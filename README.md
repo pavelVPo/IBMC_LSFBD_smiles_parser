@@ -253,7 +253,5 @@ All the possible pairs of character' types
 153. 		.^ 								atom
 154. 		.^ 								*
 
-154 variants
-
 /////////////////////////////////////////////////////////////////////////
 
