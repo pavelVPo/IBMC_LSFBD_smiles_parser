@@ -2,7 +2,7 @@
 
 Parsing SMILES is useful, since this procedure provides deeper understanding of the possibilities and limitations of SMILES format.
 
-For the SMILES parser to be testable and verifiable it is important to follow the accepted practices of parsing given the specification of the input.
+For the SMILES parser to be testable it is important to follow the accepted practices of parsing given the specification of the input.
 
 In this repo the OpenSMILES specification (http://opensmiles.org/opensmiles.html) will be explored to create the pretty normal bottom-up SMILES parser for the https://github.com/pavelVPo/IBMC_LSFBD_webApp_input
 
