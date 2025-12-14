@@ -96,7 +96,7 @@ Corresponding characters could designated as **satom_bal** & **eatom_bal**,where
 
 #### Question
 
-So, "SMILES is parsable with a context-free parser", which in practice probably means that given the set of SMILES strings, each of them could be correctly parsed without considering any other string.
+So, "SMILES is parsable with a context-free parser", which in practice means that given the set of SMILES strings, each of them could be correctly parsed without considering any other string.
 
 Maybe it is also possible to guess the atom and its properties expressed as the type of atom symbol in the single SMILES string by a single character, without considering any other character in this SMILES string?
 
