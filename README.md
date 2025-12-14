@@ -10,7 +10,7 @@ For the SMILES (Simplified Molecular Input Line Entry System) reference, please,
 
 In short:
 
--   SMILES is a language, which is used to describe a molecule in the terms of and according to the rules of chemical valence and mathemathical graph theories.
+-   SMILES is a language, which is used to describe a molecule in the terms of and according to the rules of chemical valence and mathematical graph theories.
 
 -   SMILES string is the linear notation of a spanning tree of a graph representing molecule.
 
@@ -195,7 +195,8 @@ plot_class
 
 As it can be clearly seen from the **Figure 1:** yes, it will not be possible to guess the atom and its type operating single atom symbol character at time while parsing SMILES string, since there are intersections between the different sets of characters. However, on the positive side: intersections are not uniform:
 
-| e.g., satom_bal, watom_bal & watom_oal sets have the **largest** intersection while intersection between eatom_bal, watom_bar, watom_oarm, satom_bar andeatom_bar sets is the **smallest**
+| e.g.,
+| satom_bal, watom_bal & watom_oal sets have the **largest** intersection, while intersection between eatom_bal, watom_bar, watom_oarm, satom_bar andeatom_bar sets is the **smallest**
 
 Probably, this observations could be used latter to provide the future SMILES parser with some efficiency.
 
@@ -203,4 +204,40 @@ Probably, this observations could be used latter to provide the future SMILES pa
 
 #### What are they?
 
-....
+Bond symbol is the way to designate the edge of the molecular graph, i.e. chemical bond, in the SMILES string.
+
+There are six bond symbols allowed in SMILES, each of which corresponds to the certain type of chemical bond:
+
+-   Single character bond symbol corresponding to the single bond:
+
+| -
+
+This single character symbol could be and often is omitted, since by default all the atoms, which symbols are written side by side in SMILES string are presumed to be connected by this type of bond, thus, this symbol is often omitted.
+
+-   Single character bond symbol corresponding to the double bond:
+
+| =
+
+-   Single character bond symbol corresponding to the triple bond:
+
+| \#
+
+-   Single character symbol corresponding to the quadruple bond:
+
+| \$
+
+-   Single character symbol corresponding to the aromatic bond:
+
+| :
+
+It should be noted that this symbol (**:**) is deprecated and typically omitted. Aromaticity is rather described using atom symbols: **C** - aliphatic carbon, **c** - aromatic carbon; thus, bond between the **c** and **c** is considered aromatic without additional indications.
+
+-   Single character symbol corresponding to the abscence of bond between the two specific atoms:
+
+| .
+
+As it was said earlier, by default all atoms in SMILES string are considered to be connected via the single bond (**-**). Thus, symbol corresponding to the negation of bond is needed sometimes, and here it is: **.**
+
+### Bond modifying symbols and corresponding characters
+
+#### What are they?
