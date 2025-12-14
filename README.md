@@ -212,7 +212,7 @@ There are six bond symbols allowed in SMILES, each of which corresponds to the c
 
 | -
 
-This single character symbol could be and often is omitted, since by default all the atoms, which symbols are written side by side in SMILES string are presumed to be connected by this type of bond, thus, this symbol is often omitted.
+This single character symbol could be and often is omitted, since by default all the atoms, which symbols are written side by side in SMILES string, are presumed to be connected by this type of bond, thus, this symbol is often omitted.
 
 -   Single character bond symbol corresponding to the double bond:
 
