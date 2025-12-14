@@ -195,10 +195,7 @@ plot_class
 
 As it can be clearly seen from the **Figure 1:** yes, it will not be possible to guess the atom and its type operating single atom symbol character at time while parsing SMILES string, since there are intersections between the different sets of characters. However, on the positive side: intersections are not uniform:
 
-| e.g., 
-| satom_bal, watom_bal & watom_oal sets have the **largest** intersection
-| while intersection between
-| eatom_bal, watom_bar, watom_oarm, satom_bar andeatom_bar sets is the **smallest**
+| e.g., satom_bal, watom_bal & watom_oal sets have the **largest** intersection while intersection between eatom_bal, watom_bar, watom_oarm, satom_bar andeatom_bar sets is the **smallest**
 
 Probably, this observations could be used latter to provide the future SMILES parser with some efficiency.
 
