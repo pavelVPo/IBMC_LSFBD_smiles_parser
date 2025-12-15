@@ -236,7 +236,7 @@ It should be noted that this symbol (**:**) is deprecated and typically omitted.
 
 | .
 
-As it was said earlier, by default all atoms in SMILES string are considered to be connected via the single bond (**-**). Thus, symbol corresponding to the negation of bond is needed sometimes, and here it is: **.**
+As it was said earlier, by default each atom in SMILES string is considered to be connected with its immediate neighbours via the single bond (**-**). Thus, symbol corresponding to the negation of the bond is needed sometimes, and here it is: **.**
 
 ### Bond modifying symbols and corresponding characters
 
