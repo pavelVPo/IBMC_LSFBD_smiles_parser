@@ -236,7 +236,7 @@ It should be noted that this symbol (**:**) is deprecated and typically omitted.
 
 | .
 
-As it was said earlier, by default each atom in SMILES string is considered to be connected with its immediate neighbours via the single bond (**-**). Thus, symbol corresponding to the negation of the bond is needed sometimes, and here it is: **.**
+As it was said earlier, by default each atom in SMILES string is considered to be connected with its immediate neighbors via the single bond (**-**). Thus, symbol corresponding to the negation of the bond is needed sometimes, and here it is: **.**
 
 ### Bond modifying (multiplying) symbols and corresponding characters
 
@@ -322,7 +322,7 @@ Corresponding characters could be designated as **sbm_ibe** & **ebm_ibe**, where
 
 -   Multicharacter bond multiplying symbols initiators of rings with explicit bond:
 
-| -[0-9], =[0-9], #[0-9], \$[0-9], :[0-9], -%[0-9][0-9], =%[0-9][0-9], #%[0-9][0-9], \$%[0-9][0-9], :%[0-9][0-9]
+| -[0-9], =[0-9], #[0-9], \$[0-9], :[0-9], .[0-9], -%[0-9][0-9], =%[0-9][0-9], #%[0-9][0-9], \$%[0-9][0-9], :%[0-9][0-9], .%[0-9][0-9]
 
 Corresponding characters could be designated as **sbm_ire** & **ebm_ire**, where prefix **s** stands for the start of the symbol, prefix **e** stands for the end of the symbol, **bm** - bond modifying (multiplying), suffix **i** - for initiator, suffix **r** - for ring, and last suffix **e** - for explicit.
 
@@ -344,7 +344,7 @@ Corresponding characters could be designated as **sbm_tbe** & **ebm_tbe**, where
 
 -   Multicharacter bond multiplying symbols terminators of rings with explicit bond:
 
-| -[0-9], =[0-9], #[0-9], \$[0-9], :[0-9], -%[0-9][0-9], =%[0-9][0-9], #%[0-9][0-9], \$%[0-9][0-9], :%[0-9][0-9]
+| -[0-9], =[0-9], #[0-9], \$[0-9], :[0-9], .[0-9], -%[0-9][0-9], =%[0-9][0-9], #%[0-9][0-9], \$%[0-9][0-9], :%[0-9][0-9], .%[0-9][0-9]
 
 Corresponding characters could be designated as **sbm_tre** & **ebm_tre**,where prefix **s** stands for the start of the symbol, prefix **e** stands for the end of the symbol, **bm** - bond modifying (multiplying), suffix **t** - for terminator, second suffix **r** - for ring, and last suffix **e** - for explicit.
 
