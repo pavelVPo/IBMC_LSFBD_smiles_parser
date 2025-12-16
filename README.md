@@ -421,6 +421,123 @@ plot_class <- ggplot(bm_symbol_characters, aes(x=class)) +
 plot_class
 ```
 
-![Figure 1. Intersections of the character sets describing different atom symbol types.](https://github.com/pavelVPo/IBMC_LSFBD_smiles_parser/blob/main/ggupset_bmchars.png)
+![**Figure 2.** Intersections of the character sets describing different bond multiplying symbols types.](https://github.com/pavelVPo/IBMC_LSFBD_smiles_parser/blob/main/ggupset_bmchars.png)
 
 As it can be clearly seen from the **Figure 2:** the sets of characters have large intersections in this case, it will be useful later while creating rules for parsing SMILES. At the moment these intersection suggest that the characters describing symbols from different classes were enumerated well: the largest intersection is between the set of characters describing end of the ring symbols or whole rings. As it should be ([0-9]).
+
+### Cis/Trans symbols and corresponding characters
+
+#### What are they?
+
+Cis/trans symbols is the way to designate the position of the nodes of the molecular graph, i.e. atoms, relative to the rotary non-permissive bond (=, #, \$).
+
+Cis/trans symbols should always be paired, i.e. atoms on each side of the bond should have their own cis/trans symbol or such symbols should be omitted on each side of the bond. Thus, two categories of cis/trans symbols are allowed in SMILES:
+
+-   Cis/trans symbols on the left side of the rotary non-permissive bond:
+
+| /, \\
+
+Corresponding characters could be designated as **lct**, where prefix **l** stands for the left side; **ct** - for cis/trans.
+
+-   Cis/trans symbols on the right side of the rotary non-permissive bond:
+
+| /, \\
+
+Corresponding characters could be designated as **rct**, where prefix **r** stands for the right side; **ct** - for cis/trans.
+
+The logic behind these symbols is outstandingly well described in <http://opensmiles.org/opensmiles.html> including the fact that such combinations of these symbols as in F/C=C/F and C(\F)=C/F are equivalent, since
+
+> The "visual interpretation" of the "up-ness" or "down-ness" of each single bond is **relative to the carbon atom**, not the double bond, so the sense of the symbol changes when the fluorine atom moved from the left to the right side of the alkene carbon atom.
+>
+> *Note: This point was not well documented in earlier SMILES specifications, and several SMILES interpreters are known to interpret the `'/'` and `'\'` symbols incorrectly.**\****
+>
+> **\*** <http://opensmiles.org/opensmiles.html>
+
+#### Question
+
+Just of curiosity, how many SMILES strings do contain cis/trans symbols, which could be misinterpreted by the *several SMILES interpreters*?
+
+It is quite easy to approximate the answer to this question using
+
+-   ChEMBL data (Zdrazil, Barbara. "Fifteen years of ChEMBL and its role in cheminformatics and drug discovery." *Journal of Cheminformatics* 17.1 (2025): 1-9.)
+
+-   R ([https://cran.rstudio.org/bin/windows/](#0){style="font-size: 11pt;"})
+
+-   Tidyverse ([https://tidyverse.org/](#0){style="font-size: 11pt;"})
+
+-   DBI (<https://cran.r-project.org/web/packages/DBI>)
+
+-   RMariaDB (<https://cran.r-project.org/web/packages/RMariaDB/index.html>)
+
+Here is the code:
+
+``` R
+library(tidyverse)
+library(RMariaDB)
+library(DBI)
+## Characters of cis/trans symbols
+# 01.     char           Single character left side cis/trans              lct
+# 02.     char           Single character right side cis/trans             rct
+lct <- c('/', '\\')
+rct <- c('/', '\\')
+## Patterns to search for
+# Parsing SMILES is a task, which may be harder than it seems on the first glance
+# Thus, at this stage the regexps will be used, which allows to extact substring containing only the first pair of cis/trans symbols
+# ^ - stands for the start of the string
+# followed by
+# [^\\\\/]* - means thath from the start of the string and up to the next meaningful part of regexp there should not be matches with the characters of cis/trans symbols
+# The last meaningful (and variable) part of the regexps stands for the one of the variants of cis/trans symbols usage from http://opensmiles.org/opensmiles.html
+# for example, in pattern_baseOne, [^\\(]/[Cc]=[Cc]/. matches F/C=C/F and does not match C(/F)=C/F
+# for example, in pattern_hardOne, [Cc]\\(/.\\)=[Cc]/. matches C(/F)=C/F and does not match F/C=C/F
+pattern_baseOne <- "^[^\\\\/]*[^\\(]/[Cc]=[Cc]/."
+pattern_baseTwo <- "^[^\\\\/]*[^\\(]\\\\.[Cc]=[Cc]/."
+pattern_hardOne <- "^[^\\\\/]*[Cc]\\(/.\\)=[Cc]/."
+pattern_hardTwo <- "^[^\\\\/]*[Cc]\\(\\\\.\\)=[Cc]/."
+
+## Connect to DB
+mysql_password = '*****'
+con <- dbConnect(
+  drv = RMariaDB::MariaDB(),
+  dbname = 'chembl_36',
+  username = 'root',
+  password = mysql_password,
+  host = NULL, 
+  port = 3306
+)
+
+## Extract SMILES
+cs__query <- dbSendQuery(con, 'SELECT canonical_smiles FROM compound_structures')
+cs_smiles <- dbFetch(cs__query) |> distinct()
+dbClearResult(cs__query)
+# Close the connection
+dbDisconnect(con)
+
+## Check patterns against SMILES
+cs_smiles_checked <- cs_smiles |> rowwise() |>
+                mutate(
+                  pattern_baseOne = str_extract(canonical_smiles, pattern_baseOne),
+                  pattern_baseTwo = str_extract(canonical_smiles, pattern_baseTwo),
+                  pattern_hardOne = str_extract(canonical_smiles, pattern_hardOne),
+                  pattern_hardTwo = str_extract(canonical_smiles, pattern_hardTwo)
+                ) |>
+                ungroup() # 2 854 654 SMILES strings extracted
+
+## Filter and Count
+cs_smiles_matched <- cs_smiles_checked |>
+                        filter(if_any(starts_with("pattern"), ~ !is.na(.)))
+# 49 673  records matched one of the patterns
+cs_smiles_matched_hard <- cs_smiles_matched |>
+                        filter(if_any(starts_with("pattern_hard"), ~ !is.na(.)))
+# 0       records matched one of the hard patterns
+cs_smiles_matched_base <- cs_smiles_matched |>
+                        filter(if_any(starts_with("pattern_base"), ~ !is.na(.)))
+# 49 673  records matched one of the base patterns
+```
+
+The first pairs of cis/trans symbols in ChEMBL data (canonical smiles) do not include the hard cases similar to the ones described in <http://opensmiles.org/opensmiles.html>
+
+Probably, it is safe to say that the percentage of such cases should be quite low at least in the curated databases.
+
+From this, it is possible to assume that reliability of the SMILES as a form of representation of chemical structures comes not only from the basic rules of this language, but also from the standards of its usage adopted in the community.
+
+Still, ability to parse SMILES using basic rules are essential to maintain this status.
