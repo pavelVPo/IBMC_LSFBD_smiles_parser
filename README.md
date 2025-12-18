@@ -20,7 +20,7 @@ In short:
 
 -   To build such a parser it will be useful to understand, what are the symbols and corresponding characters allowed in SMILES and what are their allowed combinations.
 
-## Analysis of characters allowed in SMILES
+## Analysis of symbols and characters allowed in SMILES
 
 ### Atom symbols and corresponding characters
 
@@ -429,7 +429,7 @@ As it can be clearly seen from the **Figure 2:** the sets of characters have lar
 
 #### What are they?
 
-Cis/trans symbols is the way to designate the position of the nodes of the molecular graph, i.e. atoms, relative to the rotary non-permissive bond (=, #, \$).
+Cis/trans symbols is the way to designate the position of the nodes of the molecular graph, i.e. atoms, relative to the rotary non-permissive bond (=, #, \$).
 
 Cis/trans symbols should always be paired, i.e. atoms on each side of the bond should have their own cis/trans symbol or such symbols should be omitted on each side of the bond. Thus, two categories of cis/trans symbols are allowed in SMILES:
 
@@ -471,7 +471,7 @@ It is quite easy to approximate the answer to this question using
 
 Here is the code:
 
-``` R
+``` r
 library(tidyverse)
 library(RMariaDB)
 library(DBI)
@@ -541,3 +541,135 @@ Probably, it is safe to say that the percentage of such cases should be quite lo
 From this, it is possible to assume that reliability of the SMILES as a form of representation of chemical structures comes not only from the basic rules of this language, but also from the standards of its usage adopted in the community.
 
 Still, ability to parse SMILES using basic rules are essential to maintain this status.
+
+### All the symbols and corresponding characters inside the square brackets besides the main atom symbol 
+
+#### What are they?
+
+Symbols and corresponding characters inside the square brackets besides the main atom symbol describe the main bracket atom in terms of its mass number indicating speciffic isotope, chiral status, number of explicit hydrogens, charge and class assigned by the author of the particular SMILES string. It should be noted that any atom symbol could be found in the square brackets and any atom symbol should be put in the square brackets if corresponding atom has aforementioned properties.
+
+These symbols will be categorized only by the length, this is sufficient for the purpose, since these symbols have the strict order of placement inside the brackets.
+
+##### Isotope symbols
+
+Isotope symbols are the symbols describing mass number of the specific atom.
+
+Isotope symbols allowed in SMILES could be divided into 3 categories by their length:
+
+-   Single character isotope symbols:
+
+| 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Corresponding characters could be designated as **wisotope**, where prefix **w** stands for the whole symbol.
+
+-   Two-character isotope symbols:
+
+| 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Corresponding characters could be designated as **sisotope & eisotope**, where prefix **s** stands for the start and prefix **e** stands for the end of the symbol.
+
+-   Three-character isotope symbols:
+
+| 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Corresponding characters could be designated as **sisotope, misotope, eisotope**, where prefix **s** stands for the start and prefix **m** stands for the middle and prefix **e** stands for the end of the symbol.
+
+##### Chiral symbols
+
+Chiral symbols are used to show that an atom is a stereocenter.
+
+Chiral symbols allowed in SMILES could be divided into 5 categories by their length:
+
+-   Single character chiral symbols:
+
+| @
+
+Corresponding characters could be designated as **wchiral**, where prefix **w** stands for the whole symbol.
+
+-   Two-character chiral symbols:
+
+| @
+
+Corresponding characters could be designated as **schiral & echiral**, where prefix **s** stands for the start and prefix **e** stands for the end of the symbol.
+
+-   Four-character chiral symbols:
+
+| @, T, H, A, L, S, P, B, O, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Corresponding characters could be designated as **schiral & mchiral & echiral**, where prefix **s** stands for the start, prefix **m** stands for the middle (2 characters) and prefix **e** stands for the end of the symbol.
+
+-   Five-character chiral symbols:
+
+| @, T, B, O, H, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Corresponding characters could be designated as **schiral & mchiral & echiral**, where prefix **s** stands for the start, prefix **m** stands for the middle (3 characters) and prefix **e** stands for the end of the symbol.
+
+##### Hydrogen symbols
+
+Hydrogen symbols are used to designate the number of explicit hydrogens of this atom.
+
+Hydrogen symbols allowed in SMILES could be divided into 2 categories by their length:
+
+-   Single character hydrogen symbols:
+
+| H
+
+Corresponding characters could be designated as **whydrogen**, where prefix **w** stands for the whole symbol.
+
+-   Two-character hydrogen symbols:
+
+| H, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Corresponding characters could be designated as **shydrogen & ehydrogen**, where prefix **s** stands for the start and **e** stands for the end of the symbol.
+
+##### Charge symbols
+
+Charge symbols are used to describe the charge of this atom.
+
+Hydrogen symbols allowed in SMILES could be divided into 2 categories by their length:
+
+-   Single character charge symbols:
+
+| +, -
+
+Corresponding characters could be designated as **wcharge**, where prefix **w** stands for the whole symbol.
+
+-   Two-character hydrogen symbols:
+
+| +, -, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Corresponding characters could be designated as **scharge & echarge**, where prefix **s** stands for the start and **e** stands for the end of the symbol.
+
+##### Class symbols
+
+Class symbols designate the class of the atom, which is thing defined by the author of SMILES string.
+
+Class symbols allowed in SMILES could be divided into 3 categories by their length:
+
+-   Two-character class symbols:
+
+| :, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Corresponding characters could be designated as **sclass & eclass**, where prefix **s** stands for the start and **e** stands for the end of the symbol.
+
+-   Three-character class symbols:
+
+| :, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Corresponding characters could be designated as **sclass & mclass & eclass**, where prefix **s** stands for the start, **m** (1 character) stands for the middle and **e** stands for the end of the symbol.
+
+-   Four-character class symbols:
+
+| :, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Corresponding characters could be designated as **sclass & mclass & eclass**, where prefix **s** stands for the start, **m** (2 characters) stands for the middle and **e** stands for the end of the symbol.
+
+-   Five-character class symbols:
+
+| :, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Corresponding characters could be designated as **sclass & mclass & eclass**, where prefix **s** stands for the start, **m** (3 characters) stands for the middle and **e** stands for the end of the symbol.
+
+As it can be seen without the further analysis, the aforementioned in-brackets categories of symbols are highly interconnected, but still it is quite easy to discriminate between the different symbols inside the square brackets, since they appear in fixed order.
+
+Also, **\*** is an allowed symbol in SMILES, which corresponds to the any atom symbol and behaves accordingly (single character atom symbol). This section, *Analysis of symbols and characters allowed in SMILES*, will soon be checked and updated to consider it.
