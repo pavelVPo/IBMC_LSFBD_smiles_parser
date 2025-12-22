@@ -1,3 +1,7 @@
+---
+---
+---
+
 # SMILES Parser (work in progress)
 
 For the SMILES (Simplified Molecular Input Line Entry System) reference, please, SEE:
@@ -94,13 +98,21 @@ Corresponding characters could be designated as **satom_bar** & **eatom_bar**,wh
 
 Corresponding characters could be designated as **satom_bal** & **eatom_bal**,where prefix **s** stands for the start of the symbol, prefix **e** stands for the end of the symbol; suffix **b** - for bracket and suffix **al** - for aliphatic.
 
+Also, **\*** is an allowed symbol in SMILES, which corresponds to the any atom symbol and behaves similar to the single character atom symbols of organic aliphatic and aromatic atoms:
+
+-   Single character atom symbol of any atom:
+
+| \*
+
+Corresponding character could be designated as **anything**, since it could mean basically anything.
+
 #### Question
 
 So, "SMILES is parsable with a context-free parser", which in practice means that given the set of SMILES strings, each of them could be correctly parsed without considering any other string.
 
 Maybe it is also possible to guess the atom and its properties expressed as the type of atom symbol in the single SMILES string by a single character, without considering any other character in this SMILES string?
 
-To be honest, the answer is definately not, but the details matter.
+To be honest, the answer is definitely not, but the details matter.
 
 Trying to answer this question by checking the intersection between the sets of characters describing atom symbols of different types, it is possible to get some insights into what also should be considered, besides the one character at time, while parsing SMILES string.
 
@@ -154,6 +166,8 @@ symb__atom_bal <- c('He', 'Li', 'Be', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'Cl', 'Ar',
 satom_bal <- map(symb__atom_bal, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
 # Get the last character for each atom symbol
 eatom_bal <- map(symb__atom_bal, \(x) str_sub(x, -1)) |> unlist() |> unique()
+# 09, single character symbol of anything
+anything <- c('*')
 
 ## Analyze characters constituting atom symbols from different classes
 atom_symbol_characters <- tibble(
@@ -166,7 +180,8 @@ atom_symbol_characters <- tibble(
                   satom_bar,
                   eatom_bar,
                   satom_bal,
-                  eatom_bal),
+                  eatom_bal,
+                  anything),
     class = c(rep("watom_oar", length(watom_oar)),
               rep("watom_oal", length(watom_oal)),
               rep("watom_bar", length(watom_bar)),
@@ -176,7 +191,8 @@ atom_symbol_characters <- tibble(
               rep("satom_bar", length(satom_bar)),
               rep("eatom_bar", length(eatom_bar)),
               rep("satom_bal", length(satom_bal)),
-              rep("eatom_bal", length(eatom_bal)))
+              rep("eatom_bal", length(eatom_bal)),
+              rep("anything", length(anything)))
     ) |>
     group_by(character) |>
     summarise(class = list(class))
@@ -242,7 +258,7 @@ As it was said earlier, by default each atom in SMILES string is considered to b
 
 #### What are they?
 
-Bond multiplying symbols is used in SMILES to extend the number of atoms, which connections to the current atom could be written using linear notation (SMILES).
+Bond multiplying symbols is used in SMILES to extend the number of atoms, for which connections to the current atom could be written using linear notation (SMILES).
 
 Bond multiplying symbols allowed in SMILES could be divided into two categories by their length:
 
@@ -542,7 +558,7 @@ From this, it is possible to assume that reliability of the SMILES as a form of 
 
 Still, ability to parse SMILES using basic rules are essential to maintain this status.
 
-### All the symbols and corresponding characters inside the square brackets besides the main atom symbol 
+### All the symbols and corresponding characters inside the square brackets besides the main atom symbol
 
 #### What are they?
 
@@ -582,25 +598,25 @@ Chiral symbols allowed in SMILES could be divided into 5 categories by their len
 
 -   Single character chiral symbols:
 
-| @
+| \@
 
 Corresponding characters could be designated as **wchiral**, where prefix **w** stands for the whole symbol.
 
 -   Two-character chiral symbols:
 
-| @
+| \@
 
 Corresponding characters could be designated as **schiral & echiral**, where prefix **s** stands for the start and prefix **e** stands for the end of the symbol.
 
 -   Four-character chiral symbols:
 
-| @, T, H, A, L, S, P, B, O, 1, 2, 3, 4, 5, 6, 7, 8, 9
+| \@, T, H, A, L, S, P, B, O, 1, 2, 3, 4, 5, 6, 7, 8, 9
 
 Corresponding characters could be designated as **schiral & mchiral & echiral**, where prefix **s** stands for the start, prefix **m** stands for the middle (2 characters) and prefix **e** stands for the end of the symbol.
 
 -   Five-character chiral symbols:
 
-| @, T, B, O, H, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+| \@, T, B, O, H, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 
 Corresponding characters could be designated as **schiral & mchiral & echiral**, where prefix **s** stands for the start, prefix **m** stands for the middle (3 characters) and prefix **e** stands for the end of the symbol.
 
@@ -671,5 +687,3 @@ Corresponding characters could be designated as **sclass & mclass & eclass**, wh
 Corresponding characters could be designated as **sclass & mclass & eclass**, where prefix **s** stands for the start, **m** (3 characters) stands for the middle and **e** stands for the end of the symbol.
 
 As it can be seen without the further analysis, the aforementioned in-brackets categories of symbols are highly interconnected, but still it is quite easy to discriminate between the different symbols inside the square brackets, since they appear in fixed order.
-
-Also, **\*** is an allowed symbol in SMILES, which corresponds to the any atom symbol and behaves accordingly (single character atom symbol). This section, *Analysis of symbols and characters allowed in SMILES*, will soon be checked and updated to consider it.
