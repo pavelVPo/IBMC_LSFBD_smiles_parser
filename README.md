@@ -586,17 +586,11 @@ Isotope symbols allowed in SMILES could be divided into 3 categories by their le
 
 Corresponding characters could be designated as **wisotope**, where prefix **w** stands for the whole symbol.
 
--   Two-character isotope symbols:
+-   Multicharacter (from 2 to 3 characters) isotope symbols:
 
 | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 
-Corresponding characters could be designated as **sisotope & eisotope**, where prefix **s** stands for the start and prefix **e** stands for the end of the symbol.
-
--   Three-character isotope symbols:
-
-| 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-
-Corresponding characters could be designated as **sisotope, risotope**, where prefix **s** stands for the start and prefix **r** stands for the end of the symbol.
+Corresponding characters could be designated as **sisotope_m & risotope_m**, where prefix **s** stands for the start and prefix r stands for the rest of the symbol and suffix **m** stands for the multi.
 
 ##### Chiral symbols
 
@@ -931,41 +925,38 @@ symb__isotope_1 <- c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
 wisotope <- symb__isotope_1
 # 25, two-character isotope symbols:
 symb__isotope_2 <- map(c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9"), \(x) map(c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9"), \(y) paste(x,y, collapse = "", sep = ""))) |> unlist()
-sisotope <- map(symb__isotope_2, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
-eisotope <- map(symb__isotope_2, \(x) str_sub(x, -1)) |> unlist() |> unique()
-# 26, three-character isotope symbols:
 symb__isotope_3 <- map(symb__isotope_2, \(x) map(c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9"), \(y) paste(x,y, collapse = "", sep = ""))) |> unlist()
-sisotope <- map(symb__isotope_2, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
-eisotope <- map(symb__isotope_2, \(x) str_sub(x, -1)) |> unlist() |> unique()
-# 27, single character chirality symbol:
+sisotope_m <- map(symb__isotope_3, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+risotope_m <- map(symb__isotope_3, \(x) str_sub(x, 2)) |> unlist() |> unique()
+# 26, single character chirality symbol:
 symb__chiral_1 <- c('@')
 wchiral <- symb__chiral_1
-# 28, two-character chirality symbol:
+# 27, two-character chirality symbol:
 symb__chiral_2 <- c('@@')
-schiral_1 <- map(symb__chiral_2, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
-echiral_1 <- map(symb__chiral_2, \(x) str_sub(x, -1)) |> unlist() |> unique()
-# 29, multicharacter chirality symbol:
+schiral_2 <- map(symb__chiral_2, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+echiral_2 <- map(symb__chiral_2, \(x) str_sub(x, -1)) |> unlist() |> unique()
+# 28, multicharacter chirality symbol:
 symb__chir_m <- c("@TH1", "@TH2", "@AL1", "@AL2", "@SP1", "@SP2", "@SP3", "@TB1", "@TB2", "@TB3", "@TB4",
 					"@TB5", "@TB6", "@TB7", "@TB8", "@TB9", "@TB10", "@TB11", "@TB12", "@TB13", "@TB14", "@TB15", "@TB16", "@TB17", "@TB18", "@TB19", "@TB20",
 					"@OH1", "@OH2", "@OH3", "@OH4", "@OH5", "@OH6", "@OH7", "@OH8", "@OH9", "@OH10", "@OH11", "@OH12", "@OH13", "@OH14", "@OH15", "@OH16", "@OH17", "@OH18", "@OH19", "@OH20",
 					"@OH21", "@OH22", "@OH23", "@OH24", "@OH25", "@OH26", "@OH27", "@OH28", "@OH29", "@OH30")
 schiral_m <- map(symb__chir_m, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
 rchiral_m <- map(symb__chir_m, \(x) str_sub(x, 2)) |> unlist() |> unique()
-# 30, single character hydrogen symbol:
+# 29, single character hydrogen symbol:
 symb__hydrogen_1 <- c("H")
 whydrogen <- symb__hydrogen_1
-# 31, two-character hydrogen symbol:
+# 30, two-character hydrogen symbol:
 symb__hydrogen_2 <- c("H0", "H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8", "H9")
 shydrogen <- map(symb__hydrogen_2, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
 ehydrogen <- map(symb__hydrogen_2, \(x) str_sub(x, -1)) |> unlist() |> unique()
-# 32, single character charge symbol:
+# 31, single character charge symbol:
 symb__charge_1 <- c("+", "-")
 wcharge <- symb__charge_1
-# 33, two-character charge symbol, obsolete:
+# 32, two-character charge symbol, obsolete:
 symb__charge_2 <- c("++", "--")
 scharge_obsolete <- map(symb__hydrogen_2, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
 echarge_obsolete <- map(symb__hydrogen_2, \(x) str_sub(x, -1)) |> unlist() |> unique()
-# 34, multicharacter charge symbol:
+# 33, multicharacter charge symbol:
 symb__class_2 <- map(c(":"), \(x) map(c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9"), \(y) paste(x,y, collapse = "", sep = ""))) |> unlist()
 symb__class_3 <- map(c(":0", ":1", ":2", ":3", ":4", ":5", ":6", ":7", ":8", ":9"), \(x) map(c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9"), \(y) paste(x,y, collapse = "", sep = ""))) |> unlist()
 symb__class_4 <- map(c(":0", ":1", ":2", ":3", ":4", ":5", ":6", ":7", ":8", ":9"), \(x) map(symb__isotope_2, \(y) paste(x,y, collapse = "", sep = ""))) |> unlist()
@@ -973,3 +964,19 @@ symb__class <- c(symb__class_2, symb__class_3, symb__class_4)
 sclass <- map(symb__class, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
 rclass <- map(symb__class, \(x) str_sub(x, 2)) |> unlist() |> unique()
 ```
+
+Now it is possible to assess the intersection between the character sets describing different entities in SMILES (*a little deviation from the point of this part of the study and latter will be transferred to the appropriate position*):
+
+-   Anything
+
+-   Atoms
+
+-   Bonds
+
+-   Bond modifiers
+
+-   Cis/Trans things
+
+-   Atom properties written in square brackets
+
+![**Figure 3.** Intersection between the classes of characters describing the different entities in SMILES.](https://github.com/pavelVPo/IBMC_LSFBD_smiles_parser/blob/main/ggupset_charClasses.png)
