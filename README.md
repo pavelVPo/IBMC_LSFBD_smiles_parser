@@ -1,7 +1,3 @@
----
----
----
-
 # SMILES Parser (work in progress)
 
 For the SMILES (Simplified Molecular Input Line Entry System) reference, please, SEE:
@@ -336,17 +332,23 @@ Corresponding characters could be designated as **sbm_ibe** & **ebm_ibe**, where
 
 | Such symbols do not exist
 
--   Multicharacter bond multiplying symbols initiators of rings with explicit bond:
+-   Two-character bond multiplying symbols initiators of rings with explicit bond:
 
-| -[0-9], =[0-9], #[0-9], \$[0-9], :[0-9], .[0-9], -%[0-9][0-9], =%[0-9][0-9], #%[0-9][0-9], \$%[0-9][0-9], :%[0-9][0-9], .%[0-9][0-9]
+| -[0-9], =[0-9], #[0-9], \$[0-9], :[0-9], .[0-9]
 
-Corresponding characters could be designated as **sbm_ire** & **ebm_ire**, where prefix **s** stands for the start of the symbol, prefix **e** stands for the end of the symbol, **bm** - bond modifying (multiplying), suffix **i** - for initiator, suffix **r** - for ring, and last suffix **e** - for explicit.
+Corresponding characters could be designated as **sbm_ire_2** & **ebm_ire_2**,where prefix **s** stands for the start of the symbol, prefix **e** stands for the end of the symbol, **bm** - bond modifying (multiplying), suffix **i** - for initiator, second suffix **r** - for ring, suffix **e** - for explicit and last suffix **2** - for two-character.
+
+-   Four-character bond multiplying symbols terminators of rings with explicit bond:
+
+| -%[0-9][1-9], =%[0-9][1-9], #%[0-9][1-9], \$%[0-9][1-9], :%[0-9][1-9], .%[0-9][1-9]
+
+Corresponding characters could be designated as **sbm_ire_4, mbm_ire_4** & **rbm_ire_4**,where prefix **s** stands for the start of the symbol, prefix **m** stands for the middle of the symbol, prefix **r** stands for the rest of the symbol, **bm** - bond modifying (multiplying), suffix **i** - for initiator, second suffix **r** - for ring, suffix **e** - for explicit and last suffix **4** - for four-character.
 
 -   Multicharacter bond multiplying symbols initiators of rings with implicit bond:
 
 | %[0-9][0-9]
 
-Corresponding characters could be designated as **sbm_iri** & **ebm_iri**, where prefix **s** stands for the start of the symbol, prefix **e** stands for the end of the symbol, **bm** - bond modifying (multiplying), suffix **i** - for initiator, suffix **r** - for ring, and last suffix **i** - for implicit.
+Corresponding characters could be designated as **sbm_iri** & **rbm_iri**, where prefix **s** stands for the start of the symbol, prefix **r** stands for the rest of the symbol, **bm** - bond modifying (multiplying), suffix **i** - for initiator, suffix **r** - for ring, and last suffix **i** - for implicit.
 
 -   Multicharacter bond multiplying symbols terminators of branching with explicit bond:
 
@@ -358,17 +360,23 @@ Corresponding characters could be designated as **sbm_tbe** & **ebm_tbe**, where
 
 | Such symbols do not exist
 
--   Multicharacter bond multiplying symbols terminators of rings with explicit bond:
+-   Two-character bond multiplying symbols terminators of rings with explicit bond:
 
-| -[0-9], =[0-9], #[0-9], \$[0-9], :[0-9], .[0-9], -%[0-9][0-9], =%[0-9][0-9], #%[0-9][0-9], \$%[0-9][0-9], :%[0-9][0-9], .%[0-9][0-9]
+| -[0-9], =[0-9], #[0-9], \$[0-9], :[0-9], .[0-9]
 
-Corresponding characters could be designated as **sbm_tre** & **ebm_tre**,where prefix **s** stands for the start of the symbol, prefix **e** stands for the end of the symbol, **bm** - bond modifying (multiplying), suffix **t** - for terminator, second suffix **r** - for ring, and last suffix **e** - for explicit.
+Corresponding characters could be designated as **sbm_tre_2** & **ebm_tre_2**,where prefix **s** stands for the start of the symbol, prefix **e** stands for the end of the symbol, **bm** - bond modifying (multiplying), suffix **t** - for terminator, second suffix **r** - for ring, suffix **e** - for explicit and last suffix **2** - for two-character.
+
+-   Four-character bond multiplying symbols terminators of rings with explicit bond:
+
+| -%[0-9][1-9], =%[0-9][1-9], #%[0-9][1-9], \$%[0-9][1-9], :%[0-9][1-9], .%[0-9][1-9]
+
+Corresponding characters could be designated as **sbm_tre_4, mbm_tre_4** & **rbm_tre_4**,where prefix **s** stands for the start of the symbol, prefix **m** stands for the middle of the symbol, prefix **r** stands for the rest of the symbol, **bm** - bond modifying (multiplying), suffix **t** - for terminator, second suffix **r** - for ring, suffix **e** - for explicit and last suffix **4** - for four-character.
 
 -   Multicharacter bond multiplying symbols terminators of rings with implicit bond:
 
 | %[0-9][0-9]
 
-Corresponding characters could be designated as **sbm_tri** & **ebm_tri**,where prefix **s** stands for the start of the symbol, prefix **e** stands for the end of the symbol, **bm** - bond modifying (multiplying), suffix **t** - for terminator, second suffix **r** - for ring, and last suffix i - for implicit.
+Corresponding characters could be designated as **sbm_tri** & **rbm_tri**,where prefix **s** stands for the start of the symbol, prefix **r** stands for the rest of the symbol, **bm** - bond modifying (multiplying), suffix **t** - for terminator, second suffix **r** - for ring, and last suffix i - for implicit.
 
 #### Sort of the same question
 
@@ -449,11 +457,11 @@ Cis/trans symbols is the way to designate the position of the nodes of the molec
 
 Cis/trans symbols should always be paired, i.e. atoms on each side of the bond should have their own cis/trans symbol or such symbols should be omitted on each side of the bond. Thus, two categories of cis/trans symbols are allowed in SMILES:
 
--   Cis/trans symbols on the left side of the rotary non-permissive bond:
+-   Cis/trans single character symbols on the left side of the rotary non-permissive bond:
 
 | /, \\
 
-Corresponding characters could be designated as **lct**, where prefix **l** stands for the left side; **ct** - for cis/trans.
+Corresponding single character characters could be designated as **lct**, where prefix **l** stands for the left side; **ct** - for cis/trans.
 
 -   Cis/trans symbols on the right side of the rotary non-permissive bond:
 
@@ -494,8 +502,8 @@ library(DBI)
 ## Characters of cis/trans symbols
 # 01.     char           Single character left side cis/trans              lct
 # 02.     char           Single character right side cis/trans             rct
-lct <- c('/', '\\')
-rct <- c('/', '\\')
+lct <- c('/', '\\\\')
+rct <- c('/', '\\\\')
 ## Patterns to search for
 # Parsing SMILES is a task, which may be harder than it seems on the first glance
 # Thus, at this stage the regexps will be used, which allows to extact substring containing only the first pair of cis/trans symbols
@@ -588,7 +596,7 @@ Corresponding characters could be designated as **sisotope & eisotope**, where p
 
 | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 
-Corresponding characters could be designated as **sisotope, misotope, eisotope**, where prefix **s** stands for the start and prefix **m** stands for the middle and prefix **e** stands for the end of the symbol.
+Corresponding characters could be designated as **sisotope, risotope**, where prefix **s** stands for the start and prefix **r** stands for the end of the symbol.
 
 ##### Chiral symbols
 
@@ -596,29 +604,23 @@ Chiral symbols are used to show that an atom is a stereocenter.
 
 Chiral symbols allowed in SMILES could be divided into 5 categories by their length:
 
--   Single character chiral symbols:
+-   Single character chirality symbols:
 
 | \@
 
 Corresponding characters could be designated as **wchiral**, where prefix **w** stands for the whole symbol.
 
--   Two-character chiral symbols:
+-   Two-character chirality symbols:
 
 | \@
 
-Corresponding characters could be designated as **schiral & echiral**, where prefix **s** stands for the start and prefix **e** stands for the end of the symbol.
+Corresponding characters could be designated as **schiral & echiral**, where prefix **e** stands for the start and prefix **r** stands for the end of the symbol.
 
--   Four-character chiral symbols:
+-   Multicharacter chirality symbols:
 
-| \@, T, H, A, L, S, P, B, O, 1, 2, 3, 4, 5, 6, 7, 8, 9
+| \@, T, H, A, L, S, P, B, O, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 
-Corresponding characters could be designated as **schiral & mchiral & echiral**, where prefix **s** stands for the start, prefix **m** stands for the middle (2 characters) and prefix **e** stands for the end of the symbol.
-
--   Five-character chiral symbols:
-
-| \@, T, B, O, H, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-
-Corresponding characters could be designated as **schiral & mchiral & echiral**, where prefix **s** stands for the start, prefix **m** stands for the middle (3 characters) and prefix **e** stands for the end of the symbol.
+Corresponding characters could be designated as **schiral & rchiral**, where prefix **s** stands for the start, prefix **r** stands for the rest of the symbol.
 
 ##### Hydrogen symbols
 
@@ -650,11 +652,17 @@ Hydrogen symbols allowed in SMILES could be divided into 2 categories by their l
 
 Corresponding characters could be designated as **wcharge**, where prefix **w** stands for the whole symbol.
 
--   Two-character hydrogen symbols:
+-   Two-character charge obsolete symbols:
+
+| +, -
+
+Corresponding characters could be designated as **scharge_obsolete & echarge_obsolete**, where prefix **s** stands for the start and **e** stands for the end of the symbol.
+
+-   Multicharacter charge obsolete symbols:
 
 | +, -, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 
-Corresponding characters could be designated as **scharge & echarge**, where prefix **s** stands for the start and **e** stands for the end of the symbol.
+Corresponding characters could be designated as **scharge_m & rcharge_m**, where prefix **s** stands for the start and **r** stands for the rest of the symbol and suffix **m** stands for the multi.
 
 ##### Class symbols
 
@@ -662,28 +670,306 @@ Class symbols designate the class of the atom, which is thing defined by the aut
 
 Class symbols allowed in SMILES could be divided into 3 categories by their length:
 
--   Two-character class symbols:
+-   Multicharacter (from 2 to 4 characters) class symbols:
 
 | :, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 
-Corresponding characters could be designated as **sclass & eclass**, where prefix **s** stands for the start and **e** stands for the end of the symbol.
-
--   Three-character class symbols:
-
-| :, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-
-Corresponding characters could be designated as **sclass & mclass & eclass**, where prefix **s** stands for the start, **m** (1 character) stands for the middle and **e** stands for the end of the symbol.
-
--   Four-character class symbols:
-
-| :, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-
-Corresponding characters could be designated as **sclass & mclass & eclass**, where prefix **s** stands for the start, **m** (2 characters) stands for the middle and **e** stands for the end of the symbol.
-
--   Five-character class symbols:
-
-| :, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-
-Corresponding characters could be designated as **sclass & mclass & eclass**, where prefix **s** stands for the start, **m** (3 characters) stands for the middle and **e** stands for the end of the symbol.
+Corresponding characters could be designated as **sclass & rclass**, where prefix **s** stands for the start and **r** stands for the rest of the symbol.
 
 As it can be seen without the further analysis, the aforementioned in-brackets categories of symbols are highly interconnected, but still it is quite easy to discriminate between the different symbols inside the square brackets, since they appear in fixed order.
+
+**This, *Analysis of symbols and characters allowed in SMILES*, will be updated to be in line with the further developments.**
+
+## Pairs of characters in SMILES and in SMILES from ChEMBL (for example)
+
+In short:
+
+It is possible to read SMILES string character by character. In this case, each new character is the point where some questions should be answered and some decisions should be taken:
+
+-   Is this character allowed in SMILES?
+
+-   Is this character allowed after the previous character?
+
+-   What does this character could mean in the current context (with the given previous characters)?
+
+-   What are the questions, which should be addressed by the next character given this one and previous ones (in the updated context)?
+
+Thus, it will be useful to prepare the list of all possible pairs of symbols, character classes and characters and check viability of their pairs in theory and in the real-world data to direct the further thinking.
+
+Here is the code to enumerate the classes of characters described earlier:
+
+``` r
+library(RMariaDB)
+library(DBI)
+library(tidyverse)
+library(ggupset)
+
+### Enumeration of the character classes allowed in SMILES
+## ATOMS
+# 01, single character atom symbol of organic aromatic atom
+symb__atom_oar <- c('b', 'c', 'n', 'o', 's', 'p')
+watom_oar <- symb__atom_oar
+# 02, single character atom symbol of organic aliphatic atom
+symb__atom_oal <- c('B', 'C', 'N', 'O', 'S', 'P', 'F', 'I')
+watom_oal <- symb__atom_oal
+# 03, single character atom symbol of bracket aromatic atom
+symb__atom_bar <- c('b', 'c', 'n', 'o', 's', 'p')
+watom_bar <- symb__atom_bar
+# 04, single character atom symbol of bracket aliphatic atom
+symb__atom_bal <- c('H', 'B', 'C', 'N', 'O', 'F', 'P', 'S', 'K', 'V', 'Y', 'I', 'W', 'U')
+watom_bal <- symb__atom_bal
+#06, two character atom symbol of organic aliphatic atoms
+symb__atom_oal <- c('Cl', 'Br')
+# Get the first character for each atom symbol
+satom_oal <- map(symb__atom_oal, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+# Get the last character for each atom symbol
+eatom_oal <- map(symb__atom_oal, \(x) str_sub(x, -1)) |> unlist() |> unique()
+# 07, two character atom symbol of bracket aromatic atom
+symb__atom_bar <- c('se', 'as', 'te')
+# Get the first character for each atom symbol
+satom_bar <- map(symb__atom_bar, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+# Get the last character for each atom symbol
+eatom_bar <- map(symb__atom_bar, \(x) str_sub(x, -1)) |> unlist() |> unique()
+# 08, two character atom symbol of bracket aliphatic atom
+symb__atom_bal <- c('He', 'Li', 'Be', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'Cl', 'Ar', 'Ca', 'Sc', 'Ti', 'Cr', 'Mn',
+                          'Fe', 'Co', 'Ni', 'Cu', 'Zn', 'Ga', 'Ge', 'As', 'Se', 'Br', 'Kr', 'Rb', 'Sr', 'Zr', 'Nb', 'Mo', 'Tc', 'Ru', 'Rh', 'Pd', 'Ag', 'Cd', 'In', 'Sn', 'Sb', 'Te',
+                          'Xe', 'Cs', 'Ba', 'Hf', 'Ta', 'Re', 'Os', 'Ir', 'Pt', 'Au', 'Hg', 'Tl', 'Pb', 'Bi', 'Po', 'At', 'Rn', 'Fr', 'Ra', 'Rf', 'Db', 'Sg', 'Bh', 'Hs', 'Mt',
+                          'Ds', 'Rg', 'Cn', 'Fl', 'Lv', 'La', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Tb', 'Dy', 'Ho', 'Er', 'Tm', 'Yb', 'Lu', 'Ac', 'Th', 'Pa', 'Np', 'Pu', 'Am',
+                          'Cm', 'Bk', 'Cf', 'Es', 'Fm', 'Md', 'No', 'Lr')
+# Get the first character for each atom symbol
+satom_bal <- map(symb__atom_bal, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+# Get the last character for each atom symbol
+eatom_bal <- map(symb__atom_bal, \(x) str_sub(x, -1)) |> unlist() |> unique()
+## ANYTHING
+# 09, single character symbol of anything
+symb__anything <- c('*')
+anything <- symb__anything
+## BONDS
+symb__single_bond <- c("-")
+single_bond <- symb__single_bond
+symb__double_bond <- c("=")
+double_bond <- symb__double_bond
+symb__triple_bond <- c("#")
+triple_bond <- symb__triple_bond
+symb__quadruple_bond <- c("$")
+quadruple_bond <- symb__quadruple_bond
+symb__aromatic_bond_obsolete <- c(":")
+aromatic_bond_obsolete <- symb__aromatic_bond_obsolete
+symb__no_bond <- c(".")
+no_bond <- symb__no_bond
+## BOND modifiers (multipliers)
+# 10, single character bond multiplying symbols initiators of branch with implicit bond
+symb__wbm_ibi <- c('(')
+wbm_ibi <- symb__wbm_ibi
+# 11, single character bond multiplying symbols terminators of branch with implicit bond
+symb__wbm_tbi <- c(')')
+wbm_tbi <- symb__wbm_tbi
+# 12, single character bond multiplying symbols initiators of rings with implicit bond
+symb__wbm_iri <- c('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+wbm_iri <- symb__wbm_iri
+# 13, single character bond multiplying symbols terminators of rings with implicit bond
+symb__wbm_tri <- c('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+wbm_tri <- symb__wbm_tri
+# 14, multicharacter bond multiplying symbols initiators of branch with explicit bond
+symb__bm_ibe <- c('(-', '(=', '(#', '($', '(:', '(.')
+sbm_ibe <- map(symb__bm_ibe, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+ebm_ibe <- map(symb__bm_ibe, \(x) str_sub(x, -1)) |> unlist() |> unique()
+# 15, two-character bond multiplying symbols initiators of rings with explicit bond
+symb__bm_ire_2  <- c('-0', '=0', '#0', '$0', ':0', '.0',
+					'-1', '=1', '#1', '$1', ':1', '.1',
+					'-2', '=2', '#2', '$2', ':2', '.2',
+					'-3', '=3', '#3', '$3', ':3', '.3',
+					'-4', '=4', '#4', '$4', ':4', '.4',
+					'-5', '=5', '#5', '$5', ':5', '.5',
+					'-6', '=6', '#6', '$6', ':6', '.6',
+					'-7', '=7', '#7', '$7', ':7', '.7',
+					'-8', '=8', '#8', '$8', ':8', '.8',
+					'-9', '=9', '#9', '$9', ':9', '.9' )
+sbm_ire_2  <- map(symb__bm_ire_2, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+ebm_ire_2  <- map(symb__bm_ire_2, \(x) str_sub(x, 2)) |> unlist() |> unique()
+# 16, four-character bond multiplying symbols initiators of rings with explicit bond
+symb__bm_ire_4  <- c('-%01', '=%01', '#%01', '$%01', ':%01', '.%01',
+					'-%02', '=%02', '#%02', '$%02', ':%02', '.%02',
+					'-%03', '=%03', '#%03', '$%03', ':%03', '.%03',
+					'-%04', '=%04', '#%04', '$%04', ':%04', '.%04',
+					'-%05', '=%05', '#%05', '$%05', ':%05', '.%05',
+					'-%06', '=%06', '#%06', '$%06', ':%06', '.%06',
+					'-%07', '=%07', '#%07', '$%07', ':%07', '.%07',
+					'-%08', '=%08', '#%08', '$%08', ':%08', '.%08',
+					'-%09', '=%09', '#%09', '$%09', ':%09', '.%09', 
+					'-%10', '=%10', '#%10', '$%10', ':%10', '.%10',
+					'-%11', '=%11', '#%11', '$%11', ':%11', '.%11',
+					'-%12', '=%12', '#%12', '$%12', ':%12', '.%12',
+					'-%13', '=%13', '#%13', '$%13', ':%13', '.%13',
+					'-%14', '=%14', '#%14', '$%14', ':%14', '.%14',
+					'-%15', '=%15', '#%15', '$%15', ':%15', '.%15',
+					'-%16', '=%16', '#%16', '$%16', ':%16', '.%16',
+					'-%17', '=%17', '#%17', '$%17', ':%17', '.%17',
+					'-%18', '=%18', '#%18', '$%18', ':%18', '.%18',
+					'-%19', '=%19', '#%19', '$%19', ':%19', '.%19',
+					'-%20', '=%20', '#%20', '$%20', ':%20', '.%20',
+					'-%21', '=%21', '#%21', '$%21', ':%21', '.%21',
+					'-%22', '=%22', '#%22', '$%22', ':%22', '.%22',
+					'-%23', '=%23', '#%23', '$%23', ':%23', '.%23',
+					'-%24', '=%24', '#%24', '$%24', ':%24', '.%24',
+					'-%25', '=%25', '#%25', '$%25', ':%25', '.%25',
+					'-%26', '=%26', '#%26', '$%26', ':%26', '.%26',
+					'-%27', '=%27', '#%27', '$%27', ':%27', '.%27',
+					'-%28', '=%28', '#%28', '$%28', ':%28', '.%28',
+					'-%29', '=%29', '#%29', '$%29', ':%29', '.%29',
+					'-%30', '=%30', '#%30', '$%30', ':%30', '.%30',
+					'-%31', '=%31', '#%31', '$%31', ':%31', '.%31',
+					'-%32', '=%32', '#%32', '$%32', ':%32', '.%32',
+					'-%33', '=%33', '#%33', '$%33', ':%33', '.%33',
+					'-%34', '=%34', '#%34', '$%34', ':%34', '.%34',
+					'-%35', '=%35', '#%35', '$%35', ':%35', '.%35',
+					'-%36', '=%36', '#%36', '$%36', ':%36', '.%36',
+					'-%37', '=%37', '#%37', '$%37', ':%37', '.%37',
+					'-%38', '=%38', '#%38', '$%38', ':%38', '.%38',
+					'-%39', '=%39', '#%39', '$%39', ':%39', '.%39',
+					'-%40', '=%40', '#%40', '$%40', ':%40', '.%40',
+					'-%41', '=%41', '#%41', '$%41', ':%41', '.%41',
+					'-%42', '=%42', '#%42', '$%42', ':%42', '.%42',
+					'-%43', '=%43', '#%43', '$%43', ':%43', '.%43',
+					'-%44', '=%44', '#%44', '$%44', ':%44', '.%44',
+					'-%45', '=%45', '#%45', '$%45', ':%45', '.%45',
+					'-%46', '=%46', '#%46', '$%46', ':%46', '.%46',
+					'-%47', '=%47', '#%47', '$%47', ':%47', '.%47',
+					'-%48', '=%48', '#%48', '$%48', ':%48', '.%48',
+					'-%49', '=%49', '#%49', '$%49', ':%49', '.%49',
+					'-%50', '=%50', '#%50', '$%50', ':%50', '.%50',
+					'-%51', '=%51', '#%51', '$%51', ':%51', '.%51',
+					'-%52', '=%52', '#%52', '$%52', ':%52', '.%52',
+					'-%53', '=%53', '#%53', '$%53', ':%53', '.%53',
+					'-%54', '=%54', '#%54', '$%54', ':%54', '.%54',
+					'-%55', '=%55', '#%55', '$%55', ':%55', '.%55',
+					'-%56', '=%56', '#%56', '$%56', ':%56', '.%56',
+					'-%57', '=%57', '#%57', '$%57', ':%57', '.%57',
+					'-%58', '=%58', '#%58', '$%58', ':%58', '.%58',
+					'-%59', '=%59', '#%59', '$%59', ':%59', '.%59',
+					'-%60', '=%60', '#%60', '$%60', ':%60', '.%60',
+					'-%61', '=%61', '#%61', '$%61', ':%61', '.%61',
+					'-%62', '=%62', '#%62', '$%62', ':%62', '.%62',
+					'-%63', '=%63', '#%63', '$%63', ':%63', '.%63',
+					'-%64', '=%64', '#%64', '$%64', ':%64', '.%64',
+					'-%65', '=%65', '#%65', '$%65', ':%65', '.%65',
+					'-%66', '=%66', '#%66', '$%66', ':%66', '.%66',
+					'-%67', '=%67', '#%67', '$%67', ':%67', '.%67',
+					'-%68', '=%68', '#%68', '$%68', ':%68', '.%68',
+					'-%69', '=%69', '#%69', '$%69', ':%69', '.%69',
+					'-%70', '=%70', '#%70', '$%70', ':%70', '.%70',
+					'-%71', '=%71', '#%71', '$%71', ':%71', '.%71',
+					'-%72', '=%72', '#%72', '$%72', ':%72', '.%72',
+					'-%73', '=%73', '#%73', '$%73', ':%73', '.%73',
+					'-%74', '=%74', '#%74', '$%74', ':%74', '.%74',
+					'-%75', '=%75', '#%75', '$%75', ':%75', '.%75',
+					'-%76', '=%76', '#%76', '$%76', ':%76', '.%76',
+					'-%77', '=%77', '#%77', '$%77', ':%77', '.%77',
+					'-%78', '=%78', '#%78', '$%78', ':%78', '.%78',
+					'-%79', '=%79', '#%79', '$%79', ':%79', '.%79',
+					'-%80', '=%80', '#%80', '$%80', ':%80', '.%80',
+					'-%81', '=%81', '#%81', '$%81', ':%81', '.%81',
+					'-%82', '=%82', '#%82', '$%82', ':%82', '.%82',
+					'-%83', '=%83', '#%83', '$%83', ':%83', '.%83',
+					'-%84', '=%84', '#%84', '$%84', ':%84', '.%84',
+					'-%85', '=%85', '#%85', '$%85', ':%85', '.%85',
+					'-%86', '=%86', '#%86', '$%86', ':%86', '.%86',
+					'-%87', '=%87', '#%87', '$%87', ':%87', '.%87',
+					'-%88', '=%88', '#%88', '$%88', ':%88', '.%88',
+					'-%89', '=%89', '#%89', '$%89', ':%89', '.%89',
+					'-%90', '=%90', '#%90', '$%90', ':%90', '.%90',
+					'-%91', '=%91', '#%91', '$%91', ':%91', '.%91',
+					'-%92', '=%92', '#%92', '$%92', ':%92', '.%92',
+					'-%93', '=%93', '#%93', '$%93', ':%93', '.%93',
+					'-%94', '=%94', '#%94', '$%94', ':%94', '.%94',
+					'-%95', '=%95', '#%95', '$%95', ':%95', '.%95',
+					'-%96', '=%96', '#%96', '$%96', ':%96', '.%96',
+					'-%97', '=%97', '#%97', '$%97', ':%97', '.%97',
+					'-%98', '=%98', '#%98', '$%98', ':%98', '.%98',
+					'-%99', '=%99', '#%99', '$%99', ':%99', '.%99')
+sbm_ire_4  <- map(symb__bm_ire_4, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+mbm_ire_4  <- map(symb__bm_ire_4, \(x) str_sub(x, 2, 2)) |> unlist() |> unique()
+rbm_ire_4  <- map(symb__bm_ire_4, \(x) str_sub(x, 3)) |> unlist() |> unique()
+# 17, multicharacter bond multiplying symbols initiators of rings with implicit bond
+symb__bm_iri <- c( '%01', '%02', '%03', '%04', '%05', '%06', '%07', '%08', '%09', '%10', '%11', '%12', '%13', '%14', '%15', '%16', '%17', '%18', '%19', '%20', 
+					'%21', '%22', '%23', '%24', '%25', '%26', '%27', '%28', '%29', '%30',
+					'%31', '%32', '%33', '%34', '%35', '%36', '%37', '%38', '%39', '%40', 
+					'%41', '%42', '%43', '%44', '%45', '%46', '%47', '%48', '%49', '%50',
+					'%51', '%52', '%53', '%54', '%55', '%56', '%57', '%58', '%59', '%60',
+					'%61', '%62', '%63', '%64', '%65', '%66', '%67', '%68', '%69', '%70',
+					'%71', '%72', '%73', '%74', '%75', '%76', '%77', '%78', '%79', '%80',
+					'%81', '%82', '%83', '%84', '%85', '%86', '%87', '%88', '%89', '%90',
+					'%91', '%92', '%93', '%94', '%95', '%96', '%97', '%98', '%99' )
+sbm_iri <- map(symb__bm_iri, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+rbm_iri <- map(symb__bm_iri, \(x) str_sub(x, 2)) |> unlist() |> unique()
+# 18, multicharacter bond multiplying symbols terminators of branch with explicit bond
+symb__tbe <- c(')-', ')=', ')#', ')$', '):', ').')
+sbm_tbe   <- map(symb__tbe, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+ebm_tbe   <- map(symb__tbe, \(x) str_sub(x, -1)) |> unlist() |> unique()
+# 19, Two-character bond multiplying symbols terminators of rings with explicit bond
+symb__bm_tre_2  <- symb__bm_ire_2
+sbm_tre_2 <- map(symb__bm_tre_2, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+ebm_tre_2 <- map(symb__bm_tre_2, \(x) str_sub(x, -1)) |> unlist() |> unique()
+# 20, Four-character bond multiplying symbols terminators of rings with explicit bond
+symb__bm_tre_4  <- symb__bm_ire_4
+sbm_tre_4 <- map(symb__bm_tre_4, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+mbm_tre_4 <- map(symb__bm_tre_4, \(x) str_sub(x, 2, 2)) |> unlist() |> unique()
+rbm_tre_4 <- map(symb__bm_tre_4, \(x) str_sub(x, 3)) |> unlist() |> unique()
+# 21, multicharacter bond multiplying symbols terminators of rings with implicit bond
+symb__bm_tri <- symb__bm_iri
+sbm_tri <- map(symb__bm_iri, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+rbm_tri <- map(symb__bm_iri, \(x) str_sub(x, 2)) |> unlist() |> unique()
+# 22, Cis/trans single character symbols on the left side of the rotary non-permissive bond
+symb__lct <- c("/", "\\\\")
+lct <- symb__lct
+# 23, Cis/trans single character symbols on the right side of the rotary non-permissive bond
+symb__rct <- c("/", "\\\\")
+rct <- symb__rct
+## All the things inside the square brackets besides the main atom symbol
+# 24, single character isotope symbols:
+symb__isotope_1 <- c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
+wisotope <- symb__isotope_1
+# 25, two-character isotope symbols:
+symb__isotope_2 <- map(c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9"), \(x) map(c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9"), \(y) paste(x,y, collapse = "", sep = ""))) |> unlist()
+sisotope <- map(symb__isotope_2, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+eisotope <- map(symb__isotope_2, \(x) str_sub(x, -1)) |> unlist() |> unique()
+# 26, three-character isotope symbols:
+symb__isotope_3 <- map(symb__isotope_2, \(x) map(c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9"), \(y) paste(x,y, collapse = "", sep = ""))) |> unlist()
+sisotope <- map(symb__isotope_2, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+eisotope <- map(symb__isotope_2, \(x) str_sub(x, -1)) |> unlist() |> unique()
+# 27, single character chirality symbol:
+symb__chiral_1 <- c('@')
+wchiral <- symb__chiral_1
+# 28, two-character chirality symbol:
+symb__chiral_2 <- c('@@')
+schiral_1 <- map(symb__chiral_2, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+echiral_1 <- map(symb__chiral_2, \(x) str_sub(x, -1)) |> unlist() |> unique()
+# 29, multicharacter chirality symbol:
+symb__chir_m <- c("@TH1", "@TH2", "@AL1", "@AL2", "@SP1", "@SP2", "@SP3", "@TB1", "@TB2", "@TB3", "@TB4",
+					"@TB5", "@TB6", "@TB7", "@TB8", "@TB9", "@TB10", "@TB11", "@TB12", "@TB13", "@TB14", "@TB15", "@TB16", "@TB17", "@TB18", "@TB19", "@TB20",
+					"@OH1", "@OH2", "@OH3", "@OH4", "@OH5", "@OH6", "@OH7", "@OH8", "@OH9", "@OH10", "@OH11", "@OH12", "@OH13", "@OH14", "@OH15", "@OH16", "@OH17", "@OH18", "@OH19", "@OH20",
+					"@OH21", "@OH22", "@OH23", "@OH24", "@OH25", "@OH26", "@OH27", "@OH28", "@OH29", "@OH30")
+schiral_m <- map(symb__chir_m, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+rchiral_m <- map(symb__chir_m, \(x) str_sub(x, 2)) |> unlist() |> unique()
+# 30, single character hydrogen symbol:
+symb__hydrogen_1 <- c("H")
+whydrogen <- symb__hydrogen_1
+# 31, two-character hydrogen symbol:
+symb__hydrogen_2 <- c("H0", "H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8", "H9")
+shydrogen <- map(symb__hydrogen_2, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+ehydrogen <- map(symb__hydrogen_2, \(x) str_sub(x, -1)) |> unlist() |> unique()
+# 32, single character charge symbol:
+symb__charge_1 <- c("+", "-")
+wcharge <- symb__charge_1
+# 33, two-character charge symbol, obsolete:
+symb__charge_2 <- c("++", "--")
+scharge_obsolete <- map(symb__hydrogen_2, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+echarge_obsolete <- map(symb__hydrogen_2, \(x) str_sub(x, -1)) |> unlist() |> unique()
+# 34, multicharacter charge symbol:
+symb__class_2 <- map(c(":"), \(x) map(c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9"), \(y) paste(x,y, collapse = "", sep = ""))) |> unlist()
+symb__class_3 <- map(c(":0", ":1", ":2", ":3", ":4", ":5", ":6", ":7", ":8", ":9"), \(x) map(c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9"), \(y) paste(x,y, collapse = "", sep = ""))) |> unlist()
+symb__class_4 <- map(c(":0", ":1", ":2", ":3", ":4", ":5", ":6", ":7", ":8", ":9"), \(x) map(symb__isotope_2, \(y) paste(x,y, collapse = "", sep = ""))) |> unlist()
+symb__class <- c(symb__class_2, symb__class_3, symb__class_4)
+sclass <- map(symb__class, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+rclass <- map(symb__class, \(x) str_sub(x, 2)) |> unlist() |> unique()
+```
