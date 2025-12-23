@@ -202,7 +202,7 @@ plot_class
 
 #### Result
 
-![**Figure 1.** Intersections of the character sets describing different atom symbol classes.](https://github.com/pavelVPo/IBMC_LSFBD_smiles_parser/blob/main/ggupset_atomchars.png)
+![**Figure 1.** Intersections of the character sets describing different atom symbol classes.](https://github.com/pavelVPo/IBMC_LSFBD_smiles_parser/blob/main/ggupset_atomClasses.png)
 
 **Figure 1.** Intersections of the character sets describing different atom symbol classes.
 
@@ -643,7 +643,7 @@ plot_class <- ggplot(bondMod_symbol_characters, aes(x=class)) +
 plot_class
 ```
 
-![**Figure 2.** Intersections of the character sets describing different bond multiplying symbols classes.](https://github.com/pavelVPo/IBMC_LSFBD_smiles_parser/blob/main/ggupset_bmchars.png)
+![**Figure 2.** Intersections of the character sets describing different bond multiplying symbols classes.](https://github.com/pavelVPo/IBMC_LSFBD_smiles_parser/blob/main/ggupset_bmodifiersClasses.png)
 
 **Figure 2.** Intersections of the character sets describing different bond multiplying symbols classes.
 
@@ -1318,3 +1318,4 @@ It is possible to read SMILES string character by character. In this case, each 
 -   What are the questions, which should be addressed by the next character given this one and previous ones (in the updated context)?
 
 Thus, it will be useful to prepare the list of all possible pairs of character classes and characters and check viability of their pairs in theory and in the real-world data to direct the further process.
+
