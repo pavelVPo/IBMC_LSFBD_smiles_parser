@@ -74,10 +74,6 @@ Corresponding characters could be designated as **watom_bar**, where prefix **w*
 
 Corresponding characters could be designated as **watom_bal**,where prefix **w** stands for the whole symbol, suffix **b** - for bracket and suffix **al** - for aliphatic. As it can be seen, this class contains the same symbols as watom_oal, they could be distinguished only using surrounding symbols: if atom has additional properties, its symbol should be put into the square brackets and, thus, belongs to the watom_bar.
 
--   Two character atom symbols of organic aromatic atoms:
-
-| Such symbols do not exist
-
 -   Two character atom symbols of organic aliphatic atoms:
 
 | Cl, Br
@@ -221,7 +217,7 @@ Probably, this observations could be used latter to provide the future SMILES pa
 
 #### What are they?
 
-Square bracket symbol **[** is the SMILES way to mark the start of the atom record including its various properties and **]** is the way to designate the end of the atom record.
+Square bracket symbol **[\*\* is the SMILES way to mark the start of the atom record including its various properties and \*\*]** is the way to designate the end of the atom record.
 
 | [, ]
 
@@ -753,9 +749,9 @@ cs_smiles_checked <- cs_smiles |> rowwise() |>
                     ) |>
                     ungroup()
 ## Filter and Count
-cs_smiles_matched <- cs_smiles_checked |> filter(if_any(starts_with("pattern"), ~ !is.na(.)))               		# 49 673  records matched one of the patterns
-cs_smiles_matched_hard <- cs_smiles_matched |> filter(if_any(starts_with("pattern_hard"), ~ !is.na(.)))           	# 0       records matched one of the hard patterns
-cs_smiles_matched_base <- cs_smiles_matched |> filter(if_any(starts_with("pattern_base"), ~ !is.na(.)))         	# 49 673  records matched one of the base patterns
+cs_smiles_matched <- cs_smiles_checked |> filter(if_any(starts_with("pattern"), ~ !is.na(.)))                       # 49 673  records matched one of the patterns
+cs_smiles_matched_hard <- cs_smiles_matched |> filter(if_any(starts_with("pattern_hard"), ~ !is.na(.)))             # 0       records matched one of the hard patterns
+cs_smiles_matched_base <- cs_smiles_matched |> filter(if_any(starts_with("pattern_base"), ~ !is.na(.)))             # 49 673  records matched one of the base patterns
 ```
 
 The first pairs of cis/trans symbols in ChEMBL data (canonical smiles) do not include the hard cases similar to the ones described in <http://opensmiles.org/opensmiles.html>
@@ -852,10 +848,10 @@ Corresponding characters could be designated as **wcharge**, where prefix **w** 
 
 Corresponding characters could be designated as **scharge_obsolete & echarge_obsolete**, where prefix **s** stands for the start and **e** stands for the end of the symbol.
 
--   Three-character charge symbols:
+-   Multicharacter (two or three characters) charge symbols:
 
 | +1, +2, +3, +4, +5, +6, +7, +8, +9, +10, +11, +12, +13, +14, +15,
-|  -1,  -2,  -3,  -4,  -5,  -6,  -7,  -8,  -9,  -10,  -11,  -12,  -13,  -14,  -15
+|  -1, -2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12, -13, -14, -15
 
 Corresponding characters could be designated as **scharge_m & rcharge_m**, where prefix **s** stands for the start and **r** stands for the rest of the symbol and suffix **m** stands for the multi.
 
@@ -877,7 +873,7 @@ As it can be seen without the further analysis, the aforementioned in-brackets c
 
 At this point it is possible to summarize the current results in the code, which could be used to represent all the mentioned here and allowed in SMILES symbol classes as sets of characters and assess the intersection between them.
 
-``` R
+``` r
 library(tidyverse)
 library(ggupset)
 
@@ -1131,9 +1127,9 @@ schiral_2 <- map(symb__chiral_2, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
 echiral_2 <- map(symb__chiral_2, \(x) str_sub(x, -1)) |> unlist() |> unique()
 # 35, Multicharacter (from three to four characters) chirality symbols
 symb__chir_m <- c("@TH1", "@TH2", "@AL1", "@AL2", "@SP1", "@SP2", "@SP3", "@TB1", "@TB2", "@TB3", "@TB4",
-					"@TB5", "@TB6", "@TB7", "@TB8", "@TB9", "@TB10", "@TB11", "@TB12", "@TB13", "@TB14", "@TB15", "@TB16", "@TB17", "@TB18", "@TB19", "@TB20",
-					"@OH1", "@OH2", "@OH3", "@OH4", "@OH5", "@OH6", "@OH7", "@OH8", "@OH9", "@OH10", "@OH11", "@OH12", "@OH13", "@OH14", "@OH15", "@OH16", "@OH17", "@OH18", "@OH19", "@OH20",
-					"@OH21", "@OH22", "@OH23", "@OH24", "@OH25", "@OH26", "@OH27", "@OH28", "@OH29", "@OH30")
+                    "@TB5", "@TB6", "@TB7", "@TB8", "@TB9", "@TB10", "@TB11", "@TB12", "@TB13", "@TB14", "@TB15", "@TB16", "@TB17", "@TB18", "@TB19", "@TB20",
+                    "@OH1", "@OH2", "@OH3", "@OH4", "@OH5", "@OH6", "@OH7", "@OH8", "@OH9", "@OH10", "@OH11", "@OH12", "@OH13", "@OH14", "@OH15", "@OH16", "@OH17", "@OH18", "@OH19", "@OH20",
+                    "@OH21", "@OH22", "@OH23", "@OH24", "@OH25", "@OH26", "@OH27", "@OH28", "@OH29", "@OH30")
 schiral_m <- map(symb__chir_m, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
 nchiral_m <- map(symb__chir_m, \(x) str_sub(x, 2, 2)) |> unlist() |> unique()
 rchiral_m <- map(symb__chir_m, \(x) str_sub(x, 3)) |> unlist() |> unique() |> map(\(x) str_split(x, "")) |> unlist() |> unique()
@@ -1151,11 +1147,11 @@ wcharge <- symb__charge_1
 symb__charge_2 <- c("++", "--")
 scharge_obsolete <- map(symb__hydrogen_2, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
 echarge_obsolete <- map(symb__hydrogen_2, \(x) str_sub(x, -1)) |> unlist() |> unique()
-# 40, three-character charge symbol:
-symb__charge_3 <- c("+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15",
-					 "-1", "-2", "-3", "-4", "-5", "-6", "-7", "-8", "-9", "-10", "-11", "-12", "-13", "-14", "-15")
-scharge_3 <- map(symb__charge_3, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
-rcharge_3 <- map(symb__charge_3, \(x) str_sub(x, 3)) |> unlist() |> unique() |> map(\(x) str_split(x, "")) |> unlist() |> unique()
+# 40, multicharacter charge symbol:
+symb__charge_m <- c("+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15",
+                     "-1", "-2", "-3", "-4", "-5", "-6", "-7", "-8", "-9", "-10", "-11", "-12", "-13", "-14", "-15")
+scharge_m <- map(symb__charge_m, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+rcharge_m <- map(symb__charge_m, \(x) str_sub(x, 3)) |> unlist() |> unique() |> map(\(x) str_split(x, "")) |> unlist() |> unique()
 # 41, multicharacter class symbols:
 symb__class_2 <- map(c(":"), \(x) map(c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9"), \(y) paste(x,y, collapse = "", sep = ""))) |> unlist()
 symb__class_3 <- map(c(":0", ":1", ":2", ":3", ":4", ":5", ":6", ":7", ":8", ":9"), \(x) map(c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9"), \(y) paste(x,y, collapse = "", sep = ""))) |> unlist()
@@ -1223,8 +1219,8 @@ ehydrogen,
 wcharge,
 scharge_obsolete,
 echarge_obsolete,
-scharge_3,
-rcharge_3,
+scharge_m,
+rcharge_m,
 sclass,
 rclass),
 class = c(rep("atom", length(watom_oar)),
@@ -1285,8 +1281,8 @@ rep("atom_property", length(ehydrogen)),
 rep("atom_property", length(wcharge)),
 rep("atom_property", length(scharge_obsolete)),
 rep("atom_property", length(echarge_obsolete)),
-rep("atom_property", length(scharge_3)),
-rep("atom_property", length(rcharge_3)),
+rep("atom_property", length(scharge_m)),
+rep("atom_property", length(rcharge_m)),
 rep("atom_property", length(sclass)),
 rep("atom_property", length(rclass)) )
 ) |>
@@ -1321,4 +1317,4 @@ It is possible to read SMILES string character by character. In this case, each 
 
 -   What are the questions, which should be addressed by the next character given this one and previous ones (in the updated context)?
 
-Thus, it will be useful to prepare the list of all possible pairs of symbols, character classes and characters and check viability of their pairs in theory and in the real-world data to direct the further thinking.
+Thus, it will be useful to prepare the list of all possible pairs of character classes and characters and check viability of their pairs in theory and in the real-world data to direct the further process.
