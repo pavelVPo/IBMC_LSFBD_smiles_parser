@@ -20,7 +20,7 @@ In short:
 
 -   To build such a parser it will be useful to understand, what are the symbols and corresponding characters allowed in SMILES and what are their allowed combinations.
 
-## Enymeration of symbols and characters allowed in SMILES
+## Enumeration of symbols and characters allowed in SMILES
 
 | *This part may require some further adjustments and corrections, but should be OK in general.*
 
@@ -1318,4 +1318,5 @@ It is possible to read SMILES string character by character. In this case, each 
 -   What are the questions, which should be addressed by the next character given this one and previous ones (in the updated context)?
 
 Thus, it will be useful to prepare the list of all possible pairs of character classes and characters and check viability of their pairs in theory and in the real-world data to direct the further process.
+
 
