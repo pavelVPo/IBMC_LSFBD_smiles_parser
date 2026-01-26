@@ -1319,15 +1319,17 @@ It is possible to read SMILES string character by character. In this case, each 
 
 Thus, it will be useful to prepare the list of all possible pairs of character classes and characters and check viability of their pairs in theory and in the real-world data to direct the further process.
 
+### Possible pairs of characters in SMILES
+
 To check the viability of the pairs of character classes, i.e. to answer the question:
 
 | is it allowed in SMILES for the particular class of characters from those described earlier to be followed by the other?
 
-The simple set of rules could be deduced from the existing SMILES description (<http://opensmiles.org/opensmiles.html>) and common sense and applied.
+The simple set of rules could be deduced from the existing SMILES description (<http://opensmiles.org/opensmiles.html>) and common sense applied.
 
 The code to do that is provided below, it should be noted that this is a draft, which is intended to be improved after the empirical study. Also, the results depend on the order of application of rules, since the *case_when* from dplyr is used, which works this way (<https://dplyr.tidyverse.org/reference/case_when.html>). The final result will take into account the probability for each of the rules to be useful given the distribution of the character classes and characters (latter) in the available SMILES string, so, probably, the whole thing will be re-worked.
 
-``` R
+``` r
 library(tidyverse)
 
 ### Enumeration of the character classes allowed in SMILES
@@ -1700,8 +1702,8 @@ select(allowed, left_class, right_class, left_description, right_description)
 ### There are 3844 combinations
 # Categorize combinations of character classes describing two- and multi-character symbols
 # Here come the classes for two-character symbols
-s_vec <- available_classes[startsWith(available_classes, "s_")]	 |> unique()
-e_vec <- available_classes[startsWith(available_classes, "e_")]	 |> unique()
+s_vec <- available_classes[startsWith(available_classes, "s_")]  |> unique()
+e_vec <- available_classes[startsWith(available_classes, "e_")]  |> unique()
 n_vec <- available_classes[startsWith(available_classes, "n_")] |> unique()
 r_vec <- available_classes[startsWith(available_classes, "r_")] |> unique()
 w_vec <- available_classes[startsWith(available_classes, "w_")] |> unique()
@@ -1955,7 +1957,7 @@ As the result, the set of rules was formulated to categorize the pairs of charac
 Here is the table containing pairs of character classes allowed in SMILES according to the formulated rules:
 
 | left_class | right_class | left_description | right_description | why |
-|------------|------------|-------------------|-------------------|------------|
+|---------------|---------------|---------------|---------------|---------------|
 | w_atom_oar | w_atom_oar | Single character atom symbols of organic aromatic atoms | Single character atom symbols of organic aromatic atoms | correct atom-atom |
 | w_atom_oar | w_atom_oal | Single character atom symbols of organic aromatic atoms | Single character atom symbols of organic aliphatic atoms | correct atom-atom |
 | w_atom_oar | s_atom_oal | Single character atom symbols of organic aromatic atoms | Two character atom symbols of organic aliphatic atoms, start | correct atom-atom |
@@ -2612,3 +2614,68 @@ Here is the table containing pairs of character classes allowed in SMILES accord
 : **Table 1.** Pairs of character classes allowed in SMILES.
 
 On the next step pairs of character classes from **Table 1** will be identified in SMILES strings from ChEMBL, using the results the set of rules will probably be updated.
+
+### Possible pairs of characters in SMILES from ChEMBL
+
+In short, to check the possible pairs of characters occurring in SMILES from ChEMBL at this stage it is possible to
+
+1.  get all the pairs of characters from ChEMBL SMILES
+
+2.  determine the belonging to the particular class for each character in each pair
+
+3.  make the table containing pairs of character classes **occurring** in ChEMBL SMILES
+
+4.  join this table with the pairs of character classes **allowed** in SMILES (Table 1)
+
+5.  make corrections in the Table 1 if needed
+
+6.  think how to discriminate between the different classes containing the same characters
+
+The code for the steps 1-3 is provided bellow.
+
+``` {#characterPairs_in_CheMBL_SMILES .R}
+### Extract SMILES
+cs__query <- dbSendQuery(con, 'SELECT canonical_smiles FROM compound_structures')
+cs_smiles <- dbFetch(cs__query) |> distinct()
+dbClearResult(cs__query)
+# Close the connection
+dbDisconnect(con)
+
+### Pairs of characters from ChEMBL SMILES, for example SEE: https://stackoverflow.com/questions/71147234/extract-all-two-character-combinations-from-a-string
+## Get the data
+cs_smiles_chars <- cs_smiles |> rowwise() |>
+								mutate(pair_list = substring(canonical_smiles, 1:(nchar(canonical_smiles) - 1), 2:nchar(canonical_smiles)) |> list()) |>
+								ungroup()
+# Create vector of unique pairs
+occuring_pairs <- cs_smiles_chars |> pull(pair_list) |> unlist() |> unique() # only 871 really occuring pairs
+## Assign the distinct characters to classes
+# Tibble to store the results, its size is sufficient to store all the possible outcomes for each pair
+occuring_pairs_classes <- tibble( left_char = rep(NA, length(occuring_pairs)*length(available_classes)^2), right_char = rep(NA, length(occuring_pairs)*length(available_classes)^2),
+									left_class = rep(NA, length(occuring_pairs)*length(available_classes)^2), right_class = rep(NA, length(occuring_pairs)*length(available_classes)^2),
+									left_description = rep(NA, length(occuring_pairs)*length(available_classes)^2), right_description = rep(NA, length(occuring_pairs)*length(available_classes)^2) )
+row <- 0
+for (main_i in seq(1:length(occuring_pairs))) {
+	for (i in seq(1:length(available_classes))) {
+		for (k in seq(1:length(available_classes))) {
+			row <- row + 1
+			# Check if characters of the current pair are present in the current classes
+			if (occuring_pairs[main_i] |> substring(1,1) %in% (available_classes[i] |> as.name() |> eval()) & occuring_pairs[main_i] |> substring(2,2) %in% (available_classes[k] |> as.name() |> eval()) ) {
+				occuring_pairs_classes[row, 1] <- occuring_pairs[main_i] |> substring(1,1)
+				occuring_pairs_classes[row, 2] <- occuring_pairs[main_i] |> substring(2,2)
+				occuring_pairs_classes[row, 3] <- available_classes[i]
+				occuring_pairs_classes[row, 4] <- available_classes[k]
+				occuring_pairs_classes[row, 5] <- available_classes_description[i]
+				occuring_pairs_classes[row, 6] <- available_classes_description[k]
+			}
+		}
+	}
+}
+# Leave only the cases
+occuring_characters <- occuring_pairs_classes |> filter(!is.na(left_char))
+occuring_classes <- occuring_pairs_classes |> filter(!is.na(left_char)) |> select(-left_char, -right_char) |> distinct()
+occuring_pairs <- occuring_pairs_classes |> filter(!is.na(left_char)) |> select(left_char, right_char) |> distinct()
+```
+
+At this stage, **828** distinct pairs of characters were identified in ChEMBL SMILES, these pairs potentially could belong to the one or more of **2182** classes, total amount of records (left_character, right_character, left_class, right_class) is **46707** without applying any rules, except the initial one: **if character occurs in the class, it represents this class**.
+
+From this, it is possible to conclude that further adjustment and latter prioritization of parsing is needed.
