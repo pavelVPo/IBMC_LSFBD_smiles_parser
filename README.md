@@ -2678,4 +2678,5 @@ occuring_pairs <- occuring_pairs_classes |> filter(!is.na(left_char)) |> select(
 
 At this stage, **828** distinct pairs of characters were identified in ChEMBL SMILES, these pairs potentially could belong to the one or more of **2182** classes, total amount of records (left_character, right_character, left_class, right_class) is **46707** without applying any rules, except the initial one: **if character occurs in the class, it represents this class**.
 
-From this, it is possible to conclude that further adjustment and latter prioritization of parsing is needed.
+From this, it is possible to conclude that further adjustment and latter prioritization of parsing procedure is needed.
+
