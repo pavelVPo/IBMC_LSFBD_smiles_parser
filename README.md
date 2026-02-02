@@ -2631,7 +2631,7 @@ In short, to check the possible pairs of characters occurring in SMILES from ChE
 
 6.  think how to discriminate between the different classes containing the same characters
 
-The code for the steps 1-3 is provided bellow.
+The code for the steps 1-3 is provided bellow:
 
 ``` {#characterPairs_in_CheMBL_SMILES .R}
 ### Extract SMILES
@@ -2644,31 +2644,31 @@ dbDisconnect(con)
 ### Pairs of characters from ChEMBL SMILES, for example SEE: https://stackoverflow.com/questions/71147234/extract-all-two-character-combinations-from-a-string
 ## Get the data
 cs_smiles_chars <- cs_smiles |> rowwise() |>
-								mutate(pair_list = substring(canonical_smiles, 1:(nchar(canonical_smiles) - 1), 2:nchar(canonical_smiles)) |> list()) |>
-								ungroup()
+                                mutate(pair_list = substring(canonical_smiles, 1:(nchar(canonical_smiles) - 1), 2:nchar(canonical_smiles)) |> list()) |>
+                                ungroup()
 # Create vector of unique pairs
 occuring_pairs <- cs_smiles_chars |> pull(pair_list) |> unlist() |> unique() # only 871 really occuring pairs
 ## Assign the distinct characters to classes
 # Tibble to store the results, its size is sufficient to store all the possible outcomes for each pair
 occuring_pairs_classes <- tibble( left_char = rep(NA, length(occuring_pairs)*length(available_classes)^2), right_char = rep(NA, length(occuring_pairs)*length(available_classes)^2),
-									left_class = rep(NA, length(occuring_pairs)*length(available_classes)^2), right_class = rep(NA, length(occuring_pairs)*length(available_classes)^2),
-									left_description = rep(NA, length(occuring_pairs)*length(available_classes)^2), right_description = rep(NA, length(occuring_pairs)*length(available_classes)^2) )
+                                    left_class = rep(NA, length(occuring_pairs)*length(available_classes)^2), right_class = rep(NA, length(occuring_pairs)*length(available_classes)^2),
+                                    left_description = rep(NA, length(occuring_pairs)*length(available_classes)^2), right_description = rep(NA, length(occuring_pairs)*length(available_classes)^2) )
 row <- 0
 for (main_i in seq(1:length(occuring_pairs))) {
-	for (i in seq(1:length(available_classes))) {
-		for (k in seq(1:length(available_classes))) {
-			row <- row + 1
-			# Check if characters of the current pair are present in the current classes
-			if (occuring_pairs[main_i] |> substring(1,1) %in% (available_classes[i] |> as.name() |> eval()) & occuring_pairs[main_i] |> substring(2,2) %in% (available_classes[k] |> as.name() |> eval()) ) {
-				occuring_pairs_classes[row, 1] <- occuring_pairs[main_i] |> substring(1,1)
-				occuring_pairs_classes[row, 2] <- occuring_pairs[main_i] |> substring(2,2)
-				occuring_pairs_classes[row, 3] <- available_classes[i]
-				occuring_pairs_classes[row, 4] <- available_classes[k]
-				occuring_pairs_classes[row, 5] <- available_classes_description[i]
-				occuring_pairs_classes[row, 6] <- available_classes_description[k]
-			}
-		}
-	}
+    for (i in seq(1:length(available_classes))) {
+        for (k in seq(1:length(available_classes))) {
+            row <- row + 1
+            # Check if characters of the current pair are present in the current classes
+            if (occuring_pairs[main_i] |> substring(1,1) %in% (available_classes[i] |> as.name() |> eval()) & occuring_pairs[main_i] |> substring(2,2) %in% (available_classes[k] |> as.name() |> eval()) ) {
+                occuring_pairs_classes[row, 1] <- occuring_pairs[main_i] |> substring(1,1)
+                occuring_pairs_classes[row, 2] <- occuring_pairs[main_i] |> substring(2,2)
+                occuring_pairs_classes[row, 3] <- available_classes[i]
+                occuring_pairs_classes[row, 4] <- available_classes[k]
+                occuring_pairs_classes[row, 5] <- available_classes_description[i]
+                occuring_pairs_classes[row, 6] <- available_classes_description[k]
+            }
+        }
+    }
 }
 # Leave only the cases
 occuring_characters <- occuring_pairs_classes |> filter(!is.na(left_char))
@@ -2676,7 +2676,35 @@ occuring_classes <- occuring_pairs_classes |> filter(!is.na(left_char)) |> selec
 occuring_pairs <- occuring_pairs_classes |> filter(!is.na(left_char)) |> select(left_char, right_char) |> distinct()
 ```
 
-At this stage, **828** distinct pairs of characters were identified in ChEMBL SMILES, these pairs potentially could belong to the one or more of **2182** classes, total amount of records (left_character, right_character, left_class, right_class) is **46707** without applying any rules, except the initial one: **if character occurs in the class, it represents this class**.
+At this stage, **828** distinct pairs of characters were identified in ChEMBL SMILES, these pairs potentially could belong to the one or more of **2182** combinations of classes, total amount of records (left_character, right_character, left_class, right_class) is **46707** without applying any rules, except the initial one: **if character occurs in the class, it represents this class**.
 
-From this, it is possible to conclude that further adjustment and latter prioritization of parsing procedure is needed.
+At this point it is possible to proceed via joining the Table 1 and current results to check whether current (preliminary) version of rules holds against the real data.
 
+The code is provided bellow:
+
+``` R
+library(tidyverse)
+
+# Input the data
+combs <- read_tsv("C:/.../pairs_chars_ChEMBL.tsv")
+combs_described <- read_tsv("C:/.../combs_described_1.tsv")
+
+# Join the data
+combs_all <- combs |> full_join(combs_described)
+
+# Check if there are pairs of chars, which are found in not allowed combs only
+combs_summ <- combs_all |> group_by(left_char, right_char) |> summarize(n = n(), summ = sum(allowed))
+contradictions <- combs_summ |> filter(summ == 0) |> inner_join(combs)
+# Extract pairs of characters contradicting the current version of rules
+contradicting_pairs <- contradictions |> select(left_char, right_char) |>
+										 distinct() |>
+										 mutate(pair = str_c(left_char, right_char, sep = "_")) |>
+										 pull(pair)
+contradicting_pairs
+```
+
+The following pairs of characters, contradicting the preliminary version of rules, were identified at this stage:
+
+| +*], -*], /*1, /2, /3, /4, /5, /6, @_], a*], e], g], i], l/, l_C, l_N, l_P, l_S, l[, l\_], l_c, r\_/, r_C, r_N, r_P, r\_[, r\_], r_c, t\_]
+
+Thus, the set of rules from **Table 1** should be updated.
