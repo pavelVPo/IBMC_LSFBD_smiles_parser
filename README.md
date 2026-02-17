@@ -1353,11 +1353,11 @@ s_atom_oal <- map(symb__atom_oal, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
 # Get the last character for each atom symbol
 e_atom_oal <- map(symb__atom_oal, \(x) str_sub(x, -1)) |> unlist() |> unique()
 # 06, two character atom symbol of bracket aromatic atom
-symb__atom_bar <- c('se', 'as', 'te')
+symb__atom_bar_2 <- c('se', 'as', 'te')
 # Get the first character for each atom symbol
-s_atom_bar <- map(symb__atom_bar, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+s_atom_bar <- map(symb__atom_bar_2, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
 # Get the last character for each atom symbol
-e_atom_bar <- map(symb__atom_bar, \(x) str_sub(x, -1)) |> unlist() |> unique()
+e_atom_bar <- map(symb__atom_bar_2, \(x) str_sub(x, -1)) |> unlist() |> unique()
 # 07, two character atom symbol of bracket aliphatic atom
 symb__atom_bal <- c('He', 'Li', 'Be', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'Cl', 'Ar', 'Ca', 'Sc', 'Ti', 'Cr', 'Mn',
 'Fe', 'Co', 'Ni', 'Cu', 'Zn', 'Ga', 'Ge', 'As', 'Se', 'Br', 'Kr', 'Rb', 'Sr', 'Zr', 'Nb', 'Mo', 'Tc', 'Ru', 'Rh', 'Pd', 'Ag', 'Cd', 'In', 'Sn', 'Sb', 'Te',
@@ -1600,8 +1600,8 @@ symb__charge_1 <- c("+", "-")
 w_charge <- symb__charge_1
 # 39, two-character charge symbol, obsolete:
 symb__charge_2 <- c("++", "--")
-s_charge_obsolete <- map(symb__hydrogen_2, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
-e_charge_obsolete <- map(symb__hydrogen_2, \(x) str_sub(x, -1)) |> unlist() |> unique()
+s_charge_obsolete <- map(symb__charge_2, \(x) str_sub(x, 1, 1)) |> unlist() |> unique()
+e_charge_obsolete <- map(symb__charge_2, \(x) str_sub(x, -1)) |> unlist() |> unique()
 # 40, three-character charge symbol:
 symb__charge_m <- c("+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15",
 "-1", "-2", "-3", "-4", "-5", "-6", "-7", "-8", "-9", "-10", "-11", "-12", "-13", "-14", "-15")
@@ -1699,8 +1699,16 @@ rename(right_description = description) |>
 mutate(allowed = NA, why = NA) |>
 select(allowed, left_class, right_class, left_description, right_description)
 
-### There are 3844 combinations
+### There are so many combinations to check ... 3844
+### I.e., 3844 cases, where mistake can be made
+### Computers probably handle such tasks much better than humans
+## 1
+## First of all, some of the classes have prefixes such as 's_', 'n_', 'e_', 'r_'
+## From this, it is quite clear that
+## On the right side from s_ could be only n_ OR r_ OR e_ with the same main body
+## And vice versa
 # Categorize combinations of character classes describing two- and multi-character symbols
+#########################################################################################################
 # Here come the classes for two-character symbols
 s_vec <- available_classes[startsWith(available_classes, "s_")]  |> unique()
 e_vec <- available_classes[startsWith(available_classes, "e_")]  |> unique()
@@ -1711,6 +1719,8 @@ w_vec <- available_classes[startsWith(available_classes, "w_")] |> unique()
 e_vec_body <- available_classes[startsWith(available_classes, "e_")] |> str_replace("e_", "") |> unique()
 n_vec_body <- available_classes[startsWith(available_classes, "n_")] |> str_replace("n_", "") |> unique()
 r_vec_body <- available_classes[startsWith(available_classes, "r_")] |> str_replace("r_", "") |> unique()
+#########################################################################################################
+#########################################################################################################
 # Here come the classes for atoms
 orgsubset_start_vec <- c(available_classes[startsWith(available_classes, "w_atom_o")], available_classes[startsWith(available_classes, "s_atom_o")]) |> unique()
 singleorg_vec <- c(available_classes[startsWith(available_classes, "w_atom_o")])
@@ -1727,13 +1737,11 @@ chargestart_vec <- available_classes[str_detect(available_classes, "[ws]_charge"
 classstart_vec <- available_classes[startsWith(available_classes, "s_class")]
 bracketatom_end_vec <- c("e_atom_bal", "e_atom_bar")
 bracketatom_start_vec <- c("s_atom_bal", "s_atom_bar")
-
-
-# Formulate and apply the rules of combinations' validity
+# Formulate the rules of combination's validity
 combs_described_m <- combs_described_raw |>
 mutate(left_noprefix = str_replace(left_class, "^._", "")) |>
 mutate(right_noprefix = str_replace(right_class, "^._", "")) |>
-rowwise() |>
+rowwise() |> # `case_when` works until the first `TRUE`, thus only positive should be considered
 mutate( allowed = case_when(
 ## multicharacter, allowed
 # 1: s->e, same body
@@ -1746,37 +1754,6 @@ left_noprefix == right_noprefix & left_noprefix %in% n_vec_body & left_class %in
 left_noprefix == right_noprefix & left_noprefix %in% n_vec_body & left_class %in% n_vec & right_class %in% r_vec ~ "1%correct multichar",
 # 4: r->r, same body
 left_noprefix == right_noprefix & left_class %in% r_vec & right_class %in% r_vec ~ "1%correct multichar",
-## multicharacter, not allowed
-# 1: s->e, s->r, s->n, n->r not the same body
-left_noprefix != right_noprefix & left_class %in% s_vec & right_class %in% e_vec ~ "0%wrong multichar",
-left_noprefix != right_noprefix & ! left_noprefix %in% n_vec_body & left_class %in% s_vec & right_class %in% r_vec ~ "0%wrong multichar",
-left_noprefix != right_noprefix & ! left_noprefix %in% n_vec_body & left_class %in% s_vec & right_class %in% r_vec ~ "0%wrong multichar",
-left_noprefix != right_noprefix & left_noprefix %in% n_vec_body & left_class %in% n_vec & right_class %in% r_vec ~ "0%wrong multichar",
-# 2: same body, wrong sequence
-# - s ->(n)-> r
-left_noprefix == right_noprefix & left_noprefix %in% n_vec_body & left_class %in% s_vec & right_class %in% r_vec ~ "0%wrong multichar",
-# - e->s
-left_noprefix == right_noprefix & left_class %in% e_vec & right_class %in% s_vec ~ "0%wrong multichar",
-# - r->s
-left_noprefix == right_noprefix & left_class %in% r_vec & right_class %in% s_vec ~ "0%wrong multichar",
-# - n->s
-left_noprefix == right_noprefix & left_class %in% n_vec & right_class %in% s_vec ~ "0%wrong multichar",
-# 3: different bodies, start/intermediate to new body
-left_noprefix != right_noprefix & (left_class %in% s_vec | left_class %in% n_vec) ~ "0%wrong multichar",
-# 4: * bodies, one single character position to another
-left_class %in% s_vec & right_class %in% s_vec ~ "0%wrong multichar",
-left_class %in% n_vec & right_class %in% n_vec ~ "0%wrong multichar",
-left_class %in% e_vec & right_class %in% e_vec ~ "0%wrong multichar",
-# 5: * bodies, end not to start
-left_class %in% e_vec & ! right_class %in% s_vec ~ "0%wrong multichar",
-# 6: different bodies, one multichar to another
-left_noprefix != right_noprefix & left_class %in% s_vec & right_class %in% s_vec ~ "0%wrong multichar",
-left_noprefix != right_noprefix & left_class %in% e_vec & right_class %in% e_vec ~ "0%wrong multichar",
-left_noprefix != right_noprefix & left_class %in% n_vec & right_class %in% n_vec ~ "0%wrong multichar",
-left_noprefix != right_noprefix & left_class %in% r_vec & right_class %in% r_vec ~ "0%wrong multichar",
-# 7: same bodies, one s/n to w
-left_noprefix == right_noprefix & (left_class %in% s_vec | left_class %in% n_vec) & right_class %in% w_vec ~ "0%wrong multichar",
-
 ## atoms, watom_oar and watom_oal, allowed
 # 1: to the start of organic subset
 left_class %in% singleorg_vec & right_class %in% orgsubset_start_vec ~ "1%correct atom-atom",
@@ -1791,18 +1768,6 @@ left_class %in% singleorg_vec & right_class %in% bondmod_start_vec ~ "1%correct 
 # 6: to cis/trans
 left_class %in% singleorg_vec & right_class == "lct" ~ "1%correct atom-cis/trans",
 left_class %in% singleorg_vec & right_class == "rct" ~ "1%correct atom-cis/trans",
-## atoms, w_atom_oar, w_atom_oal, s_atom_oal, not allowed
-# 1: to the end of organic atoms
-left_class %in% orgsubset_start_vec & right_class %in% orgend_vec ~ "0%wrong atom-atom",
-# 2: to any point of bracket atoms
-left_class %in% orgsubset_start_vec & right_class %in% bracket_vec ~ "0%wrong atom-atom",
-# 3: to the closing bracket
-left_class %in% singleorg_vec & right_class == "bracket_end" ~ "0%wrong atom-atom",
-# 4: to the not start of bond modifiers
-left_class %in% singleorg_vec & right_class %in% bondmod_notstart_vec ~ "0%wrong atom-bondMod",
-# 5: to the brackets' internals
-left_class %in% singleorg_vec & right_class %in% internals_vec ~ "0%wrong atom-property",
-
 ## atoms, s_atom_oal & e_atom_oal, allowed
 # 1: end to the start of organic subset
 left_class == "e_atom_oal" & right_class %in% orgsubset_start_vec ~ "1%correct atom-atom",
@@ -1820,39 +1785,21 @@ left_class == "e_atom_oal" & right_class == "rct" ~ "1%correct atom-cis/trans",
 # 7: fron start to finish
 left_class == "s_atom_oal" & right_class == "e_atom_oal" ~ "1%correct in-atom",
 ## atoms, s_atom_oal & e_atom_oal, not allowed
-# 1: to the end of organic atoms
-left_class == "e_atom_oal" & right_class %in% orgend_vec ~ "0%wrong atom-atom",
-# 2: to any point of bracket atoms
-left_class == "e_atom_oal" & right_class %in% bracket_vec ~ "0%wrong atom-atom",
-# 3: to the closing bracket
-left_class == "e_atom_oal" & right_class == "bracket_end" ~ "0%wrong atom-atom",
-# 4: to the not start of bond modifiers
-left_class == "e_atom_oal" & right_class %in% bondmod_notstart_vec ~ "0%wrong atom-bondMod",
-# 5: to the brackets' internals
-left_class == "e_atom_oal" & right_class %in% internals_vec ~ "0%wrong atom-property",
 # 6: from start not to the end
 left_class == "s_atom_oal" & right_class != "e_atom_oal" ~ "1%wrong in-atom",
-
 ## atoms, watom_bar and watom_bal, allowed
 left_class %in% singlebracket_vec & right_class == "bracket_end" ~ "1%correct bracket",
 left_class %in% singlebracket_vec & right_class %in% chiralitystart_vec ~ "1%correct chirality",
 left_class %in% singlebracket_vec & right_class %in% hstart_vec ~ "1%correct Hs",
 left_class %in% singlebracket_vec & right_class %in% chargestart_vec ~ "1%correct charge",
 left_class %in% singlebracket_vec & right_class %in% classstart_vec ~ "1%correct class",
-## atoms, watom_bar and watom_bal, not allowed
-# * else:
-left_class %in% singlebracket_vec ~ "0%wrong in-bracket placement",
 ## atoms, satom_bar & eatom_bar, satom_bal & eatom_bal, allowed
-left_class %in% bracketatom_end_vec  & right_class == "bracket_end" ~ "1%correct bracket",
+left_class %in% bracketatom_end_vec & right_class == "bracket_end" ~ "1%correct bracket",
 left_class %in% bracketatom_end_vec & right_class %in% chiralitystart_vec ~ "1%correct chirality",
 left_class %in% bracketatom_end_vec & right_class %in% hstart_vec ~ "1%correct Hs",
 left_class %in% bracketatom_end_vec & right_class %in% chargestart_vec ~ "1%correct charge",
 left_class %in% bracketatom_end_vec & right_class %in% classstart_vec ~ "1%correct class",
 left_class %in% bracketatom_start_vec & right_class %in% bracketatom_end_vec ~ "1%correct in-atom",
-## atoms, satom_bar & eatom_bar, satom_bal & eatom_bal, not allowed
-left_class %in% bracketatom_start_vec ~ "0%wrong in-bracket placement",
-left_class %in% bracketatom_end_vec ~ "0%wrong in-bracket placement",
-
 ## Anything, allowed
 # 1: to the start of organic subset
 left_class == "anything" & right_class %in% orgsubset_start_vec ~ "1%correct atom-atom",
@@ -1873,9 +1820,6 @@ left_class == "anything" & right_class %in% chiralitystart_vec ~ "1%correct chir
 left_class == "anything" & right_class %in% hstart_vec ~ "1%correct Hs",
 left_class == "anything" & right_class %in% chargestart_vec ~ "1%correct charge",
 left_class == "anything" & right_class %in% classstart_vec ~ "1%correct class",
-## Anything, not allowed
-left_class == "anything" ~ "0%wrong placement",
-
 ## Square brackets, allowed
 left_class == "bracket_start" & right_class %in% c("w_isotope", "s_isotope_m") ~ "1%correct bracket",
 left_class == "bracket_start" & right_class %in% c("s_atom_bal", "s_atom_bar", "w_atom_bal", "w_atom_bar") ~ "1%correct bracket",
@@ -1886,14 +1830,10 @@ left_class == "bracket_end" & right_class %in% c("w_atom_oar", "w_atom_oal", "s_
 ## Square brackets, not allowed
 left_class == "bracket_start"  ~ "1%wrong bracket",
 left_class == "bracket_end"  ~ "1%wrong bracket",
-
 ## Bonds, allowed
 left_class %in% bond_vec & right_class %in% c("w_atom_oar", "w_atom_oal", "s_atom_oal", "anything", "bracket_start",
 "w_bm_ibi", "w_bm_tbi", "w_bm_iri", "w_bm_tri", "s_bm_ibe", "s_bm_ire_2", "s_bm_ire_4",
 "s_bm_iri", "s_bm_tbe", "s_bm_tre_2", "s_bm_tre_4", "s_bm_tri", "lct", "rct")  ~ "1%correct bracket",
-## Bonds, not allowed
-left_class %in% bond_vec ~ "0%wrong bond",
-
 ## End of Bond modifying (multiplying), branch iniators, allowed
 left_class %in% c("w_bm_ibi", "e_bm_ibe") & right_class %in% c("w_atom_oar", "w_atom_oal", "s_atom_oal", "anything", "bracket_start", "w_bm_ibi", "s_bm_ibe","lct", "rct")  ~ "1%correct branch initiator",
 ## Bond modifying (multiplying), branch iniator, not allowed
@@ -1903,717 +1843,47 @@ left_class %in% c("w_bm_iri", "e_bm_ire_2", "r_bm_iri", "r_bm_ire_4") & right_cl
 "single_bond", "double_bond", "triple_bond", "quadruple_bond", "aromatic_bond_obsolete", "no_bond",
 "w_bm_ibi", "w_bm_tbi", "w_bm_iri", "w_bm_tri", "s_bm_ibe", "s_bm_ire_2",
 "s_bm_ire_4", "s_bm_iri", "s_bm_tbe", "s_bm_tre_2", "s_bm_tre_4", "s_bm_tri", "lct", "rct")  ~ "1%correct ring initiator",
-## End of bond modifying (multiplying), iniators of rings, not allowed
-left_class %in% c("w_bm_iri", "e_bm_ire_2", "r_bm_iri", "r_bm_ire_4") ~ "0%wrong ring initiator",
 ## End of Bond modifying (multiplying), branch terminators, allowed
 left_class %in% c("w_bm_tbi", "e_bm_tbe") & right_class %in% c("w_atom_oar", "w_atom_oal", "s_atom_oal", "s_atom_bar", "s_atom_bal", "anything", "bracket_start",
 "single_bond", "double_bond", "triple_bond", "quadruple_bond", "aromatic_bond_obsolete", "no_bond",
 "w_bm_ibi", "w_bm_tbi", "w_bm_iri", "w_bm_tri", "s_bm_ibe", 
 "s_bm_ire_2", "s_bm_ire_4", "s_bm_iri", "s_bm_tbe", "s_bm_tre_2", "s_bm_tre_4", "s_bm_tri", "lct", "rct") ~ "1% correct branch terminator",
-## End of Bond modifying (multiplying), branch terminators, not allowed
-left_class %in% c("w_bm_tbi", "e_bm_tbe") ~ "0%wrong branch terminator",
 ## End of bond multiplying symbols terminators of rings, allowed
 left_class %in% c("w_bm_tri", "e_bm_tre_2", "r_bm_tri", "r_bm_tre_4") & right_class %in% c("w_atom_oar", "w_atom_oal", "s_atom_oal", "anything", "bracket_start",
 "single_bond", "double_bond", "triple_bond", "quadruple_bond",
 "aromatic_bond_obsolete", "no_bond", "w_bm_ibi", "w_bm_tbi", "w_bm_iri", "w_bm_tri",
 "s_bm_ibe", "s_bm_ire_2", "s_bm_ire_4", "s_bm_iri","s_bm_tbe", "s_bm_tre_2",
 "s_bm_tre_4", "s_bm_tri", "lct", "rct") ~ "1%correct ring terminator",
-## End of bond multiplying symbols terminators of rings, not allowed
-left_class %in% c("w_bm_tri", "e_bm_tre_2", "r_bm_tri", "r_bm_tre_4") ~ "0%wrong branch terminator",
-
 ## Cis/Trans
+# ct to atom
 left_class %in% c("lct", "rct") & right_class %in% c("w_atom_oar", "w_atom_oal", "s_atom_oal", "anything", "bracket_start") ~ "1%correct cis/trans marker",
-left_class %in% c("lct", "rct") ~ "0%wrong cis/trans marker",
-
+# ct to rings' marker
+left_class %in% c("lct", "rct") & right_class %in% c("w_bm_iri", "w_bm_tri", "s_bm_iri", "s_bm_tri") ~ "1%correct cis/trans marker belonging to ring",
 ## Inner bracket things
 # Isotope
 left_class %in% c("w_isotope", "r_isotope_m") & right_class %in% c("w_atom_bar", "w_atom_bal", "s_atom_bar", "s_atom_bal") ~ "1%correct isotope",
-left_class %in% c("w_isotope", "r_isotope_m") ~ "0%wrong isotope",
 # Chirality
-left_class %in% c("w_chiral", "e_chiral_2", "r_chiral_m") & right_class %in% c("w_hydrogen", "s_hydrogen", "w_charge", "s_charge_obsolete", "s_charge_m", "s_class") ~ "1%correct chirality",
-left_class %in% c("w_chiral", "e_chiral_2", "r_chiral_m") ~ "0%wrong chirality",
+left_class %in% c("w_chiral", "e_chiral_2", "r_chiral_m") & right_class %in% c("w_hydrogen", "s_hydrogen", "w_charge", "s_charge_obsolete", "s_charge_m", "s_class", "bracket_end") ~ "1%correct chirality",
 # Hydrogen
 left_class %in% c("w_hydrogen", "e_hydrogen") & right_class %in% c("w_charge", "s_charge_obsolete", "s_charge_m", "s_class") ~ "1%correct hydrogen",
-left_class %in% c("w_hydrogen", "e_hydrogen") ~ "0%wrong hydrogen",
 # Charge
 left_class %in% c("w_charge", "e_charge_obsolete", "r_charge_m") & right_class %in% c("s_class") ~ "1%correct charge",
-left_class %in% c("w_charge", "e_charge_obsolete", "r_charge_m") ~ "0%wrong charge",
+left_class %in% c("w_charge", "e_charge_obsolete", "r_charge_m") & right_class %in% c("bracket_end") ~ "1%correct charge",
 # Class
 left_class %in% c("r_class") & right_class == "bracket_end" ~ "1%correct class",
-left_class %in% c("r_class") ~ "0%wrong class",
-
-
-.default = as.character(allowed)
+## No match
+.default = as.character("0%no_allowing_rule")
 ) ) |>
 ungroup() |>
 separate_wider_delim(allowed, names = c('allowed', 'why'), delim = "%") |>
-arrange(desc(allowed))     
+arrange(desc(allowed))
 ```
 
 As the result, the set of rules was formulated to categorize the pairs of character classes as allowed and not allowed in SMILES, according to this rules:
 
-| Only 652 of 3844 possible combinations of the described character classes are in line with the existing SMILES general specifications
+| Only 822 of 3844 possible combinations of the described character classes are in line with the existing SMILES general specifications as it was implemented here
 
-Here is the table containing pairs of character classes allowed in SMILES according to the formulated rules:
-
-| left_class | right_class | left_description | right_description | why |
-|---------------|---------------|---------------|---------------|---------------|
-| w_atom_oar | w_atom_oar | Single character atom symbols of organic aromatic atoms | Single character atom symbols of organic aromatic atoms | correct atom-atom |
-| w_atom_oar | w_atom_oal | Single character atom symbols of organic aromatic atoms | Single character atom symbols of organic aliphatic atoms | correct atom-atom |
-| w_atom_oar | s_atom_oal | Single character atom symbols of organic aromatic atoms | Two character atom symbols of organic aliphatic atoms, start | correct atom-atom |
-| w_atom_oar | anything | Single character atom symbols of organic aromatic atoms | Anything | correct atom-anything |
-| w_atom_oar | bracket_start | Single character atom symbols of organic aromatic atoms | Square bracket, start | correct atom-atom |
-| w_atom_oar | single_bond | Single character atom symbols of organic aromatic atoms | Single bond | correct atom-bond |
-| w_atom_oar | double_bond | Single character atom symbols of organic aromatic atoms | Double bond | correct atom-bond |
-| w_atom_oar | triple_bond | Single character atom symbols of organic aromatic atoms | Triple bond | correct atom-bond |
-| w_atom_oar | quadruple_bond | Single character atom symbols of organic aromatic atoms | Quadruple bond | correct atom-bond |
-| w_atom_oar | aromatic_bond_obsolete | Single character atom symbols of organic aromatic atoms | Aromatic bond, obsolete | correct atom-bond |
-| w_atom_oar | no_bond | Single character atom symbols of organic aromatic atoms | No bond | correct atom-bond |
-| w_atom_oar | w_bm_ibi | Single character atom symbols of organic aromatic atoms | Single character bond multiplying symbols initiators of branching with implicit bond | correct atom-bondMod |
-| w_atom_oar | w_bm_tbi | Single character atom symbols of organic aromatic atoms | Single character bond multiplying symbols terminators of branching with implicit bond | correct atom-bondMod |
-| w_atom_oar | w_bm_iri | Single character atom symbols of organic aromatic atoms | Single character bond multiplying symbols initiators of rings with implicit bond | correct atom-bondMod |
-| w_atom_oar | w_bm_tri | Single character atom symbols of organic aromatic atoms | Single character bond multiplying symbols terminators of rings with implicit bond | correct atom-bondMod |
-| w_atom_oar | s_bm_ibe | Single character atom symbols of organic aromatic atoms | Two-character bond multiplying symbols initiators of branching with explicit bond, start | correct atom-bondMod |
-| w_atom_oar | s_bm_ire_2 | Single character atom symbols of organic aromatic atoms | Two-character bond multiplying symbols initiators of rings with explicit bond, start | correct atom-bondMod |
-| w_atom_oar | s_bm_ire_4 | Single character atom symbols of organic aromatic atoms | Four-character bond multiplying symbols initiators of rings with explicit bond, start | correct atom-bondMod |
-| w_atom_oar | s_bm_iri | Single character atom symbols of organic aromatic atoms | Three-character bond multiplying symbols initiators of rings with implicit bond, start | correct atom-bondMod |
-| w_atom_oar | s_bm_tbe | Single character atom symbols of organic aromatic atoms | Two-character bond multiplying symbols terminators of branching with explicit bond, start | correct atom-bondMod |
-| w_atom_oar | s_bm_tre_2 | Single character atom symbols of organic aromatic atoms | Two-character bond multiplying symbols terminators of rings with explicit bond, start | correct atom-bondMod |
-| w_atom_oar | s_bm_tre_4 | Single character atom symbols of organic aromatic atoms | Four-character bond multiplying symbols terminators of rings with explicit bond, start | correct atom-bondMod |
-| w_atom_oar | s_bm_tri | Single character atom symbols of organic aromatic atoms | Three-character bond multiplying symbols terminators of rings with implicit bond, start | correct atom-bondMod |
-| w_atom_oar | lct | Single character atom symbols of organic aromatic atoms | cis/trans on the left side | correct atom-cis/trans |
-| w_atom_oar | rct | Single character atom symbols of organic aromatic atoms | cis/trans on the right side | correct atom-cis/trans |
-| w_atom_oal | w_atom_oar | Single character atom symbols of organic aliphatic atoms | Single character atom symbols of organic aromatic atoms | correct atom-atom |
-| w_atom_oal | w_atom_oal | Single character atom symbols of organic aliphatic atoms | Single character atom symbols of organic aliphatic atoms | correct atom-atom |
-| w_atom_oal | s_atom_oal | Single character atom symbols of organic aliphatic atoms | Two character atom symbols of organic aliphatic atoms, start | correct atom-atom |
-| w_atom_oal | anything | Single character atom symbols of organic aliphatic atoms | Anything | correct atom-anything |
-| w_atom_oal | bracket_start | Single character atom symbols of organic aliphatic atoms | Square bracket, start | correct atom-atom |
-| w_atom_oal | single_bond | Single character atom symbols of organic aliphatic atoms | Single bond | correct atom-bond |
-| w_atom_oal | double_bond | Single character atom symbols of organic aliphatic atoms | Double bond | correct atom-bond |
-| w_atom_oal | triple_bond | Single character atom symbols of organic aliphatic atoms | Triple bond | correct atom-bond |
-| w_atom_oal | quadruple_bond | Single character atom symbols of organic aliphatic atoms | Quadruple bond | correct atom-bond |
-| w_atom_oal | aromatic_bond_obsolete | Single character atom symbols of organic aliphatic atoms | Aromatic bond, obsolete | correct atom-bond |
-| w_atom_oal | no_bond | Single character atom symbols of organic aliphatic atoms | No bond | correct atom-bond |
-| w_atom_oal | w_bm_ibi | Single character atom symbols of organic aliphatic atoms | Single character bond multiplying symbols initiators of branching with implicit bond | correct atom-bondMod |
-| w_atom_oal | w_bm_tbi | Single character atom symbols of organic aliphatic atoms | Single character bond multiplying symbols terminators of branching with implicit bond | correct atom-bondMod |
-| w_atom_oal | w_bm_iri | Single character atom symbols of organic aliphatic atoms | Single character bond multiplying symbols initiators of rings with implicit bond | correct atom-bondMod |
-| w_atom_oal | w_bm_tri | Single character atom symbols of organic aliphatic atoms | Single character bond multiplying symbols terminators of rings with implicit bond | correct atom-bondMod |
-| w_atom_oal | s_bm_ibe | Single character atom symbols of organic aliphatic atoms | Two-character bond multiplying symbols initiators of branching with explicit bond, start | correct atom-bondMod |
-| w_atom_oal | s_bm_ire_2 | Single character atom symbols of organic aliphatic atoms | Two-character bond multiplying symbols initiators of rings with explicit bond, start | correct atom-bondMod |
-| w_atom_oal | s_bm_ire_4 | Single character atom symbols of organic aliphatic atoms | Four-character bond multiplying symbols initiators of rings with explicit bond, start | correct atom-bondMod |
-| w_atom_oal | s_bm_iri | Single character atom symbols of organic aliphatic atoms | Three-character bond multiplying symbols initiators of rings with implicit bond, start | correct atom-bondMod |
-| w_atom_oal | s_bm_tbe | Single character atom symbols of organic aliphatic atoms | Two-character bond multiplying symbols terminators of branching with explicit bond, start | correct atom-bondMod |
-| w_atom_oal | s_bm_tre_2 | Single character atom symbols of organic aliphatic atoms | Two-character bond multiplying symbols terminators of rings with explicit bond, start | correct atom-bondMod |
-| w_atom_oal | s_bm_tre_4 | Single character atom symbols of organic aliphatic atoms | Four-character bond multiplying symbols terminators of rings with explicit bond, start | correct atom-bondMod |
-| w_atom_oal | s_bm_tri | Single character atom symbols of organic aliphatic atoms | Three-character bond multiplying symbols terminators of rings with implicit bond, start | correct atom-bondMod |
-| w_atom_oal | lct | Single character atom symbols of organic aliphatic atoms | cis/trans on the left side | correct atom-cis/trans |
-| w_atom_oal | rct | Single character atom symbols of organic aliphatic atoms | cis/trans on the right side | correct atom-cis/trans |
-| w_atom_bar | bracket_end | Single character atom symbols of bracket aromatic atoms | Square bracket, end | correct bracket |
-| w_atom_bar | w_chiral | Single character atom symbols of bracket aromatic atoms | Single character chirality symbols | correct chirality |
-| w_atom_bar | s_chiral_2 | Single character atom symbols of bracket aromatic atoms | Two-character chirality symbols, start | correct chirality |
-| w_atom_bar | s_chiral_m | Single character atom symbols of bracket aromatic atoms | Multicharacter chirality symbols, start | correct chirality |
-| w_atom_bar | w_hydrogen | Single character atom symbols of bracket aromatic atoms | Single character hydrogen symbols | correct Hs |
-| w_atom_bar | s_hydrogen | Single character atom symbols of bracket aromatic atoms | Two-character hydrogen symbols, start | correct Hs |
-| w_atom_bar | w_charge | Single character atom symbols of bracket aromatic atoms | Single character charge symbols | correct charge |
-| w_atom_bar | s_charge_obsolete | Single character atom symbols of bracket aromatic atoms | Two-character charge obsolete symbols, start | correct charge |
-| w_atom_bar | s_charge_m | Single character atom symbols of bracket aromatic atoms | Multicharacter charge symbols, start | correct charge |
-| w_atom_bar | s_class | Single character atom symbols of bracket aromatic atoms | Multicharacter class symbols, start | correct class |
-| w_atom_bal | bracket_end | Single character atom symbols of bracket aliphatic atoms | Square bracket, end | correct bracket |
-| w_atom_bal | w_chiral | Single character atom symbols of bracket aliphatic atoms | Single character chirality symbols | correct chirality |
-| w_atom_bal | s_chiral_2 | Single character atom symbols of bracket aliphatic atoms | Two-character chirality symbols, start | correct chirality |
-| w_atom_bal | s_chiral_m | Single character atom symbols of bracket aliphatic atoms | Multicharacter chirality symbols, start | correct chirality |
-| w_atom_bal | w_hydrogen | Single character atom symbols of bracket aliphatic atoms | Single character hydrogen symbols | correct Hs |
-| w_atom_bal | s_hydrogen | Single character atom symbols of bracket aliphatic atoms | Two-character hydrogen symbols, start | correct Hs |
-| w_atom_bal | w_charge | Single character atom symbols of bracket aliphatic atoms | Single character charge symbols | correct charge |
-| w_atom_bal | s_charge_obsolete | Single character atom symbols of bracket aliphatic atoms | Two-character charge obsolete symbols, start | correct charge |
-| w_atom_bal | s_charge_m | Single character atom symbols of bracket aliphatic atoms | Multicharacter charge symbols, start | correct charge |
-| w_atom_bal | s_class | Single character atom symbols of bracket aliphatic atoms | Multicharacter class symbols, start | correct class |
-| s_atom_oal | e_atom_oal | Two character atom symbols of organic aliphatic atoms, start | Two character atom symbols of organic aliphatic atoms, end | correct multichar |
-| e_atom_oal | s_bm_ibe | Two character atom symbols of organic aliphatic atoms, end | Two-character bond multiplying symbols initiators of branching with explicit bond, start | correct atom-bondMod |
-| e_atom_oal | s_bm_ire_2 | Two character atom symbols of organic aliphatic atoms, end | Two-character bond multiplying symbols initiators of rings with explicit bond, start | correct atom-bondMod |
-| e_atom_oal | s_bm_ire_4 | Two character atom symbols of organic aliphatic atoms, end | Four-character bond multiplying symbols initiators of rings with explicit bond, start | correct atom-bondMod |
-| e_atom_oal | s_bm_iri | Two character atom symbols of organic aliphatic atoms, end | Three-character bond multiplying symbols initiators of rings with implicit bond, start | correct atom-bondMod |
-| e_atom_oal | s_bm_tbe | Two character atom symbols of organic aliphatic atoms, end | Two-character bond multiplying symbols terminators of branching with explicit bond, start | correct atom-bondMod |
-| e_atom_oal | s_bm_tre_2 | Two character atom symbols of organic aliphatic atoms, end | Two-character bond multiplying symbols terminators of rings with explicit bond, start | correct atom-bondMod |
-| e_atom_oal | s_bm_tre_4 | Two character atom symbols of organic aliphatic atoms, end | Four-character bond multiplying symbols terminators of rings with explicit bond, start | correct atom-bondMod |
-| e_atom_oal | s_bm_tri | Two character atom symbols of organic aliphatic atoms, end | Three-character bond multiplying symbols terminators of rings with implicit bond, start | correct atom-bondMod |
-| s_atom_bar | e_atom_bar | Two character atom symbols of bracket aromatic atoms, start | Two character atom symbols of bracket aromatic atoms, end | correct multichar |
-| e_atom_bar | s_chiral_2 | Two character atom symbols of bracket aromatic atoms, end | Two-character chirality symbols, start | correct chirality |
-| e_atom_bar | s_chiral_m | Two character atom symbols of bracket aromatic atoms, end | Multicharacter chirality symbols, start | correct chirality |
-| e_atom_bar | s_hydrogen | Two character atom symbols of bracket aromatic atoms, end | Two-character hydrogen symbols, start | correct Hs |
-| e_atom_bar | s_charge_obsolete | Two character atom symbols of bracket aromatic atoms, end | Two-character charge obsolete symbols, start | correct charge |
-| e_atom_bar | s_charge_m | Two character atom symbols of bracket aromatic atoms, end | Multicharacter charge symbols, start | correct charge |
-| e_atom_bar | s_class | Two character atom symbols of bracket aromatic atoms, end | Multicharacter class symbols, start | correct class |
-| s_atom_bal | e_atom_bal | Two character atom symbols of bracket aliphatic atoms, start | Two character atom symbols of bracket aliphatic atoms, end | correct multichar |
-| e_atom_bal | s_chiral_2 | Two character atom symbols of bracket aliphatic atoms, end | Two-character chirality symbols, start | correct chirality |
-| e_atom_bal | s_chiral_m | Two character atom symbols of bracket aliphatic atoms, end | Multicharacter chirality symbols, start | correct chirality |
-| e_atom_bal | s_hydrogen | Two character atom symbols of bracket aliphatic atoms, end | Two-character hydrogen symbols, start | correct Hs |
-| e_atom_bal | s_charge_obsolete | Two character atom symbols of bracket aliphatic atoms, end | Two-character charge obsolete symbols, start | correct charge |
-| e_atom_bal | s_charge_m | Two character atom symbols of bracket aliphatic atoms, end | Multicharacter charge symbols, start | correct charge |
-| e_atom_bal | s_class | Two character atom symbols of bracket aliphatic atoms, end | Multicharacter class symbols, start | correct class |
-| anything | w_atom_oar | Anything | Single character atom symbols of organic aromatic atoms | correct atom-atom |
-| anything | w_atom_oal | Anything | Single character atom symbols of organic aliphatic atoms | correct atom-atom |
-| anything | s_atom_oal | Anything | Two character atom symbols of organic aliphatic atoms, start | correct atom-atom |
-| anything | anything | Anything | Anything | correct atom-anything |
-| anything | bracket_start | Anything | Square bracket, start | correct atom-atom |
-| anything | bracket_end | Anything | Square bracket, end | correct bracket |
-| anything | single_bond | Anything | Single bond | correct atom-bond |
-| anything | double_bond | Anything | Double bond | correct atom-bond |
-| anything | triple_bond | Anything | Triple bond | correct atom-bond |
-| anything | quadruple_bond | Anything | Quadruple bond | correct atom-bond |
-| anything | aromatic_bond_obsolete | Anything | Aromatic bond, obsolete | correct atom-bond |
-| anything | no_bond | Anything | No bond | correct atom-bond |
-| anything | w_bm_ibi | Anything | Single character bond multiplying symbols initiators of branching with implicit bond | correct atom-bondMod |
-| anything | w_bm_tbi | Anything | Single character bond multiplying symbols terminators of branching with implicit bond | correct atom-bondMod |
-| anything | w_bm_iri | Anything | Single character bond multiplying symbols initiators of rings with implicit bond | correct atom-bondMod |
-| anything | w_bm_tri | Anything | Single character bond multiplying symbols terminators of rings with implicit bond | correct atom-bondMod |
-| anything | s_bm_ibe | Anything | Two-character bond multiplying symbols initiators of branching with explicit bond, start | correct atom-bondMod |
-| anything | s_bm_ire_2 | Anything | Two-character bond multiplying symbols initiators of rings with explicit bond, start | correct atom-bondMod |
-| anything | s_bm_ire_4 | Anything | Four-character bond multiplying symbols initiators of rings with explicit bond, start | correct atom-bondMod |
-| anything | s_bm_iri | Anything | Three-character bond multiplying symbols initiators of rings with implicit bond, start | correct atom-bondMod |
-| anything | s_bm_tbe | Anything | Two-character bond multiplying symbols terminators of branching with explicit bond, start | correct atom-bondMod |
-| anything | s_bm_tre_2 | Anything | Two-character bond multiplying symbols terminators of rings with explicit bond, start | correct atom-bondMod |
-| anything | s_bm_tre_4 | Anything | Four-character bond multiplying symbols terminators of rings with explicit bond, start | correct atom-bondMod |
-| anything | s_bm_tri | Anything | Three-character bond multiplying symbols terminators of rings with implicit bond, start | correct atom-bondMod |
-| anything | lct | Anything | cis/trans on the left side | correct atom-cis/trans |
-| anything | rct | Anything | cis/trans on the right side | correct atom-cis/trans |
-| anything | w_chiral | Anything | Single character chirality symbols | correct chirality |
-| anything | s_chiral_2 | Anything | Two-character chirality symbols, start | correct chirality |
-| anything | s_chiral_m | Anything | Multicharacter chirality symbols, start | correct chirality |
-| anything | w_hydrogen | Anything | Single character hydrogen symbols | correct Hs |
-| anything | s_hydrogen | Anything | Two-character hydrogen symbols, start | correct Hs |
-| anything | w_charge | Anything | Single character charge symbols | correct charge |
-| anything | s_charge_obsolete | Anything | Two-character charge obsolete symbols, start | correct charge |
-| anything | s_charge_m | Anything | Multicharacter charge symbols, start | correct charge |
-| anything | s_class | Anything | Multicharacter class symbols, start | correct class |
-| bracket_start | w_atom_oar | Square bracket, start | Single character atom symbols of organic aromatic atoms | wrong bracket |
-| bracket_start | w_atom_oal | Square bracket, start | Single character atom symbols of organic aliphatic atoms | wrong bracket |
-| bracket_start | w_atom_bar | Square bracket, start | Single character atom symbols of bracket aromatic atoms | correct bracket |
-| bracket_start | w_atom_bal | Square bracket, start | Single character atom symbols of bracket aliphatic atoms | correct bracket |
-| bracket_start | s_atom_oal | Square bracket, start | Two character atom symbols of organic aliphatic atoms, start | wrong bracket |
-| bracket_start | e_atom_oal | Square bracket, start | Two character atom symbols of organic aliphatic atoms, end | wrong bracket |
-| bracket_start | s_atom_bar | Square bracket, start | Two character atom symbols of bracket aromatic atoms, start | correct bracket |
-| bracket_start | e_atom_bar | Square bracket, start | Two character atom symbols of bracket aromatic atoms, end | wrong bracket |
-| bracket_start | s_atom_bal | Square bracket, start | Two character atom symbols of bracket aliphatic atoms, start | correct bracket |
-| bracket_start | e_atom_bal | Square bracket, start | Two character atom symbols of bracket aliphatic atoms, end | wrong bracket |
-| bracket_start | anything | Square bracket, start | Anything | wrong bracket |
-| bracket_start | bracket_start | Square bracket, start | Square bracket, start | wrong bracket |
-| bracket_start | bracket_end | Square bracket, start | Square bracket, end | wrong bracket |
-| bracket_start | single_bond | Square bracket, start | Single bond | wrong bracket |
-| bracket_start | double_bond | Square bracket, start | Double bond | wrong bracket |
-| bracket_start | triple_bond | Square bracket, start | Triple bond | wrong bracket |
-| bracket_start | quadruple_bond | Square bracket, start | Quadruple bond | wrong bracket |
-| bracket_start | aromatic_bond_obsolete | Square bracket, start | Aromatic bond, obsolete | wrong bracket |
-| bracket_start | no_bond | Square bracket, start | No bond | wrong bracket |
-| bracket_start | w_bm_ibi | Square bracket, start | Single character bond multiplying symbols initiators of branching with implicit bond | wrong bracket |
-| bracket_start | w_bm_tbi | Square bracket, start | Single character bond multiplying symbols terminators of branching with implicit bond | wrong bracket |
-| bracket_start | w_bm_iri | Square bracket, start | Single character bond multiplying symbols initiators of rings with implicit bond | wrong bracket |
-| bracket_start | w_bm_tri | Square bracket, start | Single character bond multiplying symbols terminators of rings with implicit bond | wrong bracket |
-| bracket_start | s_bm_ibe | Square bracket, start | Two-character bond multiplying symbols initiators of branching with explicit bond, start | wrong bracket |
-| bracket_start | e_bm_ibe | Square bracket, start | Two-character bond multiplying symbols initiators of branching with explicit bond, end | wrong bracket |
-| bracket_start | s_bm_ire_2 | Square bracket, start | Two-character bond multiplying symbols initiators of rings with explicit bond, start | wrong bracket |
-| bracket_start | e_bm_ire_2 | Square bracket, start | Two-character bond multiplying symbols initiators of rings with explicit bond, end | wrong bracket |
-| bracket_start | s_bm_ire_4 | Square bracket, start | Four-character bond multiplying symbols initiators of rings with explicit bond, start | wrong bracket |
-| bracket_start | n_bm_ire_4 | Square bracket, start | Four-character bond multiplying symbols initiators of rings with explicit bond, next from start | wrong bracket |
-| bracket_start | r_bm_ire_4 | Square bracket, start | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | wrong bracket |
-| bracket_start | s_bm_iri | Square bracket, start | Three-character bond multiplying symbols initiators of rings with implicit bond, start | wrong bracket |
-| bracket_start | r_bm_iri | Square bracket, start | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | wrong bracket |
-| bracket_start | s_bm_tbe | Square bracket, start | Two-character bond multiplying symbols terminators of branching with explicit bond, start | wrong bracket |
-| bracket_start | e_bm_tbe | Square bracket, start | Two-character bond multiplying symbols terminators of branching with explicit bond, end | wrong bracket |
-| bracket_start | s_bm_tre_2 | Square bracket, start | Two-character bond multiplying symbols terminators of rings with explicit bond, start | wrong bracket |
-| bracket_start | e_bm_tre_2 | Square bracket, start | Two-character bond multiplying symbols terminators of rings with explicit bond, end | wrong bracket |
-| bracket_start | s_bm_tre_4 | Square bracket, start | Four-character bond multiplying symbols terminators of rings with explicit bond, start | wrong bracket |
-| bracket_start | n_bm_tre_4 | Square bracket, start | Four-character bond multiplying symbols terminators of rings with explicit bond, next from start | wrong bracket |
-| bracket_start | r_bm_tre_4 | Square bracket, start | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | wrong bracket |
-| bracket_start | s_bm_tri | Square bracket, start | Three-character bond multiplying symbols terminators of rings with implicit bond, start | wrong bracket |
-| bracket_start | r_bm_tri | Square bracket, start | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | wrong bracket |
-| bracket_start | lct | Square bracket, start | cis/trans on the left side | wrong bracket |
-| bracket_start | rct | Square bracket, start | cis/trans on the right side | wrong bracket |
-| bracket_start | w_isotope | Square bracket, start | Single character isotope symbols | correct bracket |
-| bracket_start | s_isotope_m | Square bracket, start | Multicharacter isotope symbols, start | correct bracket |
-| bracket_start | r_isotope_m | Square bracket, start | Multicharacter isotope symbols, end | wrong bracket |
-| bracket_start | w_chiral | Square bracket, start | Single character chirality symbols | wrong bracket |
-| bracket_start | s_chiral_2 | Square bracket, start | Two-character chirality symbols, start | wrong bracket |
-| bracket_start | e_chiral_2 | Square bracket, start | Two-character chirality symbols, end | wrong bracket |
-| bracket_start | s_chiral_m | Square bracket, start | Multicharacter chirality symbols, start | wrong bracket |
-| bracket_start | n_chiral_m | Square bracket, start | Multicharacter chirality symbols, next from start | wrong bracket |
-| bracket_start | r_chiral_m | Square bracket, start | Multicharacter chirality symbols, rest | wrong bracket |
-| bracket_start | w_hydrogen | Square bracket, start | Single character hydrogen symbols | wrong bracket |
-| bracket_start | s_hydrogen | Square bracket, start | Two-character hydrogen symbols, start | wrong bracket |
-| bracket_start | e_hydrogen | Square bracket, start | Two-character hydrogen symbols, end | wrong bracket |
-| bracket_start | w_charge | Square bracket, start | Single character charge symbols | wrong bracket |
-| bracket_start | s_charge_obsolete | Square bracket, start | Two-character charge obsolete symbols, start | wrong bracket |
-| bracket_start | e_charge_obsolete | Square bracket, start | Two-character charge obsolete symbols, end | wrong bracket |
-| bracket_start | s_charge_m | Square bracket, start | Multicharacter charge symbols, start | wrong bracket |
-| bracket_start | r_charge_m | Square bracket, start | Multicharacter charge symbols, rest | wrong bracket |
-| bracket_start | s_class | Square bracket, start | Multicharacter class symbols, start | wrong bracket |
-| bracket_start | r_class | Square bracket, start | Multicharacter class symbols, rest | wrong bracket |
-| bracket_end | w_atom_oar | Square bracket, end | Single character atom symbols of organic aromatic atoms | correct bracket |
-| bracket_end | w_atom_oal | Square bracket, end | Single character atom symbols of organic aliphatic atoms | correct bracket |
-| bracket_end | w_atom_bar | Square bracket, end | Single character atom symbols of bracket aromatic atoms | wrong bracket |
-| bracket_end | w_atom_bal | Square bracket, end | Single character atom symbols of bracket aliphatic atoms | wrong bracket |
-| bracket_end | s_atom_oal | Square bracket, end | Two character atom symbols of organic aliphatic atoms, start | correct bracket |
-| bracket_end | e_atom_oal | Square bracket, end | Two character atom symbols of organic aliphatic atoms, end | correct bracket |
-| bracket_end | s_atom_bar | Square bracket, end | Two character atom symbols of bracket aromatic atoms, start | wrong bracket |
-| bracket_end | e_atom_bar | Square bracket, end | Two character atom symbols of bracket aromatic atoms, end | wrong bracket |
-| bracket_end | s_atom_bal | Square bracket, end | Two character atom symbols of bracket aliphatic atoms, start | wrong bracket |
-| bracket_end | e_atom_bal | Square bracket, end | Two character atom symbols of bracket aliphatic atoms, end | wrong bracket |
-| bracket_end | anything | Square bracket, end | Anything | correct bracket |
-| bracket_end | bracket_start | Square bracket, end | Square bracket, start | correct bracket |
-| bracket_end | bracket_end | Square bracket, end | Square bracket, end | wrong bracket |
-| bracket_end | single_bond | Square bracket, end | Single bond | correct bracket |
-| bracket_end | double_bond | Square bracket, end | Double bond | correct bracket |
-| bracket_end | triple_bond | Square bracket, end | Triple bond | correct bracket |
-| bracket_end | quadruple_bond | Square bracket, end | Quadruple bond | correct bracket |
-| bracket_end | aromatic_bond_obsolete | Square bracket, end | Aromatic bond, obsolete | correct bracket |
-| bracket_end | no_bond | Square bracket, end | No bond | correct bracket |
-| bracket_end | w_bm_ibi | Square bracket, end | Single character bond multiplying symbols initiators of branching with implicit bond | correct bracket |
-| bracket_end | w_bm_tbi | Square bracket, end | Single character bond multiplying symbols terminators of branching with implicit bond | correct bracket |
-| bracket_end | w_bm_iri | Square bracket, end | Single character bond multiplying symbols initiators of rings with implicit bond | correct bracket |
-| bracket_end | w_bm_tri | Square bracket, end | Single character bond multiplying symbols terminators of rings with implicit bond | correct bracket |
-| bracket_end | s_bm_ibe | Square bracket, end | Two-character bond multiplying symbols initiators of branching with explicit bond, start | correct bracket |
-| bracket_end | e_bm_ibe | Square bracket, end | Two-character bond multiplying symbols initiators of branching with explicit bond, end | wrong bracket |
-| bracket_end | s_bm_ire_2 | Square bracket, end | Two-character bond multiplying symbols initiators of rings with explicit bond, start | correct bracket |
-| bracket_end | e_bm_ire_2 | Square bracket, end | Two-character bond multiplying symbols initiators of rings with explicit bond, end | wrong bracket |
-| bracket_end | s_bm_ire_4 | Square bracket, end | Four-character bond multiplying symbols initiators of rings with explicit bond, start | correct bracket |
-| bracket_end | n_bm_ire_4 | Square bracket, end | Four-character bond multiplying symbols initiators of rings with explicit bond, next from start | wrong bracket |
-| bracket_end | r_bm_ire_4 | Square bracket, end | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | wrong bracket |
-| bracket_end | s_bm_iri | Square bracket, end | Three-character bond multiplying symbols initiators of rings with implicit bond, start | correct bracket |
-| bracket_end | r_bm_iri | Square bracket, end | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | wrong bracket |
-| bracket_end | s_bm_tbe | Square bracket, end | Two-character bond multiplying symbols terminators of branching with explicit bond, start | correct bracket |
-| bracket_end | e_bm_tbe | Square bracket, end | Two-character bond multiplying symbols terminators of branching with explicit bond, end | wrong bracket |
-| bracket_end | s_bm_tre_2 | Square bracket, end | Two-character bond multiplying symbols terminators of rings with explicit bond, start | correct bracket |
-| bracket_end | e_bm_tre_2 | Square bracket, end | Two-character bond multiplying symbols terminators of rings with explicit bond, end | wrong bracket |
-| bracket_end | s_bm_tre_4 | Square bracket, end | Four-character bond multiplying symbols terminators of rings with explicit bond, start | correct bracket |
-| bracket_end | n_bm_tre_4 | Square bracket, end | Four-character bond multiplying symbols terminators of rings with explicit bond, next from start | wrong bracket |
-| bracket_end | r_bm_tre_4 | Square bracket, end | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | wrong bracket |
-| bracket_end | s_bm_tri | Square bracket, end | Three-character bond multiplying symbols terminators of rings with implicit bond, start | correct bracket |
-| bracket_end | r_bm_tri | Square bracket, end | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | wrong bracket |
-| bracket_end | lct | Square bracket, end | cis/trans on the left side | correct bracket |
-| bracket_end | rct | Square bracket, end | cis/trans on the right side | correct bracket |
-| bracket_end | w_isotope | Square bracket, end | Single character isotope symbols | wrong bracket |
-| bracket_end | s_isotope_m | Square bracket, end | Multicharacter isotope symbols, start | wrong bracket |
-| bracket_end | r_isotope_m | Square bracket, end | Multicharacter isotope symbols, end | wrong bracket |
-| bracket_end | w_chiral | Square bracket, end | Single character chirality symbols | wrong bracket |
-| bracket_end | s_chiral_2 | Square bracket, end | Two-character chirality symbols, start | wrong bracket |
-| bracket_end | e_chiral_2 | Square bracket, end | Two-character chirality symbols, end | wrong bracket |
-| bracket_end | s_chiral_m | Square bracket, end | Multicharacter chirality symbols, start | wrong bracket |
-| bracket_end | n_chiral_m | Square bracket, end | Multicharacter chirality symbols, next from start | wrong bracket |
-| bracket_end | r_chiral_m | Square bracket, end | Multicharacter chirality symbols, rest | wrong bracket |
-| bracket_end | w_hydrogen | Square bracket, end | Single character hydrogen symbols | wrong bracket |
-| bracket_end | s_hydrogen | Square bracket, end | Two-character hydrogen symbols, start | wrong bracket |
-| bracket_end | e_hydrogen | Square bracket, end | Two-character hydrogen symbols, end | wrong bracket |
-| bracket_end | w_charge | Square bracket, end | Single character charge symbols | wrong bracket |
-| bracket_end | s_charge_obsolete | Square bracket, end | Two-character charge obsolete symbols, start | wrong bracket |
-| bracket_end | e_charge_obsolete | Square bracket, end | Two-character charge obsolete symbols, end | wrong bracket |
-| bracket_end | s_charge_m | Square bracket, end | Multicharacter charge symbols, start | wrong bracket |
-| bracket_end | r_charge_m | Square bracket, end | Multicharacter charge symbols, rest | wrong bracket |
-| bracket_end | s_class | Square bracket, end | Multicharacter class symbols, start | wrong bracket |
-| bracket_end | r_class | Square bracket, end | Multicharacter class symbols, rest | wrong bracket |
-| single_bond | w_atom_oar | Single bond | Single character atom symbols of organic aromatic atoms | correct bracket |
-| single_bond | w_atom_oal | Single bond | Single character atom symbols of organic aliphatic atoms | correct bracket |
-| single_bond | s_atom_oal | Single bond | Two character atom symbols of organic aliphatic atoms, start | correct bracket |
-| single_bond | anything | Single bond | Anything | correct bracket |
-| single_bond | bracket_start | Single bond | Square bracket, start | correct bracket |
-| single_bond | w_bm_ibi | Single bond | Single character bond multiplying symbols initiators of branching with implicit bond | correct bracket |
-| single_bond | w_bm_tbi | Single bond | Single character bond multiplying symbols terminators of branching with implicit bond | correct bracket |
-| single_bond | w_bm_iri | Single bond | Single character bond multiplying symbols initiators of rings with implicit bond | correct bracket |
-| single_bond | w_bm_tri | Single bond | Single character bond multiplying symbols terminators of rings with implicit bond | correct bracket |
-| single_bond | s_bm_ibe | Single bond | Two-character bond multiplying symbols initiators of branching with explicit bond, start | correct bracket |
-| single_bond | s_bm_ire_2 | Single bond | Two-character bond multiplying symbols initiators of rings with explicit bond, start | correct bracket |
-| single_bond | s_bm_ire_4 | Single bond | Four-character bond multiplying symbols initiators of rings with explicit bond, start | correct bracket |
-| single_bond | s_bm_iri | Single bond | Three-character bond multiplying symbols initiators of rings with implicit bond, start | correct bracket |
-| single_bond | s_bm_tbe | Single bond | Two-character bond multiplying symbols terminators of branching with explicit bond, start | correct bracket |
-| single_bond | s_bm_tre_2 | Single bond | Two-character bond multiplying symbols terminators of rings with explicit bond, start | correct bracket |
-| single_bond | s_bm_tre_4 | Single bond | Four-character bond multiplying symbols terminators of rings with explicit bond, start | correct bracket |
-| single_bond | s_bm_tri | Single bond | Three-character bond multiplying symbols terminators of rings with implicit bond, start | correct bracket |
-| single_bond | lct | Single bond | cis/trans on the left side | correct bracket |
-| single_bond | rct | Single bond | cis/trans on the right side | correct bracket |
-| double_bond | w_atom_oar | Double bond | Single character atom symbols of organic aromatic atoms | correct bracket |
-| double_bond | w_atom_oal | Double bond | Single character atom symbols of organic aliphatic atoms | correct bracket |
-| double_bond | s_atom_oal | Double bond | Two character atom symbols of organic aliphatic atoms, start | correct bracket |
-| double_bond | anything | Double bond | Anything | correct bracket |
-| double_bond | bracket_start | Double bond | Square bracket, start | correct bracket |
-| double_bond | w_bm_ibi | Double bond | Single character bond multiplying symbols initiators of branching with implicit bond | correct bracket |
-| double_bond | w_bm_tbi | Double bond | Single character bond multiplying symbols terminators of branching with implicit bond | correct bracket |
-| double_bond | w_bm_iri | Double bond | Single character bond multiplying symbols initiators of rings with implicit bond | correct bracket |
-| double_bond | w_bm_tri | Double bond | Single character bond multiplying symbols terminators of rings with implicit bond | correct bracket |
-| double_bond | s_bm_ibe | Double bond | Two-character bond multiplying symbols initiators of branching with explicit bond, start | correct bracket |
-| double_bond | s_bm_ire_2 | Double bond | Two-character bond multiplying symbols initiators of rings with explicit bond, start | correct bracket |
-| double_bond | s_bm_ire_4 | Double bond | Four-character bond multiplying symbols initiators of rings with explicit bond, start | correct bracket |
-| double_bond | s_bm_iri | Double bond | Three-character bond multiplying symbols initiators of rings with implicit bond, start | correct bracket |
-| double_bond | s_bm_tbe | Double bond | Two-character bond multiplying symbols terminators of branching with explicit bond, start | correct bracket |
-| double_bond | s_bm_tre_2 | Double bond | Two-character bond multiplying symbols terminators of rings with explicit bond, start | correct bracket |
-| double_bond | s_bm_tre_4 | Double bond | Four-character bond multiplying symbols terminators of rings with explicit bond, start | correct bracket |
-| double_bond | s_bm_tri | Double bond | Three-character bond multiplying symbols terminators of rings with implicit bond, start | correct bracket |
-| double_bond | lct | Double bond | cis/trans on the left side | correct bracket |
-| double_bond | rct | Double bond | cis/trans on the right side | correct bracket |
-| triple_bond | w_atom_oar | Triple bond | Single character atom symbols of organic aromatic atoms | correct bracket |
-| triple_bond | w_atom_oal | Triple bond | Single character atom symbols of organic aliphatic atoms | correct bracket |
-| triple_bond | s_atom_oal | Triple bond | Two character atom symbols of organic aliphatic atoms, start | correct bracket |
-| triple_bond | anything | Triple bond | Anything | correct bracket |
-| triple_bond | bracket_start | Triple bond | Square bracket, start | correct bracket |
-| triple_bond | w_bm_ibi | Triple bond | Single character bond multiplying symbols initiators of branching with implicit bond | correct bracket |
-| triple_bond | w_bm_tbi | Triple bond | Single character bond multiplying symbols terminators of branching with implicit bond | correct bracket |
-| triple_bond | w_bm_iri | Triple bond | Single character bond multiplying symbols initiators of rings with implicit bond | correct bracket |
-| triple_bond | w_bm_tri | Triple bond | Single character bond multiplying symbols terminators of rings with implicit bond | correct bracket |
-| triple_bond | s_bm_ibe | Triple bond | Two-character bond multiplying symbols initiators of branching with explicit bond, start | correct bracket |
-| triple_bond | s_bm_ire_2 | Triple bond | Two-character bond multiplying symbols initiators of rings with explicit bond, start | correct bracket |
-| triple_bond | s_bm_ire_4 | Triple bond | Four-character bond multiplying symbols initiators of rings with explicit bond, start | correct bracket |
-| triple_bond | s_bm_iri | Triple bond | Three-character bond multiplying symbols initiators of rings with implicit bond, start | correct bracket |
-| triple_bond | s_bm_tbe | Triple bond | Two-character bond multiplying symbols terminators of branching with explicit bond, start | correct bracket |
-| triple_bond | s_bm_tre_2 | Triple bond | Two-character bond multiplying symbols terminators of rings with explicit bond, start | correct bracket |
-| triple_bond | s_bm_tre_4 | Triple bond | Four-character bond multiplying symbols terminators of rings with explicit bond, start | correct bracket |
-| triple_bond | s_bm_tri | Triple bond | Three-character bond multiplying symbols terminators of rings with implicit bond, start | correct bracket |
-| triple_bond | lct | Triple bond | cis/trans on the left side | correct bracket |
-| triple_bond | rct | Triple bond | cis/trans on the right side | correct bracket |
-| quadruple_bond | w_atom_oar | Quadruple bond | Single character atom symbols of organic aromatic atoms | correct bracket |
-| quadruple_bond | w_atom_oal | Quadruple bond | Single character atom symbols of organic aliphatic atoms | correct bracket |
-| quadruple_bond | s_atom_oal | Quadruple bond | Two character atom symbols of organic aliphatic atoms, start | correct bracket |
-| quadruple_bond | anything | Quadruple bond | Anything | correct bracket |
-| quadruple_bond | bracket_start | Quadruple bond | Square bracket, start | correct bracket |
-| quadruple_bond | w_bm_ibi | Quadruple bond | Single character bond multiplying symbols initiators of branching with implicit bond | correct bracket |
-| quadruple_bond | w_bm_tbi | Quadruple bond | Single character bond multiplying symbols terminators of branching with implicit bond | correct bracket |
-| quadruple_bond | w_bm_iri | Quadruple bond | Single character bond multiplying symbols initiators of rings with implicit bond | correct bracket |
-| quadruple_bond | w_bm_tri | Quadruple bond | Single character bond multiplying symbols terminators of rings with implicit bond | correct bracket |
-| quadruple_bond | s_bm_ibe | Quadruple bond | Two-character bond multiplying symbols initiators of branching with explicit bond, start | correct bracket |
-| quadruple_bond | s_bm_ire_2 | Quadruple bond | Two-character bond multiplying symbols initiators of rings with explicit bond, start | correct bracket |
-| quadruple_bond | s_bm_ire_4 | Quadruple bond | Four-character bond multiplying symbols initiators of rings with explicit bond, start | correct bracket |
-| quadruple_bond | s_bm_iri | Quadruple bond | Three-character bond multiplying symbols initiators of rings with implicit bond, start | correct bracket |
-| quadruple_bond | s_bm_tbe | Quadruple bond | Two-character bond multiplying symbols terminators of branching with explicit bond, start | correct bracket |
-| quadruple_bond | s_bm_tre_2 | Quadruple bond | Two-character bond multiplying symbols terminators of rings with explicit bond, start | correct bracket |
-| quadruple_bond | s_bm_tre_4 | Quadruple bond | Four-character bond multiplying symbols terminators of rings with explicit bond, start | correct bracket |
-| quadruple_bond | s_bm_tri | Quadruple bond | Three-character bond multiplying symbols terminators of rings with implicit bond, start | correct bracket |
-| quadruple_bond | lct | Quadruple bond | cis/trans on the left side | correct bracket |
-| quadruple_bond | rct | Quadruple bond | cis/trans on the right side | correct bracket |
-| aromatic_bond_obsolete | w_atom_oar | Aromatic bond, obsolete | Single character atom symbols of organic aromatic atoms | correct bracket |
-| aromatic_bond_obsolete | w_atom_oal | Aromatic bond, obsolete | Single character atom symbols of organic aliphatic atoms | correct bracket |
-| aromatic_bond_obsolete | s_atom_oal | Aromatic bond, obsolete | Two character atom symbols of organic aliphatic atoms, start | correct bracket |
-| aromatic_bond_obsolete | anything | Aromatic bond, obsolete | Anything | correct bracket |
-| aromatic_bond_obsolete | bracket_start | Aromatic bond, obsolete | Square bracket, start | correct bracket |
-| aromatic_bond_obsolete | w_bm_ibi | Aromatic bond, obsolete | Single character bond multiplying symbols initiators of branching with implicit bond | correct bracket |
-| aromatic_bond_obsolete | w_bm_tbi | Aromatic bond, obsolete | Single character bond multiplying symbols terminators of branching with implicit bond | correct bracket |
-| aromatic_bond_obsolete | w_bm_iri | Aromatic bond, obsolete | Single character bond multiplying symbols initiators of rings with implicit bond | correct bracket |
-| aromatic_bond_obsolete | w_bm_tri | Aromatic bond, obsolete | Single character bond multiplying symbols terminators of rings with implicit bond | correct bracket |
-| aromatic_bond_obsolete | s_bm_ibe | Aromatic bond, obsolete | Two-character bond multiplying symbols initiators of branching with explicit bond, start | correct bracket |
-| aromatic_bond_obsolete | s_bm_ire_2 | Aromatic bond, obsolete | Two-character bond multiplying symbols initiators of rings with explicit bond, start | correct bracket |
-| aromatic_bond_obsolete | s_bm_ire_4 | Aromatic bond, obsolete | Four-character bond multiplying symbols initiators of rings with explicit bond, start | correct bracket |
-| aromatic_bond_obsolete | s_bm_iri | Aromatic bond, obsolete | Three-character bond multiplying symbols initiators of rings with implicit bond, start | correct bracket |
-| aromatic_bond_obsolete | s_bm_tbe | Aromatic bond, obsolete | Two-character bond multiplying symbols terminators of branching with explicit bond, start | correct bracket |
-| aromatic_bond_obsolete | s_bm_tre_2 | Aromatic bond, obsolete | Two-character bond multiplying symbols terminators of rings with explicit bond, start | correct bracket |
-| aromatic_bond_obsolete | s_bm_tre_4 | Aromatic bond, obsolete | Four-character bond multiplying symbols terminators of rings with explicit bond, start | correct bracket |
-| aromatic_bond_obsolete | s_bm_tri | Aromatic bond, obsolete | Three-character bond multiplying symbols terminators of rings with implicit bond, start | correct bracket |
-| aromatic_bond_obsolete | lct | Aromatic bond, obsolete | cis/trans on the left side | correct bracket |
-| aromatic_bond_obsolete | rct | Aromatic bond, obsolete | cis/trans on the right side | correct bracket |
-| no_bond | w_atom_oar | No bond | Single character atom symbols of organic aromatic atoms | correct bracket |
-| no_bond | w_atom_oal | No bond | Single character atom symbols of organic aliphatic atoms | correct bracket |
-| no_bond | s_atom_oal | No bond | Two character atom symbols of organic aliphatic atoms, start | correct bracket |
-| no_bond | anything | No bond | Anything | correct bracket |
-| no_bond | bracket_start | No bond | Square bracket, start | correct bracket |
-| no_bond | w_bm_ibi | No bond | Single character bond multiplying symbols initiators of branching with implicit bond | correct bracket |
-| no_bond | w_bm_tbi | No bond | Single character bond multiplying symbols terminators of branching with implicit bond | correct bracket |
-| no_bond | w_bm_iri | No bond | Single character bond multiplying symbols initiators of rings with implicit bond | correct bracket |
-| no_bond | w_bm_tri | No bond | Single character bond multiplying symbols terminators of rings with implicit bond | correct bracket |
-| no_bond | s_bm_ibe | No bond | Two-character bond multiplying symbols initiators of branching with explicit bond, start | correct bracket |
-| no_bond | s_bm_ire_2 | No bond | Two-character bond multiplying symbols initiators of rings with explicit bond, start | correct bracket |
-| no_bond | s_bm_ire_4 | No bond | Four-character bond multiplying symbols initiators of rings with explicit bond, start | correct bracket |
-| no_bond | s_bm_iri | No bond | Three-character bond multiplying symbols initiators of rings with implicit bond, start | correct bracket |
-| no_bond | s_bm_tbe | No bond | Two-character bond multiplying symbols terminators of branching with explicit bond, start | correct bracket |
-| no_bond | s_bm_tre_2 | No bond | Two-character bond multiplying symbols terminators of rings with explicit bond, start | correct bracket |
-| no_bond | s_bm_tre_4 | No bond | Four-character bond multiplying symbols terminators of rings with explicit bond, start | correct bracket |
-| no_bond | s_bm_tri | No bond | Three-character bond multiplying symbols terminators of rings with implicit bond, start | correct bracket |
-| no_bond | lct | No bond | cis/trans on the left side | correct bracket |
-| no_bond | rct | No bond | cis/trans on the right side | correct bracket |
-| w_bm_ibi | w_atom_oar | Single character bond multiplying symbols initiators of branching with implicit bond | Single character atom symbols of organic aromatic atoms | correct branch initiator |
-| w_bm_ibi | w_atom_oal | Single character bond multiplying symbols initiators of branching with implicit bond | Single character atom symbols of organic aliphatic atoms | correct branch initiator |
-| w_bm_ibi | s_atom_oal | Single character bond multiplying symbols initiators of branching with implicit bond | Two character atom symbols of organic aliphatic atoms, start | correct branch initiator |
-| w_bm_ibi | anything | Single character bond multiplying symbols initiators of branching with implicit bond | Anything | correct branch initiator |
-| w_bm_ibi | bracket_start | Single character bond multiplying symbols initiators of branching with implicit bond | Square bracket, start | correct branch initiator |
-| w_bm_ibi | w_bm_ibi | Single character bond multiplying symbols initiators of branching with implicit bond | Single character bond multiplying symbols initiators of branching with implicit bond | correct branch initiator |
-| w_bm_ibi | s_bm_ibe | Single character bond multiplying symbols initiators of branching with implicit bond | Two-character bond multiplying symbols initiators of branching with explicit bond, start | correct branch initiator |
-| w_bm_ibi | lct | Single character bond multiplying symbols initiators of branching with implicit bond | cis/trans on the left side | correct branch initiator |
-| w_bm_ibi | rct | Single character bond multiplying symbols initiators of branching with implicit bond | cis/trans on the right side | correct branch initiator |
-| w_bm_tbi | w_atom_oar | Single character bond multiplying symbols terminators of branching with implicit bond | Single character atom symbols of organic aromatic atoms |  correct branch terminator |
-| w_bm_tbi | w_atom_oal | Single character bond multiplying symbols terminators of branching with implicit bond | Single character atom symbols of organic aliphatic atoms |  correct branch terminator |
-| w_bm_tbi | s_atom_oal | Single character bond multiplying symbols terminators of branching with implicit bond | Two character atom symbols of organic aliphatic atoms, start |  correct branch terminator |
-| w_bm_tbi | s_atom_bar | Single character bond multiplying symbols terminators of branching with implicit bond | Two character atom symbols of bracket aromatic atoms, start |  correct branch terminator |
-| w_bm_tbi | s_atom_bal | Single character bond multiplying symbols terminators of branching with implicit bond | Two character atom symbols of bracket aliphatic atoms, start |  correct branch terminator |
-| w_bm_tbi | anything | Single character bond multiplying symbols terminators of branching with implicit bond | Anything |  correct branch terminator |
-| w_bm_tbi | bracket_start | Single character bond multiplying symbols terminators of branching with implicit bond | Square bracket, start |  correct branch terminator |
-| w_bm_tbi | single_bond | Single character bond multiplying symbols terminators of branching with implicit bond | Single bond |  correct branch terminator |
-| w_bm_tbi | double_bond | Single character bond multiplying symbols terminators of branching with implicit bond | Double bond |  correct branch terminator |
-| w_bm_tbi | triple_bond | Single character bond multiplying symbols terminators of branching with implicit bond | Triple bond |  correct branch terminator |
-| w_bm_tbi | quadruple_bond | Single character bond multiplying symbols terminators of branching with implicit bond | Quadruple bond |  correct branch terminator |
-| w_bm_tbi | aromatic_bond_obsolete | Single character bond multiplying symbols terminators of branching with implicit bond | Aromatic bond, obsolete |  correct branch terminator |
-| w_bm_tbi | no_bond | Single character bond multiplying symbols terminators of branching with implicit bond | No bond |  correct branch terminator |
-| w_bm_tbi | w_bm_ibi | Single character bond multiplying symbols terminators of branching with implicit bond | Single character bond multiplying symbols initiators of branching with implicit bond |  correct branch terminator |
-| w_bm_tbi | w_bm_tbi | Single character bond multiplying symbols terminators of branching with implicit bond | Single character bond multiplying symbols terminators of branching with implicit bond |  correct branch terminator |
-| w_bm_tbi | w_bm_iri | Single character bond multiplying symbols terminators of branching with implicit bond | Single character bond multiplying symbols initiators of rings with implicit bond |  correct branch terminator |
-| w_bm_tbi | w_bm_tri | Single character bond multiplying symbols terminators of branching with implicit bond | Single character bond multiplying symbols terminators of rings with implicit bond |  correct branch terminator |
-| w_bm_tbi | s_bm_ibe | Single character bond multiplying symbols terminators of branching with implicit bond | Two-character bond multiplying symbols initiators of branching with explicit bond, start |  correct branch terminator |
-| w_bm_tbi | s_bm_ire_2 | Single character bond multiplying symbols terminators of branching with implicit bond | Two-character bond multiplying symbols initiators of rings with explicit bond, start |  correct branch terminator |
-| w_bm_tbi | s_bm_ire_4 | Single character bond multiplying symbols terminators of branching with implicit bond | Four-character bond multiplying symbols initiators of rings with explicit bond, start |  correct branch terminator |
-| w_bm_tbi | s_bm_iri | Single character bond multiplying symbols terminators of branching with implicit bond | Three-character bond multiplying symbols initiators of rings with implicit bond, start |  correct branch terminator |
-| w_bm_tbi | s_bm_tbe | Single character bond multiplying symbols terminators of branching with implicit bond | Two-character bond multiplying symbols terminators of branching with explicit bond, start |  correct branch terminator |
-| w_bm_tbi | s_bm_tre_2 | Single character bond multiplying symbols terminators of branching with implicit bond | Two-character bond multiplying symbols terminators of rings with explicit bond, start |  correct branch terminator |
-| w_bm_tbi | s_bm_tre_4 | Single character bond multiplying symbols terminators of branching with implicit bond | Four-character bond multiplying symbols terminators of rings with explicit bond, start |  correct branch terminator |
-| w_bm_tbi | s_bm_tri | Single character bond multiplying symbols terminators of branching with implicit bond | Three-character bond multiplying symbols terminators of rings with implicit bond, start |  correct branch terminator |
-| w_bm_tbi | lct | Single character bond multiplying symbols terminators of branching with implicit bond | cis/trans on the left side |  correct branch terminator |
-| w_bm_tbi | rct | Single character bond multiplying symbols terminators of branching with implicit bond | cis/trans on the right side |  correct branch terminator |
-| w_bm_iri | w_atom_oar | Single character bond multiplying symbols initiators of rings with implicit bond | Single character atom symbols of organic aromatic atoms | correct ring initiator |
-| w_bm_iri | w_atom_oal | Single character bond multiplying symbols initiators of rings with implicit bond | Single character atom symbols of organic aliphatic atoms | correct ring initiator |
-| w_bm_iri | w_atom_bar | Single character bond multiplying symbols initiators of rings with implicit bond | Single character atom symbols of bracket aromatic atoms | correct ring initiator |
-| w_bm_iri | w_atom_bal | Single character bond multiplying symbols initiators of rings with implicit bond | Single character atom symbols of bracket aliphatic atoms | correct ring initiator |
-| w_bm_iri | s_atom_oal | Single character bond multiplying symbols initiators of rings with implicit bond | Two character atom symbols of organic aliphatic atoms, start | correct ring initiator |
-| w_bm_iri | anything | Single character bond multiplying symbols initiators of rings with implicit bond | Anything | correct ring initiator |
-| w_bm_iri | bracket_start | Single character bond multiplying symbols initiators of rings with implicit bond | Square bracket, start | correct ring initiator |
-| w_bm_iri | single_bond | Single character bond multiplying symbols initiators of rings with implicit bond | Single bond | correct ring initiator |
-| w_bm_iri | double_bond | Single character bond multiplying symbols initiators of rings with implicit bond | Double bond | correct ring initiator |
-| w_bm_iri | triple_bond | Single character bond multiplying symbols initiators of rings with implicit bond | Triple bond | correct ring initiator |
-| w_bm_iri | quadruple_bond | Single character bond multiplying symbols initiators of rings with implicit bond | Quadruple bond | correct ring initiator |
-| w_bm_iri | aromatic_bond_obsolete | Single character bond multiplying symbols initiators of rings with implicit bond | Aromatic bond, obsolete | correct ring initiator |
-| w_bm_iri | no_bond | Single character bond multiplying symbols initiators of rings with implicit bond | No bond | correct ring initiator |
-| w_bm_iri | w_bm_ibi | Single character bond multiplying symbols initiators of rings with implicit bond | Single character bond multiplying symbols initiators of branching with implicit bond | correct ring initiator |
-| w_bm_iri | w_bm_tbi | Single character bond multiplying symbols initiators of rings with implicit bond | Single character bond multiplying symbols terminators of branching with implicit bond | correct ring initiator |
-| w_bm_iri | w_bm_iri | Single character bond multiplying symbols initiators of rings with implicit bond | Single character bond multiplying symbols initiators of rings with implicit bond | correct ring initiator |
-| w_bm_iri | w_bm_tri | Single character bond multiplying symbols initiators of rings with implicit bond | Single character bond multiplying symbols terminators of rings with implicit bond | correct ring initiator |
-| w_bm_iri | s_bm_ibe | Single character bond multiplying symbols initiators of rings with implicit bond | Two-character bond multiplying symbols initiators of branching with explicit bond, start | correct ring initiator |
-| w_bm_iri | s_bm_ire_2 | Single character bond multiplying symbols initiators of rings with implicit bond | Two-character bond multiplying symbols initiators of rings with explicit bond, start | correct ring initiator |
-| w_bm_iri | s_bm_ire_4 | Single character bond multiplying symbols initiators of rings with implicit bond | Four-character bond multiplying symbols initiators of rings with explicit bond, start | correct ring initiator |
-| w_bm_iri | s_bm_iri | Single character bond multiplying symbols initiators of rings with implicit bond | Three-character bond multiplying symbols initiators of rings with implicit bond, start | correct ring initiator |
-| w_bm_iri | s_bm_tbe | Single character bond multiplying symbols initiators of rings with implicit bond | Two-character bond multiplying symbols terminators of branching with explicit bond, start | correct ring initiator |
-| w_bm_iri | s_bm_tre_2 | Single character bond multiplying symbols initiators of rings with implicit bond | Two-character bond multiplying symbols terminators of rings with explicit bond, start | correct ring initiator |
-| w_bm_iri | s_bm_tre_4 | Single character bond multiplying symbols initiators of rings with implicit bond | Four-character bond multiplying symbols terminators of rings with explicit bond, start | correct ring initiator |
-| w_bm_iri | s_bm_tri | Single character bond multiplying symbols initiators of rings with implicit bond | Three-character bond multiplying symbols terminators of rings with implicit bond, start | correct ring initiator |
-| w_bm_iri | lct | Single character bond multiplying symbols initiators of rings with implicit bond | cis/trans on the left side | correct ring initiator |
-| w_bm_iri | rct | Single character bond multiplying symbols initiators of rings with implicit bond | cis/trans on the right side | correct ring initiator |
-| w_bm_tri | w_atom_oar | Single character bond multiplying symbols terminators of rings with implicit bond | Single character atom symbols of organic aromatic atoms | correct ring terminator |
-| w_bm_tri | w_atom_oal | Single character bond multiplying symbols terminators of rings with implicit bond | Single character atom symbols of organic aliphatic atoms | correct ring terminator |
-| w_bm_tri | s_atom_oal | Single character bond multiplying symbols terminators of rings with implicit bond | Two character atom symbols of organic aliphatic atoms, start | correct ring terminator |
-| w_bm_tri | anything | Single character bond multiplying symbols terminators of rings with implicit bond | Anything | correct ring terminator |
-| w_bm_tri | bracket_start | Single character bond multiplying symbols terminators of rings with implicit bond | Square bracket, start | correct ring terminator |
-| w_bm_tri | single_bond | Single character bond multiplying symbols terminators of rings with implicit bond | Single bond | correct ring terminator |
-| w_bm_tri | double_bond | Single character bond multiplying symbols terminators of rings with implicit bond | Double bond | correct ring terminator |
-| w_bm_tri | triple_bond | Single character bond multiplying symbols terminators of rings with implicit bond | Triple bond | correct ring terminator |
-| w_bm_tri | quadruple_bond | Single character bond multiplying symbols terminators of rings with implicit bond | Quadruple bond | correct ring terminator |
-| w_bm_tri | aromatic_bond_obsolete | Single character bond multiplying symbols terminators of rings with implicit bond | Aromatic bond, obsolete | correct ring terminator |
-| w_bm_tri | no_bond | Single character bond multiplying symbols terminators of rings with implicit bond | No bond | correct ring terminator |
-| w_bm_tri | w_bm_ibi | Single character bond multiplying symbols terminators of rings with implicit bond | Single character bond multiplying symbols initiators of branching with implicit bond | correct ring terminator |
-| w_bm_tri | w_bm_tbi | Single character bond multiplying symbols terminators of rings with implicit bond | Single character bond multiplying symbols terminators of branching with implicit bond | correct ring terminator |
-| w_bm_tri | w_bm_iri | Single character bond multiplying symbols terminators of rings with implicit bond | Single character bond multiplying symbols initiators of rings with implicit bond | correct ring terminator |
-| w_bm_tri | w_bm_tri | Single character bond multiplying symbols terminators of rings with implicit bond | Single character bond multiplying symbols terminators of rings with implicit bond | correct ring terminator |
-| w_bm_tri | s_bm_ibe | Single character bond multiplying symbols terminators of rings with implicit bond | Two-character bond multiplying symbols initiators of branching with explicit bond, start | correct ring terminator |
-| w_bm_tri | s_bm_ire_2 | Single character bond multiplying symbols terminators of rings with implicit bond | Two-character bond multiplying symbols initiators of rings with explicit bond, start | correct ring terminator |
-| w_bm_tri | s_bm_ire_4 | Single character bond multiplying symbols terminators of rings with implicit bond | Four-character bond multiplying symbols initiators of rings with explicit bond, start | correct ring terminator |
-| w_bm_tri | s_bm_iri | Single character bond multiplying symbols terminators of rings with implicit bond | Three-character bond multiplying symbols initiators of rings with implicit bond, start | correct ring terminator |
-| w_bm_tri | s_bm_tbe | Single character bond multiplying symbols terminators of rings with implicit bond | Two-character bond multiplying symbols terminators of branching with explicit bond, start | correct ring terminator |
-| w_bm_tri | s_bm_tre_2 | Single character bond multiplying symbols terminators of rings with implicit bond | Two-character bond multiplying symbols terminators of rings with explicit bond, start | correct ring terminator |
-| w_bm_tri | s_bm_tre_4 | Single character bond multiplying symbols terminators of rings with implicit bond | Four-character bond multiplying symbols terminators of rings with explicit bond, start | correct ring terminator |
-| w_bm_tri | s_bm_tri | Single character bond multiplying symbols terminators of rings with implicit bond | Three-character bond multiplying symbols terminators of rings with implicit bond, start | correct ring terminator |
-| w_bm_tri | lct | Single character bond multiplying symbols terminators of rings with implicit bond | cis/trans on the left side | correct ring terminator |
-| w_bm_tri | rct | Single character bond multiplying symbols terminators of rings with implicit bond | cis/trans on the right side | correct ring terminator |
-| s_bm_ibe | e_bm_ibe | Two-character bond multiplying symbols initiators of branching with explicit bond, start | Two-character bond multiplying symbols initiators of branching with explicit bond, end | correct multichar |
-| e_bm_ibe | s_atom_oal | Two-character bond multiplying symbols initiators of branching with explicit bond, end | Two character atom symbols of organic aliphatic atoms, start | correct branch initiator |
-| s_bm_ire_2 | e_bm_ire_2 | Two-character bond multiplying symbols initiators of rings with explicit bond, start | Two-character bond multiplying symbols initiators of rings with explicit bond, end | correct multichar |
-| e_bm_ire_2 | s_atom_oal | Two-character bond multiplying symbols initiators of rings with explicit bond, end | Two character atom symbols of organic aliphatic atoms, start | correct ring initiator |
-| e_bm_ire_2 | s_bm_ibe | Two-character bond multiplying symbols initiators of rings with explicit bond, end | Two-character bond multiplying symbols initiators of branching with explicit bond, start | correct ring initiator |
-| e_bm_ire_2 | s_bm_ire_4 | Two-character bond multiplying symbols initiators of rings with explicit bond, end | Four-character bond multiplying symbols initiators of rings with explicit bond, start | correct ring initiator |
-| e_bm_ire_2 | s_bm_iri | Two-character bond multiplying symbols initiators of rings with explicit bond, end | Three-character bond multiplying symbols initiators of rings with implicit bond, start | correct ring initiator |
-| e_bm_ire_2 | s_bm_tbe | Two-character bond multiplying symbols initiators of rings with explicit bond, end | Two-character bond multiplying symbols terminators of branching with explicit bond, start | correct ring initiator |
-| e_bm_ire_2 | s_bm_tre_2 | Two-character bond multiplying symbols initiators of rings with explicit bond, end | Two-character bond multiplying symbols terminators of rings with explicit bond, start | correct ring initiator |
-| e_bm_ire_2 | s_bm_tre_4 | Two-character bond multiplying symbols initiators of rings with explicit bond, end | Four-character bond multiplying symbols terminators of rings with explicit bond, start | correct ring initiator |
-| e_bm_ire_2 | s_bm_tri | Two-character bond multiplying symbols initiators of rings with explicit bond, end | Three-character bond multiplying symbols terminators of rings with implicit bond, start | correct ring initiator |
-| s_bm_ire_4 | n_bm_ire_4 | Four-character bond multiplying symbols initiators of rings with explicit bond, start | Four-character bond multiplying symbols initiators of rings with explicit bond, next from start | correct multichar |
-| n_bm_ire_4 | r_bm_ire_4 | Four-character bond multiplying symbols initiators of rings with explicit bond, next from start | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | correct multichar |
-| r_bm_ire_4 | w_atom_oar | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Single character atom symbols of organic aromatic atoms | correct ring initiator |
-| r_bm_ire_4 | w_atom_oal | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Single character atom symbols of organic aliphatic atoms | correct ring initiator |
-| r_bm_ire_4 | w_atom_bar | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Single character atom symbols of bracket aromatic atoms | correct ring initiator |
-| r_bm_ire_4 | w_atom_bal | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Single character atom symbols of bracket aliphatic atoms | correct ring initiator |
-| r_bm_ire_4 | s_atom_oal | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Two character atom symbols of organic aliphatic atoms, start | correct ring initiator |
-| r_bm_ire_4 | anything | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Anything | correct ring initiator |
-| r_bm_ire_4 | bracket_start | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Square bracket, start | correct ring initiator |
-| r_bm_ire_4 | single_bond | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Single bond | correct ring initiator |
-| r_bm_ire_4 | double_bond | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Double bond | correct ring initiator |
-| r_bm_ire_4 | triple_bond | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Triple bond | correct ring initiator |
-| r_bm_ire_4 | quadruple_bond | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Quadruple bond | correct ring initiator |
-| r_bm_ire_4 | aromatic_bond_obsolete | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Aromatic bond, obsolete | correct ring initiator |
-| r_bm_ire_4 | no_bond | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | No bond | correct ring initiator |
-| r_bm_ire_4 | w_bm_ibi | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Single character bond multiplying symbols initiators of branching with implicit bond | correct ring initiator |
-| r_bm_ire_4 | w_bm_tbi | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Single character bond multiplying symbols terminators of branching with implicit bond | correct ring initiator |
-| r_bm_ire_4 | w_bm_iri | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Single character bond multiplying symbols initiators of rings with implicit bond | correct ring initiator |
-| r_bm_ire_4 | w_bm_tri | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Single character bond multiplying symbols terminators of rings with implicit bond | correct ring initiator |
-| r_bm_ire_4 | s_bm_ibe | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Two-character bond multiplying symbols initiators of branching with explicit bond, start | correct ring initiator |
-| r_bm_ire_4 | s_bm_ire_2 | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Two-character bond multiplying symbols initiators of rings with explicit bond, start | correct ring initiator |
-| r_bm_ire_4 | r_bm_ire_4 | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | correct multichar |
-| r_bm_ire_4 | s_bm_iri | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Three-character bond multiplying symbols initiators of rings with implicit bond, start | correct ring initiator |
-| r_bm_ire_4 | s_bm_tbe | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Two-character bond multiplying symbols terminators of branching with explicit bond, start | correct ring initiator |
-| r_bm_ire_4 | s_bm_tre_2 | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Two-character bond multiplying symbols terminators of rings with explicit bond, start | correct ring initiator |
-| r_bm_ire_4 | s_bm_tre_4 | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Four-character bond multiplying symbols terminators of rings with explicit bond, start | correct ring initiator |
-| r_bm_ire_4 | s_bm_tri | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | Three-character bond multiplying symbols terminators of rings with implicit bond, start | correct ring initiator |
-| r_bm_ire_4 | lct | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | cis/trans on the left side | correct ring initiator |
-| r_bm_ire_4 | rct | Four-character bond multiplying symbols initiators of rings with explicit bond, rest | cis/trans on the right side | correct ring initiator |
-| s_bm_iri | r_bm_iri | Three-character bond multiplying symbols initiators of rings with implicit bond, start | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | correct multichar |
-| r_bm_iri | w_atom_oar | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Single character atom symbols of organic aromatic atoms | correct ring initiator |
-| r_bm_iri | w_atom_oal | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Single character atom symbols of organic aliphatic atoms | correct ring initiator |
-| r_bm_iri | w_atom_bar | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Single character atom symbols of bracket aromatic atoms | correct ring initiator |
-| r_bm_iri | w_atom_bal | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Single character atom symbols of bracket aliphatic atoms | correct ring initiator |
-| r_bm_iri | s_atom_oal | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Two character atom symbols of organic aliphatic atoms, start | correct ring initiator |
-| r_bm_iri | anything | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Anything | correct ring initiator |
-| r_bm_iri | bracket_start | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Square bracket, start | correct ring initiator |
-| r_bm_iri | single_bond | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Single bond | correct ring initiator |
-| r_bm_iri | double_bond | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Double bond | correct ring initiator |
-| r_bm_iri | triple_bond | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Triple bond | correct ring initiator |
-| r_bm_iri | quadruple_bond | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Quadruple bond | correct ring initiator |
-| r_bm_iri | aromatic_bond_obsolete | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Aromatic bond, obsolete | correct ring initiator |
-| r_bm_iri | no_bond | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | No bond | correct ring initiator |
-| r_bm_iri | w_bm_ibi | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Single character bond multiplying symbols initiators of branching with implicit bond | correct ring initiator |
-| r_bm_iri | w_bm_tbi | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Single character bond multiplying symbols terminators of branching with implicit bond | correct ring initiator |
-| r_bm_iri | w_bm_iri | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Single character bond multiplying symbols initiators of rings with implicit bond | correct ring initiator |
-| r_bm_iri | w_bm_tri | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Single character bond multiplying symbols terminators of rings with implicit bond | correct ring initiator |
-| r_bm_iri | s_bm_ibe | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Two-character bond multiplying symbols initiators of branching with explicit bond, start | correct ring initiator |
-| r_bm_iri | s_bm_ire_2 | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Two-character bond multiplying symbols initiators of rings with explicit bond, start | correct ring initiator |
-| r_bm_iri | s_bm_ire_4 | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Four-character bond multiplying symbols initiators of rings with explicit bond, start | correct ring initiator |
-| r_bm_iri | r_bm_iri | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | correct multichar |
-| r_bm_iri | s_bm_tbe | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Two-character bond multiplying symbols terminators of branching with explicit bond, start | correct ring initiator |
-| r_bm_iri | s_bm_tre_2 | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Two-character bond multiplying symbols terminators of rings with explicit bond, start | correct ring initiator |
-| r_bm_iri | s_bm_tre_4 | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Four-character bond multiplying symbols terminators of rings with explicit bond, start | correct ring initiator |
-| r_bm_iri | s_bm_tri | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | Three-character bond multiplying symbols terminators of rings with implicit bond, start | correct ring initiator |
-| r_bm_iri | lct | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | cis/trans on the left side | correct ring initiator |
-| r_bm_iri | rct | Three-character bond multiplying symbols initiators of rings with implicit bond, rest | cis/trans on the right side | correct ring initiator |
-| s_bm_tbe | e_bm_tbe | Two-character bond multiplying symbols terminators of branching with explicit bond, start | Two-character bond multiplying symbols terminators of branching with explicit bond, end | correct multichar |
-| e_bm_tbe | s_atom_oal | Two-character bond multiplying symbols terminators of branching with explicit bond, end | Two character atom symbols of organic aliphatic atoms, start |  correct branch terminator |
-| e_bm_tbe | s_atom_bar | Two-character bond multiplying symbols terminators of branching with explicit bond, end | Two character atom symbols of bracket aromatic atoms, start |  correct branch terminator |
-| e_bm_tbe | s_atom_bal | Two-character bond multiplying symbols terminators of branching with explicit bond, end | Two character atom symbols of bracket aliphatic atoms, start |  correct branch terminator |
-| e_bm_tbe | s_bm_ibe | Two-character bond multiplying symbols terminators of branching with explicit bond, end | Two-character bond multiplying symbols initiators of branching with explicit bond, start |  correct branch terminator |
-| e_bm_tbe | s_bm_ire_2 | Two-character bond multiplying symbols terminators of branching with explicit bond, end | Two-character bond multiplying symbols initiators of rings with explicit bond, start |  correct branch terminator |
-| e_bm_tbe | s_bm_ire_4 | Two-character bond multiplying symbols terminators of branching with explicit bond, end | Four-character bond multiplying symbols initiators of rings with explicit bond, start |  correct branch terminator |
-| e_bm_tbe | s_bm_iri | Two-character bond multiplying symbols terminators of branching with explicit bond, end | Three-character bond multiplying symbols initiators of rings with implicit bond, start |  correct branch terminator |
-| e_bm_tbe | s_bm_tre_2 | Two-character bond multiplying symbols terminators of branching with explicit bond, end | Two-character bond multiplying symbols terminators of rings with explicit bond, start |  correct branch terminator |
-| e_bm_tbe | s_bm_tre_4 | Two-character bond multiplying symbols terminators of branching with explicit bond, end | Four-character bond multiplying symbols terminators of rings with explicit bond, start |  correct branch terminator |
-| e_bm_tbe | s_bm_tri | Two-character bond multiplying symbols terminators of branching with explicit bond, end | Three-character bond multiplying symbols terminators of rings with implicit bond, start |  correct branch terminator |
-| s_bm_tre_2 | e_bm_tre_2 | Two-character bond multiplying symbols terminators of rings with explicit bond, start | Two-character bond multiplying symbols terminators of rings with explicit bond, end | correct multichar |
-| e_bm_tre_2 | s_atom_oal | Two-character bond multiplying symbols terminators of rings with explicit bond, end | Two character atom symbols of organic aliphatic atoms, start | correct ring terminator |
-| e_bm_tre_2 | s_bm_ibe | Two-character bond multiplying symbols terminators of rings with explicit bond, end | Two-character bond multiplying symbols initiators of branching with explicit bond, start | correct ring terminator |
-| e_bm_tre_2 | s_bm_ire_2 | Two-character bond multiplying symbols terminators of rings with explicit bond, end | Two-character bond multiplying symbols initiators of rings with explicit bond, start | correct ring terminator |
-| e_bm_tre_2 | s_bm_ire_4 | Two-character bond multiplying symbols terminators of rings with explicit bond, end | Four-character bond multiplying symbols initiators of rings with explicit bond, start | correct ring terminator |
-| e_bm_tre_2 | s_bm_iri | Two-character bond multiplying symbols terminators of rings with explicit bond, end | Three-character bond multiplying symbols initiators of rings with implicit bond, start | correct ring terminator |
-| e_bm_tre_2 | s_bm_tbe | Two-character bond multiplying symbols terminators of rings with explicit bond, end | Two-character bond multiplying symbols terminators of branching with explicit bond, start | correct ring terminator |
-| e_bm_tre_2 | s_bm_tre_4 | Two-character bond multiplying symbols terminators of rings with explicit bond, end | Four-character bond multiplying symbols terminators of rings with explicit bond, start | correct ring terminator |
-| e_bm_tre_2 | s_bm_tri | Two-character bond multiplying symbols terminators of rings with explicit bond, end | Three-character bond multiplying symbols terminators of rings with implicit bond, start | correct ring terminator |
-| s_bm_tre_4 | n_bm_tre_4 | Four-character bond multiplying symbols terminators of rings with explicit bond, start | Four-character bond multiplying symbols terminators of rings with explicit bond, next from start | correct multichar |
-| n_bm_tre_4 | r_bm_tre_4 | Four-character bond multiplying symbols terminators of rings with explicit bond, next from start | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | correct multichar |
-| r_bm_tre_4 | w_atom_oar | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Single character atom symbols of organic aromatic atoms | correct ring terminator |
-| r_bm_tre_4 | w_atom_oal | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Single character atom symbols of organic aliphatic atoms | correct ring terminator |
-| r_bm_tre_4 | s_atom_oal | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Two character atom symbols of organic aliphatic atoms, start | correct ring terminator |
-| r_bm_tre_4 | anything | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Anything | correct ring terminator |
-| r_bm_tre_4 | bracket_start | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Square bracket, start | correct ring terminator |
-| r_bm_tre_4 | single_bond | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Single bond | correct ring terminator |
-| r_bm_tre_4 | double_bond | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Double bond | correct ring terminator |
-| r_bm_tre_4 | triple_bond | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Triple bond | correct ring terminator |
-| r_bm_tre_4 | quadruple_bond | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Quadruple bond | correct ring terminator |
-| r_bm_tre_4 | aromatic_bond_obsolete | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Aromatic bond, obsolete | correct ring terminator |
-| r_bm_tre_4 | no_bond | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | No bond | correct ring terminator |
-| r_bm_tre_4 | w_bm_ibi | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Single character bond multiplying symbols initiators of branching with implicit bond | correct ring terminator |
-| r_bm_tre_4 | w_bm_tbi | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Single character bond multiplying symbols terminators of branching with implicit bond | correct ring terminator |
-| r_bm_tre_4 | w_bm_iri | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Single character bond multiplying symbols initiators of rings with implicit bond | correct ring terminator |
-| r_bm_tre_4 | w_bm_tri | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Single character bond multiplying symbols terminators of rings with implicit bond | correct ring terminator |
-| r_bm_tre_4 | s_bm_ibe | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Two-character bond multiplying symbols initiators of branching with explicit bond, start | correct ring terminator |
-| r_bm_tre_4 | s_bm_ire_2 | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Two-character bond multiplying symbols initiators of rings with explicit bond, start | correct ring terminator |
-| r_bm_tre_4 | s_bm_ire_4 | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Four-character bond multiplying symbols initiators of rings with explicit bond, start | correct ring terminator |
-| r_bm_tre_4 | s_bm_iri | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Three-character bond multiplying symbols initiators of rings with implicit bond, start | correct ring terminator |
-| r_bm_tre_4 | s_bm_tbe | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Two-character bond multiplying symbols terminators of branching with explicit bond, start | correct ring terminator |
-| r_bm_tre_4 | s_bm_tre_2 | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Two-character bond multiplying symbols terminators of rings with explicit bond, start | correct ring terminator |
-| r_bm_tre_4 | r_bm_tre_4 | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | correct multichar |
-| r_bm_tre_4 | s_bm_tri | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | Three-character bond multiplying symbols terminators of rings with implicit bond, start | correct ring terminator |
-| r_bm_tre_4 | lct | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | cis/trans on the left side | correct ring terminator |
-| r_bm_tre_4 | rct | Four-character bond multiplying symbols terminators of rings with explicit bond, rest | cis/trans on the right side | correct ring terminator |
-| s_bm_tri | r_bm_tri | Three-character bond multiplying symbols terminators of rings with implicit bond, start | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | correct multichar |
-| r_bm_tri | w_atom_oar | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Single character atom symbols of organic aromatic atoms | correct ring terminator |
-| r_bm_tri | w_atom_oal | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Single character atom symbols of organic aliphatic atoms | correct ring terminator |
-| r_bm_tri | s_atom_oal | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Two character atom symbols of organic aliphatic atoms, start | correct ring terminator |
-| r_bm_tri | anything | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Anything | correct ring terminator |
-| r_bm_tri | bracket_start | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Square bracket, start | correct ring terminator |
-| r_bm_tri | single_bond | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Single bond | correct ring terminator |
-| r_bm_tri | double_bond | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Double bond | correct ring terminator |
-| r_bm_tri | triple_bond | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Triple bond | correct ring terminator |
-| r_bm_tri | quadruple_bond | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Quadruple bond | correct ring terminator |
-| r_bm_tri | aromatic_bond_obsolete | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Aromatic bond, obsolete | correct ring terminator |
-| r_bm_tri | no_bond | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | No bond | correct ring terminator |
-| r_bm_tri | w_bm_ibi | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Single character bond multiplying symbols initiators of branching with implicit bond | correct ring terminator |
-| r_bm_tri | w_bm_tbi | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Single character bond multiplying symbols terminators of branching with implicit bond | correct ring terminator |
-| r_bm_tri | w_bm_iri | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Single character bond multiplying symbols initiators of rings with implicit bond | correct ring terminator |
-| r_bm_tri | w_bm_tri | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Single character bond multiplying symbols terminators of rings with implicit bond | correct ring terminator |
-| r_bm_tri | s_bm_ibe | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Two-character bond multiplying symbols initiators of branching with explicit bond, start | correct ring terminator |
-| r_bm_tri | s_bm_ire_2 | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Two-character bond multiplying symbols initiators of rings with explicit bond, start | correct ring terminator |
-| r_bm_tri | s_bm_ire_4 | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Four-character bond multiplying symbols initiators of rings with explicit bond, start | correct ring terminator |
-| r_bm_tri | s_bm_iri | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Three-character bond multiplying symbols initiators of rings with implicit bond, start | correct ring terminator |
-| r_bm_tri | s_bm_tbe | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Two-character bond multiplying symbols terminators of branching with explicit bond, start | correct ring terminator |
-| r_bm_tri | s_bm_tre_2 | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Two-character bond multiplying symbols terminators of rings with explicit bond, start | correct ring terminator |
-| r_bm_tri | s_bm_tre_4 | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Four-character bond multiplying symbols terminators of rings with explicit bond, start | correct ring terminator |
-| r_bm_tri | r_bm_tri | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | correct multichar |
-| r_bm_tri | lct | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | cis/trans on the left side | correct ring terminator |
-| r_bm_tri | rct | Three-character bond multiplying symbols terminators of rings with implicit bond, rest | cis/trans on the right side | correct ring terminator |
-| lct | w_atom_oar | cis/trans on the left side | Single character atom symbols of organic aromatic atoms | correct cis/trans marker |
-| lct | w_atom_oal | cis/trans on the left side | Single character atom symbols of organic aliphatic atoms | correct cis/trans marker |
-| lct | s_atom_oal | cis/trans on the left side | Two character atom symbols of organic aliphatic atoms, start | correct cis/trans marker |
-| lct | anything | cis/trans on the left side | Anything | correct cis/trans marker |
-| lct | bracket_start | cis/trans on the left side | Square bracket, start | correct cis/trans marker |
-| rct | w_atom_oar | cis/trans on the right side | Single character atom symbols of organic aromatic atoms | correct cis/trans marker |
-| rct | w_atom_oal | cis/trans on the right side | Single character atom symbols of organic aliphatic atoms | correct cis/trans marker |
-| rct | s_atom_oal | cis/trans on the right side | Two character atom symbols of organic aliphatic atoms, start | correct cis/trans marker |
-| rct | anything | cis/trans on the right side | Anything | correct cis/trans marker |
-| rct | bracket_start | cis/trans on the right side | Square bracket, start | correct cis/trans marker |
-| w_isotope | w_atom_bar | Single character isotope symbols | Single character atom symbols of bracket aromatic atoms | correct isotope |
-| w_isotope | w_atom_bal | Single character isotope symbols | Single character atom symbols of bracket aliphatic atoms | correct isotope |
-| w_isotope | s_atom_bar | Single character isotope symbols | Two character atom symbols of bracket aromatic atoms, start | correct isotope |
-| w_isotope | s_atom_bal | Single character isotope symbols | Two character atom symbols of bracket aliphatic atoms, start | correct isotope |
-| s_isotope_m | r_isotope_m | Multicharacter isotope symbols, start | Multicharacter isotope symbols, end | correct multichar |
-| r_isotope_m | w_atom_bar | Multicharacter isotope symbols, end | Single character atom symbols of bracket aromatic atoms | correct isotope |
-| r_isotope_m | w_atom_bal | Multicharacter isotope symbols, end | Single character atom symbols of bracket aliphatic atoms | correct isotope |
-| r_isotope_m | s_atom_bar | Multicharacter isotope symbols, end | Two character atom symbols of bracket aromatic atoms, start | correct isotope |
-| r_isotope_m | s_atom_bal | Multicharacter isotope symbols, end | Two character atom symbols of bracket aliphatic atoms, start | correct isotope |
-| r_isotope_m | r_isotope_m | Multicharacter isotope symbols, end | Multicharacter isotope symbols, end | correct multichar |
-| w_chiral | w_hydrogen | Single character chirality symbols | Single character hydrogen symbols | correct chirality |
-| w_chiral | s_hydrogen | Single character chirality symbols | Two-character hydrogen symbols, start | correct chirality |
-| w_chiral | w_charge | Single character chirality symbols | Single character charge symbols | correct chirality |
-| w_chiral | s_charge_obsolete | Single character chirality symbols | Two-character charge obsolete symbols, start | correct chirality |
-| w_chiral | s_charge_m | Single character chirality symbols | Multicharacter charge symbols, start | correct chirality |
-| w_chiral | s_class | Single character chirality symbols | Multicharacter class symbols, start | correct chirality |
-| s_chiral_2 | e_chiral_2 | Two-character chirality symbols, start | Two-character chirality symbols, end | correct multichar |
-| e_chiral_2 | s_hydrogen | Two-character chirality symbols, end | Two-character hydrogen symbols, start | correct chirality |
-| e_chiral_2 | s_charge_obsolete | Two-character chirality symbols, end | Two-character charge obsolete symbols, start | correct chirality |
-| e_chiral_2 | s_charge_m | Two-character chirality symbols, end | Multicharacter charge symbols, start | correct chirality |
-| e_chiral_2 | s_class | Two-character chirality symbols, end | Multicharacter class symbols, start | correct chirality |
-| s_chiral_m | n_chiral_m | Multicharacter chirality symbols, start | Multicharacter chirality symbols, next from start | correct multichar |
-| n_chiral_m | r_chiral_m | Multicharacter chirality symbols, next from start | Multicharacter chirality symbols, rest | correct multichar |
-| r_chiral_m | r_chiral_m | Multicharacter chirality symbols, rest | Multicharacter chirality symbols, rest | correct multichar |
-| r_chiral_m | w_hydrogen | Multicharacter chirality symbols, rest | Single character hydrogen symbols | correct chirality |
-| r_chiral_m | s_hydrogen | Multicharacter chirality symbols, rest | Two-character hydrogen symbols, start | correct chirality |
-| r_chiral_m | w_charge | Multicharacter chirality symbols, rest | Single character charge symbols | correct chirality |
-| r_chiral_m | s_charge_obsolete | Multicharacter chirality symbols, rest | Two-character charge obsolete symbols, start | correct chirality |
-| r_chiral_m | s_charge_m | Multicharacter chirality symbols, rest | Multicharacter charge symbols, start | correct chirality |
-| r_chiral_m | s_class | Multicharacter chirality symbols, rest | Multicharacter class symbols, start | correct chirality |
-| w_hydrogen | w_charge | Single character hydrogen symbols | Single character charge symbols | correct hydrogen |
-| w_hydrogen | s_charge_obsolete | Single character hydrogen symbols | Two-character charge obsolete symbols, start | correct hydrogen |
-| w_hydrogen | s_charge_m | Single character hydrogen symbols | Multicharacter charge symbols, start | correct hydrogen |
-| w_hydrogen | s_class | Single character hydrogen symbols | Multicharacter class symbols, start | correct hydrogen |
-| s_hydrogen | e_hydrogen | Two-character hydrogen symbols, start | Two-character hydrogen symbols, end | correct multichar |
-| e_hydrogen | s_charge_obsolete | Two-character hydrogen symbols, end | Two-character charge obsolete symbols, start | correct hydrogen |
-| e_hydrogen | s_charge_m | Two-character hydrogen symbols, end | Multicharacter charge symbols, start | correct hydrogen |
-| e_hydrogen | s_class | Two-character hydrogen symbols, end | Multicharacter class symbols, start | correct hydrogen |
-| w_charge | s_class | Single character charge symbols | Multicharacter class symbols, start | correct charge |
-| s_charge_obsolete | e_charge_obsolete | Two-character charge obsolete symbols, start | Two-character charge obsolete symbols, end | correct multichar |
-| e_charge_obsolete | s_class | Two-character charge obsolete symbols, end | Multicharacter class symbols, start | correct charge |
-| s_charge_m | r_charge_m | Multicharacter charge symbols, start | Multicharacter charge symbols, rest | correct multichar |
-| r_charge_m | r_charge_m | Multicharacter charge symbols, rest | Multicharacter charge symbols, rest | correct multichar |
-| r_charge_m | s_class | Multicharacter charge symbols, rest | Multicharacter class symbols, start | correct charge |
-| s_class | r_class | Multicharacter class symbols, start | Multicharacter class symbols, rest | correct multichar |
-| r_class | bracket_end | Multicharacter class symbols, rest | Square bracket, end | correct class |
-| r_class | r_class | Multicharacter class symbols, rest | Multicharacter class symbols, rest | correct multichar |
-
-: **Table 1.** Pairs of character classes allowed in SMILES.
-
-On the next step pairs of character classes from **Table 1** will be identified in SMILES strings from ChEMBL, using the results the set of rules will probably be updated.
+On the next step pairs of character classes from the code chunk above will be identified in SMILES strings from ChEMBL, using the results the set of rules will probably be updated.
 
 ### Possible pairs of characters in SMILES from ChEMBL
 
@@ -2625,9 +1895,9 @@ In short, to check the possible pairs of characters occurring in SMILES from ChE
 
 3.  make the table containing pairs of character classes **occurring** in ChEMBL SMILES
 
-4.  join this table with the pairs of character classes **allowed** in SMILES (Table 1)
+4.  join this table with the pairs of character classes **allowed** in SMILES according to the preliminary results described here
 
-5.  make corrections in the Table 1 if needed
+5.  make corrections in the implementation if needed
 
 6.  think how to discriminate between the different classes containing the same characters
 
@@ -2678,11 +1948,11 @@ occuring_pairs <- occuring_pairs_classes |> filter(!is.na(left_char)) |> select(
 
 At this stage, **828** distinct pairs of characters were identified in ChEMBL SMILES, these pairs potentially could belong to the one or more of **2182** combinations of classes, total amount of records (left_character, right_character, left_class, right_class) is **46707** without applying any rules, except the initial one: **if character occurs in the class, it represents this class**.
 
-At this point it is possible to proceed via joining the Table 1 and current results to check whether current (preliminary) version of rules holds against the real data.
+At this point it is possible to proceed and check whether current (improved, but still preliminary) version of rules holds against the real data.
 
 The code is provided bellow:
 
-``` R
+``` r
 library(tidyverse)
 
 # Input the data
@@ -2697,14 +1967,10 @@ combs_summ <- combs_all |> group_by(left_char, right_char) |> summarize(n = n(),
 contradictions <- combs_summ |> filter(summ == 0) |> inner_join(combs)
 # Extract pairs of characters contradicting the current version of rules
 contradicting_pairs <- contradictions |> select(left_char, right_char) |>
-										 distinct() |>
-										 mutate(pair = str_c(left_char, right_char, sep = "_")) |>
-										 pull(pair)
+                                         distinct() |>
+                                         mutate(pair = str_c(left_char, right_char, sep = "_")) |>
+                                         pull(pair)
 contradicting_pairs
 ```
 
-The following pairs of characters, contradicting the preliminary version of rules, were identified at this stage:
-
-| +*], -*], /*1, /2, /3, /4, /5, /6, @_], a*], e], g], i], l/, l_C, l_N, l_P, l_S, l[, l\_], l_c, r\_/, r_C, r_N, r_P, r\_[, r\_], r_c, t\_]
-
-Thus, the set of rules from **Table 1** should be updated.
+After minor improvements of the first version there are no contradictions. Next step is to deepen the rules' check.
