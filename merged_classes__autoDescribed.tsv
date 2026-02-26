@@ -1,0 +1,14 @@
+merged_class	chars	basic_class	description
+ct	\, /	l_ct, r_ct	Symbols on the left side of the rotary non-permissive bond |OR| Symbols on the right side of the rotary non-permissive bond
+er_bm_r	0, 1, 2, 3, 4, 5, 6, 7, 8, 9	e_bm_ire, r_bm_iri, r_bm_ire, e_bm_tre, r_bm_tre, r_bm_tri	Bond multiplying symbols initiators of rings with explicit bond; end |OR| Bond multiplying symbols initiators of rings with implicit bond; rest |OR| Bond multiplying symbols initiators of rings with explicit bond; rest |OR| Bond multiplying symbols terminators of rings with explicit bond; end |OR| Bond multiplying symbols terminators of rings with explicit bond; rest |OR| Bond multiplying symbols terminators of rings with implicit bond; rest
+es_bm_e	-, =, #, $, :, .	e_bm_ibe, s_bm_ire, e_bm_tbe, s_bm_tre	Bond multiplying symbols initiators of branching with explicit bond; end |OR| Bond multiplying symbols initiators of rings with explicit bond; start |OR| Bond multiplying symbols terminators of branching with explicit bond; end |OR| Bond multiplying symbols terminators of rings with explicit bond; start
+esw_charge	+, -	w_charge, s_charge, e_charge	Single character charge symbols |OR| Charge symbols; start |OR| Charge symbols; end
+esw_chiral	@	w_chiral, s_chiral, e_chiral	Single character chirality symbol |OR| Chirality symbols; start |OR| Chirality symbols; end
+n_bm_r	%	n_bm_ire, n_bm_tre	Bond multiplying symbols initiators of rings with explicit bond; next from start |OR| Bond multiplying symbols terminators of rings with explicit bond; next from start
+rsw_isotope	0, 1, 2, 3, 4, 5, 6, 7, 8, 9	w_isotope, s_isotope, r_isotope	Single character isotope symbols |OR| Isotope symbols; start |OR| Isotope symbols; rest
+s_bm_ri	%	s_bm_iri, s_bm_tri	Bond multiplying symbols initiators of rings with implicit bond; start |OR| Bond multiplying symbols terminators of rings with implicit bond; start
+sw_bm_ib	(	w_bm_ibi, s_bm_ibe	Single character bond multiplying symbols initiators of branching with implicit bond |OR| Bond multiplying symbols initiators of branching with explicit bond; start
+sw_bm_tb	)	w_bm_tbi, s_bm_tbe	Single character bond multiplying symbols terminators of branching with implicit bond |OR| Bond multiplying symbols terminators of branching with explicit bond; start
+sw_hydro	H	w_hydro, s_hydro	Single character hydrogen symbols |OR| Hydrogen symbols; start
+w_atom_ar	b, c, n, o, s, p	w_atom_oar, w_atom_bar	Single character atom symbols of organic (from so called organic subset) aromatic atoms lacking the additional grammatical requirements and features |OR| Single character  atom symbols of aromatic atoms enclosed within brackets
+w_bm_ri	0, 1, 2, 3, 4, 5, 6, 7, 8, 9	w_bm_iri, w_bm_tri	Single character bond multiplying symbols initiators of rings with implicit bond |OR| Single character bond multiplying symbols terminators of rings with implicit bond

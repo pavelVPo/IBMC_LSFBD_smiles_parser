@@ -1,114 +1,114 @@
-class	class_chars	class_chars_new	description
-e_bm_ibe	"""-"", ""="", ""#"", ""$"", "":"", ""."""	es_bm_e	"""Bond multiplying symbols initiators of branching with explicit bond; end OR
+basic_class	chars	merged_class	description
+e_bm_ibe	-, =, #, $, :, .	es_bm_e	"""Bond multiplying symbols initiators of branching with explicit bond; end OR
 Bond multiplying symbols initiators of rings with explicit bond; start OR
 Bond multiplying symbols terminators of branching with explicit bond; end OR
 Bond multiplying symbols terminators of rings with explicit bond; start"""
-s_bm_ire	"""-"", ""="", ""#"", ""$"", "":"", ""."""	es_bm_e	"""Bond multiplying symbols initiators of branching with explicit bond; end OR
+s_bm_ire	-, =, #, $, :, .	es_bm_e	"""Bond multiplying symbols initiators of branching with explicit bond; end OR
 Bond multiplying symbols initiators of rings with explicit bond; start OR
 Bond multiplying symbols terminators of branching with explicit bond; end OR
 Bond multiplying symbols terminators of rings with explicit bond; start"""
-e_bm_tbe	"""-"", ""="", ""#"", ""$"", "":"", ""."""	es_bm_e	"""Bond multiplying symbols initiators of branching with explicit bond; end OR
+e_bm_tbe	-, =, #, $, :, .	es_bm_e	"""Bond multiplying symbols initiators of branching with explicit bond; end OR
 Bond multiplying symbols initiators of rings with explicit bond; start OR
 Bond multiplying symbols terminators of branching with explicit bond; end OR
 Bond multiplying symbols terminators of rings with explicit bond; start"""
-s_bm_tre	"""-"", ""="", ""#"", ""$"", "":"", ""."""	es_bm_e	"""Bond multiplying symbols initiators of branching with explicit bond; end OR
+s_bm_tre	-, =, #, $, :, .	es_bm_e	"""Bond multiplying symbols initiators of branching with explicit bond; end OR
 Bond multiplying symbols initiators of rings with explicit bond; start OR
 Bond multiplying symbols terminators of branching with explicit bond; end OR
 Bond multiplying symbols terminators of rings with explicit bond; start"""
-s_bm_iri	"""%"""	s_bm_ri	"""Bond multiplying symbols initiators of rings with implicit bond; start OR
+s_bm_iri	%	s_bm_ri	"""Bond multiplying symbols initiators of rings with implicit bond; start OR
 Bond multiplying symbols terminators of rings with implicit bond; start"""
-n_bm_ire	"""%"""	n_bm_r	"""Bond multiplying symbols initiators of rings with explicit bond; next from start OR
+n_bm_ire	%	n_bm_r	"""Bond multiplying symbols initiators of rings with explicit bond; next from start OR
 Bond multiplying symbols terminators of rings with explicit bond; next from start"""
-n_bm_tre	"""%"""	n_bm_r	"""Bond multiplying symbols initiators of rings with explicit bond; next from start OR
+n_bm_tre	%	n_bm_r	"""Bond multiplying symbols initiators of rings with explicit bond; next from start OR
 Bond multiplying symbols terminators of rings with explicit bond; next from start"""
-s_bm_tri	"""%"""	s_bm_ri	"""Bond multiplying symbols initiators of rings with implicit bond; start OR
+s_bm_tri	%	s_bm_ri	"""Bond multiplying symbols initiators of rings with implicit bond; start OR
 Bond multiplying symbols terminators of rings with implicit bond; start"""
-w_bm_ibi	"""("""	sw_bm_ib	"""Single character bond multiplying symbols initiators of branching with implicit bond OR
+w_bm_ibi	(	sw_bm_ib	"""Single character bond multiplying symbols initiators of branching with implicit bond OR
 Bond multiplying symbols initiators of branching with explicit bond; start""
 "
-s_bm_ibe	"""("""	sw_bm_ib	"""Single character bond multiplying symbols initiators of branching with implicit bond OR
+s_bm_ibe	(	sw_bm_ib	"""Single character bond multiplying symbols initiators of branching with implicit bond OR
 Bond multiplying symbols initiators of branching with explicit bond; start""
 "
-w_bm_tbi	""")"""	sw_bm_tb	"""Single character bond multiplying symbols terminators of branching with implicit bond OR
+w_bm_tbi	)	sw_bm_tb	"""Single character bond multiplying symbols terminators of branching with implicit bond OR
 Bond multiplying symbols terminators of branching with explicit bond; start"""
-s_bm_tbe	""")"""	sw_bm_tb	"""Single character bond multiplying symbols terminators of branching with implicit bond OR
+s_bm_tbe	)	sw_bm_tb	"""Single character bond multiplying symbols terminators of branching with implicit bond OR
 Bond multiplying symbols terminators of branching with explicit bond; start"""
-w_bm_iri	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	w_bm_ri	"""Single character bond multiplying symbols initiators of rings with implicit bond OR
+w_bm_iri	0, 1, 2, 3, 4, 5, 6, 7, 8, 9	w_bm_ri	"""Single character bond multiplying symbols initiators of rings with implicit bond OR
 Single character Bond multiplying symbols terminators of rings with implicit bond"""
-w_bm_tri	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	w_bm_ri	"""Single character bond multiplying symbols initiators of rings with implicit bond OR
+w_bm_tri	0, 1, 2, 3, 4, 5, 6, 7, 8, 9	w_bm_ri	"""Single character bond multiplying symbols initiators of rings with implicit bond OR
 Single character Bond multiplying symbols terminators of rings with implicit bond"""
-e_bm_ire	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	er_bm_r	"""Bond multiplying symbols initiators of rings with explicit bond; end OR
+e_bm_ire	0, 1, 2, 3, 4, 5, 6, 7, 8, 9	er_bm_r	"""Bond multiplying symbols initiators of rings with explicit bond; end OR
 Bond multiplying symbols initiators of rings with implicit bond; rest OR
 Bond multiplying symbols initiators of rings with explicit bond; rest OR
 Bond multiplying symbols terminators of rings with explicit bond; end OR
 Bond multiplying symbols terminators of rings with explicit bond; rest OR
 Bond multiplying symbols terminators of rings with implicit bond; rest"""
-r_bm_iri	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	er_bm_r	"""Bond multiplying symbols initiators of rings with explicit bond; end OR
+r_bm_iri	0, 1, 2, 3, 4, 5, 6, 7, 8, 9	er_bm_r	"""Bond multiplying symbols initiators of rings with explicit bond; end OR
 Bond multiplying symbols initiators of rings with implicit bond; rest OR
 Bond multiplying symbols initiators of rings with explicit bond; rest OR
 Bond multiplying symbols terminators of rings with explicit bond; end OR
 Bond multiplying symbols terminators of rings with explicit bond; rest OR
 Bond multiplying symbols terminators of rings with implicit bond; rest"""
-r_bm_ire	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	er_bm_r	"""Bond multiplying symbols initiators of rings with explicit bond; end OR
+r_bm_ire	0, 1, 2, 3, 4, 5, 6, 7, 8, 9	er_bm_r	"""Bond multiplying symbols initiators of rings with explicit bond; end OR
 Bond multiplying symbols initiators of rings with implicit bond; rest OR
 Bond multiplying symbols initiators of rings with explicit bond; rest OR
 Bond multiplying symbols terminators of rings with explicit bond; end OR
 Bond multiplying symbols terminators of rings with explicit bond; rest OR
 Bond multiplying symbols terminators of rings with implicit bond; rest"""
-e_bm_tre	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	er_bm_r	"""Bond multiplying symbols initiators of rings with explicit bond; end OR
+e_bm_tre	0, 1, 2, 3, 4, 5, 6, 7, 8, 9	er_bm_r	"""Bond multiplying symbols initiators of rings with explicit bond; end OR
 Bond multiplying symbols initiators of rings with implicit bond; rest OR
 Bond multiplying symbols initiators of rings with explicit bond; rest OR
 Bond multiplying symbols terminators of rings with explicit bond; end OR
 Bond multiplying symbols terminators of rings with explicit bond; rest OR
 Bond multiplying symbols terminators of rings with implicit bond; rest"""
-r_bm_tre	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	er_bm_r	"""Bond multiplying symbols initiators of rings with explicit bond; end OR
+r_bm_tre	0, 1, 2, 3, 4, 5, 6, 7, 8, 9	er_bm_r	"""Bond multiplying symbols initiators of rings with explicit bond; end OR
 Bond multiplying symbols initiators of rings with implicit bond; rest OR
 Bond multiplying symbols initiators of rings with explicit bond; rest OR
 Bond multiplying symbols terminators of rings with explicit bond; end OR
 Bond multiplying symbols terminators of rings with explicit bond; rest OR
 Bond multiplying symbols terminators of rings with implicit bond; rest"""
-r_bm_tri	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	er_bm_r	"""Bond multiplying symbols initiators of rings with explicit bond; end OR
+r_bm_tri	0, 1, 2, 3, 4, 5, 6, 7, 8, 9	er_bm_r	"""Bond multiplying symbols initiators of rings with explicit bond; end OR
 Bond multiplying symbols initiators of rings with implicit bond; rest OR
 Bond multiplying symbols initiators of rings with explicit bond; rest OR
 Bond multiplying symbols terminators of rings with explicit bond; end OR
 Bond multiplying symbols terminators of rings with explicit bond; rest OR
 Bond multiplying symbols terminators of rings with implicit bond; rest"""
-w_chiral	"""@"""	esw_chiral	"""Chirality symbols; end OR
+w_chiral	@	esw_chiral	"""Chirality symbols; end OR
 Chirality symbols; start OR
 Single character chirality symbol"""
-s_chiral	"""@"""	esw_chiral	"""Chirality symbols; end OR
+s_chiral	@	esw_chiral	"""Chirality symbols; end OR
 Chirality symbols; start OR
 Single character chirality symbol"""
-e_chiral	"""@"""	esw_chiral	"""Chirality symbols; end OR
+e_chiral	@	esw_chiral	"""Chirality symbols; end OR
 Chirality symbols; start OR
 Single character chirality symbol"""
-l_ct	"""\"", ""/"""	ct	"""Symbols on the left side of the rotary non-permissive bond OR
+l_ct	\, /	ct	"""Symbols on the left side of the rotary non-permissive bond OR
 Symbols on the right side of the rotary non-permissive bond"""
-r_ct	"""\"", ""/"""	ct	"""Symbols on the left side of the rotary non-permissive bond OR
+r_ct	\, /	ct	"""Symbols on the left side of the rotary non-permissive bond OR
 Symbols on the right side of the rotary non-permissive bond"""
-w_charge	"""+"", ""-"""	esw_charge	"""Charge obsolete symbols; end OR
+w_charge	+, -	esw_charge	"""Charge obsolete symbols; end OR
 Charge obsolete symbols; start OR
 Single character charge symbols"""
-s_charge	"""+"", ""-"""	esw_charge	"""Charge obsolete symbols; end OR
+s_charge	+, -	esw_charge	"""Charge obsolete symbols; end OR
 Charge obsolete symbols; start OR
 Single character charge symbols"""
-e_charge	"""+"", ""-"""	esw_charge	"""Charge obsolete symbols; end OR
+e_charge	+, -	esw_charge	"""Charge obsolete symbols; end OR
 Charge obsolete symbols; start OR
 Single character charge symbols"""
-w_isotope	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	rsw_isotope	"""Isotope symbols; rest OR
+w_isotope	0, 1, 2, 3, 4, 5, 6, 7, 8, 9	rsw_isotope	"""Isotope symbols; rest OR
 Isotope symbols; start OR
 Single character isotope symbols"""
-s_isotope	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	rsw_isotope	"""Isotope symbols; rest OR
+s_isotope	0, 1, 2, 3, 4, 5, 6, 7, 8, 9	rsw_isotope	"""Isotope symbols; rest OR
 Isotope symbols; start OR
 Single character isotope symbols"""
-r_isotope	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	rsw_isotope	"""Isotope symbols; rest OR
+r_isotope	0, 1, 2, 3, 4, 5, 6, 7, 8, 9	rsw_isotope	"""Isotope symbols; rest OR
 Isotope symbols; start OR
 Single character isotope symbols"""
-w_atom_oar	"""b"", ""c"", ""n"", ""o"", ""s"", ""p"""	w_atom_ar	"""Single character atom symbols of organic (from so called organic subset) aromatic atoms lacking the additional grammatical requirements and features OR
+w_atom_oar	b, c, n, o, s, p	w_atom_ar	"""Single character atom symbols of organic (from so called organic subset) aromatic atoms lacking the additional grammatical requirements and features OR
 Single character  atom symbols of aromatic atoms enclosed within brackets"""
-w_atom_bar	"""b"", ""c"", ""n"", ""o"", ""s"", ""p"""	w_atom_ar	"""Single character atom symbols of organic (from so called organic subset) aromatic atoms lacking the additional grammatical requirements and features OR
+w_atom_bar	b, c, n, o, s, p	w_atom_ar	"""Single character atom symbols of organic (from so called organic subset) aromatic atoms lacking the additional grammatical requirements and features OR
 Single character  atom symbols of aromatic atoms enclosed within brackets"""
-w_hydro	"""H"""	sw_hydro	"""Hydrogen symbols; start OR
+w_hydro	H	sw_hydro	"""Hydrogen symbols; start OR
 Single character hydrogen symbols"""
-s_hydro	"""H"""	sw_hydro	"""Hydrogen symbols; start OR
+s_hydro	H	sw_hydro	"""Hydrogen symbols; start OR
 Single character hydrogen symbols"""
