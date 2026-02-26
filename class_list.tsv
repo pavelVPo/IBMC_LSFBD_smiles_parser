@@ -55,9 +55,9 @@ id	superclass	symbols	class	class_chars	description
 54	hydro	"""H0"", ""H1"", ""H2"", ""H3"", ""H4"", ""H5"", ""H6"", ""H7"", ""H8"", ""H9"""	s_hydro	"""H"""	"Hydrogen symbols; start"
 55	hydro	"""H0"", ""H1"", ""H2"", ""H3"", ""H4"", ""H5"", ""H6"", ""H7"", ""H8"", ""H9"""	e_hydro	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	"Hydrogen symbols; end"
 56	charge	"""+"", ""-"""	w_charge	"""+"", ""-"""	Single character charge symbols
-57	charge	"""++"", ""--"""	s_charge	"""+"", ""-"""	"Charge obsolete symbols; start"
-58	charge	"""++"", ""--"""	e_charge	"""+"", ""-"""	"Charge obsolete symbols; end"
+57	charge	"""++"", ""--"""	s_charge	"""+"", ""-"""	"Charge symbols; start"
+58	charge	"""++"", ""--"""	e_charge	"""+"", ""-"""	"Charge symbols; end"
 59	charge	"""+1"", ""+2"", ""+3"", ""+4"", ""+5"", ""+6"", ""+7"", ""+8"", ""+9"", ""+10"", ""+11"", ""+12"", ""+13"", ""+14"", ""+15"", ""-1"", ""-2"", ""-3"", ""-4"", ""-5"", ""-6"", ""-7"", ""-8"", ""-9"", ""-10"", ""-11"", ""-12"", ""-13"", ""-14"", ""-15"""	s_charge	"""+"", ""-"""	"Charge symbols; start"
 60	charge	"""+1"", ""+2"", ""+3"", ""+4"", ""+5"", ""+6"", ""+7"", ""+8"", ""+9"", ""+10"", ""+11"", ""+12"", ""+13"", ""+14"", ""+15"", ""-1"", ""-2"", ""-3"", ""-4"", ""-5"", ""-6"", ""-7"", ""-8"", ""-9"", ""-10"", ""-11"", ""-12"", ""-13"", ""-14"", ""-15"""	r_charge	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	"Charge symbols; start"
-61	a_class	"from "":0"" to "":999"""	s_a_class	""":"""	"Charge symbols; start"
-62	a_class	"from "":0"" to "":999"""	r_a_class	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	"Charge symbols; start"
+61	aclass	"from "":0"" to "":999"""	s_aclass	""":"""	"Charge symbols; start"
+62	aclass	"from "":0"" to "":999"""	r_aclass	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	"Charge symbols; start"
