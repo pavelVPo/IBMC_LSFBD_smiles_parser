@@ -73,3 +73,42 @@ Bond multiplying symbols initiators of rings with explicit bond; rest OR
 Bond multiplying symbols terminators of rings with explicit bond; end OR
 Bond multiplying symbols terminators of rings with explicit bond; rest OR
 Bond multiplying symbols terminators of rings with implicit bond; rest"""
+w_chiral	"""@"""	esw_chiral	"""Chirality symbols; end OR
+Chirality symbols; start OR
+Single character chirality symbol"""
+s_chiral	"""@"""	esw_chiral	"""Chirality symbols; end OR
+Chirality symbols; start OR
+Single character chirality symbol"""
+e_chiral	"""@"""	esw_chiral	"""Chirality symbols; end OR
+Chirality symbols; start OR
+Single character chirality symbol"""
+l_ct	"""\"", ""/"""	ct	"""Symbols on the left side of the rotary non-permissive bond OR
+Symbols on the right side of the rotary non-permissive bond"""
+r_ct	"""\"", ""/"""	ct	"""Symbols on the left side of the rotary non-permissive bond OR
+Symbols on the right side of the rotary non-permissive bond"""
+w_charge	"""+"", ""-"""	esw_charge	"""Charge obsolete symbols; end OR
+Charge obsolete symbols; start OR
+Single character charge symbols"""
+s_charge	"""+"", ""-"""	esw_charge	"""Charge obsolete symbols; end OR
+Charge obsolete symbols; start OR
+Single character charge symbols"""
+e_charge	"""+"", ""-"""	esw_charge	"""Charge obsolete symbols; end OR
+Charge obsolete symbols; start OR
+Single character charge symbols"""
+w_isotope	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	rsw_isotope	"""Isotope symbols; rest OR
+Isotope symbols; start OR
+Single character isotope symbols"""
+s_isotope	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	rsw_isotope	"""Isotope symbols; rest OR
+Isotope symbols; start OR
+Single character isotope symbols"""
+r_isotope	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	rsw_isotope	"""Isotope symbols; rest OR
+Isotope symbols; start OR
+Single character isotope symbols"""
+w_atom_oar	"""b"", ""c"", ""n"", ""o"", ""s"", ""p"""	w_atom_ar	"""Single character atom symbols of organic (from so called organic subset) aromatic atoms lacking the additional grammatical requirements and features OR
+Single character  atom symbols of aromatic atoms enclosed within brackets"""
+w_atom_bar	"""b"", ""c"", ""n"", ""o"", ""s"", ""p"""	w_atom_ar	"""Single character atom symbols of organic (from so called organic subset) aromatic atoms lacking the additional grammatical requirements and features OR
+Single character  atom symbols of aromatic atoms enclosed within brackets"""
+w_hydro	"""H"""	sw_hydro	"""Hydrogen symbols; start OR
+Single character hydrogen symbols"""
+s_hydro	"""H"""	sw_hydro	"""Hydrogen symbols; start OR
+Single character hydrogen symbols"""

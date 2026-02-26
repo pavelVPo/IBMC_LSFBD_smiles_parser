@@ -43,8 +43,8 @@ id	superclass	symbols	class	class_chars	description
 42	l_ct	"""\"", ""/"""	l_ct	"""\"", ""/"""	Symbols on the left side of the rotary non-permissive bond
 43	r_ct	"""\"", ""/"""	r_ct	"""\"", ""/"""	Symbols on the right side of the rotary non-permissive bond
 44	isotope	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	w_isotope	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	Single character isotope symbols
-45	isotope	seq from 1 to 999	s_isotope_m	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	"Isotope symbols; start"
-46	isotope	seq from 1 to 999	r_isotope_m	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	"Isotope symbols; rest"
+45	isotope	seq from 1 to 999	s_isotope	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	"Isotope symbols; start"
+46	isotope	seq from 1 to 999	r_isotope	"""0"", ""1"", ""2"", ""3"", ""4"", ""5"", ""6"", ""7"", ""8"", ""9"""	"Isotope symbols; rest"
 47	chiral	"""@"""	w_chiral	"""@"""	Single character chirality symbol
 48	chiral	"""@@"""	s_chiral	"""@"""	"Chirality symbols; start"
 49	chiral	"""@@"""	e_chiral	"""@"""	"Chirality symbols; end"
