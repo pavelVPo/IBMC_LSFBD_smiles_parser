@@ -1324,6 +1324,6 @@ chars_symbols$charClass_description <- paste0(rep("Characters describing ", leng
 char_data <- chars_symbols[, 1:5]
 
 #### Export the results
-write.table(char_data, "C:/.../character_classes.tsv", sep = "\t")
-write.table(symb_data, "C:/.../symbol_classes.tsv", sep = "\t")
-write.table(chars_symbols, "C:/.../chars_&_symbs.tsv", sep = "\t")
+write.table(char_data, "C:/.../character_classes.tsv", sep = "\t", row.names = FALSE)
+write.table(symb_data, "C:/.../symbol_classes.tsv", sep = "\t", row.names = FALSE)
+write.table(chars_symbols, "C:/.../chars_&_symbs.tsv", sep = "\t", row.names = FALSE)
