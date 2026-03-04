@@ -1,3 +1,7 @@
+---
+---
+---
+
 # SMILES Parser (work in progress)
 
 For the SMILES (Simplified Molecular Input Line Entry System) reference, please, SEE:
@@ -143,7 +147,7 @@ Corresponding character could be designated as **anything**, since it could mean
 
 #### What are they?
 
-9.  Square bracket symbols **[, ]** is the SMILES way to mark the start of the atom record including its various properties is the way to designate the end of the atom record.
+9.  Square bracket symbols **[, ]** is the SMILES way to mark the start of the atom record including its various properties and is the way to designate the end of the atom record.
 
 | [, ]
 
@@ -458,7 +462,7 @@ Still, ability to parse SMILES using basic rules are essential to maintain this 
 
 #### What are they?
 
-Symbols and corresponding characters inside the square brackets besides the main atom symbol describe the main bracket atom in terms of its mass number indicating speciffic isotope, chiral status, number of explicit hydrogens, charge and class assigned by the author of the particular SMILES string. It should be noted that any atom symbol could be found in the square brackets and any atom symbol should be put in the square brackets if corresponding atom has aforementioned properties.
+Symbols and corresponding characters inside the square brackets besides the main atom symbol describe the main bracket atom in terms of its mass number indicating specific isotope, chiral status, number of explicit hydrogens, charge and class assigned by the author of the particular SMILES string. It should be noted that any atom symbol could be found in the square brackets and any atom symbol should be put in the square brackets if corresponding atom has aforementioned properties.
 
 These symbols will be categorized only by the length, this is sufficient for the purpose, since these symbols have the strict order of placement inside the brackets.
 
@@ -478,7 +482,7 @@ Corresponding character class could be designated as **w_isotope**, where prefix
 
 | [0-9][0-9], [0-9][0-9][0-9]
 
-Corresponding characters could be designated as **s_isotope_m & r_isotope_m**, where prefix **s** stands for the start and prefix **r** stands for the rest of the symbol and suffix **m** stands for the multi.
+Corresponding characters could be designated as **s_isotope & r_isotope**, where prefix **s** stands for the start and prefix **r** stands for the rest of the symbol.
 
 ##### Chirality symbols
 
@@ -502,7 +506,7 @@ Corresponding character classes could be designated as **s_chiral & e_chiral**, 
 
 | \@, T, H, A, L, S, P, B, O, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 
-Corresponding character classes could be designated as **s_chiral_m, m_chiral_m & r_chiral_m**, where prefix **s** stands for the start, *prefix* **m** stands for the next from the medium (two characters), prefix **r** stands for the rest of the symbol and *suffix* **m** stands for the multi.
+Corresponding character classes could be designated as **s_chiral_m, m_chiral_m & r_chiral_m**, where prefix **s** stands for the start, *prefix* **m** stands for the medium (two characters), prefix **r** stands for the rest of the symbol and *suffix* **m** stands for the multi.
 
 ##### Hydrogen symbols
 
@@ -603,7 +607,7 @@ Following character classes describing chemically meaningful symbols occurring i
 
     | e\_**charge**, e\_**chiral**, e\_**hydro**, n\_**chiral**, r\_**aclass**, r\_**charge**, r\_**chiral**, r\_**isotope**, s\_**aclass**, s\_**charge**, s\_**chiral**, s\_**hydro**, s\_**isotope**, w\_**charge**, w\_**chiral**, w\_**hydro**
     | 
-    | Some of these original classes could be merged on condition that they are identical on the character level and having further convenience in mind: 
+    | Some of these original classes could be merged on condition that they are identical on the character level and having further convenience in mind:
     | 
     | esw\_**charge**
 
@@ -613,4 +617,18 @@ Using the data provided in the *class_list.tsv* and *merged_classes\_\_autoDescr
 
 ## Intersection of character classes
 
-As it can be seen without the further analysis, the aforementioned classes of symbols are highly interconnected via characters constituting them, even besides those, which are identical; the degree could be assessed numerically using previously introduced tools and visualized using UpSet plot from ggupset library (<https://cran.r-project.org/web/packages/ggupset/>).
+As it can be seen without the further analysis, the aforementioned classes of symbols are highly interconnected via characters constituting them, even besides those classes, which are identical; the degree could be assessed numerically using previously introduced tools and visualized using UpSet plot realized in ggupset library (<https://cran.r-project.org/web/packages/ggupset/>).
+
+However, firstly it will be useful to visualize all the connections between:
+
+-   Types of the symbols
+
+-   Classes of the symbols
+
+-   Classes of characters
+
+-   And sets of characters constituting classes
+
+Based on the already obtained results and D3.JS Sankey diagram.
+
+![Sankey diagram describing relations in SMILES language. Red links correspond to the cases when more than one link enters the particular node.](smiles_sankey.png)
