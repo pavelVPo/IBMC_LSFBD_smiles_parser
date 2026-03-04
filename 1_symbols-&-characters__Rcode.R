@@ -135,7 +135,7 @@ charClass_cntr <- charClass_cntr + 1
 # Symbols
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c('Cl', 'Br') |> sort()
-class <- "atom_oal_2"
+class <- "atom_oal"
 symbClass_description <- "Two character atom symbols of organic aliphatic atoms lacking the additional features"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
@@ -163,7 +163,7 @@ charClass_cntr <- charClass_cntr + 1
 # Symbols
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c('se', 'as', 'te') |> sort()
-class <- "atom_bar_2"
+class <- "atom_bar"
 symbClass_description <- "Two character atom symbols of organic aliphatic atoms lacking the additional features"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
@@ -195,7 +195,7 @@ symbols <- c('He', 'Li', 'Be', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'Cl', 'Ar', 'Ca', '
                           'Xe', 'Cs', 'Ba', 'Hf', 'Ta', 'Re', 'Os', 'Ir', 'Pt', 'Au', 'Hg', 'Tl', 'Pb', 'Bi', 'Po', 'At', 'Rn', 'Fr', 'Ra', 'Rf', 'Db', 'Sg', 'Bh', 'Hs', 'Mt',
                           'Ds', 'Rg', 'Cn', 'Fl', 'Lv', 'La', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Tb', 'Dy', 'Ho', 'Er', 'Tm', 'Yb', 'Lu', 'Ac', 'Th', 'Pa', 'Np', 'Pu', 'Am',
                           'Cm', 'Bk', 'Cf', 'Es', 'Fm', 'Md', 'No', 'Lr') |> sort()
-class <- "atom_bal_2"
+class <- "atom_bal"
 symbClass_description <- "Two character atom symbols of aliphatic atoms, which should be enclosed within the square brackets"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
@@ -1324,6 +1324,6 @@ chars_symbols$charClass_description <- paste0(rep("Characters describing ", leng
 char_data <- chars_symbols[, 1:5]
 
 #### Export the results
-write.table(char_data, "C:/.../character_classes.tsv", sep = "\t", row.names = FALSE)
-write.table(symb_data, "C:/.../symbol_classes.tsv", sep = "\t", row.names = FALSE)
-write.table(chars_symbols, "C:/.../chars_&_symbs.tsv", sep = "\t", row.names = FALSE)
+write.table(char_data, "C:/Users/XPS/Documents/!__tools_for_chemical_information_processing/SMILES_parser/code_v2/data/character_classes.tsv", sep = "\t", row.names = FALSE)
+write.table(symb_data, "C:/Users/XPS/Documents/!__tools_for_chemical_information_processing/SMILES_parser/code_v2/data/symbol_classes.tsv", sep = "\t", row.names = FALSE)
+write.table(chars_symbols, "C:/Users/XPS/Documents/!__tools_for_chemical_information_processing/SMILES_parser/code_v2/data/chars_&_symbs.tsv", sep = "\t", row.names = FALSE)
