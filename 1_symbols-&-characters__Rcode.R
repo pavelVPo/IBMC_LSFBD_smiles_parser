@@ -280,6 +280,8 @@ char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 
 ### 4 BONDS
+symbType <- "bond__symbol"
+symbType_description <- "Bond symbol is the way to designate the edge of the molecular graph, i.e. chemical bond, in the SMILES string"
 ## 4 BONDS, SYMBOLS
 # 10, symbol class: Bond symbol corresponding to the single bond
 # Symbols
@@ -979,7 +981,7 @@ symb_data[symbClass_cntr, 4] <- paste(symbols, collapse = ", ")
 symb_data[symbClass_cntr, 5] <- symbClass_description
 symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
-characters <- characters
+characters <- symbols
 charClass <- "l_ct"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
