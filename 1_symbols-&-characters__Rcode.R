@@ -50,7 +50,7 @@ charClass_cntr <- 1
 
 #### Enumeration of the symbols and character classes allowed in SMILES
 ### TYPE: ATOM
-symbType <- "atom"
+symbType <- "atom__symbol"
 symbType_description <- "Atom symbol is the way to designate the node of the molecular graph, i.e. atom, in the SMILES string"
 ## 01, symbol class: Single character atom symbols of organic (from so called organic subset) aromatic atoms lacking the additional features
 # Symbols
@@ -221,7 +221,7 @@ char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 
 ### 2 ANYTHING
-symbType <- "anything"
+symbType <- "anything__symbol"
 symbType_description <- "Anything symbol is the way to designate any atom or basically anything"
 ## ANYTHING, SYMBOL
 # 08, symbol class: Single character symbol of any atom or basically anything
@@ -238,7 +238,7 @@ symb_data[symbClass_cntr, 5] <- symbClass_description
 symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 characters <- symbols
-charClass <- "anything"
+charClass <- "w_anything"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
 char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
@@ -246,7 +246,7 @@ char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 
 ## 3 BRACKETS, SYMBOLS
-symbType <- "bracket"
+symbType <- "bracket__symbol"
 symbType_description <- "Square bracket symbols is the SMILES way to mark the start of the atom record including its various properties and is the way to designate the end of the atom record"
 # 09, symbol class: Single character square bracket symbols
 # Symbols
@@ -295,7 +295,7 @@ symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # single_bond
 characters <- symbols
-charClass <- "single_bond"
+charClass <- "w_single_bond"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
 char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
@@ -315,7 +315,7 @@ symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # double_bond
 characters <- symbols
-charClass <- "double_bond"
+charClass <- "w_double_bond"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
 char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
@@ -335,7 +335,7 @@ symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # triple_bond
 characters <- symbols
-charClass <- "triple_bond"
+charClass <- "w_triple_bond"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
 char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
@@ -356,7 +356,7 @@ symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # quadruple_bond
 characters <- symbols
-charClass <- "quadruple_bond"
+charClass <- "w_quadruple_bond"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
 char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
@@ -376,7 +376,7 @@ symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # aromatic_bond
 characters <- symbols
-charClass <- "aromatic_bond"
+charClass <- "w_aromatic_bond"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
 char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
@@ -396,7 +396,7 @@ symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # no_bond
 characters <- symbols
-charClass <- "no_bond"
+charClass <- "w_no_bond"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
 char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
@@ -964,7 +964,7 @@ char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 
 ### 6 cis_trans
-symbType <- "cis_trans"
+symbType <- "cis_trans__symbol"
 symbType_description <- "Cis / trans symbols  is the way to designate the position of the nodes of the molecular graph, i.e. atoms, relative to the rotary non-permissive bond"
 ## cis_trans, SYMBOLS
 # 28, symbol class: cis_trans single character symbols on the left side of the rotary non-permissive bond
@@ -1008,7 +1008,7 @@ charClass_cntr <- charClass_cntr + 1
 
 
 ### 7 All the symb_data inside the square brackets besides the main atom symbol
-symbType <- "features in brackets"
+symbType <- "features__symbol"
 symbType_description <- "Symbols of atomic features written inside the square brackets"
 ## All the symb_data inside the square brackets besides the main atom symbol, SYMBOLS
 # 30, symbol class: Single character isotope symbols
@@ -1318,12 +1318,12 @@ charClass_cntr <- charClass_cntr + 1
 # Process
 char_data <- char_data[!is.na(char_data$charClass_id), ]
 symb_data <- symb_data[!is.na(symb_data$symbClass_id), ] 
-chars_symbols <- char_data |> merge(symb_data, by = "symbClass_id")
-chars_symbols$charClass_description <- paste0(rep("Characters describing ", length(chars_symbols[, 9])), chars_symbols[, 9])
-# Update char_data using information from chars_symbols
-char_data <- chars_symbols[, 1:5]
+chars__symbols <- char_data |> merge(symb_data, by = "symbClass_id")
+chars__symbols$charClass_description <- paste0(rep("Characters describing ", length(chars__symbols[, 9])), chars__symbols[, 9])
+# Update char_data using information from chars__symbols
+char_data <- chars__symbols[, 1:5]
 
 #### Export the results
 write.table(char_data, "C:/.../character_classes.tsv", sep = "\t", row.names = FALSE)
 write.table(symb_data, "C:/.../symbol_classes.tsv", sep = "\t", row.names = FALSE)
-write.table(chars_symbols, "C:/.../chars_&_symbs.tsv", sep = "\t", row.names = FALSE)
+write.table(chars__symbols, "C:/.../chars_&_symbs.tsv", sep = "\t", row.names = FALSE)
