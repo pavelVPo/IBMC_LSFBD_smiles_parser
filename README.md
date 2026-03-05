@@ -579,6 +579,7 @@ Based on the already obtained results and D3.JS Sankey diagram.
   <figcaption><strong>Figure 1: </strong> Sankey diagram describing relations between entities in SMILES language. Red links corresponds to the cases when more than one link enters the particular node.</figcaption>
 </figure>
 
-At this stage diagram could be used to check whether each class of symbols (second column from the left) has unique character classes assigned (third column from the left) and elucidate the character classes, which are constituted by the same characters: every link before the third column should be grey, red links between the third and fourth column highlight the cases, which will be constantly hard for parsing (ability to judge on the character class of character based only on this character is desireable).
+At this stage diagram could be used to check whether each class of symbols (second column from the left) has unique character classes assigned (third column from the left) and elucidate the character classes, which are constituted by the same characters: every link before the third column should be grey, red links between the third and fourth column highlight the cases, which will be constantly hard for parsing (ability to judge on the character class of character based only on this character is desirable).
+
 
 
