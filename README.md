@@ -631,4 +631,5 @@ However, firstly it will be useful to visualize all the connections between:
 
 Based on the already obtained results and D3.JS Sankey diagram.
 
-![Sankey diagram describing relations in SMILES language. Red links correspond to the cases when more than one link enters the particular node.](smiles_sankey.png)
+![Sankey diagram describing relations in SMILES language. Red links corresponds to the cases when more than one link enters the particular node.](smiles_sankey.png)
+
