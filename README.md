@@ -1,7 +1,3 @@
----
----
----
-
 # SMILES Parser (work in progress)
 
 For the SMILES (Simplified Molecular Input Line Entry System) reference, please, SEE:
@@ -629,7 +625,11 @@ However, firstly it will be useful to visualize all the connections between:
 
 -   And sets of characters constituting classes
 
-Based on the already obtained results and D3.JS Sankey diagram.
+Based on the already obtained results via D3.JS Sankey diagram.
 
-![Sankey diagram describing relations in SMILES language. Red links corresponds to the cases when more than one link enters the particular node.](smiles_sankey.png)
+<figure>
+  <img src="smiles_sankey.png" alt="Sankey diagram describing relations between entities in SMILES language">
+  <figcaption><strong>Figure 1: </strong> Sankey diagram describing relations between entities in SMILES language. Red links corresponds to the cases when more than one link enters the particular node.</figcaption>
+</figure>
+
 
