@@ -628,9 +628,10 @@ However, firstly it will be useful to visualize all the connections between:
 Based on the already obtained results via D3.JS Sankey diagram.
 
 <figure>
-  <img src="smiles_sankey.xng" alt="Sankey diagram describing relations between entities in SMILES language">
+  <img src="smiles_sankey.png" alt="Sankey diagram describing relations between entities in SMILES language">
   <figcaption><strong>Figure 1: </strong> Sankey diagram describing relations between entities in SMILES language. Red links corresponds to the cases when more than one link enters the particular node.</figcaption>
 </figure>
+
 
 
 
