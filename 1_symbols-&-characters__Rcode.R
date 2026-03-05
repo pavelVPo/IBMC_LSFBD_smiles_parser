@@ -3,37 +3,37 @@
 
 #### Functions
 # Function to get the first character from word
-first_char <- function(word) {
+char_1 <- function(word) {
     first_char <- strsplit(word, split = "")[[1]][1]
     return(first_char)
 }
 # Function to get the second character from word
-medium_chars <- function(word) {
-    scnd_char <- strsplit(word, split = "")[[1]][2:3]
+char_2 <- function(word) {
+    scnd_char <- strsplit(word, split = "")[[1]][2]
     return(scnd_char)
 }
 # Function to get the second and third characters from word
-second_char <- function(word) {
+chars_2_3 <- function(word) {
     medium_char <- strsplit(word, split = "")[[1]][2:3]
     return(medium_char)
 }
 # Function to get the last character from word
-last_char <- function(word) {
+char_last <- function(word) {
     last_char <- tail(strsplit(word, split = "")[[1]], n = 1)
     return(last_char)
 }
 # Function to ommit the first character from word
-rest_chars_1 <- function(word) {
+chars_1rest <- function(word) {
     rest_chars <- strsplit(word, split = "")[[1]][-1]
     return(rest_chars)
 }
 # Function to ommit the first and second character from word
-rest_chars_2 <- function(word) {
+chars_2rest <- function(word) {
     rest_chars <- strsplit(word, split = "")[[1]][-2:-1]
     return(rest_chars)
 }
 # Function to ommit the first, second and third character from word
-rest_chars_3 <- function(word) {
+chars_3rest <- function(word) {
     rest_chars <- strsplit(word, split = "")[[1]][-3:-1]
     return(rest_chars)
 }
@@ -144,7 +144,7 @@ symb_data[symbClass_cntr, 4] <- paste(symbols, collapse = ", ")
 symb_data[symbClass_cntr, 5] <- symbClass_description
 symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters, start
-characters <- lapply(symbols, first_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_1) |> unlist() |> unique() |> sort()
 charClass <- "s_atom_oal"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -152,7 +152,7 @@ char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
 char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 # Characters, end
-characters <- lapply(symbols, last_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_last) |> unlist() |> unique() |> sort()
 charClass <- "e_atom_oal"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -172,7 +172,7 @@ symb_data[symbClass_cntr, 4] <- paste(symbols, collapse = ", ")
 symb_data[symbClass_cntr, 5] <- symbClass_description
 symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters, start
-characters <- lapply(symbols, first_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_1) |> unlist() |> unique() |> sort()
 charClass <- "s_atom_bar"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -180,7 +180,7 @@ char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
 char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 # Characters, end
-characters <- lapply(symbols, last_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_last) |> unlist() |> unique() |> sort()
 charClass <- "e_atom_bar"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -204,7 +204,7 @@ symb_data[symbClass_cntr, 4] <- paste(symbols, collapse = ", ")
 symb_data[symbClass_cntr, 5] <- symbClass_description
 symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters, start
-characters <- lapply(symbols, first_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_1) |> unlist() |> unique() |> sort()
 charClass <- "s_atom_bal"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -212,7 +212,7 @@ char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
 char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 # Characters, end
-characters <- lapply(symbols, last_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_last) |> unlist() |> unique() |> sort()
 charClass <- "e_atom_bal"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -406,6 +406,8 @@ char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 
 ### 5 BOND MODIFIERS (MULTIPLIERS)
+symbType <- "modifier__symbol"
+symbType_description <- "Bond multiplying symbols is used in SMILES to extend the number of atoms, for which connections to the current atom could be written"
 ## 5 BOND MODIFIERS (MULTIPLIERS), SYMBOLS
 # 16, symbol class: Single character bond multiplying symbols initiators of branching with implicit bond
 # Symbols
@@ -500,7 +502,7 @@ symb_data[symbClass_cntr, 5] <- symbClass_description
 symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # bm_ibe, start
-characters <- lapply(symbols, first_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_1) |> unlist() |> unique() |> sort()
 charClass <- "s_bm_ibe"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -508,7 +510,7 @@ char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
 char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 # bm_ibe, end
-characters <- lapply(symbols, last_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_last) |> unlist() |> unique() |> sort()
 charClass <- "e_bm_ibe"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -538,7 +540,7 @@ symb_data[symbClass_cntr, 5] <- symbClass_description
 symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # bm_ire, start
-characters <- lapply(symbols, first_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_1) |> unlist() |> unique() |> sort()
 charClass <- "s_bm_ire"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -546,7 +548,7 @@ char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
 char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 # bm_ire, end
-characters <- lapply(symbols, last_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_last) |> unlist() |> unique() |> sort()
 charClass <- "e_bm_ire"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -575,7 +577,7 @@ symb_data[symbClass_cntr, 5] <- symbClass_description
 symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # bm_iri, start
-characters <- lapply(symbols, first_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_1) |> unlist() |> unique() |> sort()
 charClass <- "s_bm_iri"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -583,7 +585,7 @@ char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
 char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 # bm_iri, rest
-characters <- lapply(symbols, rest_chars_1) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, chars_1rest) |> unlist() |> unique() |> sort()
 charClass <- "r_bm_iri"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -702,7 +704,7 @@ symb_data[symbClass_cntr, 5] <- symbClass_description
 symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # bm_ire, start
-characters <- lapply(symbols, first_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_1) |> unlist() |> unique() |> sort()
 charClass <- "s_bm_ire"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -710,7 +712,7 @@ char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
 char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 # bm_ire, next from start
-characters <- lapply(symbols, second_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_2) |> unlist() |> unique() |> sort()
 charClass <- "n_bm_ire"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -718,7 +720,7 @@ char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
 char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 # bm_ire, rest
-characters <- lapply(symbols, rest_chars_2) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, chars_2rest) |> unlist() |> unique() |> sort()
 charClass <- "r_bm_ire"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -739,7 +741,7 @@ symb_data[symbClass_cntr, 5] <- symbClass_description
 symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # bm_tbe, start
-characters <- lapply(symbols, first_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_1) |> unlist() |> unique() |> sort()
 charClass <- "s_bm_tbe"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -747,7 +749,7 @@ char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
 char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 # bm_tre, end
-characters <- lapply(symbols, last_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_last) |> unlist() |> unique() |> sort()
 charClass <- "e_bm_tbe"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -777,7 +779,7 @@ symb_data[symbClass_cntr, 5] <- symbClass_description
 symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # bm_tbe, start
-characters <- lapply(symbols, first_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_1) |> unlist() |> unique() |> sort()
 charClass <- "s_bm_tre"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -785,7 +787,7 @@ char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
 char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 # bm_tre, end
-characters <- lapply(symbols, last_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_last) |> unlist() |> unique() |> sort()
 charClass <- "e_bm_tre"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -903,24 +905,24 @@ symb_data[symbClass_cntr, 4] <- paste(symbols, collapse = ", ")
 symb_data[symbClass_cntr, 5] <- symbClass_description
 symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
-# bm_ire, start
-characters <- lapply(symbols, first_char) |> unlist() |> unique() |> sort()
+# bm_tre, start
+characters <- lapply(symbols, char_1) |> unlist() |> unique() |> sort()
 charClass <- "s_bm_tre"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
 char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
 char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
-# bm_ire, next from start
-characters <- lapply(symbols, second_char) |> unlist() |> unique() |> sort()
+# bm_tre, next from start
+characters <- lapply(symbols, char_2) |> unlist() |> unique() |> sort()
 charClass <- "n_bm_tre"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
 char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
 char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
-# bm_ire, rest
-characters <- lapply(symbols, rest_chars_2) |> unlist() |> unique() |> sort()
+# bm_tre, rest
+characters <- lapply(symbols, chars_2rest) |> unlist() |> unique() |> sort()
 charClass <- "r_bm_tre"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -949,7 +951,7 @@ symb_data[symbClass_cntr, 5] <- symbClass_description
 symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # bm_iri, start
-characters <- lapply(symbols, first_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_1) |> unlist() |> unique() |> sort()
 charClass <- "s_bm_tri"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -957,7 +959,7 @@ char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
 char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 # bm_iri, rest
-characters <- lapply(symbols, rest_chars_1) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, chars_1rest) |> unlist() |> unique() |> sort()
 charClass <- "r_bm_tri"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -1052,7 +1054,7 @@ symb_data[symbClass_cntr, 5] <- symbClass_description
 symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # s_isotope
-characters <- lapply(symbols, first_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_1) |> unlist() |> unique() |> sort()
 charClass <- "s_isotope"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -1060,7 +1062,7 @@ char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
 char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 # r_isotope
-characters <- lapply(symbols, rest_chars_1) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, chars_1rest) |> unlist() |> unique() |> sort()
 charClass <- "r_isotope"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -1101,7 +1103,7 @@ symb_data[symbClass_cntr, 5] <- symbClass_description
 symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # s_chiral
-characters <- lapply(symbols, first_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_1) |> unlist() |> unique() |> sort()
 charClass <- "s_chiral"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -1109,7 +1111,7 @@ char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
 char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 # e_chiral
-characters <- lapply(symbols, last_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_last) |> unlist() |> unique() |> sort()
 charClass <- "e_chiral"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -1133,7 +1135,7 @@ symb_data[symbClass_cntr, 5] <- symbClass_description
 symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # s_chiral
-characters <- lapply(symbols, first_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_1) |> unlist() |> unique() |> sort()
 charClass <- "s_chiral"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -1141,7 +1143,7 @@ char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
 char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 # m_chiral
-characters <- lapply(symbols, medium_chars) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, chars_2_3) |> unlist() |> unique() |> sort()
 charClass <- "n_chiral"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -1149,7 +1151,7 @@ char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
 char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 # r_chiral
-characters <- lapply(symbols, rest_chars_3) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, chars_3rest) |> unlist() |> unique() |> sort()
 charClass <- "r_chiral"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -1191,7 +1193,7 @@ symb_data[symbClass_cntr, 5] <- symbClass_description
 symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # s_hydro
-characters <- lapply(symbols, first_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_1) |> unlist() |> unique() |> sort()
 charClass <- "s_hydro"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -1199,7 +1201,7 @@ char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
 char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 # e_hydro
-characters <- lapply(symbols, last_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_last) |> unlist() |> unique() |> sort()
 charClass <- "e_hydro"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -1241,7 +1243,7 @@ symb_data[symbClass_cntr, 5] <- symbClass_description
 symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # s_charge
-characters <- lapply(symbols, first_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_1) |> unlist() |> unique() |> sort()
 charClass <- "s_charge"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -1249,7 +1251,7 @@ char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
 char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 # e_charge
-characters <- lapply(symbols, last_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_last) |> unlist() |> unique() |> sort()
 charClass <- "e_charge"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -1271,7 +1273,7 @@ symb_data[symbClass_cntr, 5] <- symbClass_description
 symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # s_charge
-characters <- lapply(symbols, first_char) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, char_1) |> unlist() |> unique() |> sort()
 charClass <- "s_charge"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
@@ -1279,7 +1281,7 @@ char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
 char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
 # r_charge
-characters <- lapply(symbols, rest_chars_1) |> unlist() |> unique() |> sort()
+characters <- lapply(symbols, chars_1rest) |> unlist() |> unique() |> sort()
 charClass <- "r_charge"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass

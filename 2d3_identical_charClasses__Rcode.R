@@ -23,7 +23,6 @@ data <- data_raw |> group_by(chars) |>
 					select(charClass, charClass_id, chars, chars_id, symbClass_id, symbClass, symbType, charClass_description, charClass_combined, charClass_id_combined, charClass_description_combined)
 # schema
 data_schema <- data |> select(chars, chars_id, charClass, symbClass, symbType) |> distinct()
-#|> mutate_all(~str_replace_all(., "-", "")) |> mutate_all(~str_replace_all(., "/", "")) |> mutate_all(~str_replace_all(., " ", "_"))
 
 ## Prepare the data to be visualized using D3.JS
 links_all_raw <- tibble(source = rep(NA, 1000), target = rep(NA, 1000), value = rep(NA, 1000),
@@ -79,7 +78,7 @@ for (i in seq(1:length(l1_nodes))) {
 links <- links_all_raw |> filter(!is.na(source)) |> group_by(target) |>
 							mutate(value = 100*n()) |>
 							ungroup() |>
-							mutate(link_color = if_else(value > 100, "#8B3834", "#161212FF"))
+							mutate(link_color = if_else(value > 100, "#8A350C", "#090A04"))
 
 ## Export
-write_csv(links, "C:/.../smiles.csv")
+write_csv(links, "C:/.../smiles-sankey.csv")
