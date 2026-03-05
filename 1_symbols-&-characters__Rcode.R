@@ -705,7 +705,7 @@ symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # bm_ire, start
 characters <- lapply(symbols, char_1) |> unlist() |> unique() |> sort()
-charClass <- "s_bm_ire"
+charClass <- "s_bm_ire_4"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
 char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
@@ -907,7 +907,7 @@ symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # bm_tre, start
 characters <- lapply(symbols, char_1) |> unlist() |> unique() |> sort()
-charClass <- "s_bm_tre"
+charClass <- "s_bm_tre_4"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
 char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
@@ -1094,7 +1094,7 @@ charClass_cntr <- charClass_cntr + 1
 # Symbols
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c('@@') |> sort()
-class <- "chirality_2"
+class <- "chiral_2"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -1126,7 +1126,7 @@ symbols <- c("@TH1", "@TH2", "@AL1", "@AL2", "@SP1", "@SP2", "@SP3", "@TB1", "@T
                     "@TB5", "@TB6", "@TB7", "@TB8", "@TB9", "@TB10", "@TB11", "@TB12", "@TB13", "@TB14", "@TB15", "@TB16", "@TB17", "@TB18", "@TB19", "@TB20",
                     "@OH1", "@OH2", "@OH3", "@OH4", "@OH5", "@OH6", "@OH7", "@OH8", "@OH9", "@OH10", "@OH11", "@OH12", "@OH13", "@OH14", "@OH15", "@OH16", "@OH17", "@OH18", "@OH19", "@OH20",
                     "@OH21", "@OH22", "@OH23", "@OH24", "@OH25", "@OH26", "@OH27", "@OH28", "@OH29", "@OH30") |> sort()
-class <- "chirality_m"
+class <- "chiral_m"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -1136,15 +1136,15 @@ symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # s_chiral
 characters <- lapply(symbols, char_1) |> unlist() |> unique() |> sort()
-charClass <- "s_chiral"
+charClass <- "s_chiral_m"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
 char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
 char_data[charClass_cntr, 5] <- symbClass_cntr
 charClass_cntr <- charClass_cntr + 1
-# m_chiral
+# n_chiral
 characters <- lapply(symbols, chars_2_3) |> unlist() |> unique() |> sort()
-charClass <- "n_chiral"
+charClass <- "m_chiral"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
 char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")
@@ -1274,7 +1274,7 @@ symb_data[symbClass_cntr, 6] <- symbType_description
 # Characters
 # s_charge
 characters <- lapply(symbols, char_1) |> unlist() |> unique() |> sort()
-charClass <- "s_charge"
+charClass <- "s_charge_m"
 char_data[charClass_cntr, 1] <- charClass_cntr
 char_data[charClass_cntr, 2] <- charClass
 char_data[charClass_cntr, 3] <- paste(characters, collapse = ", ")

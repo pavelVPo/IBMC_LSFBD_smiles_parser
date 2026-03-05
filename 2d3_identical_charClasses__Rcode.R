@@ -78,7 +78,8 @@ for (i in seq(1:length(l1_nodes))) {
 links <- links_all_raw |> filter(!is.na(source)) |> group_by(target) |>
 							mutate(value = 100*n()) |>
 							ungroup() |>
-							mutate(link_color = if_else(value > 100, "#8A350C", "#090A04"))
+							mutate(link_color = if_else(value > 100, "#8A350C", "#090A04")) |>
+							mutate(value = 5*sqrt(value))
 
 ## Export
 write_csv(links, "C:/.../smiles-sankey.csv")
