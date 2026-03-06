@@ -607,10 +607,11 @@ Besides totally intersected classes, which were described previously, classes ha
 
 <figure>
 <img src="charSets_intersection.png" alt="Intersection of the character sets"/>
-<figcaption><strong>Figure 2: </strong> All intersections of the character sets. Red cells correspond to the cases where there is full intersection. Yellowish cells correspond to the cases, where intersection is absent.</figcaption>
+<figcaption><strong>Figure 2: </strong> All intersections of the character sets. Red cells correspond to the cases where there is full intersection. Orange cells should correspond to the cases, where there is partial intersection. Yellowish cells correspond to the cases, where intersection is absent.</figcaption>
 </figure>
 
 As it can be seen from Figure 2, there are no partial intersection between the character sets, which is good.
+
 
 
 
