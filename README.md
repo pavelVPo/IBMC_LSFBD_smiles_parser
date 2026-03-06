@@ -606,11 +606,12 @@ As it can be seen from the Table 1, most of the identical character sets still b
 Besides totally intersected classes, which were described previously, classes having partial intersection are possible, they could be elucidated and visualized, see Fugure 2.
 
 <figure>
-<img src="charSets_intersection.png" alt="Intersection of the character sets"/>
+<img src="charSets_intersections.png" alt="Intersection of the character sets"/>
 <figcaption><strong>Figure 2: </strong> All intersections of the character sets. Red cells correspond to the cases where there is full intersection. Yellowish cells correspond to the cases, where intersection is absent.</figcaption>
 </figure>
 
 As it can be seen from Figure 2, there are no partial intersection between the character sets, which is good.
+
 
 
 
