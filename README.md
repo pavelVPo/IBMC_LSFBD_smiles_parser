@@ -601,5 +601,18 @@ List of the not unique character sets, character and symbol classes, symbol type
 
 As it can be seen from the Table 1, most of the identical character sets still belong to the single symbol type (2 maximum).
 
+### Partial intersection
+
+Besides totally intersected classes, which were described previously, classes having partial intersection are possible, they could be elucidated and visualized, see Fugure 2.
+
+<figure>
+<img src="C:/Users/XPS/Documents/!__tools_for_chemical_information_processing/SMILES_parser/code_v2/data/charSets_intersection.png" alt="Intersection of the character sets"/>
+<figcaption><strong>Figure 2: </strong> All intersections of the character sets. Red cells correspond to the cases where there is full intersection. Yellowish cells correspond to the cases, where intersection is absent.</figcaption>
+</figure>
+
+As it can be seen from Figure 2, there are no partial intersection between the character sets, which is good.
+
+
+
 
 
