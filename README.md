@@ -581,5 +581,24 @@ Based on the already obtained results and D3.JS Sankey diagram.
 
 At this stage diagram could be used to check whether each class of symbols (second column from the left) has unique character classes assigned (third column from the left) and elucidate the character classes, which are constituted by the same characters: every link before the third column should be grey, red links between the third and fourth column highlight the cases, which will be constantly hard for parsing (ability to judge on the character class of character based only on this character is desirable).
 
+List of the not unique character sets, character and symbol classes, symbol types is given in **Table 1**.
+
+| Number of identical char classes | Characters | Char сlass | Symbol сlass | Symbol type |
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+| 15 | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 | e_bm_ire, e_bm_tre, e_hydro, r_bm_ire, r_bm_iri, r_bm_tre, r_bm_tri, r_charge, r_chiral, r_class, r_isotope, s_isotope, w_bm_iri, w_bm_tri, w_isotope | bm_ire_2, bm_ire_4, bm_iri, bm_iri_3, bm_tre_2, bm_tre_4, bm_tri, bm_tri_3, charge_m, chiral_m, class_m, hydro_2, isotope, isotope_m | feature symbol, modifier symbol |
+| 6 | -, #, \$, ., :, = | e_bm_ibe, e_bm_tbe, s_bm_ire, s_bm_ire_4, s_bm_tre, s_bm_tre_4 | bm_ibe_2, bm_ire_2, bm_ire_4, bm_tbe_2, bm_tre_2, bm_tre_4 | modifier symbol |
+| 4 | \% | n_bm_ire, n_bm_tre, s_bm_iri, s_bm_tri | bm_ire_4, bm_iri_3, bm_tre_4, bm_tri_3 | modifier symbol |
+| 4 | -, + | e_charge, s_charge, s_charge_m, w_charge | charge, charge_2, charge_m | feature symbol |
+| 4 | \@ | e_chiral, s_chiral, s_chiral_m, w_chiral | chiral, chiral_2, chiral_m | feature symbol |
+| 2 | ( | s_bm_ibe, w_bm_ibi | bm_ibe_2, bm_ibi | modifier symbol |
+| 2 | ) | s_bm_tbe, w_bm_tbi | bm_tbe_2, bm_tbi | modifier symbol |
+| 2 | /,\\ | l_ct, r_ct | ct | cis/trans symbol |
+| 2 | : | s_class, w_aromatic_bond | aromatic_bond, class_m | bond symbol, feature symbol |
+| 2 | H | s_hydro, w_hydro | hydro, hydro_2 | feature symbol |
+| 2 | b, c, n, o, p, s | w_atom_bar, w_atom_oar | atom_bar, atom_oar | atom symbol |
+
+**Table 1.** List of sets of characters constituting more than one character class.
+
+As it can be seen from the Table 1, most of the identical character sets still belongs to the single symbol type (2 maximum).
 
 
