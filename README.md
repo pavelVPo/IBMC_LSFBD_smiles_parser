@@ -599,6 +599,7 @@ List of the not unique character sets, character and symbol classes, symbol type
 
 **Table 1.** List of sets of characters constituting more than one character class.
 
-As it can be seen from the Table 1, most of the identical character sets still belongs to the single symbol type (2 maximum).
+As it can be seen from the Table 1, most of the identical character sets still belong to the single symbol type (2 maximum).
+
 
 
