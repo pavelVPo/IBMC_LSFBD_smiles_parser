@@ -601,7 +601,7 @@ List of the not unique character sets, character and symbol classes, symbol type
 
 As it can be seen from the Table 1, most of the identical character sets still belong to the single symbol type (2 maximum).
 
-### Partial intersection
+### Partial intersection ** should be corrected **
 
 Besides totally intersected classes, which were described previously, classes having partial intersection are possible, they could be elucidated and visualized, see Fugure 2.
 
@@ -611,7 +611,8 @@ Besides totally intersected classes, which were described previously, classes ha
 </figure>
 
 
-As it can be seen from Figure 2, there are no partial intersection between the character sets (only full intersections described earlier), which is good.
+As it can be seen from Figure 2, <s>there are no partial intersection between the character sets (only full intersections described earlier), which is good.</s>
+
 
 
 
