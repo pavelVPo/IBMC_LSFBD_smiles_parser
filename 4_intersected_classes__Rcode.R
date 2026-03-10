@@ -24,7 +24,7 @@ for (i in seq(1:nrow(chars))) {
 		# Get the intersection for the character set corresponding to this row and all other character sets.
 		# Represent it as a string
 		# This string's length could be used latter to characterize the intersection
-		intersection <- intersect(chars[i,4] |> pull() |> str_split(", "), chars[k,4] |> pull() |> str_split(", ")) |> unlist() |> sort() |> str_c(collapse = ", ")
+		intersection <- intersect(chars[i,4] |> pull() |> str_split(", ") |> unlist(), chars[k,4] |> pull() |> str_split(", ") |> unlist()) |> unlist() |> sort() |> str_c(collapse = ", ")
 		if (intersection |> str_length() == chars[i,4] |> pull() |> str_length() & intersection |> str_length() == chars[k,4] |> pull() |> str_length()) {
 			intersection <- 10
 		} else {
