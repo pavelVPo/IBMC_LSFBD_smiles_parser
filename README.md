@@ -616,6 +616,12 @@ Besides totally intersected classes, which were described previously, classes ha
 
 As it can be seen from Figure 2, there are pairs of classes having partial intersection, which should be considering during the further parser's development.
 
+It should be noted, that the usage of terms **class** and **type** maybe considered problematic in this situation.
+
+Fortunately, this is not a principal problem: classes and types, which were described earlier, are semantical; they reflect the meaning of the entity in the context of the surrounding (connected) characters and symbols.
+
+Thus, the terminology will not be re-worked.
+
 ## General SMILES parsing strategy
 
 The main idea is as follows:
@@ -639,3 +645,25 @@ The main idea is as follows:
     To get an insight into what kinds of state switching will be needed and possible for the program, it will be useful to check, which pairs of characters are possible in SMILES.
 
     | Topic of parsers is well developed, please, see the [Grune, D., & Jacobs, C. J. (2008). Introduction to parsing. In *Parsing techniques: A practical guide* (pp. 61-102). New York, NY: Springer New York.] for example.
+
+## Pairs of SMILES characters, which are theoretically possible
+
+71 distinct characters were previously enumerated in SMILES, while parsing computer program can encounter only these characters:
+
+| 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, -, #, \$, %, (, ), \*, ., /, :, \@, [, \\, ], +, =, a, A, b, B, c, C, d, D, e, E, f, F, g, G, h, H, i, I, k, K, l, L, m, M, n, N, o, O, p, P, r, R, s, S, t, T, u, U, v, V, W, X, y, Y, Z
+
+Thus, it its quite possible to generate all the possible pairs of these characters to evaluate pairs' validity:
+
+``` r
+library(tidyverse)
+# Input chars, classes and types
+data <- read_tsv("C:/.../chars_&_symbs.tsv") |>
+                select(chars, charClass, symbClass, symbType) |>
+                separate_longer_delim(chars, delim = ", ")
+# Get unique characters
+unique_chars <- data |> pull(chars) |> unique()
+# Generate all the pairs possible in theory
+pairs <- expand.grid(left_char = unique_chars, right_char = unique_chars)
+```
+
+5041 distinct pairs are theoretically possible on the level of characters.
