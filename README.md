@@ -616,3 +616,26 @@ Besides totally intersected classes, which were described previously, classes ha
 
 As it can be seen from Figure 2, there are pairs of classes having partial intersection, which should be considering during the further parser's development.
 
+## General SMILES parsing strategy
+
+The main idea is as follows:
+
+1.  Computer program accepts the SMILES string, i.e., an ordered sequence of characters having chemical meaning as described previously.
+
+2.  Computer program process this string from left to right one character at time.
+
+    **What is meant by "computer program process"?**
+
+    | - Computer program has default state.
+    | - Every time computer program encounters new (next) character, state of the computer program changes accordingly (taking into account program's current state and what character it encounters).
+    | - At each step computer program takes some action to produce an output.
+
+3.  Computer program produces an output.
+
+    **What is "output"?**
+
+    | Data structure appropriate for the further computer processing and filled with the chemical data encoded by the input SMILES string.
+
+    To get an insight into what kinds of state switching will be needed and possible for the program, it will be useful to check, which pairs of characters are possible in SMILES.
+
+    | Topic of parsers is well developed, please, see the [Grune, D., & Jacobs, C. J. (2008). Introduction to parsing. In *Parsing techniques: A practical guide* (pp. 61-102). New York, NY: Springer New York.] for example.
