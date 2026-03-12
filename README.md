@@ -630,7 +630,7 @@ The main idea is as follows:
 
 2.  Computer program process this string from left to right one character at time.
 
-    **What is meant by "computer program process"?**
+    **What is meant by the "computer program process"?**
 
     | - Computer program has default state.
     | - Every time computer program encounters new (next) character, state of the computer program changes accordingly (taking into account program's current state and what character it encounters).
@@ -638,7 +638,7 @@ The main idea is as follows:
 
 3.  Computer program produces an output.
 
-    **What is "output"?**
+    **What is the "output"?**
 
     | Data structure appropriate for the further computer processing and filled with the chemical data encoded by the input SMILES string.
 
@@ -648,13 +648,13 @@ The main idea is as follows:
 
 ## Pairs of SMILES characters, which are theoretically possible
 
-71 distinct characters were previously enumerated in SMILES, while parsing computer program can encounter only these characters:
+**71** distinct characters were previously enumerated in SMILES, while parsing computer program can encounter only these characters:
 
 | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, -, #, \$, %, (, ), \*, ., /, :, \@, [, \\, ], +, =, a, A, b, B, c, C, d, D, e, E, f, F, g, G, h, H, i, I, k, K, l, L, m, M, n, N, o, O, p, P, r, R, s, S, t, T, u, U, v, V, W, X, y, Y, Z
 
 Thus, it its quite possible to generate all the possible pairs of these characters to evaluate pairs' validity:
 
-``` r
+```         
 library(tidyverse)
 # Input chars, classes and types
 data <- read_tsv("C:/.../chars_&_symbs.tsv") |>
@@ -666,4 +666,153 @@ unique_chars <- data |> pull(chars) |> unique()
 pairs <- expand.grid(left_char = unique_chars, right_char = unique_chars)
 ```
 
-5041 distinct pairs are theoretically possible on the level of characters.
+**5041** distinct pairs are theoretically possible on the level of characters.
+
+However, as it can be seen from Figures 1 and 2, many characters allowed in SMILES can belong to the several classes and types.
+
+Thus, number of pairs is effectively larger considering classes and types:
+
+```         
+# Get all the theoretically possible pairs considering classes and types
+pairs_labeled <- pairs |>
+  inner_join(data, by = c("left_char" = "chars"), relationship = "many-to-many") |>
+  rename(left_charClass = charClass, left_symbClass = symbClass, left_symbType = symbType) |>
+  inner_join(data, by = c("right_char" = "chars"), relationship = "many-to-many") |>
+  rename(right_charClass = charClass, right_symbClass = symbClass, right_symbType = symbType)
+```
+
+**99225** pairs of characters are theoretically possible in SMILES considering classes and types.
+
+This number is huge.
+
+## Pairs of SMILES characters, which are allowed
+
+Given the large number of the theoretically possible character to character transitions in SMILES, it should be reasonable to assess their viability, considering hierarchical nature of the labels.
+
+## Pairs of symbol types, which are allowed in SMILES
+
+```         
+# Get the distinct theoretically possible pairs of symbol types
+pairs_symbType <- pairs_labeled |> select(left_symbType, right_symbType) |> distinct()
+```
+
+**49** pairs of symbol types are possible in SMILES in theory, there is a need to check their viability using available community-driven SMILES specification and SMILES Parser Demo (<https://doc.gdb.tools/smilesDrawer/sd/example/index_light.html>) for testing:
+
+[Here is the preliminary version, updates may be needed]{style="color:#8A350C"}.
+
+| left_symbType       | right_symbType      | Allowed |
+|---------------------|---------------------|---------|
+| atom\_\_symbol      | atom\_\_symbol      | yes     |
+| features\_\_symbol  | atom\_\_symbol      | yes     |
+| anything\_\_symbol  | atom\_\_symbol      | yes     |
+| bracket\_\_symbol   | atom\_\_symbol      | yes     |
+| bond\_\_symbol      | atom\_\_symbol      | yes     |
+| modifier\_\_symbol  | atom\_\_symbol      | yes     |
+| cis_trans\_\_symbol | atom\_\_symbol      | yes     |
+| atom\_\_symbol      | features\_\_symbol  | yes     |
+| features\_\_symbol  | features\_\_symbol  | yes     |
+| anything\_\_symbol  | features\_\_symbol  | yes     |
+| bracket\_\_symbol   | features\_\_symbol  | yes     |
+| bond\_\_symbol      | features\_\_symbol  | no      |
+| modifier\_\_symbol  | features\_\_symbol  | no      |
+| cis_trans\_\_symbol | features\_\_symbol  | no      |
+| atom\_\_symbol      | anything\_\_symbol  | yes     |
+| features\_\_symbol  | anything\_\_symbol  | yes     |
+| anything\_\_symbol  | anything\_\_symbol  | yes     |
+| bracket\_\_symbol   | anything\_\_symbol  | yes     |
+| bond\_\_symbol      | anything\_\_symbol  | yes     |
+| modifier\_\_symbol  | anything\_\_symbol  | yes     |
+| cis_trans\_\_symbol | anything\_\_symbol  | yes     |
+| atom\_\_symbol      | bracket\_\_symbol   | yes     |
+| features\_\_symbol  | bracket\_\_symbol   | yes     |
+| anything\_\_symbol  | bracket\_\_symbol   | yes     |
+| bracket\_\_symbol   | bracket\_\_symbol   | no      |
+| bond\_\_symbol      | bracket\_\_symbol   | yes     |
+| modifier\_\_symbol  | bracket\_\_symbol   | yes     |
+| cis_trans\_\_symbol | bracket\_\_symbol   | yes     |
+| atom\_\_symbol      | bond\_\_symbol      | yes     |
+| atom\_\_symbol      | modifier\_\_symbol  | yes     |
+| features\_\_symbol  | bond\_\_symbol      | no      |
+| features\_\_symbol  | modifier\_\_symbol  | no      |
+| anything\_\_symbol  | bond\_\_symbol      | yes     |
+| anything\_\_symbol  | modifier\_\_symbol  | yes     |
+| bracket\_\_symbol   | bond\_\_symbol      | yes     |
+| bracket\_\_symbol   | modifier\_\_symbol  | yes     |
+| bond\_\_symbol      | bond\_\_symbol      | no      |
+| bond\_\_symbol      | modifier\_\_symbol  | no      |
+| modifier\_\_symbol  | bond\_\_symbol      | no      |
+| modifier\_\_symbol  | modifier\_\_symbol  | yes     |
+| cis_trans\_\_symbol | bond\_\_symbol      | no      |
+| cis_trans\_\_symbol | modifier\_\_symbol  | yes     |
+| atom\_\_symbol      | cis_trans\_\_symbol | yes     |
+| features\_\_symbol  | cis_trans\_\_symbol | no      |
+| anything\_\_symbol  | cis_trans\_\_symbol | yes     |
+| bracket\_\_symbol   | cis_trans\_\_symbol | yes     |
+| bond\_\_symbol      | cis_trans\_\_symbol | no      |
+| modifier\_\_symbol  | cis_trans\_\_symbol | yes     |
+| cis_trans\_\_symbol | cis_trans\_\_symbol | no      |
+
+**Table 2.** List of symbol type to symbol type transitions, which are theoretically possible in SMILES.
+
+From Table 2 it follows that among **49** symbol type to symbol type transitions theoretically possible in SMILES, there are **13** transitions, which are not allowed by the rules of the SMILES language as described in OpenSMILES documentation:
+
+1.  bond\_\_symbol to features\_\_symbol
+
+    | these symbols should always be separated by the bracket_symbol
+
+2.  modifier\_\_symbol to features\_\_symbol
+
+    | these symbols should always be separated by the bracket_symbol
+
+3.  cis_trans\_\_symbol to features\_\_symbol
+
+    | these symbols should always be separated by the bracket_symbol
+
+4.  bracket\_\_symbol to bracket\_\_symbol
+
+    | these symbols should always be separated by the atom_symbol
+
+5.  features\_\_symbol to bond\_\_symbol
+
+    | these symbols should always be separated by the bracket_symbol
+
+6.  features\_\_symbol to modifier\_\_symbol
+
+    | these symbols should always be separated by the bracket_symbol
+
+7.  bond\_\_symbol to bond\_\_symbol
+
+    | these symbols should always be separated by the atom_symbol
+
+8.  bond\_\_symbol to modifier\_\_symbol
+
+    | these symbols should always be separated by the bracket_symbol
+
+9.  modifier\_\_symbol to bond\_\_symbol
+
+    | these symbols should always be separated by the bracket_symbol
+
+10. cis_trans\_\_symbol to bond\_\_symbol
+
+    | these symbols should always be separated by the atom_symbol
+
+11. features\_\_symbol to cis_trans\_\_symbol
+
+    | these symbols should always be separated by the bracket_symbol
+
+12. bond\_\_symbol to cis_trans\_\_symbol
+
+    | these symbols should always be separated by the bracket_symbol
+
+13. cis_trans\_\_symbol to cis_trans\_\_symbol
+
+    | these symbols should always be separated by the atom_symbol
+
+Thus, corresponding pairs of characters could be safely excluded from the further work:
+
+```         
+pairs_symbTypes_not <- read_tsv("C:/.../theory_pairs_symbType.tsv") |> filter(allowed == "no")
+pairs_labeled <- pairs_labeled |> anti_join(pairs_symbTypes_not)
+```
+
+At this stage, **72709** pairs of characters are theoretically possible in SMILES considering classes, types and viability of symbol types pairing.
