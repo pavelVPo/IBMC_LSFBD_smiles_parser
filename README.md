@@ -685,6 +685,8 @@ pairs_labeled <- pairs |>
 
 This number is huge.
 
+# The following is the preliminary version, updates may be needed.
+
 ## Pairs of SMILES characters, which are allowed
 
 Given the large number of the theoretically possible character to character transitions in SMILES, it should be reasonable to assess their viability, considering hierarchical nature of the labels.
@@ -697,8 +699,6 @@ pairs_symbType <- pairs_labeled |> select(left_symbType, right_symbType) |> dist
 ```
 
 **49** pairs of symbol types are possible in SMILES in theory, there is a need to check their viability using available community-driven SMILES specification and SMILES Parser Demo (<https://doc.gdb.tools/smilesDrawer/sd/example/index_light.html>) for testing:
-
-<span style="color: #8A350C;"> Here is the preliminary version, updates may be needed. </span>
 
 | left_symbType       | right_symbType      | Allowed |
 |---------------------|---------------------|---------|
