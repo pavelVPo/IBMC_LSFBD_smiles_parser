@@ -837,5 +837,6 @@ nrow(pairs_symbClass)
 5.  Bracket atoms cannot be paired with the symbols contained outside the brackets and they can only be paired with the isotope symbols if those symbols are on the left and they can only be paired with the other bracket atom symbols on condition that those symbols has the same length, which is greater than 1.
 6.  Organic atom symbols can not be paired with the symbols contained inside the brackets.
 7.  Bond symbols and bond modifying symbols can not be paired with the symbols contained inside the brackets.
+8.  Cis/trans symbols are only allowed on the left side from the organic atoms and brackets and on the right side of the symbol classes belonging outside the brackets.
 
-After applying this set of simple rules, **662** pairs of symbol classes are left, they will be checked to refine the set of rules and proceed.
+After applying this set of simple rules, 479 pairs of symbol classes are left, they will be checked to refine the set of rules and proceed.
