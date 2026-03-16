@@ -819,8 +819,6 @@ At this stage, **72709** pairs of characters are theoretically possible in SMILE
 
 ## Pairs of symbol classes, which are allowed in SMILES
 
-[Here is the preliminary version, updates may be needed]{style="color:#8A350C"}.
-
 Using the remaining set of character pairs, it is possible to do the same thing (assess viability) for the symbol classes:
 
 ```         
