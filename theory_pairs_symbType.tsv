@@ -1,4 +1,4 @@
-left_symbType	right_symbType	Allowed
+left_symbType	right_symbType	allowed
 atom__symbol	atom__symbol	yes
 features__symbol	atom__symbol	yes
 anything__symbol	atom__symbol	yes
@@ -38,7 +38,7 @@ bracket__symbol	modifier__symbol	yes
 bond__symbol	bond__symbol	no
 bond__symbol	modifier__symbol	no
 modifier__symbol	bond__symbol	no
-modifier__symbol	modifier__symbol	no
+modifier__symbol	modifier__symbol	yes
 cis_trans__symbol	bond__symbol	no
 cis_trans__symbol	modifier__symbol	yes
 atom__symbol	cis_trans__symbol	yes
