@@ -816,3 +816,28 @@ pairs_labeled <- pairs_labeled |> anti_join(pairs_symbTypes_not)
 ```
 
 At this stage, **72709** pairs of characters are theoretically possible in SMILES considering classes, types and viability of symbol types pairing.
+
+## Pairs of symbol classes, which are allowed in SMILES
+
+[Here is the preliminary version, updates may be needed]{style="color:#8A350C"}.
+
+Using the remaining set of character pairs, it is possible to do the same thing (assess viability) for the symbol classes:
+
+```         
+# Get the distinct theoretically possible pairs of symbol types
+pairs_symbClass <- pairs_labeled |> select(left_symbClass, right_symbClass) |> distinct()
+# Assess the number of theoretically possible symbol pairs
+nrow(pairs_symbClass)
+```
+
+**909** pairs of symbol classes are possible in SMILES at this stage, there is a possibility to check their viability using available community-driven SMILES specification and SMILES Parser Demo (<https://doc.gdb.tools/smilesDrawer/sd/example/index_light.html>) for testing, however, the number of records is large this time, thus, it will be beneficial to filter out some of the not allowed pairings using the most obvious rules:
+
+1.  Isotope symbols could only be paired with the bracket on the left and bracket atom on the right.
+2.  Features symbols, besides isotope, could only be paired with the other feature symbols or bracket symbols on the right and with the other feature symbols or bracket atom symbols on the left.
+3.  Features symbols, besides isotope, on the left side could only be paired with the other feature symbols in the following order (from left to right): chiral -\> hydro -\> charge -\> class; gaps are allowed.
+4.  Given restrictions are not valid on condition that symbol class consists of the symbols longer than 1 character and is paired with itself.
+5.  Bracket atoms cannot be paired with the symbols contained outside the brackets and they can only be paired with the isotope symbols if those symbols are on the left and they can only be paired with the other bracket atom symbols on condition that those symbols has the same length, which is greater than 1.
+6.  Organic atom symbols can not be paired with the symbols contained inside the brackets.
+7.  Bond symbols and bond modifying symbols can not be paired with the symbols contained inside the brackets.
+
+After applying this set of simple rules, **662** pairs of symbol classes are left, they will be checked to refine the set of rules and proceed.
