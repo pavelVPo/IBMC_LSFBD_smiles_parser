@@ -698,7 +698,7 @@ pairs_symbType <- pairs_labeled |> select(left_symbType, right_symbType) |> dist
 
 **49** pairs of symbol types are possible in SMILES in theory, there is a need to check their viability using available community-driven SMILES specification and SMILES Parser Demo (<https://doc.gdb.tools/smilesDrawer/sd/example/index_light.html>) for testing:
 
-<span style="color: #8A350C;">Here is the preliminary version, updates may be needed.</span>
+<span style="color: #8A350C;"> Here is the preliminary version, updates may be needed. </span>
 
 | left_symbType       | right_symbType      | Allowed |
 |---------------------|---------------------|---------|
