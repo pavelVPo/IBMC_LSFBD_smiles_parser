@@ -819,6 +819,8 @@ At this stage, **72709** pairs of characters are theoretically possible in SMILE
 
 ## Pairs of symbol classes, which are allowed in SMILES
 
+[Here is the preliminary version, updates may be needed]{style="color:#8A350C"}.
+
 Using the remaining set of character pairs, it is possible to do the same thing (assess viability) for the symbol classes:
 
 ```         
@@ -835,8 +837,22 @@ nrow(pairs_symbClass)
 3.  Features symbols, besides isotope, on the left side could only be paired with the other feature symbols in the following order (from left to right): chiral -\> hydro -\> charge -\> class; gaps are allowed.
 4.  Given restrictions are not valid on condition that symbol class consists of the symbols longer than 1 character and is paired with itself.
 5.  Bracket atoms cannot be paired with the symbols contained outside the brackets and they can only be paired with the isotope symbols if those symbols are on the left and they can only be paired with the other bracket atom symbols on condition that those symbols has the same length, which is greater than 1.
-6.  Organic atom symbols can not be paired with the symbols contained inside the brackets.
+6.  Organic atom symbols can only be paired with the symbols found outside the brackets.
 7.  Bond symbols and bond modifying symbols can not be paired with the symbols contained inside the brackets.
 8.  Cis/trans symbols are only allowed on the left side from the organic atoms and brackets and on the right side of the symbol classes belonging outside the brackets.
 
-After applying this set of simple rules, 479 pairs of symbol classes are left, they will be checked to refine the set of rules and proceed.
+After applying this set of simple rules, **479** pairs of symbol classes are left, the following check-ups will be conducted on the level of character classes.
+
+## Pairs of character classes, which are allowed in SMILES
+
+The following set of simple rules could be proposed to filter out the undesired pairs of characters belonging to the specific classes:
+
+1.  Characters belonging to the two- and multi-character symbols should be paired in the correct order.
+2.  Characters corresponding to the cis/trans features could be present only outside the square brackets along with the appropriate classes.
+3.  Characters of the symbols corresponding to the start of the brackets could be written on the left side only from the starting isotope or bracket atom symbols.
+4.  Characters of the symbols corresponding to the start of the brackets could be on the right side only from the characters describing symbols belonging to the outside of the brackets and symbol corresponding to the end of the brackets.
+5.  Symbol corresponding to the to the end of the brackets could be on the right side only from the ending bracket atom or bracket property symbols.
+6.  Symbol corresponding to the end of the brackets could be on the left side only from from the character classes belonging to the outside of brackets and symbol corresponding to the start of the brackets.
+7.  Repetition of the symbols inside the square brackets is not allowed.
+
+With these rules applied only **190** pairings of the character classes left to be checked.
