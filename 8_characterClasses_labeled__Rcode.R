@@ -104,5 +104,15 @@ data_inProgress <- data_inProgress |> anti_join(bracket_allowed, by = c("left_ch
 # Filter to re-check the rest
 data_inProgress <- data_inProgress |> anti_join(start_allowed, by = c("left_charClass", "right_charClass"))
 data <- bind_rows(data_inProgress, ct_allowed, bracket_allowed)
-# Data examples
-data_examples <- data |> inner_join(char_classes, by = c("left_charClass" = "charClass"))
+# Data examples to check current results
+data_examples <- data |> inner_join(char_classes, by = c("left_charClass" = "charClass")) |>
+						 select(left_charClass, right_charClass, left_symbClass, right_symbClass, chars) |>
+						 rename(left_chars = chars) |>
+						 inner_join(char_classes, by = c("right_charClass" = "charClass")) |>
+						 select(left_charClass, right_charClass, left_symbClass, right_symbClass, left_chars, chars) |>
+						 rename(right_chars = chars) |>
+						 rowwise() |>
+						 mutate(example_pair = str_c(str_sub(left_chars, 1, 1), str_sub(right_chars, 1, 1))) |>
+						 select(left_charClass, right_charClass, example_pair)
+# Export pairs
+write_tsv(data, "C:/.../theory_pairs_charClasses_examples.tsv")
