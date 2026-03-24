@@ -855,4 +855,4 @@ The following set of simple rules could be proposed to filter out the undesired 
 6.  Symbol corresponding to the end of the brackets could be on the left side only from from the character classes belonging to the outside of brackets and symbol corresponding to the start of the brackets.
 7.  Repetition of the symbols inside the square brackets is not allowed.
 
-With these rules applied only **383** pairings of the character classes left to be checked.
+With these rules applied only **447** pairings of the character classes left to be checked.
