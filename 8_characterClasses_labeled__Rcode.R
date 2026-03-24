@@ -115,4 +115,4 @@ data_examples <- data |> inner_join(char_classes, by = c("left_charClass" = "cha
 						 mutate(example_pair = str_c(str_sub(left_chars, 1, 1), str_sub(right_chars, 1, 1))) |>
 						 select(left_charClass, right_charClass, example_pair)
 # Export pairs
-write_tsv(data, "C:/.../theory_pairs_charClasses_examples.tsv")
+write_tsv(data_examples, "C:/.../theory_pairs_charClasses_examples.tsv")
