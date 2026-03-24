@@ -102,7 +102,7 @@ end_allowed <- data_inProgress |> filter(
 # Process further only pairs, which have the correct order
 data_inProgress <- bind_rows(ct_allowed, bracket_allowed, whole_allowed, start_allowed, inter_allowed, end_allowed) |> distinct()
 # Prepare to re-check the rest
-data <- bind_rows(data_inProgress, ct_allowed, bracket_allowed)
+data <- bind_rows(data_inProgress, ct_allowed, bracket_allowed) |> distinct()
 # Data examples to check current results
 data_examples <- data |> inner_join(char_classes, by = c("left_charClass" = "charClass")) |>
 						 select(left_charClass, right_charClass, left_symbClass, right_symbClass, chars) |>
@@ -116,4 +116,4 @@ data_examples <- data |> inner_join(char_classes, by = c("left_charClass" = "cha
 check_nrow_left  <- char_classes |> left_join(data_examples |> mutate(f_charClass = left_charClass), by = c("charClass" = "left_charClass")) |> select(charClass, f_charClass) |> distinct()
 check_nrow_right <- char_classes |> left_join(data_examples |> mutate(f_charClass = right_charClass), by = c("charClass" = "right_charClass")) |> select(charClass, f_charClass) |> distinct()
 # Export pairs
-write_tsv(data_examples, "C:/.../theory_pairs_charClasses_examples.tsv")
+write_tsv(data_examples, "C:/.../theory_pairs_charClasses_examples.tsv", quote = "all")
