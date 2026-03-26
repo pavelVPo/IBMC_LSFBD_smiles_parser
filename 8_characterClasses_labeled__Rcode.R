@@ -27,21 +27,21 @@ write_tsv(data_all, "C:/.../theory_pairs_charClasses_rules.tsv")
 # Get the correct subset for l_ct and r_ct
 ct_allowed <- data_all |> filter(
 									# lct is on the left
-									(left_charClass == "l_ct"  & right_charClass %in% c("s_bracket", "w_anything", "w_atom_oal", "w_atom_oar", "s_atom_oal", "s_bm_ire", "s_bm_ire_4", "s_bm_iri", "s_bm_tre", "s_bm_tre_4", "s_bm_tri", "w_bm_iri", "s_bm_tri")) |
+									(left_charClass == "l_ct"  & right_charClass %in% c("s_bracket", "w_anything", "w_atom_oal", "s_atom_oal")) |
 									# rct is on the left
-									(left_charClass == "r_ct"  & right_charClass %in% c("s_bracket", "w_anything", "w_atom_oal", "w_atom_oar", "s_atom_oal", "s_bm_ire", "s_bm_ire_4", "s_bm_iri", "s_bm_tre", "s_bm_tre_4", "s_bm_tri", "w_bm_iri", "s_bm_tri")) |
+									(left_charClass == "r_ct"  & right_charClass %in% c("s_bracket", "w_anything", "w_atom_oal", "s_atom_oal")) |
 									# lct is on the right
 									(right_charClass == "l_ct" & left_charClass  %in% c("w_atom_oal", "w_atom_oar", "w_bm_ibi", "w_bm_iri", "w_bm_tri", "w_bm_tbi")) |
 									# rct is on the right
 									(right_charClass == "r_ct" & left_charClass  %in% c("w_atom_oal", "w_atom_oar", "w_bm_ibi", "w_bm_iri", "w_bm_tri", "w_bm_tbi"))
 								)
 data_inProgress <- data_all |> anti_join(ct_allowed, by = c("left_charClass", "right_charClass")) |> filter(left_charClass != "l_ct" & right_charClass != "l_ct") |> filter(left_charClass != "r_ct" & right_charClass != "r_ct")
-# Get the correct subset including start and end of brackets
+# Get the correct subset including start and end of the square brackets
 bracket_allowed   <- data_inProgress |> filter(
 											# bracket start is on the left
 											(left_charClass == "s_bracket"   & right_charClass %in% c("w_isotope", "s_isotope", "w_anything", "w_atom_bar", "s_atom_bar", "w_atom_bal", "s_atom_bal")) |
 											# bracket start is on the right
-											( right_charClass == "s_bracket" & left_charClass %in% c("e_bracket", "l_ct", "r_ct", "w_anything", "w_aromatic_bond", "w_atom_oal", "w_atom_oar", "w_bm_ibi", "w_bm_iri", "w_bm_tbi", "w_bm_tri", "w_no_bond", "w_quadruple_bond", "w_single_bond", "w_triple_bond")) |
+											( right_charClass == "s_bracket" & left_charClass %in% c("e_bracket", "l_ct", "r_ct", "w_anything", "w_aromatic_bond", "w_atom_oal", "e_atom_oal", "w_atom_oar", "e_atom_oar", "w_bm_ibi", "e_bm_ibe", "w_bm_iri", "e_bm_ire", "r_bm_iri", "r_bm_ire", "w_bm_tbi", "e_bm_tbe", "w_bm_tri", "e_bm_tre", "r_bm_tre", "r_bm_tri", "w_no_bond", "w_quadruple_bond", "w_single_bond", "w_triple_bond")) |
 											# bracket end is on the right
 											(right_charClass == "e_bracket"  & left_charClass %in% c("w_anything", "w_atom_bar", "w_atom_bal", "e_atom_bar", "e_atom_bal", "e_charge", "e_chiral", "e_hydro", "r_charge", "r_chiral", "r_class", "w_hydro")) |
 											# bracket end is on the left
@@ -97,14 +97,23 @@ end_allowed <- data_inProgress |> filter(
 								   		  	   !(left_charClass == "e_charge" & right_charClass == "s_charge_m") &
 								   		  	   !(left_charClass == "e_chiral" & right_charClass == "s_chiral") &
 								   		  	   !(left_charClass == "e_atom_bal" & right_charClass == "s_atom_bal") &
-								   		  	   !(left_charClass == "e_atom_bar" & right_charClass == "s_atom_bar")
+								   		  	   !(left_charClass == "r_class" & right_charClass == "s_class") &
+								   		  	   !(left_charClass == "e_atom_bar" & right_charClass == "s_atom_bar") &
+								   		  	   !(left_charClass %in% c("e_atom_bal", "e_atom_bar", "e_charge", "e_chiral", "e_hydro", "r_charge", "r_chiral", "r_class", "r_isotope") & right_charClass == "s_bracket")
 								   	 )
-# Process further only pairs, which have the correct order
+# Process further only pairs, which have been selected earlier
 data_inProgress <- bind_rows(ct_allowed, bracket_allowed, whole_allowed, start_allowed, inter_allowed, end_allowed) |> distinct()
-# Prepare to re-check the rest
-data <- bind_rows(data_inProgress, ct_allowed, bracket_allowed) |> distinct()
+# Delete the .*bm_ib.* - .*bm_tb.* pairs
+data_inProgress <- data_inProgress |> filter(!(left_charClass %in% c("w_bm_ibi", "s_bm_ibe", "e_bm_ibe") & right_charClass %in% c("w_bm_tbi", "s_bm_tbe", "e_bm_tbe")))
+# Delete the .*bm_ib.* - .*bm_.r.*
+data_inProgress <- data_inProgress |> filter(!(left_charClass %in% c("w_bm_ibi", "s_bm_ibe", "e_bm_ibe") &
+											right_charClass %in% c("w_bm_iri", "w_bm_tri", "s_bm_ire", "e_bm_ire", "s_bm_iri", "r_bm_iri", "s_bm_ire_4", "n_bm_ire",
+																	"r_bm_ire", "s_bm_tre", "e_bm_tre", "s_bm_tre_4", "n_bm_tre", "r_bm_tre", "s_bm_tri", "r_bm_tri")))
+# Delete pairs where e_bm_tbe and [i|t]re obviously interfere
+data_inProgress <- data_inProgress |> filter(!(left_charClass == "e_bm_tbe" & right_charClass %in% c("s_bm_ire", "s_bm_ire_4", "s_bm_tre", "s_bm_tre_4")))
+
 # Data examples to check current results
-data_examples <- data |> inner_join(char_classes, by = c("left_charClass" = "charClass")) |>
+data_examples <- data_inProgress |> inner_join(char_classes, by = c("left_charClass" = "charClass")) |>
 						 select(left_charClass, right_charClass, left_symbClass, right_symbClass, chars) |>
 						 rename(left_chars = chars) |>
 						 inner_join(char_classes, by = c("right_charClass" = "charClass")) |>
