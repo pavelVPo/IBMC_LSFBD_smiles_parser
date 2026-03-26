@@ -847,12 +847,44 @@ After applying this set of simple rules, **479** pairs of symbol classes are lef
 
 The following set of simple rules could be proposed to filter out the undesired pairs of characters belonging to the specific classes:
 
-1.  Characters belonging to the two- and multi-character symbols should be paired in the correct order.
-2.  Characters corresponding to the cis/trans features could be present only outside the square brackets along with the appropriate classes.
-3.  Characters of the symbols corresponding to the start of the brackets could be written on the left side only from the starting isotope or bracket atom symbols.
-4.  Characters of the symbols corresponding to the start of the brackets could be on the right side only from the characters describing symbols belonging to the outside of the brackets and symbol corresponding to the end of the brackets.
-5.  Symbol corresponding to the to the end of the brackets could be on the right side only from the ending bracket atom or bracket property symbols.
-6.  Symbol corresponding to the end of the brackets could be on the left side only from from the character classes belonging to the outside of brackets and symbol corresponding to the start of the brackets.
-7.  Repetition of the symbols inside the square brackets is not allowed.
+**Permissive (sort of) rules:**
 
-With these rules applied only **510** pairings of the character classes left to be checked.
+1.  Characters belonging to the **l_ct** and **r_ct** could precede characters only from the following classes:
+
+    | s_bracket, w_anything, w_atom_oal, s_atom_oal
+
+    This rule is somewhat arbitrary, since some existing parsers allow pairs of characters from other classes defined in this document, others do not. However, arguably, usage of the '\@...' notation is clearer in the cases not allowed by this rule.
+
+2.  Characters belonging to the **l_ct** and **r_ct** could be preceded by the characters only from the following classes:
+
+    | w_atom_oal, w_atom_oar, w_bm_ibi, w_bm_iri, w_bm_tri, w_bm_tbi
+
+3.  **s_bracket** characters could precede only characters from classes describing isotope number, bracket atoms or anything.
+
+4.  **s_bracket** characters could be preceded only by the characters of the classes occurring outside the square brackets.
+
+5.  **e_bracket** characters could precede only the characters of the classes occurring outside the square brackets.
+
+6.  **e_bracket** characters could be preceded only by the characters of the classes occurring inside the square brackets besides the isotopic classes.
+
+7.  Characters in pairs should be written considering the order (**s\_**, **n\_** / **m\_**, **r\_** / **e\_**) both for characters from different and same classes.
+
+8.  In-bracket classes should follow the order of in-bracket symbol classes:
+
+    | **isotope**, **atom_bar** / **atom_bal** / **anything**, **chiral**, **hydro**, **charge**, **class**
+
+    Everything except the bracket atom could be omitted.
+
+**Prohibitive rules:**
+
+1.  Characters belonging to the classes of branching initiators should not precede the characters belonging to the classes of branching terminators.
+
+2.   Characters belonging to the classes of branching initiators should not precede the characters belonging to the classes of rings' initiators / terminators.
+
+3.  Characters belonging to the **e_bm_tbe** (terminator of branching with explicit bond) should not precede any classes containing first characters of the ring initiators with explicit bond:
+
+    | s_bm_ire, s_bm_ire_4, s_bm_tre, s_bm_tre_4
+
+    Since explicit bonds interfere not in a good way.
+
+With these rules applied only 462 pairs of the character classes are left to be verified.
