@@ -887,4 +887,4 @@ The following set of simple rules could be proposed to filter out the undesired 
 
     Since explicit bonds interfere not in a good way.
 
-With these rules applied only 462 pairs of the character classes are left to be verified.
+With these rules applied only 462 pairs of the character classes are left to be verified. Initial check-up of these pairs shows that validity of some of them is questionable (theory_pairs_chairClasses_gathered.tsv). Probably, studying examples will help to decide on them.
