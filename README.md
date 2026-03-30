@@ -897,12 +897,20 @@ Using **1** as an example of w_bm_iri and **\\** as an example of the l_ct chara
 
 | C(=C **1\\** CCCN(c2ccc(C3=NCCN3)cc2)C1)\\c1ccc(C2=NCCN2)cc1
 
-However, no pair was identified where preceding characters were not **=C**, so the whole pattern is
+However, no pair was identified where preceding character were not **=C**, so the whole pattern is
 
 | **=C1\\**
 
 This pattern does not correspond well to the w_bm_iri - l_ct if the whole cis/trans environment will be considered like in example from [<http://opensmiles.org/opensmiles.html>]:
 
-| F/C=C/F
+| F/C **=C/** F
 
-To conclude: questionable pair of character classes **w_bm_iri - l_ct** was identified in ChEMBL v36 on condition that w_bm_iri character is **1** and l_ct character is **\\**.
+To sum up on this example: questionable pair of character classes **w_bm_iri - l_ct** was identified in ChEMBL v36 on condition that w_bm_iri character is **1** and l_ct character is **\\**, but it clearly would be a misidentification considering the whole SMILES string. 
+
+Using **1** as an example of w_bm_iri and **/** as an example of the l_ct characters the search was conducted for the canonical SMILES from ChEMBL v36. Some cases where this pair could be counted as w_bm_iri - l_ct were found, for example:
+
+| COC**1\\**C=C/OC2(C)Oc3c(C)c(O)c4c(c3C2O)C(=O)C=C(NC(=O)/C(C)=C\\C=C\\C(C)C(OC(C)=O)C(C)C(O)C(C)C(OC(C)=O)C1C)C4=O
+
+This case corresponds well to the w_bm_iri - l_ct pair from the example above.
+
+To conclude on the examples of w_bm_iri - l_ct: this pair of character classes could be found in the wild. However, it should be treated with extra care during the further parsing procedure, since identification will be context dependent.
