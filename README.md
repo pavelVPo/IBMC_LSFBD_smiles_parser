@@ -891,18 +891,18 @@ With these rules applied only 462 pairs of the character classes are left to be 
 
 ## Theoretical pairs of character classes, which seem to be questionable
 
-### w_bm_iri -\> l_ct
+### w_bm_iri -> l_ct
 
-Using **1** as an example of w_bm_iri and **\\** as an example of the l_ct characters the search was conducted for the canonical SMILES from ChEMBL v36. Some cases where this pair could be counted as w_bm_iri -\> l_ct were found, for example:
+Using **1** as an example of w_bm_iri and **\** as an example of the l_ct characters the search was conducted for the canonical SMILES from ChEMBL v36. Some cases where this pair could be counted as w_bm_iri -> l_ct were found, for example:
 
-| C(=C**1\\**CCCN(c2ccc(C3=NCCN3)cc2)C1)\\c1ccc(C2=NCCN2)cc1
+| C(=C**1\**CCCN(c2ccc(C3=NCCN3)cc2)C1)\c1ccc(C2=NCCN2)cc1
 
 However, no pair was identified where preceding character were not **=C**, so the whole pattern is
 
-| **=C1\\**
+| **=C1\**
 
-This pattern does not correspond well to the w_bm_iri -\> l_ct if the whole cis/trans environment will be considered like in example from [<http://opensmiles.org/opensmiles.html>]:
+This pattern does not correspond well to the w_bm_iri -> l_ct if the whole cis/trans environment will be considered like in example from [<http://opensmiles.org/opensmiles.html>]:
 
 | F/C**=C/**F
 
-To conclude: questionable pair of character classes **w_bm_iri -\> l_ct** was identified in ChEMBL v36 on condition that w_bm_iri character is **1** and l_ct character is **\\**.
+To conclude: questionable pair of character classes **w_bm_iri -> l_ct** was identified in ChEMBL v36 on condition that w_bm_iri character is **1** and l_ct character is **\**.
