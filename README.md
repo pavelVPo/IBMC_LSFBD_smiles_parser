@@ -913,4 +913,4 @@ Using **1** as an example of w_bm_iri and **/** as an example of the l_ct charac
 
 This case corresponds well to the w_bm_iri - l_ct pair from the example above.
 
-To conclude on the examples of w_bm_iri - l_ct: this pair of character classes could be found in the wild. However, it should be treated with extra care during the further parsing procedure, since identification will be context dependent.
+To conclude on the examples of w_bm_iri - l_ct: this pair of character classes could be found in the wild. However, it should be treated with an extra care during the further parsing procedure, since identification will be context dependent.
