@@ -909,7 +909,7 @@ To sum up on this example: questionable pair of character classes **w_bm_iri - l
 
 Using **1** as an example of w_bm_iri and **/** as an example of the l_ct characters the search was conducted for the canonical SMILES from ChEMBL v36. Some cases where this pair could be counted as w_bm_iri - l_ct were found, for example:
 
-| COC**1\\**C=C/OC2(C)Oc3c(C)c(O)c4c(c3C2O)C(=O)C=C(NC(=O)/C(C)=C\\C=C\\C(C)C(OC(C)=O)C(C)C(O)C(C)C(OC(C)=O)C1C)C4=O
+| COC **1\\** C=C/OC2(C)Oc3c(C)c(O)c4c(c3C2O)C(=O)C=C(NC(=O)/C(C)=C\\C=C\\C(C)C(OC(C)=O)C(C)C(O)C(C)C(OC(C)=O)C1C)C4=O
 
 This case corresponds well to the w_bm_iri - l_ct pair from the example above.
 
