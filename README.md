@@ -897,7 +897,7 @@ Using **1** as an example of w_bm_iri and **\\** as an example of the l_ct chara
 
 | C(=C **1\\** CCCN(c2ccc(C3=NCCN3)cc2)C1)\\c1ccc(C2=NCCN2)cc1
 
-However, no pair was identified where preceding character were not **=C**, so the whole pattern is
+However, no pair was identified where preceding characters were not **=C**, so the whole pattern is
 
 | **=C1\\**
 
