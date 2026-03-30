@@ -888,3 +888,17 @@ The following set of simple rules could be proposed to filter out the undesired 
     Since explicit bonds interfere not in a good way.
 
 With these rules applied only 462 pairs of the character classes are left to be verified. Initial check-up of these pairs shows that validity of some of them is questionable (theory_pairs_chairClasses_gathered.tsv). Probably, studying examples will help to decide on them.
+
+## Theoretical pairs of character classes, which seem to be questionable
+
+### w_bm_iri -\> l_ct
+
+Using **1** as an example of w_bm_iri and **\\** as an example of the l_ct the search was conducted for the canonical SMILES from ChEMBL v36. Some cases where this pair could be counted as l_ct were found, for example:
+
+| C(=C**1\\**CCCN(c2ccc(C3=NCCN3)cc2)C1)\\c1ccc(C2=NCCN2)cc1
+
+However, no pair was identified where preceding character were not **=C**, so the whole pattern is
+
+| **=C1\\**
+
+This pattern corresponds well to the r_ct, not l_ct.
