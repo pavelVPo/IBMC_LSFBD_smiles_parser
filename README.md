@@ -929,3 +929,40 @@ Using **1** as an example of w_bm_iri and **/** as an example of the r_ct charac
 
 **To conclude on the examples of w_bm_iri - l_ct:** corresponding pair of character classes could be found in the wild.
 
+### w_atom_oar - l_ct
+
+Using **c** as an example of w_atom_oar and **\\** as an example of the l_ct characters the search was conducted for the canonical SMILES from ChEMBL v36. Some cases where this pair could be counted as w_atom_oar - l_ct were found, for example:
+
+| CN1CCC(c2c(O)cc(O)c3c(O)**c/**c(=N\\c4ccccc4)oc23)C(O)C1
+
+**To conclude on the examples of w_atom_oar - l_ct:** corresponding pair of character classes could be found in the wild.
+
+### w_atom_oar - w_double_bond
+
+Using **c** as an example of w_atom_oar and **=** as an example of the w_double_bond characters the search was conducted for the canonical SMILES from ChEMBL v36. Some cases where this pair could be counted as w_atom_oar - w_double_bond were found, for example:
+
+| O=c1c2[nH]c3ccc4ccccc4c3s **c=** 2c(=O)c2ccccc12
+
+**To conclude on the examples of w_atom_oar - w_double_bond:** corresponding pair of character classes could be found in the wild.
+
+Main kinds of the questionable pairs of character are actually legible, however, some attention is required while parsing them.
+
+## Current status and furhter objectives
+
+So, at this point symbols and characters allowed in SMILES are enumerated and classified, their relations are somewhat described, general parsing strategy is proposed.
+
+Thus, it is possible to
+
+-   design the data structure to store the parsed results
+
+-   create basic realization of the parser
+
+After that it will be possible to adjust this realization using
+
+-   stats already obtained
+
+-   stats, which could be gathered using publicly available sources
+
+## Data structure to store the results of SMILES parsing
+
+
