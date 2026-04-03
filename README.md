@@ -965,4 +965,62 @@ After that it will be possible to adjust this realization using
 
 ## Data structure to store the results of SMILES parsing
 
+Probably, any in-computer representation of something could be characterized by the following aspects:
 
+-   Human readability
+
+-   Time and space (computational and storing) efficiency
+
+-   Interchangeability
+
+First two aspects are often in conflict, for example: one can read string and can not read the raw binary data, but human readable string usually takes more space to be stored and more time for processing than corresponding piece of the binary data.
+
+Interchangeability here is defined as the ability for the data structure to be submitted elsewhere without further processing or with minimal processing. Interchangeability rather depends on the existing conventions, established practices.
+
+Given that the basic realization of the parser is going to be designed and developed, it is safe to say that human readability and interchangeability are of priority.
+
+From this, JSON (JavaScript Object Notation, <https://www.json.org/json-en.html>) seems to be a good choice: text format, which is completely language independent.
+
+Substantially, as it was mentioned earlier, SMILES string contains information on atoms and bonds between them. Atoms and bonds could be used to describe the chemical structure further. Thus, it will be useful to have distinct, but related, records for them.
+
+Thus, JSON object containing records on atoms and bonds between them is the desired output of the SMILES parser.
+
+### Description of atoms
+
+As it became clear from the OpenSMILES documentation and RSF 23-73-01058 (<https://github.com/RSF-23-73-01058/test_get-generic-scaffold-from-smiles>) the following parameters of atoms seem to be important to generate / parse and store:
+
+-   Atom ID
+
+-   Symbol
+
+-   is organic
+
+-   is aromatic
+
+-   is in brackets
+
+-   isotope
+
+-   chirality
+
+-   number of hydrogens
+
+-   charge
+
+-   class
+
+### Description of bonds
+
+As it became clear from the OpenSMILES documentation and RSF 23-73-01058 (<https://github.com/RSF-23-73-01058/test_get-generic-scaffold-from-smiles>) the following parameters of bonds seem to be important to generate / parse and store:
+
+-  Bond ID
+
+-  Atom_1 ID
+
+-  Atom_2 ID
+
+-  Type
+
+-  is ring initiator/terminator
+
+-  is branch initiator/terminator
