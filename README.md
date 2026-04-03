@@ -1024,3 +1024,48 @@ As it became clear from the OpenSMILES documentation and RSF 23-73-01058 (<https
 -  is ring initiator/terminator
 
 -  is branch initiator/terminator
+
+ ## Basic parser
+
+Parser should be written in some programming language, as of early 2026 C++ (generally speaking) seems to be a good option:
+
+-   well established language, which has standards, reference documentation and examples
+
+-   performance is considered to be high
+
+-   is +/- known to the people outside of its community (like me), since syntax is influential: many other programming languages have somewhat similar syntax
+
+-   compiled code could be called from many different environments relatively easy
+
+-   code could be compiled to a WebAssembly module and be used in browser
+
+The last two points are the main reasons in this case.
+
+As it was mentioned, the following strategy of parsing is proposed:
+
+1.  Computer program accepts the SMILES string, i.e., an ordered sequence of characters having chemical meaning as described previously.
+
+2.  Computer program process this string from left to right one character at time.
+
+    **What is meant by "computer program process"?**
+
+    | - Computer program has default state.
+    | - Every time computer program encounters new (next) character, state of the computer program changes accordingly (taking into account program's current state and what character it encounters).
+    | - At each step computer program takes some action to produce an output.
+
+3.  Computer program produces an output.
+
+So, for starters, some code should be written to process each and every character in the SMILES string from left to right. As it can be seen from <https://en.cppreference.com/w/cpp/language/while.html>
+
+**while** is an option to do just that.
+
+Thus, the code of the SMILES parser in general could look like this:
+
+```         
+while (i < smiles_str.length()) {
+  // process i-th character
+  // modify the object containing the results
+  i++;
+}
+```
+
