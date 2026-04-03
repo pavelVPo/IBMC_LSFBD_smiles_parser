@@ -913,4 +913,19 @@ Using **1** as an example of w_bm_iri and **/** as an example of the l_ct charac
 
 This case corresponds well to the w_bm_iri - l_ct pair from the example above.
 
-To conclude on the examples of w_bm_iri - l_ct: this pair of character classes could be found in the wild. However, it should be treated with an extra care during the further parsing procedure, since identification will be context dependent.
+To conclude on the examples of w_bm_iri - l_ct: corresponding pair of character classes could be found in the wild. However, it should be treated with an extra care during the further parsing procedure, since identification will be context dependent.
+
+### w_bm_iri - r_ct
+
+Using **1** as an example of w_bm_iri and **\\** as an example of the l_ct characters the search was conducted for the canonical SMILES from ChEMBL v36. Some cases where this pair could be counted as w_bm_iri - l_ct were found, for example:
+
+| C#C/C=C **1\\** CCC(c2cccc3ccccc23)C(=O)O1
+
+This case corresponds well to the w_bm_iri - r_ct pair from the example above.
+
+Using **1** as an example of w_bm_iri and **/** as an example of the r_ct characters the search was conducted for the canonical SMILES from ChEMBL v36. Some cases where this pair could be counted as w_bm_iri - r_ct were found, for example:
+
+| C/C=C/C=C/C(O)=C **1/** C(=O)[C\@](C)(O)C(=O)C(C)=C1O
+
+**To conclude on the examples of w_bm_iri - l_ct:** corresponding pair of character classes could be found in the wild.
+
