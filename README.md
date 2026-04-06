@@ -1062,10 +1062,22 @@ So, for starters, some code should be written to process each and every characte
 Thus, the code of the SMILES parser in general could look like this:
 
 ```         
+// not to run
 while (i < smiles_str.length()) {
-  // process i-th character
-  // modify the object containing the results
+  // process i-th character:
+  //    check state
+  //    find character among the lableled characters
+  //    If needed:
+  //      update output in accordance with the current state and character's label
+  //      update state
   i++;
 }
 ```
 
+From this code block it could be seen that some variables should be initialized prior to the main loop:
+
+-   variable (object) to store the results
+
+-   variable (objects) to store the state
+
+-   variable(s) (objects) to store characters' labels and rules for processing
