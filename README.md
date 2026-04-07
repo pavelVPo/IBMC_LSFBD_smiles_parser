@@ -1081,3 +1081,44 @@ From this code block it could be seen that some variables should be initialized 
 -   variable (objects) to store the state
 
 -   variable(s) (objects) to store characters' labels and rules for processing
+
+### Rust
+
+On the other hand, Rust also seems to be an appropriate option for the task:
+
+-   modern language: less legacy things both in terms of the code and documentation, which makes the search for information and actual coding much easier for beginners; ecosystem seems to be pretty compact and well structured
+
+-   performance is considered to be high
+
+-   venerated memory safety (probably not a deal breacker in the context of this task, but people could consider the resulting tool more reliable because of that)
+
+-   compiled code could be called from many different environments
+
+-   code could be compiled to a WebAssembly module and used in browser and is, as I can see, language is being developed with this option in mind
+
+-   build with the ideas of functional programming in mind (opinionated)
+
+### C++ vs Rust for the task according to the author's opinion
+
+On the first glance for me it will be easier to use Rust considering the task, since it is more function-oriented, compact in the terms of documentation and standards, has memory safety.
+
+It is an opinionated choice: no problem with C++, it allows to make things differently and safely, but C++ way will be harder generally due to the fact that there are a lot of things on it, many of which are object-oriented and are way too much for the task.
+
+#### What is important:
+
+It is assumed that the results of this work will be used to feed the tools from R, JavaScript and Python ecosystems. How is it possible?
+
+**C++ to R**, for example there is Rcpp package for that (<https://cran.r-project.org/web/packages/Rcpp/index.html>) it works fine.
+
+**C++ to JavaScript (via Wasm)**, it surely works: <https://developer.mozilla.org/en-US/docs/WebAssembly/Guides/C_to_Wasm>
+
+**C++ to Python**, definitely there are ways to do that, for example: <https://docs.python.org/3/extending/building.html#building>
+
+**Rust to R**, there is extendR (<https://cran.r-project.org/web/packages/rextendr/index.html>)
+
+**Rust to JavaScript (via Wasm)**, it surely works: <https://developer.mozilla.org/en-US/docs/WebAssembly/Guides/Rust_to_Wasm>
+
+**Rust to Python,** there are ways to do that, for example: <https://github.com/pyo3/pyo3>
+
+So, no surprise: both languages considered could be used for the task, however, using Rust is probably a more straightforward way. Time to read and check (<https://doc.rust-lang.org/book/>)
+
