@@ -947,7 +947,7 @@ Using **c** as an example of w_atom_oar and **=** as an example of the w_double_
 
 Main kinds of the questionable pairs of character are actually legible, however, some attention is required while parsing them.
 
-## Current status and furhter objectives
+## Current status and further objectives
 
 So, at this point symbols and characters allowed in SMILES are enumerated and classified, their relations are somewhat described, general parsing strategy is proposed.
 
