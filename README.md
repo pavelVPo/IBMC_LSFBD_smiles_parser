@@ -1144,7 +1144,7 @@ Lets assume the SMILES parser is needed to parse strings describing structures c
 
 Many alkanes / alkenes (important organic molecules) are like this, thus, such a parser is not a joke.
 
-The code in Rust will be as follows:
+The code in Rust will be as follows (I used online Rust playground to write and test it, https://play.rust-lang.org/?version=stable&mode=debug&edition=2024):
 
 ``` {.Rust .Rust}
 fn main() {
