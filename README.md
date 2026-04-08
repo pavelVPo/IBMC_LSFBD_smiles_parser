@@ -1129,7 +1129,7 @@ From what I have read so far it is quite clear that Rust is more than enough for
 **Thus, Rust.**
 
 | It should be noted that this decision is not so spontaneous as it may seems from the text above: over the years I have read news and discussions on the topic
-| and still read, when I have time:
+| and still read, when I have time
 | see <https://habr.com/> 
 | see <https://news.ycombinator.com/>
 | various books and other sources
