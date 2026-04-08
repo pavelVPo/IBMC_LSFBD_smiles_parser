@@ -1104,7 +1104,7 @@ On the first glance for me it will be easier to use Rust considering the task, s
 
 It is an opinionated choice: no problem with C++, it allows to make things differently and safely, but C++ way will be harder generally due to the fact that there are a lot of things on it, many of which are object-oriented and are way too much for the task.
 
-#### What is important:
+#### What is important
 
 It is assumed that the results of this work will be used to feed the tools from R, JavaScript and Python ecosystems. How is it possible?
 
@@ -1122,3 +1122,14 @@ It is assumed that the results of this work will be used to feed the tools from 
 
 So, no surprise: both languages considered could be used for the task, however, using Rust is probably a more straightforward way. Time to read and check (<https://doc.rust-lang.org/book/>)
 
+#### Decision
+
+From what I have read so far it is quite clear that Rust is more than enough for me to proceed with the task: it has `structs` for the desired output, `mutables` in general to deal with the state, `references` to deal with the distinct characters from SMILES string in a safe and efficient way, `enums` to check multiple conditions and compact ecosystem.
+
+Thus, Rust.
+
+| It should be noted that this decision is not so spontaneous as it may seems from the text above: over the years I have read news and discussions on the topic and still read, when I have time:
+| <https://habr.com/> 
+| <https://news.ycombinator.com/>
+| various books and other sources
+| What is even more important I had a chance to talk with the people, colleagues, having experience and achievements in the field and did some work helping to understand what is what.
