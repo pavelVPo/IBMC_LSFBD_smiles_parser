@@ -1143,3 +1143,220 @@ Lets assume the SMILES parser is needed to parse strings describing structures c
 | CCC=CCC
 
 Many alkanes / alkenes (important organic molecules) are like this, thus, such a parser is not a joke.
+
+The code in Rust will be as follows:
+
+``` {.Rust .Rust}
+fn main() {
+use std::collections::HashSet; // data structures to store the conditions
+use serde::Serialize;          // to get JSON from Struct
+// define empty structs to store the results in  the desired format
+    #[derive(Serialize)]
+    #[derive(Clone)]
+    struct Atom {
+        atom_id: u32, // because, who knows?
+        symbol: String,
+        is_organic: bool,
+        is_aromatic: bool,
+        isin_bracket: bool,
+        isotope: u8,
+        chirality: String,
+        n_hydrogens: u8,
+        charge: i8,
+        class: String
+    }
+    #[derive(Serialize)]
+    #[derive(Clone)]
+    struct Bond {
+        bond_id: u32,
+        atom_one: u32,
+        atom_two: u32,
+        bond_type: char
+    }
+    #[derive(Serialize)]
+    struct Structure {
+        atoms: Vec<Atom>,
+        bonds: Vec<Bond>
+    }
+    // define the functions to parse limited SMILES
+    fn parse_smiles(smiles_string: String) -> Structure {
+        // define hash sets to store the allowed characters
+        let mut allowed_atom: HashSet<char> = HashSet::new();
+        let mut allowed_bond: HashSet<char> = HashSet::new();
+        allowed_atom.insert('C');
+        allowed_bond.insert('=');
+        // define mutable to store the state
+        let mut current_state: String = "".to_string();
+        let mut prev_state: String = "".to_string();
+        let mut current_atom_id: u32 = 1;
+        let mut current_bond_id: u32 = 1;
+        // Traverse the SMILES string filling the output
+        let mut structure = Structure {
+            atoms: Vec::new(),
+            bonds: Vec::new()
+        };
+        for smiles_char in smiles_string.chars() {
+            // update state
+            if allowed_atom.contains(&smiles_char) {
+                current_state = "atom".to_string();
+            }
+            if allowed_bond.contains(&smiles_char) {
+                current_state = "bond".to_string();
+            }
+            println!("---");
+            println!("previous state: {}", &prev_state.to_string());
+            println!("current state: {}", &current_state.to_string());
+            // Update the output
+            if prev_state == "" && current_state == "atom" {
+                // prepare on the first atom
+                let first_atom = Atom {
+                    atom_id: current_atom_id,
+                    symbol: "C".to_string(),
+                    is_organic: true,
+                    is_aromatic: false,
+                    isin_bracket: false,
+                    isotope: 0,
+                    chirality: "".to_string(),
+                    n_hydrogens: 0,
+                    charge: 0,
+                    class: "".to_string()
+                };
+                // push the results
+                structure.atoms.push(first_atom.clone());
+                // increase atom id
+                current_atom_id = current_atom_id + 1;
+            }
+            if prev_state == "atom" && current_state == "atom" {
+                println!("atom-atom");
+                // Add the data on the previous bond and current atom
+                let typical_atom = Atom {
+                    atom_id: current_atom_id,
+                    symbol: "C".to_string(),
+                    is_organic: true,
+                    is_aromatic: false,
+                    isin_bracket: false,
+                    isotope: 0,
+                    chirality: "".to_string(),
+                    n_hydrogens: 0,
+                    charge: 0,
+                    class: "".to_string()
+                };
+                let typical_bond = Bond {
+                    bond_id: current_bond_id,
+                    atom_one: current_atom_id - 1,
+                    atom_two: current_atom_id,
+                    bond_type: '-'
+                };
+                // Push the results to the structure
+                structure.atoms.push(typical_atom.clone());
+                structure.bonds.push(typical_bond.clone());
+                current_bond_id = current_bond_id + 1;
+                current_atom_id = current_atom_id + 1;
+            }
+            if prev_state == "bond" && current_state == "atom" {
+                println!("bond-atom");
+                // Add the data on the previous bond and current atom
+                let right_atom = Atom {
+                    atom_id: current_atom_id,
+                    symbol: "C".to_string(),
+                    is_organic: true,
+                    is_aromatic: false,
+                    isin_bracket: false,
+                    isotope: 0,
+                    chirality: "".to_string(),
+                    n_hydrogens: 0,
+                    charge: 0,
+                    class: "".to_string()
+                };
+                let double_bond = Bond {
+                    bond_id: current_bond_id,
+                    atom_one: current_atom_id - 1,
+                    atom_two: current_atom_id,
+                    bond_type: '='
+                };
+                // Push the results to structure
+                structure.atoms.push(right_atom.clone());
+                structure.bonds.push(double_bond.clone());
+                current_bond_id = current_bond_id + 1;
+                current_atom_id = current_atom_id + 1;
+            }
+            // Update previous state
+            prev_state = current_state.clone();
+        }
+        // Return the value
+        structure
+    }
+    // Execute
+    let structure_rslt = parse_smiles("CC=C".to_string());
+    let structure_json = serde_json::to_string_pretty(&structure_rslt).unwrap();
+    println!("{}", structure_json);
+}
+```
+
+Basically, this is the whole thing. However, logic should be extended, which will require changes to handle complexity; additional check-up and optimisations are required.
+
+Still, with the given input:
+
+> CC=C
+
+This toy parser produces the following output:
+
+``` JSON
+{
+  "atoms": [
+    {
+      "atom_id": 1,
+      "symbol": "C",
+      "is_organic": true,
+      "is_aromatic": false,
+      "isin_bracket": false,
+      "isotope": 0,
+      "chirality": "",
+      "n_hydrogens": 0,
+      "charge": 0,
+      "class": ""
+    },
+    {
+      "atom_id": 2,
+      "symbol": "C",
+      "is_organic": true,
+      "is_aromatic": false,
+      "isin_bracket": false,
+      "isotope": 0,
+      "chirality": "",
+      "n_hydrogens": 0,
+      "charge": 0,
+      "class": ""
+    },
+    {
+      "atom_id": 3,
+      "symbol": "C",
+      "is_organic": true,
+      "is_aromatic": false,
+      "isin_bracket": false,
+      "isotope": 0,
+      "chirality": "",
+      "n_hydrogens": 0,
+      "charge": 0,
+      "class": ""
+    }
+  ],
+  "bonds": [
+    {
+      "bond_id": 1,
+      "atom_one": 1,
+      "atom_two": 2,
+      "bond_type": "-"
+    },
+    {
+      "bond_id": 2,
+      "atom_one": 2,
+      "atom_two": 3,
+      "bond_type": "="
+    }
+  ]
+}
+```
+
+Which is correct.
+
