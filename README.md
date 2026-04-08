@@ -1131,7 +1131,7 @@ From what I have read so far it is quite clear that Rust is more than enough for
 > It should be noted that this decision is not so spontaneous as it may seems from the text above: over the years I have read news and discussions on the topic and still read, when I have time  
 > <https://habr.com/>  
 > <https://news.ycombinator.com/>  
-> various books and other sources  
+> various books and other sources (I did not mention publications in the scientific peer-reviewed journals specifically, since reading them is like cheating, I mean, it may require some additional, not directly related to the task, skills, but probably all the concepts, which are in active use these days, could be traced back to such publications)  
 > What is even more important I had a chance to talk with the people, colleagues, having experience and achievements in the field and did some work helping to understand what is what.
 
 #### Proof-of-concept, toy SMILES parser
