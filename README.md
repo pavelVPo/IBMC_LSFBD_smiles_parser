@@ -1128,11 +1128,13 @@ From what I have read so far it is quite clear that Rust is more than enough for
 
 **Thus, Rust.**
 
-| It should be noted that this decision is not so spontaneous as it may seems from the text above: over the years I have read news and discussions on the topic and still read, when I have time:
-| <https://habr.com/> 
-| <https://news.ycombinator.com/>
+| It should be noted that this decision is not so spontaneous as it may seems from the text above: over the years I have read news and discussions on the topic
+| and still read, when I have time:
+| see <https://habr.com/> 
+| see <https://news.ycombinator.com/>
 | various books and other sources
-| What is even more important I had a chance to talk with the people, colleagues, having experience and achievements in the field and did some work helping to understand what is what.
+| What is even more important I had a chance to talk with the people, colleagues, having experience and achievements in the field and
+| did some work helping to understand what is what.
 
 #### Proof-of-concept, toy SMILES parser
 
