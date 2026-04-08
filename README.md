@@ -1136,6 +1136,8 @@ From what I have read so far it is quite clear that Rust is more than enough for
 | What is even more important I had a chance to talk with the people, colleagues, having experience and achievements in the field and
 | did some work helping to understand what is what.
 
+OK
+
 #### Proof-of-concept, toy SMILES parser
 
 Still, it is hard to deduce all the possible obstacles from selective reading of the fascinating things only. To mitigate existing limitations it is possible to craft a toy parser with Rust, make Wasm module and check it alive before the deeper dive into analysis of SMILES strings.
