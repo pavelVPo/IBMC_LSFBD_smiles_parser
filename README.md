@@ -1124,7 +1124,7 @@ So, no surprise: both languages considered could be used for the task, however, 
 
 #### Decision
 
-From what I have read so far it is quite clear that Rust is more than enough for me to proceed with the task: it has `structs` for the desired output, `mutables` in general to deal with the state, `references` to deal with the distinct characters from SMILES string in a safe and efficient way, `enums` to check multiple conditions and compact ecosystem.
+From what I have read so far it is quite clear that Rust is more than enough for me to proceed with the task: it has `structs` for the desired output, `mutables` in general to deal with the state, `references` to deal with the distinct characters from SMILES string in a safe and efficient way, `enums` or `HashSet` to check multiple conditions and compact ecosystem.
 
 **Thus, Rust.**
 
