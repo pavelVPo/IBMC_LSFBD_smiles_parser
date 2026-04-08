@@ -1358,4 +1358,4 @@ This toy parser produces the following output:
 }
 ```
 
-Which is correct. Thus, this toy / Proof-of-Concept example demonstrates for me that Rust is aligned well with the task.
+Which is correct. Thus, this toy / Proof-of-Concept example demonstrates for me that Rust is aligned well with the task. Must admit, memory safety and object-oriented things should be taken seriously during further development.
