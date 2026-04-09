@@ -1362,3 +1362,24 @@ This toy parser produces the following output:
 ```
 
 Which is correct. Thus, this toy / Proof-of-Concept example demonstrates for me that Rust is aligned well with the task. Must admit, memory safety and object-oriented things should be taken seriously during further development.
+
+##### Compiling toy parser module to Web Assembly
+
+In short, compilation using very clear instructions from
+
+<https://developer.mozilla.org/en-US/docs/WebAssembly/Guides/Rust_to_Wasm>
+
+was successful
+
+<https://github.com/pavelVPo/IBMC_LSFBD_test_smiles_parser_Rust>
+
+Not for production, just a test: code is not mature.
+
+##### Licensing
+
+**Rust (1.94.1)**, <https://rust-lang.org/> : [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) OR [MIT license](http://opensource.org/licenses/MIT)
+
+**wasm-pack**, <https://www.npmjs.com/package/wasm-pack> : [MIT license](http://opensource.org/licenses/MIT) OR [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+**wasm-bindgen**, <https://github.com/wasm-bindgen/wasm-bindgen> : [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) OR [MIT license](http://opensource.org/licenses/MIT)
+
