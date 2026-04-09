@@ -1146,6 +1146,9 @@ Many alkanes / alkenes (important organic molecules) are like this, thus, such a
 
 The code in Rust will be as follows (I used online Rust playground to write and test it, https://play.rust-lang.org/?version=stable&mode=debug&edition=2024):
 
+> [!NOTE]
+> This code is not intended to be used in production
+
 ``` {.Rust .Rust}
 fn main() {
 use std::collections::HashSet; // data structures to store the conditions
