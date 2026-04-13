@@ -1383,3 +1383,10 @@ Not for production, just a test: code is not mature.
 
 **wasm-bindgen**, <https://github.com/wasm-bindgen/wasm-bindgen> : [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) OR [MIT license](http://opensource.org/licenses/MIT)
 
+**serde**, <https://crates.io/crates/serde> : [MIT license](http://opensource.org/licenses/MIT) OR [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+##### Lessons learned from the toy parser writing and compiling
+
+1.  Rust does not have the native JSON support, thus, additional code is needed to serialize / deserialize the data. Whether to use serde crate (<https://crates.io/crates/serde>) for Rust or write some dedicated code is the question. Probably, the usage of the dedicated crate is the optimal way, since serialization / deserialization is the common task, serde with the large user base exists, thus, serde.
+
+2.  Important part of the desired parser is the `state` variable, since it will store parameters essential for parsing. The example above shows that the previous symbol is important for the successful parsing. Thus, previous work on SMILES analysis will help a lot a would continued and finalized with this understanding.
