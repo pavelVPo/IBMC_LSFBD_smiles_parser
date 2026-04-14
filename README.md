@@ -843,6 +843,10 @@ nrow(pairs_symbClass)
 
 After applying this set of simple rules, **479** pairs of symbol classes are left, the following check-ups will be conducted on the level of character classes.
 
+> [!NOTE]
+> Several cases where rules are violated were found, thus, an update is needed.
+> Also, the strategy probably should be reconsidered: more focused approach should be better.
+
 ## Pairs of character classes, which are allowed in SMILES
 
 The following set of simple rules could be proposed to filter out the undesired pairs of characters belonging to the specific classes:
