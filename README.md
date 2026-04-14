@@ -846,6 +846,10 @@ Also, characters could be paired with the characters from the same symbol classe
 
 After applying this set of simple rules, **479** pairs of symbol classes are left, the following check-ups will be conducted on the level of character classes.
 
+### Checking pairs of symbol classes
+
+To check the results of rules application it is possible to generate the examples of symbol pairs from the aforementioned classes.
+
 > [!NOTE]
 > Several cases where rules are violated were found, thus, an update is needed.
 > Also, the strategy probably should be reconsidered: more focused approach should be better.
