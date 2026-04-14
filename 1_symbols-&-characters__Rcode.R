@@ -96,7 +96,7 @@ charClass_cntr <- charClass_cntr + 1
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c('b', 'c', 'n', 'o', 's', 'p') |> sort()
 class <- "atom_bar"
-symbClass_description <- "Single character atom symbols of organic aliphatic atoms lacking the additional features"
+symbClass_description <- "Single character atom symbols of in-bracket aromatic atoms"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -116,7 +116,7 @@ charClass_cntr <- charClass_cntr + 1
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c('H', 'B', 'C', 'N', 'O', 'F', 'P', 'S', 'K', 'V', 'Y', 'I', 'W', 'U') |> sort()
 class <- "atom_bal"
-symbClass_description <- "Single character atom symbols of organic aliphatic atoms lacking the additional features"
+symbClass_description <- "Single character atom symbols of in-bracket aliphatic atoms"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -164,7 +164,7 @@ charClass_cntr <- charClass_cntr + 1
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c('se', 'as', 'te') |> sort()
 class <- "atom_bar_2"
-symbClass_description <- "Two character atom symbols of organic aliphatic atoms lacking the additional features"
+symbClass_description <- "Two character atom symbols of bracket aromatic atoms"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -196,7 +196,7 @@ symbols <- c('He', 'Li', 'Be', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'Cl', 'Ar', 'Ca', '
                           'Ds', 'Rg', 'Cn', 'Fl', 'Lv', 'La', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Tb', 'Dy', 'Ho', 'Er', 'Tm', 'Yb', 'Lu', 'Ac', 'Th', 'Pa', 'Np', 'Pu', 'Am',
                           'Cm', 'Bk', 'Cf', 'Es', 'Fm', 'Md', 'No', 'Lr') |> sort()
 class <- "atom_bal_2"
-symbClass_description <- "Two character atom symbols of aliphatic atoms, which should be enclosed within the square brackets"
+symbClass_description <- "Two character atom symbols of in-bracket aliphatic atoms"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -288,6 +288,7 @@ symbType_description <- "Bond symbol is the way to designate the edge of the mol
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c("-") |> sort()
 class <- "single_bond"
+symbClass_description <- "Single character symbol of single bond"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -308,6 +309,7 @@ charClass_cntr <- charClass_cntr + 1
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c("=") |> sort()
 class <- "double_bond"
+symbClass_description <- "Single character symbol of double bond"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -328,6 +330,7 @@ charClass_cntr <- charClass_cntr + 1
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c("#") |> sort()
 class <- "triple_bond"
+symbClass_description <- "Single character symbol of triple bond"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -349,6 +352,7 @@ symb__quadruple_bond <- c("$")
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c("$") |> sort()
 class <- "quadruple_bond"
+symbClass_description <- "Single character symbol of quadruple bond"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -369,6 +373,7 @@ charClass_cntr <- charClass_cntr + 1
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c(":") |> sort()
 class <- "aromatic_bond"
+symbClass_description <- "Single character symbol of aromatic bond"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -389,6 +394,7 @@ charClass_cntr <- charClass_cntr + 1
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c(".") |> sort()
 class <- "no_bond"
+symbClass_description <- "Single character symbol of no bond"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -414,6 +420,7 @@ symbType_description <- "Bond multiplying symbols is used in SMILES to extend th
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c("(") |> sort()
 class <- "bm_ibi"
+symbClass_description <- "Single character bond multiplying symbols initiators of branching with implicit bond"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -434,6 +441,7 @@ charClass_cntr <- charClass_cntr + 1
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c('0', '1', '2', '3', '4', '5', '6', '7', '8', '9') |> sort()
 class <- "bm_iri"
+symbClass_description <- "Single character bond multiplying symbols initiators of rings with implicit bond"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -454,6 +462,7 @@ charClass_cntr <- charClass_cntr + 1
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c(')') |> sort()
 class <- "bm_tbi"
+symbClass_description <- "Single character bond multiplying symbols terminators of branching with implicit bond"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -474,6 +483,7 @@ charClass_cntr <- charClass_cntr + 1
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c('0', '1', '2', '3', '4', '5', '6', '7', '8', '9') |> sort()
 class <- "bm_tri"
+symbClass_description <- "Single character bond multiplying symbols terminators of rings with implicit bond"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -494,6 +504,7 @@ charClass_cntr <- charClass_cntr + 1
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c('(-', '(=', '(#', '($', '(:', '(.') |> sort()
 class <- "bm_ibe_2"
+symbClass_description <- "Two character bond multiplying symbols initiators of branching with explicit bond"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -532,6 +543,7 @@ symbols <- c('-0', '=0', '#0', '$0', ':0', '.0',
 '-8', '=8', '#8', '$8', ':8', '.8',
 '-9', '=9', '#9', '$9', ':9', '.9' ) |> sort()
 class <- "bm_ire_2"
+symbClass_description <- "Two character bond multiplying symbols initiators of rings with explicit bond"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -569,6 +581,7 @@ symbols <- c( '%01', '%02', '%03', '%04', '%05', '%06', '%07', '%08', '%09', '%1
 '%81', '%82', '%83', '%84', '%85', '%86', '%87', '%88', '%89', '%90',
 '%91', '%92', '%93', '%94', '%95', '%96', '%97', '%98', '%99' ) |> sort()
 class <- "bm_iri_3"
+symbClass_description <- "Three character bond multiplying symbols initiators of rings with implicit bond"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -696,6 +709,7 @@ symbols <- c('-%01', '=%01', '#%01', '$%01', ':%01', '.%01',
 '-%98', '=%98', '#%98', '$%98', ':%98', '.%98',
 '-%99', '=%99', '#%99', '$%99', ':%99', '.%99') |> sort()
 class <- "bm_ire_4"
+symbClass_description <- "Four character bond multiplying symbols initiators of rings with explicit bond"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -733,6 +747,7 @@ charClass_cntr <- charClass_cntr + 1
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c(')-', ')=', ')#', ')$', '):', ').') |> sort()
 class <- "bm_tbe_2"
+symbClass_description <- "Two character bond multiplying symbols terminators of branching with explicit bond"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -771,6 +786,7 @@ symbols <- c('-0', '=0', '#0', '$0', ':0', '.0',
                 '-8', '=8', '#8', '$8', ':8', '.8',
                 '-9', '=9', '#9', '$9', ':9', '.9' ) |> sort()
 class <- "bm_tre_2"
+symbClass_description <- "Two character bond multiplying symbols terminators of rings with explicit bond"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -898,6 +914,7 @@ symbols <- c('-%01', '=%01', '#%01', '$%01', ':%01', '.%01',
 '-%98', '=%98', '#%98', '$%98', ':%98', '.%98',
 '-%99', '=%99', '#%99', '$%99', ':%99', '.%99') |> sort()
 class <- "bm_tre_4"
+symbClass_description <- "Four character bond multiplying symbols terminators of rings with explicit bond"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -943,6 +960,7 @@ symbols <- c( '%01', '%02', '%03', '%04', '%05', '%06', '%07', '%08', '%09', '%1
 '%81', '%82', '%83', '%84', '%85', '%86', '%87', '%88', '%89', '%90',
 '%91', '%92', '%93', '%94', '%95', '%96', '%97', '%98', '%99' ) |> sort()
 class <- "bm_tri_3"
+symbClass_description <- "Three character bond multiplying symbols terminators of rings with implicit bond"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -969,13 +987,14 @@ charClass_cntr <- charClass_cntr + 1
 
 ### 6 cis_trans
 symbType <- "cis_trans__symbol"
-symbType_description <- "Cis / trans symbols  is the way to designate the position of the nodes of the molecular graph, i.e. atoms, relative to the rotary non-permissive bond"
+symbType_description <- "Cis / trans symbols is the way to designate the position of the nodes of the molecular graph, i.e. atoms, relative to the rotary non-permissive bond"
 ## cis_trans, SYMBOLS
 # 28, symbol class: cis_trans single character symbols on the left side of the rotary non-permissive bond
 # Symbols
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c("/", "\\") |> sort()
 class <- "ct"
+symbClass_description <- "Single character symbols describing cis / trans features"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -995,6 +1014,7 @@ charClass_cntr <- charClass_cntr + 1
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c("/", "\\") |> sort()
 class <- "ct"
+symbClass_description <- "Single character symbols describing cis / trans features"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -1020,6 +1040,7 @@ symbType_description <- "Symbols of atomic features written inside the square br
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c('0', '1', '2', '3', '4', '5', '6', '7', '8', '9') |> sort()
 class <- "isotope"
+symbClass_description <- "Single character isotopic symbols"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -1046,6 +1067,7 @@ symb__isotope_3_df <- expand.grid(symb__isotope_1, symb__isotope_2)
 symb__isotope_3 <- apply(X = symb__isotope_3_df, MARGIN = 1, FUN = paste, collapse = "")
 symbols <- c(symb__isotope_1, symb__isotope_2, symb__isotope_3) |> unique() |> sort()
 class <- "isotope_m"
+symbClass_description <- "Multi character isotopic symbols"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -1075,6 +1097,7 @@ charClass_cntr <- charClass_cntr + 1
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c('@') |> sort()
 class <- "chiral"
+symbClass_description <- "Single character symbols describing chirality"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -1095,6 +1118,7 @@ charClass_cntr <- charClass_cntr + 1
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c('@@') |> sort()
 class <- "chiral_2"
+symbClass_description <- "Two character symbols describing chirality"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -1127,6 +1151,7 @@ symbols <- c("@TH1", "@TH2", "@AL1", "@AL2", "@SP1", "@SP2", "@SP3", "@TB1", "@T
                     "@OH1", "@OH2", "@OH3", "@OH4", "@OH5", "@OH6", "@OH7", "@OH8", "@OH9", "@OH10", "@OH11", "@OH12", "@OH13", "@OH14", "@OH15", "@OH16", "@OH17", "@OH18", "@OH19", "@OH20",
                     "@OH21", "@OH22", "@OH23", "@OH24", "@OH25", "@OH26", "@OH27", "@OH28", "@OH29", "@OH30") |> sort()
 class <- "chiral_m"
+symbClass_description <- "Multi character symbols describing chirality"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -1164,6 +1189,7 @@ charClass_cntr <- charClass_cntr + 1
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c("H") |> sort()
 class <- "hydro"
+symbClass_description <- "Single character symbols describing hydrogens"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -1185,6 +1211,7 @@ charClass_cntr <- charClass_cntr + 1
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c("H0", "H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8", "H9") |> sort()
 class <- "hydro_2"
+symbClass_description <- "Two character symbols describing hydrogens"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -1214,6 +1241,7 @@ charClass_cntr <- charClass_cntr + 1
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c("+", "-") |> sort()
 class <- "charge"
+symbClass_description <- "Single character symbols describing charge"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -1235,6 +1263,7 @@ charClass_cntr <- charClass_cntr + 1
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c("++", "--") |> sort()
 class <- "charge_2"
+symbClass_description <- "Two character symbols describing charge"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -1265,6 +1294,7 @@ symbClass_cntr <- symbClass_cntr + 1
 symbols <- c("+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9", "+10", "+11", "+12", "+13", "+14", "+15",
                      "-1", "-2", "-3", "-4", "-5", "-6", "-7", "-8", "-9", "-10", "-11", "-12", "-13", "-14", "-15") |> sort()
 class <- "charge_m"
+symbClass_description <- "Multi character symbols describing charge"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
@@ -1294,6 +1324,7 @@ charClass_cntr <- charClass_cntr + 1
 symbClass_cntr <- symbClass_cntr + 1
 symbols <- c(":[0-9]", ":[0-9][0-9]", ":[0-9][0-9][0-9]") |> sort()
 class <- "class_m"
+symbClass_description <- "Multi character symbols describing atom class"
 symb_data[symbClass_cntr, 1] <- symbClass_cntr
 symb_data[symbClass_cntr, 2] <- class
 symb_data[symbClass_cntr, 3] <- symbType
