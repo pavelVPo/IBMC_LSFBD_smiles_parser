@@ -830,16 +830,19 @@ pairs_symbClass <- pairs_labeled |> select(left_symbClass, right_symbClass) |> d
 nrow(pairs_symbClass)
 ```
 
-**909** pairs of symbol classes are possible in SMILES at this stage, there is a possibility to check their viability using available community-driven SMILES specification and SMILES Parser Demo (<https://doc.gdb.tools/smilesDrawer/sd/example/index_light.html>) for testing, however, the number of records is large this time, thus, it will be beneficial to filter out some of the not allowed pairings using the most obvious rules:
+**909** pairs of symbol classes are possible in SMILES at this stage, there is a possibility to check their viability using available community-driven SMILES specification and SMILES Parser Demo (<https://doc.gdb.tools/smilesDrawer/sd/example/index_light.html>) for testing, however, the number of records is large this time, thus, it will be beneficial to filter out some of the not allowed pairings using the follwoing rules on the level of whole symbols:
 
-1.  Isotope symbols could only be paired with the bracket on the left and bracket atom on the right.
-2.  Features symbols, besides isotope, could only be paired with the other feature symbols or bracket symbols on the right and with the other feature symbols or bracket atom symbols on the left.
-3.  Features symbols, besides isotope, on the left side could only be paired with the other feature symbols in the following order (from left to right): chiral -\> hydro -\> charge -\> class; gaps are allowed.
-4.  Given restrictions are not valid on condition that symbol class consists of the symbols longer than 1 character and is paired with itself.
+1.  Aromatic bond, which is already deprecated, should not be paired with the aliphatic atoms.
+2.  Isotope symbols could only be paired with the bracket on the left and bracket atom on the right.
+3.  Features symbols, besides isotope, could only be paired with the other feature symbols or bracket symbols on the right and with the other feature symbols or bracket atom symbols on the left.
+4.  Features symbols, besides isotope, being on the left side could only be paired with the other feature symbols in the following order (from left to right): chiral -\> hydro -\> charge -\> class (gaps are allowed) and bracket.
 5.  Bracket atoms cannot be paired with the symbols contained outside the brackets and they can only be paired with the isotope symbols if those symbols are on the left and they can only be paired with the other bracket atom symbols on condition that those symbols has the same length, which is greater than 1.
 6.  Organic atom symbols can only be paired with the symbols found outside the brackets.
 7.  Bond symbols and bond modifying symbols can not be paired with the symbols contained inside the brackets.
-8.  Cis/trans symbols are only allowed on the left side from the organic atoms and brackets and on the right side of the symbol classes belonging outside the brackets.
+8.  Bond modifying initiators and terminators should be separated by at least one atom.
+9.  Two character bond modifying initiator symbols could not precede other bond modifying initiator symbols.
+
+Also, characters could be paired with the characters from the same symbol classes given that they belong to the one class, which members consist of more than one character considering the right order.
 
 After applying this set of simple rules, **479** pairs of symbol classes are left, the following check-ups will be conducted on the level of character classes.
 
