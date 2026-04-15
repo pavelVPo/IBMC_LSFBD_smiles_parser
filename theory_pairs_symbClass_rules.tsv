@@ -1,480 +1,473 @@
-left_symbClass	right_symbClass
-isotope	atom_bar
-isotope	atom_bal_2
-isotope_m	atom_bar
-isotope_m	atom_bal_2
-isotope	atom_bar_2
-isotope_m	atom_bar_2
-isotope	atom_bal
-isotope_m	atom_bal
-bracket	isotope
-bracket	isotope_m
-isotope_m	isotope_m
-atom_bar	chiral_m
-atom_bal_2	chiral_m
-atom_bar_2	chiral_m
-atom_bal	chiral_m
-chiral_m	chiral_m
-atom_bar	hydro
-atom_bar	hydro_2
-atom_bal_2	hydro
-atom_bal_2	hydro_2
-atom_bar_2	hydro
-atom_bar_2	hydro_2
-atom_bal	hydro
-atom_bal	hydro_2
-chiral_m	hydro
-chiral_m	hydro_2
-hydro_2	hydro_2
-chiral	hydro
-chiral	hydro_2
-chiral_2	hydro
-chiral_2	hydro_2
-chiral_m	bracket
-hydro	bracket
-hydro_2	bracket
-charge	bracket
-charge_2	bracket
-charge_m	bracket
-class_m	bracket
-chiral	bracket
-chiral_2	bracket
-atom_bar	charge
-atom_bar	charge_2
-atom_bar	charge_m
-atom_bal_2	charge
-atom_bal_2	charge_2
-atom_bal_2	charge_m
-atom_bar_2	charge
-atom_bar_2	charge_2
-atom_bar_2	charge_m
-atom_bal	charge
-atom_bal	charge_2
-atom_bal	charge_m
-chiral_m	charge
-chiral_m	charge_2
-chiral_m	charge_m
-hydro	charge
-hydro	charge_2
-hydro	charge_m
-hydro_2	charge
-hydro_2	charge_2
-hydro_2	charge_m
-charge_2	charge_2
-charge_m	charge_m
-chiral	charge
-chiral	charge_2
-chiral	charge_m
-chiral_2	charge
-chiral_2	charge_2
-chiral_2	charge_m
-atom_bar	class_m
-atom_bal_2	class_m
-atom_bar_2	class_m
-atom_bal	class_m
-chiral_m	class_m
-hydro	class_m
-hydro_2	class_m
-charge	class_m
-charge_2	class_m
-charge_m	class_m
-class_m	class_m
-chiral	class_m
-chiral_2	class_m
-atom_bar	chiral
-atom_bar	chiral_2
-atom_bal_2	chiral
-atom_bal_2	chiral_2
-atom_bar_2	chiral
-atom_bar_2	chiral_2
-atom_bal	chiral
-atom_bal	chiral_2
-chiral_2	chiral_2
-atom_bal_2	atom_bal_2
-bracket	atom_bar
-bracket	atom_bal_2
-atom_bar_2	atom_bar_2
-bracket	atom_bar_2
-bracket	atom_bal
-atom_bar	bracket
-atom_bal_2	bracket
-atom_bar_2	bracket
-atom_bal	bracket
-atom_oar	atom_oar
-atom_oal	atom_oar
-atom_oal_2	atom_oar
-anything	atom_oar
-bracket	atom_oar
-single_bond	atom_oar
-bm_ibe_2	atom_oar
-bm_ire_2	atom_oar
-bm_ire_4	atom_oar
-bm_tbe_2	atom_oar
-bm_tre_2	atom_oar
-bm_tre_4	atom_oar
-double_bond	atom_oar
-triple_bond	atom_oar
-quadruple_bond	atom_oar
-aromatic_bond	atom_oar
-no_bond	atom_oar
-bm_ibi	atom_oar
-bm_iri	atom_oar
-bm_tri	atom_oar
-bm_iri_3	atom_oar
-bm_tri_3	atom_oar
-bm_tbi	atom_oar
-ct	atom_oar
-atom_oar	atom_oal
-atom_oar	atom_oal_2
-atom_oal	atom_oal
-atom_oal	atom_oal_2
-atom_oal_2	atom_oal
-atom_oal_2	atom_oal_2
-anything	atom_oal
-anything	atom_oal_2
-bracket	atom_oal
-bracket	atom_oal_2
-single_bond	atom_oal
-single_bond	atom_oal_2
-bm_ibe_2	atom_oal
-bm_ibe_2	atom_oal_2
-bm_ire_2	atom_oal
-bm_ire_2	atom_oal_2
-bm_ire_4	atom_oal
-bm_ire_4	atom_oal_2
-bm_tbe_2	atom_oal
-bm_tbe_2	atom_oal_2
-bm_tre_2	atom_oal
-bm_tre_2	atom_oal_2
-bm_tre_4	atom_oal
-bm_tre_4	atom_oal_2
-double_bond	atom_oal
-double_bond	atom_oal_2
-triple_bond	atom_oal
-triple_bond	atom_oal_2
-quadruple_bond	atom_oal
-quadruple_bond	atom_oal_2
-aromatic_bond	atom_oal
-aromatic_bond	atom_oal_2
-no_bond	atom_oal
-no_bond	atom_oal_2
-bm_ibi	atom_oal
-bm_ibi	atom_oal_2
-bm_iri	atom_oal
-bm_iri	atom_oal_2
-bm_tri	atom_oal
-bm_tri	atom_oal_2
-bm_iri_3	atom_oal
-bm_iri_3	atom_oal_2
-bm_tri_3	atom_oal
-bm_tri_3	atom_oal_2
-bm_tbi	atom_oal
-bm_tbi	atom_oal_2
-ct	atom_oal
-ct	atom_oal_2
-atom_oar	anything
-atom_oal	anything
-atom_oal_2	anything
-atom_oar	bracket
-atom_oal	bracket
-atom_oal_2	bracket
-atom_oar	single_bond
-atom_oar	bm_ibe_2
-atom_oar	bm_ire_2
-atom_oar	bm_ire_4
-atom_oar	bm_tbe_2
-atom_oar	bm_tre_2
-atom_oar	bm_tre_4
-atom_oal	single_bond
-atom_oal	bm_ibe_2
-atom_oal	bm_ire_2
-atom_oal	bm_ire_4
-atom_oal	bm_tbe_2
-atom_oal	bm_tre_2
-atom_oal	bm_tre_4
-atom_oal_2	single_bond
-atom_oal_2	bm_ibe_2
-atom_oal_2	bm_ire_2
-atom_oal_2	bm_ire_4
-atom_oal_2	bm_tbe_2
-atom_oal_2	bm_tre_2
-atom_oal_2	bm_tre_4
-atom_oar	double_bond
-atom_oal	double_bond
-atom_oal_2	double_bond
-atom_oar	triple_bond
-atom_oal	triple_bond
-atom_oal_2	triple_bond
-atom_oar	quadruple_bond
-atom_oal	quadruple_bond
-atom_oal_2	quadruple_bond
-atom_oar	aromatic_bond
-atom_oal	aromatic_bond
-atom_oal_2	aromatic_bond
-atom_oar	no_bond
-atom_oal	no_bond
-atom_oal_2	no_bond
-atom_oar	bm_ibi
-atom_oal	bm_ibi
-atom_oal_2	bm_ibi
-atom_oar	bm_iri
-atom_oar	bm_tri
-atom_oar	bm_iri_3
-atom_oar	bm_tri_3
-atom_oal	bm_iri
-atom_oal	bm_tri
-atom_oal	bm_iri_3
-atom_oal	bm_tri_3
-atom_oal_2	bm_iri
-atom_oal_2	bm_tri
-atom_oal_2	bm_iri_3
-atom_oal_2	bm_tri_3
-atom_oar	bm_tbi
-atom_oal	bm_tbi
-atom_oal_2	bm_tbi
-atom_oar	ct
-atom_oal	ct
-atom_oal_2	ct
-single_bond	anything
-bm_ibe_2	anything
-bm_ire_2	anything
-bm_ire_4	anything
-bm_tbe_2	anything
-bm_tre_2	anything
-bm_tre_4	anything
-double_bond	anything
-triple_bond	anything
-quadruple_bond	anything
-aromatic_bond	anything
-no_bond	anything
-bm_ibi	anything
-bm_iri	anything
-bm_tri	anything
-bm_iri_3	anything
-bm_tri_3	anything
-bm_tbi	anything
-single_bond	bracket
-bm_ibe_2	bracket
-bm_ire_2	bracket
-bm_ire_4	bracket
-bm_tbe_2	bracket
-bm_tre_2	bracket
-bm_tre_4	bracket
-double_bond	bracket
-triple_bond	bracket
-quadruple_bond	bracket
-aromatic_bond	bracket
-no_bond	bracket
-bm_ibi	bracket
-bm_iri	bracket
-bm_tri	bracket
-bm_iri_3	bracket
-bm_tri_3	bracket
-bm_tbi	bracket
-anything	single_bond
-anything	bm_ibe_2
-anything	bm_ire_2
-anything	bm_ire_4
-anything	bm_tbe_2
-anything	bm_tre_2
-anything	bm_tre_4
-bracket	single_bond
-bracket	bm_ibe_2
-bracket	bm_ire_2
-bracket	bm_ire_4
-bracket	bm_tbe_2
-bracket	bm_tre_2
-bracket	bm_tre_4
-bm_ibe_2	bm_ibe_2
-bm_ibe_2	bm_ire_2
-bm_ibe_2	bm_ire_4
-bm_ibe_2	bm_tbe_2
-bm_ibe_2	bm_tre_2
-bm_ibe_2	bm_tre_4
-bm_ire_2	bm_ibe_2
-bm_ire_2	bm_ire_2
-bm_ire_2	bm_ire_4
-bm_ire_2	bm_tbe_2
-bm_ire_2	bm_tre_2
-bm_ire_2	bm_tre_4
-bm_ire_4	bm_ibe_2
-bm_ire_4	bm_ire_2
-bm_ire_4	bm_ire_4
-bm_ire_4	bm_tbe_2
-bm_ire_4	bm_tre_2
-bm_ire_4	bm_tre_4
-bm_tbe_2	bm_ibe_2
-bm_tbe_2	bm_ire_2
-bm_tbe_2	bm_ire_4
-bm_tbe_2	bm_tbe_2
-bm_tbe_2	bm_tre_2
-bm_tbe_2	bm_tre_4
-bm_tre_2	bm_ibe_2
-bm_tre_2	bm_ire_2
-bm_tre_2	bm_ire_4
-bm_tre_2	bm_tbe_2
-bm_tre_2	bm_tre_2
-bm_tre_2	bm_tre_4
-bm_tre_4	bm_ibe_2
-bm_tre_4	bm_ire_2
-bm_tre_4	bm_ire_4
-bm_tre_4	bm_tbe_2
-bm_tre_4	bm_tre_2
-bm_tre_4	bm_tre_4
-bm_ibi	bm_ibe_2
-bm_ibi	bm_ire_2
-bm_ibi	bm_ire_4
-bm_ibi	bm_tbe_2
-bm_ibi	bm_tre_2
-bm_ibi	bm_tre_4
-bm_iri	bm_ibe_2
-bm_iri	bm_ire_2
-bm_iri	bm_ire_4
-bm_iri	bm_tbe_2
-bm_iri	bm_tre_2
-bm_iri	bm_tre_4
-bm_tri	bm_ibe_2
-bm_tri	bm_ire_2
-bm_tri	bm_ire_4
-bm_tri	bm_tbe_2
-bm_tri	bm_tre_2
-bm_tri	bm_tre_4
-bm_iri_3	bm_ibe_2
-bm_iri_3	bm_ire_2
-bm_iri_3	bm_ire_4
-bm_iri_3	bm_tbe_2
-bm_iri_3	bm_tre_2
-bm_iri_3	bm_tre_4
-bm_tri_3	bm_ibe_2
-bm_tri_3	bm_ire_2
-bm_tri_3	bm_ire_4
-bm_tri_3	bm_tbe_2
-bm_tri_3	bm_tre_2
-bm_tri_3	bm_tre_4
-bm_tbi	bm_ibe_2
-bm_tbi	bm_ire_2
-bm_tbi	bm_ire_4
-bm_tbi	bm_tbe_2
-bm_tbi	bm_tre_2
-bm_tbi	bm_tre_4
-ct	bm_ibe_2
-ct	bm_ire_2
-ct	bm_ire_4
-ct	bm_tbe_2
-ct	bm_tre_2
-ct	bm_tre_4
-anything	double_bond
-bracket	double_bond
-anything	triple_bond
-bracket	triple_bond
-anything	quadruple_bond
-bracket	quadruple_bond
-anything	aromatic_bond
-bracket	aromatic_bond
-anything	no_bond
-bracket	no_bond
-anything	bm_ibi
-bracket	bm_ibi
-bm_ibe_2	bm_ibi
-bm_ire_2	bm_ibi
-bm_ire_4	bm_ibi
-bm_tbe_2	bm_ibi
-bm_tre_2	bm_ibi
-bm_tre_4	bm_ibi
-bm_ibi	bm_ibi
-bm_iri	bm_ibi
-bm_tri	bm_ibi
-bm_iri_3	bm_ibi
-bm_tri_3	bm_ibi
-bm_tbi	bm_ibi
-ct	bm_ibi
-anything	bm_iri
-anything	bm_tri
-anything	bm_iri_3
-anything	bm_tri_3
-bracket	bm_iri
-bracket	bm_tri
-bracket	bm_iri_3
-bracket	bm_tri_3
-bm_ibe_2	bm_iri
-bm_ibe_2	bm_tri
-bm_ibe_2	bm_iri_3
-bm_ibe_2	bm_tri_3
-bm_ire_2	bm_iri
-bm_ire_2	bm_tri
-bm_ire_2	bm_iri_3
-bm_ire_2	bm_tri_3
-bm_ire_4	bm_iri
-bm_ire_4	bm_tri
-bm_ire_4	bm_iri_3
-bm_ire_4	bm_tri_3
-bm_tbe_2	bm_iri
-bm_tbe_2	bm_tri
-bm_tbe_2	bm_iri_3
-bm_tbe_2	bm_tri_3
-bm_tre_2	bm_iri
-bm_tre_2	bm_tri
-bm_tre_2	bm_iri_3
-bm_tre_2	bm_tri_3
-bm_tre_4	bm_iri
-bm_tre_4	bm_tri
-bm_tre_4	bm_iri_3
-bm_tre_4	bm_tri_3
-bm_ibi	bm_iri
-bm_ibi	bm_tri
-bm_ibi	bm_iri_3
-bm_ibi	bm_tri_3
-bm_iri	bm_iri
-bm_iri	bm_tri
-bm_iri	bm_iri_3
-bm_iri	bm_tri_3
-bm_tri	bm_iri
-bm_tri	bm_tri
-bm_tri	bm_iri_3
-bm_tri	bm_tri_3
-bm_iri_3	bm_iri
-bm_iri_3	bm_tri
-bm_iri_3	bm_iri_3
-bm_iri_3	bm_tri_3
-bm_tri_3	bm_iri
-bm_tri_3	bm_tri
-bm_tri_3	bm_iri_3
-bm_tri_3	bm_tri_3
-bm_tbi	bm_iri
-bm_tbi	bm_tri
-bm_tbi	bm_iri_3
-bm_tbi	bm_tri_3
-ct	bm_iri
-ct	bm_tri
-ct	bm_iri_3
-ct	bm_tri_3
-anything	bm_tbi
-bracket	bm_tbi
-bm_ibe_2	bm_tbi
-bm_ire_2	bm_tbi
-bm_ire_4	bm_tbi
-bm_tbe_2	bm_tbi
-bm_tre_2	bm_tbi
-bm_tre_4	bm_tbi
-bm_ibi	bm_tbi
-bm_iri	bm_tbi
-bm_tri	bm_tbi
-bm_iri_3	bm_tbi
-bm_tri_3	bm_tbi
-bm_tbi	bm_tbi
-ct	bm_tbi
-bm_ibe_2	ct
-bm_ire_2	ct
-bm_ire_4	ct
-bm_tbe_2	ct
-bm_tre_2	ct
-bm_tre_4	ct
-bm_ibi	ct
-bm_iri	ct
-bm_tri	ct
-bm_iri_3	ct
-bm_tri_3	ct
-bm_tbi	ct
-anything	anything
-bracket	anything
-anything	bracket
+left	right	left_type	right_type
+atom_oar	atom_oar	atom__symbol	atom__symbol
+atom_oar	atom_oal	atom__symbol	atom__symbol
+atom_oar	atom_oal_2	atom__symbol	atom__symbol
+atom_oar	anything	atom__symbol	anything__symbol
+atom_oar	bracket	atom__symbol	bracket__symbol
+atom_oar	single_bond	atom__symbol	bond__symbol
+atom_oar	double_bond	atom__symbol	bond__symbol
+atom_oar	triple_bond	atom__symbol	bond__symbol
+atom_oar	quadruple_bond	atom__symbol	bond__symbol
+atom_oar	aromatic_bond	atom__symbol	bond__symbol
+atom_oar	no_bond	atom__symbol	bond__symbol
+atom_oar	bm_ibi	atom__symbol	modifier__symbol
+atom_oar	bm_iri	atom__symbol	modifier__symbol
+atom_oar	bm_tbi	atom__symbol	modifier__symbol
+atom_oar	bm_tri	atom__symbol	modifier__symbol
+atom_oar	bm_ibe_2	atom__symbol	modifier__symbol
+atom_oar	bm_ire_2	atom__symbol	modifier__symbol
+atom_oar	bm_iri_3	atom__symbol	modifier__symbol
+atom_oar	bm_ire_4	atom__symbol	modifier__symbol
+atom_oar	bm_tbe_2	atom__symbol	modifier__symbol
+atom_oar	bm_tre_2	atom__symbol	modifier__symbol
+atom_oar	bm_tre_4	atom__symbol	modifier__symbol
+atom_oar	bm_tri_3	atom__symbol	modifier__symbol
+atom_oar	ct	atom__symbol	cis_trans__symbol
+atom_oal	atom_oar	atom__symbol	atom__symbol
+atom_oal	atom_oal	atom__symbol	atom__symbol
+atom_oal	atom_oal_2	atom__symbol	atom__symbol
+atom_oal	anything	atom__symbol	anything__symbol
+atom_oal	bracket	atom__symbol	bracket__symbol
+atom_oal	single_bond	atom__symbol	bond__symbol
+atom_oal	double_bond	atom__symbol	bond__symbol
+atom_oal	triple_bond	atom__symbol	bond__symbol
+atom_oal	quadruple_bond	atom__symbol	bond__symbol
+atom_oal	no_bond	atom__symbol	bond__symbol
+atom_oal	bm_ibi	atom__symbol	modifier__symbol
+atom_oal	bm_iri	atom__symbol	modifier__symbol
+atom_oal	bm_tbi	atom__symbol	modifier__symbol
+atom_oal	bm_tri	atom__symbol	modifier__symbol
+atom_oal	bm_ibe_2	atom__symbol	modifier__symbol
+atom_oal	bm_ire_2	atom__symbol	modifier__symbol
+atom_oal	bm_iri_3	atom__symbol	modifier__symbol
+atom_oal	bm_ire_4	atom__symbol	modifier__symbol
+atom_oal	bm_tbe_2	atom__symbol	modifier__symbol
+atom_oal	bm_tre_2	atom__symbol	modifier__symbol
+atom_oal	bm_tre_4	atom__symbol	modifier__symbol
+atom_oal	bm_tri_3	atom__symbol	modifier__symbol
+atom_oal	ct	atom__symbol	cis_trans__symbol
+atom_bar	bracket	atom__symbol	bracket__symbol
+atom_bar	chiral	atom__symbol	features__symbol
+atom_bar	chiral_2	atom__symbol	features__symbol
+atom_bar	chiral_m	atom__symbol	features__symbol
+atom_bar	hydro	atom__symbol	features__symbol
+atom_bar	hydro_2	atom__symbol	features__symbol
+atom_bar	charge	atom__symbol	features__symbol
+atom_bar	charge_2	atom__symbol	features__symbol
+atom_bar	charge_m	atom__symbol	features__symbol
+atom_bar	class_m	atom__symbol	features__symbol
+atom_bal	bracket	atom__symbol	bracket__symbol
+atom_bal	chiral	atom__symbol	features__symbol
+atom_bal	chiral_2	atom__symbol	features__symbol
+atom_bal	chiral_m	atom__symbol	features__symbol
+atom_bal	hydro	atom__symbol	features__symbol
+atom_bal	hydro_2	atom__symbol	features__symbol
+atom_bal	charge	atom__symbol	features__symbol
+atom_bal	charge_2	atom__symbol	features__symbol
+atom_bal	charge_m	atom__symbol	features__symbol
+atom_bal	class_m	atom__symbol	features__symbol
+atom_oal_2	atom_oar	atom__symbol	atom__symbol
+atom_oal_2	atom_oal	atom__symbol	atom__symbol
+atom_oal_2	atom_oal_2	atom__symbol	atom__symbol
+atom_oal_2	anything	atom__symbol	anything__symbol
+atom_oal_2	bracket	atom__symbol	bracket__symbol
+atom_oal_2	single_bond	atom__symbol	bond__symbol
+atom_oal_2	double_bond	atom__symbol	bond__symbol
+atom_oal_2	triple_bond	atom__symbol	bond__symbol
+atom_oal_2	quadruple_bond	atom__symbol	bond__symbol
+atom_oal_2	no_bond	atom__symbol	bond__symbol
+atom_oal_2	bm_ibi	atom__symbol	modifier__symbol
+atom_oal_2	bm_iri	atom__symbol	modifier__symbol
+atom_oal_2	bm_tbi	atom__symbol	modifier__symbol
+atom_oal_2	bm_tri	atom__symbol	modifier__symbol
+atom_oal_2	bm_ibe_2	atom__symbol	modifier__symbol
+atom_oal_2	bm_ire_2	atom__symbol	modifier__symbol
+atom_oal_2	bm_iri_3	atom__symbol	modifier__symbol
+atom_oal_2	bm_ire_4	atom__symbol	modifier__symbol
+atom_oal_2	bm_tbe_2	atom__symbol	modifier__symbol
+atom_oal_2	bm_tre_2	atom__symbol	modifier__symbol
+atom_oal_2	bm_tre_4	atom__symbol	modifier__symbol
+atom_oal_2	bm_tri_3	atom__symbol	modifier__symbol
+atom_oal_2	ct	atom__symbol	cis_trans__symbol
+atom_bar_2	atom_bar_2	atom__symbol	atom__symbol
+atom_bar_2	bracket	atom__symbol	bracket__symbol
+atom_bar_2	chiral	atom__symbol	features__symbol
+atom_bar_2	chiral_2	atom__symbol	features__symbol
+atom_bar_2	chiral_m	atom__symbol	features__symbol
+atom_bar_2	hydro	atom__symbol	features__symbol
+atom_bar_2	hydro_2	atom__symbol	features__symbol
+atom_bar_2	charge	atom__symbol	features__symbol
+atom_bar_2	charge_2	atom__symbol	features__symbol
+atom_bar_2	charge_m	atom__symbol	features__symbol
+atom_bar_2	class_m	atom__symbol	features__symbol
+atom_bal_2	atom_bal_2	atom__symbol	atom__symbol
+atom_bal_2	bracket	atom__symbol	bracket__symbol
+atom_bal_2	chiral	atom__symbol	features__symbol
+atom_bal_2	chiral_2	atom__symbol	features__symbol
+atom_bal_2	chiral_m	atom__symbol	features__symbol
+atom_bal_2	hydro	atom__symbol	features__symbol
+atom_bal_2	hydro_2	atom__symbol	features__symbol
+atom_bal_2	charge	atom__symbol	features__symbol
+atom_bal_2	charge_2	atom__symbol	features__symbol
+atom_bal_2	charge_m	atom__symbol	features__symbol
+atom_bal_2	class_m	atom__symbol	features__symbol
+anything	atom_oar	anything__symbol	atom__symbol
+anything	atom_oal	anything__symbol	atom__symbol
+anything	atom_oal_2	anything__symbol	atom__symbol
+anything	anything	anything__symbol	anything__symbol
+anything	bracket	anything__symbol	bracket__symbol
+anything	single_bond	anything__symbol	bond__symbol
+anything	double_bond	anything__symbol	bond__symbol
+anything	triple_bond	anything__symbol	bond__symbol
+anything	quadruple_bond	anything__symbol	bond__symbol
+anything	aromatic_bond	anything__symbol	bond__symbol
+anything	no_bond	anything__symbol	bond__symbol
+anything	bm_ibi	anything__symbol	modifier__symbol
+anything	bm_iri	anything__symbol	modifier__symbol
+anything	bm_tbi	anything__symbol	modifier__symbol
+anything	bm_tri	anything__symbol	modifier__symbol
+anything	bm_ibe_2	anything__symbol	modifier__symbol
+anything	bm_ire_2	anything__symbol	modifier__symbol
+anything	bm_iri_3	anything__symbol	modifier__symbol
+anything	bm_ire_4	anything__symbol	modifier__symbol
+anything	bm_tbe_2	anything__symbol	modifier__symbol
+anything	bm_tre_2	anything__symbol	modifier__symbol
+anything	bm_tre_4	anything__symbol	modifier__symbol
+anything	bm_tri_3	anything__symbol	modifier__symbol
+anything	ct	anything__symbol	cis_trans__symbol
+bracket	atom_oar	bracket__symbol	atom__symbol
+bracket	atom_oal	bracket__symbol	atom__symbol
+bracket	atom_bar	bracket__symbol	atom__symbol
+bracket	atom_bal	bracket__symbol	atom__symbol
+bracket	atom_oal_2	bracket__symbol	atom__symbol
+bracket	atom_bar_2	bracket__symbol	atom__symbol
+bracket	atom_bal_2	bracket__symbol	atom__symbol
+bracket	anything	bracket__symbol	anything__symbol
+bracket	single_bond	bracket__symbol	bond__symbol
+bracket	double_bond	bracket__symbol	bond__symbol
+bracket	triple_bond	bracket__symbol	bond__symbol
+bracket	quadruple_bond	bracket__symbol	bond__symbol
+bracket	aromatic_bond	bracket__symbol	bond__symbol
+bracket	no_bond	bracket__symbol	bond__symbol
+bracket	bm_ibi	bracket__symbol	modifier__symbol
+bracket	bm_iri	bracket__symbol	modifier__symbol
+bracket	bm_tbi	bracket__symbol	modifier__symbol
+bracket	bm_tri	bracket__symbol	modifier__symbol
+bracket	bm_ibe_2	bracket__symbol	modifier__symbol
+bracket	bm_ire_2	bracket__symbol	modifier__symbol
+bracket	bm_iri_3	bracket__symbol	modifier__symbol
+bracket	bm_ire_4	bracket__symbol	modifier__symbol
+bracket	bm_tbe_2	bracket__symbol	modifier__symbol
+bracket	bm_tre_2	bracket__symbol	modifier__symbol
+bracket	bm_tre_4	bracket__symbol	modifier__symbol
+bracket	bm_tri_3	bracket__symbol	modifier__symbol
+bracket	ct	bracket__symbol	cis_trans__symbol
+single_bond	atom_oar	bond__symbol	atom__symbol
+single_bond	atom_oal	bond__symbol	atom__symbol
+single_bond	atom_oal_2	bond__symbol	atom__symbol
+single_bond	anything	bond__symbol	anything__symbol
+single_bond	bracket	bond__symbol	bracket__symbol
+double_bond	atom_oar	bond__symbol	atom__symbol
+double_bond	atom_oal	bond__symbol	atom__symbol
+double_bond	atom_oal_2	bond__symbol	atom__symbol
+double_bond	anything	bond__symbol	anything__symbol
+double_bond	bracket	bond__symbol	bracket__symbol
+triple_bond	atom_oar	bond__symbol	atom__symbol
+triple_bond	atom_oal	bond__symbol	atom__symbol
+triple_bond	atom_oal_2	bond__symbol	atom__symbol
+triple_bond	anything	bond__symbol	anything__symbol
+triple_bond	bracket	bond__symbol	bracket__symbol
+quadruple_bond	atom_oar	bond__symbol	atom__symbol
+quadruple_bond	atom_oal	bond__symbol	atom__symbol
+quadruple_bond	atom_oal_2	bond__symbol	atom__symbol
+quadruple_bond	anything	bond__symbol	anything__symbol
+quadruple_bond	bracket	bond__symbol	bracket__symbol
+aromatic_bond	atom_oar	bond__symbol	atom__symbol
+aromatic_bond	anything	bond__symbol	anything__symbol
+aromatic_bond	bracket	bond__symbol	bracket__symbol
+no_bond	atom_oar	bond__symbol	atom__symbol
+no_bond	atom_oal	bond__symbol	atom__symbol
+no_bond	atom_oal_2	bond__symbol	atom__symbol
+no_bond	anything	bond__symbol	anything__symbol
+no_bond	bracket	bond__symbol	bracket__symbol
+bm_ibi	atom_oar	modifier__symbol	atom__symbol
+bm_ibi	atom_oal	modifier__symbol	atom__symbol
+bm_ibi	atom_oal_2	modifier__symbol	atom__symbol
+bm_ibi	anything	modifier__symbol	anything__symbol
+bm_ibi	bracket	modifier__symbol	bracket__symbol
+bm_ibi	bm_ibi	modifier__symbol	modifier__symbol
+bm_ibi	bm_iri	modifier__symbol	modifier__symbol
+bm_ibi	bm_tri	modifier__symbol	modifier__symbol
+bm_ibi	bm_ibe_2	modifier__symbol	modifier__symbol
+bm_ibi	bm_ire_2	modifier__symbol	modifier__symbol
+bm_ibi	bm_iri_3	modifier__symbol	modifier__symbol
+bm_ibi	bm_ire_4	modifier__symbol	modifier__symbol
+bm_ibi	bm_tre_2	modifier__symbol	modifier__symbol
+bm_ibi	bm_tre_4	modifier__symbol	modifier__symbol
+bm_ibi	bm_tri_3	modifier__symbol	modifier__symbol
+bm_ibi	ct	modifier__symbol	cis_trans__symbol
+bm_iri	atom_oar	modifier__symbol	atom__symbol
+bm_iri	atom_oal	modifier__symbol	atom__symbol
+bm_iri	atom_oal_2	modifier__symbol	atom__symbol
+bm_iri	anything	modifier__symbol	anything__symbol
+bm_iri	bracket	modifier__symbol	bracket__symbol
+bm_iri	bm_ibi	modifier__symbol	modifier__symbol
+bm_iri	bm_iri	modifier__symbol	modifier__symbol
+bm_iri	bm_tbi	modifier__symbol	modifier__symbol
+bm_iri	bm_tri	modifier__symbol	modifier__symbol
+bm_iri	bm_ibe_2	modifier__symbol	modifier__symbol
+bm_iri	bm_ire_2	modifier__symbol	modifier__symbol
+bm_iri	bm_iri_3	modifier__symbol	modifier__symbol
+bm_iri	bm_ire_4	modifier__symbol	modifier__symbol
+bm_iri	bm_tbe_2	modifier__symbol	modifier__symbol
+bm_iri	bm_tre_2	modifier__symbol	modifier__symbol
+bm_iri	bm_tre_4	modifier__symbol	modifier__symbol
+bm_iri	bm_tri_3	modifier__symbol	modifier__symbol
+bm_iri	ct	modifier__symbol	cis_trans__symbol
+bm_tbi	atom_oar	modifier__symbol	atom__symbol
+bm_tbi	atom_oal	modifier__symbol	atom__symbol
+bm_tbi	atom_oal_2	modifier__symbol	atom__symbol
+bm_tbi	anything	modifier__symbol	anything__symbol
+bm_tbi	bracket	modifier__symbol	bracket__symbol
+bm_tbi	bm_ibi	modifier__symbol	modifier__symbol
+bm_tbi	bm_iri	modifier__symbol	modifier__symbol
+bm_tbi	bm_tbi	modifier__symbol	modifier__symbol
+bm_tbi	bm_tri	modifier__symbol	modifier__symbol
+bm_tbi	bm_ibe_2	modifier__symbol	modifier__symbol
+bm_tbi	bm_ire_2	modifier__symbol	modifier__symbol
+bm_tbi	bm_iri_3	modifier__symbol	modifier__symbol
+bm_tbi	bm_ire_4	modifier__symbol	modifier__symbol
+bm_tbi	bm_tbe_2	modifier__symbol	modifier__symbol
+bm_tbi	bm_tre_2	modifier__symbol	modifier__symbol
+bm_tbi	bm_tre_4	modifier__symbol	modifier__symbol
+bm_tbi	bm_tri_3	modifier__symbol	modifier__symbol
+bm_tbi	ct	modifier__symbol	cis_trans__symbol
+bm_tri	atom_oar	modifier__symbol	atom__symbol
+bm_tri	atom_oal	modifier__symbol	atom__symbol
+bm_tri	atom_oal_2	modifier__symbol	atom__symbol
+bm_tri	anything	modifier__symbol	anything__symbol
+bm_tri	bracket	modifier__symbol	bracket__symbol
+bm_tri	bm_ibi	modifier__symbol	modifier__symbol
+bm_tri	bm_iri	modifier__symbol	modifier__symbol
+bm_tri	bm_tbi	modifier__symbol	modifier__symbol
+bm_tri	bm_tri	modifier__symbol	modifier__symbol
+bm_tri	bm_ibe_2	modifier__symbol	modifier__symbol
+bm_tri	bm_ire_2	modifier__symbol	modifier__symbol
+bm_tri	bm_iri_3	modifier__symbol	modifier__symbol
+bm_tri	bm_ire_4	modifier__symbol	modifier__symbol
+bm_tri	bm_tbe_2	modifier__symbol	modifier__symbol
+bm_tri	bm_tre_2	modifier__symbol	modifier__symbol
+bm_tri	bm_tre_4	modifier__symbol	modifier__symbol
+bm_tri	bm_tri_3	modifier__symbol	modifier__symbol
+bm_tri	ct	modifier__symbol	cis_trans__symbol
+bm_ibe_2	atom_oar	modifier__symbol	atom__symbol
+bm_ibe_2	atom_oal	modifier__symbol	atom__symbol
+bm_ibe_2	atom_oal_2	modifier__symbol	atom__symbol
+bm_ibe_2	anything	modifier__symbol	anything__symbol
+bm_ibe_2	bracket	modifier__symbol	bracket__symbol
+bm_ibe_2	bm_iri	modifier__symbol	modifier__symbol
+bm_ibe_2	bm_tri	modifier__symbol	modifier__symbol
+bm_ibe_2	bm_ibe_2	modifier__symbol	modifier__symbol
+bm_ibe_2	bm_ire_2	modifier__symbol	modifier__symbol
+bm_ibe_2	bm_iri_3	modifier__symbol	modifier__symbol
+bm_ibe_2	bm_ire_4	modifier__symbol	modifier__symbol
+bm_ibe_2	bm_tre_2	modifier__symbol	modifier__symbol
+bm_ibe_2	bm_tre_4	modifier__symbol	modifier__symbol
+bm_ibe_2	bm_tri_3	modifier__symbol	modifier__symbol
+bm_ibe_2	ct	modifier__symbol	cis_trans__symbol
+bm_ire_2	atom_oar	modifier__symbol	atom__symbol
+bm_ire_2	atom_oal	modifier__symbol	atom__symbol
+bm_ire_2	atom_oal_2	modifier__symbol	atom__symbol
+bm_ire_2	anything	modifier__symbol	anything__symbol
+bm_ire_2	bracket	modifier__symbol	bracket__symbol
+bm_ire_2	bm_ibi	modifier__symbol	modifier__symbol
+bm_ire_2	bm_iri	modifier__symbol	modifier__symbol
+bm_ire_2	bm_tbi	modifier__symbol	modifier__symbol
+bm_ire_2	bm_tri	modifier__symbol	modifier__symbol
+bm_ire_2	bm_ibe_2	modifier__symbol	modifier__symbol
+bm_ire_2	bm_ire_2	modifier__symbol	modifier__symbol
+bm_ire_2	bm_iri_3	modifier__symbol	modifier__symbol
+bm_ire_2	bm_ire_4	modifier__symbol	modifier__symbol
+bm_ire_2	bm_tbe_2	modifier__symbol	modifier__symbol
+bm_ire_2	bm_tre_2	modifier__symbol	modifier__symbol
+bm_ire_2	bm_tre_4	modifier__symbol	modifier__symbol
+bm_ire_2	bm_tri_3	modifier__symbol	modifier__symbol
+bm_ire_2	ct	modifier__symbol	cis_trans__symbol
+bm_iri_3	atom_oar	modifier__symbol	atom__symbol
+bm_iri_3	atom_oal	modifier__symbol	atom__symbol
+bm_iri_3	atom_oal_2	modifier__symbol	atom__symbol
+bm_iri_3	anything	modifier__symbol	anything__symbol
+bm_iri_3	bracket	modifier__symbol	bracket__symbol
+bm_iri_3	bm_ibi	modifier__symbol	modifier__symbol
+bm_iri_3	bm_iri	modifier__symbol	modifier__symbol
+bm_iri_3	bm_tbi	modifier__symbol	modifier__symbol
+bm_iri_3	bm_tri	modifier__symbol	modifier__symbol
+bm_iri_3	bm_ibe_2	modifier__symbol	modifier__symbol
+bm_iri_3	bm_ire_2	modifier__symbol	modifier__symbol
+bm_iri_3	bm_iri_3	modifier__symbol	modifier__symbol
+bm_iri_3	bm_ire_4	modifier__symbol	modifier__symbol
+bm_iri_3	bm_tbe_2	modifier__symbol	modifier__symbol
+bm_iri_3	bm_tre_2	modifier__symbol	modifier__symbol
+bm_iri_3	bm_tre_4	modifier__symbol	modifier__symbol
+bm_iri_3	bm_tri_3	modifier__symbol	modifier__symbol
+bm_iri_3	ct	modifier__symbol	cis_trans__symbol
+bm_ire_4	atom_oar	modifier__symbol	atom__symbol
+bm_ire_4	atom_oal	modifier__symbol	atom__symbol
+bm_ire_4	atom_oal_2	modifier__symbol	atom__symbol
+bm_ire_4	anything	modifier__symbol	anything__symbol
+bm_ire_4	bracket	modifier__symbol	bracket__symbol
+bm_ire_4	bm_ibi	modifier__symbol	modifier__symbol
+bm_ire_4	bm_iri	modifier__symbol	modifier__symbol
+bm_ire_4	bm_tbi	modifier__symbol	modifier__symbol
+bm_ire_4	bm_tri	modifier__symbol	modifier__symbol
+bm_ire_4	bm_ibe_2	modifier__symbol	modifier__symbol
+bm_ire_4	bm_ire_2	modifier__symbol	modifier__symbol
+bm_ire_4	bm_iri_3	modifier__symbol	modifier__symbol
+bm_ire_4	bm_ire_4	modifier__symbol	modifier__symbol
+bm_ire_4	bm_tbe_2	modifier__symbol	modifier__symbol
+bm_ire_4	bm_tre_2	modifier__symbol	modifier__symbol
+bm_ire_4	bm_tre_4	modifier__symbol	modifier__symbol
+bm_ire_4	bm_tri_3	modifier__symbol	modifier__symbol
+bm_ire_4	ct	modifier__symbol	cis_trans__symbol
+bm_tbe_2	atom_oar	modifier__symbol	atom__symbol
+bm_tbe_2	atom_oal	modifier__symbol	atom__symbol
+bm_tbe_2	atom_oal_2	modifier__symbol	atom__symbol
+bm_tbe_2	anything	modifier__symbol	anything__symbol
+bm_tbe_2	bracket	modifier__symbol	bracket__symbol
+bm_tbe_2	bm_ibi	modifier__symbol	modifier__symbol
+bm_tbe_2	bm_iri	modifier__symbol	modifier__symbol
+bm_tbe_2	bm_tbi	modifier__symbol	modifier__symbol
+bm_tbe_2	bm_tri	modifier__symbol	modifier__symbol
+bm_tbe_2	bm_ibe_2	modifier__symbol	modifier__symbol
+bm_tbe_2	bm_ire_2	modifier__symbol	modifier__symbol
+bm_tbe_2	bm_iri_3	modifier__symbol	modifier__symbol
+bm_tbe_2	bm_ire_4	modifier__symbol	modifier__symbol
+bm_tbe_2	bm_tbe_2	modifier__symbol	modifier__symbol
+bm_tbe_2	bm_tre_2	modifier__symbol	modifier__symbol
+bm_tbe_2	bm_tre_4	modifier__symbol	modifier__symbol
+bm_tbe_2	bm_tri_3	modifier__symbol	modifier__symbol
+bm_tbe_2	ct	modifier__symbol	cis_trans__symbol
+bm_tre_2	atom_oar	modifier__symbol	atom__symbol
+bm_tre_2	atom_oal	modifier__symbol	atom__symbol
+bm_tre_2	atom_oal_2	modifier__symbol	atom__symbol
+bm_tre_2	anything	modifier__symbol	anything__symbol
+bm_tre_2	bracket	modifier__symbol	bracket__symbol
+bm_tre_2	bm_ibi	modifier__symbol	modifier__symbol
+bm_tre_2	bm_iri	modifier__symbol	modifier__symbol
+bm_tre_2	bm_tbi	modifier__symbol	modifier__symbol
+bm_tre_2	bm_tri	modifier__symbol	modifier__symbol
+bm_tre_2	bm_ibe_2	modifier__symbol	modifier__symbol
+bm_tre_2	bm_ire_2	modifier__symbol	modifier__symbol
+bm_tre_2	bm_iri_3	modifier__symbol	modifier__symbol
+bm_tre_2	bm_ire_4	modifier__symbol	modifier__symbol
+bm_tre_2	bm_tbe_2	modifier__symbol	modifier__symbol
+bm_tre_2	bm_tre_2	modifier__symbol	modifier__symbol
+bm_tre_2	bm_tre_4	modifier__symbol	modifier__symbol
+bm_tre_2	bm_tri_3	modifier__symbol	modifier__symbol
+bm_tre_2	ct	modifier__symbol	cis_trans__symbol
+bm_tre_4	atom_oar	modifier__symbol	atom__symbol
+bm_tre_4	atom_oal	modifier__symbol	atom__symbol
+bm_tre_4	atom_oal_2	modifier__symbol	atom__symbol
+bm_tre_4	anything	modifier__symbol	anything__symbol
+bm_tre_4	bracket	modifier__symbol	bracket__symbol
+bm_tre_4	bm_ibi	modifier__symbol	modifier__symbol
+bm_tre_4	bm_iri	modifier__symbol	modifier__symbol
+bm_tre_4	bm_tbi	modifier__symbol	modifier__symbol
+bm_tre_4	bm_tri	modifier__symbol	modifier__symbol
+bm_tre_4	bm_ibe_2	modifier__symbol	modifier__symbol
+bm_tre_4	bm_ire_2	modifier__symbol	modifier__symbol
+bm_tre_4	bm_iri_3	modifier__symbol	modifier__symbol
+bm_tre_4	bm_ire_4	modifier__symbol	modifier__symbol
+bm_tre_4	bm_tbe_2	modifier__symbol	modifier__symbol
+bm_tre_4	bm_tre_2	modifier__symbol	modifier__symbol
+bm_tre_4	bm_tre_4	modifier__symbol	modifier__symbol
+bm_tre_4	bm_tri_3	modifier__symbol	modifier__symbol
+bm_tre_4	ct	modifier__symbol	cis_trans__symbol
+bm_tri_3	atom_oar	modifier__symbol	atom__symbol
+bm_tri_3	atom_oal	modifier__symbol	atom__symbol
+bm_tri_3	atom_oal_2	modifier__symbol	atom__symbol
+bm_tri_3	anything	modifier__symbol	anything__symbol
+bm_tri_3	bracket	modifier__symbol	bracket__symbol
+bm_tri_3	bm_ibi	modifier__symbol	modifier__symbol
+bm_tri_3	bm_iri	modifier__symbol	modifier__symbol
+bm_tri_3	bm_tbi	modifier__symbol	modifier__symbol
+bm_tri_3	bm_tri	modifier__symbol	modifier__symbol
+bm_tri_3	bm_ibe_2	modifier__symbol	modifier__symbol
+bm_tri_3	bm_ire_2	modifier__symbol	modifier__symbol
+bm_tri_3	bm_iri_3	modifier__symbol	modifier__symbol
+bm_tri_3	bm_ire_4	modifier__symbol	modifier__symbol
+bm_tri_3	bm_tbe_2	modifier__symbol	modifier__symbol
+bm_tri_3	bm_tre_2	modifier__symbol	modifier__symbol
+bm_tri_3	bm_tre_4	modifier__symbol	modifier__symbol
+bm_tri_3	bm_tri_3	modifier__symbol	modifier__symbol
+bm_tri_3	ct	modifier__symbol	cis_trans__symbol
+ct	atom_oar	cis_trans__symbol	atom__symbol
+ct	atom_oal	cis_trans__symbol	atom__symbol
+ct	atom_oal_2	cis_trans__symbol	atom__symbol
+ct	anything	cis_trans__symbol	anything__symbol
+ct	bracket	cis_trans__symbol	bracket__symbol
+ct	bm_ibi	cis_trans__symbol	modifier__symbol
+ct	bm_iri	cis_trans__symbol	modifier__symbol
+ct	bm_tbi	cis_trans__symbol	modifier__symbol
+ct	bm_tri	cis_trans__symbol	modifier__symbol
+ct	bm_ibe_2	cis_trans__symbol	modifier__symbol
+ct	bm_ire_2	cis_trans__symbol	modifier__symbol
+ct	bm_iri_3	cis_trans__symbol	modifier__symbol
+ct	bm_ire_4	cis_trans__symbol	modifier__symbol
+ct	bm_tbe_2	cis_trans__symbol	modifier__symbol
+ct	bm_tre_2	cis_trans__symbol	modifier__symbol
+ct	bm_tre_4	cis_trans__symbol	modifier__symbol
+ct	bm_tri_3	cis_trans__symbol	modifier__symbol
+isotope	atom_bar	features__symbol	atom__symbol
+isotope	atom_bal	features__symbol	atom__symbol
+isotope	atom_bar_2	features__symbol	atom__symbol
+isotope	atom_bal_2	features__symbol	atom__symbol
+isotope_m	atom_bar	features__symbol	atom__symbol
+isotope_m	atom_bal	features__symbol	atom__symbol
+isotope_m	atom_bar_2	features__symbol	atom__symbol
+isotope_m	atom_bal_2	features__symbol	atom__symbol
+isotope_m	isotope_m	features__symbol	features__symbol
+chiral	bracket	features__symbol	bracket__symbol
+chiral	hydro	features__symbol	features__symbol
+chiral	hydro_2	features__symbol	features__symbol
+chiral	charge	features__symbol	features__symbol
+chiral	charge_2	features__symbol	features__symbol
+chiral	charge_m	features__symbol	features__symbol
+chiral	class_m	features__symbol	features__symbol
+chiral_2	bracket	features__symbol	bracket__symbol
+chiral_2	chiral_2	features__symbol	features__symbol
+chiral_2	hydro	features__symbol	features__symbol
+chiral_2	hydro_2	features__symbol	features__symbol
+chiral_2	charge	features__symbol	features__symbol
+chiral_2	charge_2	features__symbol	features__symbol
+chiral_2	charge_m	features__symbol	features__symbol
+chiral_2	class_m	features__symbol	features__symbol
+chiral_m	bracket	features__symbol	bracket__symbol
+chiral_m	chiral_m	features__symbol	features__symbol
+chiral_m	hydro	features__symbol	features__symbol
+chiral_m	hydro_2	features__symbol	features__symbol
+chiral_m	charge	features__symbol	features__symbol
+chiral_m	charge_2	features__symbol	features__symbol
+chiral_m	charge_m	features__symbol	features__symbol
+chiral_m	class_m	features__symbol	features__symbol
+hydro	bracket	features__symbol	bracket__symbol
+hydro	charge	features__symbol	features__symbol
+hydro	charge_2	features__symbol	features__symbol
+hydro	charge_m	features__symbol	features__symbol
+hydro	class_m	features__symbol	features__symbol
+hydro_2	bracket	features__symbol	bracket__symbol
+hydro_2	hydro_2	features__symbol	features__symbol
+hydro_2	charge	features__symbol	features__symbol
+hydro_2	charge_2	features__symbol	features__symbol
+hydro_2	charge_m	features__symbol	features__symbol
+hydro_2	class_m	features__symbol	features__symbol
+charge	bracket	features__symbol	bracket__symbol
+charge	class_m	features__symbol	features__symbol
+charge_2	bracket	features__symbol	bracket__symbol
+charge_2	charge_2	features__symbol	features__symbol
+charge_2	class_m	features__symbol	features__symbol
+charge_m	bracket	features__symbol	bracket__symbol
+charge_m	charge_m	features__symbol	features__symbol
+charge_m	class_m	features__symbol	features__symbol
+class_m	bracket	features__symbol	bracket__symbol
+class_m	class_m	features__symbol	features__symbol

@@ -1,96 +1,87 @@
 library(tidyverse)
-# Input chars, classes and types
-data <- read_tsv(".../chars_&_symbs.tsv") |>
-                select(chars, charClass, symbClass, symbType) |>
-                separate_longer_delim(chars, delim = ", ")
+### Functions
+# SEE: https://stackoverflow.com/questions/71777528/how-to-filter-not-in
+`%nin%` <- Negate(`%in%`)
+
+### Input classes of symbols
+data <- read_tsv("C:/Users/XPS/Documents/!__tools_for_chemical_information_processing/SMILES_parser/code_v2/data/chars_&_symbs.tsv")
+data_class   <- data |> select(symbClass, symbType) |> distinct()
+allowed_type <- read_tsv("C:/Users/XPS/Documents/!__tools_for_chemical_information_processing/SMILES_parser/code_v2/data/theory_pairs_symbType.tsv") |>
+                    filter(allowed == "yes") |>
+                    select(left_symbType, right_symbType) |>
+                    distinct()
 
 
-###
-# Get unique characters
-unique_chars <- data |> pull(chars) |> unique()
-# Generate all the pairs possible in theory
-pairs <- expand.grid(left_char = unique_chars, right_char = unique_chars)
-# Get all the theoretically possible pairs considering classes and types
-pairs_labeled <- pairs |> inner_join(data, by = c("left_char" = "chars"), relationship = "many-to-many") |>
-                          rename(left_charClass = charClass, left_symbClass = symbClass, left_symbType = symbType) |>
-                          inner_join(data, by = c("right_char" = "chars"), relationship = "many-to-many") |>
-                          rename(right_charClass = charClass, right_symbClass = symbClass, right_symbType = symbType)
+### Process
+##  Generate all the possible pairs of symbol classes
+data_combs <- data_class |> select(symbClass) |>
+                      summarize(symbClass = str_c(symbClass, collapse = ", ")) |>
+                      ungroup() |>
+                      mutate(left = symbClass, right = symbClass) |>
+                      select(left, right)
 
-###
-# Exclude the symbol type pairs, which are not allowed
-pairs_symbTypes_not <- read_tsv(".../theory_pairs_symbType.tsv") |>
-                            filter(allowed == "no")
-pairs_labeled <- pairs_labeled |> anti_join(pairs_symbTypes_not)
-# Assess the number of theoretically possible pairs
-nrow(pairs_labeled)
+##  Filter according to the list of allowed pairs of symbol types
+data_combs <- data_combs |> separate_longer_delim(left, delim = ", ") |>
+                    separate_longer_delim(right, delim = ", ") |>
+                    distinct() |>
+                    inner_join(data_class, by =c("left" = "symbClass")) |>
+                    rename(left_type = symbType) |>
+                    inner_join(data_class, by =c("right" = "symbClass")) |>
+                    rename(right_type = symbType) |>
+                    inner_join(allowed_type, by = c("left_type" = "left_symbType", "right_type" = "right_symbType"))
 
-###
-# Get the distinct theoretically possible pairs of symbol types
-pairs_symbClass <- pairs_labeled |> select(left_symbClass, right_symbClass) |> distinct()
-# Assess the number of theoretically possible symbol pairs
-nrow(pairs_symbClass)
-# Export these results
-write_tsv(pairs_symbClass, ".../theory_pairs_symbClass.tsv")
+##  Filter according to the rules of symbol classes pairings
+data_rules <- data_combs |> filter(
+                                # aromatic bond
+                                !(left == "aromatic_bond"  & right %in% c("atom_bal", "atom_bal_2", "atom_oal", "atom_oal_2")) &
+                                !(right == "aromatic_bond" & left  %in% c("atom_bal", "atom_bal_2", "atom_oal", "atom_oal_2")) &
+                                # isotopes
+                                !(left  == "isotope"    & right %nin% c("atom_bal", "atom_bal_2", "atom_bar", "atom_bar_2")) &
+                                !(left  == "isotope_m"  & right %nin% c("isotope_m", "atom_bal", "atom_bal_2", "atom_bar", "atom_bar_2")) &
+                                !(right == "isotope"    & left %nin% c("atom_bal", "atom_bal_2", "atom_bar", "atom_bar_2")) &
+                                !(right == "isotope_m"  & left %nin% c("isotope_m", "atom_bal", "atom_bal_2", "atom_bar", "atom_bar_2")) &
+                                # feature symbols, chiral
+                                !(left  == "chiral"     & right %nin% c("hydro", "hydro_2", "charge", "charge_2", "charge_m", "class_m", "bracket")) &
+                                !(left  == "chiral_2"   & right %nin% c("chiral_2", "hydro", "hydro_2", "charge", "charge_2", "charge_m", "class_m", "bracket")) &
+                                !(left  == "chiral_m"   & right %nin% c("chiral_m", "hydro", "hydro_2", "charge", "charge_2", "charge_m", "class_m", "bracket")) &
+                                !(right == "chiral"     & left  %nin% c("atom_bal", "atom_bal_2", "atom_bar", "atom_bar_2")) &
+                                !(right == "chiral_2"   & left  %nin% c("chiral_2", "atom_bal", "atom_bal_2", "atom_bar", "atom_bar_2")) &
+                                !(right == "chiral_m"   & left  %nin% c("chiral_m", "atom_bal", "atom_bal_2", "atom_bar", "atom_bar_2")) &
+                                # feature symbols, hydrogen count
+                                !(left  == "hydro"      & right %nin% c("charge", "charge_2", "charge_m", "class_m", "bracket")) &
+                                !(left  == "hydro_2"    & right %nin% c("hydro_2", "charge", "charge_2", "charge_m", "class_m", "bracket")) &
+                                !(right == "hydro"      & left  %nin% c("chiral", "chiral_2", "chiral_m", "atom_bal", "atom_bal_2", "atom_bar", "atom_bar_2")) &
+                                !(right == "hydro_2"    & left  %nin% c("hydro_2", "chiral", "chiral_2", "chiral_m", "atom_bal", "atom_bal_2", "atom_bar", "atom_bar_2")) &
+                                # feature symbols, charge
+                                !(left  == "charge"     & right %nin% c("class_m", "bracket")) &
+                                !(left  == "charge_2"   & right %nin% c("charge_2", "class_m", "bracket")) &
+                                !(left  == "charge_m"   & right %nin% c("charge_m", "class_m", "bracket")) &
+                                !(right == "charge"     & left  %nin% c("hydro", "hydro_2", "chiral", "chiral_2", "chiral_m", "atom_bal", "atom_bal_2", "atom_bar", "atom_bar_2")) &
+                                !(right == "charge_2"   & left  %nin% c("charge_2", "hydro", "hydro_2", "chiral", "chiral_2", "chiral_m", "atom_bal", "atom_bal_2", "atom_bar", "atom_bar_2")) &
+                                !(right == "charge_m"   & left  %nin% c("charge_m", "hydro", "hydro_2", "chiral", "chiral_2", "chiral_m", "atom_bal", "atom_bal_2", "atom_bar", "atom_bar_2")) &
+                                # feature symbols, class
+                                !(left  == "class_m"    & right %nin% c("class_m", "bracket")) &
+                                !(right == "class_m"    & left  %nin% c("class_m", "charge", "charge_2", "charge_m", "hydro", "hydro_2", "chiral", "chiral_2", "chiral_m", "atom_bal", "atom_bal_2", "atom_bar", "atom_bar_2")) &
+                                # bracket atoms
+                                !(left   %in% c("atom_bal", "atom_bar") & right %nin% c("class_m", "charge", "charge_2", "charge_m", "hydro", "hydro_2", "chiral", "chiral_2", "chiral_m", "bracket")) &
+                                !(left   == "atom_bal_2" & right %nin% c("atom_bal_2", "class_m", "charge", "charge_2", "charge_m", "hydro", "hydro_2", "chiral", "chiral_2", "chiral_m", "bracket")) &
+                                !(left   == "atom_bar_2" & right %nin% c("atom_bar_2", "class_m", "charge", "charge_2", "charge_m", "hydro", "hydro_2", "chiral", "chiral_2", "chiral_m", "bracket")) &
+                                !(right  %in% c("atom_bal", "atom_bar") & left  %nin% c("isotope_m", "isotope", "bracket")) &
+                                !(right  == "atom_bal_2" & left  %nin% c("atom_bal_2", "isotope_m", "isotope", "bracket")) &
+                                !(right  == "atom_bar_2" & left  %nin% c("atom_bar_2", "isotope_m", "isotope", "bracket")) &
+                                # organic atoms lacking additional properties
+                                !(left  %in% c("atom_oal", "atom_oal_2", "atom_oar", "atom_oar_2") & right %in% c("class_m", "charge", "charge_2", "charge_m", "hydro", "hydro_2", "chiral", "chiral_2", "chiral_m", "atom_bal", "atom_bal_2", "atom_bar", "atom_bar_2", "isotope", "isotope_m")) &
+                                !(right %in% c("atom_oal", "atom_oal_2", "atom_oar", "atom_oar_2") & left  %in% c("class_m", "charge", "charge_2", "charge_m", "hydro", "hydro_2", "chiral", "chiral_2", "chiral_m", "atom_bal", "atom_bal_2", "atom_bar", "atom_bar_2", "isotope", "isotope_m")) &
+                                # bonds and bond modifying symbols should not be paired with the atoms and features inside the brackets
+                                !(left  %in% c("aromatic_bond", "double_bond", "no_bond", "quadruple_bond", "single_bond", "triple_bond", "bm_ibi", "bm_iri", "bm_tbi", "bm_tri", "bm_ibe_2", "bm_ire_2", "bm_iri_3", "bm_ire_4", "bm_tbe_2", "bm_tre_2", "bm_tre_4", "bm_tri_3") &
+                                  right %in% c("class_m", "charge", "charge_2", "charge_m", "hydro", "hydro_2", "chiral", "chiral_2", "chiral_m", "atom_bal", "atom_bal_2", "atom_bar", "atom_bar_2", "isotope", "isotope_m")) &
+                                !(right  %in% c("aromatic_bond", "double_bond", "no_bond", "quadruple_bond", "single_bond", "triple_bond", "bm_ibi", "bm_iri", "bm_tbi", "bm_tri", "bm_ibe_2", "bm_ire_2", "bm_iri_3", "bm_ire_4", "bm_tbe_2", "bm_tre_2", "bm_tre_4", "bm_tri_3") &
+                                  left %in% c("class_m", "charge", "charge_2", "charge_m", "hydro", "hydro_2", "chiral", "chiral_2", "chiral_m", "atom_bal", "atom_bal_2", "atom_bar", "atom_bar_2", "isotope", "isotope_m")) &
+                                # bond modifying symbols, initiators and terminators of branching
+                                !(left %in% c("bm_ibi", "bm_ibe_2") & right %in% c("bm_tbi", "bm_tbe_2")) &
+                                # two character (explicit) bond modifying symbols on the left, initiators should not have new branching iniator on the right
+                                !(left %in% c("bm_ibe_2") & right %in% c("bm_ibi"))
+                            )
 
-###
-# 1, 2. Isotope symbols could only be paired with the bracket on the left and bracket atom on the right, also isotope_m could be paired with itself on both sides.
-isotope_allowed <- pairs_labeled |> filter(
-                                                (left_symbClass == "isotope" & str_detect(right_symbClass, "atom_b")) |
-                                                (right_symbClass == "isotope" & left_symbClass == "bracket") |
-                                                (left_symbClass == "isotope_m" & (str_detect(right_symbClass, "atom_b") | right_symbClass == "isotope_m")) |
-                                                (right_symbClass == "isotope_m" & (left_symbClass == "bracket" | left_symbClass == "isotope_m"))
-                                                ) |>
-                                 select(left_symbClass, right_symbClass) |> distinct()
-# 3. Features symbols, besides isotope, could only be paired with the other feature symbols or bracket symbols on the right and with the other feature symbols or bracket atom symbols on the left.
-# Or they can go in pairs with themselves
-fs_allowed <- pairs_labeled |> filter(
-                                      (str_detect(left_symbClass, "chiral.*")   & (str_detect(right_symbClass, "hydro.*") | str_detect(right_symbClass, "charge.*") | str_detect(right_symbClass, "class.*") | right_symbClass == "bracket")) |
-                                      (str_detect(left_symbClass, "hydro.*")    & (str_detect(right_symbClass, "charge.*") | str_detect(right_symbClass, "class.*") | right_symbClass == "bracket")) |
-                                      (str_detect(left_symbClass, "charge.*")   & (str_detect(right_symbClass, "class.*") | right_symbClass == "bracket")) |
-                                      (str_detect(left_symbClass, "class.*")    & right_symbClass == "bracket") |
-                                      (str_detect(right_symbClass, "chiral.*")  & str_detect(left_symbClass, "atom_b.*")) |
-                                      (str_detect(right_symbClass, "hydro.*")   & (str_detect(left_symbClass, "chiral.*") | str_detect(left_symbClass, "atom_b.*"))) |
-                                      (str_detect(right_symbClass, "charge.*")  & (str_detect(left_symbClass, "chiral.*") | str_detect(left_symbClass, "hydro.*") | str_detect(left_symbClass, "atom_b.*"))) |
-                                      (str_detect(right_symbClass, "class.*")   & (str_detect(left_symbClass, "chiral.*") | str_detect(left_symbClass, "hydro.*") | str_detect(left_symbClass, "charge.*") | str_detect(left_symbClass, "atom_b.*"))) |
-                                      (str_detect(left_symbClass,  "chiral_.*|hydro_.*|charge_.*|class_.*") & left_symbClass == right_symbClass) |
-                                      (str_detect(right_symbClass, "chiral_.*|hydro_.*|charge_.*|class_.*") & left_symbClass == right_symbClass)
-                               ) |>
-                               select(left_symbClass, right_symbClass) |> distinct()
-# 5. Bracket atoms cannot be paired with the symbols contained outside the brackets and they can only be paired with the isotope symbols if those symbols are on the left and they can only be paired with the other bracket atom symbols on condition that those symbols has the same length, which is greater than 1.
-ba_allowed <- pairs_labeled |> filter(
-                                        (str_detect(left_symbClass, "atom_b.*")     & str_detect(right_symbClass, "chiral.*|hydro.*|charge.*|class.*|chiral.*|bracket")) |
-                                        (str_detect(right_symbClass, "atom_b.*")    & str_detect(left_symbClass,  "bracket|isotope.*")) |
-                                        (str_detect(left_symbClass, "atom_b.*_.*")  & right_symbClass == left_symbClass) |
-                                        (str_detect(right_symbClass, "atom_b.*_.*") & right_symbClass == left_symbClass)
-                                ) |>
-                                select(left_symbClass, right_symbClass) |> distinct()
-# 6. Organic atom symbols can not be paired with the symbols contained inside the brackets.
-oa_allowed <- pairs_labeled |> filter(
-                                        (str_detect(left_symbClass, "atom_o.*")    & !str_detect(right_symbClass, "atom_b.*|isotope.*|chiral.*|hydro.*|charge.*|class.*")) |
-                                        (str_detect(right_symbClass, "atom_o.*")   & !str_detect(left_symbClass,  "atom_b.*|isotope.*|chiral.*|hydro.*|charge.*|class.*"))
-                                ) |>
-                                select(left_symbClass, right_symbClass) |> distinct()
-# 7. Bond symbols and bond modifying symbols can not be paired with the symbols contained inside the brackets.
-bbm_allowed <- pairs_labeled |> filter(
-                                        (str_detect(left_symbClass, ".*_bond") &  !str_detect(right_symbClass, "atom_b.*|isotope.*|chiral.*|hydro.*|charge.*|class.*")) |
-                                        (str_detect(right_symbClass, ".*_bond") &  !str_detect(left_symbClass, "atom_b.*|isotope.*|chiral.*|hydro.*|charge.*|class.*")) |
-                                        (str_detect(left_symbClass, "bm.*") &  !str_detect(right_symbClass, "atom_b.*|isotope.*|chiral.*|hydro.*|charge.*|class.*")) |
-                                        (str_detect(right_symbClass, "bm.*") &  !str_detect(left_symbClass, "atom_b.*|isotope.*|chiral.*|hydro.*|charge.*|class.*"))
-                                ) |>
-                                select(left_symbClass, right_symbClass) |> distinct()
-# 8. Cis/trans symbols are only allowed on the left side from the organic atoms and brackets.
-ct_allowed <- pairs_labeled |> filter(
-                                        (left_symbClass == "ct" & (str_detect(right_symbClass, "atom_o.*_.*") | right_symbClass == "bracket")) |
-                                        (right_symbClass == "ct" & (!str_detect(left_symbClass, "atom_b.*|isotope.*|chiral.*|hydro.*|charge.*|class.*"))) 
-                               ) |>
-                               select(left_symbClass, right_symbClass) |> distinct()
-# Delete records, to which the rules were applied from the main set of pairs
-pairs_unknown <- pairs_labeled |> filter(
-                                        !str_detect(left_symbClass,  "ct|bm.*|.*_bond|atom_b.*|isotope.*|chiral.*|hydro.*|charge.*|class.*|chiral.*") &
-                                        !str_detect(right_symbClass, "ct|bm.*|.*_bond|atom_b.*|isotope.*|chiral.*|hydro.*|charge.*|class.*|chiral.*")
-                                ) |>
-                                select(left_symbClass, right_symbClass) |> distinct()
-# Gather labeled pairs
-pairs_rulesApplied <- bind_rows(isotope_allowed, fs_allowed, ba_allowed, oa_allowed, bbm_allowed, pairs_unknown) |> distinct()
-# Export these prefiltered results
-write_tsv(pairs_rulesApplied, ".../theory_pairs_symbClass_rules.tsv")
+
+write_tsv(data_rules, "C:/.../theory_pairs_symbClass_rules.tsv")
