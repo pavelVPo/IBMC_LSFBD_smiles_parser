@@ -834,25 +834,22 @@ nrow(pairs_symbClass)
 
 1.  Aromatic bond, which is already deprecated, should not be paired with the aliphatic atoms.
 2.  Isotope symbols could only be paired with the bracket on the left and bracket atom on the right.
-3.  Features symbols, besides isotope, could only be paired with the other feature symbols or bracket symbols on the right and with the other feature symbols or bracket atom symbols on the left.
-4.  Features symbols, besides isotope, being on the left side could only be paired with the other feature symbols in the following order (from left to right): chiral -\> hydro -\> charge -\> class (gaps are allowed) and bracket.
+3.  Features symbols, besides isotope, being on the left side could only be paired with the other feature symbols in the following order (from left to right): chiral -\> hydro -\> charge -\> class (gaps are allowed) and bracket.
+4.  Features symbols, besides isotope, could only be paired with the other feature symbols or bracket symbols on the right and with the other feature symbols (in reverse order from 3) or bracket atom symbols on the left.
 5.  Bracket atoms cannot be paired with the symbols contained outside the brackets and they can only be paired with the isotope symbols if those symbols are on the left and they can only be paired with the other bracket atom symbols on condition that those symbols has the same length, which is greater than 1.
 6.  Organic atom symbols can only be paired with the symbols found outside the brackets.
 7.  Bond symbols and bond modifying symbols can not be paired with the symbols contained inside the brackets.
-8.  Bond modifying initiators and terminators should be separated by at least one atom.
+8.  Bond modifying initiators and terminators of branching should be separated by at least one atom.
 9.  Two character bond modifying initiator symbols could not precede other bond modifying initiator symbols.
 
 Also, characters could be paired with the characters from the same symbol classes given that they belong to the one class, which members consist of more than one character considering the right order.
 
-After applying this set of simple rules, **479** pairs of symbol classes are left, the following check-ups will be conducted on the level of character classes.
-
-### Checking pairs of symbol classes
-
-To check the results of rules application it is possible to generate the examples of symbol pairs from the aforementioned classes.
+After applying this set of simple rules, **472** pairs of symbol classes are left, the following check-ups will be conducted on the level of character classes.
 
 > [!NOTE]
-> Several cases where rules are violated were found, thus, an update is needed.
-> Also, the strategy probably should be reconsidered: more focused approach should be better.
+> Toy parser shown that the decision making process concerning the characters of the current symbol mainly depends on the previous symbol.
+> Thus, it will be alright to analyze one possible pair of symbols at time describing the appropriate course of action.
+> Latter the appropriate actions for each state possible will be gathered to the whole process.
 
 ## Pairs of character classes, which are allowed in SMILES
 
