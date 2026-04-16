@@ -861,10 +861,10 @@ It seems to be reasonable to check the remaining pairs of symbol classes as foll
 
 > [!NOTE]
 > **Here is an idea of much simpler parsing procedure**:  
-> Read the SMILES string character by character.  
-> Accumulate current symbol.  
-> At each step of accumulation search for the accumulated string in the list of the symbols allowed in SMILES.  
-> Terminate the search and move to accumulating next symbol with regards to the last match, when the longest symbol possible is exceeded by the accumulated string.
+> - Read the SMILES string character by character.  
+> - Accumulate current symbol.  
+> - At each step of accumulation search for the accumulated string in the list of the symbols allowed in SMILES.  
+> - Terminate the search and move to accumulating next symbol with regards to the last match, when the longest symbol possible is exceeded by the accumulated string.
 
 **This is much simpler than the current approach and should work. Also, it is a fully verifiable approach, since for each symbol pair it is possible to append each symbol allowed in SMILES and just check for mistakes.**
 
