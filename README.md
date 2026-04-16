@@ -844,7 +844,7 @@ nrow(pairs_symbClass)
 
 Also, characters could be paired with the characters from the same symbol classes given that they belong to the one class, which members consist of more than one character considering the right order.
 
-After applying this set of simple rules, **472** pairs of symbol classes are left, the following check-ups will be conducted on the level of character classes.
+After applying this set of simple rules (with latest update), **462** pairs of symbol classes are left, the following check-ups will be conducted on the level of character classes.
 
 > [!NOTE]
 
@@ -852,7 +852,7 @@ After applying this set of simple rules, **472** pairs of symbol classes are lef
 
 > Thus, it will be alright to analyze one possible pair of symbols at time describing the appropriate course of action.
 
-> Latter the appropriate actions for each state possible will be gathered to describe the whole process.
+> After that the appropriate actions for each state possible will be gathered to describe the whole process.
 
 ## Checking pairs of symbol classes
 
