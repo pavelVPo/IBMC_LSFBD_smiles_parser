@@ -267,7 +267,6 @@ bm_ibe_2	anything	modifier__symbol	anything__symbol
 bm_ibe_2	bracket	modifier__symbol	bracket__symbol
 bm_ibe_2	bm_iri	modifier__symbol	modifier__symbol
 bm_ibe_2	bm_tri	modifier__symbol	modifier__symbol
-bm_ibe_2	bm_ibe_2	modifier__symbol	modifier__symbol
 bm_ibe_2	bm_ire_2	modifier__symbol	modifier__symbol
 bm_ibe_2	bm_iri_3	modifier__symbol	modifier__symbol
 bm_ibe_2	bm_ire_4	modifier__symbol	modifier__symbol
@@ -336,13 +335,11 @@ bm_tbe_2	anything	modifier__symbol	anything__symbol
 bm_tbe_2	bracket	modifier__symbol	bracket__symbol
 bm_tbe_2	bm_ibi	modifier__symbol	modifier__symbol
 bm_tbe_2	bm_iri	modifier__symbol	modifier__symbol
-bm_tbe_2	bm_tbi	modifier__symbol	modifier__symbol
 bm_tbe_2	bm_tri	modifier__symbol	modifier__symbol
 bm_tbe_2	bm_ibe_2	modifier__symbol	modifier__symbol
 bm_tbe_2	bm_ire_2	modifier__symbol	modifier__symbol
 bm_tbe_2	bm_iri_3	modifier__symbol	modifier__symbol
 bm_tbe_2	bm_ire_4	modifier__symbol	modifier__symbol
-bm_tbe_2	bm_tbe_2	modifier__symbol	modifier__symbol
 bm_tbe_2	bm_tre_2	modifier__symbol	modifier__symbol
 bm_tbe_2	bm_tre_4	modifier__symbol	modifier__symbol
 bm_tbe_2	bm_tri_3	modifier__symbol	modifier__symbol
@@ -426,7 +423,6 @@ isotope_m	atom_bar	features__symbol	atom__symbol
 isotope_m	atom_bal	features__symbol	atom__symbol
 isotope_m	atom_bar_2	features__symbol	atom__symbol
 isotope_m	atom_bal_2	features__symbol	atom__symbol
-isotope_m	isotope_m	features__symbol	features__symbol
 chiral	bracket	features__symbol	bracket__symbol
 chiral	hydro	features__symbol	features__symbol
 chiral	hydro_2	features__symbol	features__symbol
@@ -435,7 +431,6 @@ chiral	charge_2	features__symbol	features__symbol
 chiral	charge_m	features__symbol	features__symbol
 chiral	class_m	features__symbol	features__symbol
 chiral_2	bracket	features__symbol	bracket__symbol
-chiral_2	chiral_2	features__symbol	features__symbol
 chiral_2	hydro	features__symbol	features__symbol
 chiral_2	hydro_2	features__symbol	features__symbol
 chiral_2	charge	features__symbol	features__symbol
@@ -443,7 +438,6 @@ chiral_2	charge_2	features__symbol	features__symbol
 chiral_2	charge_m	features__symbol	features__symbol
 chiral_2	class_m	features__symbol	features__symbol
 chiral_m	bracket	features__symbol	bracket__symbol
-chiral_m	chiral_m	features__symbol	features__symbol
 chiral_m	hydro	features__symbol	features__symbol
 chiral_m	hydro_2	features__symbol	features__symbol
 chiral_m	charge	features__symbol	features__symbol
@@ -456,7 +450,6 @@ hydro	charge_2	features__symbol	features__symbol
 hydro	charge_m	features__symbol	features__symbol
 hydro	class_m	features__symbol	features__symbol
 hydro_2	bracket	features__symbol	bracket__symbol
-hydro_2	hydro_2	features__symbol	features__symbol
 hydro_2	charge	features__symbol	features__symbol
 hydro_2	charge_2	features__symbol	features__symbol
 hydro_2	charge_m	features__symbol	features__symbol
@@ -464,10 +457,7 @@ hydro_2	class_m	features__symbol	features__symbol
 charge	bracket	features__symbol	bracket__symbol
 charge	class_m	features__symbol	features__symbol
 charge_2	bracket	features__symbol	bracket__symbol
-charge_2	charge_2	features__symbol	features__symbol
 charge_2	class_m	features__symbol	features__symbol
 charge_m	bracket	features__symbol	bracket__symbol
-charge_m	charge_m	features__symbol	features__symbol
 charge_m	class_m	features__symbol	features__symbol
 class_m	bracket	features__symbol	bracket__symbol
-class_m	class_m	features__symbol	features__symbol
