@@ -840,16 +840,35 @@ nrow(pairs_symbClass)
 6.  Organic atom symbols can only be paired with the symbols found outside the brackets.
 7.  Bond symbols and bond modifying symbols can not be paired with the symbols contained inside the brackets.
 8.  Bond modifying initiators and terminators of branching should be separated by at least one atom.
-9.  Two character bond modifying initiator symbols could not precede other bond modifying initiator symbols.
+9.  Two character bond modifying initiator and terminator symbols could not precede other bond modifying initiator symbols.
 
 Also, characters could be paired with the characters from the same symbol classes given that they belong to the one class, which members consist of more than one character considering the right order.
 
 After applying this set of simple rules, **472** pairs of symbol classes are left, the following check-ups will be conducted on the level of character classes.
 
 > [!NOTE]
+
 > Toy parser shown that the decision making process concerning the characters of the current symbol mainly depends on the previous symbol.
+
 > Thus, it will be alright to analyze one possible pair of symbols at time describing the appropriate course of action.
-> Latter the appropriate actions for each state possible will be gathered to the whole process.
+
+> Latter the appropriate actions for each state possible will be gathered to describe the whole process.
+
+## Checking pairs of symbol classes
+
+It seems to be reasonable to check the remaining pairs of symbol classes as follows:
+
+1. Simulate the parsing procedure for each case described by the pair of symbol characters, considering that pair is already known and the state is appropriate.
+
+> [!NOTE]
+> **Here is an idea of much simpler parsing strategy**:
+> Read the SMILES string by character
+> Accumulate characters of the current symbol
+> At each step of accumulation search for the accumulated string in the list of the symbols allowed in SMILES
+> Terminate the search and move to accumulating next symbol, when the longest symbol possible is exceeded by the accumulated string.
+
+> [!NOTE]
+> **Considering the previous note, additional symbol classes should be forbidden: pairs of identical classes, which were previously allowed because of their multicharacter nature.
 
 ## Checking pairs of symbol classes
 
