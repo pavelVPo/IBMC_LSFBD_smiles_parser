@@ -851,6 +851,23 @@ After applying this set of simple rules, **472** pairs of symbol classes are lef
 > Thus, it will be alright to analyze one possible pair of symbols at time describing the appropriate course of action.
 > Latter the appropriate actions for each state possible will be gathered to the whole process.
 
+## Checking pairs of symbol classes
+
+It seems to be reasonable to check the remaining pairs of symbol classes as follows:
+
+1. Simulate the parsing procedure for each case described by the pair of symbol characters, considering that pair is already known and the state is appropriate.
+2. Check the results.
+3. Analyze the results.
+
+> [!NOTE]
+> **Here is an idea of much simpler parsing procedure**:
+> Read the SMILES string character by character
+> Accumulate current symbol
+> At each step of accumulation search for the accumulated string in the list of the symbols allowed in SMILES
+> Terminate the search and move to accumulating next symbol with regards to the last match, when the longest symbol possible is exceeded by the accumulated string.
+
+**This is much simpler than the current approach and should work. Also, it is a fully verifiable approach, since for each symbol pair it is possible to append each symbol allowed in SMILES and just check for mistakes.**
+
 ## Current status and further objectives
 
 So, at this point symbols and characters allowed in SMILES are enumerated and classified, their relations are somewhat described, general parsing strategy is proposed.
