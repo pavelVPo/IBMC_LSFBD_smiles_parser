@@ -1,0 +1,140 @@
+left	right	classes
+1	1	bm_iri - bm_iri, bm_iri - bm_tri, bm_tri - bm_iri, bm_tri - bm_tri
+1	?	bm_iri - anything, bm_iri - bm_ibi, bm_iri - bm_tbi, bm_iri - bracket, bm_iri - ct, bm_tri - anything, bm_tri - bm_ibi, bm_tri - bm_tbi, bm_tri - bracket, bm_tri - ct
+1	?1	bm_iri - bm_ire_2, bm_iri - bm_tre_2, bm_tri - bm_ire_2, bm_tri - bm_tre_2
+1	?11	bm_iri - bm_iri_3, bm_iri - bm_tri_3, bm_tri - bm_iri_3, bm_tri - bm_tri_3
+1	??	bm_iri - bm_ibe_2, bm_iri - bm_tbe_2, bm_tri - bm_ibe_2, bm_tri - bm_tbe_2
+1	??11	bm_iri - bm_ire_4, bm_iri - bm_tre_4, bm_tri - bm_ire_4, bm_tri - bm_tre_4
+1	A	bm_iri - atom_oal, bm_tri - atom_oal, isotope - atom_bal, isotope_m - atom_bal
+1	Aa	bm_iri - atom_oal_2, bm_tri - atom_oal_2, isotope - atom_bal_2, isotope_m - atom_bal_2
+1	a	bm_iri - atom_oar, bm_tri - atom_oar, isotope - atom_bar, isotope_m - atom_bar
+1	aa	isotope - atom_bar_2, isotope_m - atom_bar_2
+11	A	isotope_m - atom_bal
+11	Aa	isotope_m - atom_bal_2
+11	a	isotope_m - atom_bar
+11	aa	isotope_m - atom_bar_2
+111	A	isotope_m - atom_bal
+111	Aa	isotope_m - atom_bal_2
+111	a	isotope_m - atom_bar
+111	aa	isotope_m - atom_bar_2
+?	1	anything - bm_iri, anything - bm_tri, bm_ibi - bm_iri, bm_ibi - bm_tri, bm_tbi - bm_iri, bm_tbi - bm_tri, bracket - bm_iri, bracket - bm_tri, ct - bm_iri, ct - bm_tri
+?	?	anything - anything, anything - aromatic_bond, anything - bm_ibi, anything - bm_tbi, anything - bracket, anything - ct, anything - double_bond, anything - no_bond, anything - quadruple_bond, anything - single_bond, anything - triple_bond, aromatic_bond - anything, aromatic_bond - bracket, bm_ibi - anything, bm_ibi - bm_ibi, bm_ibi - bracket, bm_ibi - ct, bm_tbi - anything, bm_tbi - bm_ibi, bm_tbi - bm_tbi, bm_tbi - bracket, bm_tbi - ct, bracket - anything, bracket - aromatic_bond, bracket - bm_ibi, bracket - bm_tbi, bracket - ct, bracket - double_bond, bracket - no_bond, bracket - quadruple_bond, bracket - single_bond, bracket - triple_bond, charge - bracket, chiral - bracket, chiral - charge, ct - anything, ct - bm_ibi, ct - bm_tbi, ct - bracket, double_bond - anything, double_bond - bracket, no_bond - anything, no_bond - bracket, quadruple_bond - anything, quadruple_bond - bracket, single_bond - anything, single_bond - bracket, triple_bond - anything, triple_bond - bracket
+?	?1	anything - bm_ire_2, anything - bm_tre_2, bm_ibi - bm_ire_2, bm_ibi - bm_tre_2, bm_tbi - bm_ire_2, bm_tbi - bm_tre_2, bracket - bm_ire_2, bracket - bm_tre_2, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_ire_2, ct - bm_tre_2
+?	?11	anything - bm_iri_3, anything - bm_tri_3, bm_ibi - bm_iri_3, bm_ibi - bm_tri_3, bm_tbi - bm_iri_3, bm_tbi - bm_tri_3, bracket - bm_iri_3, bracket - bm_tri_3, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_iri_3, ct - bm_tri_3
+?	?111	charge - class_m, chiral - class_m
+?	??	anything - bm_ibe_2, anything - bm_tbe_2, bm_ibi - bm_ibe_2, bm_tbi - bm_ibe_2, bm_tbi - bm_tbe_2, bracket - bm_ibe_2, bracket - bm_tbe_2, chiral - charge_2, ct - bm_ibe_2, ct - bm_tbe_2
+?	??11	anything - bm_ire_4, anything - bm_tre_4, bm_ibi - bm_ire_4, bm_ibi - bm_tre_4, bm_tbi - bm_ire_4, bm_tbi - bm_tre_4, bracket - bm_ire_4, bracket - bm_tre_4, ct - bm_ire_4, ct - bm_tre_4
+?	A	anything - atom_oal, bm_ibi - atom_oal, bm_tbi - atom_oal, bracket - atom_bal, bracket - atom_oal, chiral - hydro, ct - atom_oal, double_bond - atom_oal, no_bond - atom_oal, quadruple_bond - atom_oal, single_bond - atom_oal, triple_bond - atom_oal
+?	A1	chiral - hydro_2
+?	Aa	anything - atom_oal_2, bm_ibi - atom_oal_2, bm_tbi - atom_oal_2, bracket - atom_bal_2, bracket - atom_oal_2, ct - atom_oal_2, double_bond - atom_oal_2, no_bond - atom_oal_2, quadruple_bond - atom_oal_2, single_bond - atom_oal_2, triple_bond - atom_oal_2
+?	a	anything - atom_oar, aromatic_bond - atom_oar, bm_ibi - atom_oar, bm_tbi - atom_oar, bracket - atom_bar, bracket - atom_oar, ct - atom_oar, double_bond - atom_oar, no_bond - atom_oar, quadruple_bond - atom_oar, single_bond - atom_oar, triple_bond - atom_oar
+?	aa	bracket - atom_bar_2
+?1	1	bm_ire_2 - bm_iri, bm_ire_2 - bm_tri, bm_tre_2 - bm_iri, bm_tre_2 - bm_tri
+?1	?	bm_ire_2 - anything, bm_ire_2 - bm_ibi, bm_ire_2 - bm_tbi, bm_ire_2 - bracket, bm_ire_2 - ct, bm_tre_2 - anything, bm_tre_2 - bm_ibi, bm_tre_2 - bm_tbi, bm_tre_2 - bracket, bm_tre_2 - ct, charge_m - bracket, class_m - bracket
+?1	?1	bm_ire_2 - bm_ire_2, bm_ire_2 - bm_tre_2, bm_tre_2 - bm_ire_2, bm_tre_2 - bm_tre_2, charge_m - class_m
+?1	?11	bm_ire_2 - bm_iri_3, bm_ire_2 - bm_tri_3, bm_tre_2 - bm_iri_3, bm_tre_2 - bm_tri_3, charge_m - class_m
+?1	?111	charge_m - class_m
+?1	??	bm_ire_2 - bm_ibe_2, bm_ire_2 - bm_tbe_2, bm_tre_2 - bm_ibe_2, bm_tre_2 - bm_tbe_2
+?1	??11	bm_ire_2 - bm_ire_4, bm_ire_2 - bm_tre_4, bm_tre_2 - bm_ire_4, bm_tre_2 - bm_tre_4
+?1	A	bm_ire_2 - atom_oal, bm_tre_2 - atom_oal
+?1	Aa	bm_ire_2 - atom_oal_2, bm_tre_2 - atom_oal_2
+?1	a	bm_ire_2 - atom_oar, bm_tre_2 - atom_oar
+?11	1	bm_iri_3 - bm_iri, bm_iri_3 - bm_tri, bm_tri_3 - bm_iri, bm_tri_3 - bm_tri
+?11	?	bm_iri_3 - anything, bm_iri_3 - bm_ibi, bm_iri_3 - bm_tbi, bm_iri_3 - bracket, bm_iri_3 - ct, bm_tri_3 - anything, bm_tri_3 - bm_ibi, bm_tri_3 - bm_tbi, bm_tri_3 - bracket, bm_tri_3 - ct, charge_m - bracket, class_m - bracket
+?11	?1	bm_iri_3 - bm_ire_2, bm_iri_3 - bm_tre_2, bm_tri_3 - bm_ire_2, bm_tri_3 - bm_tre_2, charge_m - class_m
+?11	?11	bm_iri_3 - bm_iri_3, bm_iri_3 - bm_tri_3, bm_tri_3 - bm_iri_3, bm_tri_3 - bm_tri_3, charge_m - class_m
+?11	?111	charge_m - class_m
+?11	??	bm_iri_3 - bm_ibe_2, bm_iri_3 - bm_tbe_2, bm_tri_3 - bm_ibe_2, bm_tri_3 - bm_tbe_2
+?11	??11	bm_iri_3 - bm_ire_4, bm_iri_3 - bm_tre_4, bm_tri_3 - bm_ire_4, bm_tri_3 - bm_tre_4
+?11	A	bm_iri_3 - atom_oal, bm_tri_3 - atom_oal
+?11	Aa	bm_iri_3 - atom_oal_2, bm_tri_3 - atom_oal_2
+?11	a	bm_iri_3 - atom_oar, bm_tri_3 - atom_oar
+?111	?	class_m - bracket
+??	1	bm_ibe_2 - bm_iri, bm_ibe_2 - bm_tri, bm_tbe_2 - bm_iri, bm_tbe_2 - bm_tri
+??	?	bm_ibe_2 - anything, bm_ibe_2 - bracket, bm_ibe_2 - ct, bm_tbe_2 - anything, bm_tbe_2 - bm_ibi, bm_tbe_2 - bracket, bm_tbe_2 - ct, charge_2 - bracket, chiral_2 - bracket, chiral_2 - charge
+??	?1	bm_ibe_2 - bm_ire_2, bm_ibe_2 - bm_tre_2, bm_tbe_2 - bm_ire_2, bm_tbe_2 - bm_tre_2, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m
+??	?11	bm_ibe_2 - bm_iri_3, bm_ibe_2 - bm_tri_3, bm_tbe_2 - bm_iri_3, bm_tbe_2 - bm_tri_3, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m
+??	?111	charge_2 - class_m, chiral_2 - class_m
+??	??	bm_tbe_2 - bm_ibe_2, chiral_2 - charge_2
+??	??11	bm_ibe_2 - bm_ire_4, bm_ibe_2 - bm_tre_4, bm_tbe_2 - bm_ire_4, bm_tbe_2 - bm_tre_4
+??	A	bm_ibe_2 - atom_oal, bm_tbe_2 - atom_oal, chiral_2 - hydro
+??	A1	chiral_2 - hydro_2
+??	Aa	bm_ibe_2 - atom_oal_2, bm_tbe_2 - atom_oal_2
+??	a	bm_ibe_2 - atom_oar, bm_tbe_2 - atom_oar
+??11	1	bm_ire_4 - bm_iri, bm_ire_4 - bm_tri, bm_tre_4 - bm_iri, bm_tre_4 - bm_tri
+??11	?	bm_ire_4 - anything, bm_ire_4 - bm_ibi, bm_ire_4 - bm_tbi, bm_ire_4 - bracket, bm_ire_4 - ct, bm_tre_4 - anything, bm_tre_4 - bm_ibi, bm_tre_4 - bm_tbi, bm_tre_4 - bracket, bm_tre_4 - ct
+??11	?1	bm_ire_4 - bm_ire_2, bm_ire_4 - bm_tre_2, bm_tre_4 - bm_ire_2, bm_tre_4 - bm_tre_2
+??11	?11	bm_ire_4 - bm_iri_3, bm_ire_4 - bm_tri_3, bm_tre_4 - bm_iri_3, bm_tre_4 - bm_tri_3
+??11	??	bm_ire_4 - bm_ibe_2, bm_ire_4 - bm_tbe_2, bm_tre_4 - bm_ibe_2, bm_tre_4 - bm_tbe_2
+??11	??11	bm_ire_4 - bm_ire_4, bm_ire_4 - bm_tre_4, bm_tre_4 - bm_ire_4, bm_tre_4 - bm_tre_4
+??11	A	bm_ire_4 - atom_oal, bm_tre_4 - atom_oal
+??11	Aa	bm_ire_4 - atom_oal_2, bm_tre_4 - atom_oal_2
+??11	a	bm_ire_4 - atom_oar, bm_tre_4 - atom_oar
+?AA1	?	chiral_m - bracket, chiral_m - charge
+?AA1	?1	chiral_m - charge_m, chiral_m - class_m
+?AA1	?11	chiral_m - charge_m, chiral_m - class_m
+?AA1	?111	chiral_m - class_m
+?AA1	??	chiral_m - charge_2
+?AA1	A	chiral_m - hydro
+?AA1	A1	chiral_m - hydro_2
+?AA11	?	chiral_m - bracket, chiral_m - charge
+?AA11	?1	chiral_m - charge_m, chiral_m - class_m
+?AA11	?11	chiral_m - charge_m, chiral_m - class_m
+?AA11	?111	chiral_m - class_m
+?AA11	??	chiral_m - charge_2
+?AA11	A	chiral_m - hydro
+?AA11	A1	chiral_m - hydro_2
+A	1	atom_oal - bm_iri, atom_oal - bm_tri
+A	?	atom_bal - bracket, atom_bal - charge, atom_bal - chiral, atom_oal - anything, atom_oal - bm_ibi, atom_oal - bm_tbi, atom_oal - bracket, atom_oal - ct, atom_oal - double_bond, atom_oal - no_bond, atom_oal - quadruple_bond, atom_oal - single_bond, atom_oal - triple_bond, hydro - bracket, hydro - charge
+A	?1	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_ire_2, atom_oal - bm_tre_2, hydro - charge_m, hydro - class_m
+A	?11	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_iri_3, atom_oal - bm_tri_3, hydro - charge_m, hydro - class_m
+A	?111	atom_bal - class_m, hydro - class_m
+A	??	atom_bal - charge_2, atom_bal - chiral_2, atom_oal - bm_ibe_2, atom_oal - bm_tbe_2, hydro - charge_2
+A	??11	atom_oal - bm_ire_4, atom_oal - bm_tre_4
+A	?AA1	atom_bal - chiral_m
+A	?AA11	atom_bal - chiral_m
+A	A	atom_bal - hydro, atom_oal - atom_oal
+A	A1	atom_bal - hydro_2
+A	Aa	atom_oal - atom_oal_2
+A	a	atom_oal - atom_oar
+A1	?	hydro_2 - bracket, hydro_2 - charge
+A1	?1	hydro_2 - charge_m, hydro_2 - class_m
+A1	?11	hydro_2 - charge_m, hydro_2 - class_m
+A1	?111	hydro_2 - class_m
+A1	??	hydro_2 - charge_2
+Aa	1	atom_oal_2 - bm_iri, atom_oal_2 - bm_tri
+Aa	?	atom_bal_2 - bracket, atom_bal_2 - charge, atom_bal_2 - chiral, atom_oal_2 - anything, atom_oal_2 - bm_ibi, atom_oal_2 - bm_tbi, atom_oal_2 - bracket, atom_oal_2 - ct, atom_oal_2 - double_bond, atom_oal_2 - no_bond, atom_oal_2 - quadruple_bond, atom_oal_2 - single_bond, atom_oal_2 - triple_bond
+Aa	?1	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_ire_2, atom_oal_2 - bm_tre_2
+Aa	?11	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_iri_3, atom_oal_2 - bm_tri_3
+Aa	?111	atom_bal_2 - class_m
+Aa	??	atom_bal_2 - charge_2, atom_bal_2 - chiral_2, atom_oal_2 - bm_ibe_2, atom_oal_2 - bm_tbe_2
+Aa	??11	atom_oal_2 - bm_ire_4, atom_oal_2 - bm_tre_4
+Aa	?AA1	atom_bal_2 - chiral_m
+Aa	?AA11	atom_bal_2 - chiral_m
+Aa	A	atom_bal_2 - hydro, atom_oal_2 - atom_oal
+Aa	A1	atom_bal_2 - hydro_2
+Aa	Aa	atom_bal_2 - atom_bal_2, atom_oal_2 - atom_oal_2
+Aa	a	atom_oal_2 - atom_oar
+a	1	atom_oar - bm_iri, atom_oar - bm_tri
+a	?	atom_bar - bracket, atom_bar - charge, atom_bar - chiral, atom_oar - anything, atom_oar - aromatic_bond, atom_oar - bm_ibi, atom_oar - bm_tbi, atom_oar - bracket, atom_oar - ct, atom_oar - double_bond, atom_oar - no_bond, atom_oar - quadruple_bond, atom_oar - single_bond, atom_oar - triple_bond
+a	?1	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_ire_2, atom_oar - bm_tre_2
+a	?11	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_iri_3, atom_oar - bm_tri_3
+a	?111	atom_bar - class_m
+a	??	atom_bar - charge_2, atom_bar - chiral_2, atom_oar - bm_ibe_2, atom_oar - bm_tbe_2
+a	??11	atom_oar - bm_ire_4, atom_oar - bm_tre_4
+a	?AA1	atom_bar - chiral_m
+a	?AA11	atom_bar - chiral_m
+a	A	atom_bar - hydro, atom_oar - atom_oal
+a	A1	atom_bar - hydro_2
+a	Aa	atom_oar - atom_oal_2
+a	a	atom_oar - atom_oar
+aa	?	atom_bar_2 - bracket, atom_bar_2 - charge, atom_bar_2 - chiral
+aa	?1	atom_bar_2 - charge_m, atom_bar_2 - class_m
+aa	?11	atom_bar_2 - charge_m, atom_bar_2 - class_m
+aa	?111	atom_bar_2 - class_m
+aa	??	atom_bar_2 - charge_2, atom_bar_2 - chiral_2
+aa	?AA1	atom_bar_2 - chiral_m
+aa	?AA11	atom_bar_2 - chiral_m
+aa	A	atom_bar_2 - hydro
+aa	A1	atom_bar_2 - hydro_2
+aa	aa	atom_bar_2 - atom_bar_2

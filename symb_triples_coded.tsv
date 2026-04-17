@@ -1,0 +1,2225 @@
+left	right	classes	next_symb
+1	1	bm_iri - bm_iri, bm_iri - bm_tri, bm_tri - bm_iri, bm_tri - bm_tri	a
+1	1	bm_iri - bm_iri, bm_iri - bm_tri, bm_tri - bm_iri, bm_tri - bm_tri	A
+1	1	bm_iri - bm_iri, bm_iri - bm_tri, bm_tri - bm_iri, bm_tri - bm_tri	Aa
+1	1	bm_iri - bm_iri, bm_iri - bm_tri, bm_tri - bm_iri, bm_tri - bm_tri	aa
+1	1	bm_iri - bm_iri, bm_iri - bm_tri, bm_tri - bm_iri, bm_tri - bm_tri	?
+1	1	bm_iri - bm_iri, bm_iri - bm_tri, bm_tri - bm_iri, bm_tri - bm_tri	1
+1	1	bm_iri - bm_iri, bm_iri - bm_tri, bm_tri - bm_iri, bm_tri - bm_tri	??
+1	1	bm_iri - bm_iri, bm_iri - bm_tri, bm_tri - bm_iri, bm_tri - bm_tri	?1
+1	1	bm_iri - bm_iri, bm_iri - bm_tri, bm_tri - bm_iri, bm_tri - bm_tri	?11
+1	1	bm_iri - bm_iri, bm_iri - bm_tri, bm_tri - bm_iri, bm_tri - bm_tri	??11
+1	1	bm_iri - bm_iri, bm_iri - bm_tri, bm_tri - bm_iri, bm_tri - bm_tri	11
+1	1	bm_iri - bm_iri, bm_iri - bm_tri, bm_tri - bm_iri, bm_tri - bm_tri	111
+1	1	bm_iri - bm_iri, bm_iri - bm_tri, bm_tri - bm_iri, bm_tri - bm_tri	?AA1
+1	1	bm_iri - bm_iri, bm_iri - bm_tri, bm_tri - bm_iri, bm_tri - bm_tri	?AA11
+1	1	bm_iri - bm_iri, bm_iri - bm_tri, bm_tri - bm_iri, bm_tri - bm_tri	A1
+1	1	bm_iri - bm_iri, bm_iri - bm_tri, bm_tri - bm_iri, bm_tri - bm_tri	?111
+1	?	bm_iri - anything, bm_iri - bm_ibi, bm_iri - bm_tbi, bm_iri - bracket, bm_iri - ct, bm_tri - anything, bm_tri - bm_ibi, bm_tri - bm_tbi, bm_tri - bracket, bm_tri - ct	a
+1	?	bm_iri - anything, bm_iri - bm_ibi, bm_iri - bm_tbi, bm_iri - bracket, bm_iri - ct, bm_tri - anything, bm_tri - bm_ibi, bm_tri - bm_tbi, bm_tri - bracket, bm_tri - ct	A
+1	?	bm_iri - anything, bm_iri - bm_ibi, bm_iri - bm_tbi, bm_iri - bracket, bm_iri - ct, bm_tri - anything, bm_tri - bm_ibi, bm_tri - bm_tbi, bm_tri - bracket, bm_tri - ct	Aa
+1	?	bm_iri - anything, bm_iri - bm_ibi, bm_iri - bm_tbi, bm_iri - bracket, bm_iri - ct, bm_tri - anything, bm_tri - bm_ibi, bm_tri - bm_tbi, bm_tri - bracket, bm_tri - ct	aa
+1	?	bm_iri - anything, bm_iri - bm_ibi, bm_iri - bm_tbi, bm_iri - bracket, bm_iri - ct, bm_tri - anything, bm_tri - bm_ibi, bm_tri - bm_tbi, bm_tri - bracket, bm_tri - ct	?
+1	?	bm_iri - anything, bm_iri - bm_ibi, bm_iri - bm_tbi, bm_iri - bracket, bm_iri - ct, bm_tri - anything, bm_tri - bm_ibi, bm_tri - bm_tbi, bm_tri - bracket, bm_tri - ct	1
+1	?	bm_iri - anything, bm_iri - bm_ibi, bm_iri - bm_tbi, bm_iri - bracket, bm_iri - ct, bm_tri - anything, bm_tri - bm_ibi, bm_tri - bm_tbi, bm_tri - bracket, bm_tri - ct	??
+1	?	bm_iri - anything, bm_iri - bm_ibi, bm_iri - bm_tbi, bm_iri - bracket, bm_iri - ct, bm_tri - anything, bm_tri - bm_ibi, bm_tri - bm_tbi, bm_tri - bracket, bm_tri - ct	?1
+1	?	bm_iri - anything, bm_iri - bm_ibi, bm_iri - bm_tbi, bm_iri - bracket, bm_iri - ct, bm_tri - anything, bm_tri - bm_ibi, bm_tri - bm_tbi, bm_tri - bracket, bm_tri - ct	?11
+1	?	bm_iri - anything, bm_iri - bm_ibi, bm_iri - bm_tbi, bm_iri - bracket, bm_iri - ct, bm_tri - anything, bm_tri - bm_ibi, bm_tri - bm_tbi, bm_tri - bracket, bm_tri - ct	??11
+1	?	bm_iri - anything, bm_iri - bm_ibi, bm_iri - bm_tbi, bm_iri - bracket, bm_iri - ct, bm_tri - anything, bm_tri - bm_ibi, bm_tri - bm_tbi, bm_tri - bracket, bm_tri - ct	11
+1	?	bm_iri - anything, bm_iri - bm_ibi, bm_iri - bm_tbi, bm_iri - bracket, bm_iri - ct, bm_tri - anything, bm_tri - bm_ibi, bm_tri - bm_tbi, bm_tri - bracket, bm_tri - ct	111
+1	?	bm_iri - anything, bm_iri - bm_ibi, bm_iri - bm_tbi, bm_iri - bracket, bm_iri - ct, bm_tri - anything, bm_tri - bm_ibi, bm_tri - bm_tbi, bm_tri - bracket, bm_tri - ct	?AA1
+1	?	bm_iri - anything, bm_iri - bm_ibi, bm_iri - bm_tbi, bm_iri - bracket, bm_iri - ct, bm_tri - anything, bm_tri - bm_ibi, bm_tri - bm_tbi, bm_tri - bracket, bm_tri - ct	?AA11
+1	?	bm_iri - anything, bm_iri - bm_ibi, bm_iri - bm_tbi, bm_iri - bracket, bm_iri - ct, bm_tri - anything, bm_tri - bm_ibi, bm_tri - bm_tbi, bm_tri - bracket, bm_tri - ct	A1
+1	?	bm_iri - anything, bm_iri - bm_ibi, bm_iri - bm_tbi, bm_iri - bracket, bm_iri - ct, bm_tri - anything, bm_tri - bm_ibi, bm_tri - bm_tbi, bm_tri - bracket, bm_tri - ct	?111
+1	?1	bm_iri - bm_ire_2, bm_iri - bm_tre_2, bm_tri - bm_ire_2, bm_tri - bm_tre_2	a
+1	?1	bm_iri - bm_ire_2, bm_iri - bm_tre_2, bm_tri - bm_ire_2, bm_tri - bm_tre_2	A
+1	?1	bm_iri - bm_ire_2, bm_iri - bm_tre_2, bm_tri - bm_ire_2, bm_tri - bm_tre_2	Aa
+1	?1	bm_iri - bm_ire_2, bm_iri - bm_tre_2, bm_tri - bm_ire_2, bm_tri - bm_tre_2	aa
+1	?1	bm_iri - bm_ire_2, bm_iri - bm_tre_2, bm_tri - bm_ire_2, bm_tri - bm_tre_2	?
+1	?1	bm_iri - bm_ire_2, bm_iri - bm_tre_2, bm_tri - bm_ire_2, bm_tri - bm_tre_2	1
+1	?1	bm_iri - bm_ire_2, bm_iri - bm_tre_2, bm_tri - bm_ire_2, bm_tri - bm_tre_2	??
+1	?1	bm_iri - bm_ire_2, bm_iri - bm_tre_2, bm_tri - bm_ire_2, bm_tri - bm_tre_2	?1
+1	?1	bm_iri - bm_ire_2, bm_iri - bm_tre_2, bm_tri - bm_ire_2, bm_tri - bm_tre_2	?11
+1	?1	bm_iri - bm_ire_2, bm_iri - bm_tre_2, bm_tri - bm_ire_2, bm_tri - bm_tre_2	??11
+1	?1	bm_iri - bm_ire_2, bm_iri - bm_tre_2, bm_tri - bm_ire_2, bm_tri - bm_tre_2	11
+1	?1	bm_iri - bm_ire_2, bm_iri - bm_tre_2, bm_tri - bm_ire_2, bm_tri - bm_tre_2	111
+1	?1	bm_iri - bm_ire_2, bm_iri - bm_tre_2, bm_tri - bm_ire_2, bm_tri - bm_tre_2	?AA1
+1	?1	bm_iri - bm_ire_2, bm_iri - bm_tre_2, bm_tri - bm_ire_2, bm_tri - bm_tre_2	?AA11
+1	?1	bm_iri - bm_ire_2, bm_iri - bm_tre_2, bm_tri - bm_ire_2, bm_tri - bm_tre_2	A1
+1	?1	bm_iri - bm_ire_2, bm_iri - bm_tre_2, bm_tri - bm_ire_2, bm_tri - bm_tre_2	?111
+1	?11	bm_iri - bm_iri_3, bm_iri - bm_tri_3, bm_tri - bm_iri_3, bm_tri - bm_tri_3	a
+1	?11	bm_iri - bm_iri_3, bm_iri - bm_tri_3, bm_tri - bm_iri_3, bm_tri - bm_tri_3	A
+1	?11	bm_iri - bm_iri_3, bm_iri - bm_tri_3, bm_tri - bm_iri_3, bm_tri - bm_tri_3	Aa
+1	?11	bm_iri - bm_iri_3, bm_iri - bm_tri_3, bm_tri - bm_iri_3, bm_tri - bm_tri_3	aa
+1	?11	bm_iri - bm_iri_3, bm_iri - bm_tri_3, bm_tri - bm_iri_3, bm_tri - bm_tri_3	?
+1	?11	bm_iri - bm_iri_3, bm_iri - bm_tri_3, bm_tri - bm_iri_3, bm_tri - bm_tri_3	1
+1	?11	bm_iri - bm_iri_3, bm_iri - bm_tri_3, bm_tri - bm_iri_3, bm_tri - bm_tri_3	??
+1	?11	bm_iri - bm_iri_3, bm_iri - bm_tri_3, bm_tri - bm_iri_3, bm_tri - bm_tri_3	?1
+1	?11	bm_iri - bm_iri_3, bm_iri - bm_tri_3, bm_tri - bm_iri_3, bm_tri - bm_tri_3	?11
+1	?11	bm_iri - bm_iri_3, bm_iri - bm_tri_3, bm_tri - bm_iri_3, bm_tri - bm_tri_3	??11
+1	?11	bm_iri - bm_iri_3, bm_iri - bm_tri_3, bm_tri - bm_iri_3, bm_tri - bm_tri_3	11
+1	?11	bm_iri - bm_iri_3, bm_iri - bm_tri_3, bm_tri - bm_iri_3, bm_tri - bm_tri_3	111
+1	?11	bm_iri - bm_iri_3, bm_iri - bm_tri_3, bm_tri - bm_iri_3, bm_tri - bm_tri_3	?AA1
+1	?11	bm_iri - bm_iri_3, bm_iri - bm_tri_3, bm_tri - bm_iri_3, bm_tri - bm_tri_3	?AA11
+1	?11	bm_iri - bm_iri_3, bm_iri - bm_tri_3, bm_tri - bm_iri_3, bm_tri - bm_tri_3	A1
+1	?11	bm_iri - bm_iri_3, bm_iri - bm_tri_3, bm_tri - bm_iri_3, bm_tri - bm_tri_3	?111
+1	??	bm_iri - bm_ibe_2, bm_iri - bm_tbe_2, bm_tri - bm_ibe_2, bm_tri - bm_tbe_2	a
+1	??	bm_iri - bm_ibe_2, bm_iri - bm_tbe_2, bm_tri - bm_ibe_2, bm_tri - bm_tbe_2	A
+1	??	bm_iri - bm_ibe_2, bm_iri - bm_tbe_2, bm_tri - bm_ibe_2, bm_tri - bm_tbe_2	Aa
+1	??	bm_iri - bm_ibe_2, bm_iri - bm_tbe_2, bm_tri - bm_ibe_2, bm_tri - bm_tbe_2	aa
+1	??	bm_iri - bm_ibe_2, bm_iri - bm_tbe_2, bm_tri - bm_ibe_2, bm_tri - bm_tbe_2	?
+1	??	bm_iri - bm_ibe_2, bm_iri - bm_tbe_2, bm_tri - bm_ibe_2, bm_tri - bm_tbe_2	1
+1	??	bm_iri - bm_ibe_2, bm_iri - bm_tbe_2, bm_tri - bm_ibe_2, bm_tri - bm_tbe_2	??
+1	??	bm_iri - bm_ibe_2, bm_iri - bm_tbe_2, bm_tri - bm_ibe_2, bm_tri - bm_tbe_2	?1
+1	??	bm_iri - bm_ibe_2, bm_iri - bm_tbe_2, bm_tri - bm_ibe_2, bm_tri - bm_tbe_2	?11
+1	??	bm_iri - bm_ibe_2, bm_iri - bm_tbe_2, bm_tri - bm_ibe_2, bm_tri - bm_tbe_2	??11
+1	??	bm_iri - bm_ibe_2, bm_iri - bm_tbe_2, bm_tri - bm_ibe_2, bm_tri - bm_tbe_2	11
+1	??	bm_iri - bm_ibe_2, bm_iri - bm_tbe_2, bm_tri - bm_ibe_2, bm_tri - bm_tbe_2	111
+1	??	bm_iri - bm_ibe_2, bm_iri - bm_tbe_2, bm_tri - bm_ibe_2, bm_tri - bm_tbe_2	?AA1
+1	??	bm_iri - bm_ibe_2, bm_iri - bm_tbe_2, bm_tri - bm_ibe_2, bm_tri - bm_tbe_2	?AA11
+1	??	bm_iri - bm_ibe_2, bm_iri - bm_tbe_2, bm_tri - bm_ibe_2, bm_tri - bm_tbe_2	A1
+1	??	bm_iri - bm_ibe_2, bm_iri - bm_tbe_2, bm_tri - bm_ibe_2, bm_tri - bm_tbe_2	?111
+1	??11	bm_iri - bm_ire_4, bm_iri - bm_tre_4, bm_tri - bm_ire_4, bm_tri - bm_tre_4	a
+1	??11	bm_iri - bm_ire_4, bm_iri - bm_tre_4, bm_tri - bm_ire_4, bm_tri - bm_tre_4	A
+1	??11	bm_iri - bm_ire_4, bm_iri - bm_tre_4, bm_tri - bm_ire_4, bm_tri - bm_tre_4	Aa
+1	??11	bm_iri - bm_ire_4, bm_iri - bm_tre_4, bm_tri - bm_ire_4, bm_tri - bm_tre_4	aa
+1	??11	bm_iri - bm_ire_4, bm_iri - bm_tre_4, bm_tri - bm_ire_4, bm_tri - bm_tre_4	?
+1	??11	bm_iri - bm_ire_4, bm_iri - bm_tre_4, bm_tri - bm_ire_4, bm_tri - bm_tre_4	1
+1	??11	bm_iri - bm_ire_4, bm_iri - bm_tre_4, bm_tri - bm_ire_4, bm_tri - bm_tre_4	??
+1	??11	bm_iri - bm_ire_4, bm_iri - bm_tre_4, bm_tri - bm_ire_4, bm_tri - bm_tre_4	?1
+1	??11	bm_iri - bm_ire_4, bm_iri - bm_tre_4, bm_tri - bm_ire_4, bm_tri - bm_tre_4	?11
+1	??11	bm_iri - bm_ire_4, bm_iri - bm_tre_4, bm_tri - bm_ire_4, bm_tri - bm_tre_4	??11
+1	??11	bm_iri - bm_ire_4, bm_iri - bm_tre_4, bm_tri - bm_ire_4, bm_tri - bm_tre_4	11
+1	??11	bm_iri - bm_ire_4, bm_iri - bm_tre_4, bm_tri - bm_ire_4, bm_tri - bm_tre_4	111
+1	??11	bm_iri - bm_ire_4, bm_iri - bm_tre_4, bm_tri - bm_ire_4, bm_tri - bm_tre_4	?AA1
+1	??11	bm_iri - bm_ire_4, bm_iri - bm_tre_4, bm_tri - bm_ire_4, bm_tri - bm_tre_4	?AA11
+1	??11	bm_iri - bm_ire_4, bm_iri - bm_tre_4, bm_tri - bm_ire_4, bm_tri - bm_tre_4	A1
+1	??11	bm_iri - bm_ire_4, bm_iri - bm_tre_4, bm_tri - bm_ire_4, bm_tri - bm_tre_4	?111
+1	A	bm_iri - atom_oal, bm_tri - atom_oal, isotope - atom_bal, isotope_m - atom_bal	a
+1	A	bm_iri - atom_oal, bm_tri - atom_oal, isotope - atom_bal, isotope_m - atom_bal	A
+1	A	bm_iri - atom_oal, bm_tri - atom_oal, isotope - atom_bal, isotope_m - atom_bal	Aa
+1	A	bm_iri - atom_oal, bm_tri - atom_oal, isotope - atom_bal, isotope_m - atom_bal	aa
+1	A	bm_iri - atom_oal, bm_tri - atom_oal, isotope - atom_bal, isotope_m - atom_bal	?
+1	A	bm_iri - atom_oal, bm_tri - atom_oal, isotope - atom_bal, isotope_m - atom_bal	1
+1	A	bm_iri - atom_oal, bm_tri - atom_oal, isotope - atom_bal, isotope_m - atom_bal	??
+1	A	bm_iri - atom_oal, bm_tri - atom_oal, isotope - atom_bal, isotope_m - atom_bal	?1
+1	A	bm_iri - atom_oal, bm_tri - atom_oal, isotope - atom_bal, isotope_m - atom_bal	?11
+1	A	bm_iri - atom_oal, bm_tri - atom_oal, isotope - atom_bal, isotope_m - atom_bal	??11
+1	A	bm_iri - atom_oal, bm_tri - atom_oal, isotope - atom_bal, isotope_m - atom_bal	11
+1	A	bm_iri - atom_oal, bm_tri - atom_oal, isotope - atom_bal, isotope_m - atom_bal	111
+1	A	bm_iri - atom_oal, bm_tri - atom_oal, isotope - atom_bal, isotope_m - atom_bal	?AA1
+1	A	bm_iri - atom_oal, bm_tri - atom_oal, isotope - atom_bal, isotope_m - atom_bal	?AA11
+1	A	bm_iri - atom_oal, bm_tri - atom_oal, isotope - atom_bal, isotope_m - atom_bal	A1
+1	A	bm_iri - atom_oal, bm_tri - atom_oal, isotope - atom_bal, isotope_m - atom_bal	?111
+1	Aa	bm_iri - atom_oal_2, bm_tri - atom_oal_2, isotope - atom_bal_2, isotope_m - atom_bal_2	a
+1	Aa	bm_iri - atom_oal_2, bm_tri - atom_oal_2, isotope - atom_bal_2, isotope_m - atom_bal_2	A
+1	Aa	bm_iri - atom_oal_2, bm_tri - atom_oal_2, isotope - atom_bal_2, isotope_m - atom_bal_2	Aa
+1	Aa	bm_iri - atom_oal_2, bm_tri - atom_oal_2, isotope - atom_bal_2, isotope_m - atom_bal_2	aa
+1	Aa	bm_iri - atom_oal_2, bm_tri - atom_oal_2, isotope - atom_bal_2, isotope_m - atom_bal_2	?
+1	Aa	bm_iri - atom_oal_2, bm_tri - atom_oal_2, isotope - atom_bal_2, isotope_m - atom_bal_2	1
+1	Aa	bm_iri - atom_oal_2, bm_tri - atom_oal_2, isotope - atom_bal_2, isotope_m - atom_bal_2	??
+1	Aa	bm_iri - atom_oal_2, bm_tri - atom_oal_2, isotope - atom_bal_2, isotope_m - atom_bal_2	?1
+1	Aa	bm_iri - atom_oal_2, bm_tri - atom_oal_2, isotope - atom_bal_2, isotope_m - atom_bal_2	?11
+1	Aa	bm_iri - atom_oal_2, bm_tri - atom_oal_2, isotope - atom_bal_2, isotope_m - atom_bal_2	??11
+1	Aa	bm_iri - atom_oal_2, bm_tri - atom_oal_2, isotope - atom_bal_2, isotope_m - atom_bal_2	11
+1	Aa	bm_iri - atom_oal_2, bm_tri - atom_oal_2, isotope - atom_bal_2, isotope_m - atom_bal_2	111
+1	Aa	bm_iri - atom_oal_2, bm_tri - atom_oal_2, isotope - atom_bal_2, isotope_m - atom_bal_2	?AA1
+1	Aa	bm_iri - atom_oal_2, bm_tri - atom_oal_2, isotope - atom_bal_2, isotope_m - atom_bal_2	?AA11
+1	Aa	bm_iri - atom_oal_2, bm_tri - atom_oal_2, isotope - atom_bal_2, isotope_m - atom_bal_2	A1
+1	Aa	bm_iri - atom_oal_2, bm_tri - atom_oal_2, isotope - atom_bal_2, isotope_m - atom_bal_2	?111
+1	a	bm_iri - atom_oar, bm_tri - atom_oar, isotope - atom_bar, isotope_m - atom_bar	a
+1	a	bm_iri - atom_oar, bm_tri - atom_oar, isotope - atom_bar, isotope_m - atom_bar	A
+1	a	bm_iri - atom_oar, bm_tri - atom_oar, isotope - atom_bar, isotope_m - atom_bar	Aa
+1	a	bm_iri - atom_oar, bm_tri - atom_oar, isotope - atom_bar, isotope_m - atom_bar	aa
+1	a	bm_iri - atom_oar, bm_tri - atom_oar, isotope - atom_bar, isotope_m - atom_bar	?
+1	a	bm_iri - atom_oar, bm_tri - atom_oar, isotope - atom_bar, isotope_m - atom_bar	1
+1	a	bm_iri - atom_oar, bm_tri - atom_oar, isotope - atom_bar, isotope_m - atom_bar	??
+1	a	bm_iri - atom_oar, bm_tri - atom_oar, isotope - atom_bar, isotope_m - atom_bar	?1
+1	a	bm_iri - atom_oar, bm_tri - atom_oar, isotope - atom_bar, isotope_m - atom_bar	?11
+1	a	bm_iri - atom_oar, bm_tri - atom_oar, isotope - atom_bar, isotope_m - atom_bar	??11
+1	a	bm_iri - atom_oar, bm_tri - atom_oar, isotope - atom_bar, isotope_m - atom_bar	11
+1	a	bm_iri - atom_oar, bm_tri - atom_oar, isotope - atom_bar, isotope_m - atom_bar	111
+1	a	bm_iri - atom_oar, bm_tri - atom_oar, isotope - atom_bar, isotope_m - atom_bar	?AA1
+1	a	bm_iri - atom_oar, bm_tri - atom_oar, isotope - atom_bar, isotope_m - atom_bar	?AA11
+1	a	bm_iri - atom_oar, bm_tri - atom_oar, isotope - atom_bar, isotope_m - atom_bar	A1
+1	a	bm_iri - atom_oar, bm_tri - atom_oar, isotope - atom_bar, isotope_m - atom_bar	?111
+1	aa	isotope - atom_bar_2, isotope_m - atom_bar_2	a
+1	aa	isotope - atom_bar_2, isotope_m - atom_bar_2	A
+1	aa	isotope - atom_bar_2, isotope_m - atom_bar_2	Aa
+1	aa	isotope - atom_bar_2, isotope_m - atom_bar_2	aa
+1	aa	isotope - atom_bar_2, isotope_m - atom_bar_2	?
+1	aa	isotope - atom_bar_2, isotope_m - atom_bar_2	1
+1	aa	isotope - atom_bar_2, isotope_m - atom_bar_2	??
+1	aa	isotope - atom_bar_2, isotope_m - atom_bar_2	?1
+1	aa	isotope - atom_bar_2, isotope_m - atom_bar_2	?11
+1	aa	isotope - atom_bar_2, isotope_m - atom_bar_2	??11
+1	aa	isotope - atom_bar_2, isotope_m - atom_bar_2	11
+1	aa	isotope - atom_bar_2, isotope_m - atom_bar_2	111
+1	aa	isotope - atom_bar_2, isotope_m - atom_bar_2	?AA1
+1	aa	isotope - atom_bar_2, isotope_m - atom_bar_2	?AA11
+1	aa	isotope - atom_bar_2, isotope_m - atom_bar_2	A1
+1	aa	isotope - atom_bar_2, isotope_m - atom_bar_2	?111
+11	A	isotope_m - atom_bal	a
+11	A	isotope_m - atom_bal	A
+11	A	isotope_m - atom_bal	Aa
+11	A	isotope_m - atom_bal	aa
+11	A	isotope_m - atom_bal	?
+11	A	isotope_m - atom_bal	1
+11	A	isotope_m - atom_bal	??
+11	A	isotope_m - atom_bal	?1
+11	A	isotope_m - atom_bal	?11
+11	A	isotope_m - atom_bal	??11
+11	A	isotope_m - atom_bal	11
+11	A	isotope_m - atom_bal	111
+11	A	isotope_m - atom_bal	?AA1
+11	A	isotope_m - atom_bal	?AA11
+11	A	isotope_m - atom_bal	A1
+11	A	isotope_m - atom_bal	?111
+11	Aa	isotope_m - atom_bal_2	a
+11	Aa	isotope_m - atom_bal_2	A
+11	Aa	isotope_m - atom_bal_2	Aa
+11	Aa	isotope_m - atom_bal_2	aa
+11	Aa	isotope_m - atom_bal_2	?
+11	Aa	isotope_m - atom_bal_2	1
+11	Aa	isotope_m - atom_bal_2	??
+11	Aa	isotope_m - atom_bal_2	?1
+11	Aa	isotope_m - atom_bal_2	?11
+11	Aa	isotope_m - atom_bal_2	??11
+11	Aa	isotope_m - atom_bal_2	11
+11	Aa	isotope_m - atom_bal_2	111
+11	Aa	isotope_m - atom_bal_2	?AA1
+11	Aa	isotope_m - atom_bal_2	?AA11
+11	Aa	isotope_m - atom_bal_2	A1
+11	Aa	isotope_m - atom_bal_2	?111
+11	a	isotope_m - atom_bar	a
+11	a	isotope_m - atom_bar	A
+11	a	isotope_m - atom_bar	Aa
+11	a	isotope_m - atom_bar	aa
+11	a	isotope_m - atom_bar	?
+11	a	isotope_m - atom_bar	1
+11	a	isotope_m - atom_bar	??
+11	a	isotope_m - atom_bar	?1
+11	a	isotope_m - atom_bar	?11
+11	a	isotope_m - atom_bar	??11
+11	a	isotope_m - atom_bar	11
+11	a	isotope_m - atom_bar	111
+11	a	isotope_m - atom_bar	?AA1
+11	a	isotope_m - atom_bar	?AA11
+11	a	isotope_m - atom_bar	A1
+11	a	isotope_m - atom_bar	?111
+11	aa	isotope_m - atom_bar_2	a
+11	aa	isotope_m - atom_bar_2	A
+11	aa	isotope_m - atom_bar_2	Aa
+11	aa	isotope_m - atom_bar_2	aa
+11	aa	isotope_m - atom_bar_2	?
+11	aa	isotope_m - atom_bar_2	1
+11	aa	isotope_m - atom_bar_2	??
+11	aa	isotope_m - atom_bar_2	?1
+11	aa	isotope_m - atom_bar_2	?11
+11	aa	isotope_m - atom_bar_2	??11
+11	aa	isotope_m - atom_bar_2	11
+11	aa	isotope_m - atom_bar_2	111
+11	aa	isotope_m - atom_bar_2	?AA1
+11	aa	isotope_m - atom_bar_2	?AA11
+11	aa	isotope_m - atom_bar_2	A1
+11	aa	isotope_m - atom_bar_2	?111
+111	A	isotope_m - atom_bal	a
+111	A	isotope_m - atom_bal	A
+111	A	isotope_m - atom_bal	Aa
+111	A	isotope_m - atom_bal	aa
+111	A	isotope_m - atom_bal	?
+111	A	isotope_m - atom_bal	1
+111	A	isotope_m - atom_bal	??
+111	A	isotope_m - atom_bal	?1
+111	A	isotope_m - atom_bal	?11
+111	A	isotope_m - atom_bal	??11
+111	A	isotope_m - atom_bal	11
+111	A	isotope_m - atom_bal	111
+111	A	isotope_m - atom_bal	?AA1
+111	A	isotope_m - atom_bal	?AA11
+111	A	isotope_m - atom_bal	A1
+111	A	isotope_m - atom_bal	?111
+111	Aa	isotope_m - atom_bal_2	a
+111	Aa	isotope_m - atom_bal_2	A
+111	Aa	isotope_m - atom_bal_2	Aa
+111	Aa	isotope_m - atom_bal_2	aa
+111	Aa	isotope_m - atom_bal_2	?
+111	Aa	isotope_m - atom_bal_2	1
+111	Aa	isotope_m - atom_bal_2	??
+111	Aa	isotope_m - atom_bal_2	?1
+111	Aa	isotope_m - atom_bal_2	?11
+111	Aa	isotope_m - atom_bal_2	??11
+111	Aa	isotope_m - atom_bal_2	11
+111	Aa	isotope_m - atom_bal_2	111
+111	Aa	isotope_m - atom_bal_2	?AA1
+111	Aa	isotope_m - atom_bal_2	?AA11
+111	Aa	isotope_m - atom_bal_2	A1
+111	Aa	isotope_m - atom_bal_2	?111
+111	a	isotope_m - atom_bar	a
+111	a	isotope_m - atom_bar	A
+111	a	isotope_m - atom_bar	Aa
+111	a	isotope_m - atom_bar	aa
+111	a	isotope_m - atom_bar	?
+111	a	isotope_m - atom_bar	1
+111	a	isotope_m - atom_bar	??
+111	a	isotope_m - atom_bar	?1
+111	a	isotope_m - atom_bar	?11
+111	a	isotope_m - atom_bar	??11
+111	a	isotope_m - atom_bar	11
+111	a	isotope_m - atom_bar	111
+111	a	isotope_m - atom_bar	?AA1
+111	a	isotope_m - atom_bar	?AA11
+111	a	isotope_m - atom_bar	A1
+111	a	isotope_m - atom_bar	?111
+111	aa	isotope_m - atom_bar_2	a
+111	aa	isotope_m - atom_bar_2	A
+111	aa	isotope_m - atom_bar_2	Aa
+111	aa	isotope_m - atom_bar_2	aa
+111	aa	isotope_m - atom_bar_2	?
+111	aa	isotope_m - atom_bar_2	1
+111	aa	isotope_m - atom_bar_2	??
+111	aa	isotope_m - atom_bar_2	?1
+111	aa	isotope_m - atom_bar_2	?11
+111	aa	isotope_m - atom_bar_2	??11
+111	aa	isotope_m - atom_bar_2	11
+111	aa	isotope_m - atom_bar_2	111
+111	aa	isotope_m - atom_bar_2	?AA1
+111	aa	isotope_m - atom_bar_2	?AA11
+111	aa	isotope_m - atom_bar_2	A1
+111	aa	isotope_m - atom_bar_2	?111
+?	1	anything - bm_iri, anything - bm_tri, bm_ibi - bm_iri, bm_ibi - bm_tri, bm_tbi - bm_iri, bm_tbi - bm_tri, bracket - bm_iri, bracket - bm_tri, ct - bm_iri, ct - bm_tri	a
+?	1	anything - bm_iri, anything - bm_tri, bm_ibi - bm_iri, bm_ibi - bm_tri, bm_tbi - bm_iri, bm_tbi - bm_tri, bracket - bm_iri, bracket - bm_tri, ct - bm_iri, ct - bm_tri	A
+?	1	anything - bm_iri, anything - bm_tri, bm_ibi - bm_iri, bm_ibi - bm_tri, bm_tbi - bm_iri, bm_tbi - bm_tri, bracket - bm_iri, bracket - bm_tri, ct - bm_iri, ct - bm_tri	Aa
+?	1	anything - bm_iri, anything - bm_tri, bm_ibi - bm_iri, bm_ibi - bm_tri, bm_tbi - bm_iri, bm_tbi - bm_tri, bracket - bm_iri, bracket - bm_tri, ct - bm_iri, ct - bm_tri	aa
+?	1	anything - bm_iri, anything - bm_tri, bm_ibi - bm_iri, bm_ibi - bm_tri, bm_tbi - bm_iri, bm_tbi - bm_tri, bracket - bm_iri, bracket - bm_tri, ct - bm_iri, ct - bm_tri	?
+?	1	anything - bm_iri, anything - bm_tri, bm_ibi - bm_iri, bm_ibi - bm_tri, bm_tbi - bm_iri, bm_tbi - bm_tri, bracket - bm_iri, bracket - bm_tri, ct - bm_iri, ct - bm_tri	1
+?	1	anything - bm_iri, anything - bm_tri, bm_ibi - bm_iri, bm_ibi - bm_tri, bm_tbi - bm_iri, bm_tbi - bm_tri, bracket - bm_iri, bracket - bm_tri, ct - bm_iri, ct - bm_tri	??
+?	1	anything - bm_iri, anything - bm_tri, bm_ibi - bm_iri, bm_ibi - bm_tri, bm_tbi - bm_iri, bm_tbi - bm_tri, bracket - bm_iri, bracket - bm_tri, ct - bm_iri, ct - bm_tri	?1
+?	1	anything - bm_iri, anything - bm_tri, bm_ibi - bm_iri, bm_ibi - bm_tri, bm_tbi - bm_iri, bm_tbi - bm_tri, bracket - bm_iri, bracket - bm_tri, ct - bm_iri, ct - bm_tri	?11
+?	1	anything - bm_iri, anything - bm_tri, bm_ibi - bm_iri, bm_ibi - bm_tri, bm_tbi - bm_iri, bm_tbi - bm_tri, bracket - bm_iri, bracket - bm_tri, ct - bm_iri, ct - bm_tri	??11
+?	1	anything - bm_iri, anything - bm_tri, bm_ibi - bm_iri, bm_ibi - bm_tri, bm_tbi - bm_iri, bm_tbi - bm_tri, bracket - bm_iri, bracket - bm_tri, ct - bm_iri, ct - bm_tri	11
+?	1	anything - bm_iri, anything - bm_tri, bm_ibi - bm_iri, bm_ibi - bm_tri, bm_tbi - bm_iri, bm_tbi - bm_tri, bracket - bm_iri, bracket - bm_tri, ct - bm_iri, ct - bm_tri	111
+?	1	anything - bm_iri, anything - bm_tri, bm_ibi - bm_iri, bm_ibi - bm_tri, bm_tbi - bm_iri, bm_tbi - bm_tri, bracket - bm_iri, bracket - bm_tri, ct - bm_iri, ct - bm_tri	?AA1
+?	1	anything - bm_iri, anything - bm_tri, bm_ibi - bm_iri, bm_ibi - bm_tri, bm_tbi - bm_iri, bm_tbi - bm_tri, bracket - bm_iri, bracket - bm_tri, ct - bm_iri, ct - bm_tri	?AA11
+?	1	anything - bm_iri, anything - bm_tri, bm_ibi - bm_iri, bm_ibi - bm_tri, bm_tbi - bm_iri, bm_tbi - bm_tri, bracket - bm_iri, bracket - bm_tri, ct - bm_iri, ct - bm_tri	A1
+?	1	anything - bm_iri, anything - bm_tri, bm_ibi - bm_iri, bm_ibi - bm_tri, bm_tbi - bm_iri, bm_tbi - bm_tri, bracket - bm_iri, bracket - bm_tri, ct - bm_iri, ct - bm_tri	?111
+?	?	anything - anything, anything - aromatic_bond, anything - bm_ibi, anything - bm_tbi, anything - bracket, anything - ct, anything - double_bond, anything - no_bond, anything - quadruple_bond, anything - single_bond, anything - triple_bond, aromatic_bond - anything, aromatic_bond - bracket, bm_ibi - anything, bm_ibi - bm_ibi, bm_ibi - bracket, bm_ibi - ct, bm_tbi - anything, bm_tbi - bm_ibi, bm_tbi - bm_tbi, bm_tbi - bracket, bm_tbi - ct, bracket - anything, bracket - aromatic_bond, bracket - bm_ibi, bracket - bm_tbi, bracket - ct, bracket - double_bond, bracket - no_bond, bracket - quadruple_bond, bracket - single_bond, bracket - triple_bond, charge - bracket, chiral - bracket, chiral - charge, ct - anything, ct - bm_ibi, ct - bm_tbi, ct - bracket, double_bond - anything, double_bond - bracket, no_bond - anything, no_bond - bracket, quadruple_bond - anything, quadruple_bond - bracket, single_bond - anything, single_bond - bracket, triple_bond - anything, triple_bond - bracket	a
+?	?	anything - anything, anything - aromatic_bond, anything - bm_ibi, anything - bm_tbi, anything - bracket, anything - ct, anything - double_bond, anything - no_bond, anything - quadruple_bond, anything - single_bond, anything - triple_bond, aromatic_bond - anything, aromatic_bond - bracket, bm_ibi - anything, bm_ibi - bm_ibi, bm_ibi - bracket, bm_ibi - ct, bm_tbi - anything, bm_tbi - bm_ibi, bm_tbi - bm_tbi, bm_tbi - bracket, bm_tbi - ct, bracket - anything, bracket - aromatic_bond, bracket - bm_ibi, bracket - bm_tbi, bracket - ct, bracket - double_bond, bracket - no_bond, bracket - quadruple_bond, bracket - single_bond, bracket - triple_bond, charge - bracket, chiral - bracket, chiral - charge, ct - anything, ct - bm_ibi, ct - bm_tbi, ct - bracket, double_bond - anything, double_bond - bracket, no_bond - anything, no_bond - bracket, quadruple_bond - anything, quadruple_bond - bracket, single_bond - anything, single_bond - bracket, triple_bond - anything, triple_bond - bracket	A
+?	?	anything - anything, anything - aromatic_bond, anything - bm_ibi, anything - bm_tbi, anything - bracket, anything - ct, anything - double_bond, anything - no_bond, anything - quadruple_bond, anything - single_bond, anything - triple_bond, aromatic_bond - anything, aromatic_bond - bracket, bm_ibi - anything, bm_ibi - bm_ibi, bm_ibi - bracket, bm_ibi - ct, bm_tbi - anything, bm_tbi - bm_ibi, bm_tbi - bm_tbi, bm_tbi - bracket, bm_tbi - ct, bracket - anything, bracket - aromatic_bond, bracket - bm_ibi, bracket - bm_tbi, bracket - ct, bracket - double_bond, bracket - no_bond, bracket - quadruple_bond, bracket - single_bond, bracket - triple_bond, charge - bracket, chiral - bracket, chiral - charge, ct - anything, ct - bm_ibi, ct - bm_tbi, ct - bracket, double_bond - anything, double_bond - bracket, no_bond - anything, no_bond - bracket, quadruple_bond - anything, quadruple_bond - bracket, single_bond - anything, single_bond - bracket, triple_bond - anything, triple_bond - bracket	Aa
+?	?	anything - anything, anything - aromatic_bond, anything - bm_ibi, anything - bm_tbi, anything - bracket, anything - ct, anything - double_bond, anything - no_bond, anything - quadruple_bond, anything - single_bond, anything - triple_bond, aromatic_bond - anything, aromatic_bond - bracket, bm_ibi - anything, bm_ibi - bm_ibi, bm_ibi - bracket, bm_ibi - ct, bm_tbi - anything, bm_tbi - bm_ibi, bm_tbi - bm_tbi, bm_tbi - bracket, bm_tbi - ct, bracket - anything, bracket - aromatic_bond, bracket - bm_ibi, bracket - bm_tbi, bracket - ct, bracket - double_bond, bracket - no_bond, bracket - quadruple_bond, bracket - single_bond, bracket - triple_bond, charge - bracket, chiral - bracket, chiral - charge, ct - anything, ct - bm_ibi, ct - bm_tbi, ct - bracket, double_bond - anything, double_bond - bracket, no_bond - anything, no_bond - bracket, quadruple_bond - anything, quadruple_bond - bracket, single_bond - anything, single_bond - bracket, triple_bond - anything, triple_bond - bracket	aa
+?	?	anything - anything, anything - aromatic_bond, anything - bm_ibi, anything - bm_tbi, anything - bracket, anything - ct, anything - double_bond, anything - no_bond, anything - quadruple_bond, anything - single_bond, anything - triple_bond, aromatic_bond - anything, aromatic_bond - bracket, bm_ibi - anything, bm_ibi - bm_ibi, bm_ibi - bracket, bm_ibi - ct, bm_tbi - anything, bm_tbi - bm_ibi, bm_tbi - bm_tbi, bm_tbi - bracket, bm_tbi - ct, bracket - anything, bracket - aromatic_bond, bracket - bm_ibi, bracket - bm_tbi, bracket - ct, bracket - double_bond, bracket - no_bond, bracket - quadruple_bond, bracket - single_bond, bracket - triple_bond, charge - bracket, chiral - bracket, chiral - charge, ct - anything, ct - bm_ibi, ct - bm_tbi, ct - bracket, double_bond - anything, double_bond - bracket, no_bond - anything, no_bond - bracket, quadruple_bond - anything, quadruple_bond - bracket, single_bond - anything, single_bond - bracket, triple_bond - anything, triple_bond - bracket	?
+?	?	anything - anything, anything - aromatic_bond, anything - bm_ibi, anything - bm_tbi, anything - bracket, anything - ct, anything - double_bond, anything - no_bond, anything - quadruple_bond, anything - single_bond, anything - triple_bond, aromatic_bond - anything, aromatic_bond - bracket, bm_ibi - anything, bm_ibi - bm_ibi, bm_ibi - bracket, bm_ibi - ct, bm_tbi - anything, bm_tbi - bm_ibi, bm_tbi - bm_tbi, bm_tbi - bracket, bm_tbi - ct, bracket - anything, bracket - aromatic_bond, bracket - bm_ibi, bracket - bm_tbi, bracket - ct, bracket - double_bond, bracket - no_bond, bracket - quadruple_bond, bracket - single_bond, bracket - triple_bond, charge - bracket, chiral - bracket, chiral - charge, ct - anything, ct - bm_ibi, ct - bm_tbi, ct - bracket, double_bond - anything, double_bond - bracket, no_bond - anything, no_bond - bracket, quadruple_bond - anything, quadruple_bond - bracket, single_bond - anything, single_bond - bracket, triple_bond - anything, triple_bond - bracket	1
+?	?	anything - anything, anything - aromatic_bond, anything - bm_ibi, anything - bm_tbi, anything - bracket, anything - ct, anything - double_bond, anything - no_bond, anything - quadruple_bond, anything - single_bond, anything - triple_bond, aromatic_bond - anything, aromatic_bond - bracket, bm_ibi - anything, bm_ibi - bm_ibi, bm_ibi - bracket, bm_ibi - ct, bm_tbi - anything, bm_tbi - bm_ibi, bm_tbi - bm_tbi, bm_tbi - bracket, bm_tbi - ct, bracket - anything, bracket - aromatic_bond, bracket - bm_ibi, bracket - bm_tbi, bracket - ct, bracket - double_bond, bracket - no_bond, bracket - quadruple_bond, bracket - single_bond, bracket - triple_bond, charge - bracket, chiral - bracket, chiral - charge, ct - anything, ct - bm_ibi, ct - bm_tbi, ct - bracket, double_bond - anything, double_bond - bracket, no_bond - anything, no_bond - bracket, quadruple_bond - anything, quadruple_bond - bracket, single_bond - anything, single_bond - bracket, triple_bond - anything, triple_bond - bracket	??
+?	?	anything - anything, anything - aromatic_bond, anything - bm_ibi, anything - bm_tbi, anything - bracket, anything - ct, anything - double_bond, anything - no_bond, anything - quadruple_bond, anything - single_bond, anything - triple_bond, aromatic_bond - anything, aromatic_bond - bracket, bm_ibi - anything, bm_ibi - bm_ibi, bm_ibi - bracket, bm_ibi - ct, bm_tbi - anything, bm_tbi - bm_ibi, bm_tbi - bm_tbi, bm_tbi - bracket, bm_tbi - ct, bracket - anything, bracket - aromatic_bond, bracket - bm_ibi, bracket - bm_tbi, bracket - ct, bracket - double_bond, bracket - no_bond, bracket - quadruple_bond, bracket - single_bond, bracket - triple_bond, charge - bracket, chiral - bracket, chiral - charge, ct - anything, ct - bm_ibi, ct - bm_tbi, ct - bracket, double_bond - anything, double_bond - bracket, no_bond - anything, no_bond - bracket, quadruple_bond - anything, quadruple_bond - bracket, single_bond - anything, single_bond - bracket, triple_bond - anything, triple_bond - bracket	?1
+?	?	anything - anything, anything - aromatic_bond, anything - bm_ibi, anything - bm_tbi, anything - bracket, anything - ct, anything - double_bond, anything - no_bond, anything - quadruple_bond, anything - single_bond, anything - triple_bond, aromatic_bond - anything, aromatic_bond - bracket, bm_ibi - anything, bm_ibi - bm_ibi, bm_ibi - bracket, bm_ibi - ct, bm_tbi - anything, bm_tbi - bm_ibi, bm_tbi - bm_tbi, bm_tbi - bracket, bm_tbi - ct, bracket - anything, bracket - aromatic_bond, bracket - bm_ibi, bracket - bm_tbi, bracket - ct, bracket - double_bond, bracket - no_bond, bracket - quadruple_bond, bracket - single_bond, bracket - triple_bond, charge - bracket, chiral - bracket, chiral - charge, ct - anything, ct - bm_ibi, ct - bm_tbi, ct - bracket, double_bond - anything, double_bond - bracket, no_bond - anything, no_bond - bracket, quadruple_bond - anything, quadruple_bond - bracket, single_bond - anything, single_bond - bracket, triple_bond - anything, triple_bond - bracket	?11
+?	?	anything - anything, anything - aromatic_bond, anything - bm_ibi, anything - bm_tbi, anything - bracket, anything - ct, anything - double_bond, anything - no_bond, anything - quadruple_bond, anything - single_bond, anything - triple_bond, aromatic_bond - anything, aromatic_bond - bracket, bm_ibi - anything, bm_ibi - bm_ibi, bm_ibi - bracket, bm_ibi - ct, bm_tbi - anything, bm_tbi - bm_ibi, bm_tbi - bm_tbi, bm_tbi - bracket, bm_tbi - ct, bracket - anything, bracket - aromatic_bond, bracket - bm_ibi, bracket - bm_tbi, bracket - ct, bracket - double_bond, bracket - no_bond, bracket - quadruple_bond, bracket - single_bond, bracket - triple_bond, charge - bracket, chiral - bracket, chiral - charge, ct - anything, ct - bm_ibi, ct - bm_tbi, ct - bracket, double_bond - anything, double_bond - bracket, no_bond - anything, no_bond - bracket, quadruple_bond - anything, quadruple_bond - bracket, single_bond - anything, single_bond - bracket, triple_bond - anything, triple_bond - bracket	??11
+?	?	anything - anything, anything - aromatic_bond, anything - bm_ibi, anything - bm_tbi, anything - bracket, anything - ct, anything - double_bond, anything - no_bond, anything - quadruple_bond, anything - single_bond, anything - triple_bond, aromatic_bond - anything, aromatic_bond - bracket, bm_ibi - anything, bm_ibi - bm_ibi, bm_ibi - bracket, bm_ibi - ct, bm_tbi - anything, bm_tbi - bm_ibi, bm_tbi - bm_tbi, bm_tbi - bracket, bm_tbi - ct, bracket - anything, bracket - aromatic_bond, bracket - bm_ibi, bracket - bm_tbi, bracket - ct, bracket - double_bond, bracket - no_bond, bracket - quadruple_bond, bracket - single_bond, bracket - triple_bond, charge - bracket, chiral - bracket, chiral - charge, ct - anything, ct - bm_ibi, ct - bm_tbi, ct - bracket, double_bond - anything, double_bond - bracket, no_bond - anything, no_bond - bracket, quadruple_bond - anything, quadruple_bond - bracket, single_bond - anything, single_bond - bracket, triple_bond - anything, triple_bond - bracket	11
+?	?	anything - anything, anything - aromatic_bond, anything - bm_ibi, anything - bm_tbi, anything - bracket, anything - ct, anything - double_bond, anything - no_bond, anything - quadruple_bond, anything - single_bond, anything - triple_bond, aromatic_bond - anything, aromatic_bond - bracket, bm_ibi - anything, bm_ibi - bm_ibi, bm_ibi - bracket, bm_ibi - ct, bm_tbi - anything, bm_tbi - bm_ibi, bm_tbi - bm_tbi, bm_tbi - bracket, bm_tbi - ct, bracket - anything, bracket - aromatic_bond, bracket - bm_ibi, bracket - bm_tbi, bracket - ct, bracket - double_bond, bracket - no_bond, bracket - quadruple_bond, bracket - single_bond, bracket - triple_bond, charge - bracket, chiral - bracket, chiral - charge, ct - anything, ct - bm_ibi, ct - bm_tbi, ct - bracket, double_bond - anything, double_bond - bracket, no_bond - anything, no_bond - bracket, quadruple_bond - anything, quadruple_bond - bracket, single_bond - anything, single_bond - bracket, triple_bond - anything, triple_bond - bracket	111
+?	?	anything - anything, anything - aromatic_bond, anything - bm_ibi, anything - bm_tbi, anything - bracket, anything - ct, anything - double_bond, anything - no_bond, anything - quadruple_bond, anything - single_bond, anything - triple_bond, aromatic_bond - anything, aromatic_bond - bracket, bm_ibi - anything, bm_ibi - bm_ibi, bm_ibi - bracket, bm_ibi - ct, bm_tbi - anything, bm_tbi - bm_ibi, bm_tbi - bm_tbi, bm_tbi - bracket, bm_tbi - ct, bracket - anything, bracket - aromatic_bond, bracket - bm_ibi, bracket - bm_tbi, bracket - ct, bracket - double_bond, bracket - no_bond, bracket - quadruple_bond, bracket - single_bond, bracket - triple_bond, charge - bracket, chiral - bracket, chiral - charge, ct - anything, ct - bm_ibi, ct - bm_tbi, ct - bracket, double_bond - anything, double_bond - bracket, no_bond - anything, no_bond - bracket, quadruple_bond - anything, quadruple_bond - bracket, single_bond - anything, single_bond - bracket, triple_bond - anything, triple_bond - bracket	?AA1
+?	?	anything - anything, anything - aromatic_bond, anything - bm_ibi, anything - bm_tbi, anything - bracket, anything - ct, anything - double_bond, anything - no_bond, anything - quadruple_bond, anything - single_bond, anything - triple_bond, aromatic_bond - anything, aromatic_bond - bracket, bm_ibi - anything, bm_ibi - bm_ibi, bm_ibi - bracket, bm_ibi - ct, bm_tbi - anything, bm_tbi - bm_ibi, bm_tbi - bm_tbi, bm_tbi - bracket, bm_tbi - ct, bracket - anything, bracket - aromatic_bond, bracket - bm_ibi, bracket - bm_tbi, bracket - ct, bracket - double_bond, bracket - no_bond, bracket - quadruple_bond, bracket - single_bond, bracket - triple_bond, charge - bracket, chiral - bracket, chiral - charge, ct - anything, ct - bm_ibi, ct - bm_tbi, ct - bracket, double_bond - anything, double_bond - bracket, no_bond - anything, no_bond - bracket, quadruple_bond - anything, quadruple_bond - bracket, single_bond - anything, single_bond - bracket, triple_bond - anything, triple_bond - bracket	?AA11
+?	?	anything - anything, anything - aromatic_bond, anything - bm_ibi, anything - bm_tbi, anything - bracket, anything - ct, anything - double_bond, anything - no_bond, anything - quadruple_bond, anything - single_bond, anything - triple_bond, aromatic_bond - anything, aromatic_bond - bracket, bm_ibi - anything, bm_ibi - bm_ibi, bm_ibi - bracket, bm_ibi - ct, bm_tbi - anything, bm_tbi - bm_ibi, bm_tbi - bm_tbi, bm_tbi - bracket, bm_tbi - ct, bracket - anything, bracket - aromatic_bond, bracket - bm_ibi, bracket - bm_tbi, bracket - ct, bracket - double_bond, bracket - no_bond, bracket - quadruple_bond, bracket - single_bond, bracket - triple_bond, charge - bracket, chiral - bracket, chiral - charge, ct - anything, ct - bm_ibi, ct - bm_tbi, ct - bracket, double_bond - anything, double_bond - bracket, no_bond - anything, no_bond - bracket, quadruple_bond - anything, quadruple_bond - bracket, single_bond - anything, single_bond - bracket, triple_bond - anything, triple_bond - bracket	A1
+?	?	anything - anything, anything - aromatic_bond, anything - bm_ibi, anything - bm_tbi, anything - bracket, anything - ct, anything - double_bond, anything - no_bond, anything - quadruple_bond, anything - single_bond, anything - triple_bond, aromatic_bond - anything, aromatic_bond - bracket, bm_ibi - anything, bm_ibi - bm_ibi, bm_ibi - bracket, bm_ibi - ct, bm_tbi - anything, bm_tbi - bm_ibi, bm_tbi - bm_tbi, bm_tbi - bracket, bm_tbi - ct, bracket - anything, bracket - aromatic_bond, bracket - bm_ibi, bracket - bm_tbi, bracket - ct, bracket - double_bond, bracket - no_bond, bracket - quadruple_bond, bracket - single_bond, bracket - triple_bond, charge - bracket, chiral - bracket, chiral - charge, ct - anything, ct - bm_ibi, ct - bm_tbi, ct - bracket, double_bond - anything, double_bond - bracket, no_bond - anything, no_bond - bracket, quadruple_bond - anything, quadruple_bond - bracket, single_bond - anything, single_bond - bracket, triple_bond - anything, triple_bond - bracket	?111
+?	?1	anything - bm_ire_2, anything - bm_tre_2, bm_ibi - bm_ire_2, bm_ibi - bm_tre_2, bm_tbi - bm_ire_2, bm_tbi - bm_tre_2, bracket - bm_ire_2, bracket - bm_tre_2, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_ire_2, ct - bm_tre_2	a
+?	?1	anything - bm_ire_2, anything - bm_tre_2, bm_ibi - bm_ire_2, bm_ibi - bm_tre_2, bm_tbi - bm_ire_2, bm_tbi - bm_tre_2, bracket - bm_ire_2, bracket - bm_tre_2, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_ire_2, ct - bm_tre_2	A
+?	?1	anything - bm_ire_2, anything - bm_tre_2, bm_ibi - bm_ire_2, bm_ibi - bm_tre_2, bm_tbi - bm_ire_2, bm_tbi - bm_tre_2, bracket - bm_ire_2, bracket - bm_tre_2, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_ire_2, ct - bm_tre_2	Aa
+?	?1	anything - bm_ire_2, anything - bm_tre_2, bm_ibi - bm_ire_2, bm_ibi - bm_tre_2, bm_tbi - bm_ire_2, bm_tbi - bm_tre_2, bracket - bm_ire_2, bracket - bm_tre_2, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_ire_2, ct - bm_tre_2	aa
+?	?1	anything - bm_ire_2, anything - bm_tre_2, bm_ibi - bm_ire_2, bm_ibi - bm_tre_2, bm_tbi - bm_ire_2, bm_tbi - bm_tre_2, bracket - bm_ire_2, bracket - bm_tre_2, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_ire_2, ct - bm_tre_2	?
+?	?1	anything - bm_ire_2, anything - bm_tre_2, bm_ibi - bm_ire_2, bm_ibi - bm_tre_2, bm_tbi - bm_ire_2, bm_tbi - bm_tre_2, bracket - bm_ire_2, bracket - bm_tre_2, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_ire_2, ct - bm_tre_2	1
+?	?1	anything - bm_ire_2, anything - bm_tre_2, bm_ibi - bm_ire_2, bm_ibi - bm_tre_2, bm_tbi - bm_ire_2, bm_tbi - bm_tre_2, bracket - bm_ire_2, bracket - bm_tre_2, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_ire_2, ct - bm_tre_2	??
+?	?1	anything - bm_ire_2, anything - bm_tre_2, bm_ibi - bm_ire_2, bm_ibi - bm_tre_2, bm_tbi - bm_ire_2, bm_tbi - bm_tre_2, bracket - bm_ire_2, bracket - bm_tre_2, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_ire_2, ct - bm_tre_2	?1
+?	?1	anything - bm_ire_2, anything - bm_tre_2, bm_ibi - bm_ire_2, bm_ibi - bm_tre_2, bm_tbi - bm_ire_2, bm_tbi - bm_tre_2, bracket - bm_ire_2, bracket - bm_tre_2, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_ire_2, ct - bm_tre_2	?11
+?	?1	anything - bm_ire_2, anything - bm_tre_2, bm_ibi - bm_ire_2, bm_ibi - bm_tre_2, bm_tbi - bm_ire_2, bm_tbi - bm_tre_2, bracket - bm_ire_2, bracket - bm_tre_2, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_ire_2, ct - bm_tre_2	??11
+?	?1	anything - bm_ire_2, anything - bm_tre_2, bm_ibi - bm_ire_2, bm_ibi - bm_tre_2, bm_tbi - bm_ire_2, bm_tbi - bm_tre_2, bracket - bm_ire_2, bracket - bm_tre_2, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_ire_2, ct - bm_tre_2	11
+?	?1	anything - bm_ire_2, anything - bm_tre_2, bm_ibi - bm_ire_2, bm_ibi - bm_tre_2, bm_tbi - bm_ire_2, bm_tbi - bm_tre_2, bracket - bm_ire_2, bracket - bm_tre_2, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_ire_2, ct - bm_tre_2	111
+?	?1	anything - bm_ire_2, anything - bm_tre_2, bm_ibi - bm_ire_2, bm_ibi - bm_tre_2, bm_tbi - bm_ire_2, bm_tbi - bm_tre_2, bracket - bm_ire_2, bracket - bm_tre_2, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_ire_2, ct - bm_tre_2	?AA1
+?	?1	anything - bm_ire_2, anything - bm_tre_2, bm_ibi - bm_ire_2, bm_ibi - bm_tre_2, bm_tbi - bm_ire_2, bm_tbi - bm_tre_2, bracket - bm_ire_2, bracket - bm_tre_2, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_ire_2, ct - bm_tre_2	?AA11
+?	?1	anything - bm_ire_2, anything - bm_tre_2, bm_ibi - bm_ire_2, bm_ibi - bm_tre_2, bm_tbi - bm_ire_2, bm_tbi - bm_tre_2, bracket - bm_ire_2, bracket - bm_tre_2, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_ire_2, ct - bm_tre_2	A1
+?	?1	anything - bm_ire_2, anything - bm_tre_2, bm_ibi - bm_ire_2, bm_ibi - bm_tre_2, bm_tbi - bm_ire_2, bm_tbi - bm_tre_2, bracket - bm_ire_2, bracket - bm_tre_2, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_ire_2, ct - bm_tre_2	?111
+?	?11	anything - bm_iri_3, anything - bm_tri_3, bm_ibi - bm_iri_3, bm_ibi - bm_tri_3, bm_tbi - bm_iri_3, bm_tbi - bm_tri_3, bracket - bm_iri_3, bracket - bm_tri_3, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_iri_3, ct - bm_tri_3	a
+?	?11	anything - bm_iri_3, anything - bm_tri_3, bm_ibi - bm_iri_3, bm_ibi - bm_tri_3, bm_tbi - bm_iri_3, bm_tbi - bm_tri_3, bracket - bm_iri_3, bracket - bm_tri_3, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_iri_3, ct - bm_tri_3	A
+?	?11	anything - bm_iri_3, anything - bm_tri_3, bm_ibi - bm_iri_3, bm_ibi - bm_tri_3, bm_tbi - bm_iri_3, bm_tbi - bm_tri_3, bracket - bm_iri_3, bracket - bm_tri_3, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_iri_3, ct - bm_tri_3	Aa
+?	?11	anything - bm_iri_3, anything - bm_tri_3, bm_ibi - bm_iri_3, bm_ibi - bm_tri_3, bm_tbi - bm_iri_3, bm_tbi - bm_tri_3, bracket - bm_iri_3, bracket - bm_tri_3, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_iri_3, ct - bm_tri_3	aa
+?	?11	anything - bm_iri_3, anything - bm_tri_3, bm_ibi - bm_iri_3, bm_ibi - bm_tri_3, bm_tbi - bm_iri_3, bm_tbi - bm_tri_3, bracket - bm_iri_3, bracket - bm_tri_3, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_iri_3, ct - bm_tri_3	?
+?	?11	anything - bm_iri_3, anything - bm_tri_3, bm_ibi - bm_iri_3, bm_ibi - bm_tri_3, bm_tbi - bm_iri_3, bm_tbi - bm_tri_3, bracket - bm_iri_3, bracket - bm_tri_3, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_iri_3, ct - bm_tri_3	1
+?	?11	anything - bm_iri_3, anything - bm_tri_3, bm_ibi - bm_iri_3, bm_ibi - bm_tri_3, bm_tbi - bm_iri_3, bm_tbi - bm_tri_3, bracket - bm_iri_3, bracket - bm_tri_3, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_iri_3, ct - bm_tri_3	??
+?	?11	anything - bm_iri_3, anything - bm_tri_3, bm_ibi - bm_iri_3, bm_ibi - bm_tri_3, bm_tbi - bm_iri_3, bm_tbi - bm_tri_3, bracket - bm_iri_3, bracket - bm_tri_3, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_iri_3, ct - bm_tri_3	?1
+?	?11	anything - bm_iri_3, anything - bm_tri_3, bm_ibi - bm_iri_3, bm_ibi - bm_tri_3, bm_tbi - bm_iri_3, bm_tbi - bm_tri_3, bracket - bm_iri_3, bracket - bm_tri_3, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_iri_3, ct - bm_tri_3	?11
+?	?11	anything - bm_iri_3, anything - bm_tri_3, bm_ibi - bm_iri_3, bm_ibi - bm_tri_3, bm_tbi - bm_iri_3, bm_tbi - bm_tri_3, bracket - bm_iri_3, bracket - bm_tri_3, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_iri_3, ct - bm_tri_3	??11
+?	?11	anything - bm_iri_3, anything - bm_tri_3, bm_ibi - bm_iri_3, bm_ibi - bm_tri_3, bm_tbi - bm_iri_3, bm_tbi - bm_tri_3, bracket - bm_iri_3, bracket - bm_tri_3, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_iri_3, ct - bm_tri_3	11
+?	?11	anything - bm_iri_3, anything - bm_tri_3, bm_ibi - bm_iri_3, bm_ibi - bm_tri_3, bm_tbi - bm_iri_3, bm_tbi - bm_tri_3, bracket - bm_iri_3, bracket - bm_tri_3, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_iri_3, ct - bm_tri_3	111
+?	?11	anything - bm_iri_3, anything - bm_tri_3, bm_ibi - bm_iri_3, bm_ibi - bm_tri_3, bm_tbi - bm_iri_3, bm_tbi - bm_tri_3, bracket - bm_iri_3, bracket - bm_tri_3, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_iri_3, ct - bm_tri_3	?AA1
+?	?11	anything - bm_iri_3, anything - bm_tri_3, bm_ibi - bm_iri_3, bm_ibi - bm_tri_3, bm_tbi - bm_iri_3, bm_tbi - bm_tri_3, bracket - bm_iri_3, bracket - bm_tri_3, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_iri_3, ct - bm_tri_3	?AA11
+?	?11	anything - bm_iri_3, anything - bm_tri_3, bm_ibi - bm_iri_3, bm_ibi - bm_tri_3, bm_tbi - bm_iri_3, bm_tbi - bm_tri_3, bracket - bm_iri_3, bracket - bm_tri_3, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_iri_3, ct - bm_tri_3	A1
+?	?11	anything - bm_iri_3, anything - bm_tri_3, bm_ibi - bm_iri_3, bm_ibi - bm_tri_3, bm_tbi - bm_iri_3, bm_tbi - bm_tri_3, bracket - bm_iri_3, bracket - bm_tri_3, charge - class_m, chiral - charge_m, chiral - class_m, ct - bm_iri_3, ct - bm_tri_3	?111
+?	?111	charge - class_m, chiral - class_m	a
+?	?111	charge - class_m, chiral - class_m	A
+?	?111	charge - class_m, chiral - class_m	Aa
+?	?111	charge - class_m, chiral - class_m	aa
+?	?111	charge - class_m, chiral - class_m	?
+?	?111	charge - class_m, chiral - class_m	1
+?	?111	charge - class_m, chiral - class_m	??
+?	?111	charge - class_m, chiral - class_m	?1
+?	?111	charge - class_m, chiral - class_m	?11
+?	?111	charge - class_m, chiral - class_m	??11
+?	?111	charge - class_m, chiral - class_m	11
+?	?111	charge - class_m, chiral - class_m	111
+?	?111	charge - class_m, chiral - class_m	?AA1
+?	?111	charge - class_m, chiral - class_m	?AA11
+?	?111	charge - class_m, chiral - class_m	A1
+?	?111	charge - class_m, chiral - class_m	?111
+?	??	anything - bm_ibe_2, anything - bm_tbe_2, bm_ibi - bm_ibe_2, bm_tbi - bm_ibe_2, bm_tbi - bm_tbe_2, bracket - bm_ibe_2, bracket - bm_tbe_2, chiral - charge_2, ct - bm_ibe_2, ct - bm_tbe_2	a
+?	??	anything - bm_ibe_2, anything - bm_tbe_2, bm_ibi - bm_ibe_2, bm_tbi - bm_ibe_2, bm_tbi - bm_tbe_2, bracket - bm_ibe_2, bracket - bm_tbe_2, chiral - charge_2, ct - bm_ibe_2, ct - bm_tbe_2	A
+?	??	anything - bm_ibe_2, anything - bm_tbe_2, bm_ibi - bm_ibe_2, bm_tbi - bm_ibe_2, bm_tbi - bm_tbe_2, bracket - bm_ibe_2, bracket - bm_tbe_2, chiral - charge_2, ct - bm_ibe_2, ct - bm_tbe_2	Aa
+?	??	anything - bm_ibe_2, anything - bm_tbe_2, bm_ibi - bm_ibe_2, bm_tbi - bm_ibe_2, bm_tbi - bm_tbe_2, bracket - bm_ibe_2, bracket - bm_tbe_2, chiral - charge_2, ct - bm_ibe_2, ct - bm_tbe_2	aa
+?	??	anything - bm_ibe_2, anything - bm_tbe_2, bm_ibi - bm_ibe_2, bm_tbi - bm_ibe_2, bm_tbi - bm_tbe_2, bracket - bm_ibe_2, bracket - bm_tbe_2, chiral - charge_2, ct - bm_ibe_2, ct - bm_tbe_2	?
+?	??	anything - bm_ibe_2, anything - bm_tbe_2, bm_ibi - bm_ibe_2, bm_tbi - bm_ibe_2, bm_tbi - bm_tbe_2, bracket - bm_ibe_2, bracket - bm_tbe_2, chiral - charge_2, ct - bm_ibe_2, ct - bm_tbe_2	1
+?	??	anything - bm_ibe_2, anything - bm_tbe_2, bm_ibi - bm_ibe_2, bm_tbi - bm_ibe_2, bm_tbi - bm_tbe_2, bracket - bm_ibe_2, bracket - bm_tbe_2, chiral - charge_2, ct - bm_ibe_2, ct - bm_tbe_2	??
+?	??	anything - bm_ibe_2, anything - bm_tbe_2, bm_ibi - bm_ibe_2, bm_tbi - bm_ibe_2, bm_tbi - bm_tbe_2, bracket - bm_ibe_2, bracket - bm_tbe_2, chiral - charge_2, ct - bm_ibe_2, ct - bm_tbe_2	?1
+?	??	anything - bm_ibe_2, anything - bm_tbe_2, bm_ibi - bm_ibe_2, bm_tbi - bm_ibe_2, bm_tbi - bm_tbe_2, bracket - bm_ibe_2, bracket - bm_tbe_2, chiral - charge_2, ct - bm_ibe_2, ct - bm_tbe_2	?11
+?	??	anything - bm_ibe_2, anything - bm_tbe_2, bm_ibi - bm_ibe_2, bm_tbi - bm_ibe_2, bm_tbi - bm_tbe_2, bracket - bm_ibe_2, bracket - bm_tbe_2, chiral - charge_2, ct - bm_ibe_2, ct - bm_tbe_2	??11
+?	??	anything - bm_ibe_2, anything - bm_tbe_2, bm_ibi - bm_ibe_2, bm_tbi - bm_ibe_2, bm_tbi - bm_tbe_2, bracket - bm_ibe_2, bracket - bm_tbe_2, chiral - charge_2, ct - bm_ibe_2, ct - bm_tbe_2	11
+?	??	anything - bm_ibe_2, anything - bm_tbe_2, bm_ibi - bm_ibe_2, bm_tbi - bm_ibe_2, bm_tbi - bm_tbe_2, bracket - bm_ibe_2, bracket - bm_tbe_2, chiral - charge_2, ct - bm_ibe_2, ct - bm_tbe_2	111
+?	??	anything - bm_ibe_2, anything - bm_tbe_2, bm_ibi - bm_ibe_2, bm_tbi - bm_ibe_2, bm_tbi - bm_tbe_2, bracket - bm_ibe_2, bracket - bm_tbe_2, chiral - charge_2, ct - bm_ibe_2, ct - bm_tbe_2	?AA1
+?	??	anything - bm_ibe_2, anything - bm_tbe_2, bm_ibi - bm_ibe_2, bm_tbi - bm_ibe_2, bm_tbi - bm_tbe_2, bracket - bm_ibe_2, bracket - bm_tbe_2, chiral - charge_2, ct - bm_ibe_2, ct - bm_tbe_2	?AA11
+?	??	anything - bm_ibe_2, anything - bm_tbe_2, bm_ibi - bm_ibe_2, bm_tbi - bm_ibe_2, bm_tbi - bm_tbe_2, bracket - bm_ibe_2, bracket - bm_tbe_2, chiral - charge_2, ct - bm_ibe_2, ct - bm_tbe_2	A1
+?	??	anything - bm_ibe_2, anything - bm_tbe_2, bm_ibi - bm_ibe_2, bm_tbi - bm_ibe_2, bm_tbi - bm_tbe_2, bracket - bm_ibe_2, bracket - bm_tbe_2, chiral - charge_2, ct - bm_ibe_2, ct - bm_tbe_2	?111
+?	??11	anything - bm_ire_4, anything - bm_tre_4, bm_ibi - bm_ire_4, bm_ibi - bm_tre_4, bm_tbi - bm_ire_4, bm_tbi - bm_tre_4, bracket - bm_ire_4, bracket - bm_tre_4, ct - bm_ire_4, ct - bm_tre_4	a
+?	??11	anything - bm_ire_4, anything - bm_tre_4, bm_ibi - bm_ire_4, bm_ibi - bm_tre_4, bm_tbi - bm_ire_4, bm_tbi - bm_tre_4, bracket - bm_ire_4, bracket - bm_tre_4, ct - bm_ire_4, ct - bm_tre_4	A
+?	??11	anything - bm_ire_4, anything - bm_tre_4, bm_ibi - bm_ire_4, bm_ibi - bm_tre_4, bm_tbi - bm_ire_4, bm_tbi - bm_tre_4, bracket - bm_ire_4, bracket - bm_tre_4, ct - bm_ire_4, ct - bm_tre_4	Aa
+?	??11	anything - bm_ire_4, anything - bm_tre_4, bm_ibi - bm_ire_4, bm_ibi - bm_tre_4, bm_tbi - bm_ire_4, bm_tbi - bm_tre_4, bracket - bm_ire_4, bracket - bm_tre_4, ct - bm_ire_4, ct - bm_tre_4	aa
+?	??11	anything - bm_ire_4, anything - bm_tre_4, bm_ibi - bm_ire_4, bm_ibi - bm_tre_4, bm_tbi - bm_ire_4, bm_tbi - bm_tre_4, bracket - bm_ire_4, bracket - bm_tre_4, ct - bm_ire_4, ct - bm_tre_4	?
+?	??11	anything - bm_ire_4, anything - bm_tre_4, bm_ibi - bm_ire_4, bm_ibi - bm_tre_4, bm_tbi - bm_ire_4, bm_tbi - bm_tre_4, bracket - bm_ire_4, bracket - bm_tre_4, ct - bm_ire_4, ct - bm_tre_4	1
+?	??11	anything - bm_ire_4, anything - bm_tre_4, bm_ibi - bm_ire_4, bm_ibi - bm_tre_4, bm_tbi - bm_ire_4, bm_tbi - bm_tre_4, bracket - bm_ire_4, bracket - bm_tre_4, ct - bm_ire_4, ct - bm_tre_4	??
+?	??11	anything - bm_ire_4, anything - bm_tre_4, bm_ibi - bm_ire_4, bm_ibi - bm_tre_4, bm_tbi - bm_ire_4, bm_tbi - bm_tre_4, bracket - bm_ire_4, bracket - bm_tre_4, ct - bm_ire_4, ct - bm_tre_4	?1
+?	??11	anything - bm_ire_4, anything - bm_tre_4, bm_ibi - bm_ire_4, bm_ibi - bm_tre_4, bm_tbi - bm_ire_4, bm_tbi - bm_tre_4, bracket - bm_ire_4, bracket - bm_tre_4, ct - bm_ire_4, ct - bm_tre_4	?11
+?	??11	anything - bm_ire_4, anything - bm_tre_4, bm_ibi - bm_ire_4, bm_ibi - bm_tre_4, bm_tbi - bm_ire_4, bm_tbi - bm_tre_4, bracket - bm_ire_4, bracket - bm_tre_4, ct - bm_ire_4, ct - bm_tre_4	??11
+?	??11	anything - bm_ire_4, anything - bm_tre_4, bm_ibi - bm_ire_4, bm_ibi - bm_tre_4, bm_tbi - bm_ire_4, bm_tbi - bm_tre_4, bracket - bm_ire_4, bracket - bm_tre_4, ct - bm_ire_4, ct - bm_tre_4	11
+?	??11	anything - bm_ire_4, anything - bm_tre_4, bm_ibi - bm_ire_4, bm_ibi - bm_tre_4, bm_tbi - bm_ire_4, bm_tbi - bm_tre_4, bracket - bm_ire_4, bracket - bm_tre_4, ct - bm_ire_4, ct - bm_tre_4	111
+?	??11	anything - bm_ire_4, anything - bm_tre_4, bm_ibi - bm_ire_4, bm_ibi - bm_tre_4, bm_tbi - bm_ire_4, bm_tbi - bm_tre_4, bracket - bm_ire_4, bracket - bm_tre_4, ct - bm_ire_4, ct - bm_tre_4	?AA1
+?	??11	anything - bm_ire_4, anything - bm_tre_4, bm_ibi - bm_ire_4, bm_ibi - bm_tre_4, bm_tbi - bm_ire_4, bm_tbi - bm_tre_4, bracket - bm_ire_4, bracket - bm_tre_4, ct - bm_ire_4, ct - bm_tre_4	?AA11
+?	??11	anything - bm_ire_4, anything - bm_tre_4, bm_ibi - bm_ire_4, bm_ibi - bm_tre_4, bm_tbi - bm_ire_4, bm_tbi - bm_tre_4, bracket - bm_ire_4, bracket - bm_tre_4, ct - bm_ire_4, ct - bm_tre_4	A1
+?	??11	anything - bm_ire_4, anything - bm_tre_4, bm_ibi - bm_ire_4, bm_ibi - bm_tre_4, bm_tbi - bm_ire_4, bm_tbi - bm_tre_4, bracket - bm_ire_4, bracket - bm_tre_4, ct - bm_ire_4, ct - bm_tre_4	?111
+?	A	anything - atom_oal, bm_ibi - atom_oal, bm_tbi - atom_oal, bracket - atom_bal, bracket - atom_oal, chiral - hydro, ct - atom_oal, double_bond - atom_oal, no_bond - atom_oal, quadruple_bond - atom_oal, single_bond - atom_oal, triple_bond - atom_oal	a
+?	A	anything - atom_oal, bm_ibi - atom_oal, bm_tbi - atom_oal, bracket - atom_bal, bracket - atom_oal, chiral - hydro, ct - atom_oal, double_bond - atom_oal, no_bond - atom_oal, quadruple_bond - atom_oal, single_bond - atom_oal, triple_bond - atom_oal	A
+?	A	anything - atom_oal, bm_ibi - atom_oal, bm_tbi - atom_oal, bracket - atom_bal, bracket - atom_oal, chiral - hydro, ct - atom_oal, double_bond - atom_oal, no_bond - atom_oal, quadruple_bond - atom_oal, single_bond - atom_oal, triple_bond - atom_oal	Aa
+?	A	anything - atom_oal, bm_ibi - atom_oal, bm_tbi - atom_oal, bracket - atom_bal, bracket - atom_oal, chiral - hydro, ct - atom_oal, double_bond - atom_oal, no_bond - atom_oal, quadruple_bond - atom_oal, single_bond - atom_oal, triple_bond - atom_oal	aa
+?	A	anything - atom_oal, bm_ibi - atom_oal, bm_tbi - atom_oal, bracket - atom_bal, bracket - atom_oal, chiral - hydro, ct - atom_oal, double_bond - atom_oal, no_bond - atom_oal, quadruple_bond - atom_oal, single_bond - atom_oal, triple_bond - atom_oal	?
+?	A	anything - atom_oal, bm_ibi - atom_oal, bm_tbi - atom_oal, bracket - atom_bal, bracket - atom_oal, chiral - hydro, ct - atom_oal, double_bond - atom_oal, no_bond - atom_oal, quadruple_bond - atom_oal, single_bond - atom_oal, triple_bond - atom_oal	1
+?	A	anything - atom_oal, bm_ibi - atom_oal, bm_tbi - atom_oal, bracket - atom_bal, bracket - atom_oal, chiral - hydro, ct - atom_oal, double_bond - atom_oal, no_bond - atom_oal, quadruple_bond - atom_oal, single_bond - atom_oal, triple_bond - atom_oal	??
+?	A	anything - atom_oal, bm_ibi - atom_oal, bm_tbi - atom_oal, bracket - atom_bal, bracket - atom_oal, chiral - hydro, ct - atom_oal, double_bond - atom_oal, no_bond - atom_oal, quadruple_bond - atom_oal, single_bond - atom_oal, triple_bond - atom_oal	?1
+?	A	anything - atom_oal, bm_ibi - atom_oal, bm_tbi - atom_oal, bracket - atom_bal, bracket - atom_oal, chiral - hydro, ct - atom_oal, double_bond - atom_oal, no_bond - atom_oal, quadruple_bond - atom_oal, single_bond - atom_oal, triple_bond - atom_oal	?11
+?	A	anything - atom_oal, bm_ibi - atom_oal, bm_tbi - atom_oal, bracket - atom_bal, bracket - atom_oal, chiral - hydro, ct - atom_oal, double_bond - atom_oal, no_bond - atom_oal, quadruple_bond - atom_oal, single_bond - atom_oal, triple_bond - atom_oal	??11
+?	A	anything - atom_oal, bm_ibi - atom_oal, bm_tbi - atom_oal, bracket - atom_bal, bracket - atom_oal, chiral - hydro, ct - atom_oal, double_bond - atom_oal, no_bond - atom_oal, quadruple_bond - atom_oal, single_bond - atom_oal, triple_bond - atom_oal	11
+?	A	anything - atom_oal, bm_ibi - atom_oal, bm_tbi - atom_oal, bracket - atom_bal, bracket - atom_oal, chiral - hydro, ct - atom_oal, double_bond - atom_oal, no_bond - atom_oal, quadruple_bond - atom_oal, single_bond - atom_oal, triple_bond - atom_oal	111
+?	A	anything - atom_oal, bm_ibi - atom_oal, bm_tbi - atom_oal, bracket - atom_bal, bracket - atom_oal, chiral - hydro, ct - atom_oal, double_bond - atom_oal, no_bond - atom_oal, quadruple_bond - atom_oal, single_bond - atom_oal, triple_bond - atom_oal	?AA1
+?	A	anything - atom_oal, bm_ibi - atom_oal, bm_tbi - atom_oal, bracket - atom_bal, bracket - atom_oal, chiral - hydro, ct - atom_oal, double_bond - atom_oal, no_bond - atom_oal, quadruple_bond - atom_oal, single_bond - atom_oal, triple_bond - atom_oal	?AA11
+?	A	anything - atom_oal, bm_ibi - atom_oal, bm_tbi - atom_oal, bracket - atom_bal, bracket - atom_oal, chiral - hydro, ct - atom_oal, double_bond - atom_oal, no_bond - atom_oal, quadruple_bond - atom_oal, single_bond - atom_oal, triple_bond - atom_oal	A1
+?	A	anything - atom_oal, bm_ibi - atom_oal, bm_tbi - atom_oal, bracket - atom_bal, bracket - atom_oal, chiral - hydro, ct - atom_oal, double_bond - atom_oal, no_bond - atom_oal, quadruple_bond - atom_oal, single_bond - atom_oal, triple_bond - atom_oal	?111
+?	A1	chiral - hydro_2	a
+?	A1	chiral - hydro_2	A
+?	A1	chiral - hydro_2	Aa
+?	A1	chiral - hydro_2	aa
+?	A1	chiral - hydro_2	?
+?	A1	chiral - hydro_2	1
+?	A1	chiral - hydro_2	??
+?	A1	chiral - hydro_2	?1
+?	A1	chiral - hydro_2	?11
+?	A1	chiral - hydro_2	??11
+?	A1	chiral - hydro_2	11
+?	A1	chiral - hydro_2	111
+?	A1	chiral - hydro_2	?AA1
+?	A1	chiral - hydro_2	?AA11
+?	A1	chiral - hydro_2	A1
+?	A1	chiral - hydro_2	?111
+?	Aa	anything - atom_oal_2, bm_ibi - atom_oal_2, bm_tbi - atom_oal_2, bracket - atom_bal_2, bracket - atom_oal_2, ct - atom_oal_2, double_bond - atom_oal_2, no_bond - atom_oal_2, quadruple_bond - atom_oal_2, single_bond - atom_oal_2, triple_bond - atom_oal_2	a
+?	Aa	anything - atom_oal_2, bm_ibi - atom_oal_2, bm_tbi - atom_oal_2, bracket - atom_bal_2, bracket - atom_oal_2, ct - atom_oal_2, double_bond - atom_oal_2, no_bond - atom_oal_2, quadruple_bond - atom_oal_2, single_bond - atom_oal_2, triple_bond - atom_oal_2	A
+?	Aa	anything - atom_oal_2, bm_ibi - atom_oal_2, bm_tbi - atom_oal_2, bracket - atom_bal_2, bracket - atom_oal_2, ct - atom_oal_2, double_bond - atom_oal_2, no_bond - atom_oal_2, quadruple_bond - atom_oal_2, single_bond - atom_oal_2, triple_bond - atom_oal_2	Aa
+?	Aa	anything - atom_oal_2, bm_ibi - atom_oal_2, bm_tbi - atom_oal_2, bracket - atom_bal_2, bracket - atom_oal_2, ct - atom_oal_2, double_bond - atom_oal_2, no_bond - atom_oal_2, quadruple_bond - atom_oal_2, single_bond - atom_oal_2, triple_bond - atom_oal_2	aa
+?	Aa	anything - atom_oal_2, bm_ibi - atom_oal_2, bm_tbi - atom_oal_2, bracket - atom_bal_2, bracket - atom_oal_2, ct - atom_oal_2, double_bond - atom_oal_2, no_bond - atom_oal_2, quadruple_bond - atom_oal_2, single_bond - atom_oal_2, triple_bond - atom_oal_2	?
+?	Aa	anything - atom_oal_2, bm_ibi - atom_oal_2, bm_tbi - atom_oal_2, bracket - atom_bal_2, bracket - atom_oal_2, ct - atom_oal_2, double_bond - atom_oal_2, no_bond - atom_oal_2, quadruple_bond - atom_oal_2, single_bond - atom_oal_2, triple_bond - atom_oal_2	1
+?	Aa	anything - atom_oal_2, bm_ibi - atom_oal_2, bm_tbi - atom_oal_2, bracket - atom_bal_2, bracket - atom_oal_2, ct - atom_oal_2, double_bond - atom_oal_2, no_bond - atom_oal_2, quadruple_bond - atom_oal_2, single_bond - atom_oal_2, triple_bond - atom_oal_2	??
+?	Aa	anything - atom_oal_2, bm_ibi - atom_oal_2, bm_tbi - atom_oal_2, bracket - atom_bal_2, bracket - atom_oal_2, ct - atom_oal_2, double_bond - atom_oal_2, no_bond - atom_oal_2, quadruple_bond - atom_oal_2, single_bond - atom_oal_2, triple_bond - atom_oal_2	?1
+?	Aa	anything - atom_oal_2, bm_ibi - atom_oal_2, bm_tbi - atom_oal_2, bracket - atom_bal_2, bracket - atom_oal_2, ct - atom_oal_2, double_bond - atom_oal_2, no_bond - atom_oal_2, quadruple_bond - atom_oal_2, single_bond - atom_oal_2, triple_bond - atom_oal_2	?11
+?	Aa	anything - atom_oal_2, bm_ibi - atom_oal_2, bm_tbi - atom_oal_2, bracket - atom_bal_2, bracket - atom_oal_2, ct - atom_oal_2, double_bond - atom_oal_2, no_bond - atom_oal_2, quadruple_bond - atom_oal_2, single_bond - atom_oal_2, triple_bond - atom_oal_2	??11
+?	Aa	anything - atom_oal_2, bm_ibi - atom_oal_2, bm_tbi - atom_oal_2, bracket - atom_bal_2, bracket - atom_oal_2, ct - atom_oal_2, double_bond - atom_oal_2, no_bond - atom_oal_2, quadruple_bond - atom_oal_2, single_bond - atom_oal_2, triple_bond - atom_oal_2	11
+?	Aa	anything - atom_oal_2, bm_ibi - atom_oal_2, bm_tbi - atom_oal_2, bracket - atom_bal_2, bracket - atom_oal_2, ct - atom_oal_2, double_bond - atom_oal_2, no_bond - atom_oal_2, quadruple_bond - atom_oal_2, single_bond - atom_oal_2, triple_bond - atom_oal_2	111
+?	Aa	anything - atom_oal_2, bm_ibi - atom_oal_2, bm_tbi - atom_oal_2, bracket - atom_bal_2, bracket - atom_oal_2, ct - atom_oal_2, double_bond - atom_oal_2, no_bond - atom_oal_2, quadruple_bond - atom_oal_2, single_bond - atom_oal_2, triple_bond - atom_oal_2	?AA1
+?	Aa	anything - atom_oal_2, bm_ibi - atom_oal_2, bm_tbi - atom_oal_2, bracket - atom_bal_2, bracket - atom_oal_2, ct - atom_oal_2, double_bond - atom_oal_2, no_bond - atom_oal_2, quadruple_bond - atom_oal_2, single_bond - atom_oal_2, triple_bond - atom_oal_2	?AA11
+?	Aa	anything - atom_oal_2, bm_ibi - atom_oal_2, bm_tbi - atom_oal_2, bracket - atom_bal_2, bracket - atom_oal_2, ct - atom_oal_2, double_bond - atom_oal_2, no_bond - atom_oal_2, quadruple_bond - atom_oal_2, single_bond - atom_oal_2, triple_bond - atom_oal_2	A1
+?	Aa	anything - atom_oal_2, bm_ibi - atom_oal_2, bm_tbi - atom_oal_2, bracket - atom_bal_2, bracket - atom_oal_2, ct - atom_oal_2, double_bond - atom_oal_2, no_bond - atom_oal_2, quadruple_bond - atom_oal_2, single_bond - atom_oal_2, triple_bond - atom_oal_2	?111
+?	a	anything - atom_oar, aromatic_bond - atom_oar, bm_ibi - atom_oar, bm_tbi - atom_oar, bracket - atom_bar, bracket - atom_oar, ct - atom_oar, double_bond - atom_oar, no_bond - atom_oar, quadruple_bond - atom_oar, single_bond - atom_oar, triple_bond - atom_oar	a
+?	a	anything - atom_oar, aromatic_bond - atom_oar, bm_ibi - atom_oar, bm_tbi - atom_oar, bracket - atom_bar, bracket - atom_oar, ct - atom_oar, double_bond - atom_oar, no_bond - atom_oar, quadruple_bond - atom_oar, single_bond - atom_oar, triple_bond - atom_oar	A
+?	a	anything - atom_oar, aromatic_bond - atom_oar, bm_ibi - atom_oar, bm_tbi - atom_oar, bracket - atom_bar, bracket - atom_oar, ct - atom_oar, double_bond - atom_oar, no_bond - atom_oar, quadruple_bond - atom_oar, single_bond - atom_oar, triple_bond - atom_oar	Aa
+?	a	anything - atom_oar, aromatic_bond - atom_oar, bm_ibi - atom_oar, bm_tbi - atom_oar, bracket - atom_bar, bracket - atom_oar, ct - atom_oar, double_bond - atom_oar, no_bond - atom_oar, quadruple_bond - atom_oar, single_bond - atom_oar, triple_bond - atom_oar	aa
+?	a	anything - atom_oar, aromatic_bond - atom_oar, bm_ibi - atom_oar, bm_tbi - atom_oar, bracket - atom_bar, bracket - atom_oar, ct - atom_oar, double_bond - atom_oar, no_bond - atom_oar, quadruple_bond - atom_oar, single_bond - atom_oar, triple_bond - atom_oar	?
+?	a	anything - atom_oar, aromatic_bond - atom_oar, bm_ibi - atom_oar, bm_tbi - atom_oar, bracket - atom_bar, bracket - atom_oar, ct - atom_oar, double_bond - atom_oar, no_bond - atom_oar, quadruple_bond - atom_oar, single_bond - atom_oar, triple_bond - atom_oar	1
+?	a	anything - atom_oar, aromatic_bond - atom_oar, bm_ibi - atom_oar, bm_tbi - atom_oar, bracket - atom_bar, bracket - atom_oar, ct - atom_oar, double_bond - atom_oar, no_bond - atom_oar, quadruple_bond - atom_oar, single_bond - atom_oar, triple_bond - atom_oar	??
+?	a	anything - atom_oar, aromatic_bond - atom_oar, bm_ibi - atom_oar, bm_tbi - atom_oar, bracket - atom_bar, bracket - atom_oar, ct - atom_oar, double_bond - atom_oar, no_bond - atom_oar, quadruple_bond - atom_oar, single_bond - atom_oar, triple_bond - atom_oar	?1
+?	a	anything - atom_oar, aromatic_bond - atom_oar, bm_ibi - atom_oar, bm_tbi - atom_oar, bracket - atom_bar, bracket - atom_oar, ct - atom_oar, double_bond - atom_oar, no_bond - atom_oar, quadruple_bond - atom_oar, single_bond - atom_oar, triple_bond - atom_oar	?11
+?	a	anything - atom_oar, aromatic_bond - atom_oar, bm_ibi - atom_oar, bm_tbi - atom_oar, bracket - atom_bar, bracket - atom_oar, ct - atom_oar, double_bond - atom_oar, no_bond - atom_oar, quadruple_bond - atom_oar, single_bond - atom_oar, triple_bond - atom_oar	??11
+?	a	anything - atom_oar, aromatic_bond - atom_oar, bm_ibi - atom_oar, bm_tbi - atom_oar, bracket - atom_bar, bracket - atom_oar, ct - atom_oar, double_bond - atom_oar, no_bond - atom_oar, quadruple_bond - atom_oar, single_bond - atom_oar, triple_bond - atom_oar	11
+?	a	anything - atom_oar, aromatic_bond - atom_oar, bm_ibi - atom_oar, bm_tbi - atom_oar, bracket - atom_bar, bracket - atom_oar, ct - atom_oar, double_bond - atom_oar, no_bond - atom_oar, quadruple_bond - atom_oar, single_bond - atom_oar, triple_bond - atom_oar	111
+?	a	anything - atom_oar, aromatic_bond - atom_oar, bm_ibi - atom_oar, bm_tbi - atom_oar, bracket - atom_bar, bracket - atom_oar, ct - atom_oar, double_bond - atom_oar, no_bond - atom_oar, quadruple_bond - atom_oar, single_bond - atom_oar, triple_bond - atom_oar	?AA1
+?	a	anything - atom_oar, aromatic_bond - atom_oar, bm_ibi - atom_oar, bm_tbi - atom_oar, bracket - atom_bar, bracket - atom_oar, ct - atom_oar, double_bond - atom_oar, no_bond - atom_oar, quadruple_bond - atom_oar, single_bond - atom_oar, triple_bond - atom_oar	?AA11
+?	a	anything - atom_oar, aromatic_bond - atom_oar, bm_ibi - atom_oar, bm_tbi - atom_oar, bracket - atom_bar, bracket - atom_oar, ct - atom_oar, double_bond - atom_oar, no_bond - atom_oar, quadruple_bond - atom_oar, single_bond - atom_oar, triple_bond - atom_oar	A1
+?	a	anything - atom_oar, aromatic_bond - atom_oar, bm_ibi - atom_oar, bm_tbi - atom_oar, bracket - atom_bar, bracket - atom_oar, ct - atom_oar, double_bond - atom_oar, no_bond - atom_oar, quadruple_bond - atom_oar, single_bond - atom_oar, triple_bond - atom_oar	?111
+?	aa	bracket - atom_bar_2	a
+?	aa	bracket - atom_bar_2	A
+?	aa	bracket - atom_bar_2	Aa
+?	aa	bracket - atom_bar_2	aa
+?	aa	bracket - atom_bar_2	?
+?	aa	bracket - atom_bar_2	1
+?	aa	bracket - atom_bar_2	??
+?	aa	bracket - atom_bar_2	?1
+?	aa	bracket - atom_bar_2	?11
+?	aa	bracket - atom_bar_2	??11
+?	aa	bracket - atom_bar_2	11
+?	aa	bracket - atom_bar_2	111
+?	aa	bracket - atom_bar_2	?AA1
+?	aa	bracket - atom_bar_2	?AA11
+?	aa	bracket - atom_bar_2	A1
+?	aa	bracket - atom_bar_2	?111
+?1	1	bm_ire_2 - bm_iri, bm_ire_2 - bm_tri, bm_tre_2 - bm_iri, bm_tre_2 - bm_tri	a
+?1	1	bm_ire_2 - bm_iri, bm_ire_2 - bm_tri, bm_tre_2 - bm_iri, bm_tre_2 - bm_tri	A
+?1	1	bm_ire_2 - bm_iri, bm_ire_2 - bm_tri, bm_tre_2 - bm_iri, bm_tre_2 - bm_tri	Aa
+?1	1	bm_ire_2 - bm_iri, bm_ire_2 - bm_tri, bm_tre_2 - bm_iri, bm_tre_2 - bm_tri	aa
+?1	1	bm_ire_2 - bm_iri, bm_ire_2 - bm_tri, bm_tre_2 - bm_iri, bm_tre_2 - bm_tri	?
+?1	1	bm_ire_2 - bm_iri, bm_ire_2 - bm_tri, bm_tre_2 - bm_iri, bm_tre_2 - bm_tri	1
+?1	1	bm_ire_2 - bm_iri, bm_ire_2 - bm_tri, bm_tre_2 - bm_iri, bm_tre_2 - bm_tri	??
+?1	1	bm_ire_2 - bm_iri, bm_ire_2 - bm_tri, bm_tre_2 - bm_iri, bm_tre_2 - bm_tri	?1
+?1	1	bm_ire_2 - bm_iri, bm_ire_2 - bm_tri, bm_tre_2 - bm_iri, bm_tre_2 - bm_tri	?11
+?1	1	bm_ire_2 - bm_iri, bm_ire_2 - bm_tri, bm_tre_2 - bm_iri, bm_tre_2 - bm_tri	??11
+?1	1	bm_ire_2 - bm_iri, bm_ire_2 - bm_tri, bm_tre_2 - bm_iri, bm_tre_2 - bm_tri	11
+?1	1	bm_ire_2 - bm_iri, bm_ire_2 - bm_tri, bm_tre_2 - bm_iri, bm_tre_2 - bm_tri	111
+?1	1	bm_ire_2 - bm_iri, bm_ire_2 - bm_tri, bm_tre_2 - bm_iri, bm_tre_2 - bm_tri	?AA1
+?1	1	bm_ire_2 - bm_iri, bm_ire_2 - bm_tri, bm_tre_2 - bm_iri, bm_tre_2 - bm_tri	?AA11
+?1	1	bm_ire_2 - bm_iri, bm_ire_2 - bm_tri, bm_tre_2 - bm_iri, bm_tre_2 - bm_tri	A1
+?1	1	bm_ire_2 - bm_iri, bm_ire_2 - bm_tri, bm_tre_2 - bm_iri, bm_tre_2 - bm_tri	?111
+?1	?	bm_ire_2 - anything, bm_ire_2 - bm_ibi, bm_ire_2 - bm_tbi, bm_ire_2 - bracket, bm_ire_2 - ct, bm_tre_2 - anything, bm_tre_2 - bm_ibi, bm_tre_2 - bm_tbi, bm_tre_2 - bracket, bm_tre_2 - ct, charge_m - bracket, class_m - bracket	a
+?1	?	bm_ire_2 - anything, bm_ire_2 - bm_ibi, bm_ire_2 - bm_tbi, bm_ire_2 - bracket, bm_ire_2 - ct, bm_tre_2 - anything, bm_tre_2 - bm_ibi, bm_tre_2 - bm_tbi, bm_tre_2 - bracket, bm_tre_2 - ct, charge_m - bracket, class_m - bracket	A
+?1	?	bm_ire_2 - anything, bm_ire_2 - bm_ibi, bm_ire_2 - bm_tbi, bm_ire_2 - bracket, bm_ire_2 - ct, bm_tre_2 - anything, bm_tre_2 - bm_ibi, bm_tre_2 - bm_tbi, bm_tre_2 - bracket, bm_tre_2 - ct, charge_m - bracket, class_m - bracket	Aa
+?1	?	bm_ire_2 - anything, bm_ire_2 - bm_ibi, bm_ire_2 - bm_tbi, bm_ire_2 - bracket, bm_ire_2 - ct, bm_tre_2 - anything, bm_tre_2 - bm_ibi, bm_tre_2 - bm_tbi, bm_tre_2 - bracket, bm_tre_2 - ct, charge_m - bracket, class_m - bracket	aa
+?1	?	bm_ire_2 - anything, bm_ire_2 - bm_ibi, bm_ire_2 - bm_tbi, bm_ire_2 - bracket, bm_ire_2 - ct, bm_tre_2 - anything, bm_tre_2 - bm_ibi, bm_tre_2 - bm_tbi, bm_tre_2 - bracket, bm_tre_2 - ct, charge_m - bracket, class_m - bracket	?
+?1	?	bm_ire_2 - anything, bm_ire_2 - bm_ibi, bm_ire_2 - bm_tbi, bm_ire_2 - bracket, bm_ire_2 - ct, bm_tre_2 - anything, bm_tre_2 - bm_ibi, bm_tre_2 - bm_tbi, bm_tre_2 - bracket, bm_tre_2 - ct, charge_m - bracket, class_m - bracket	1
+?1	?	bm_ire_2 - anything, bm_ire_2 - bm_ibi, bm_ire_2 - bm_tbi, bm_ire_2 - bracket, bm_ire_2 - ct, bm_tre_2 - anything, bm_tre_2 - bm_ibi, bm_tre_2 - bm_tbi, bm_tre_2 - bracket, bm_tre_2 - ct, charge_m - bracket, class_m - bracket	??
+?1	?	bm_ire_2 - anything, bm_ire_2 - bm_ibi, bm_ire_2 - bm_tbi, bm_ire_2 - bracket, bm_ire_2 - ct, bm_tre_2 - anything, bm_tre_2 - bm_ibi, bm_tre_2 - bm_tbi, bm_tre_2 - bracket, bm_tre_2 - ct, charge_m - bracket, class_m - bracket	?1
+?1	?	bm_ire_2 - anything, bm_ire_2 - bm_ibi, bm_ire_2 - bm_tbi, bm_ire_2 - bracket, bm_ire_2 - ct, bm_tre_2 - anything, bm_tre_2 - bm_ibi, bm_tre_2 - bm_tbi, bm_tre_2 - bracket, bm_tre_2 - ct, charge_m - bracket, class_m - bracket	?11
+?1	?	bm_ire_2 - anything, bm_ire_2 - bm_ibi, bm_ire_2 - bm_tbi, bm_ire_2 - bracket, bm_ire_2 - ct, bm_tre_2 - anything, bm_tre_2 - bm_ibi, bm_tre_2 - bm_tbi, bm_tre_2 - bracket, bm_tre_2 - ct, charge_m - bracket, class_m - bracket	??11
+?1	?	bm_ire_2 - anything, bm_ire_2 - bm_ibi, bm_ire_2 - bm_tbi, bm_ire_2 - bracket, bm_ire_2 - ct, bm_tre_2 - anything, bm_tre_2 - bm_ibi, bm_tre_2 - bm_tbi, bm_tre_2 - bracket, bm_tre_2 - ct, charge_m - bracket, class_m - bracket	11
+?1	?	bm_ire_2 - anything, bm_ire_2 - bm_ibi, bm_ire_2 - bm_tbi, bm_ire_2 - bracket, bm_ire_2 - ct, bm_tre_2 - anything, bm_tre_2 - bm_ibi, bm_tre_2 - bm_tbi, bm_tre_2 - bracket, bm_tre_2 - ct, charge_m - bracket, class_m - bracket	111
+?1	?	bm_ire_2 - anything, bm_ire_2 - bm_ibi, bm_ire_2 - bm_tbi, bm_ire_2 - bracket, bm_ire_2 - ct, bm_tre_2 - anything, bm_tre_2 - bm_ibi, bm_tre_2 - bm_tbi, bm_tre_2 - bracket, bm_tre_2 - ct, charge_m - bracket, class_m - bracket	?AA1
+?1	?	bm_ire_2 - anything, bm_ire_2 - bm_ibi, bm_ire_2 - bm_tbi, bm_ire_2 - bracket, bm_ire_2 - ct, bm_tre_2 - anything, bm_tre_2 - bm_ibi, bm_tre_2 - bm_tbi, bm_tre_2 - bracket, bm_tre_2 - ct, charge_m - bracket, class_m - bracket	?AA11
+?1	?	bm_ire_2 - anything, bm_ire_2 - bm_ibi, bm_ire_2 - bm_tbi, bm_ire_2 - bracket, bm_ire_2 - ct, bm_tre_2 - anything, bm_tre_2 - bm_ibi, bm_tre_2 - bm_tbi, bm_tre_2 - bracket, bm_tre_2 - ct, charge_m - bracket, class_m - bracket	A1
+?1	?	bm_ire_2 - anything, bm_ire_2 - bm_ibi, bm_ire_2 - bm_tbi, bm_ire_2 - bracket, bm_ire_2 - ct, bm_tre_2 - anything, bm_tre_2 - bm_ibi, bm_tre_2 - bm_tbi, bm_tre_2 - bracket, bm_tre_2 - ct, charge_m - bracket, class_m - bracket	?111
+?1	?1	bm_ire_2 - bm_ire_2, bm_ire_2 - bm_tre_2, bm_tre_2 - bm_ire_2, bm_tre_2 - bm_tre_2, charge_m - class_m	a
+?1	?1	bm_ire_2 - bm_ire_2, bm_ire_2 - bm_tre_2, bm_tre_2 - bm_ire_2, bm_tre_2 - bm_tre_2, charge_m - class_m	A
+?1	?1	bm_ire_2 - bm_ire_2, bm_ire_2 - bm_tre_2, bm_tre_2 - bm_ire_2, bm_tre_2 - bm_tre_2, charge_m - class_m	Aa
+?1	?1	bm_ire_2 - bm_ire_2, bm_ire_2 - bm_tre_2, bm_tre_2 - bm_ire_2, bm_tre_2 - bm_tre_2, charge_m - class_m	aa
+?1	?1	bm_ire_2 - bm_ire_2, bm_ire_2 - bm_tre_2, bm_tre_2 - bm_ire_2, bm_tre_2 - bm_tre_2, charge_m - class_m	?
+?1	?1	bm_ire_2 - bm_ire_2, bm_ire_2 - bm_tre_2, bm_tre_2 - bm_ire_2, bm_tre_2 - bm_tre_2, charge_m - class_m	1
+?1	?1	bm_ire_2 - bm_ire_2, bm_ire_2 - bm_tre_2, bm_tre_2 - bm_ire_2, bm_tre_2 - bm_tre_2, charge_m - class_m	??
+?1	?1	bm_ire_2 - bm_ire_2, bm_ire_2 - bm_tre_2, bm_tre_2 - bm_ire_2, bm_tre_2 - bm_tre_2, charge_m - class_m	?1
+?1	?1	bm_ire_2 - bm_ire_2, bm_ire_2 - bm_tre_2, bm_tre_2 - bm_ire_2, bm_tre_2 - bm_tre_2, charge_m - class_m	?11
+?1	?1	bm_ire_2 - bm_ire_2, bm_ire_2 - bm_tre_2, bm_tre_2 - bm_ire_2, bm_tre_2 - bm_tre_2, charge_m - class_m	??11
+?1	?1	bm_ire_2 - bm_ire_2, bm_ire_2 - bm_tre_2, bm_tre_2 - bm_ire_2, bm_tre_2 - bm_tre_2, charge_m - class_m	11
+?1	?1	bm_ire_2 - bm_ire_2, bm_ire_2 - bm_tre_2, bm_tre_2 - bm_ire_2, bm_tre_2 - bm_tre_2, charge_m - class_m	111
+?1	?1	bm_ire_2 - bm_ire_2, bm_ire_2 - bm_tre_2, bm_tre_2 - bm_ire_2, bm_tre_2 - bm_tre_2, charge_m - class_m	?AA1
+?1	?1	bm_ire_2 - bm_ire_2, bm_ire_2 - bm_tre_2, bm_tre_2 - bm_ire_2, bm_tre_2 - bm_tre_2, charge_m - class_m	?AA11
+?1	?1	bm_ire_2 - bm_ire_2, bm_ire_2 - bm_tre_2, bm_tre_2 - bm_ire_2, bm_tre_2 - bm_tre_2, charge_m - class_m	A1
+?1	?1	bm_ire_2 - bm_ire_2, bm_ire_2 - bm_tre_2, bm_tre_2 - bm_ire_2, bm_tre_2 - bm_tre_2, charge_m - class_m	?111
+?1	?11	bm_ire_2 - bm_iri_3, bm_ire_2 - bm_tri_3, bm_tre_2 - bm_iri_3, bm_tre_2 - bm_tri_3, charge_m - class_m	a
+?1	?11	bm_ire_2 - bm_iri_3, bm_ire_2 - bm_tri_3, bm_tre_2 - bm_iri_3, bm_tre_2 - bm_tri_3, charge_m - class_m	A
+?1	?11	bm_ire_2 - bm_iri_3, bm_ire_2 - bm_tri_3, bm_tre_2 - bm_iri_3, bm_tre_2 - bm_tri_3, charge_m - class_m	Aa
+?1	?11	bm_ire_2 - bm_iri_3, bm_ire_2 - bm_tri_3, bm_tre_2 - bm_iri_3, bm_tre_2 - bm_tri_3, charge_m - class_m	aa
+?1	?11	bm_ire_2 - bm_iri_3, bm_ire_2 - bm_tri_3, bm_tre_2 - bm_iri_3, bm_tre_2 - bm_tri_3, charge_m - class_m	?
+?1	?11	bm_ire_2 - bm_iri_3, bm_ire_2 - bm_tri_3, bm_tre_2 - bm_iri_3, bm_tre_2 - bm_tri_3, charge_m - class_m	1
+?1	?11	bm_ire_2 - bm_iri_3, bm_ire_2 - bm_tri_3, bm_tre_2 - bm_iri_3, bm_tre_2 - bm_tri_3, charge_m - class_m	??
+?1	?11	bm_ire_2 - bm_iri_3, bm_ire_2 - bm_tri_3, bm_tre_2 - bm_iri_3, bm_tre_2 - bm_tri_3, charge_m - class_m	?1
+?1	?11	bm_ire_2 - bm_iri_3, bm_ire_2 - bm_tri_3, bm_tre_2 - bm_iri_3, bm_tre_2 - bm_tri_3, charge_m - class_m	?11
+?1	?11	bm_ire_2 - bm_iri_3, bm_ire_2 - bm_tri_3, bm_tre_2 - bm_iri_3, bm_tre_2 - bm_tri_3, charge_m - class_m	??11
+?1	?11	bm_ire_2 - bm_iri_3, bm_ire_2 - bm_tri_3, bm_tre_2 - bm_iri_3, bm_tre_2 - bm_tri_3, charge_m - class_m	11
+?1	?11	bm_ire_2 - bm_iri_3, bm_ire_2 - bm_tri_3, bm_tre_2 - bm_iri_3, bm_tre_2 - bm_tri_3, charge_m - class_m	111
+?1	?11	bm_ire_2 - bm_iri_3, bm_ire_2 - bm_tri_3, bm_tre_2 - bm_iri_3, bm_tre_2 - bm_tri_3, charge_m - class_m	?AA1
+?1	?11	bm_ire_2 - bm_iri_3, bm_ire_2 - bm_tri_3, bm_tre_2 - bm_iri_3, bm_tre_2 - bm_tri_3, charge_m - class_m	?AA11
+?1	?11	bm_ire_2 - bm_iri_3, bm_ire_2 - bm_tri_3, bm_tre_2 - bm_iri_3, bm_tre_2 - bm_tri_3, charge_m - class_m	A1
+?1	?11	bm_ire_2 - bm_iri_3, bm_ire_2 - bm_tri_3, bm_tre_2 - bm_iri_3, bm_tre_2 - bm_tri_3, charge_m - class_m	?111
+?1	?111	charge_m - class_m	a
+?1	?111	charge_m - class_m	A
+?1	?111	charge_m - class_m	Aa
+?1	?111	charge_m - class_m	aa
+?1	?111	charge_m - class_m	?
+?1	?111	charge_m - class_m	1
+?1	?111	charge_m - class_m	??
+?1	?111	charge_m - class_m	?1
+?1	?111	charge_m - class_m	?11
+?1	?111	charge_m - class_m	??11
+?1	?111	charge_m - class_m	11
+?1	?111	charge_m - class_m	111
+?1	?111	charge_m - class_m	?AA1
+?1	?111	charge_m - class_m	?AA11
+?1	?111	charge_m - class_m	A1
+?1	?111	charge_m - class_m	?111
+?1	??	bm_ire_2 - bm_ibe_2, bm_ire_2 - bm_tbe_2, bm_tre_2 - bm_ibe_2, bm_tre_2 - bm_tbe_2	a
+?1	??	bm_ire_2 - bm_ibe_2, bm_ire_2 - bm_tbe_2, bm_tre_2 - bm_ibe_2, bm_tre_2 - bm_tbe_2	A
+?1	??	bm_ire_2 - bm_ibe_2, bm_ire_2 - bm_tbe_2, bm_tre_2 - bm_ibe_2, bm_tre_2 - bm_tbe_2	Aa
+?1	??	bm_ire_2 - bm_ibe_2, bm_ire_2 - bm_tbe_2, bm_tre_2 - bm_ibe_2, bm_tre_2 - bm_tbe_2	aa
+?1	??	bm_ire_2 - bm_ibe_2, bm_ire_2 - bm_tbe_2, bm_tre_2 - bm_ibe_2, bm_tre_2 - bm_tbe_2	?
+?1	??	bm_ire_2 - bm_ibe_2, bm_ire_2 - bm_tbe_2, bm_tre_2 - bm_ibe_2, bm_tre_2 - bm_tbe_2	1
+?1	??	bm_ire_2 - bm_ibe_2, bm_ire_2 - bm_tbe_2, bm_tre_2 - bm_ibe_2, bm_tre_2 - bm_tbe_2	??
+?1	??	bm_ire_2 - bm_ibe_2, bm_ire_2 - bm_tbe_2, bm_tre_2 - bm_ibe_2, bm_tre_2 - bm_tbe_2	?1
+?1	??	bm_ire_2 - bm_ibe_2, bm_ire_2 - bm_tbe_2, bm_tre_2 - bm_ibe_2, bm_tre_2 - bm_tbe_2	?11
+?1	??	bm_ire_2 - bm_ibe_2, bm_ire_2 - bm_tbe_2, bm_tre_2 - bm_ibe_2, bm_tre_2 - bm_tbe_2	??11
+?1	??	bm_ire_2 - bm_ibe_2, bm_ire_2 - bm_tbe_2, bm_tre_2 - bm_ibe_2, bm_tre_2 - bm_tbe_2	11
+?1	??	bm_ire_2 - bm_ibe_2, bm_ire_2 - bm_tbe_2, bm_tre_2 - bm_ibe_2, bm_tre_2 - bm_tbe_2	111
+?1	??	bm_ire_2 - bm_ibe_2, bm_ire_2 - bm_tbe_2, bm_tre_2 - bm_ibe_2, bm_tre_2 - bm_tbe_2	?AA1
+?1	??	bm_ire_2 - bm_ibe_2, bm_ire_2 - bm_tbe_2, bm_tre_2 - bm_ibe_2, bm_tre_2 - bm_tbe_2	?AA11
+?1	??	bm_ire_2 - bm_ibe_2, bm_ire_2 - bm_tbe_2, bm_tre_2 - bm_ibe_2, bm_tre_2 - bm_tbe_2	A1
+?1	??	bm_ire_2 - bm_ibe_2, bm_ire_2 - bm_tbe_2, bm_tre_2 - bm_ibe_2, bm_tre_2 - bm_tbe_2	?111
+?1	??11	bm_ire_2 - bm_ire_4, bm_ire_2 - bm_tre_4, bm_tre_2 - bm_ire_4, bm_tre_2 - bm_tre_4	a
+?1	??11	bm_ire_2 - bm_ire_4, bm_ire_2 - bm_tre_4, bm_tre_2 - bm_ire_4, bm_tre_2 - bm_tre_4	A
+?1	??11	bm_ire_2 - bm_ire_4, bm_ire_2 - bm_tre_4, bm_tre_2 - bm_ire_4, bm_tre_2 - bm_tre_4	Aa
+?1	??11	bm_ire_2 - bm_ire_4, bm_ire_2 - bm_tre_4, bm_tre_2 - bm_ire_4, bm_tre_2 - bm_tre_4	aa
+?1	??11	bm_ire_2 - bm_ire_4, bm_ire_2 - bm_tre_4, bm_tre_2 - bm_ire_4, bm_tre_2 - bm_tre_4	?
+?1	??11	bm_ire_2 - bm_ire_4, bm_ire_2 - bm_tre_4, bm_tre_2 - bm_ire_4, bm_tre_2 - bm_tre_4	1
+?1	??11	bm_ire_2 - bm_ire_4, bm_ire_2 - bm_tre_4, bm_tre_2 - bm_ire_4, bm_tre_2 - bm_tre_4	??
+?1	??11	bm_ire_2 - bm_ire_4, bm_ire_2 - bm_tre_4, bm_tre_2 - bm_ire_4, bm_tre_2 - bm_tre_4	?1
+?1	??11	bm_ire_2 - bm_ire_4, bm_ire_2 - bm_tre_4, bm_tre_2 - bm_ire_4, bm_tre_2 - bm_tre_4	?11
+?1	??11	bm_ire_2 - bm_ire_4, bm_ire_2 - bm_tre_4, bm_tre_2 - bm_ire_4, bm_tre_2 - bm_tre_4	??11
+?1	??11	bm_ire_2 - bm_ire_4, bm_ire_2 - bm_tre_4, bm_tre_2 - bm_ire_4, bm_tre_2 - bm_tre_4	11
+?1	??11	bm_ire_2 - bm_ire_4, bm_ire_2 - bm_tre_4, bm_tre_2 - bm_ire_4, bm_tre_2 - bm_tre_4	111
+?1	??11	bm_ire_2 - bm_ire_4, bm_ire_2 - bm_tre_4, bm_tre_2 - bm_ire_4, bm_tre_2 - bm_tre_4	?AA1
+?1	??11	bm_ire_2 - bm_ire_4, bm_ire_2 - bm_tre_4, bm_tre_2 - bm_ire_4, bm_tre_2 - bm_tre_4	?AA11
+?1	??11	bm_ire_2 - bm_ire_4, bm_ire_2 - bm_tre_4, bm_tre_2 - bm_ire_4, bm_tre_2 - bm_tre_4	A1
+?1	??11	bm_ire_2 - bm_ire_4, bm_ire_2 - bm_tre_4, bm_tre_2 - bm_ire_4, bm_tre_2 - bm_tre_4	?111
+?1	A	bm_ire_2 - atom_oal, bm_tre_2 - atom_oal	a
+?1	A	bm_ire_2 - atom_oal, bm_tre_2 - atom_oal	A
+?1	A	bm_ire_2 - atom_oal, bm_tre_2 - atom_oal	Aa
+?1	A	bm_ire_2 - atom_oal, bm_tre_2 - atom_oal	aa
+?1	A	bm_ire_2 - atom_oal, bm_tre_2 - atom_oal	?
+?1	A	bm_ire_2 - atom_oal, bm_tre_2 - atom_oal	1
+?1	A	bm_ire_2 - atom_oal, bm_tre_2 - atom_oal	??
+?1	A	bm_ire_2 - atom_oal, bm_tre_2 - atom_oal	?1
+?1	A	bm_ire_2 - atom_oal, bm_tre_2 - atom_oal	?11
+?1	A	bm_ire_2 - atom_oal, bm_tre_2 - atom_oal	??11
+?1	A	bm_ire_2 - atom_oal, bm_tre_2 - atom_oal	11
+?1	A	bm_ire_2 - atom_oal, bm_tre_2 - atom_oal	111
+?1	A	bm_ire_2 - atom_oal, bm_tre_2 - atom_oal	?AA1
+?1	A	bm_ire_2 - atom_oal, bm_tre_2 - atom_oal	?AA11
+?1	A	bm_ire_2 - atom_oal, bm_tre_2 - atom_oal	A1
+?1	A	bm_ire_2 - atom_oal, bm_tre_2 - atom_oal	?111
+?1	Aa	bm_ire_2 - atom_oal_2, bm_tre_2 - atom_oal_2	a
+?1	Aa	bm_ire_2 - atom_oal_2, bm_tre_2 - atom_oal_2	A
+?1	Aa	bm_ire_2 - atom_oal_2, bm_tre_2 - atom_oal_2	Aa
+?1	Aa	bm_ire_2 - atom_oal_2, bm_tre_2 - atom_oal_2	aa
+?1	Aa	bm_ire_2 - atom_oal_2, bm_tre_2 - atom_oal_2	?
+?1	Aa	bm_ire_2 - atom_oal_2, bm_tre_2 - atom_oal_2	1
+?1	Aa	bm_ire_2 - atom_oal_2, bm_tre_2 - atom_oal_2	??
+?1	Aa	bm_ire_2 - atom_oal_2, bm_tre_2 - atom_oal_2	?1
+?1	Aa	bm_ire_2 - atom_oal_2, bm_tre_2 - atom_oal_2	?11
+?1	Aa	bm_ire_2 - atom_oal_2, bm_tre_2 - atom_oal_2	??11
+?1	Aa	bm_ire_2 - atom_oal_2, bm_tre_2 - atom_oal_2	11
+?1	Aa	bm_ire_2 - atom_oal_2, bm_tre_2 - atom_oal_2	111
+?1	Aa	bm_ire_2 - atom_oal_2, bm_tre_2 - atom_oal_2	?AA1
+?1	Aa	bm_ire_2 - atom_oal_2, bm_tre_2 - atom_oal_2	?AA11
+?1	Aa	bm_ire_2 - atom_oal_2, bm_tre_2 - atom_oal_2	A1
+?1	Aa	bm_ire_2 - atom_oal_2, bm_tre_2 - atom_oal_2	?111
+?1	a	bm_ire_2 - atom_oar, bm_tre_2 - atom_oar	a
+?1	a	bm_ire_2 - atom_oar, bm_tre_2 - atom_oar	A
+?1	a	bm_ire_2 - atom_oar, bm_tre_2 - atom_oar	Aa
+?1	a	bm_ire_2 - atom_oar, bm_tre_2 - atom_oar	aa
+?1	a	bm_ire_2 - atom_oar, bm_tre_2 - atom_oar	?
+?1	a	bm_ire_2 - atom_oar, bm_tre_2 - atom_oar	1
+?1	a	bm_ire_2 - atom_oar, bm_tre_2 - atom_oar	??
+?1	a	bm_ire_2 - atom_oar, bm_tre_2 - atom_oar	?1
+?1	a	bm_ire_2 - atom_oar, bm_tre_2 - atom_oar	?11
+?1	a	bm_ire_2 - atom_oar, bm_tre_2 - atom_oar	??11
+?1	a	bm_ire_2 - atom_oar, bm_tre_2 - atom_oar	11
+?1	a	bm_ire_2 - atom_oar, bm_tre_2 - atom_oar	111
+?1	a	bm_ire_2 - atom_oar, bm_tre_2 - atom_oar	?AA1
+?1	a	bm_ire_2 - atom_oar, bm_tre_2 - atom_oar	?AA11
+?1	a	bm_ire_2 - atom_oar, bm_tre_2 - atom_oar	A1
+?1	a	bm_ire_2 - atom_oar, bm_tre_2 - atom_oar	?111
+?11	1	bm_iri_3 - bm_iri, bm_iri_3 - bm_tri, bm_tri_3 - bm_iri, bm_tri_3 - bm_tri	a
+?11	1	bm_iri_3 - bm_iri, bm_iri_3 - bm_tri, bm_tri_3 - bm_iri, bm_tri_3 - bm_tri	A
+?11	1	bm_iri_3 - bm_iri, bm_iri_3 - bm_tri, bm_tri_3 - bm_iri, bm_tri_3 - bm_tri	Aa
+?11	1	bm_iri_3 - bm_iri, bm_iri_3 - bm_tri, bm_tri_3 - bm_iri, bm_tri_3 - bm_tri	aa
+?11	1	bm_iri_3 - bm_iri, bm_iri_3 - bm_tri, bm_tri_3 - bm_iri, bm_tri_3 - bm_tri	?
+?11	1	bm_iri_3 - bm_iri, bm_iri_3 - bm_tri, bm_tri_3 - bm_iri, bm_tri_3 - bm_tri	1
+?11	1	bm_iri_3 - bm_iri, bm_iri_3 - bm_tri, bm_tri_3 - bm_iri, bm_tri_3 - bm_tri	??
+?11	1	bm_iri_3 - bm_iri, bm_iri_3 - bm_tri, bm_tri_3 - bm_iri, bm_tri_3 - bm_tri	?1
+?11	1	bm_iri_3 - bm_iri, bm_iri_3 - bm_tri, bm_tri_3 - bm_iri, bm_tri_3 - bm_tri	?11
+?11	1	bm_iri_3 - bm_iri, bm_iri_3 - bm_tri, bm_tri_3 - bm_iri, bm_tri_3 - bm_tri	??11
+?11	1	bm_iri_3 - bm_iri, bm_iri_3 - bm_tri, bm_tri_3 - bm_iri, bm_tri_3 - bm_tri	11
+?11	1	bm_iri_3 - bm_iri, bm_iri_3 - bm_tri, bm_tri_3 - bm_iri, bm_tri_3 - bm_tri	111
+?11	1	bm_iri_3 - bm_iri, bm_iri_3 - bm_tri, bm_tri_3 - bm_iri, bm_tri_3 - bm_tri	?AA1
+?11	1	bm_iri_3 - bm_iri, bm_iri_3 - bm_tri, bm_tri_3 - bm_iri, bm_tri_3 - bm_tri	?AA11
+?11	1	bm_iri_3 - bm_iri, bm_iri_3 - bm_tri, bm_tri_3 - bm_iri, bm_tri_3 - bm_tri	A1
+?11	1	bm_iri_3 - bm_iri, bm_iri_3 - bm_tri, bm_tri_3 - bm_iri, bm_tri_3 - bm_tri	?111
+?11	?	bm_iri_3 - anything, bm_iri_3 - bm_ibi, bm_iri_3 - bm_tbi, bm_iri_3 - bracket, bm_iri_3 - ct, bm_tri_3 - anything, bm_tri_3 - bm_ibi, bm_tri_3 - bm_tbi, bm_tri_3 - bracket, bm_tri_3 - ct, charge_m - bracket, class_m - bracket	a
+?11	?	bm_iri_3 - anything, bm_iri_3 - bm_ibi, bm_iri_3 - bm_tbi, bm_iri_3 - bracket, bm_iri_3 - ct, bm_tri_3 - anything, bm_tri_3 - bm_ibi, bm_tri_3 - bm_tbi, bm_tri_3 - bracket, bm_tri_3 - ct, charge_m - bracket, class_m - bracket	A
+?11	?	bm_iri_3 - anything, bm_iri_3 - bm_ibi, bm_iri_3 - bm_tbi, bm_iri_3 - bracket, bm_iri_3 - ct, bm_tri_3 - anything, bm_tri_3 - bm_ibi, bm_tri_3 - bm_tbi, bm_tri_3 - bracket, bm_tri_3 - ct, charge_m - bracket, class_m - bracket	Aa
+?11	?	bm_iri_3 - anything, bm_iri_3 - bm_ibi, bm_iri_3 - bm_tbi, bm_iri_3 - bracket, bm_iri_3 - ct, bm_tri_3 - anything, bm_tri_3 - bm_ibi, bm_tri_3 - bm_tbi, bm_tri_3 - bracket, bm_tri_3 - ct, charge_m - bracket, class_m - bracket	aa
+?11	?	bm_iri_3 - anything, bm_iri_3 - bm_ibi, bm_iri_3 - bm_tbi, bm_iri_3 - bracket, bm_iri_3 - ct, bm_tri_3 - anything, bm_tri_3 - bm_ibi, bm_tri_3 - bm_tbi, bm_tri_3 - bracket, bm_tri_3 - ct, charge_m - bracket, class_m - bracket	?
+?11	?	bm_iri_3 - anything, bm_iri_3 - bm_ibi, bm_iri_3 - bm_tbi, bm_iri_3 - bracket, bm_iri_3 - ct, bm_tri_3 - anything, bm_tri_3 - bm_ibi, bm_tri_3 - bm_tbi, bm_tri_3 - bracket, bm_tri_3 - ct, charge_m - bracket, class_m - bracket	1
+?11	?	bm_iri_3 - anything, bm_iri_3 - bm_ibi, bm_iri_3 - bm_tbi, bm_iri_3 - bracket, bm_iri_3 - ct, bm_tri_3 - anything, bm_tri_3 - bm_ibi, bm_tri_3 - bm_tbi, bm_tri_3 - bracket, bm_tri_3 - ct, charge_m - bracket, class_m - bracket	??
+?11	?	bm_iri_3 - anything, bm_iri_3 - bm_ibi, bm_iri_3 - bm_tbi, bm_iri_3 - bracket, bm_iri_3 - ct, bm_tri_3 - anything, bm_tri_3 - bm_ibi, bm_tri_3 - bm_tbi, bm_tri_3 - bracket, bm_tri_3 - ct, charge_m - bracket, class_m - bracket	?1
+?11	?	bm_iri_3 - anything, bm_iri_3 - bm_ibi, bm_iri_3 - bm_tbi, bm_iri_3 - bracket, bm_iri_3 - ct, bm_tri_3 - anything, bm_tri_3 - bm_ibi, bm_tri_3 - bm_tbi, bm_tri_3 - bracket, bm_tri_3 - ct, charge_m - bracket, class_m - bracket	?11
+?11	?	bm_iri_3 - anything, bm_iri_3 - bm_ibi, bm_iri_3 - bm_tbi, bm_iri_3 - bracket, bm_iri_3 - ct, bm_tri_3 - anything, bm_tri_3 - bm_ibi, bm_tri_3 - bm_tbi, bm_tri_3 - bracket, bm_tri_3 - ct, charge_m - bracket, class_m - bracket	??11
+?11	?	bm_iri_3 - anything, bm_iri_3 - bm_ibi, bm_iri_3 - bm_tbi, bm_iri_3 - bracket, bm_iri_3 - ct, bm_tri_3 - anything, bm_tri_3 - bm_ibi, bm_tri_3 - bm_tbi, bm_tri_3 - bracket, bm_tri_3 - ct, charge_m - bracket, class_m - bracket	11
+?11	?	bm_iri_3 - anything, bm_iri_3 - bm_ibi, bm_iri_3 - bm_tbi, bm_iri_3 - bracket, bm_iri_3 - ct, bm_tri_3 - anything, bm_tri_3 - bm_ibi, bm_tri_3 - bm_tbi, bm_tri_3 - bracket, bm_tri_3 - ct, charge_m - bracket, class_m - bracket	111
+?11	?	bm_iri_3 - anything, bm_iri_3 - bm_ibi, bm_iri_3 - bm_tbi, bm_iri_3 - bracket, bm_iri_3 - ct, bm_tri_3 - anything, bm_tri_3 - bm_ibi, bm_tri_3 - bm_tbi, bm_tri_3 - bracket, bm_tri_3 - ct, charge_m - bracket, class_m - bracket	?AA1
+?11	?	bm_iri_3 - anything, bm_iri_3 - bm_ibi, bm_iri_3 - bm_tbi, bm_iri_3 - bracket, bm_iri_3 - ct, bm_tri_3 - anything, bm_tri_3 - bm_ibi, bm_tri_3 - bm_tbi, bm_tri_3 - bracket, bm_tri_3 - ct, charge_m - bracket, class_m - bracket	?AA11
+?11	?	bm_iri_3 - anything, bm_iri_3 - bm_ibi, bm_iri_3 - bm_tbi, bm_iri_3 - bracket, bm_iri_3 - ct, bm_tri_3 - anything, bm_tri_3 - bm_ibi, bm_tri_3 - bm_tbi, bm_tri_3 - bracket, bm_tri_3 - ct, charge_m - bracket, class_m - bracket	A1
+?11	?	bm_iri_3 - anything, bm_iri_3 - bm_ibi, bm_iri_3 - bm_tbi, bm_iri_3 - bracket, bm_iri_3 - ct, bm_tri_3 - anything, bm_tri_3 - bm_ibi, bm_tri_3 - bm_tbi, bm_tri_3 - bracket, bm_tri_3 - ct, charge_m - bracket, class_m - bracket	?111
+?11	?1	bm_iri_3 - bm_ire_2, bm_iri_3 - bm_tre_2, bm_tri_3 - bm_ire_2, bm_tri_3 - bm_tre_2, charge_m - class_m	a
+?11	?1	bm_iri_3 - bm_ire_2, bm_iri_3 - bm_tre_2, bm_tri_3 - bm_ire_2, bm_tri_3 - bm_tre_2, charge_m - class_m	A
+?11	?1	bm_iri_3 - bm_ire_2, bm_iri_3 - bm_tre_2, bm_tri_3 - bm_ire_2, bm_tri_3 - bm_tre_2, charge_m - class_m	Aa
+?11	?1	bm_iri_3 - bm_ire_2, bm_iri_3 - bm_tre_2, bm_tri_3 - bm_ire_2, bm_tri_3 - bm_tre_2, charge_m - class_m	aa
+?11	?1	bm_iri_3 - bm_ire_2, bm_iri_3 - bm_tre_2, bm_tri_3 - bm_ire_2, bm_tri_3 - bm_tre_2, charge_m - class_m	?
+?11	?1	bm_iri_3 - bm_ire_2, bm_iri_3 - bm_tre_2, bm_tri_3 - bm_ire_2, bm_tri_3 - bm_tre_2, charge_m - class_m	1
+?11	?1	bm_iri_3 - bm_ire_2, bm_iri_3 - bm_tre_2, bm_tri_3 - bm_ire_2, bm_tri_3 - bm_tre_2, charge_m - class_m	??
+?11	?1	bm_iri_3 - bm_ire_2, bm_iri_3 - bm_tre_2, bm_tri_3 - bm_ire_2, bm_tri_3 - bm_tre_2, charge_m - class_m	?1
+?11	?1	bm_iri_3 - bm_ire_2, bm_iri_3 - bm_tre_2, bm_tri_3 - bm_ire_2, bm_tri_3 - bm_tre_2, charge_m - class_m	?11
+?11	?1	bm_iri_3 - bm_ire_2, bm_iri_3 - bm_tre_2, bm_tri_3 - bm_ire_2, bm_tri_3 - bm_tre_2, charge_m - class_m	??11
+?11	?1	bm_iri_3 - bm_ire_2, bm_iri_3 - bm_tre_2, bm_tri_3 - bm_ire_2, bm_tri_3 - bm_tre_2, charge_m - class_m	11
+?11	?1	bm_iri_3 - bm_ire_2, bm_iri_3 - bm_tre_2, bm_tri_3 - bm_ire_2, bm_tri_3 - bm_tre_2, charge_m - class_m	111
+?11	?1	bm_iri_3 - bm_ire_2, bm_iri_3 - bm_tre_2, bm_tri_3 - bm_ire_2, bm_tri_3 - bm_tre_2, charge_m - class_m	?AA1
+?11	?1	bm_iri_3 - bm_ire_2, bm_iri_3 - bm_tre_2, bm_tri_3 - bm_ire_2, bm_tri_3 - bm_tre_2, charge_m - class_m	?AA11
+?11	?1	bm_iri_3 - bm_ire_2, bm_iri_3 - bm_tre_2, bm_tri_3 - bm_ire_2, bm_tri_3 - bm_tre_2, charge_m - class_m	A1
+?11	?1	bm_iri_3 - bm_ire_2, bm_iri_3 - bm_tre_2, bm_tri_3 - bm_ire_2, bm_tri_3 - bm_tre_2, charge_m - class_m	?111
+?11	?11	bm_iri_3 - bm_iri_3, bm_iri_3 - bm_tri_3, bm_tri_3 - bm_iri_3, bm_tri_3 - bm_tri_3, charge_m - class_m	a
+?11	?11	bm_iri_3 - bm_iri_3, bm_iri_3 - bm_tri_3, bm_tri_3 - bm_iri_3, bm_tri_3 - bm_tri_3, charge_m - class_m	A
+?11	?11	bm_iri_3 - bm_iri_3, bm_iri_3 - bm_tri_3, bm_tri_3 - bm_iri_3, bm_tri_3 - bm_tri_3, charge_m - class_m	Aa
+?11	?11	bm_iri_3 - bm_iri_3, bm_iri_3 - bm_tri_3, bm_tri_3 - bm_iri_3, bm_tri_3 - bm_tri_3, charge_m - class_m	aa
+?11	?11	bm_iri_3 - bm_iri_3, bm_iri_3 - bm_tri_3, bm_tri_3 - bm_iri_3, bm_tri_3 - bm_tri_3, charge_m - class_m	?
+?11	?11	bm_iri_3 - bm_iri_3, bm_iri_3 - bm_tri_3, bm_tri_3 - bm_iri_3, bm_tri_3 - bm_tri_3, charge_m - class_m	1
+?11	?11	bm_iri_3 - bm_iri_3, bm_iri_3 - bm_tri_3, bm_tri_3 - bm_iri_3, bm_tri_3 - bm_tri_3, charge_m - class_m	??
+?11	?11	bm_iri_3 - bm_iri_3, bm_iri_3 - bm_tri_3, bm_tri_3 - bm_iri_3, bm_tri_3 - bm_tri_3, charge_m - class_m	?1
+?11	?11	bm_iri_3 - bm_iri_3, bm_iri_3 - bm_tri_3, bm_tri_3 - bm_iri_3, bm_tri_3 - bm_tri_3, charge_m - class_m	?11
+?11	?11	bm_iri_3 - bm_iri_3, bm_iri_3 - bm_tri_3, bm_tri_3 - bm_iri_3, bm_tri_3 - bm_tri_3, charge_m - class_m	??11
+?11	?11	bm_iri_3 - bm_iri_3, bm_iri_3 - bm_tri_3, bm_tri_3 - bm_iri_3, bm_tri_3 - bm_tri_3, charge_m - class_m	11
+?11	?11	bm_iri_3 - bm_iri_3, bm_iri_3 - bm_tri_3, bm_tri_3 - bm_iri_3, bm_tri_3 - bm_tri_3, charge_m - class_m	111
+?11	?11	bm_iri_3 - bm_iri_3, bm_iri_3 - bm_tri_3, bm_tri_3 - bm_iri_3, bm_tri_3 - bm_tri_3, charge_m - class_m	?AA1
+?11	?11	bm_iri_3 - bm_iri_3, bm_iri_3 - bm_tri_3, bm_tri_3 - bm_iri_3, bm_tri_3 - bm_tri_3, charge_m - class_m	?AA11
+?11	?11	bm_iri_3 - bm_iri_3, bm_iri_3 - bm_tri_3, bm_tri_3 - bm_iri_3, bm_tri_3 - bm_tri_3, charge_m - class_m	A1
+?11	?11	bm_iri_3 - bm_iri_3, bm_iri_3 - bm_tri_3, bm_tri_3 - bm_iri_3, bm_tri_3 - bm_tri_3, charge_m - class_m	?111
+?11	?111	charge_m - class_m	a
+?11	?111	charge_m - class_m	A
+?11	?111	charge_m - class_m	Aa
+?11	?111	charge_m - class_m	aa
+?11	?111	charge_m - class_m	?
+?11	?111	charge_m - class_m	1
+?11	?111	charge_m - class_m	??
+?11	?111	charge_m - class_m	?1
+?11	?111	charge_m - class_m	?11
+?11	?111	charge_m - class_m	??11
+?11	?111	charge_m - class_m	11
+?11	?111	charge_m - class_m	111
+?11	?111	charge_m - class_m	?AA1
+?11	?111	charge_m - class_m	?AA11
+?11	?111	charge_m - class_m	A1
+?11	?111	charge_m - class_m	?111
+?11	??	bm_iri_3 - bm_ibe_2, bm_iri_3 - bm_tbe_2, bm_tri_3 - bm_ibe_2, bm_tri_3 - bm_tbe_2	a
+?11	??	bm_iri_3 - bm_ibe_2, bm_iri_3 - bm_tbe_2, bm_tri_3 - bm_ibe_2, bm_tri_3 - bm_tbe_2	A
+?11	??	bm_iri_3 - bm_ibe_2, bm_iri_3 - bm_tbe_2, bm_tri_3 - bm_ibe_2, bm_tri_3 - bm_tbe_2	Aa
+?11	??	bm_iri_3 - bm_ibe_2, bm_iri_3 - bm_tbe_2, bm_tri_3 - bm_ibe_2, bm_tri_3 - bm_tbe_2	aa
+?11	??	bm_iri_3 - bm_ibe_2, bm_iri_3 - bm_tbe_2, bm_tri_3 - bm_ibe_2, bm_tri_3 - bm_tbe_2	?
+?11	??	bm_iri_3 - bm_ibe_2, bm_iri_3 - bm_tbe_2, bm_tri_3 - bm_ibe_2, bm_tri_3 - bm_tbe_2	1
+?11	??	bm_iri_3 - bm_ibe_2, bm_iri_3 - bm_tbe_2, bm_tri_3 - bm_ibe_2, bm_tri_3 - bm_tbe_2	??
+?11	??	bm_iri_3 - bm_ibe_2, bm_iri_3 - bm_tbe_2, bm_tri_3 - bm_ibe_2, bm_tri_3 - bm_tbe_2	?1
+?11	??	bm_iri_3 - bm_ibe_2, bm_iri_3 - bm_tbe_2, bm_tri_3 - bm_ibe_2, bm_tri_3 - bm_tbe_2	?11
+?11	??	bm_iri_3 - bm_ibe_2, bm_iri_3 - bm_tbe_2, bm_tri_3 - bm_ibe_2, bm_tri_3 - bm_tbe_2	??11
+?11	??	bm_iri_3 - bm_ibe_2, bm_iri_3 - bm_tbe_2, bm_tri_3 - bm_ibe_2, bm_tri_3 - bm_tbe_2	11
+?11	??	bm_iri_3 - bm_ibe_2, bm_iri_3 - bm_tbe_2, bm_tri_3 - bm_ibe_2, bm_tri_3 - bm_tbe_2	111
+?11	??	bm_iri_3 - bm_ibe_2, bm_iri_3 - bm_tbe_2, bm_tri_3 - bm_ibe_2, bm_tri_3 - bm_tbe_2	?AA1
+?11	??	bm_iri_3 - bm_ibe_2, bm_iri_3 - bm_tbe_2, bm_tri_3 - bm_ibe_2, bm_tri_3 - bm_tbe_2	?AA11
+?11	??	bm_iri_3 - bm_ibe_2, bm_iri_3 - bm_tbe_2, bm_tri_3 - bm_ibe_2, bm_tri_3 - bm_tbe_2	A1
+?11	??	bm_iri_3 - bm_ibe_2, bm_iri_3 - bm_tbe_2, bm_tri_3 - bm_ibe_2, bm_tri_3 - bm_tbe_2	?111
+?11	??11	bm_iri_3 - bm_ire_4, bm_iri_3 - bm_tre_4, bm_tri_3 - bm_ire_4, bm_tri_3 - bm_tre_4	a
+?11	??11	bm_iri_3 - bm_ire_4, bm_iri_3 - bm_tre_4, bm_tri_3 - bm_ire_4, bm_tri_3 - bm_tre_4	A
+?11	??11	bm_iri_3 - bm_ire_4, bm_iri_3 - bm_tre_4, bm_tri_3 - bm_ire_4, bm_tri_3 - bm_tre_4	Aa
+?11	??11	bm_iri_3 - bm_ire_4, bm_iri_3 - bm_tre_4, bm_tri_3 - bm_ire_4, bm_tri_3 - bm_tre_4	aa
+?11	??11	bm_iri_3 - bm_ire_4, bm_iri_3 - bm_tre_4, bm_tri_3 - bm_ire_4, bm_tri_3 - bm_tre_4	?
+?11	??11	bm_iri_3 - bm_ire_4, bm_iri_3 - bm_tre_4, bm_tri_3 - bm_ire_4, bm_tri_3 - bm_tre_4	1
+?11	??11	bm_iri_3 - bm_ire_4, bm_iri_3 - bm_tre_4, bm_tri_3 - bm_ire_4, bm_tri_3 - bm_tre_4	??
+?11	??11	bm_iri_3 - bm_ire_4, bm_iri_3 - bm_tre_4, bm_tri_3 - bm_ire_4, bm_tri_3 - bm_tre_4	?1
+?11	??11	bm_iri_3 - bm_ire_4, bm_iri_3 - bm_tre_4, bm_tri_3 - bm_ire_4, bm_tri_3 - bm_tre_4	?11
+?11	??11	bm_iri_3 - bm_ire_4, bm_iri_3 - bm_tre_4, bm_tri_3 - bm_ire_4, bm_tri_3 - bm_tre_4	??11
+?11	??11	bm_iri_3 - bm_ire_4, bm_iri_3 - bm_tre_4, bm_tri_3 - bm_ire_4, bm_tri_3 - bm_tre_4	11
+?11	??11	bm_iri_3 - bm_ire_4, bm_iri_3 - bm_tre_4, bm_tri_3 - bm_ire_4, bm_tri_3 - bm_tre_4	111
+?11	??11	bm_iri_3 - bm_ire_4, bm_iri_3 - bm_tre_4, bm_tri_3 - bm_ire_4, bm_tri_3 - bm_tre_4	?AA1
+?11	??11	bm_iri_3 - bm_ire_4, bm_iri_3 - bm_tre_4, bm_tri_3 - bm_ire_4, bm_tri_3 - bm_tre_4	?AA11
+?11	??11	bm_iri_3 - bm_ire_4, bm_iri_3 - bm_tre_4, bm_tri_3 - bm_ire_4, bm_tri_3 - bm_tre_4	A1
+?11	??11	bm_iri_3 - bm_ire_4, bm_iri_3 - bm_tre_4, bm_tri_3 - bm_ire_4, bm_tri_3 - bm_tre_4	?111
+?11	A	bm_iri_3 - atom_oal, bm_tri_3 - atom_oal	a
+?11	A	bm_iri_3 - atom_oal, bm_tri_3 - atom_oal	A
+?11	A	bm_iri_3 - atom_oal, bm_tri_3 - atom_oal	Aa
+?11	A	bm_iri_3 - atom_oal, bm_tri_3 - atom_oal	aa
+?11	A	bm_iri_3 - atom_oal, bm_tri_3 - atom_oal	?
+?11	A	bm_iri_3 - atom_oal, bm_tri_3 - atom_oal	1
+?11	A	bm_iri_3 - atom_oal, bm_tri_3 - atom_oal	??
+?11	A	bm_iri_3 - atom_oal, bm_tri_3 - atom_oal	?1
+?11	A	bm_iri_3 - atom_oal, bm_tri_3 - atom_oal	?11
+?11	A	bm_iri_3 - atom_oal, bm_tri_3 - atom_oal	??11
+?11	A	bm_iri_3 - atom_oal, bm_tri_3 - atom_oal	11
+?11	A	bm_iri_3 - atom_oal, bm_tri_3 - atom_oal	111
+?11	A	bm_iri_3 - atom_oal, bm_tri_3 - atom_oal	?AA1
+?11	A	bm_iri_3 - atom_oal, bm_tri_3 - atom_oal	?AA11
+?11	A	bm_iri_3 - atom_oal, bm_tri_3 - atom_oal	A1
+?11	A	bm_iri_3 - atom_oal, bm_tri_3 - atom_oal	?111
+?11	Aa	bm_iri_3 - atom_oal_2, bm_tri_3 - atom_oal_2	a
+?11	Aa	bm_iri_3 - atom_oal_2, bm_tri_3 - atom_oal_2	A
+?11	Aa	bm_iri_3 - atom_oal_2, bm_tri_3 - atom_oal_2	Aa
+?11	Aa	bm_iri_3 - atom_oal_2, bm_tri_3 - atom_oal_2	aa
+?11	Aa	bm_iri_3 - atom_oal_2, bm_tri_3 - atom_oal_2	?
+?11	Aa	bm_iri_3 - atom_oal_2, bm_tri_3 - atom_oal_2	1
+?11	Aa	bm_iri_3 - atom_oal_2, bm_tri_3 - atom_oal_2	??
+?11	Aa	bm_iri_3 - atom_oal_2, bm_tri_3 - atom_oal_2	?1
+?11	Aa	bm_iri_3 - atom_oal_2, bm_tri_3 - atom_oal_2	?11
+?11	Aa	bm_iri_3 - atom_oal_2, bm_tri_3 - atom_oal_2	??11
+?11	Aa	bm_iri_3 - atom_oal_2, bm_tri_3 - atom_oal_2	11
+?11	Aa	bm_iri_3 - atom_oal_2, bm_tri_3 - atom_oal_2	111
+?11	Aa	bm_iri_3 - atom_oal_2, bm_tri_3 - atom_oal_2	?AA1
+?11	Aa	bm_iri_3 - atom_oal_2, bm_tri_3 - atom_oal_2	?AA11
+?11	Aa	bm_iri_3 - atom_oal_2, bm_tri_3 - atom_oal_2	A1
+?11	Aa	bm_iri_3 - atom_oal_2, bm_tri_3 - atom_oal_2	?111
+?11	a	bm_iri_3 - atom_oar, bm_tri_3 - atom_oar	a
+?11	a	bm_iri_3 - atom_oar, bm_tri_3 - atom_oar	A
+?11	a	bm_iri_3 - atom_oar, bm_tri_3 - atom_oar	Aa
+?11	a	bm_iri_3 - atom_oar, bm_tri_3 - atom_oar	aa
+?11	a	bm_iri_3 - atom_oar, bm_tri_3 - atom_oar	?
+?11	a	bm_iri_3 - atom_oar, bm_tri_3 - atom_oar	1
+?11	a	bm_iri_3 - atom_oar, bm_tri_3 - atom_oar	??
+?11	a	bm_iri_3 - atom_oar, bm_tri_3 - atom_oar	?1
+?11	a	bm_iri_3 - atom_oar, bm_tri_3 - atom_oar	?11
+?11	a	bm_iri_3 - atom_oar, bm_tri_3 - atom_oar	??11
+?11	a	bm_iri_3 - atom_oar, bm_tri_3 - atom_oar	11
+?11	a	bm_iri_3 - atom_oar, bm_tri_3 - atom_oar	111
+?11	a	bm_iri_3 - atom_oar, bm_tri_3 - atom_oar	?AA1
+?11	a	bm_iri_3 - atom_oar, bm_tri_3 - atom_oar	?AA11
+?11	a	bm_iri_3 - atom_oar, bm_tri_3 - atom_oar	A1
+?11	a	bm_iri_3 - atom_oar, bm_tri_3 - atom_oar	?111
+?111	?	class_m - bracket	a
+?111	?	class_m - bracket	A
+?111	?	class_m - bracket	Aa
+?111	?	class_m - bracket	aa
+?111	?	class_m - bracket	?
+?111	?	class_m - bracket	1
+?111	?	class_m - bracket	??
+?111	?	class_m - bracket	?1
+?111	?	class_m - bracket	?11
+?111	?	class_m - bracket	??11
+?111	?	class_m - bracket	11
+?111	?	class_m - bracket	111
+?111	?	class_m - bracket	?AA1
+?111	?	class_m - bracket	?AA11
+?111	?	class_m - bracket	A1
+?111	?	class_m - bracket	?111
+??	1	bm_ibe_2 - bm_iri, bm_ibe_2 - bm_tri, bm_tbe_2 - bm_iri, bm_tbe_2 - bm_tri	a
+??	1	bm_ibe_2 - bm_iri, bm_ibe_2 - bm_tri, bm_tbe_2 - bm_iri, bm_tbe_2 - bm_tri	A
+??	1	bm_ibe_2 - bm_iri, bm_ibe_2 - bm_tri, bm_tbe_2 - bm_iri, bm_tbe_2 - bm_tri	Aa
+??	1	bm_ibe_2 - bm_iri, bm_ibe_2 - bm_tri, bm_tbe_2 - bm_iri, bm_tbe_2 - bm_tri	aa
+??	1	bm_ibe_2 - bm_iri, bm_ibe_2 - bm_tri, bm_tbe_2 - bm_iri, bm_tbe_2 - bm_tri	?
+??	1	bm_ibe_2 - bm_iri, bm_ibe_2 - bm_tri, bm_tbe_2 - bm_iri, bm_tbe_2 - bm_tri	1
+??	1	bm_ibe_2 - bm_iri, bm_ibe_2 - bm_tri, bm_tbe_2 - bm_iri, bm_tbe_2 - bm_tri	??
+??	1	bm_ibe_2 - bm_iri, bm_ibe_2 - bm_tri, bm_tbe_2 - bm_iri, bm_tbe_2 - bm_tri	?1
+??	1	bm_ibe_2 - bm_iri, bm_ibe_2 - bm_tri, bm_tbe_2 - bm_iri, bm_tbe_2 - bm_tri	?11
+??	1	bm_ibe_2 - bm_iri, bm_ibe_2 - bm_tri, bm_tbe_2 - bm_iri, bm_tbe_2 - bm_tri	??11
+??	1	bm_ibe_2 - bm_iri, bm_ibe_2 - bm_tri, bm_tbe_2 - bm_iri, bm_tbe_2 - bm_tri	11
+??	1	bm_ibe_2 - bm_iri, bm_ibe_2 - bm_tri, bm_tbe_2 - bm_iri, bm_tbe_2 - bm_tri	111
+??	1	bm_ibe_2 - bm_iri, bm_ibe_2 - bm_tri, bm_tbe_2 - bm_iri, bm_tbe_2 - bm_tri	?AA1
+??	1	bm_ibe_2 - bm_iri, bm_ibe_2 - bm_tri, bm_tbe_2 - bm_iri, bm_tbe_2 - bm_tri	?AA11
+??	1	bm_ibe_2 - bm_iri, bm_ibe_2 - bm_tri, bm_tbe_2 - bm_iri, bm_tbe_2 - bm_tri	A1
+??	1	bm_ibe_2 - bm_iri, bm_ibe_2 - bm_tri, bm_tbe_2 - bm_iri, bm_tbe_2 - bm_tri	?111
+??	?	bm_ibe_2 - anything, bm_ibe_2 - bracket, bm_ibe_2 - ct, bm_tbe_2 - anything, bm_tbe_2 - bm_ibi, bm_tbe_2 - bracket, bm_tbe_2 - ct, charge_2 - bracket, chiral_2 - bracket, chiral_2 - charge	a
+??	?	bm_ibe_2 - anything, bm_ibe_2 - bracket, bm_ibe_2 - ct, bm_tbe_2 - anything, bm_tbe_2 - bm_ibi, bm_tbe_2 - bracket, bm_tbe_2 - ct, charge_2 - bracket, chiral_2 - bracket, chiral_2 - charge	A
+??	?	bm_ibe_2 - anything, bm_ibe_2 - bracket, bm_ibe_2 - ct, bm_tbe_2 - anything, bm_tbe_2 - bm_ibi, bm_tbe_2 - bracket, bm_tbe_2 - ct, charge_2 - bracket, chiral_2 - bracket, chiral_2 - charge	Aa
+??	?	bm_ibe_2 - anything, bm_ibe_2 - bracket, bm_ibe_2 - ct, bm_tbe_2 - anything, bm_tbe_2 - bm_ibi, bm_tbe_2 - bracket, bm_tbe_2 - ct, charge_2 - bracket, chiral_2 - bracket, chiral_2 - charge	aa
+??	?	bm_ibe_2 - anything, bm_ibe_2 - bracket, bm_ibe_2 - ct, bm_tbe_2 - anything, bm_tbe_2 - bm_ibi, bm_tbe_2 - bracket, bm_tbe_2 - ct, charge_2 - bracket, chiral_2 - bracket, chiral_2 - charge	?
+??	?	bm_ibe_2 - anything, bm_ibe_2 - bracket, bm_ibe_2 - ct, bm_tbe_2 - anything, bm_tbe_2 - bm_ibi, bm_tbe_2 - bracket, bm_tbe_2 - ct, charge_2 - bracket, chiral_2 - bracket, chiral_2 - charge	1
+??	?	bm_ibe_2 - anything, bm_ibe_2 - bracket, bm_ibe_2 - ct, bm_tbe_2 - anything, bm_tbe_2 - bm_ibi, bm_tbe_2 - bracket, bm_tbe_2 - ct, charge_2 - bracket, chiral_2 - bracket, chiral_2 - charge	??
+??	?	bm_ibe_2 - anything, bm_ibe_2 - bracket, bm_ibe_2 - ct, bm_tbe_2 - anything, bm_tbe_2 - bm_ibi, bm_tbe_2 - bracket, bm_tbe_2 - ct, charge_2 - bracket, chiral_2 - bracket, chiral_2 - charge	?1
+??	?	bm_ibe_2 - anything, bm_ibe_2 - bracket, bm_ibe_2 - ct, bm_tbe_2 - anything, bm_tbe_2 - bm_ibi, bm_tbe_2 - bracket, bm_tbe_2 - ct, charge_2 - bracket, chiral_2 - bracket, chiral_2 - charge	?11
+??	?	bm_ibe_2 - anything, bm_ibe_2 - bracket, bm_ibe_2 - ct, bm_tbe_2 - anything, bm_tbe_2 - bm_ibi, bm_tbe_2 - bracket, bm_tbe_2 - ct, charge_2 - bracket, chiral_2 - bracket, chiral_2 - charge	??11
+??	?	bm_ibe_2 - anything, bm_ibe_2 - bracket, bm_ibe_2 - ct, bm_tbe_2 - anything, bm_tbe_2 - bm_ibi, bm_tbe_2 - bracket, bm_tbe_2 - ct, charge_2 - bracket, chiral_2 - bracket, chiral_2 - charge	11
+??	?	bm_ibe_2 - anything, bm_ibe_2 - bracket, bm_ibe_2 - ct, bm_tbe_2 - anything, bm_tbe_2 - bm_ibi, bm_tbe_2 - bracket, bm_tbe_2 - ct, charge_2 - bracket, chiral_2 - bracket, chiral_2 - charge	111
+??	?	bm_ibe_2 - anything, bm_ibe_2 - bracket, bm_ibe_2 - ct, bm_tbe_2 - anything, bm_tbe_2 - bm_ibi, bm_tbe_2 - bracket, bm_tbe_2 - ct, charge_2 - bracket, chiral_2 - bracket, chiral_2 - charge	?AA1
+??	?	bm_ibe_2 - anything, bm_ibe_2 - bracket, bm_ibe_2 - ct, bm_tbe_2 - anything, bm_tbe_2 - bm_ibi, bm_tbe_2 - bracket, bm_tbe_2 - ct, charge_2 - bracket, chiral_2 - bracket, chiral_2 - charge	?AA11
+??	?	bm_ibe_2 - anything, bm_ibe_2 - bracket, bm_ibe_2 - ct, bm_tbe_2 - anything, bm_tbe_2 - bm_ibi, bm_tbe_2 - bracket, bm_tbe_2 - ct, charge_2 - bracket, chiral_2 - bracket, chiral_2 - charge	A1
+??	?	bm_ibe_2 - anything, bm_ibe_2 - bracket, bm_ibe_2 - ct, bm_tbe_2 - anything, bm_tbe_2 - bm_ibi, bm_tbe_2 - bracket, bm_tbe_2 - ct, charge_2 - bracket, chiral_2 - bracket, chiral_2 - charge	?111
+??	?1	bm_ibe_2 - bm_ire_2, bm_ibe_2 - bm_tre_2, bm_tbe_2 - bm_ire_2, bm_tbe_2 - bm_tre_2, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	a
+??	?1	bm_ibe_2 - bm_ire_2, bm_ibe_2 - bm_tre_2, bm_tbe_2 - bm_ire_2, bm_tbe_2 - bm_tre_2, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	A
+??	?1	bm_ibe_2 - bm_ire_2, bm_ibe_2 - bm_tre_2, bm_tbe_2 - bm_ire_2, bm_tbe_2 - bm_tre_2, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	Aa
+??	?1	bm_ibe_2 - bm_ire_2, bm_ibe_2 - bm_tre_2, bm_tbe_2 - bm_ire_2, bm_tbe_2 - bm_tre_2, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	aa
+??	?1	bm_ibe_2 - bm_ire_2, bm_ibe_2 - bm_tre_2, bm_tbe_2 - bm_ire_2, bm_tbe_2 - bm_tre_2, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	?
+??	?1	bm_ibe_2 - bm_ire_2, bm_ibe_2 - bm_tre_2, bm_tbe_2 - bm_ire_2, bm_tbe_2 - bm_tre_2, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	1
+??	?1	bm_ibe_2 - bm_ire_2, bm_ibe_2 - bm_tre_2, bm_tbe_2 - bm_ire_2, bm_tbe_2 - bm_tre_2, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	??
+??	?1	bm_ibe_2 - bm_ire_2, bm_ibe_2 - bm_tre_2, bm_tbe_2 - bm_ire_2, bm_tbe_2 - bm_tre_2, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	?1
+??	?1	bm_ibe_2 - bm_ire_2, bm_ibe_2 - bm_tre_2, bm_tbe_2 - bm_ire_2, bm_tbe_2 - bm_tre_2, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	?11
+??	?1	bm_ibe_2 - bm_ire_2, bm_ibe_2 - bm_tre_2, bm_tbe_2 - bm_ire_2, bm_tbe_2 - bm_tre_2, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	??11
+??	?1	bm_ibe_2 - bm_ire_2, bm_ibe_2 - bm_tre_2, bm_tbe_2 - bm_ire_2, bm_tbe_2 - bm_tre_2, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	11
+??	?1	bm_ibe_2 - bm_ire_2, bm_ibe_2 - bm_tre_2, bm_tbe_2 - bm_ire_2, bm_tbe_2 - bm_tre_2, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	111
+??	?1	bm_ibe_2 - bm_ire_2, bm_ibe_2 - bm_tre_2, bm_tbe_2 - bm_ire_2, bm_tbe_2 - bm_tre_2, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	?AA1
+??	?1	bm_ibe_2 - bm_ire_2, bm_ibe_2 - bm_tre_2, bm_tbe_2 - bm_ire_2, bm_tbe_2 - bm_tre_2, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	?AA11
+??	?1	bm_ibe_2 - bm_ire_2, bm_ibe_2 - bm_tre_2, bm_tbe_2 - bm_ire_2, bm_tbe_2 - bm_tre_2, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	A1
+??	?1	bm_ibe_2 - bm_ire_2, bm_ibe_2 - bm_tre_2, bm_tbe_2 - bm_ire_2, bm_tbe_2 - bm_tre_2, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	?111
+??	?11	bm_ibe_2 - bm_iri_3, bm_ibe_2 - bm_tri_3, bm_tbe_2 - bm_iri_3, bm_tbe_2 - bm_tri_3, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	a
+??	?11	bm_ibe_2 - bm_iri_3, bm_ibe_2 - bm_tri_3, bm_tbe_2 - bm_iri_3, bm_tbe_2 - bm_tri_3, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	A
+??	?11	bm_ibe_2 - bm_iri_3, bm_ibe_2 - bm_tri_3, bm_tbe_2 - bm_iri_3, bm_tbe_2 - bm_tri_3, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	Aa
+??	?11	bm_ibe_2 - bm_iri_3, bm_ibe_2 - bm_tri_3, bm_tbe_2 - bm_iri_3, bm_tbe_2 - bm_tri_3, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	aa
+??	?11	bm_ibe_2 - bm_iri_3, bm_ibe_2 - bm_tri_3, bm_tbe_2 - bm_iri_3, bm_tbe_2 - bm_tri_3, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	?
+??	?11	bm_ibe_2 - bm_iri_3, bm_ibe_2 - bm_tri_3, bm_tbe_2 - bm_iri_3, bm_tbe_2 - bm_tri_3, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	1
+??	?11	bm_ibe_2 - bm_iri_3, bm_ibe_2 - bm_tri_3, bm_tbe_2 - bm_iri_3, bm_tbe_2 - bm_tri_3, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	??
+??	?11	bm_ibe_2 - bm_iri_3, bm_ibe_2 - bm_tri_3, bm_tbe_2 - bm_iri_3, bm_tbe_2 - bm_tri_3, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	?1
+??	?11	bm_ibe_2 - bm_iri_3, bm_ibe_2 - bm_tri_3, bm_tbe_2 - bm_iri_3, bm_tbe_2 - bm_tri_3, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	?11
+??	?11	bm_ibe_2 - bm_iri_3, bm_ibe_2 - bm_tri_3, bm_tbe_2 - bm_iri_3, bm_tbe_2 - bm_tri_3, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	??11
+??	?11	bm_ibe_2 - bm_iri_3, bm_ibe_2 - bm_tri_3, bm_tbe_2 - bm_iri_3, bm_tbe_2 - bm_tri_3, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	11
+??	?11	bm_ibe_2 - bm_iri_3, bm_ibe_2 - bm_tri_3, bm_tbe_2 - bm_iri_3, bm_tbe_2 - bm_tri_3, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	111
+??	?11	bm_ibe_2 - bm_iri_3, bm_ibe_2 - bm_tri_3, bm_tbe_2 - bm_iri_3, bm_tbe_2 - bm_tri_3, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	?AA1
+??	?11	bm_ibe_2 - bm_iri_3, bm_ibe_2 - bm_tri_3, bm_tbe_2 - bm_iri_3, bm_tbe_2 - bm_tri_3, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	?AA11
+??	?11	bm_ibe_2 - bm_iri_3, bm_ibe_2 - bm_tri_3, bm_tbe_2 - bm_iri_3, bm_tbe_2 - bm_tri_3, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	A1
+??	?11	bm_ibe_2 - bm_iri_3, bm_ibe_2 - bm_tri_3, bm_tbe_2 - bm_iri_3, bm_tbe_2 - bm_tri_3, charge_2 - class_m, chiral_2 - charge_m, chiral_2 - class_m	?111
+??	?111	charge_2 - class_m, chiral_2 - class_m	a
+??	?111	charge_2 - class_m, chiral_2 - class_m	A
+??	?111	charge_2 - class_m, chiral_2 - class_m	Aa
+??	?111	charge_2 - class_m, chiral_2 - class_m	aa
+??	?111	charge_2 - class_m, chiral_2 - class_m	?
+??	?111	charge_2 - class_m, chiral_2 - class_m	1
+??	?111	charge_2 - class_m, chiral_2 - class_m	??
+??	?111	charge_2 - class_m, chiral_2 - class_m	?1
+??	?111	charge_2 - class_m, chiral_2 - class_m	?11
+??	?111	charge_2 - class_m, chiral_2 - class_m	??11
+??	?111	charge_2 - class_m, chiral_2 - class_m	11
+??	?111	charge_2 - class_m, chiral_2 - class_m	111
+??	?111	charge_2 - class_m, chiral_2 - class_m	?AA1
+??	?111	charge_2 - class_m, chiral_2 - class_m	?AA11
+??	?111	charge_2 - class_m, chiral_2 - class_m	A1
+??	?111	charge_2 - class_m, chiral_2 - class_m	?111
+??	??	bm_tbe_2 - bm_ibe_2, chiral_2 - charge_2	a
+??	??	bm_tbe_2 - bm_ibe_2, chiral_2 - charge_2	A
+??	??	bm_tbe_2 - bm_ibe_2, chiral_2 - charge_2	Aa
+??	??	bm_tbe_2 - bm_ibe_2, chiral_2 - charge_2	aa
+??	??	bm_tbe_2 - bm_ibe_2, chiral_2 - charge_2	?
+??	??	bm_tbe_2 - bm_ibe_2, chiral_2 - charge_2	1
+??	??	bm_tbe_2 - bm_ibe_2, chiral_2 - charge_2	??
+??	??	bm_tbe_2 - bm_ibe_2, chiral_2 - charge_2	?1
+??	??	bm_tbe_2 - bm_ibe_2, chiral_2 - charge_2	?11
+??	??	bm_tbe_2 - bm_ibe_2, chiral_2 - charge_2	??11
+??	??	bm_tbe_2 - bm_ibe_2, chiral_2 - charge_2	11
+??	??	bm_tbe_2 - bm_ibe_2, chiral_2 - charge_2	111
+??	??	bm_tbe_2 - bm_ibe_2, chiral_2 - charge_2	?AA1
+??	??	bm_tbe_2 - bm_ibe_2, chiral_2 - charge_2	?AA11
+??	??	bm_tbe_2 - bm_ibe_2, chiral_2 - charge_2	A1
+??	??	bm_tbe_2 - bm_ibe_2, chiral_2 - charge_2	?111
+??	??11	bm_ibe_2 - bm_ire_4, bm_ibe_2 - bm_tre_4, bm_tbe_2 - bm_ire_4, bm_tbe_2 - bm_tre_4	a
+??	??11	bm_ibe_2 - bm_ire_4, bm_ibe_2 - bm_tre_4, bm_tbe_2 - bm_ire_4, bm_tbe_2 - bm_tre_4	A
+??	??11	bm_ibe_2 - bm_ire_4, bm_ibe_2 - bm_tre_4, bm_tbe_2 - bm_ire_4, bm_tbe_2 - bm_tre_4	Aa
+??	??11	bm_ibe_2 - bm_ire_4, bm_ibe_2 - bm_tre_4, bm_tbe_2 - bm_ire_4, bm_tbe_2 - bm_tre_4	aa
+??	??11	bm_ibe_2 - bm_ire_4, bm_ibe_2 - bm_tre_4, bm_tbe_2 - bm_ire_4, bm_tbe_2 - bm_tre_4	?
+??	??11	bm_ibe_2 - bm_ire_4, bm_ibe_2 - bm_tre_4, bm_tbe_2 - bm_ire_4, bm_tbe_2 - bm_tre_4	1
+??	??11	bm_ibe_2 - bm_ire_4, bm_ibe_2 - bm_tre_4, bm_tbe_2 - bm_ire_4, bm_tbe_2 - bm_tre_4	??
+??	??11	bm_ibe_2 - bm_ire_4, bm_ibe_2 - bm_tre_4, bm_tbe_2 - bm_ire_4, bm_tbe_2 - bm_tre_4	?1
+??	??11	bm_ibe_2 - bm_ire_4, bm_ibe_2 - bm_tre_4, bm_tbe_2 - bm_ire_4, bm_tbe_2 - bm_tre_4	?11
+??	??11	bm_ibe_2 - bm_ire_4, bm_ibe_2 - bm_tre_4, bm_tbe_2 - bm_ire_4, bm_tbe_2 - bm_tre_4	??11
+??	??11	bm_ibe_2 - bm_ire_4, bm_ibe_2 - bm_tre_4, bm_tbe_2 - bm_ire_4, bm_tbe_2 - bm_tre_4	11
+??	??11	bm_ibe_2 - bm_ire_4, bm_ibe_2 - bm_tre_4, bm_tbe_2 - bm_ire_4, bm_tbe_2 - bm_tre_4	111
+??	??11	bm_ibe_2 - bm_ire_4, bm_ibe_2 - bm_tre_4, bm_tbe_2 - bm_ire_4, bm_tbe_2 - bm_tre_4	?AA1
+??	??11	bm_ibe_2 - bm_ire_4, bm_ibe_2 - bm_tre_4, bm_tbe_2 - bm_ire_4, bm_tbe_2 - bm_tre_4	?AA11
+??	??11	bm_ibe_2 - bm_ire_4, bm_ibe_2 - bm_tre_4, bm_tbe_2 - bm_ire_4, bm_tbe_2 - bm_tre_4	A1
+??	??11	bm_ibe_2 - bm_ire_4, bm_ibe_2 - bm_tre_4, bm_tbe_2 - bm_ire_4, bm_tbe_2 - bm_tre_4	?111
+??	A	bm_ibe_2 - atom_oal, bm_tbe_2 - atom_oal, chiral_2 - hydro	a
+??	A	bm_ibe_2 - atom_oal, bm_tbe_2 - atom_oal, chiral_2 - hydro	A
+??	A	bm_ibe_2 - atom_oal, bm_tbe_2 - atom_oal, chiral_2 - hydro	Aa
+??	A	bm_ibe_2 - atom_oal, bm_tbe_2 - atom_oal, chiral_2 - hydro	aa
+??	A	bm_ibe_2 - atom_oal, bm_tbe_2 - atom_oal, chiral_2 - hydro	?
+??	A	bm_ibe_2 - atom_oal, bm_tbe_2 - atom_oal, chiral_2 - hydro	1
+??	A	bm_ibe_2 - atom_oal, bm_tbe_2 - atom_oal, chiral_2 - hydro	??
+??	A	bm_ibe_2 - atom_oal, bm_tbe_2 - atom_oal, chiral_2 - hydro	?1
+??	A	bm_ibe_2 - atom_oal, bm_tbe_2 - atom_oal, chiral_2 - hydro	?11
+??	A	bm_ibe_2 - atom_oal, bm_tbe_2 - atom_oal, chiral_2 - hydro	??11
+??	A	bm_ibe_2 - atom_oal, bm_tbe_2 - atom_oal, chiral_2 - hydro	11
+??	A	bm_ibe_2 - atom_oal, bm_tbe_2 - atom_oal, chiral_2 - hydro	111
+??	A	bm_ibe_2 - atom_oal, bm_tbe_2 - atom_oal, chiral_2 - hydro	?AA1
+??	A	bm_ibe_2 - atom_oal, bm_tbe_2 - atom_oal, chiral_2 - hydro	?AA11
+??	A	bm_ibe_2 - atom_oal, bm_tbe_2 - atom_oal, chiral_2 - hydro	A1
+??	A	bm_ibe_2 - atom_oal, bm_tbe_2 - atom_oal, chiral_2 - hydro	?111
+??	A1	chiral_2 - hydro_2	a
+??	A1	chiral_2 - hydro_2	A
+??	A1	chiral_2 - hydro_2	Aa
+??	A1	chiral_2 - hydro_2	aa
+??	A1	chiral_2 - hydro_2	?
+??	A1	chiral_2 - hydro_2	1
+??	A1	chiral_2 - hydro_2	??
+??	A1	chiral_2 - hydro_2	?1
+??	A1	chiral_2 - hydro_2	?11
+??	A1	chiral_2 - hydro_2	??11
+??	A1	chiral_2 - hydro_2	11
+??	A1	chiral_2 - hydro_2	111
+??	A1	chiral_2 - hydro_2	?AA1
+??	A1	chiral_2 - hydro_2	?AA11
+??	A1	chiral_2 - hydro_2	A1
+??	A1	chiral_2 - hydro_2	?111
+??	Aa	bm_ibe_2 - atom_oal_2, bm_tbe_2 - atom_oal_2	a
+??	Aa	bm_ibe_2 - atom_oal_2, bm_tbe_2 - atom_oal_2	A
+??	Aa	bm_ibe_2 - atom_oal_2, bm_tbe_2 - atom_oal_2	Aa
+??	Aa	bm_ibe_2 - atom_oal_2, bm_tbe_2 - atom_oal_2	aa
+??	Aa	bm_ibe_2 - atom_oal_2, bm_tbe_2 - atom_oal_2	?
+??	Aa	bm_ibe_2 - atom_oal_2, bm_tbe_2 - atom_oal_2	1
+??	Aa	bm_ibe_2 - atom_oal_2, bm_tbe_2 - atom_oal_2	??
+??	Aa	bm_ibe_2 - atom_oal_2, bm_tbe_2 - atom_oal_2	?1
+??	Aa	bm_ibe_2 - atom_oal_2, bm_tbe_2 - atom_oal_2	?11
+??	Aa	bm_ibe_2 - atom_oal_2, bm_tbe_2 - atom_oal_2	??11
+??	Aa	bm_ibe_2 - atom_oal_2, bm_tbe_2 - atom_oal_2	11
+??	Aa	bm_ibe_2 - atom_oal_2, bm_tbe_2 - atom_oal_2	111
+??	Aa	bm_ibe_2 - atom_oal_2, bm_tbe_2 - atom_oal_2	?AA1
+??	Aa	bm_ibe_2 - atom_oal_2, bm_tbe_2 - atom_oal_2	?AA11
+??	Aa	bm_ibe_2 - atom_oal_2, bm_tbe_2 - atom_oal_2	A1
+??	Aa	bm_ibe_2 - atom_oal_2, bm_tbe_2 - atom_oal_2	?111
+??	a	bm_ibe_2 - atom_oar, bm_tbe_2 - atom_oar	a
+??	a	bm_ibe_2 - atom_oar, bm_tbe_2 - atom_oar	A
+??	a	bm_ibe_2 - atom_oar, bm_tbe_2 - atom_oar	Aa
+??	a	bm_ibe_2 - atom_oar, bm_tbe_2 - atom_oar	aa
+??	a	bm_ibe_2 - atom_oar, bm_tbe_2 - atom_oar	?
+??	a	bm_ibe_2 - atom_oar, bm_tbe_2 - atom_oar	1
+??	a	bm_ibe_2 - atom_oar, bm_tbe_2 - atom_oar	??
+??	a	bm_ibe_2 - atom_oar, bm_tbe_2 - atom_oar	?1
+??	a	bm_ibe_2 - atom_oar, bm_tbe_2 - atom_oar	?11
+??	a	bm_ibe_2 - atom_oar, bm_tbe_2 - atom_oar	??11
+??	a	bm_ibe_2 - atom_oar, bm_tbe_2 - atom_oar	11
+??	a	bm_ibe_2 - atom_oar, bm_tbe_2 - atom_oar	111
+??	a	bm_ibe_2 - atom_oar, bm_tbe_2 - atom_oar	?AA1
+??	a	bm_ibe_2 - atom_oar, bm_tbe_2 - atom_oar	?AA11
+??	a	bm_ibe_2 - atom_oar, bm_tbe_2 - atom_oar	A1
+??	a	bm_ibe_2 - atom_oar, bm_tbe_2 - atom_oar	?111
+??11	1	bm_ire_4 - bm_iri, bm_ire_4 - bm_tri, bm_tre_4 - bm_iri, bm_tre_4 - bm_tri	a
+??11	1	bm_ire_4 - bm_iri, bm_ire_4 - bm_tri, bm_tre_4 - bm_iri, bm_tre_4 - bm_tri	A
+??11	1	bm_ire_4 - bm_iri, bm_ire_4 - bm_tri, bm_tre_4 - bm_iri, bm_tre_4 - bm_tri	Aa
+??11	1	bm_ire_4 - bm_iri, bm_ire_4 - bm_tri, bm_tre_4 - bm_iri, bm_tre_4 - bm_tri	aa
+??11	1	bm_ire_4 - bm_iri, bm_ire_4 - bm_tri, bm_tre_4 - bm_iri, bm_tre_4 - bm_tri	?
+??11	1	bm_ire_4 - bm_iri, bm_ire_4 - bm_tri, bm_tre_4 - bm_iri, bm_tre_4 - bm_tri	1
+??11	1	bm_ire_4 - bm_iri, bm_ire_4 - bm_tri, bm_tre_4 - bm_iri, bm_tre_4 - bm_tri	??
+??11	1	bm_ire_4 - bm_iri, bm_ire_4 - bm_tri, bm_tre_4 - bm_iri, bm_tre_4 - bm_tri	?1
+??11	1	bm_ire_4 - bm_iri, bm_ire_4 - bm_tri, bm_tre_4 - bm_iri, bm_tre_4 - bm_tri	?11
+??11	1	bm_ire_4 - bm_iri, bm_ire_4 - bm_tri, bm_tre_4 - bm_iri, bm_tre_4 - bm_tri	??11
+??11	1	bm_ire_4 - bm_iri, bm_ire_4 - bm_tri, bm_tre_4 - bm_iri, bm_tre_4 - bm_tri	11
+??11	1	bm_ire_4 - bm_iri, bm_ire_4 - bm_tri, bm_tre_4 - bm_iri, bm_tre_4 - bm_tri	111
+??11	1	bm_ire_4 - bm_iri, bm_ire_4 - bm_tri, bm_tre_4 - bm_iri, bm_tre_4 - bm_tri	?AA1
+??11	1	bm_ire_4 - bm_iri, bm_ire_4 - bm_tri, bm_tre_4 - bm_iri, bm_tre_4 - bm_tri	?AA11
+??11	1	bm_ire_4 - bm_iri, bm_ire_4 - bm_tri, bm_tre_4 - bm_iri, bm_tre_4 - bm_tri	A1
+??11	1	bm_ire_4 - bm_iri, bm_ire_4 - bm_tri, bm_tre_4 - bm_iri, bm_tre_4 - bm_tri	?111
+??11	?	bm_ire_4 - anything, bm_ire_4 - bm_ibi, bm_ire_4 - bm_tbi, bm_ire_4 - bracket, bm_ire_4 - ct, bm_tre_4 - anything, bm_tre_4 - bm_ibi, bm_tre_4 - bm_tbi, bm_tre_4 - bracket, bm_tre_4 - ct	a
+??11	?	bm_ire_4 - anything, bm_ire_4 - bm_ibi, bm_ire_4 - bm_tbi, bm_ire_4 - bracket, bm_ire_4 - ct, bm_tre_4 - anything, bm_tre_4 - bm_ibi, bm_tre_4 - bm_tbi, bm_tre_4 - bracket, bm_tre_4 - ct	A
+??11	?	bm_ire_4 - anything, bm_ire_4 - bm_ibi, bm_ire_4 - bm_tbi, bm_ire_4 - bracket, bm_ire_4 - ct, bm_tre_4 - anything, bm_tre_4 - bm_ibi, bm_tre_4 - bm_tbi, bm_tre_4 - bracket, bm_tre_4 - ct	Aa
+??11	?	bm_ire_4 - anything, bm_ire_4 - bm_ibi, bm_ire_4 - bm_tbi, bm_ire_4 - bracket, bm_ire_4 - ct, bm_tre_4 - anything, bm_tre_4 - bm_ibi, bm_tre_4 - bm_tbi, bm_tre_4 - bracket, bm_tre_4 - ct	aa
+??11	?	bm_ire_4 - anything, bm_ire_4 - bm_ibi, bm_ire_4 - bm_tbi, bm_ire_4 - bracket, bm_ire_4 - ct, bm_tre_4 - anything, bm_tre_4 - bm_ibi, bm_tre_4 - bm_tbi, bm_tre_4 - bracket, bm_tre_4 - ct	?
+??11	?	bm_ire_4 - anything, bm_ire_4 - bm_ibi, bm_ire_4 - bm_tbi, bm_ire_4 - bracket, bm_ire_4 - ct, bm_tre_4 - anything, bm_tre_4 - bm_ibi, bm_tre_4 - bm_tbi, bm_tre_4 - bracket, bm_tre_4 - ct	1
+??11	?	bm_ire_4 - anything, bm_ire_4 - bm_ibi, bm_ire_4 - bm_tbi, bm_ire_4 - bracket, bm_ire_4 - ct, bm_tre_4 - anything, bm_tre_4 - bm_ibi, bm_tre_4 - bm_tbi, bm_tre_4 - bracket, bm_tre_4 - ct	??
+??11	?	bm_ire_4 - anything, bm_ire_4 - bm_ibi, bm_ire_4 - bm_tbi, bm_ire_4 - bracket, bm_ire_4 - ct, bm_tre_4 - anything, bm_tre_4 - bm_ibi, bm_tre_4 - bm_tbi, bm_tre_4 - bracket, bm_tre_4 - ct	?1
+??11	?	bm_ire_4 - anything, bm_ire_4 - bm_ibi, bm_ire_4 - bm_tbi, bm_ire_4 - bracket, bm_ire_4 - ct, bm_tre_4 - anything, bm_tre_4 - bm_ibi, bm_tre_4 - bm_tbi, bm_tre_4 - bracket, bm_tre_4 - ct	?11
+??11	?	bm_ire_4 - anything, bm_ire_4 - bm_ibi, bm_ire_4 - bm_tbi, bm_ire_4 - bracket, bm_ire_4 - ct, bm_tre_4 - anything, bm_tre_4 - bm_ibi, bm_tre_4 - bm_tbi, bm_tre_4 - bracket, bm_tre_4 - ct	??11
+??11	?	bm_ire_4 - anything, bm_ire_4 - bm_ibi, bm_ire_4 - bm_tbi, bm_ire_4 - bracket, bm_ire_4 - ct, bm_tre_4 - anything, bm_tre_4 - bm_ibi, bm_tre_4 - bm_tbi, bm_tre_4 - bracket, bm_tre_4 - ct	11
+??11	?	bm_ire_4 - anything, bm_ire_4 - bm_ibi, bm_ire_4 - bm_tbi, bm_ire_4 - bracket, bm_ire_4 - ct, bm_tre_4 - anything, bm_tre_4 - bm_ibi, bm_tre_4 - bm_tbi, bm_tre_4 - bracket, bm_tre_4 - ct	111
+??11	?	bm_ire_4 - anything, bm_ire_4 - bm_ibi, bm_ire_4 - bm_tbi, bm_ire_4 - bracket, bm_ire_4 - ct, bm_tre_4 - anything, bm_tre_4 - bm_ibi, bm_tre_4 - bm_tbi, bm_tre_4 - bracket, bm_tre_4 - ct	?AA1
+??11	?	bm_ire_4 - anything, bm_ire_4 - bm_ibi, bm_ire_4 - bm_tbi, bm_ire_4 - bracket, bm_ire_4 - ct, bm_tre_4 - anything, bm_tre_4 - bm_ibi, bm_tre_4 - bm_tbi, bm_tre_4 - bracket, bm_tre_4 - ct	?AA11
+??11	?	bm_ire_4 - anything, bm_ire_4 - bm_ibi, bm_ire_4 - bm_tbi, bm_ire_4 - bracket, bm_ire_4 - ct, bm_tre_4 - anything, bm_tre_4 - bm_ibi, bm_tre_4 - bm_tbi, bm_tre_4 - bracket, bm_tre_4 - ct	A1
+??11	?	bm_ire_4 - anything, bm_ire_4 - bm_ibi, bm_ire_4 - bm_tbi, bm_ire_4 - bracket, bm_ire_4 - ct, bm_tre_4 - anything, bm_tre_4 - bm_ibi, bm_tre_4 - bm_tbi, bm_tre_4 - bracket, bm_tre_4 - ct	?111
+??11	?1	bm_ire_4 - bm_ire_2, bm_ire_4 - bm_tre_2, bm_tre_4 - bm_ire_2, bm_tre_4 - bm_tre_2	a
+??11	?1	bm_ire_4 - bm_ire_2, bm_ire_4 - bm_tre_2, bm_tre_4 - bm_ire_2, bm_tre_4 - bm_tre_2	A
+??11	?1	bm_ire_4 - bm_ire_2, bm_ire_4 - bm_tre_2, bm_tre_4 - bm_ire_2, bm_tre_4 - bm_tre_2	Aa
+??11	?1	bm_ire_4 - bm_ire_2, bm_ire_4 - bm_tre_2, bm_tre_4 - bm_ire_2, bm_tre_4 - bm_tre_2	aa
+??11	?1	bm_ire_4 - bm_ire_2, bm_ire_4 - bm_tre_2, bm_tre_4 - bm_ire_2, bm_tre_4 - bm_tre_2	?
+??11	?1	bm_ire_4 - bm_ire_2, bm_ire_4 - bm_tre_2, bm_tre_4 - bm_ire_2, bm_tre_4 - bm_tre_2	1
+??11	?1	bm_ire_4 - bm_ire_2, bm_ire_4 - bm_tre_2, bm_tre_4 - bm_ire_2, bm_tre_4 - bm_tre_2	??
+??11	?1	bm_ire_4 - bm_ire_2, bm_ire_4 - bm_tre_2, bm_tre_4 - bm_ire_2, bm_tre_4 - bm_tre_2	?1
+??11	?1	bm_ire_4 - bm_ire_2, bm_ire_4 - bm_tre_2, bm_tre_4 - bm_ire_2, bm_tre_4 - bm_tre_2	?11
+??11	?1	bm_ire_4 - bm_ire_2, bm_ire_4 - bm_tre_2, bm_tre_4 - bm_ire_2, bm_tre_4 - bm_tre_2	??11
+??11	?1	bm_ire_4 - bm_ire_2, bm_ire_4 - bm_tre_2, bm_tre_4 - bm_ire_2, bm_tre_4 - bm_tre_2	11
+??11	?1	bm_ire_4 - bm_ire_2, bm_ire_4 - bm_tre_2, bm_tre_4 - bm_ire_2, bm_tre_4 - bm_tre_2	111
+??11	?1	bm_ire_4 - bm_ire_2, bm_ire_4 - bm_tre_2, bm_tre_4 - bm_ire_2, bm_tre_4 - bm_tre_2	?AA1
+??11	?1	bm_ire_4 - bm_ire_2, bm_ire_4 - bm_tre_2, bm_tre_4 - bm_ire_2, bm_tre_4 - bm_tre_2	?AA11
+??11	?1	bm_ire_4 - bm_ire_2, bm_ire_4 - bm_tre_2, bm_tre_4 - bm_ire_2, bm_tre_4 - bm_tre_2	A1
+??11	?1	bm_ire_4 - bm_ire_2, bm_ire_4 - bm_tre_2, bm_tre_4 - bm_ire_2, bm_tre_4 - bm_tre_2	?111
+??11	?11	bm_ire_4 - bm_iri_3, bm_ire_4 - bm_tri_3, bm_tre_4 - bm_iri_3, bm_tre_4 - bm_tri_3	a
+??11	?11	bm_ire_4 - bm_iri_3, bm_ire_4 - bm_tri_3, bm_tre_4 - bm_iri_3, bm_tre_4 - bm_tri_3	A
+??11	?11	bm_ire_4 - bm_iri_3, bm_ire_4 - bm_tri_3, bm_tre_4 - bm_iri_3, bm_tre_4 - bm_tri_3	Aa
+??11	?11	bm_ire_4 - bm_iri_3, bm_ire_4 - bm_tri_3, bm_tre_4 - bm_iri_3, bm_tre_4 - bm_tri_3	aa
+??11	?11	bm_ire_4 - bm_iri_3, bm_ire_4 - bm_tri_3, bm_tre_4 - bm_iri_3, bm_tre_4 - bm_tri_3	?
+??11	?11	bm_ire_4 - bm_iri_3, bm_ire_4 - bm_tri_3, bm_tre_4 - bm_iri_3, bm_tre_4 - bm_tri_3	1
+??11	?11	bm_ire_4 - bm_iri_3, bm_ire_4 - bm_tri_3, bm_tre_4 - bm_iri_3, bm_tre_4 - bm_tri_3	??
+??11	?11	bm_ire_4 - bm_iri_3, bm_ire_4 - bm_tri_3, bm_tre_4 - bm_iri_3, bm_tre_4 - bm_tri_3	?1
+??11	?11	bm_ire_4 - bm_iri_3, bm_ire_4 - bm_tri_3, bm_tre_4 - bm_iri_3, bm_tre_4 - bm_tri_3	?11
+??11	?11	bm_ire_4 - bm_iri_3, bm_ire_4 - bm_tri_3, bm_tre_4 - bm_iri_3, bm_tre_4 - bm_tri_3	??11
+??11	?11	bm_ire_4 - bm_iri_3, bm_ire_4 - bm_tri_3, bm_tre_4 - bm_iri_3, bm_tre_4 - bm_tri_3	11
+??11	?11	bm_ire_4 - bm_iri_3, bm_ire_4 - bm_tri_3, bm_tre_4 - bm_iri_3, bm_tre_4 - bm_tri_3	111
+??11	?11	bm_ire_4 - bm_iri_3, bm_ire_4 - bm_tri_3, bm_tre_4 - bm_iri_3, bm_tre_4 - bm_tri_3	?AA1
+??11	?11	bm_ire_4 - bm_iri_3, bm_ire_4 - bm_tri_3, bm_tre_4 - bm_iri_3, bm_tre_4 - bm_tri_3	?AA11
+??11	?11	bm_ire_4 - bm_iri_3, bm_ire_4 - bm_tri_3, bm_tre_4 - bm_iri_3, bm_tre_4 - bm_tri_3	A1
+??11	?11	bm_ire_4 - bm_iri_3, bm_ire_4 - bm_tri_3, bm_tre_4 - bm_iri_3, bm_tre_4 - bm_tri_3	?111
+??11	??	bm_ire_4 - bm_ibe_2, bm_ire_4 - bm_tbe_2, bm_tre_4 - bm_ibe_2, bm_tre_4 - bm_tbe_2	a
+??11	??	bm_ire_4 - bm_ibe_2, bm_ire_4 - bm_tbe_2, bm_tre_4 - bm_ibe_2, bm_tre_4 - bm_tbe_2	A
+??11	??	bm_ire_4 - bm_ibe_2, bm_ire_4 - bm_tbe_2, bm_tre_4 - bm_ibe_2, bm_tre_4 - bm_tbe_2	Aa
+??11	??	bm_ire_4 - bm_ibe_2, bm_ire_4 - bm_tbe_2, bm_tre_4 - bm_ibe_2, bm_tre_4 - bm_tbe_2	aa
+??11	??	bm_ire_4 - bm_ibe_2, bm_ire_4 - bm_tbe_2, bm_tre_4 - bm_ibe_2, bm_tre_4 - bm_tbe_2	?
+??11	??	bm_ire_4 - bm_ibe_2, bm_ire_4 - bm_tbe_2, bm_tre_4 - bm_ibe_2, bm_tre_4 - bm_tbe_2	1
+??11	??	bm_ire_4 - bm_ibe_2, bm_ire_4 - bm_tbe_2, bm_tre_4 - bm_ibe_2, bm_tre_4 - bm_tbe_2	??
+??11	??	bm_ire_4 - bm_ibe_2, bm_ire_4 - bm_tbe_2, bm_tre_4 - bm_ibe_2, bm_tre_4 - bm_tbe_2	?1
+??11	??	bm_ire_4 - bm_ibe_2, bm_ire_4 - bm_tbe_2, bm_tre_4 - bm_ibe_2, bm_tre_4 - bm_tbe_2	?11
+??11	??	bm_ire_4 - bm_ibe_2, bm_ire_4 - bm_tbe_2, bm_tre_4 - bm_ibe_2, bm_tre_4 - bm_tbe_2	??11
+??11	??	bm_ire_4 - bm_ibe_2, bm_ire_4 - bm_tbe_2, bm_tre_4 - bm_ibe_2, bm_tre_4 - bm_tbe_2	11
+??11	??	bm_ire_4 - bm_ibe_2, bm_ire_4 - bm_tbe_2, bm_tre_4 - bm_ibe_2, bm_tre_4 - bm_tbe_2	111
+??11	??	bm_ire_4 - bm_ibe_2, bm_ire_4 - bm_tbe_2, bm_tre_4 - bm_ibe_2, bm_tre_4 - bm_tbe_2	?AA1
+??11	??	bm_ire_4 - bm_ibe_2, bm_ire_4 - bm_tbe_2, bm_tre_4 - bm_ibe_2, bm_tre_4 - bm_tbe_2	?AA11
+??11	??	bm_ire_4 - bm_ibe_2, bm_ire_4 - bm_tbe_2, bm_tre_4 - bm_ibe_2, bm_tre_4 - bm_tbe_2	A1
+??11	??	bm_ire_4 - bm_ibe_2, bm_ire_4 - bm_tbe_2, bm_tre_4 - bm_ibe_2, bm_tre_4 - bm_tbe_2	?111
+??11	??11	bm_ire_4 - bm_ire_4, bm_ire_4 - bm_tre_4, bm_tre_4 - bm_ire_4, bm_tre_4 - bm_tre_4	a
+??11	??11	bm_ire_4 - bm_ire_4, bm_ire_4 - bm_tre_4, bm_tre_4 - bm_ire_4, bm_tre_4 - bm_tre_4	A
+??11	??11	bm_ire_4 - bm_ire_4, bm_ire_4 - bm_tre_4, bm_tre_4 - bm_ire_4, bm_tre_4 - bm_tre_4	Aa
+??11	??11	bm_ire_4 - bm_ire_4, bm_ire_4 - bm_tre_4, bm_tre_4 - bm_ire_4, bm_tre_4 - bm_tre_4	aa
+??11	??11	bm_ire_4 - bm_ire_4, bm_ire_4 - bm_tre_4, bm_tre_4 - bm_ire_4, bm_tre_4 - bm_tre_4	?
+??11	??11	bm_ire_4 - bm_ire_4, bm_ire_4 - bm_tre_4, bm_tre_4 - bm_ire_4, bm_tre_4 - bm_tre_4	1
+??11	??11	bm_ire_4 - bm_ire_4, bm_ire_4 - bm_tre_4, bm_tre_4 - bm_ire_4, bm_tre_4 - bm_tre_4	??
+??11	??11	bm_ire_4 - bm_ire_4, bm_ire_4 - bm_tre_4, bm_tre_4 - bm_ire_4, bm_tre_4 - bm_tre_4	?1
+??11	??11	bm_ire_4 - bm_ire_4, bm_ire_4 - bm_tre_4, bm_tre_4 - bm_ire_4, bm_tre_4 - bm_tre_4	?11
+??11	??11	bm_ire_4 - bm_ire_4, bm_ire_4 - bm_tre_4, bm_tre_4 - bm_ire_4, bm_tre_4 - bm_tre_4	??11
+??11	??11	bm_ire_4 - bm_ire_4, bm_ire_4 - bm_tre_4, bm_tre_4 - bm_ire_4, bm_tre_4 - bm_tre_4	11
+??11	??11	bm_ire_4 - bm_ire_4, bm_ire_4 - bm_tre_4, bm_tre_4 - bm_ire_4, bm_tre_4 - bm_tre_4	111
+??11	??11	bm_ire_4 - bm_ire_4, bm_ire_4 - bm_tre_4, bm_tre_4 - bm_ire_4, bm_tre_4 - bm_tre_4	?AA1
+??11	??11	bm_ire_4 - bm_ire_4, bm_ire_4 - bm_tre_4, bm_tre_4 - bm_ire_4, bm_tre_4 - bm_tre_4	?AA11
+??11	??11	bm_ire_4 - bm_ire_4, bm_ire_4 - bm_tre_4, bm_tre_4 - bm_ire_4, bm_tre_4 - bm_tre_4	A1
+??11	??11	bm_ire_4 - bm_ire_4, bm_ire_4 - bm_tre_4, bm_tre_4 - bm_ire_4, bm_tre_4 - bm_tre_4	?111
+??11	A	bm_ire_4 - atom_oal, bm_tre_4 - atom_oal	a
+??11	A	bm_ire_4 - atom_oal, bm_tre_4 - atom_oal	A
+??11	A	bm_ire_4 - atom_oal, bm_tre_4 - atom_oal	Aa
+??11	A	bm_ire_4 - atom_oal, bm_tre_4 - atom_oal	aa
+??11	A	bm_ire_4 - atom_oal, bm_tre_4 - atom_oal	?
+??11	A	bm_ire_4 - atom_oal, bm_tre_4 - atom_oal	1
+??11	A	bm_ire_4 - atom_oal, bm_tre_4 - atom_oal	??
+??11	A	bm_ire_4 - atom_oal, bm_tre_4 - atom_oal	?1
+??11	A	bm_ire_4 - atom_oal, bm_tre_4 - atom_oal	?11
+??11	A	bm_ire_4 - atom_oal, bm_tre_4 - atom_oal	??11
+??11	A	bm_ire_4 - atom_oal, bm_tre_4 - atom_oal	11
+??11	A	bm_ire_4 - atom_oal, bm_tre_4 - atom_oal	111
+??11	A	bm_ire_4 - atom_oal, bm_tre_4 - atom_oal	?AA1
+??11	A	bm_ire_4 - atom_oal, bm_tre_4 - atom_oal	?AA11
+??11	A	bm_ire_4 - atom_oal, bm_tre_4 - atom_oal	A1
+??11	A	bm_ire_4 - atom_oal, bm_tre_4 - atom_oal	?111
+??11	Aa	bm_ire_4 - atom_oal_2, bm_tre_4 - atom_oal_2	a
+??11	Aa	bm_ire_4 - atom_oal_2, bm_tre_4 - atom_oal_2	A
+??11	Aa	bm_ire_4 - atom_oal_2, bm_tre_4 - atom_oal_2	Aa
+??11	Aa	bm_ire_4 - atom_oal_2, bm_tre_4 - atom_oal_2	aa
+??11	Aa	bm_ire_4 - atom_oal_2, bm_tre_4 - atom_oal_2	?
+??11	Aa	bm_ire_4 - atom_oal_2, bm_tre_4 - atom_oal_2	1
+??11	Aa	bm_ire_4 - atom_oal_2, bm_tre_4 - atom_oal_2	??
+??11	Aa	bm_ire_4 - atom_oal_2, bm_tre_4 - atom_oal_2	?1
+??11	Aa	bm_ire_4 - atom_oal_2, bm_tre_4 - atom_oal_2	?11
+??11	Aa	bm_ire_4 - atom_oal_2, bm_tre_4 - atom_oal_2	??11
+??11	Aa	bm_ire_4 - atom_oal_2, bm_tre_4 - atom_oal_2	11
+??11	Aa	bm_ire_4 - atom_oal_2, bm_tre_4 - atom_oal_2	111
+??11	Aa	bm_ire_4 - atom_oal_2, bm_tre_4 - atom_oal_2	?AA1
+??11	Aa	bm_ire_4 - atom_oal_2, bm_tre_4 - atom_oal_2	?AA11
+??11	Aa	bm_ire_4 - atom_oal_2, bm_tre_4 - atom_oal_2	A1
+??11	Aa	bm_ire_4 - atom_oal_2, bm_tre_4 - atom_oal_2	?111
+??11	a	bm_ire_4 - atom_oar, bm_tre_4 - atom_oar	a
+??11	a	bm_ire_4 - atom_oar, bm_tre_4 - atom_oar	A
+??11	a	bm_ire_4 - atom_oar, bm_tre_4 - atom_oar	Aa
+??11	a	bm_ire_4 - atom_oar, bm_tre_4 - atom_oar	aa
+??11	a	bm_ire_4 - atom_oar, bm_tre_4 - atom_oar	?
+??11	a	bm_ire_4 - atom_oar, bm_tre_4 - atom_oar	1
+??11	a	bm_ire_4 - atom_oar, bm_tre_4 - atom_oar	??
+??11	a	bm_ire_4 - atom_oar, bm_tre_4 - atom_oar	?1
+??11	a	bm_ire_4 - atom_oar, bm_tre_4 - atom_oar	?11
+??11	a	bm_ire_4 - atom_oar, bm_tre_4 - atom_oar	??11
+??11	a	bm_ire_4 - atom_oar, bm_tre_4 - atom_oar	11
+??11	a	bm_ire_4 - atom_oar, bm_tre_4 - atom_oar	111
+??11	a	bm_ire_4 - atom_oar, bm_tre_4 - atom_oar	?AA1
+??11	a	bm_ire_4 - atom_oar, bm_tre_4 - atom_oar	?AA11
+??11	a	bm_ire_4 - atom_oar, bm_tre_4 - atom_oar	A1
+??11	a	bm_ire_4 - atom_oar, bm_tre_4 - atom_oar	?111
+?AA1	?	chiral_m - bracket, chiral_m - charge	a
+?AA1	?	chiral_m - bracket, chiral_m - charge	A
+?AA1	?	chiral_m - bracket, chiral_m - charge	Aa
+?AA1	?	chiral_m - bracket, chiral_m - charge	aa
+?AA1	?	chiral_m - bracket, chiral_m - charge	?
+?AA1	?	chiral_m - bracket, chiral_m - charge	1
+?AA1	?	chiral_m - bracket, chiral_m - charge	??
+?AA1	?	chiral_m - bracket, chiral_m - charge	?1
+?AA1	?	chiral_m - bracket, chiral_m - charge	?11
+?AA1	?	chiral_m - bracket, chiral_m - charge	??11
+?AA1	?	chiral_m - bracket, chiral_m - charge	11
+?AA1	?	chiral_m - bracket, chiral_m - charge	111
+?AA1	?	chiral_m - bracket, chiral_m - charge	?AA1
+?AA1	?	chiral_m - bracket, chiral_m - charge	?AA11
+?AA1	?	chiral_m - bracket, chiral_m - charge	A1
+?AA1	?	chiral_m - bracket, chiral_m - charge	?111
+?AA1	?1	chiral_m - charge_m, chiral_m - class_m	a
+?AA1	?1	chiral_m - charge_m, chiral_m - class_m	A
+?AA1	?1	chiral_m - charge_m, chiral_m - class_m	Aa
+?AA1	?1	chiral_m - charge_m, chiral_m - class_m	aa
+?AA1	?1	chiral_m - charge_m, chiral_m - class_m	?
+?AA1	?1	chiral_m - charge_m, chiral_m - class_m	1
+?AA1	?1	chiral_m - charge_m, chiral_m - class_m	??
+?AA1	?1	chiral_m - charge_m, chiral_m - class_m	?1
+?AA1	?1	chiral_m - charge_m, chiral_m - class_m	?11
+?AA1	?1	chiral_m - charge_m, chiral_m - class_m	??11
+?AA1	?1	chiral_m - charge_m, chiral_m - class_m	11
+?AA1	?1	chiral_m - charge_m, chiral_m - class_m	111
+?AA1	?1	chiral_m - charge_m, chiral_m - class_m	?AA1
+?AA1	?1	chiral_m - charge_m, chiral_m - class_m	?AA11
+?AA1	?1	chiral_m - charge_m, chiral_m - class_m	A1
+?AA1	?1	chiral_m - charge_m, chiral_m - class_m	?111
+?AA1	?11	chiral_m - charge_m, chiral_m - class_m	a
+?AA1	?11	chiral_m - charge_m, chiral_m - class_m	A
+?AA1	?11	chiral_m - charge_m, chiral_m - class_m	Aa
+?AA1	?11	chiral_m - charge_m, chiral_m - class_m	aa
+?AA1	?11	chiral_m - charge_m, chiral_m - class_m	?
+?AA1	?11	chiral_m - charge_m, chiral_m - class_m	1
+?AA1	?11	chiral_m - charge_m, chiral_m - class_m	??
+?AA1	?11	chiral_m - charge_m, chiral_m - class_m	?1
+?AA1	?11	chiral_m - charge_m, chiral_m - class_m	?11
+?AA1	?11	chiral_m - charge_m, chiral_m - class_m	??11
+?AA1	?11	chiral_m - charge_m, chiral_m - class_m	11
+?AA1	?11	chiral_m - charge_m, chiral_m - class_m	111
+?AA1	?11	chiral_m - charge_m, chiral_m - class_m	?AA1
+?AA1	?11	chiral_m - charge_m, chiral_m - class_m	?AA11
+?AA1	?11	chiral_m - charge_m, chiral_m - class_m	A1
+?AA1	?11	chiral_m - charge_m, chiral_m - class_m	?111
+?AA1	?111	chiral_m - class_m	a
+?AA1	?111	chiral_m - class_m	A
+?AA1	?111	chiral_m - class_m	Aa
+?AA1	?111	chiral_m - class_m	aa
+?AA1	?111	chiral_m - class_m	?
+?AA1	?111	chiral_m - class_m	1
+?AA1	?111	chiral_m - class_m	??
+?AA1	?111	chiral_m - class_m	?1
+?AA1	?111	chiral_m - class_m	?11
+?AA1	?111	chiral_m - class_m	??11
+?AA1	?111	chiral_m - class_m	11
+?AA1	?111	chiral_m - class_m	111
+?AA1	?111	chiral_m - class_m	?AA1
+?AA1	?111	chiral_m - class_m	?AA11
+?AA1	?111	chiral_m - class_m	A1
+?AA1	?111	chiral_m - class_m	?111
+?AA1	??	chiral_m - charge_2	a
+?AA1	??	chiral_m - charge_2	A
+?AA1	??	chiral_m - charge_2	Aa
+?AA1	??	chiral_m - charge_2	aa
+?AA1	??	chiral_m - charge_2	?
+?AA1	??	chiral_m - charge_2	1
+?AA1	??	chiral_m - charge_2	??
+?AA1	??	chiral_m - charge_2	?1
+?AA1	??	chiral_m - charge_2	?11
+?AA1	??	chiral_m - charge_2	??11
+?AA1	??	chiral_m - charge_2	11
+?AA1	??	chiral_m - charge_2	111
+?AA1	??	chiral_m - charge_2	?AA1
+?AA1	??	chiral_m - charge_2	?AA11
+?AA1	??	chiral_m - charge_2	A1
+?AA1	??	chiral_m - charge_2	?111
+?AA1	A	chiral_m - hydro	a
+?AA1	A	chiral_m - hydro	A
+?AA1	A	chiral_m - hydro	Aa
+?AA1	A	chiral_m - hydro	aa
+?AA1	A	chiral_m - hydro	?
+?AA1	A	chiral_m - hydro	1
+?AA1	A	chiral_m - hydro	??
+?AA1	A	chiral_m - hydro	?1
+?AA1	A	chiral_m - hydro	?11
+?AA1	A	chiral_m - hydro	??11
+?AA1	A	chiral_m - hydro	11
+?AA1	A	chiral_m - hydro	111
+?AA1	A	chiral_m - hydro	?AA1
+?AA1	A	chiral_m - hydro	?AA11
+?AA1	A	chiral_m - hydro	A1
+?AA1	A	chiral_m - hydro	?111
+?AA1	A1	chiral_m - hydro_2	a
+?AA1	A1	chiral_m - hydro_2	A
+?AA1	A1	chiral_m - hydro_2	Aa
+?AA1	A1	chiral_m - hydro_2	aa
+?AA1	A1	chiral_m - hydro_2	?
+?AA1	A1	chiral_m - hydro_2	1
+?AA1	A1	chiral_m - hydro_2	??
+?AA1	A1	chiral_m - hydro_2	?1
+?AA1	A1	chiral_m - hydro_2	?11
+?AA1	A1	chiral_m - hydro_2	??11
+?AA1	A1	chiral_m - hydro_2	11
+?AA1	A1	chiral_m - hydro_2	111
+?AA1	A1	chiral_m - hydro_2	?AA1
+?AA1	A1	chiral_m - hydro_2	?AA11
+?AA1	A1	chiral_m - hydro_2	A1
+?AA1	A1	chiral_m - hydro_2	?111
+?AA11	?	chiral_m - bracket, chiral_m - charge	a
+?AA11	?	chiral_m - bracket, chiral_m - charge	A
+?AA11	?	chiral_m - bracket, chiral_m - charge	Aa
+?AA11	?	chiral_m - bracket, chiral_m - charge	aa
+?AA11	?	chiral_m - bracket, chiral_m - charge	?
+?AA11	?	chiral_m - bracket, chiral_m - charge	1
+?AA11	?	chiral_m - bracket, chiral_m - charge	??
+?AA11	?	chiral_m - bracket, chiral_m - charge	?1
+?AA11	?	chiral_m - bracket, chiral_m - charge	?11
+?AA11	?	chiral_m - bracket, chiral_m - charge	??11
+?AA11	?	chiral_m - bracket, chiral_m - charge	11
+?AA11	?	chiral_m - bracket, chiral_m - charge	111
+?AA11	?	chiral_m - bracket, chiral_m - charge	?AA1
+?AA11	?	chiral_m - bracket, chiral_m - charge	?AA11
+?AA11	?	chiral_m - bracket, chiral_m - charge	A1
+?AA11	?	chiral_m - bracket, chiral_m - charge	?111
+?AA11	?1	chiral_m - charge_m, chiral_m - class_m	a
+?AA11	?1	chiral_m - charge_m, chiral_m - class_m	A
+?AA11	?1	chiral_m - charge_m, chiral_m - class_m	Aa
+?AA11	?1	chiral_m - charge_m, chiral_m - class_m	aa
+?AA11	?1	chiral_m - charge_m, chiral_m - class_m	?
+?AA11	?1	chiral_m - charge_m, chiral_m - class_m	1
+?AA11	?1	chiral_m - charge_m, chiral_m - class_m	??
+?AA11	?1	chiral_m - charge_m, chiral_m - class_m	?1
+?AA11	?1	chiral_m - charge_m, chiral_m - class_m	?11
+?AA11	?1	chiral_m - charge_m, chiral_m - class_m	??11
+?AA11	?1	chiral_m - charge_m, chiral_m - class_m	11
+?AA11	?1	chiral_m - charge_m, chiral_m - class_m	111
+?AA11	?1	chiral_m - charge_m, chiral_m - class_m	?AA1
+?AA11	?1	chiral_m - charge_m, chiral_m - class_m	?AA11
+?AA11	?1	chiral_m - charge_m, chiral_m - class_m	A1
+?AA11	?1	chiral_m - charge_m, chiral_m - class_m	?111
+?AA11	?11	chiral_m - charge_m, chiral_m - class_m	a
+?AA11	?11	chiral_m - charge_m, chiral_m - class_m	A
+?AA11	?11	chiral_m - charge_m, chiral_m - class_m	Aa
+?AA11	?11	chiral_m - charge_m, chiral_m - class_m	aa
+?AA11	?11	chiral_m - charge_m, chiral_m - class_m	?
+?AA11	?11	chiral_m - charge_m, chiral_m - class_m	1
+?AA11	?11	chiral_m - charge_m, chiral_m - class_m	??
+?AA11	?11	chiral_m - charge_m, chiral_m - class_m	?1
+?AA11	?11	chiral_m - charge_m, chiral_m - class_m	?11
+?AA11	?11	chiral_m - charge_m, chiral_m - class_m	??11
+?AA11	?11	chiral_m - charge_m, chiral_m - class_m	11
+?AA11	?11	chiral_m - charge_m, chiral_m - class_m	111
+?AA11	?11	chiral_m - charge_m, chiral_m - class_m	?AA1
+?AA11	?11	chiral_m - charge_m, chiral_m - class_m	?AA11
+?AA11	?11	chiral_m - charge_m, chiral_m - class_m	A1
+?AA11	?11	chiral_m - charge_m, chiral_m - class_m	?111
+?AA11	?111	chiral_m - class_m	a
+?AA11	?111	chiral_m - class_m	A
+?AA11	?111	chiral_m - class_m	Aa
+?AA11	?111	chiral_m - class_m	aa
+?AA11	?111	chiral_m - class_m	?
+?AA11	?111	chiral_m - class_m	1
+?AA11	?111	chiral_m - class_m	??
+?AA11	?111	chiral_m - class_m	?1
+?AA11	?111	chiral_m - class_m	?11
+?AA11	?111	chiral_m - class_m	??11
+?AA11	?111	chiral_m - class_m	11
+?AA11	?111	chiral_m - class_m	111
+?AA11	?111	chiral_m - class_m	?AA1
+?AA11	?111	chiral_m - class_m	?AA11
+?AA11	?111	chiral_m - class_m	A1
+?AA11	?111	chiral_m - class_m	?111
+?AA11	??	chiral_m - charge_2	a
+?AA11	??	chiral_m - charge_2	A
+?AA11	??	chiral_m - charge_2	Aa
+?AA11	??	chiral_m - charge_2	aa
+?AA11	??	chiral_m - charge_2	?
+?AA11	??	chiral_m - charge_2	1
+?AA11	??	chiral_m - charge_2	??
+?AA11	??	chiral_m - charge_2	?1
+?AA11	??	chiral_m - charge_2	?11
+?AA11	??	chiral_m - charge_2	??11
+?AA11	??	chiral_m - charge_2	11
+?AA11	??	chiral_m - charge_2	111
+?AA11	??	chiral_m - charge_2	?AA1
+?AA11	??	chiral_m - charge_2	?AA11
+?AA11	??	chiral_m - charge_2	A1
+?AA11	??	chiral_m - charge_2	?111
+?AA11	A	chiral_m - hydro	a
+?AA11	A	chiral_m - hydro	A
+?AA11	A	chiral_m - hydro	Aa
+?AA11	A	chiral_m - hydro	aa
+?AA11	A	chiral_m - hydro	?
+?AA11	A	chiral_m - hydro	1
+?AA11	A	chiral_m - hydro	??
+?AA11	A	chiral_m - hydro	?1
+?AA11	A	chiral_m - hydro	?11
+?AA11	A	chiral_m - hydro	??11
+?AA11	A	chiral_m - hydro	11
+?AA11	A	chiral_m - hydro	111
+?AA11	A	chiral_m - hydro	?AA1
+?AA11	A	chiral_m - hydro	?AA11
+?AA11	A	chiral_m - hydro	A1
+?AA11	A	chiral_m - hydro	?111
+?AA11	A1	chiral_m - hydro_2	a
+?AA11	A1	chiral_m - hydro_2	A
+?AA11	A1	chiral_m - hydro_2	Aa
+?AA11	A1	chiral_m - hydro_2	aa
+?AA11	A1	chiral_m - hydro_2	?
+?AA11	A1	chiral_m - hydro_2	1
+?AA11	A1	chiral_m - hydro_2	??
+?AA11	A1	chiral_m - hydro_2	?1
+?AA11	A1	chiral_m - hydro_2	?11
+?AA11	A1	chiral_m - hydro_2	??11
+?AA11	A1	chiral_m - hydro_2	11
+?AA11	A1	chiral_m - hydro_2	111
+?AA11	A1	chiral_m - hydro_2	?AA1
+?AA11	A1	chiral_m - hydro_2	?AA11
+?AA11	A1	chiral_m - hydro_2	A1
+?AA11	A1	chiral_m - hydro_2	?111
+A	1	atom_oal - bm_iri, atom_oal - bm_tri	a
+A	1	atom_oal - bm_iri, atom_oal - bm_tri	A
+A	1	atom_oal - bm_iri, atom_oal - bm_tri	Aa
+A	1	atom_oal - bm_iri, atom_oal - bm_tri	aa
+A	1	atom_oal - bm_iri, atom_oal - bm_tri	?
+A	1	atom_oal - bm_iri, atom_oal - bm_tri	1
+A	1	atom_oal - bm_iri, atom_oal - bm_tri	??
+A	1	atom_oal - bm_iri, atom_oal - bm_tri	?1
+A	1	atom_oal - bm_iri, atom_oal - bm_tri	?11
+A	1	atom_oal - bm_iri, atom_oal - bm_tri	??11
+A	1	atom_oal - bm_iri, atom_oal - bm_tri	11
+A	1	atom_oal - bm_iri, atom_oal - bm_tri	111
+A	1	atom_oal - bm_iri, atom_oal - bm_tri	?AA1
+A	1	atom_oal - bm_iri, atom_oal - bm_tri	?AA11
+A	1	atom_oal - bm_iri, atom_oal - bm_tri	A1
+A	1	atom_oal - bm_iri, atom_oal - bm_tri	?111
+A	?	atom_bal - bracket, atom_bal - charge, atom_bal - chiral, atom_oal - anything, atom_oal - bm_ibi, atom_oal - bm_tbi, atom_oal - bracket, atom_oal - ct, atom_oal - double_bond, atom_oal - no_bond, atom_oal - quadruple_bond, atom_oal - single_bond, atom_oal - triple_bond, hydro - bracket, hydro - charge	a
+A	?	atom_bal - bracket, atom_bal - charge, atom_bal - chiral, atom_oal - anything, atom_oal - bm_ibi, atom_oal - bm_tbi, atom_oal - bracket, atom_oal - ct, atom_oal - double_bond, atom_oal - no_bond, atom_oal - quadruple_bond, atom_oal - single_bond, atom_oal - triple_bond, hydro - bracket, hydro - charge	A
+A	?	atom_bal - bracket, atom_bal - charge, atom_bal - chiral, atom_oal - anything, atom_oal - bm_ibi, atom_oal - bm_tbi, atom_oal - bracket, atom_oal - ct, atom_oal - double_bond, atom_oal - no_bond, atom_oal - quadruple_bond, atom_oal - single_bond, atom_oal - triple_bond, hydro - bracket, hydro - charge	Aa
+A	?	atom_bal - bracket, atom_bal - charge, atom_bal - chiral, atom_oal - anything, atom_oal - bm_ibi, atom_oal - bm_tbi, atom_oal - bracket, atom_oal - ct, atom_oal - double_bond, atom_oal - no_bond, atom_oal - quadruple_bond, atom_oal - single_bond, atom_oal - triple_bond, hydro - bracket, hydro - charge	aa
+A	?	atom_bal - bracket, atom_bal - charge, atom_bal - chiral, atom_oal - anything, atom_oal - bm_ibi, atom_oal - bm_tbi, atom_oal - bracket, atom_oal - ct, atom_oal - double_bond, atom_oal - no_bond, atom_oal - quadruple_bond, atom_oal - single_bond, atom_oal - triple_bond, hydro - bracket, hydro - charge	?
+A	?	atom_bal - bracket, atom_bal - charge, atom_bal - chiral, atom_oal - anything, atom_oal - bm_ibi, atom_oal - bm_tbi, atom_oal - bracket, atom_oal - ct, atom_oal - double_bond, atom_oal - no_bond, atom_oal - quadruple_bond, atom_oal - single_bond, atom_oal - triple_bond, hydro - bracket, hydro - charge	1
+A	?	atom_bal - bracket, atom_bal - charge, atom_bal - chiral, atom_oal - anything, atom_oal - bm_ibi, atom_oal - bm_tbi, atom_oal - bracket, atom_oal - ct, atom_oal - double_bond, atom_oal - no_bond, atom_oal - quadruple_bond, atom_oal - single_bond, atom_oal - triple_bond, hydro - bracket, hydro - charge	??
+A	?	atom_bal - bracket, atom_bal - charge, atom_bal - chiral, atom_oal - anything, atom_oal - bm_ibi, atom_oal - bm_tbi, atom_oal - bracket, atom_oal - ct, atom_oal - double_bond, atom_oal - no_bond, atom_oal - quadruple_bond, atom_oal - single_bond, atom_oal - triple_bond, hydro - bracket, hydro - charge	?1
+A	?	atom_bal - bracket, atom_bal - charge, atom_bal - chiral, atom_oal - anything, atom_oal - bm_ibi, atom_oal - bm_tbi, atom_oal - bracket, atom_oal - ct, atom_oal - double_bond, atom_oal - no_bond, atom_oal - quadruple_bond, atom_oal - single_bond, atom_oal - triple_bond, hydro - bracket, hydro - charge	?11
+A	?	atom_bal - bracket, atom_bal - charge, atom_bal - chiral, atom_oal - anything, atom_oal - bm_ibi, atom_oal - bm_tbi, atom_oal - bracket, atom_oal - ct, atom_oal - double_bond, atom_oal - no_bond, atom_oal - quadruple_bond, atom_oal - single_bond, atom_oal - triple_bond, hydro - bracket, hydro - charge	??11
+A	?	atom_bal - bracket, atom_bal - charge, atom_bal - chiral, atom_oal - anything, atom_oal - bm_ibi, atom_oal - bm_tbi, atom_oal - bracket, atom_oal - ct, atom_oal - double_bond, atom_oal - no_bond, atom_oal - quadruple_bond, atom_oal - single_bond, atom_oal - triple_bond, hydro - bracket, hydro - charge	11
+A	?	atom_bal - bracket, atom_bal - charge, atom_bal - chiral, atom_oal - anything, atom_oal - bm_ibi, atom_oal - bm_tbi, atom_oal - bracket, atom_oal - ct, atom_oal - double_bond, atom_oal - no_bond, atom_oal - quadruple_bond, atom_oal - single_bond, atom_oal - triple_bond, hydro - bracket, hydro - charge	111
+A	?	atom_bal - bracket, atom_bal - charge, atom_bal - chiral, atom_oal - anything, atom_oal - bm_ibi, atom_oal - bm_tbi, atom_oal - bracket, atom_oal - ct, atom_oal - double_bond, atom_oal - no_bond, atom_oal - quadruple_bond, atom_oal - single_bond, atom_oal - triple_bond, hydro - bracket, hydro - charge	?AA1
+A	?	atom_bal - bracket, atom_bal - charge, atom_bal - chiral, atom_oal - anything, atom_oal - bm_ibi, atom_oal - bm_tbi, atom_oal - bracket, atom_oal - ct, atom_oal - double_bond, atom_oal - no_bond, atom_oal - quadruple_bond, atom_oal - single_bond, atom_oal - triple_bond, hydro - bracket, hydro - charge	?AA11
+A	?	atom_bal - bracket, atom_bal - charge, atom_bal - chiral, atom_oal - anything, atom_oal - bm_ibi, atom_oal - bm_tbi, atom_oal - bracket, atom_oal - ct, atom_oal - double_bond, atom_oal - no_bond, atom_oal - quadruple_bond, atom_oal - single_bond, atom_oal - triple_bond, hydro - bracket, hydro - charge	A1
+A	?	atom_bal - bracket, atom_bal - charge, atom_bal - chiral, atom_oal - anything, atom_oal - bm_ibi, atom_oal - bm_tbi, atom_oal - bracket, atom_oal - ct, atom_oal - double_bond, atom_oal - no_bond, atom_oal - quadruple_bond, atom_oal - single_bond, atom_oal - triple_bond, hydro - bracket, hydro - charge	?111
+A	?1	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_ire_2, atom_oal - bm_tre_2, hydro - charge_m, hydro - class_m	a
+A	?1	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_ire_2, atom_oal - bm_tre_2, hydro - charge_m, hydro - class_m	A
+A	?1	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_ire_2, atom_oal - bm_tre_2, hydro - charge_m, hydro - class_m	Aa
+A	?1	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_ire_2, atom_oal - bm_tre_2, hydro - charge_m, hydro - class_m	aa
+A	?1	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_ire_2, atom_oal - bm_tre_2, hydro - charge_m, hydro - class_m	?
+A	?1	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_ire_2, atom_oal - bm_tre_2, hydro - charge_m, hydro - class_m	1
+A	?1	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_ire_2, atom_oal - bm_tre_2, hydro - charge_m, hydro - class_m	??
+A	?1	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_ire_2, atom_oal - bm_tre_2, hydro - charge_m, hydro - class_m	?1
+A	?1	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_ire_2, atom_oal - bm_tre_2, hydro - charge_m, hydro - class_m	?11
+A	?1	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_ire_2, atom_oal - bm_tre_2, hydro - charge_m, hydro - class_m	??11
+A	?1	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_ire_2, atom_oal - bm_tre_2, hydro - charge_m, hydro - class_m	11
+A	?1	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_ire_2, atom_oal - bm_tre_2, hydro - charge_m, hydro - class_m	111
+A	?1	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_ire_2, atom_oal - bm_tre_2, hydro - charge_m, hydro - class_m	?AA1
+A	?1	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_ire_2, atom_oal - bm_tre_2, hydro - charge_m, hydro - class_m	?AA11
+A	?1	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_ire_2, atom_oal - bm_tre_2, hydro - charge_m, hydro - class_m	A1
+A	?1	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_ire_2, atom_oal - bm_tre_2, hydro - charge_m, hydro - class_m	?111
+A	?11	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_iri_3, atom_oal - bm_tri_3, hydro - charge_m, hydro - class_m	a
+A	?11	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_iri_3, atom_oal - bm_tri_3, hydro - charge_m, hydro - class_m	A
+A	?11	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_iri_3, atom_oal - bm_tri_3, hydro - charge_m, hydro - class_m	Aa
+A	?11	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_iri_3, atom_oal - bm_tri_3, hydro - charge_m, hydro - class_m	aa
+A	?11	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_iri_3, atom_oal - bm_tri_3, hydro - charge_m, hydro - class_m	?
+A	?11	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_iri_3, atom_oal - bm_tri_3, hydro - charge_m, hydro - class_m	1
+A	?11	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_iri_3, atom_oal - bm_tri_3, hydro - charge_m, hydro - class_m	??
+A	?11	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_iri_3, atom_oal - bm_tri_3, hydro - charge_m, hydro - class_m	?1
+A	?11	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_iri_3, atom_oal - bm_tri_3, hydro - charge_m, hydro - class_m	?11
+A	?11	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_iri_3, atom_oal - bm_tri_3, hydro - charge_m, hydro - class_m	??11
+A	?11	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_iri_3, atom_oal - bm_tri_3, hydro - charge_m, hydro - class_m	11
+A	?11	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_iri_3, atom_oal - bm_tri_3, hydro - charge_m, hydro - class_m	111
+A	?11	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_iri_3, atom_oal - bm_tri_3, hydro - charge_m, hydro - class_m	?AA1
+A	?11	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_iri_3, atom_oal - bm_tri_3, hydro - charge_m, hydro - class_m	?AA11
+A	?11	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_iri_3, atom_oal - bm_tri_3, hydro - charge_m, hydro - class_m	A1
+A	?11	atom_bal - charge_m, atom_bal - class_m, atom_oal - bm_iri_3, atom_oal - bm_tri_3, hydro - charge_m, hydro - class_m	?111
+A	?111	atom_bal - class_m, hydro - class_m	a
+A	?111	atom_bal - class_m, hydro - class_m	A
+A	?111	atom_bal - class_m, hydro - class_m	Aa
+A	?111	atom_bal - class_m, hydro - class_m	aa
+A	?111	atom_bal - class_m, hydro - class_m	?
+A	?111	atom_bal - class_m, hydro - class_m	1
+A	?111	atom_bal - class_m, hydro - class_m	??
+A	?111	atom_bal - class_m, hydro - class_m	?1
+A	?111	atom_bal - class_m, hydro - class_m	?11
+A	?111	atom_bal - class_m, hydro - class_m	??11
+A	?111	atom_bal - class_m, hydro - class_m	11
+A	?111	atom_bal - class_m, hydro - class_m	111
+A	?111	atom_bal - class_m, hydro - class_m	?AA1
+A	?111	atom_bal - class_m, hydro - class_m	?AA11
+A	?111	atom_bal - class_m, hydro - class_m	A1
+A	?111	atom_bal - class_m, hydro - class_m	?111
+A	??	atom_bal - charge_2, atom_bal - chiral_2, atom_oal - bm_ibe_2, atom_oal - bm_tbe_2, hydro - charge_2	a
+A	??	atom_bal - charge_2, atom_bal - chiral_2, atom_oal - bm_ibe_2, atom_oal - bm_tbe_2, hydro - charge_2	A
+A	??	atom_bal - charge_2, atom_bal - chiral_2, atom_oal - bm_ibe_2, atom_oal - bm_tbe_2, hydro - charge_2	Aa
+A	??	atom_bal - charge_2, atom_bal - chiral_2, atom_oal - bm_ibe_2, atom_oal - bm_tbe_2, hydro - charge_2	aa
+A	??	atom_bal - charge_2, atom_bal - chiral_2, atom_oal - bm_ibe_2, atom_oal - bm_tbe_2, hydro - charge_2	?
+A	??	atom_bal - charge_2, atom_bal - chiral_2, atom_oal - bm_ibe_2, atom_oal - bm_tbe_2, hydro - charge_2	1
+A	??	atom_bal - charge_2, atom_bal - chiral_2, atom_oal - bm_ibe_2, atom_oal - bm_tbe_2, hydro - charge_2	??
+A	??	atom_bal - charge_2, atom_bal - chiral_2, atom_oal - bm_ibe_2, atom_oal - bm_tbe_2, hydro - charge_2	?1
+A	??	atom_bal - charge_2, atom_bal - chiral_2, atom_oal - bm_ibe_2, atom_oal - bm_tbe_2, hydro - charge_2	?11
+A	??	atom_bal - charge_2, atom_bal - chiral_2, atom_oal - bm_ibe_2, atom_oal - bm_tbe_2, hydro - charge_2	??11
+A	??	atom_bal - charge_2, atom_bal - chiral_2, atom_oal - bm_ibe_2, atom_oal - bm_tbe_2, hydro - charge_2	11
+A	??	atom_bal - charge_2, atom_bal - chiral_2, atom_oal - bm_ibe_2, atom_oal - bm_tbe_2, hydro - charge_2	111
+A	??	atom_bal - charge_2, atom_bal - chiral_2, atom_oal - bm_ibe_2, atom_oal - bm_tbe_2, hydro - charge_2	?AA1
+A	??	atom_bal - charge_2, atom_bal - chiral_2, atom_oal - bm_ibe_2, atom_oal - bm_tbe_2, hydro - charge_2	?AA11
+A	??	atom_bal - charge_2, atom_bal - chiral_2, atom_oal - bm_ibe_2, atom_oal - bm_tbe_2, hydro - charge_2	A1
+A	??	atom_bal - charge_2, atom_bal - chiral_2, atom_oal - bm_ibe_2, atom_oal - bm_tbe_2, hydro - charge_2	?111
+A	??11	atom_oal - bm_ire_4, atom_oal - bm_tre_4	a
+A	??11	atom_oal - bm_ire_4, atom_oal - bm_tre_4	A
+A	??11	atom_oal - bm_ire_4, atom_oal - bm_tre_4	Aa
+A	??11	atom_oal - bm_ire_4, atom_oal - bm_tre_4	aa
+A	??11	atom_oal - bm_ire_4, atom_oal - bm_tre_4	?
+A	??11	atom_oal - bm_ire_4, atom_oal - bm_tre_4	1
+A	??11	atom_oal - bm_ire_4, atom_oal - bm_tre_4	??
+A	??11	atom_oal - bm_ire_4, atom_oal - bm_tre_4	?1
+A	??11	atom_oal - bm_ire_4, atom_oal - bm_tre_4	?11
+A	??11	atom_oal - bm_ire_4, atom_oal - bm_tre_4	??11
+A	??11	atom_oal - bm_ire_4, atom_oal - bm_tre_4	11
+A	??11	atom_oal - bm_ire_4, atom_oal - bm_tre_4	111
+A	??11	atom_oal - bm_ire_4, atom_oal - bm_tre_4	?AA1
+A	??11	atom_oal - bm_ire_4, atom_oal - bm_tre_4	?AA11
+A	??11	atom_oal - bm_ire_4, atom_oal - bm_tre_4	A1
+A	??11	atom_oal - bm_ire_4, atom_oal - bm_tre_4	?111
+A	?AA1	atom_bal - chiral_m	a
+A	?AA1	atom_bal - chiral_m	A
+A	?AA1	atom_bal - chiral_m	Aa
+A	?AA1	atom_bal - chiral_m	aa
+A	?AA1	atom_bal - chiral_m	?
+A	?AA1	atom_bal - chiral_m	1
+A	?AA1	atom_bal - chiral_m	??
+A	?AA1	atom_bal - chiral_m	?1
+A	?AA1	atom_bal - chiral_m	?11
+A	?AA1	atom_bal - chiral_m	??11
+A	?AA1	atom_bal - chiral_m	11
+A	?AA1	atom_bal - chiral_m	111
+A	?AA1	atom_bal - chiral_m	?AA1
+A	?AA1	atom_bal - chiral_m	?AA11
+A	?AA1	atom_bal - chiral_m	A1
+A	?AA1	atom_bal - chiral_m	?111
+A	?AA11	atom_bal - chiral_m	a
+A	?AA11	atom_bal - chiral_m	A
+A	?AA11	atom_bal - chiral_m	Aa
+A	?AA11	atom_bal - chiral_m	aa
+A	?AA11	atom_bal - chiral_m	?
+A	?AA11	atom_bal - chiral_m	1
+A	?AA11	atom_bal - chiral_m	??
+A	?AA11	atom_bal - chiral_m	?1
+A	?AA11	atom_bal - chiral_m	?11
+A	?AA11	atom_bal - chiral_m	??11
+A	?AA11	atom_bal - chiral_m	11
+A	?AA11	atom_bal - chiral_m	111
+A	?AA11	atom_bal - chiral_m	?AA1
+A	?AA11	atom_bal - chiral_m	?AA11
+A	?AA11	atom_bal - chiral_m	A1
+A	?AA11	atom_bal - chiral_m	?111
+A	A	atom_bal - hydro, atom_oal - atom_oal	a
+A	A	atom_bal - hydro, atom_oal - atom_oal	A
+A	A	atom_bal - hydro, atom_oal - atom_oal	Aa
+A	A	atom_bal - hydro, atom_oal - atom_oal	aa
+A	A	atom_bal - hydro, atom_oal - atom_oal	?
+A	A	atom_bal - hydro, atom_oal - atom_oal	1
+A	A	atom_bal - hydro, atom_oal - atom_oal	??
+A	A	atom_bal - hydro, atom_oal - atom_oal	?1
+A	A	atom_bal - hydro, atom_oal - atom_oal	?11
+A	A	atom_bal - hydro, atom_oal - atom_oal	??11
+A	A	atom_bal - hydro, atom_oal - atom_oal	11
+A	A	atom_bal - hydro, atom_oal - atom_oal	111
+A	A	atom_bal - hydro, atom_oal - atom_oal	?AA1
+A	A	atom_bal - hydro, atom_oal - atom_oal	?AA11
+A	A	atom_bal - hydro, atom_oal - atom_oal	A1
+A	A	atom_bal - hydro, atom_oal - atom_oal	?111
+A	A1	atom_bal - hydro_2	a
+A	A1	atom_bal - hydro_2	A
+A	A1	atom_bal - hydro_2	Aa
+A	A1	atom_bal - hydro_2	aa
+A	A1	atom_bal - hydro_2	?
+A	A1	atom_bal - hydro_2	1
+A	A1	atom_bal - hydro_2	??
+A	A1	atom_bal - hydro_2	?1
+A	A1	atom_bal - hydro_2	?11
+A	A1	atom_bal - hydro_2	??11
+A	A1	atom_bal - hydro_2	11
+A	A1	atom_bal - hydro_2	111
+A	A1	atom_bal - hydro_2	?AA1
+A	A1	atom_bal - hydro_2	?AA11
+A	A1	atom_bal - hydro_2	A1
+A	A1	atom_bal - hydro_2	?111
+A	Aa	atom_oal - atom_oal_2	a
+A	Aa	atom_oal - atom_oal_2	A
+A	Aa	atom_oal - atom_oal_2	Aa
+A	Aa	atom_oal - atom_oal_2	aa
+A	Aa	atom_oal - atom_oal_2	?
+A	Aa	atom_oal - atom_oal_2	1
+A	Aa	atom_oal - atom_oal_2	??
+A	Aa	atom_oal - atom_oal_2	?1
+A	Aa	atom_oal - atom_oal_2	?11
+A	Aa	atom_oal - atom_oal_2	??11
+A	Aa	atom_oal - atom_oal_2	11
+A	Aa	atom_oal - atom_oal_2	111
+A	Aa	atom_oal - atom_oal_2	?AA1
+A	Aa	atom_oal - atom_oal_2	?AA11
+A	Aa	atom_oal - atom_oal_2	A1
+A	Aa	atom_oal - atom_oal_2	?111
+A	a	atom_oal - atom_oar	a
+A	a	atom_oal - atom_oar	A
+A	a	atom_oal - atom_oar	Aa
+A	a	atom_oal - atom_oar	aa
+A	a	atom_oal - atom_oar	?
+A	a	atom_oal - atom_oar	1
+A	a	atom_oal - atom_oar	??
+A	a	atom_oal - atom_oar	?1
+A	a	atom_oal - atom_oar	?11
+A	a	atom_oal - atom_oar	??11
+A	a	atom_oal - atom_oar	11
+A	a	atom_oal - atom_oar	111
+A	a	atom_oal - atom_oar	?AA1
+A	a	atom_oal - atom_oar	?AA11
+A	a	atom_oal - atom_oar	A1
+A	a	atom_oal - atom_oar	?111
+A1	?	hydro_2 - bracket, hydro_2 - charge	a
+A1	?	hydro_2 - bracket, hydro_2 - charge	A
+A1	?	hydro_2 - bracket, hydro_2 - charge	Aa
+A1	?	hydro_2 - bracket, hydro_2 - charge	aa
+A1	?	hydro_2 - bracket, hydro_2 - charge	?
+A1	?	hydro_2 - bracket, hydro_2 - charge	1
+A1	?	hydro_2 - bracket, hydro_2 - charge	??
+A1	?	hydro_2 - bracket, hydro_2 - charge	?1
+A1	?	hydro_2 - bracket, hydro_2 - charge	?11
+A1	?	hydro_2 - bracket, hydro_2 - charge	??11
+A1	?	hydro_2 - bracket, hydro_2 - charge	11
+A1	?	hydro_2 - bracket, hydro_2 - charge	111
+A1	?	hydro_2 - bracket, hydro_2 - charge	?AA1
+A1	?	hydro_2 - bracket, hydro_2 - charge	?AA11
+A1	?	hydro_2 - bracket, hydro_2 - charge	A1
+A1	?	hydro_2 - bracket, hydro_2 - charge	?111
+A1	?1	hydro_2 - charge_m, hydro_2 - class_m	a
+A1	?1	hydro_2 - charge_m, hydro_2 - class_m	A
+A1	?1	hydro_2 - charge_m, hydro_2 - class_m	Aa
+A1	?1	hydro_2 - charge_m, hydro_2 - class_m	aa
+A1	?1	hydro_2 - charge_m, hydro_2 - class_m	?
+A1	?1	hydro_2 - charge_m, hydro_2 - class_m	1
+A1	?1	hydro_2 - charge_m, hydro_2 - class_m	??
+A1	?1	hydro_2 - charge_m, hydro_2 - class_m	?1
+A1	?1	hydro_2 - charge_m, hydro_2 - class_m	?11
+A1	?1	hydro_2 - charge_m, hydro_2 - class_m	??11
+A1	?1	hydro_2 - charge_m, hydro_2 - class_m	11
+A1	?1	hydro_2 - charge_m, hydro_2 - class_m	111
+A1	?1	hydro_2 - charge_m, hydro_2 - class_m	?AA1
+A1	?1	hydro_2 - charge_m, hydro_2 - class_m	?AA11
+A1	?1	hydro_2 - charge_m, hydro_2 - class_m	A1
+A1	?1	hydro_2 - charge_m, hydro_2 - class_m	?111
+A1	?11	hydro_2 - charge_m, hydro_2 - class_m	a
+A1	?11	hydro_2 - charge_m, hydro_2 - class_m	A
+A1	?11	hydro_2 - charge_m, hydro_2 - class_m	Aa
+A1	?11	hydro_2 - charge_m, hydro_2 - class_m	aa
+A1	?11	hydro_2 - charge_m, hydro_2 - class_m	?
+A1	?11	hydro_2 - charge_m, hydro_2 - class_m	1
+A1	?11	hydro_2 - charge_m, hydro_2 - class_m	??
+A1	?11	hydro_2 - charge_m, hydro_2 - class_m	?1
+A1	?11	hydro_2 - charge_m, hydro_2 - class_m	?11
+A1	?11	hydro_2 - charge_m, hydro_2 - class_m	??11
+A1	?11	hydro_2 - charge_m, hydro_2 - class_m	11
+A1	?11	hydro_2 - charge_m, hydro_2 - class_m	111
+A1	?11	hydro_2 - charge_m, hydro_2 - class_m	?AA1
+A1	?11	hydro_2 - charge_m, hydro_2 - class_m	?AA11
+A1	?11	hydro_2 - charge_m, hydro_2 - class_m	A1
+A1	?11	hydro_2 - charge_m, hydro_2 - class_m	?111
+A1	?111	hydro_2 - class_m	a
+A1	?111	hydro_2 - class_m	A
+A1	?111	hydro_2 - class_m	Aa
+A1	?111	hydro_2 - class_m	aa
+A1	?111	hydro_2 - class_m	?
+A1	?111	hydro_2 - class_m	1
+A1	?111	hydro_2 - class_m	??
+A1	?111	hydro_2 - class_m	?1
+A1	?111	hydro_2 - class_m	?11
+A1	?111	hydro_2 - class_m	??11
+A1	?111	hydro_2 - class_m	11
+A1	?111	hydro_2 - class_m	111
+A1	?111	hydro_2 - class_m	?AA1
+A1	?111	hydro_2 - class_m	?AA11
+A1	?111	hydro_2 - class_m	A1
+A1	?111	hydro_2 - class_m	?111
+A1	??	hydro_2 - charge_2	a
+A1	??	hydro_2 - charge_2	A
+A1	??	hydro_2 - charge_2	Aa
+A1	??	hydro_2 - charge_2	aa
+A1	??	hydro_2 - charge_2	?
+A1	??	hydro_2 - charge_2	1
+A1	??	hydro_2 - charge_2	??
+A1	??	hydro_2 - charge_2	?1
+A1	??	hydro_2 - charge_2	?11
+A1	??	hydro_2 - charge_2	??11
+A1	??	hydro_2 - charge_2	11
+A1	??	hydro_2 - charge_2	111
+A1	??	hydro_2 - charge_2	?AA1
+A1	??	hydro_2 - charge_2	?AA11
+A1	??	hydro_2 - charge_2	A1
+A1	??	hydro_2 - charge_2	?111
+Aa	1	atom_oal_2 - bm_iri, atom_oal_2 - bm_tri	a
+Aa	1	atom_oal_2 - bm_iri, atom_oal_2 - bm_tri	A
+Aa	1	atom_oal_2 - bm_iri, atom_oal_2 - bm_tri	Aa
+Aa	1	atom_oal_2 - bm_iri, atom_oal_2 - bm_tri	aa
+Aa	1	atom_oal_2 - bm_iri, atom_oal_2 - bm_tri	?
+Aa	1	atom_oal_2 - bm_iri, atom_oal_2 - bm_tri	1
+Aa	1	atom_oal_2 - bm_iri, atom_oal_2 - bm_tri	??
+Aa	1	atom_oal_2 - bm_iri, atom_oal_2 - bm_tri	?1
+Aa	1	atom_oal_2 - bm_iri, atom_oal_2 - bm_tri	?11
+Aa	1	atom_oal_2 - bm_iri, atom_oal_2 - bm_tri	??11
+Aa	1	atom_oal_2 - bm_iri, atom_oal_2 - bm_tri	11
+Aa	1	atom_oal_2 - bm_iri, atom_oal_2 - bm_tri	111
+Aa	1	atom_oal_2 - bm_iri, atom_oal_2 - bm_tri	?AA1
+Aa	1	atom_oal_2 - bm_iri, atom_oal_2 - bm_tri	?AA11
+Aa	1	atom_oal_2 - bm_iri, atom_oal_2 - bm_tri	A1
+Aa	1	atom_oal_2 - bm_iri, atom_oal_2 - bm_tri	?111
+Aa	?	atom_bal_2 - bracket, atom_bal_2 - charge, atom_bal_2 - chiral, atom_oal_2 - anything, atom_oal_2 - bm_ibi, atom_oal_2 - bm_tbi, atom_oal_2 - bracket, atom_oal_2 - ct, atom_oal_2 - double_bond, atom_oal_2 - no_bond, atom_oal_2 - quadruple_bond, atom_oal_2 - single_bond, atom_oal_2 - triple_bond	a
+Aa	?	atom_bal_2 - bracket, atom_bal_2 - charge, atom_bal_2 - chiral, atom_oal_2 - anything, atom_oal_2 - bm_ibi, atom_oal_2 - bm_tbi, atom_oal_2 - bracket, atom_oal_2 - ct, atom_oal_2 - double_bond, atom_oal_2 - no_bond, atom_oal_2 - quadruple_bond, atom_oal_2 - single_bond, atom_oal_2 - triple_bond	A
+Aa	?	atom_bal_2 - bracket, atom_bal_2 - charge, atom_bal_2 - chiral, atom_oal_2 - anything, atom_oal_2 - bm_ibi, atom_oal_2 - bm_tbi, atom_oal_2 - bracket, atom_oal_2 - ct, atom_oal_2 - double_bond, atom_oal_2 - no_bond, atom_oal_2 - quadruple_bond, atom_oal_2 - single_bond, atom_oal_2 - triple_bond	Aa
+Aa	?	atom_bal_2 - bracket, atom_bal_2 - charge, atom_bal_2 - chiral, atom_oal_2 - anything, atom_oal_2 - bm_ibi, atom_oal_2 - bm_tbi, atom_oal_2 - bracket, atom_oal_2 - ct, atom_oal_2 - double_bond, atom_oal_2 - no_bond, atom_oal_2 - quadruple_bond, atom_oal_2 - single_bond, atom_oal_2 - triple_bond	aa
+Aa	?	atom_bal_2 - bracket, atom_bal_2 - charge, atom_bal_2 - chiral, atom_oal_2 - anything, atom_oal_2 - bm_ibi, atom_oal_2 - bm_tbi, atom_oal_2 - bracket, atom_oal_2 - ct, atom_oal_2 - double_bond, atom_oal_2 - no_bond, atom_oal_2 - quadruple_bond, atom_oal_2 - single_bond, atom_oal_2 - triple_bond	?
+Aa	?	atom_bal_2 - bracket, atom_bal_2 - charge, atom_bal_2 - chiral, atom_oal_2 - anything, atom_oal_2 - bm_ibi, atom_oal_2 - bm_tbi, atom_oal_2 - bracket, atom_oal_2 - ct, atom_oal_2 - double_bond, atom_oal_2 - no_bond, atom_oal_2 - quadruple_bond, atom_oal_2 - single_bond, atom_oal_2 - triple_bond	1
+Aa	?	atom_bal_2 - bracket, atom_bal_2 - charge, atom_bal_2 - chiral, atom_oal_2 - anything, atom_oal_2 - bm_ibi, atom_oal_2 - bm_tbi, atom_oal_2 - bracket, atom_oal_2 - ct, atom_oal_2 - double_bond, atom_oal_2 - no_bond, atom_oal_2 - quadruple_bond, atom_oal_2 - single_bond, atom_oal_2 - triple_bond	??
+Aa	?	atom_bal_2 - bracket, atom_bal_2 - charge, atom_bal_2 - chiral, atom_oal_2 - anything, atom_oal_2 - bm_ibi, atom_oal_2 - bm_tbi, atom_oal_2 - bracket, atom_oal_2 - ct, atom_oal_2 - double_bond, atom_oal_2 - no_bond, atom_oal_2 - quadruple_bond, atom_oal_2 - single_bond, atom_oal_2 - triple_bond	?1
+Aa	?	atom_bal_2 - bracket, atom_bal_2 - charge, atom_bal_2 - chiral, atom_oal_2 - anything, atom_oal_2 - bm_ibi, atom_oal_2 - bm_tbi, atom_oal_2 - bracket, atom_oal_2 - ct, atom_oal_2 - double_bond, atom_oal_2 - no_bond, atom_oal_2 - quadruple_bond, atom_oal_2 - single_bond, atom_oal_2 - triple_bond	?11
+Aa	?	atom_bal_2 - bracket, atom_bal_2 - charge, atom_bal_2 - chiral, atom_oal_2 - anything, atom_oal_2 - bm_ibi, atom_oal_2 - bm_tbi, atom_oal_2 - bracket, atom_oal_2 - ct, atom_oal_2 - double_bond, atom_oal_2 - no_bond, atom_oal_2 - quadruple_bond, atom_oal_2 - single_bond, atom_oal_2 - triple_bond	??11
+Aa	?	atom_bal_2 - bracket, atom_bal_2 - charge, atom_bal_2 - chiral, atom_oal_2 - anything, atom_oal_2 - bm_ibi, atom_oal_2 - bm_tbi, atom_oal_2 - bracket, atom_oal_2 - ct, atom_oal_2 - double_bond, atom_oal_2 - no_bond, atom_oal_2 - quadruple_bond, atom_oal_2 - single_bond, atom_oal_2 - triple_bond	11
+Aa	?	atom_bal_2 - bracket, atom_bal_2 - charge, atom_bal_2 - chiral, atom_oal_2 - anything, atom_oal_2 - bm_ibi, atom_oal_2 - bm_tbi, atom_oal_2 - bracket, atom_oal_2 - ct, atom_oal_2 - double_bond, atom_oal_2 - no_bond, atom_oal_2 - quadruple_bond, atom_oal_2 - single_bond, atom_oal_2 - triple_bond	111
+Aa	?	atom_bal_2 - bracket, atom_bal_2 - charge, atom_bal_2 - chiral, atom_oal_2 - anything, atom_oal_2 - bm_ibi, atom_oal_2 - bm_tbi, atom_oal_2 - bracket, atom_oal_2 - ct, atom_oal_2 - double_bond, atom_oal_2 - no_bond, atom_oal_2 - quadruple_bond, atom_oal_2 - single_bond, atom_oal_2 - triple_bond	?AA1
+Aa	?	atom_bal_2 - bracket, atom_bal_2 - charge, atom_bal_2 - chiral, atom_oal_2 - anything, atom_oal_2 - bm_ibi, atom_oal_2 - bm_tbi, atom_oal_2 - bracket, atom_oal_2 - ct, atom_oal_2 - double_bond, atom_oal_2 - no_bond, atom_oal_2 - quadruple_bond, atom_oal_2 - single_bond, atom_oal_2 - triple_bond	?AA11
+Aa	?	atom_bal_2 - bracket, atom_bal_2 - charge, atom_bal_2 - chiral, atom_oal_2 - anything, atom_oal_2 - bm_ibi, atom_oal_2 - bm_tbi, atom_oal_2 - bracket, atom_oal_2 - ct, atom_oal_2 - double_bond, atom_oal_2 - no_bond, atom_oal_2 - quadruple_bond, atom_oal_2 - single_bond, atom_oal_2 - triple_bond	A1
+Aa	?	atom_bal_2 - bracket, atom_bal_2 - charge, atom_bal_2 - chiral, atom_oal_2 - anything, atom_oal_2 - bm_ibi, atom_oal_2 - bm_tbi, atom_oal_2 - bracket, atom_oal_2 - ct, atom_oal_2 - double_bond, atom_oal_2 - no_bond, atom_oal_2 - quadruple_bond, atom_oal_2 - single_bond, atom_oal_2 - triple_bond	?111
+Aa	?1	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_ire_2, atom_oal_2 - bm_tre_2	a
+Aa	?1	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_ire_2, atom_oal_2 - bm_tre_2	A
+Aa	?1	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_ire_2, atom_oal_2 - bm_tre_2	Aa
+Aa	?1	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_ire_2, atom_oal_2 - bm_tre_2	aa
+Aa	?1	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_ire_2, atom_oal_2 - bm_tre_2	?
+Aa	?1	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_ire_2, atom_oal_2 - bm_tre_2	1
+Aa	?1	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_ire_2, atom_oal_2 - bm_tre_2	??
+Aa	?1	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_ire_2, atom_oal_2 - bm_tre_2	?1
+Aa	?1	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_ire_2, atom_oal_2 - bm_tre_2	?11
+Aa	?1	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_ire_2, atom_oal_2 - bm_tre_2	??11
+Aa	?1	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_ire_2, atom_oal_2 - bm_tre_2	11
+Aa	?1	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_ire_2, atom_oal_2 - bm_tre_2	111
+Aa	?1	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_ire_2, atom_oal_2 - bm_tre_2	?AA1
+Aa	?1	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_ire_2, atom_oal_2 - bm_tre_2	?AA11
+Aa	?1	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_ire_2, atom_oal_2 - bm_tre_2	A1
+Aa	?1	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_ire_2, atom_oal_2 - bm_tre_2	?111
+Aa	?11	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_iri_3, atom_oal_2 - bm_tri_3	a
+Aa	?11	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_iri_3, atom_oal_2 - bm_tri_3	A
+Aa	?11	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_iri_3, atom_oal_2 - bm_tri_3	Aa
+Aa	?11	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_iri_3, atom_oal_2 - bm_tri_3	aa
+Aa	?11	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_iri_3, atom_oal_2 - bm_tri_3	?
+Aa	?11	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_iri_3, atom_oal_2 - bm_tri_3	1
+Aa	?11	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_iri_3, atom_oal_2 - bm_tri_3	??
+Aa	?11	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_iri_3, atom_oal_2 - bm_tri_3	?1
+Aa	?11	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_iri_3, atom_oal_2 - bm_tri_3	?11
+Aa	?11	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_iri_3, atom_oal_2 - bm_tri_3	??11
+Aa	?11	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_iri_3, atom_oal_2 - bm_tri_3	11
+Aa	?11	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_iri_3, atom_oal_2 - bm_tri_3	111
+Aa	?11	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_iri_3, atom_oal_2 - bm_tri_3	?AA1
+Aa	?11	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_iri_3, atom_oal_2 - bm_tri_3	?AA11
+Aa	?11	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_iri_3, atom_oal_2 - bm_tri_3	A1
+Aa	?11	atom_bal_2 - charge_m, atom_bal_2 - class_m, atom_oal_2 - bm_iri_3, atom_oal_2 - bm_tri_3	?111
+Aa	?111	atom_bal_2 - class_m	a
+Aa	?111	atom_bal_2 - class_m	A
+Aa	?111	atom_bal_2 - class_m	Aa
+Aa	?111	atom_bal_2 - class_m	aa
+Aa	?111	atom_bal_2 - class_m	?
+Aa	?111	atom_bal_2 - class_m	1
+Aa	?111	atom_bal_2 - class_m	??
+Aa	?111	atom_bal_2 - class_m	?1
+Aa	?111	atom_bal_2 - class_m	?11
+Aa	?111	atom_bal_2 - class_m	??11
+Aa	?111	atom_bal_2 - class_m	11
+Aa	?111	atom_bal_2 - class_m	111
+Aa	?111	atom_bal_2 - class_m	?AA1
+Aa	?111	atom_bal_2 - class_m	?AA11
+Aa	?111	atom_bal_2 - class_m	A1
+Aa	?111	atom_bal_2 - class_m	?111
+Aa	??	atom_bal_2 - charge_2, atom_bal_2 - chiral_2, atom_oal_2 - bm_ibe_2, atom_oal_2 - bm_tbe_2	a
+Aa	??	atom_bal_2 - charge_2, atom_bal_2 - chiral_2, atom_oal_2 - bm_ibe_2, atom_oal_2 - bm_tbe_2	A
+Aa	??	atom_bal_2 - charge_2, atom_bal_2 - chiral_2, atom_oal_2 - bm_ibe_2, atom_oal_2 - bm_tbe_2	Aa
+Aa	??	atom_bal_2 - charge_2, atom_bal_2 - chiral_2, atom_oal_2 - bm_ibe_2, atom_oal_2 - bm_tbe_2	aa
+Aa	??	atom_bal_2 - charge_2, atom_bal_2 - chiral_2, atom_oal_2 - bm_ibe_2, atom_oal_2 - bm_tbe_2	?
+Aa	??	atom_bal_2 - charge_2, atom_bal_2 - chiral_2, atom_oal_2 - bm_ibe_2, atom_oal_2 - bm_tbe_2	1
+Aa	??	atom_bal_2 - charge_2, atom_bal_2 - chiral_2, atom_oal_2 - bm_ibe_2, atom_oal_2 - bm_tbe_2	??
+Aa	??	atom_bal_2 - charge_2, atom_bal_2 - chiral_2, atom_oal_2 - bm_ibe_2, atom_oal_2 - bm_tbe_2	?1
+Aa	??	atom_bal_2 - charge_2, atom_bal_2 - chiral_2, atom_oal_2 - bm_ibe_2, atom_oal_2 - bm_tbe_2	?11
+Aa	??	atom_bal_2 - charge_2, atom_bal_2 - chiral_2, atom_oal_2 - bm_ibe_2, atom_oal_2 - bm_tbe_2	??11
+Aa	??	atom_bal_2 - charge_2, atom_bal_2 - chiral_2, atom_oal_2 - bm_ibe_2, atom_oal_2 - bm_tbe_2	11
+Aa	??	atom_bal_2 - charge_2, atom_bal_2 - chiral_2, atom_oal_2 - bm_ibe_2, atom_oal_2 - bm_tbe_2	111
+Aa	??	atom_bal_2 - charge_2, atom_bal_2 - chiral_2, atom_oal_2 - bm_ibe_2, atom_oal_2 - bm_tbe_2	?AA1
+Aa	??	atom_bal_2 - charge_2, atom_bal_2 - chiral_2, atom_oal_2 - bm_ibe_2, atom_oal_2 - bm_tbe_2	?AA11
+Aa	??	atom_bal_2 - charge_2, atom_bal_2 - chiral_2, atom_oal_2 - bm_ibe_2, atom_oal_2 - bm_tbe_2	A1
+Aa	??	atom_bal_2 - charge_2, atom_bal_2 - chiral_2, atom_oal_2 - bm_ibe_2, atom_oal_2 - bm_tbe_2	?111
+Aa	??11	atom_oal_2 - bm_ire_4, atom_oal_2 - bm_tre_4	a
+Aa	??11	atom_oal_2 - bm_ire_4, atom_oal_2 - bm_tre_4	A
+Aa	??11	atom_oal_2 - bm_ire_4, atom_oal_2 - bm_tre_4	Aa
+Aa	??11	atom_oal_2 - bm_ire_4, atom_oal_2 - bm_tre_4	aa
+Aa	??11	atom_oal_2 - bm_ire_4, atom_oal_2 - bm_tre_4	?
+Aa	??11	atom_oal_2 - bm_ire_4, atom_oal_2 - bm_tre_4	1
+Aa	??11	atom_oal_2 - bm_ire_4, atom_oal_2 - bm_tre_4	??
+Aa	??11	atom_oal_2 - bm_ire_4, atom_oal_2 - bm_tre_4	?1
+Aa	??11	atom_oal_2 - bm_ire_4, atom_oal_2 - bm_tre_4	?11
+Aa	??11	atom_oal_2 - bm_ire_4, atom_oal_2 - bm_tre_4	??11
+Aa	??11	atom_oal_2 - bm_ire_4, atom_oal_2 - bm_tre_4	11
+Aa	??11	atom_oal_2 - bm_ire_4, atom_oal_2 - bm_tre_4	111
+Aa	??11	atom_oal_2 - bm_ire_4, atom_oal_2 - bm_tre_4	?AA1
+Aa	??11	atom_oal_2 - bm_ire_4, atom_oal_2 - bm_tre_4	?AA11
+Aa	??11	atom_oal_2 - bm_ire_4, atom_oal_2 - bm_tre_4	A1
+Aa	??11	atom_oal_2 - bm_ire_4, atom_oal_2 - bm_tre_4	?111
+Aa	?AA1	atom_bal_2 - chiral_m	a
+Aa	?AA1	atom_bal_2 - chiral_m	A
+Aa	?AA1	atom_bal_2 - chiral_m	Aa
+Aa	?AA1	atom_bal_2 - chiral_m	aa
+Aa	?AA1	atom_bal_2 - chiral_m	?
+Aa	?AA1	atom_bal_2 - chiral_m	1
+Aa	?AA1	atom_bal_2 - chiral_m	??
+Aa	?AA1	atom_bal_2 - chiral_m	?1
+Aa	?AA1	atom_bal_2 - chiral_m	?11
+Aa	?AA1	atom_bal_2 - chiral_m	??11
+Aa	?AA1	atom_bal_2 - chiral_m	11
+Aa	?AA1	atom_bal_2 - chiral_m	111
+Aa	?AA1	atom_bal_2 - chiral_m	?AA1
+Aa	?AA1	atom_bal_2 - chiral_m	?AA11
+Aa	?AA1	atom_bal_2 - chiral_m	A1
+Aa	?AA1	atom_bal_2 - chiral_m	?111
+Aa	?AA11	atom_bal_2 - chiral_m	a
+Aa	?AA11	atom_bal_2 - chiral_m	A
+Aa	?AA11	atom_bal_2 - chiral_m	Aa
+Aa	?AA11	atom_bal_2 - chiral_m	aa
+Aa	?AA11	atom_bal_2 - chiral_m	?
+Aa	?AA11	atom_bal_2 - chiral_m	1
+Aa	?AA11	atom_bal_2 - chiral_m	??
+Aa	?AA11	atom_bal_2 - chiral_m	?1
+Aa	?AA11	atom_bal_2 - chiral_m	?11
+Aa	?AA11	atom_bal_2 - chiral_m	??11
+Aa	?AA11	atom_bal_2 - chiral_m	11
+Aa	?AA11	atom_bal_2 - chiral_m	111
+Aa	?AA11	atom_bal_2 - chiral_m	?AA1
+Aa	?AA11	atom_bal_2 - chiral_m	?AA11
+Aa	?AA11	atom_bal_2 - chiral_m	A1
+Aa	?AA11	atom_bal_2 - chiral_m	?111
+Aa	A	atom_bal_2 - hydro, atom_oal_2 - atom_oal	a
+Aa	A	atom_bal_2 - hydro, atom_oal_2 - atom_oal	A
+Aa	A	atom_bal_2 - hydro, atom_oal_2 - atom_oal	Aa
+Aa	A	atom_bal_2 - hydro, atom_oal_2 - atom_oal	aa
+Aa	A	atom_bal_2 - hydro, atom_oal_2 - atom_oal	?
+Aa	A	atom_bal_2 - hydro, atom_oal_2 - atom_oal	1
+Aa	A	atom_bal_2 - hydro, atom_oal_2 - atom_oal	??
+Aa	A	atom_bal_2 - hydro, atom_oal_2 - atom_oal	?1
+Aa	A	atom_bal_2 - hydro, atom_oal_2 - atom_oal	?11
+Aa	A	atom_bal_2 - hydro, atom_oal_2 - atom_oal	??11
+Aa	A	atom_bal_2 - hydro, atom_oal_2 - atom_oal	11
+Aa	A	atom_bal_2 - hydro, atom_oal_2 - atom_oal	111
+Aa	A	atom_bal_2 - hydro, atom_oal_2 - atom_oal	?AA1
+Aa	A	atom_bal_2 - hydro, atom_oal_2 - atom_oal	?AA11
+Aa	A	atom_bal_2 - hydro, atom_oal_2 - atom_oal	A1
+Aa	A	atom_bal_2 - hydro, atom_oal_2 - atom_oal	?111
+Aa	A1	atom_bal_2 - hydro_2	a
+Aa	A1	atom_bal_2 - hydro_2	A
+Aa	A1	atom_bal_2 - hydro_2	Aa
+Aa	A1	atom_bal_2 - hydro_2	aa
+Aa	A1	atom_bal_2 - hydro_2	?
+Aa	A1	atom_bal_2 - hydro_2	1
+Aa	A1	atom_bal_2 - hydro_2	??
+Aa	A1	atom_bal_2 - hydro_2	?1
+Aa	A1	atom_bal_2 - hydro_2	?11
+Aa	A1	atom_bal_2 - hydro_2	??11
+Aa	A1	atom_bal_2 - hydro_2	11
+Aa	A1	atom_bal_2 - hydro_2	111
+Aa	A1	atom_bal_2 - hydro_2	?AA1
+Aa	A1	atom_bal_2 - hydro_2	?AA11
+Aa	A1	atom_bal_2 - hydro_2	A1
+Aa	A1	atom_bal_2 - hydro_2	?111
+Aa	Aa	atom_bal_2 - atom_bal_2, atom_oal_2 - atom_oal_2	a
+Aa	Aa	atom_bal_2 - atom_bal_2, atom_oal_2 - atom_oal_2	A
+Aa	Aa	atom_bal_2 - atom_bal_2, atom_oal_2 - atom_oal_2	Aa
+Aa	Aa	atom_bal_2 - atom_bal_2, atom_oal_2 - atom_oal_2	aa
+Aa	Aa	atom_bal_2 - atom_bal_2, atom_oal_2 - atom_oal_2	?
+Aa	Aa	atom_bal_2 - atom_bal_2, atom_oal_2 - atom_oal_2	1
+Aa	Aa	atom_bal_2 - atom_bal_2, atom_oal_2 - atom_oal_2	??
+Aa	Aa	atom_bal_2 - atom_bal_2, atom_oal_2 - atom_oal_2	?1
+Aa	Aa	atom_bal_2 - atom_bal_2, atom_oal_2 - atom_oal_2	?11
+Aa	Aa	atom_bal_2 - atom_bal_2, atom_oal_2 - atom_oal_2	??11
+Aa	Aa	atom_bal_2 - atom_bal_2, atom_oal_2 - atom_oal_2	11
+Aa	Aa	atom_bal_2 - atom_bal_2, atom_oal_2 - atom_oal_2	111
+Aa	Aa	atom_bal_2 - atom_bal_2, atom_oal_2 - atom_oal_2	?AA1
+Aa	Aa	atom_bal_2 - atom_bal_2, atom_oal_2 - atom_oal_2	?AA11
+Aa	Aa	atom_bal_2 - atom_bal_2, atom_oal_2 - atom_oal_2	A1
+Aa	Aa	atom_bal_2 - atom_bal_2, atom_oal_2 - atom_oal_2	?111
+Aa	a	atom_oal_2 - atom_oar	a
+Aa	a	atom_oal_2 - atom_oar	A
+Aa	a	atom_oal_2 - atom_oar	Aa
+Aa	a	atom_oal_2 - atom_oar	aa
+Aa	a	atom_oal_2 - atom_oar	?
+Aa	a	atom_oal_2 - atom_oar	1
+Aa	a	atom_oal_2 - atom_oar	??
+Aa	a	atom_oal_2 - atom_oar	?1
+Aa	a	atom_oal_2 - atom_oar	?11
+Aa	a	atom_oal_2 - atom_oar	??11
+Aa	a	atom_oal_2 - atom_oar	11
+Aa	a	atom_oal_2 - atom_oar	111
+Aa	a	atom_oal_2 - atom_oar	?AA1
+Aa	a	atom_oal_2 - atom_oar	?AA11
+Aa	a	atom_oal_2 - atom_oar	A1
+Aa	a	atom_oal_2 - atom_oar	?111
+a	1	atom_oar - bm_iri, atom_oar - bm_tri	a
+a	1	atom_oar - bm_iri, atom_oar - bm_tri	A
+a	1	atom_oar - bm_iri, atom_oar - bm_tri	Aa
+a	1	atom_oar - bm_iri, atom_oar - bm_tri	aa
+a	1	atom_oar - bm_iri, atom_oar - bm_tri	?
+a	1	atom_oar - bm_iri, atom_oar - bm_tri	1
+a	1	atom_oar - bm_iri, atom_oar - bm_tri	??
+a	1	atom_oar - bm_iri, atom_oar - bm_tri	?1
+a	1	atom_oar - bm_iri, atom_oar - bm_tri	?11
+a	1	atom_oar - bm_iri, atom_oar - bm_tri	??11
+a	1	atom_oar - bm_iri, atom_oar - bm_tri	11
+a	1	atom_oar - bm_iri, atom_oar - bm_tri	111
+a	1	atom_oar - bm_iri, atom_oar - bm_tri	?AA1
+a	1	atom_oar - bm_iri, atom_oar - bm_tri	?AA11
+a	1	atom_oar - bm_iri, atom_oar - bm_tri	A1
+a	1	atom_oar - bm_iri, atom_oar - bm_tri	?111
+a	?	atom_bar - bracket, atom_bar - charge, atom_bar - chiral, atom_oar - anything, atom_oar - aromatic_bond, atom_oar - bm_ibi, atom_oar - bm_tbi, atom_oar - bracket, atom_oar - ct, atom_oar - double_bond, atom_oar - no_bond, atom_oar - quadruple_bond, atom_oar - single_bond, atom_oar - triple_bond	a
+a	?	atom_bar - bracket, atom_bar - charge, atom_bar - chiral, atom_oar - anything, atom_oar - aromatic_bond, atom_oar - bm_ibi, atom_oar - bm_tbi, atom_oar - bracket, atom_oar - ct, atom_oar - double_bond, atom_oar - no_bond, atom_oar - quadruple_bond, atom_oar - single_bond, atom_oar - triple_bond	A
+a	?	atom_bar - bracket, atom_bar - charge, atom_bar - chiral, atom_oar - anything, atom_oar - aromatic_bond, atom_oar - bm_ibi, atom_oar - bm_tbi, atom_oar - bracket, atom_oar - ct, atom_oar - double_bond, atom_oar - no_bond, atom_oar - quadruple_bond, atom_oar - single_bond, atom_oar - triple_bond	Aa
+a	?	atom_bar - bracket, atom_bar - charge, atom_bar - chiral, atom_oar - anything, atom_oar - aromatic_bond, atom_oar - bm_ibi, atom_oar - bm_tbi, atom_oar - bracket, atom_oar - ct, atom_oar - double_bond, atom_oar - no_bond, atom_oar - quadruple_bond, atom_oar - single_bond, atom_oar - triple_bond	aa
+a	?	atom_bar - bracket, atom_bar - charge, atom_bar - chiral, atom_oar - anything, atom_oar - aromatic_bond, atom_oar - bm_ibi, atom_oar - bm_tbi, atom_oar - bracket, atom_oar - ct, atom_oar - double_bond, atom_oar - no_bond, atom_oar - quadruple_bond, atom_oar - single_bond, atom_oar - triple_bond	?
+a	?	atom_bar - bracket, atom_bar - charge, atom_bar - chiral, atom_oar - anything, atom_oar - aromatic_bond, atom_oar - bm_ibi, atom_oar - bm_tbi, atom_oar - bracket, atom_oar - ct, atom_oar - double_bond, atom_oar - no_bond, atom_oar - quadruple_bond, atom_oar - single_bond, atom_oar - triple_bond	1
+a	?	atom_bar - bracket, atom_bar - charge, atom_bar - chiral, atom_oar - anything, atom_oar - aromatic_bond, atom_oar - bm_ibi, atom_oar - bm_tbi, atom_oar - bracket, atom_oar - ct, atom_oar - double_bond, atom_oar - no_bond, atom_oar - quadruple_bond, atom_oar - single_bond, atom_oar - triple_bond	??
+a	?	atom_bar - bracket, atom_bar - charge, atom_bar - chiral, atom_oar - anything, atom_oar - aromatic_bond, atom_oar - bm_ibi, atom_oar - bm_tbi, atom_oar - bracket, atom_oar - ct, atom_oar - double_bond, atom_oar - no_bond, atom_oar - quadruple_bond, atom_oar - single_bond, atom_oar - triple_bond	?1
+a	?	atom_bar - bracket, atom_bar - charge, atom_bar - chiral, atom_oar - anything, atom_oar - aromatic_bond, atom_oar - bm_ibi, atom_oar - bm_tbi, atom_oar - bracket, atom_oar - ct, atom_oar - double_bond, atom_oar - no_bond, atom_oar - quadruple_bond, atom_oar - single_bond, atom_oar - triple_bond	?11
+a	?	atom_bar - bracket, atom_bar - charge, atom_bar - chiral, atom_oar - anything, atom_oar - aromatic_bond, atom_oar - bm_ibi, atom_oar - bm_tbi, atom_oar - bracket, atom_oar - ct, atom_oar - double_bond, atom_oar - no_bond, atom_oar - quadruple_bond, atom_oar - single_bond, atom_oar - triple_bond	??11
+a	?	atom_bar - bracket, atom_bar - charge, atom_bar - chiral, atom_oar - anything, atom_oar - aromatic_bond, atom_oar - bm_ibi, atom_oar - bm_tbi, atom_oar - bracket, atom_oar - ct, atom_oar - double_bond, atom_oar - no_bond, atom_oar - quadruple_bond, atom_oar - single_bond, atom_oar - triple_bond	11
+a	?	atom_bar - bracket, atom_bar - charge, atom_bar - chiral, atom_oar - anything, atom_oar - aromatic_bond, atom_oar - bm_ibi, atom_oar - bm_tbi, atom_oar - bracket, atom_oar - ct, atom_oar - double_bond, atom_oar - no_bond, atom_oar - quadruple_bond, atom_oar - single_bond, atom_oar - triple_bond	111
+a	?	atom_bar - bracket, atom_bar - charge, atom_bar - chiral, atom_oar - anything, atom_oar - aromatic_bond, atom_oar - bm_ibi, atom_oar - bm_tbi, atom_oar - bracket, atom_oar - ct, atom_oar - double_bond, atom_oar - no_bond, atom_oar - quadruple_bond, atom_oar - single_bond, atom_oar - triple_bond	?AA1
+a	?	atom_bar - bracket, atom_bar - charge, atom_bar - chiral, atom_oar - anything, atom_oar - aromatic_bond, atom_oar - bm_ibi, atom_oar - bm_tbi, atom_oar - bracket, atom_oar - ct, atom_oar - double_bond, atom_oar - no_bond, atom_oar - quadruple_bond, atom_oar - single_bond, atom_oar - triple_bond	?AA11
+a	?	atom_bar - bracket, atom_bar - charge, atom_bar - chiral, atom_oar - anything, atom_oar - aromatic_bond, atom_oar - bm_ibi, atom_oar - bm_tbi, atom_oar - bracket, atom_oar - ct, atom_oar - double_bond, atom_oar - no_bond, atom_oar - quadruple_bond, atom_oar - single_bond, atom_oar - triple_bond	A1
+a	?	atom_bar - bracket, atom_bar - charge, atom_bar - chiral, atom_oar - anything, atom_oar - aromatic_bond, atom_oar - bm_ibi, atom_oar - bm_tbi, atom_oar - bracket, atom_oar - ct, atom_oar - double_bond, atom_oar - no_bond, atom_oar - quadruple_bond, atom_oar - single_bond, atom_oar - triple_bond	?111
+a	?1	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_ire_2, atom_oar - bm_tre_2	a
+a	?1	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_ire_2, atom_oar - bm_tre_2	A
+a	?1	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_ire_2, atom_oar - bm_tre_2	Aa
+a	?1	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_ire_2, atom_oar - bm_tre_2	aa
+a	?1	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_ire_2, atom_oar - bm_tre_2	?
+a	?1	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_ire_2, atom_oar - bm_tre_2	1
+a	?1	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_ire_2, atom_oar - bm_tre_2	??
+a	?1	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_ire_2, atom_oar - bm_tre_2	?1
+a	?1	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_ire_2, atom_oar - bm_tre_2	?11
+a	?1	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_ire_2, atom_oar - bm_tre_2	??11
+a	?1	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_ire_2, atom_oar - bm_tre_2	11
+a	?1	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_ire_2, atom_oar - bm_tre_2	111
+a	?1	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_ire_2, atom_oar - bm_tre_2	?AA1
+a	?1	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_ire_2, atom_oar - bm_tre_2	?AA11
+a	?1	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_ire_2, atom_oar - bm_tre_2	A1
+a	?1	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_ire_2, atom_oar - bm_tre_2	?111
+a	?11	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_iri_3, atom_oar - bm_tri_3	a
+a	?11	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_iri_3, atom_oar - bm_tri_3	A
+a	?11	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_iri_3, atom_oar - bm_tri_3	Aa
+a	?11	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_iri_3, atom_oar - bm_tri_3	aa
+a	?11	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_iri_3, atom_oar - bm_tri_3	?
+a	?11	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_iri_3, atom_oar - bm_tri_3	1
+a	?11	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_iri_3, atom_oar - bm_tri_3	??
+a	?11	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_iri_3, atom_oar - bm_tri_3	?1
+a	?11	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_iri_3, atom_oar - bm_tri_3	?11
+a	?11	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_iri_3, atom_oar - bm_tri_3	??11
+a	?11	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_iri_3, atom_oar - bm_tri_3	11
+a	?11	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_iri_3, atom_oar - bm_tri_3	111
+a	?11	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_iri_3, atom_oar - bm_tri_3	?AA1
+a	?11	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_iri_3, atom_oar - bm_tri_3	?AA11
+a	?11	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_iri_3, atom_oar - bm_tri_3	A1
+a	?11	atom_bar - charge_m, atom_bar - class_m, atom_oar - bm_iri_3, atom_oar - bm_tri_3	?111
+a	?111	atom_bar - class_m	a
+a	?111	atom_bar - class_m	A
+a	?111	atom_bar - class_m	Aa
+a	?111	atom_bar - class_m	aa
+a	?111	atom_bar - class_m	?
+a	?111	atom_bar - class_m	1
+a	?111	atom_bar - class_m	??
+a	?111	atom_bar - class_m	?1
+a	?111	atom_bar - class_m	?11
+a	?111	atom_bar - class_m	??11
+a	?111	atom_bar - class_m	11
+a	?111	atom_bar - class_m	111
+a	?111	atom_bar - class_m	?AA1
+a	?111	atom_bar - class_m	?AA11
+a	?111	atom_bar - class_m	A1
+a	?111	atom_bar - class_m	?111
+a	??	atom_bar - charge_2, atom_bar - chiral_2, atom_oar - bm_ibe_2, atom_oar - bm_tbe_2	a
+a	??	atom_bar - charge_2, atom_bar - chiral_2, atom_oar - bm_ibe_2, atom_oar - bm_tbe_2	A
+a	??	atom_bar - charge_2, atom_bar - chiral_2, atom_oar - bm_ibe_2, atom_oar - bm_tbe_2	Aa
+a	??	atom_bar - charge_2, atom_bar - chiral_2, atom_oar - bm_ibe_2, atom_oar - bm_tbe_2	aa
+a	??	atom_bar - charge_2, atom_bar - chiral_2, atom_oar - bm_ibe_2, atom_oar - bm_tbe_2	?
+a	??	atom_bar - charge_2, atom_bar - chiral_2, atom_oar - bm_ibe_2, atom_oar - bm_tbe_2	1
+a	??	atom_bar - charge_2, atom_bar - chiral_2, atom_oar - bm_ibe_2, atom_oar - bm_tbe_2	??
+a	??	atom_bar - charge_2, atom_bar - chiral_2, atom_oar - bm_ibe_2, atom_oar - bm_tbe_2	?1
+a	??	atom_bar - charge_2, atom_bar - chiral_2, atom_oar - bm_ibe_2, atom_oar - bm_tbe_2	?11
+a	??	atom_bar - charge_2, atom_bar - chiral_2, atom_oar - bm_ibe_2, atom_oar - bm_tbe_2	??11
+a	??	atom_bar - charge_2, atom_bar - chiral_2, atom_oar - bm_ibe_2, atom_oar - bm_tbe_2	11
+a	??	atom_bar - charge_2, atom_bar - chiral_2, atom_oar - bm_ibe_2, atom_oar - bm_tbe_2	111
+a	??	atom_bar - charge_2, atom_bar - chiral_2, atom_oar - bm_ibe_2, atom_oar - bm_tbe_2	?AA1
+a	??	atom_bar - charge_2, atom_bar - chiral_2, atom_oar - bm_ibe_2, atom_oar - bm_tbe_2	?AA11
+a	??	atom_bar - charge_2, atom_bar - chiral_2, atom_oar - bm_ibe_2, atom_oar - bm_tbe_2	A1
+a	??	atom_bar - charge_2, atom_bar - chiral_2, atom_oar - bm_ibe_2, atom_oar - bm_tbe_2	?111
+a	??11	atom_oar - bm_ire_4, atom_oar - bm_tre_4	a
+a	??11	atom_oar - bm_ire_4, atom_oar - bm_tre_4	A
+a	??11	atom_oar - bm_ire_4, atom_oar - bm_tre_4	Aa
+a	??11	atom_oar - bm_ire_4, atom_oar - bm_tre_4	aa
+a	??11	atom_oar - bm_ire_4, atom_oar - bm_tre_4	?
+a	??11	atom_oar - bm_ire_4, atom_oar - bm_tre_4	1
+a	??11	atom_oar - bm_ire_4, atom_oar - bm_tre_4	??
+a	??11	atom_oar - bm_ire_4, atom_oar - bm_tre_4	?1
+a	??11	atom_oar - bm_ire_4, atom_oar - bm_tre_4	?11
+a	??11	atom_oar - bm_ire_4, atom_oar - bm_tre_4	??11
+a	??11	atom_oar - bm_ire_4, atom_oar - bm_tre_4	11
+a	??11	atom_oar - bm_ire_4, atom_oar - bm_tre_4	111
+a	??11	atom_oar - bm_ire_4, atom_oar - bm_tre_4	?AA1
+a	??11	atom_oar - bm_ire_4, atom_oar - bm_tre_4	?AA11
+a	??11	atom_oar - bm_ire_4, atom_oar - bm_tre_4	A1
+a	??11	atom_oar - bm_ire_4, atom_oar - bm_tre_4	?111
+a	?AA1	atom_bar - chiral_m	a
+a	?AA1	atom_bar - chiral_m	A
+a	?AA1	atom_bar - chiral_m	Aa
+a	?AA1	atom_bar - chiral_m	aa
+a	?AA1	atom_bar - chiral_m	?
+a	?AA1	atom_bar - chiral_m	1
+a	?AA1	atom_bar - chiral_m	??
+a	?AA1	atom_bar - chiral_m	?1
+a	?AA1	atom_bar - chiral_m	?11
+a	?AA1	atom_bar - chiral_m	??11
+a	?AA1	atom_bar - chiral_m	11
+a	?AA1	atom_bar - chiral_m	111
+a	?AA1	atom_bar - chiral_m	?AA1
+a	?AA1	atom_bar - chiral_m	?AA11
+a	?AA1	atom_bar - chiral_m	A1
+a	?AA1	atom_bar - chiral_m	?111
+a	?AA11	atom_bar - chiral_m	a
+a	?AA11	atom_bar - chiral_m	A
+a	?AA11	atom_bar - chiral_m	Aa
+a	?AA11	atom_bar - chiral_m	aa
+a	?AA11	atom_bar - chiral_m	?
+a	?AA11	atom_bar - chiral_m	1
+a	?AA11	atom_bar - chiral_m	??
+a	?AA11	atom_bar - chiral_m	?1
+a	?AA11	atom_bar - chiral_m	?11
+a	?AA11	atom_bar - chiral_m	??11
+a	?AA11	atom_bar - chiral_m	11
+a	?AA11	atom_bar - chiral_m	111
+a	?AA11	atom_bar - chiral_m	?AA1
+a	?AA11	atom_bar - chiral_m	?AA11
+a	?AA11	atom_bar - chiral_m	A1
+a	?AA11	atom_bar - chiral_m	?111
+a	A	atom_bar - hydro, atom_oar - atom_oal	a
+a	A	atom_bar - hydro, atom_oar - atom_oal	A
+a	A	atom_bar - hydro, atom_oar - atom_oal	Aa
+a	A	atom_bar - hydro, atom_oar - atom_oal	aa
+a	A	atom_bar - hydro, atom_oar - atom_oal	?
+a	A	atom_bar - hydro, atom_oar - atom_oal	1
+a	A	atom_bar - hydro, atom_oar - atom_oal	??
+a	A	atom_bar - hydro, atom_oar - atom_oal	?1
+a	A	atom_bar - hydro, atom_oar - atom_oal	?11
+a	A	atom_bar - hydro, atom_oar - atom_oal	??11
+a	A	atom_bar - hydro, atom_oar - atom_oal	11
+a	A	atom_bar - hydro, atom_oar - atom_oal	111
+a	A	atom_bar - hydro, atom_oar - atom_oal	?AA1
+a	A	atom_bar - hydro, atom_oar - atom_oal	?AA11
+a	A	atom_bar - hydro, atom_oar - atom_oal	A1
+a	A	atom_bar - hydro, atom_oar - atom_oal	?111
+a	A1	atom_bar - hydro_2	a
+a	A1	atom_bar - hydro_2	A
+a	A1	atom_bar - hydro_2	Aa
+a	A1	atom_bar - hydro_2	aa
+a	A1	atom_bar - hydro_2	?
+a	A1	atom_bar - hydro_2	1
+a	A1	atom_bar - hydro_2	??
+a	A1	atom_bar - hydro_2	?1
+a	A1	atom_bar - hydro_2	?11
+a	A1	atom_bar - hydro_2	??11
+a	A1	atom_bar - hydro_2	11
+a	A1	atom_bar - hydro_2	111
+a	A1	atom_bar - hydro_2	?AA1
+a	A1	atom_bar - hydro_2	?AA11
+a	A1	atom_bar - hydro_2	A1
+a	A1	atom_bar - hydro_2	?111
+a	Aa	atom_oar - atom_oal_2	a
+a	Aa	atom_oar - atom_oal_2	A
+a	Aa	atom_oar - atom_oal_2	Aa
+a	Aa	atom_oar - atom_oal_2	aa
+a	Aa	atom_oar - atom_oal_2	?
+a	Aa	atom_oar - atom_oal_2	1
+a	Aa	atom_oar - atom_oal_2	??
+a	Aa	atom_oar - atom_oal_2	?1
+a	Aa	atom_oar - atom_oal_2	?11
+a	Aa	atom_oar - atom_oal_2	??11
+a	Aa	atom_oar - atom_oal_2	11
+a	Aa	atom_oar - atom_oal_2	111
+a	Aa	atom_oar - atom_oal_2	?AA1
+a	Aa	atom_oar - atom_oal_2	?AA11
+a	Aa	atom_oar - atom_oal_2	A1
+a	Aa	atom_oar - atom_oal_2	?111
+a	a	atom_oar - atom_oar	a
+a	a	atom_oar - atom_oar	A
+a	a	atom_oar - atom_oar	Aa
+a	a	atom_oar - atom_oar	aa
+a	a	atom_oar - atom_oar	?
+a	a	atom_oar - atom_oar	1
+a	a	atom_oar - atom_oar	??
+a	a	atom_oar - atom_oar	?1
+a	a	atom_oar - atom_oar	?11
+a	a	atom_oar - atom_oar	??11
+a	a	atom_oar - atom_oar	11
+a	a	atom_oar - atom_oar	111
+a	a	atom_oar - atom_oar	?AA1
+a	a	atom_oar - atom_oar	?AA11
+a	a	atom_oar - atom_oar	A1
+a	a	atom_oar - atom_oar	?111
+aa	?	atom_bar_2 - bracket, atom_bar_2 - charge, atom_bar_2 - chiral	a
+aa	?	atom_bar_2 - bracket, atom_bar_2 - charge, atom_bar_2 - chiral	A
+aa	?	atom_bar_2 - bracket, atom_bar_2 - charge, atom_bar_2 - chiral	Aa
+aa	?	atom_bar_2 - bracket, atom_bar_2 - charge, atom_bar_2 - chiral	aa
+aa	?	atom_bar_2 - bracket, atom_bar_2 - charge, atom_bar_2 - chiral	?
+aa	?	atom_bar_2 - bracket, atom_bar_2 - charge, atom_bar_2 - chiral	1
+aa	?	atom_bar_2 - bracket, atom_bar_2 - charge, atom_bar_2 - chiral	??
+aa	?	atom_bar_2 - bracket, atom_bar_2 - charge, atom_bar_2 - chiral	?1
+aa	?	atom_bar_2 - bracket, atom_bar_2 - charge, atom_bar_2 - chiral	?11
+aa	?	atom_bar_2 - bracket, atom_bar_2 - charge, atom_bar_2 - chiral	??11
+aa	?	atom_bar_2 - bracket, atom_bar_2 - charge, atom_bar_2 - chiral	11
+aa	?	atom_bar_2 - bracket, atom_bar_2 - charge, atom_bar_2 - chiral	111
+aa	?	atom_bar_2 - bracket, atom_bar_2 - charge, atom_bar_2 - chiral	?AA1
+aa	?	atom_bar_2 - bracket, atom_bar_2 - charge, atom_bar_2 - chiral	?AA11
+aa	?	atom_bar_2 - bracket, atom_bar_2 - charge, atom_bar_2 - chiral	A1
+aa	?	atom_bar_2 - bracket, atom_bar_2 - charge, atom_bar_2 - chiral	?111
+aa	?1	atom_bar_2 - charge_m, atom_bar_2 - class_m	a
+aa	?1	atom_bar_2 - charge_m, atom_bar_2 - class_m	A
+aa	?1	atom_bar_2 - charge_m, atom_bar_2 - class_m	Aa
+aa	?1	atom_bar_2 - charge_m, atom_bar_2 - class_m	aa
+aa	?1	atom_bar_2 - charge_m, atom_bar_2 - class_m	?
+aa	?1	atom_bar_2 - charge_m, atom_bar_2 - class_m	1
+aa	?1	atom_bar_2 - charge_m, atom_bar_2 - class_m	??
+aa	?1	atom_bar_2 - charge_m, atom_bar_2 - class_m	?1
+aa	?1	atom_bar_2 - charge_m, atom_bar_2 - class_m	?11
+aa	?1	atom_bar_2 - charge_m, atom_bar_2 - class_m	??11
+aa	?1	atom_bar_2 - charge_m, atom_bar_2 - class_m	11
+aa	?1	atom_bar_2 - charge_m, atom_bar_2 - class_m	111
+aa	?1	atom_bar_2 - charge_m, atom_bar_2 - class_m	?AA1
+aa	?1	atom_bar_2 - charge_m, atom_bar_2 - class_m	?AA11
+aa	?1	atom_bar_2 - charge_m, atom_bar_2 - class_m	A1
+aa	?1	atom_bar_2 - charge_m, atom_bar_2 - class_m	?111
+aa	?11	atom_bar_2 - charge_m, atom_bar_2 - class_m	a
+aa	?11	atom_bar_2 - charge_m, atom_bar_2 - class_m	A
+aa	?11	atom_bar_2 - charge_m, atom_bar_2 - class_m	Aa
+aa	?11	atom_bar_2 - charge_m, atom_bar_2 - class_m	aa
+aa	?11	atom_bar_2 - charge_m, atom_bar_2 - class_m	?
+aa	?11	atom_bar_2 - charge_m, atom_bar_2 - class_m	1
+aa	?11	atom_bar_2 - charge_m, atom_bar_2 - class_m	??
+aa	?11	atom_bar_2 - charge_m, atom_bar_2 - class_m	?1
+aa	?11	atom_bar_2 - charge_m, atom_bar_2 - class_m	?11
+aa	?11	atom_bar_2 - charge_m, atom_bar_2 - class_m	??11
+aa	?11	atom_bar_2 - charge_m, atom_bar_2 - class_m	11
+aa	?11	atom_bar_2 - charge_m, atom_bar_2 - class_m	111
+aa	?11	atom_bar_2 - charge_m, atom_bar_2 - class_m	?AA1
+aa	?11	atom_bar_2 - charge_m, atom_bar_2 - class_m	?AA11
+aa	?11	atom_bar_2 - charge_m, atom_bar_2 - class_m	A1
+aa	?11	atom_bar_2 - charge_m, atom_bar_2 - class_m	?111
+aa	?111	atom_bar_2 - class_m	a
+aa	?111	atom_bar_2 - class_m	A
+aa	?111	atom_bar_2 - class_m	Aa
+aa	?111	atom_bar_2 - class_m	aa
+aa	?111	atom_bar_2 - class_m	?
+aa	?111	atom_bar_2 - class_m	1
+aa	?111	atom_bar_2 - class_m	??
+aa	?111	atom_bar_2 - class_m	?1
+aa	?111	atom_bar_2 - class_m	?11
+aa	?111	atom_bar_2 - class_m	??11
+aa	?111	atom_bar_2 - class_m	11
+aa	?111	atom_bar_2 - class_m	111
+aa	?111	atom_bar_2 - class_m	?AA1
+aa	?111	atom_bar_2 - class_m	?AA11
+aa	?111	atom_bar_2 - class_m	A1
+aa	?111	atom_bar_2 - class_m	?111
+aa	??	atom_bar_2 - charge_2, atom_bar_2 - chiral_2	a
+aa	??	atom_bar_2 - charge_2, atom_bar_2 - chiral_2	A
+aa	??	atom_bar_2 - charge_2, atom_bar_2 - chiral_2	Aa
+aa	??	atom_bar_2 - charge_2, atom_bar_2 - chiral_2	aa
+aa	??	atom_bar_2 - charge_2, atom_bar_2 - chiral_2	?
+aa	??	atom_bar_2 - charge_2, atom_bar_2 - chiral_2	1
+aa	??	atom_bar_2 - charge_2, atom_bar_2 - chiral_2	??
+aa	??	atom_bar_2 - charge_2, atom_bar_2 - chiral_2	?1
+aa	??	atom_bar_2 - charge_2, atom_bar_2 - chiral_2	?11
+aa	??	atom_bar_2 - charge_2, atom_bar_2 - chiral_2	??11
+aa	??	atom_bar_2 - charge_2, atom_bar_2 - chiral_2	11
+aa	??	atom_bar_2 - charge_2, atom_bar_2 - chiral_2	111
+aa	??	atom_bar_2 - charge_2, atom_bar_2 - chiral_2	?AA1
+aa	??	atom_bar_2 - charge_2, atom_bar_2 - chiral_2	?AA11
+aa	??	atom_bar_2 - charge_2, atom_bar_2 - chiral_2	A1
+aa	??	atom_bar_2 - charge_2, atom_bar_2 - chiral_2	?111
+aa	?AA1	atom_bar_2 - chiral_m	a
+aa	?AA1	atom_bar_2 - chiral_m	A
+aa	?AA1	atom_bar_2 - chiral_m	Aa
+aa	?AA1	atom_bar_2 - chiral_m	aa
+aa	?AA1	atom_bar_2 - chiral_m	?
+aa	?AA1	atom_bar_2 - chiral_m	1
+aa	?AA1	atom_bar_2 - chiral_m	??
+aa	?AA1	atom_bar_2 - chiral_m	?1
+aa	?AA1	atom_bar_2 - chiral_m	?11
+aa	?AA1	atom_bar_2 - chiral_m	??11
+aa	?AA1	atom_bar_2 - chiral_m	11
+aa	?AA1	atom_bar_2 - chiral_m	111
+aa	?AA1	atom_bar_2 - chiral_m	?AA1
+aa	?AA1	atom_bar_2 - chiral_m	?AA11
+aa	?AA1	atom_bar_2 - chiral_m	A1
+aa	?AA1	atom_bar_2 - chiral_m	?111
+aa	?AA11	atom_bar_2 - chiral_m	a
+aa	?AA11	atom_bar_2 - chiral_m	A
+aa	?AA11	atom_bar_2 - chiral_m	Aa
+aa	?AA11	atom_bar_2 - chiral_m	aa
+aa	?AA11	atom_bar_2 - chiral_m	?
+aa	?AA11	atom_bar_2 - chiral_m	1
+aa	?AA11	atom_bar_2 - chiral_m	??
+aa	?AA11	atom_bar_2 - chiral_m	?1
+aa	?AA11	atom_bar_2 - chiral_m	?11
+aa	?AA11	atom_bar_2 - chiral_m	??11
+aa	?AA11	atom_bar_2 - chiral_m	11
+aa	?AA11	atom_bar_2 - chiral_m	111
+aa	?AA11	atom_bar_2 - chiral_m	?AA1
+aa	?AA11	atom_bar_2 - chiral_m	?AA11
+aa	?AA11	atom_bar_2 - chiral_m	A1
+aa	?AA11	atom_bar_2 - chiral_m	?111
+aa	A	atom_bar_2 - hydro	a
+aa	A	atom_bar_2 - hydro	A
+aa	A	atom_bar_2 - hydro	Aa
+aa	A	atom_bar_2 - hydro	aa
+aa	A	atom_bar_2 - hydro	?
+aa	A	atom_bar_2 - hydro	1
+aa	A	atom_bar_2 - hydro	??
+aa	A	atom_bar_2 - hydro	?1
+aa	A	atom_bar_2 - hydro	?11
+aa	A	atom_bar_2 - hydro	??11
+aa	A	atom_bar_2 - hydro	11
+aa	A	atom_bar_2 - hydro	111
+aa	A	atom_bar_2 - hydro	?AA1
+aa	A	atom_bar_2 - hydro	?AA11
+aa	A	atom_bar_2 - hydro	A1
+aa	A	atom_bar_2 - hydro	?111
+aa	A1	atom_bar_2 - hydro_2	a
+aa	A1	atom_bar_2 - hydro_2	A
+aa	A1	atom_bar_2 - hydro_2	Aa
+aa	A1	atom_bar_2 - hydro_2	aa
+aa	A1	atom_bar_2 - hydro_2	?
+aa	A1	atom_bar_2 - hydro_2	1
+aa	A1	atom_bar_2 - hydro_2	??
+aa	A1	atom_bar_2 - hydro_2	?1
+aa	A1	atom_bar_2 - hydro_2	?11
+aa	A1	atom_bar_2 - hydro_2	??11
+aa	A1	atom_bar_2 - hydro_2	11
+aa	A1	atom_bar_2 - hydro_2	111
+aa	A1	atom_bar_2 - hydro_2	?AA1
+aa	A1	atom_bar_2 - hydro_2	?AA11
+aa	A1	atom_bar_2 - hydro_2	A1
+aa	A1	atom_bar_2 - hydro_2	?111
+aa	aa	atom_bar_2 - atom_bar_2	a
+aa	aa	atom_bar_2 - atom_bar_2	A
+aa	aa	atom_bar_2 - atom_bar_2	Aa
+aa	aa	atom_bar_2 - atom_bar_2	aa
+aa	aa	atom_bar_2 - atom_bar_2	?
+aa	aa	atom_bar_2 - atom_bar_2	1
+aa	aa	atom_bar_2 - atom_bar_2	??
+aa	aa	atom_bar_2 - atom_bar_2	?1
+aa	aa	atom_bar_2 - atom_bar_2	?11
+aa	aa	atom_bar_2 - atom_bar_2	??11
+aa	aa	atom_bar_2 - atom_bar_2	11
+aa	aa	atom_bar_2 - atom_bar_2	111
+aa	aa	atom_bar_2 - atom_bar_2	?AA1
+aa	aa	atom_bar_2 - atom_bar_2	?AA11
+aa	aa	atom_bar_2 - atom_bar_2	A1
+aa	aa	atom_bar_2 - atom_bar_2	?111
