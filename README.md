@@ -1332,3 +1332,13 @@ Not for production, just a test: code is not mature.
 1.  Rust does not have the native JSON support, thus, additional code is needed to serialize / deserialize the data. Whether to use serde crate (<https://crates.io/crates/serde>) for Rust or write some dedicated code is the question. Probably, the usage of the dedicated crate is the optimal way, since serialization / deserialization is the common task, serde with the large user base exists, thus, serde.
 
 2.  Important part of the desired parser is the `state` variable, since it will store parameters essential for parsing. The example above shows that the previous symbol is important for the successful parsing. Thus, previous work on SMILES analysis will help a lot a would continued and finalized with this understanding.
+
+#### Proof-of-concept, toy SMILES parser V2
+
+So, here is an idea: use just allowed SMILES symbols (without further division into character classes, etc) to parse the whole SMILES string.
+
+To check idea's viability the toy parser V2 using R and Tidyverse will be developed to parse the first two symbols (allowed pairs of symbols) out of three symbol string (third symbol is each symbol possible).
+
+This will show if it is possible to distinguish between the SMILES symbols this way on the example of all allowed pairs of symbols and all possible symbols following them.
+
+Assuming the state is appropriate.
