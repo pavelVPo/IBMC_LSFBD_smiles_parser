@@ -1337,7 +1337,7 @@ Not for production, just a test: code is not mature.
 
 So, here is an idea: use just allowed SMILES symbols (without further division into character classes, etc) to parse the whole SMILES string.
 
-To check idea's viability the toy parser V2 using Rust will be developed to parse the first two symbols (allowed pairs of symbols) out of three symbol string (third symbol is each symbol possible).
+To check idea's viability the toy parser V2 using Rust will be developed to parse the first two symbols (pair of any allowed symbols) out of three symbol string (third symbol is each symbol possible).
 
 This will show if it is possible to distinguish between the SMILES symbols this way on the example of all allowed pairs of symbols and all possible symbols following them.
 
