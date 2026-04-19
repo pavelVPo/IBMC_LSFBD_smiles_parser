@@ -1342,3 +1342,77 @@ To check idea's viability the toy parser V2 using Rust will be developed to pars
 This will show if it is possible to distinguish between the SMILES symbols this way on the example of all allowed pairs of symbols and all possible symbols following them.
 
 Assuming the state is appropriate.
+
+**Here is the code (not for production, without considering right methods of string processing, just to test the idea and sheer performance):**
+
+``` Rust
+use std::io::{self, Read, Write};
+use std::fs::File;
+use rayon::prelude::*;
+
+fn main() {
+    // symbols, ... to be short
+    const SYMBS_AR: [&str;2107] = ["b", "c", "n", "o", ..., ":111"];
+// generate triples", "parse pairs", "check and collect results if parsing fails
+    let fails: Vec<String> = SYMBS_AR.par_iter_mut()
+            .map(|i|{
+                let mut fails_i: Vec<String> = Vec::new();
+                // mutable array for triple
+                let mut query_ar: [&str;3] = ["";3];
+                // mutable query string
+                let mut current_str = String::from("n");
+                // mutable string to store the first symbol
+                let mut symbone_str = String::from("");
+                // mutable string to store the second symbol
+                let mut symbtwo_str = String::from("");
+                query_ar[0] = i;
+                // first inner loop
+                for k in &SYMBS_AR {
+                    query_ar[1] = k;
+                    // second inner loop
+                    for j in &SYMBS_AR {
+                        query_ar[2] = j;
+                        current_str = "".to_string();
+                        let first_query_str = query_ar.join("");
+                        let first_query: Vec<String> = first_query_str.chars().map(|c| c.to_string()).collect();
+                        for i_q in &first_query {
+                        current_str = [current_str, i_q.to_string()].join("");
+                            // append to curent string
+                            if SYMBS_AR.contains(&&current_str[..]) {
+                                symbone_str = current_str.clone();
+                            }
+                        }
+                        // find the second symbol in query
+                        let second_query_str = first_query_str.replacen(&symbone_str, "", 1);
+                        let second_query: Vec<String> = second_query_str.chars().map(|c| c.to_string()).collect();
+                        current_str = "".to_string();
+                        for i_q in &second_query {
+                            current_str = [current_str, i_q.to_string()].join("");
+                            // append to curent string
+                            if SYMBS_AR.contains(&&current_str[..]) {
+                                symbtwo_str = current_str.clone();
+                                let tempi = format!("{}-{}-{}-{}-{}", query_ar[0].clone(), &k.clone(), &j.clone(), &symbone_str.clone(), &symbtwo_str.clone()).to_string();
+                                if query_ar[0].to_string() != symbone_str.to_string() || query_ar[1].to_string() != symbtwo_str.to_string() {
+                                    fails_i.push(tempi.to_string().clone());
+                                }
+                            }
+                        }
+                    }
+                } 
+                let result = fails_i.join("_qqq_").to_string().clone();
+                result
+            })
+            .collect();
+    let mut file = File::create("failed__triples-pairs.tsv").expect("Unable to create file");                                                                                                          
+    for i in &fails{                                                                                                                                                                  
+        file.write_all((i.as_bytes())).expect("Unable to write data");
+    }
+    // Memory consumption is huge; efficeint way to access / process strings should be considered 
+}
+```
+
+Using the code above about 9 billions of SMILES symbols' triples were generated, first pair of symbols was parsed; no parsing errors were identified.
+
+The whole process took several hours, so, compiled Rust code is fast before even the basic optimization.
+
+Idea of more simple parser is valid.
