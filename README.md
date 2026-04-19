@@ -1415,4 +1415,4 @@ Using the code above about 9 billions of SMILES symbols' triples were generated,
 
 The whole process took several hours, so, compiled Rust code is fast before even the basic optimization.
 
-Idea of more simple parser is valid.
+Idea of more simple parser seems to be valid.
