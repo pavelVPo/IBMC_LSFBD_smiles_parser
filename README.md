@@ -24,6 +24,32 @@ In short:
 
 -   Thus, via direct left to right parsing of the SMILES, it is possible to obtain readily useful representation of the chemical structure.
 
+## General SMILES parsing strategy
+
+The main idea is as follows:
+
+1.  Computer program accepts the SMILES string, i.e., sequence of characters constituting symbols having chemical meaning.
+
+2.  Computer program process this string from left to right one character at time.
+
+    **What is meant by "computer program process"?**
+
+    | - Computer program has default state.
+    | - Every time computer program encounters new (next) character, state of the computer program changes accordingly (taking into account program's current state and what character it encounters).
+    | - At each step computer program takes some action to produce an output.
+
+3.  Computer program produces an output.
+
+    **What is "output"?**
+
+    | Data structure appropriate for the further computer processing and filled with the chemical data encoded by the input SMILES string.
+
+    To get an insight into what kinds of state switching will be needed and possible for the program, it will be useful to check, which pairs of characters are possible in SMILES.
+
+    | Topic of parsers is well developed, please, see the [Grune, D., & Jacobs, C. J. (2008). Introduction to parsing. In *Parsing techniques: A practical guide* (pp. 61-102). New York, NY: Springer New York.] and documentation and theory associated with the widely accepted parser generator software for the reference.
+
+    To construct such a parser understanding of SMILES is needed, this understanding is about knowing symbols and characters, which could be present in the SMILES string; and rules of their arrangement. Thus, at the first stage all symbols and characters allowed in SMILES will be enumrated and classified.
+
 ## Enumeration and classification of the symbols and characters allowed in SMILES
 
 | *This part may require some further adjustments and corrections, but should be OK in general.*
@@ -54,11 +80,13 @@ Using faceted classification scheme (<https://en.wikipedia.org/wiki/Faceted_clas
 
 Using the information above, it is possible to
 
--   construct character classes describing symbols in SMILES or their parts providing some convenience for parsing
+-   construct symbol classes using meaningful combinations of facets mentioned above
+
+-   construct corresponding classes of characters providing some convenience for parsing
 
 -   assess their intersections and frequency in the available data, which will be useful while selecting particular parsing approach
 
-And then, select particular parsing approach and set of rules within it to hopefully finally come up with the pretty normal SMILES parser.
+And then, select particular parsing approach and set of rules within it and set of technologies for implementation to hopefully finally come up with the pretty normal SMILES parser.
 
 ### Atom symbols type and corresponding character classes
 
@@ -68,25 +96,25 @@ Atom symbol is the way to designate the node of the molecular graph, i.e. atom, 
 
 Atom symbols allowed in SMILES could be divided into two facets by their length:
 
--   Symbols consisting of the single character
+-   symbols consisting of the single character
 
--   Symbols consisting of two characters
+-   symbols consisting of two characters
 
 Atom symbols allowed in SMILES could be divided into two facets by their grammatical requirements:
 
--   Symbols, which could be written as is, corresponding atoms belong to the so called organic subset
+-   symbols, which could be written as is, corresponding atoms belong to the so called organic subset
 
--   Symbols, which could be written only in the square brackets, so called bracket atoms and atoms from organic subset on condition that they have additional properties (charge, etc.)
+-   symbols, which could be written only in the square brackets, so called bracket atoms and atoms from organic subset on condition that they have additional properties (charge, etc.)
 
 Atom symbols allowed in SMILES could be divided into two categories depending on the nature of their bonding:
 
--   Symbols of the aromatic atoms
+-   symbols of the aromatic atoms
 
--   Symbols of the aliphatic atoms
+-   symbols of the aliphatic atoms
 
 Thus, the following classes of atom symbols allowed in SMILES could be enumerated and labeled:
 
-1.  Single character atom symbols of organic (from so called *organic* subset) aromatic atoms (**atom_oar**) lacking the additional grammatical requirements and features:
+1.  Single character atom symbols of organic (from so called *organic* subset) aromatic atoms lacking the additional grammatical requirements and features (**atom_oar**):
 
 | b, c, n, o, s, p
 
@@ -116,13 +144,13 @@ Corresponding characters could be designated as **w_atom_bal**, where prefix **w
 
 Corresponding character classes could be designated as **s_atom_oal** & **e_atom_oal**,where prefix **s** stands for the start of the symbol, prefix **e** stands for the end of the symbol; suffix **o** - for organic and suffix **al** - for aliphatic. Further division of the characters describing symbol into two classes could be useful if the resulting parser will operate one character at time.
 
-6.  Two character atom symbols of aromatic atoms, which should be enclosed within the square brackets (**atom_bar_2**):
+6.  Two character atom symbols of in-bracket aromatic atoms (**atom_bar_2**):
 
 | se, as, te
 
 Corresponding characters could be designated as **s_atom_bar** & **e_atom_bar**,where prefix **s** stands for the start of the symbol, prefix **e** stands for the end of the symbol; suffix **b** - for bracket and suffix **ar** - for aromatic.
 
-7.  Two character atom symbols of aliphatic atoms, which should be enclosed within the square brackets (**atom_bal_2**):
+7.  Two character atom symbols of in-bracket aliphatic atoms (**atom_bal_2**):
 
 | He, Li, Be, Ne, Na, Mg, Al, Si, Cl, Ar, Ca, Sc, Ti, Cr, Mn, Fe, Co, Ni, Cu, Zn, Ga, Ge, As, Se, Br, Kr, Rb, Sr, Zr, Nb, Mo, Tc, Ru, Rh, Pd, Ag, Cd, In, Sn, Sb, Te,Xe, Cs, Ba, Hf, Ta, Re, Os, Ir, Pt, Au, Hg, Tl, Pb, Bi, Po, At, Rn, Fr, Ra, Rf, Db, Sg, Bh, Hs, Mt, Ds, Rg, Cn, Fl, Lv, La, Ce, Pr, Nd, Pm, Sm, Eu, Gd, Tb, Dy, Ho, Er, Tm, Yb, Lu, Ac, Th, Pa, Np, Pu, Am, Cm, Bk, Cf, Es, Fm, Md, No, Lr
 
@@ -130,13 +158,13 @@ Corresponding characters could be designated as **s_atom_bal** & **e_atom_bal**,
 
 ### Symbol of anything and corresponding character class
 
-**\*** is an allowed symbol in SMILES, it corresponds to the any atom symbol and behaves similar to the single character atom symbols of organic aliphatic and aromatic atoms:
+**\*** is an allowed symbol in SMILES, it corresponds to any (atom) symbol and behaves similar to the single character atom symbols of organic aliphatic and aromatic atoms :
 
 8.  Single character symbol of any atom or basically **anything**:
 
 | \*
 
-Corresponding character could be designated as **w_anything**, since it could mean basically anything.
+Corresponding character could be designated as **w_any**, since it could mean basically any character or symbol.
 
 ### Square bracket symbols and corresponding character classes
 
@@ -146,7 +174,7 @@ Corresponding character could be designated as **w_anything**, since it could me
 
 | [, ]
 
-Corresponding characters could be designated as **s_bracket & e_bracket** classes.
+Corresponding character classes could be designated as **s_bracket** & **e_bracket**.
 
 ### Bond symbols and corresponding character classes
 
@@ -189,8 +217,6 @@ It should be noted that this symbol (**:**) is deprecated and typically omitted.
 15. Single character symbol corresponding to the absence of the bond between the two specific atoms (**no_bond**):
 
 | .
-
-As it was said earlier, by default each atom in SMILES string is considered to be connected with its immediate neighbors via the single bond (**-**). Thus, symbol corresponding to the negation of the bond is needed sometimes, and here it is: **.** Corresponding character class will be designated as **w_no_bond**.
 
 ### Bond modifying (multiplying) symbols and corresponding characters
 
@@ -246,7 +272,7 @@ Corresponding character class could be designated as **w_bm_iri**, where prefix 
 
 Corresponding characters could be designated as **w_bm_tbi**, where prefix **w** stands for the whole symbol, **bm** - bond modifying (multiplying), suffix **t** - for terminator, suffix **b** - for branching, and second suffix **i** - for implicit.
 
-19. Single character bond multiplying symbols terminators of rings with implicit bond:
+19. Single character bond multiplying symbols terminators of rings with implicit bond (**bm_tri**):
 
 | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 
@@ -254,87 +280,49 @@ Corresponding characters could be designated as **w_bm_tri**, where prefix **w**
 
 20. Two-character bond multiplying symbols initiators of branching with explicit bond (**bm_ibe**):
 
-| (-, (=, (#, (\$, (:, (.
+| ([-=#\$:.]
 
 Corresponding character classes could be designated as **s_bm_ibe** & **e_bm_ibe** where prefix **s** stands for the start of the symbol, prefix **e** stands for the end of the symbol, **bm** - bond modifying (multiplying), suffix **i** - for initiator, suffix **b** - for branching, second suffix **e** - for explicit.
 
 21. Two-character bond multiplying symbols initiators of rings with explicit bond (**bm_ire_2**):
 
-| -0, =0, #0, \$0, :0, .0,
-| -1, =1, #1, \$1, :1, .1,
-| -2, =2, #2, \$2, :2, .2,
-| -3, =3, #3, \$3, :3, .3,
-| -4, =4, #4, \$4, :4, .4,
-| -5, =5, #5, \$5, :5, .5,
-| -6, =6, #6, \$6, :6, .6,
-| -7, =7, #7, \$7, :7, .7,
-| -8, =8, #8, \$8, :8, .8,
-| -9, =9, #9, \$9, :9, .9
+| [-=#\$:.][0-9]
 
 Corresponding characters could be designated as **s_bm_ire** & **e_bm_ire**,where prefix **s** stands for the start of the symbol, prefix **e** stands for the end of the symbol, **bm** - bond modifying (multiplying), suffix **i** - for initiator, second suffix **r** - for ring, suffix **e** - for explicit.
 
 22. Three-character bond multiplying symbols initiators of rings with implicit bond (**bm_iri_3**):
 
-| %01, %02, %03, %04, %05, %06, %07, %08, %09, %10,
-| %11, %12, %13, %14, %15, %16, %17, %18, %19, %20,
-| %21, %22, %23, %24, %25, %26, %27, %28, %29, %30,
-| %31, %32, %33, %34, %35, %36, %37, %38, %39, %40,
-| %41, %42, %43, %44, %45, %46, %47, %48, %49, %50,
-| %51, %52, %53, %54, %55, %56, %57, %58, %59, %60,
-| %61, %62, %63, %64, %65, %66, %67, %68, %69, %70,
-| %71, %72, %73, %74, %75, %76, %77, %78, %79, %80,
-| %81, %82, %83, %84, %85, %86, %87, %88, %89, %90,
-| %91, %92, %93, %94, %95, %96, %97, %98, %99
+| %[0-9][1-9], %[1-9][0-9]
 
 Corresponding character classes could be designated as **s_bm_iri** & **r_bm_iri**, where prefix **s** stands for the start of the symbol, prefix **r** stands for the rest of the symbol, **bm** - bond modifying (multiplying), suffix **i** - for initiator, suffix **r** - for ring, next suffix **i** - for implicit.
 
 23. Four-character bond multiplying symbols initiators of rings with explicit bond (**bm_ire_4**):
 
-| -%0[1-9], =%0[1-9], #%0[1-9], \$%0[1-9], :%0[1-9], .%0[1-9],
-| -%[1-9][0-9], =%[1-9][0-9], #%[1-9][0-9], \$%[1-9][0-9], :%[1-9][0-9], .%[1-9][0-9]
+| [-=#\$:.]%[0-9][1-9], [-=#\$:.]%[1-9][0-9]
 
 Corresponding character classes could be designated as **s_bm_ire_4, n_bm_ire** & **r_bm_ire**, where prefix **s** stands for the start of the symbol, prefix **n** stands for the next from start of the symbol, prefix **r** stands for the rest of the symbol, **bm** - bond modifying (multiplying), suffix **i** - for initiator, second suffix **r** - for ring, suffix **e** - for explicit; **4** in s_bm_ire_4 is used to differentiate this class from the s_bm_ire corresponding to the bm_ire_2, n_bm_ire and r_bm_ire are already unique.
 
 24. Two-character bond multiplying symbols terminators of branching with explicit bond (**bm_tbe_2**):
 
-| )-, )=, )#, )\$, ):, ).
+| )[-=#\$:.]
 
 Corresponding character classes could be designated as **s_bm_tbe** & **e_bm_tbe**, where prefix **s** stands for the start of the symbol, prefix **e** stands for the end of the symbol, **bm** - bond modifying (multiplying), suffix **t** - for terminator, second suffix **b** - for branch, and last suffix **e** - for explicit.
 
 25. Two-character bond multiplying symbols terminators of rings with explicit bond (**bm_tre_2**):
 
-| -0, =0, #0, \$0, :0, .0,
-| -1, =1, #1, \$1, :1, .1,
-| -2, =2, #2, \$2, :2, .2,
-| -3, =3, #3, \$3, :3, .3,
-| -4, =4, #4, \$4, :4, .4,
-| -5, =5, #5, \$5, :5, .5,
-| -6, =6, #6, \$6, :6, .6,
-| -7, =7, #7, \$7, :7, .7,
-| -8, =8, #8, \$8, :8, .8,
-| -9, =9, #9, \$9, :9, .9
+|  [-=#\$:.][0-9]
 
 Corresponding character classes could be designated as **s_bm_tre** & **e_bm_tre**, where prefix **s** stands for the start of the symbol, prefix **e** stands for the end of the symbol, **bm** - bond modifying (multiplying), suffix **t** - for terminator, second suffix **r** - for ring, suffix **e** - for explicit.
 
 26. Four-character bond multiplying symbols terminators of rings with explicit bond (**bm_tre_4**):
 
-| -%0[1-9], =%0[1-9], #%0[1-9], \$%0[1-9], :%0[1-9], .%0[1-9],
-| -%[1-9][0-9], =%[1-9][0-9], #%[1-9][0-9], \$%[1-9][0-9], :%[1-9][0-9], .%[1-9][0-9]
+| [-=#\$:.]%[0-9][1-9], [-=#\$:.]%[1-9][0-9]
 
 Corresponding characters could be designated as **s_bm_tre, n_bm_tre** & **r_bm_tre**, where prefix **s** stands for the start of the symbol, prefix **n** stands for the next from start of the symbol, prefix **r** stands for the rest of the symbol, **bm** - bond modifying (multiplying), suffix **t** - for terminator, second suffix **r** - for ring, suffix **e** - for explicit. **4** in s_bm_tre_4 is used to differentiate this class from the s_bm_tre corresponding to the bm_tre_2, n_bm_tre and r_bm_tre are already unique.
 
 27. Three-character bond multiplying symbols terminators of rings with implicit bond (**bm_tri_3**):
 
-| %01, %02, %03, %04, %05, %06, %07, %08, %09, %10,
-| %11, %12, %13, %14, %15, %16, %17, %18, %19, %20,
-| %21, %22, %23, %24, %25, %26, %27, %28, %29, %30,
-| %31, %32, %33, %34, %35, %36, %37, %38, %39, %40,
-| %41, %42, %43, %44, %45, %46, %47, %48, %49, %50,
-| %51, %52, %53, %54, %55, %56, %57, %58, %59, %60,
-| %61, %62, %63, %64, %65, %66, %67, %68, %69, %70,
-| %71, %72, %73, %74, %75, %76, %77, %78, %79, %80,
-| %81, %82, %83, %84, %85, %86, %87, %88, %89, %90,
-| %91, %92, %93, %94, %95, %96, %97, %98, %99
+| %[0-9][1-9], %[1-9][0-9]
 
 Corresponding characters could be designated as **s_bm_tri** & **r_bm_tri**,where prefix **s** stands for the start of the symbol, prefix **r** stands for the rest of the symbol, **bm** - bond modifying (multiplying), suffix **t** - for terminator, second suffix **r** - for ring, next suffix **i** - for implicit.
 
@@ -346,7 +334,7 @@ Cis/trans symbols is the way to designate the position of the nodes of the molec
 
 Cis/trans symbols should always be paired, i.e. atoms on each side of the bond should have their own cis/trans symbol or such symbols should be omitted on each side of the bond. Thus, two facets of cis/trans symbols are allowed in SMILES:
 
-28. Cis/trans single character symbols on the left side of the rotary non-permissive bond (**ct**):
+28. Cis/trans single character symbols on the left side of the rotary non-permissive bond (**l_ct**):
 
 | /, \\
 
@@ -364,95 +352,6 @@ The logic behind these symbols is outstandingly well described in <http://opensm
 | *Note: This point was not well documented in earlier SMILES specifications, and several SMILES interpreters are known to interpret the `'/'` and `'\'` symbols incorrectly.**\****
 | **\*** <http://opensmiles.org/opensmiles.html>
 
-------------------------------------------------------------------------
-
-#### Question
-
-Just of curiosity, how many SMILES strings do contain cis/trans symbols, which could be misinterpreted by the *several SMILES interpreters*?
-
-It is quite easy to approximate the answer to this question using
-
--   ChEMBL data (Zdrazil, Barbara. "Fifteen years of ChEMBL and its role in cheminformatics and drug discovery." *Journal of Cheminformatics* 17.1 (2025): 1-9.)
-
--   R ([https://cran.rstudio.org/bin/windows/](#0){style="font-size: 11pt;"})
-
--   Tidyverse ([https://tidyverse.org/](#0){style="font-size: 11pt;"})
-
--   DBI (<https://cran.r-project.org/web/packages/DBI>)
-
--   RMariaDB (<https://cran.r-project.org/web/packages/RMariaDB/index.html>)
-
-Here is the code:
-
-``` r
-library(RMariaDB)
-library(DBI)
-library(tidyverse)
-
-# 30, Cis/trans single character symbols on the left side of the rotary non-permissive bond
-symb__lct <- c("/", "\\\\")
-lct <- symb__lct
-# 31, Cis/trans single character symbols on the right side of the rotary non-permissive bond
-symb__rct <- c("/", "\\\\")
-rct <- symb__rct
-
-## Patterns to search for
-# Parsing SMILES is a task, which is harder than it may appears on the first glance
-# Thus, at this stage the regexps will be used, which allows to extact substring containing only the first pair of cis/trans symbols
-# ^ - stands for the start of the string
-# [^\\\\/]* - means thath from the start of the string and up to the next meaningful part of regexp there should not be matches with the characters of cis/trans symbols
-# The last meaningful (and variable) part of the regexps stands for the one of the variants of cis/trans symbols usage from http://opensmiles.org/opensmiles.html
-# for example, in pattern_baseOne, [^\\(]/[^\\\\/]*=[^\\\\/]*[aA-zZ]/. matches F/C=C/F and does not match C(/F)=C/F
-# for example, in pattern_hardOne, *C\\(/.\\)=C/. matches C(/F)=C/F and does not match F/C=C/F
-pattern_baseOne <- "^[^\\\\/]*[^\\(]/[Cc]=[Cc]/."
-pattern_baseTwo <- "^[^\\\\/]*[^\\(]\\\\.[Cc]=[Cc]/."
-pattern_hardOne <- "^[^\\\\/]*[Cc]\\(/.\\)=[Cc]/."
-pattern_hardTwo <- "^[^\\\\/]*[Cc]\\(\\\\.\\)=[Cc]/."
-str_extract('C(/F)=C/F', pattern_baseOne)
-str_extract('F/C=C/F', pattern_baseOne)
-str_extract('C(/F)=C/F', pattern_hardOne)
-str_extract('F/C=C/F', pattern_hardOne)
-## Connect to DB
-mysql_password = '***'
-con <- dbConnect(
-  drv = RMariaDB::MariaDB(),
-  dbname = 'chembl_36',
-  username = 'root',
-  password = mysql_password,
-  host = NULL, 
-  port = 3306
-)
-## Extract SMILES
-cs__query <- dbSendQuery(con, 'SELECT canonical_smiles FROM compound_structures')
-cs_smiles <- dbFetch(cs__query) |> distinct()
-dbClearResult(cs__query)
-# Close the connection
-dbDisconnect(con)
-## Check patterns against SMILES
-cs_smiles_checked <- cs_smiles |> rowwise() |>
-                    mutate(
-                        pattern_baseOne = str_extract(canonical_smiles, pattern_baseOne),
-                        pattern_baseTwo = str_extract(canonical_smiles, pattern_baseTwo),
-                        pattern_hardOne = str_extract(canonical_smiles, pattern_hardOne),
-                        pattern_hardTwo = str_extract(canonical_smiles, pattern_hardTwo)
-                    ) |>
-                    ungroup()
-## Filter and Count
-cs_smiles_matched <- cs_smiles_checked |> filter(if_any(starts_with("pattern"), ~ !is.na(.)))                       # 49 673  records matched one of the patterns
-cs_smiles_matched_hard <- cs_smiles_matched |> filter(if_any(starts_with("pattern_hard"), ~ !is.na(.)))             # 0       records matched one of the hard patterns
-cs_smiles_matched_base <- cs_smiles_matched |> filter(if_any(starts_with("pattern_base"), ~ !is.na(.)))             # 49 673  records matched one of the base patterns
-```
-
-The first pairs of cis/trans symbols in ChEMBL data (canonical smiles) do not include the hard cases similar to the ones described in <http://opensmiles.org/opensmiles.html>
-
-Probably, it is safe to say that the percentage of such cases should be quite low at least in the curated databases.
-
-From this, it is possible to assume that reliability of the SMILES as a form of representation of chemical structures comes not only from the basic rules of this language, but also from the standards of its usage adopted in the community.
-
-Still, ability to parse SMILES using basic rules are essential to maintain this status.
-
-------------------------------------------------------------------------
-
 ### All the symbols and corresponding character classes inside the square brackets besides the main atom symbol
 
 #### What are they?
@@ -469,13 +368,13 @@ Isotope symbols allowed in SMILES could be divided into 3 categories by their le
 
 30. Single character isotope symbols (**isotope**):
 
-| 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+| 1, 2, 3, 4, 5, 6, 7, 8, 9
 
 Corresponding character class could be designated as **w_isotope**, where prefix **w** stands for the whole symbol.
 
 31. Multicharacter (from 2 to 3 characters) isotope symbols (**isotope_m**):
 
-| [0-9][0-9], [0-9][0-9][0-9]
+| [0-9][1-9], [1-9][0-9], [0-9][0-9][1-9], [0-9][1-9][0-9], [1-9][0-9][0-9]
 
 Corresponding characters could be designated as **s_isotope & r_isotope**, where prefix **s** stands for the start and prefix **r** stands for the rest of the symbol.
 
@@ -485,7 +384,7 @@ Chirality symbols are used to show that an atom is a stereocenter.
 
 Chirality symbols allowed in SMILES could be divided into 5 categories by their length:
 
-32. Single character chirality symbols (**chiral**):
+32. Single character chirality symbol (**chiral**):
 
 | \@
 
@@ -493,13 +392,13 @@ Corresponding character class could be designated as **w_chiral**, where prefix 
 
 33. Two-character chirality symbols (**chiral_2**):
 
-| \@\@
+| [\@][\@]
 
 Corresponding character classes could be designated as **s_chiral & e_chiral**, where prefix **s** stands for the start and prefix **e** stands for the end of the symbol.
 
-34. Multi-character (four or five character) chirality symbols (**chiral_m**):
+34. Multicharacter (four or five character) chirality symbols (**chiral_m**):
 
-| \@, T, H, A, L, S, P, B, O, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+| [\@]TH[1-2], [\@]AL[1-2], [\@]SP[1-3], [\@]TB[1-20], [\@]OH[1-30]
 
 Corresponding character classes could be designated as **s_chiral_m, m_chiral & r_chiral**, where prefix **s** stands for the start, *prefix* **m** stands for the medium (two characters), prefix **r** stands for the rest of the symbol and *suffix* **m** stands for the multi, where it is needed.
 
@@ -509,15 +408,15 @@ Hydrogen symbols are used to designate the number of explicit hydrogens of this 
 
 Hydrogen symbols allowed in SMILES could be divided into 2 facets by their length:
 
-35. Single character hydrogen symbols (**hydro**):
+35. Single character hydrogen symbol (**hydro**):
 
 | H
 
 Corresponding character classes could be designated as **w_hydro**, where prefix **w** stands for the whole symbol.
 
-36. Two-character hydrogen symbols:
+36. Two-character hydrogen symbols (**hydro_2**):
 
-| H0, H1, H2, H3, H4, H5, H6, H7, H8, H9
+| H[2-9]
 
 Corresponding character classes could be designated as **s_hydro & ehydro**, where prefix **s** stands for the start and **e** stands for the end of the symbol.
 
@@ -527,22 +426,21 @@ Charge symbols are used to describe the charge of this atom (**charge**).
 
 Charge symbols allowed in SMILES could be divided into 2 facets by their length:
 
-37. Single character charge symbols:
+37. Single character charge symbols (**charge**):
 
-| +, -
+| [+-]
 
 Corresponding character classes could be designated as **w_charge**, where prefix **w** stands for the whole symbol.
 
 38. Two-character charge obsolete symbols (**charge_2**):
 
-| ++, - -
+| [+][+], [-][-]
 
 Corresponding characters could be designated as **s_charge & e_charge**, where prefix **s** stands for the start and **e** stands for the end of the symbol.
 
-39. Multicharacter (two or three characters) charge symbols:
+39. Multicharacter (two or three characters) charge symbols (**charge_m**):
 
-| +1, +2, +3, +4, +5, +6, +7, +8, +9, +10, +11, +12, +13, +14, +15,
-|  -1, -2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12, -13, -14, -15
+| [+-][1-9], [+-]1[0-5]
 
 Corresponding characters could be designated as **s_charge_m & r_charge_m**, where prefix **s** stands for the start and **r** stands for the rest of the symbol and suffix **m** stands for the multi where it is needed.
 
@@ -558,69 +456,25 @@ Class symbols allowed in SMILES may have variable length, but there is no point 
 
 Corresponding character classes could be designated as **s_class & r_class**, where prefix **s** stands for the start and **r** stands for the rest of the symbol.
 
-## Intersection of character classes
+Information on symbols is summarized in **symbols.tsv**, all symbols are provided in **symbols_all.tsv**.
 
-As it can be seen without the further analysis, the aforementioned classes of symbols are highly interconnected on the level of characters constituting them, even besides those classes, which are identical; the degree could be assessed numerically using previously introduced tools and visualized using UpSet plot realized in ggupset library (<https://cran.r-project.org/web/packages/ggupset/>).
+## Q1: are described symbols unique, i.e. is it possible to identify each SMILES symbols based only on characters constituting it?
 
-However, firstly it will be useful to visualize all the connections between:
+No, as it can be seen from **symbols.tsv**. For example,
 
--   Types of the symbols
+-   terminators and initiators of branching could be and often are the same by design
 
--   Classes of the symbols
+-   symbols of in-bracket atoms and bracket-free atoms could be the same (organic subset)
 
--   Classes of characters
+Also, several classes of symbols could be described or are described partially by the patterns [0-9] and [1-9], which makes parsing without consideration of the environment questionable.
 
--   And sets of characters constituting classes
+In the previous version the attempt was taken to divide the whole symbols into the smaller subsets of characters, the result is as follows: this strategy does not pay off, character classes probably could be useful to construct the SMILES strings, but they provide no clear benefits for parsing:
 
-Based on the already obtained results and D3.JS Sankey diagram.
-
-<figure>
-  <img src="smiles_sankey_base.png" alt="Sankey diagram describing relations between entities in SMILES language">
-  <figcaption><strong>Figure 1: </strong> Sankey diagram describing relations between entities in SMILES language. Red links corresponds to the cases when more than one link enters the particular node.</figcaption>
-</figure>
-
-At this stage diagram could be used to check whether each class of symbols (second column from the left) has unique character classes assigned (third column from the left) and elucidate the character classes, which are constituted by the same characters: every link before the third column should be grey, red links between the third and fourth column highlight the cases, which will be constantly hard for parsing (ability to judge on the character class of character based only on this character is desirable).
-
-List of the not unique character sets, character and symbol classes, symbol types is given in **Table 1**.
-
-| Number of identical char classes | Characters | Char сlass | Symbol сlass | Symbol type |
-|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
-| 15 | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 | e_bm_ire, e_bm_tre, e_hydro, r_bm_ire, r_bm_iri, r_bm_tre, r_bm_tri, r_charge, r_chiral, r_class, r_isotope, s_isotope, w_bm_iri, w_bm_tri, w_isotope | bm_ire_2, bm_ire_4, bm_iri, bm_iri_3, bm_tre_2, bm_tre_4, bm_tri, bm_tri_3, charge_m, chiral_m, class_m, hydro_2, isotope, isotope_m | feature symbol, modifier symbol |
-| 6 | -, #, \$, ., :, = | e_bm_ibe, e_bm_tbe, s_bm_ire, s_bm_ire_4, s_bm_tre, s_bm_tre_4 | bm_ibe_2, bm_ire_2, bm_ire_4, bm_tbe_2, bm_tre_2, bm_tre_4 | modifier symbol |
-| 4 | \% | n_bm_ire, n_bm_tre, s_bm_iri, s_bm_tri | bm_ire_4, bm_iri_3, bm_tre_4, bm_tri_3 | modifier symbol |
-| 4 | -, + | e_charge, s_charge, s_charge_m, w_charge | charge, charge_2, charge_m | feature symbol |
-| 4 | \@ | e_chiral, s_chiral, s_chiral_m, w_chiral | chiral, chiral_2, chiral_m | feature symbol |
-| 2 | ( | s_bm_ibe, w_bm_ibi | bm_ibe_2, bm_ibi | modifier symbol |
-| 2 | ) | s_bm_tbe, w_bm_tbi | bm_tbe_2, bm_tbi | modifier symbol |
-| 2 | /,\\ | l_ct, r_ct | ct | cis/trans symbol |
-| 2 | : | s_class, w_aromatic_bond | aromatic_bond, class_m | bond symbol, feature symbol |
-| 2 | H | s_hydro, w_hydro | hydro, hydro_2 | feature symbol |
-| 2 | b, c, n, o, p, s | w_atom_bar, w_atom_oar | atom_bar, atom_oar | atom symbol |
-
-**Table 1.** List of sets of characters constituting more than one character class.
-
-As it can be seen from the Table 1, most of the identical character sets still belong to the single symbol type (2 maximum).
-
-## Should be corrected
-
-### Partial intersection
-
-Besides totally intersected classes, which were described previously, classes having partial intersection are possible, they could be elucidated and visualized, see Fugure 2.
-
-<p>
-<figure>
-<img src="charSets_intersection.png" alt="Intersection of the character sets"/>
-<figcaption><strong>Figure 2: </strong> All intersections of the character sets. Red cells correspond to the cases where there is full intersection. Yellowish cells correspond to the cases, where intersection is absent. Cells having intermediate color correspond to the cases, where partial intersection exists.</figcaption>
-</figure>
-</p>
-
-As it can be seen from Figure 2, there are pairs of classes having partial intersection, which should be considering during the further parser's development.
-
-It should be noted, that the usage of terms **class** and **type** maybe considered problematic in this situation.
-
-Fortunately, this is not a principal problem: classes and types, which were described earlier, are semantical; they reflect the meaning of the entity in the context of the surrounding (connected) characters and symbols.
-
-Thus, the terminology will not be re-worked.
+> [!NOTE]
+>
+> It seems to be easier (and fast enough) to read the characters one by one until the longest possible sequence describing symbol is gathered (5 characters, I guess) and decide on the actual symbol afterwards, considering matches in **current sub-string** and **state** deduced from the previous symbols and length of the remaining SMILES string.
+>
+> The following text will be rewritten accordingly.
 
 ## General SMILES parsing strategy
 
