@@ -1,0 +1,41 @@
+id	type	class	symbols	description
+1	atom	atom_oar	b, c, n, o, s, p	Single character atom symbols of organic (from so called organic subset) aromatic atoms lacking the additional grammatical requirements and features
+2	atom	atom_oal	B, C, N, O, S, P, F, I	Single character atom symbols of organic (from so called organic subset) aliphatic atoms lacking the additional grammatical requirements and features
+3	atom	atom_bar	b, c, n, o, s, p	Single character atom symbols of aromatic atoms enclosed within brackets
+4	atom	atom_bal	H, B, C, N, O, F, P, S, K, V, Y, I, W, U	Single character atom symbols of in-bracket aliphatic atoms
+5	atom	atom_oal_2	Cl, Br	Two-character atom symbols of organic aliphatic atoms lacking the additional grammatical requirements and features
+6	atom	atom_bar_2	se, as, te	Two-character atom symbols of in-bracket aromatic atoms
+7	atom	atom_bal_2	He, Li, Be, Ne, Na, Mg, Al, Si, Cl, Ar, Ca, Sc, Ti, Cr, Mn, Fe, Co, Ni, Cu, Zn, Ga, Ge, As, Se, Br, Kr, Rb, Sr, Zr, Nb, Mo, Tc, Ru, Rh, Pd, Ag, Cd, In, Sn, Sb, Te, Xe, Cs, Ba, Hf, Ta, Re, Os, Ir, Pt, Au, Hg, Tl, Pb, Bi, Po, At, Rn, Fr, Ra, Rf, Db, Sg, Bh, Hs, Mt, Ds, Rg, Cn, Fl, Lv, La, Ce, Pr, Nd, Pm, Sm, Eu, Gd, Tb, Dy, Ho, Er, Tm, Yb, Lu, Ac, Th, Pa, Np, Pu, Am, Cm, Bk, Cf, Es, Fm, Md, No, Lr	Two-character atom symbols of in-bracket aliphatic atoms
+8	anything	anything	*	Single character symbol of anything
+9	Square bracket	bracket	[, ]	Single character symbols marking the start and the end of atom record including various properties 
+10	bond	single_bond	-	Single character symbol corresponding to the single bond
+11	bond	double_bond	=	Single character symbol corresponding to the double bond
+12	bond	triple_bond	#	Single character symbol corresponding to the triple bond
+13	bond	quadruple_bond	$	Single character symbol corresponding to the quadruple bond
+14	bond	aromatic_bond	:	Single character symbol corresponding to the aromatic bond
+15	bond	no_bond	.	Single character symbol corresponding to the absence of the bond
+16	modifier	bm_ibi	(	Single character bond multiplying symbols initiators of branching with implicit bond
+17	modifier	bm_iri	0, 1, 2, 3, 4, 5, 6, 7, 8, 9	Single character bond multiplying symbols initiators of rings with implicit bond
+18	modifier	bm_tbi	)	Single character bond multiplying symbols terminators of branching with implicit bond
+19	modifier	bm_tri	0, 1, 2, 3, 4, 5, 6, 7, 8, 9	Single character bond multiplying symbols terminators of rings with implicit bond
+20	modifier	bm_ibe	([-=#$:.]	Two-character bond multiplying symbols initiators of branching with explicit bond
+21	modifier	bm_ire_2	[-=#$:.][0-9]	Two-character bond multiplying symbols initiators of rings with explicit bond
+22	modifier	bm_iri_3	%[0-9][1-9], %[1-9][0-9]	Three-character bond multiplying symbols initiators of rings with implicit bond
+23	modifier	bm_ire_4	[-=#$:.]%[0-9][1-9], [-=#$:.]%[1-9][0-9]	Four-character bond multiplying symbols initiators of rings with explicit bond
+24	modifier	bm_tbe_2	)[-=#$:.]	Two-character bond multiplying symbols terminators of branching with explicit bond
+25	modifier	bm_tre_2	[-=#$:.][0-9]	Two-character bond multiplying symbols terminators of rings with explicit bond
+26	modifier	bm_tre_4	[-=#$:.]%[0-9][1-9], [-=#$:.]%[1-9][0-9]	Four-character bond multiplying symbols terminators of rings with explicit bond
+27	modifier	bm_tri_3	%[0-9][1-9], %[1-9][0-9]	Three-character bond multiplying symbols terminators of rings with implicit bond
+28	modifier	l_ct	/, \	Cis/trans single character symbols on the left side of the rotary non-permissive bond
+29	modifier	r_ct	/, \	Cis/trans single character symbols on the right side of the rotary non-permissive bond
+30	property	isotope	1, 2, 3, 4, 5, 6, 7, 8, 9	Single character isotope symbols
+31	property	isotope_m	[0-9][1-9], [1-9][0-9], [0-9][0-9][1-9], [0-9][1-9][0-9], [1-9][0-9][0-9]	Multicharacter (from 2 to 3 characters) isotope symbols
+32	property	chiral	@	Single character chirality symbol
+33	property	chiral_2	[@][@]	Two-character chirality symbol
+34	property	chiral_m	[@]TH[1-2], [@]AL[1-2], [@]SP[1-3], [@]TB[1-20], [@]OH[1-30]	Multicharacter (four or five character) chirality symbols
+35	property	hydro	H	Single character hydrogen symbol
+36	property	hydro_2	H[2-9]	Two-character hydrogen symbols
+37	property	charge	[+-]	Single character charge symbols
+38	property	charge_2	[+][+], [-][-]	Two-character charge symbols
+39	property	charge_m	[+-][1-9], [+-]1[0-5]	Multicharacter charge symbols
+40	property	class	:[0-9], :[0-9][0-9], :[0-9][0-9][0-9] 	Multicharacter class symbols
