@@ -473,8 +473,26 @@ In the previous version the attempt was taken to divide the whole symbols into t
 > [!NOTE]
 >
 > It seems to be easier (and fast enough) to read the characters one by one until the longest possible sequence describing symbol is gathered (5 characters, I guess) and decide on the actual symbol afterwards, considering matches in **current sub-string** and **state** deduced from the previous symbols and length of the remaining SMILES string.
+> 
+
+## General SMILES parsing strategy revised
+
+1.  Computer program initializes with the SMILES string having default **state** and empty **accumulator** of characters and empty **result**.
+
+2.  Every time computer program encounters new (next) character it accumulates this character.
+
+3.  Every time accumulator reaches its limits (longest symbol in SMILES or end of the string) its content is being evaluated, state changes accordingly, accumulator's content is being trimmed from left to right to delete all the characters evaluated as the whole symbol at this step.
+
+4.  Every time state changes computer program takes some action to build up an output.
+
+5.  When the end of the string is reached, computer program outputs the result.
+
+> [!NOTE]
 >
 > The following text will be rewritten accordingly.
+>
+
+
 
 ## General SMILES parsing strategy
 
