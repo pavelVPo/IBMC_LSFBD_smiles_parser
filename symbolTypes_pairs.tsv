@@ -1,0 +1,37 @@
+l_type	r_type	allowed
+bond	bond	no
+bond	modifier	no
+bond	property	no
+modifier	property	no
+property	bond	no
+property	modifier	no
+atom	atom	yes
+atom	anything	yes
+atom	Square bracket	yes
+atom	bond	yes
+atom	modifier	yes
+atom	property	yes
+anything	atom	yes
+anything	anything	yes
+anything	Square bracket	yes
+anything	bond	yes
+anything	modifier	yes
+anything	property	yes
+Square bracket	atom	yes
+Square bracket	anything	yes
+Square bracket	Square bracket	yes
+Square bracket	bond	yes
+Square bracket	modifier	yes
+Square bracket	property	yes
+bond	atom	yes
+bond	anything	yes
+bond	Square bracket	yes
+modifier	atom	yes
+modifier	anything	yes
+modifier	Square bracket	yes
+modifier	bond	yes
+modifier	modifier	yes
+property	atom	yes
+property	anything	yes
+property	Square bracket	yes
+property	property	yes
