@@ -482,11 +482,6 @@ In the previous version the attempt was taken to divide the whole symbols into t
 
 5.  When the end of the string is reached, computer program outputs the result.
 
-> [!NOTE]
->
-> The following text will be rewritten accordingly.
->
-
 ## Pairs of symbol types, which are allowed in SMILES
 
 Chemistry deals with the complex objects, which structures are under strict constrains, however, even in general nonsensical chemical structures may make sense under specific conditions, representing the intermediate state, or due to the technical reasons (data analysis).
