@@ -486,3 +486,25 @@ In the previous version the attempt was taken to divide the whole symbols into t
 >
 > The following text will be rewritten accordingly.
 >
+
+## Pairs of symbol types, which are allowed in SMILES
+
+Chemistry deals with the complex objects, which structures are under strict constrains, however, even in general nonsensical chemical structures may make sense under specific conditions, representing the intermediate state, or due to the technical reasons (data analysis).
+
+Thus, there is no objective to produce only the chemically valid structures as the result of SMILES parsing.
+
+However, some restrictions concerning the SMILES string validity should be enforced and to identify them, all the theoretically possible pairs of symbol types will be enumerated.
+
+Among the 36 theoretically possible pairs of symbol types the following will be forbidden:
+
+-   **bond - bond:** bonds connect atoms, not bonds
+
+-   **bond - modifier:** modifiers include bonds, bonds connect atoms, not bonds
+
+-   **bond - property:** properties are allowed only inside the square brackets, bonds are allowed only outside the square brackets
+
+-   **modifier - property:** properties are allowed only inside the square brackets, modifiers are allowed only outside the square brackets
+
+-   **property - bond:** properties are allowed only inside the square brackets, bonds are allowed only outside the square brackets
+
+-   **property - modifier:** properties are allowed only inside the square brackets, modifiers are allowed only outside the square brackets
