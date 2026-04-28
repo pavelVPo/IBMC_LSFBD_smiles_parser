@@ -224,7 +224,7 @@ for (i in seq(1:nrow(symb_folds))) {
 	}
 }
 
-symbs_all <- symbs_raw |> filter(class == "bracket" | !str_detect(symbols, "\\[")) |>
+symbs_all <- symbs_raw |> filter(class == "s_bracket" | class == "e_bracket" | !str_detect(symbols, "\\[")) |>
 							bind_rows(symb_folds |> separate_longer_delim(symbols, delim = ", ")) |>
 							group_by(class) |>
 							mutate(symbols = symbols |> sort() |> unique() |> str_c(collapse = ", ")) |>
