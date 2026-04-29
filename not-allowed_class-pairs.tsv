@@ -1,0 +1,560 @@
+classpairs_forbidden	reason
+atom_oal -> atom_bal	out-of-bracket -> in-bracket atoms
+atom_oal -> atom_bal_2	out-of-bracket -> in-bracket atoms
+atom_oal -> atom_bar_2	out-of-bracket -> in-bracket atoms
+atom_oal_2 -> atom_bal	out-of-bracket -> in-bracket atoms
+atom_oal_2 -> atom_bal_2	out-of-bracket -> in-bracket atoms
+atom_oal_2 -> atom_bar	out-of-bracket -> in-bracket atoms
+atom_oal_2 -> atom_bar_2	out-of-bracket -> in-bracket atoms
+atom_oar -> atom_bal	out-of-bracket -> in-bracket atoms
+atom_oar -> atom_bal_2	out-of-bracket -> in-bracket atoms
+atom_oar -> atom_bar	out-of-bracket -> in-bracket atoms
+atom_oar -> atom_bar_2	out-of-bracket -> in-bracket atoms
+atom_bal -> atom_oal	in-bracket -> out-of-bracket atoms
+atom_bal -> atom_oal_2	in-bracket -> out-of-bracket atoms
+atom_bal -> atom_oar	in-bracket -> out-of-bracket atoms
+atom_bal_2 -> atom_oal	in-bracket -> out-of-bracket atoms
+atom_bal_2 -> atom_oal_2	in-bracket -> out-of-bracket atoms
+atom_bal_2 -> atom_oar	in-bracket -> out-of-bracket atoms
+atom_bar -> atom_oal	in-bracket -> out-of-bracket atoms
+atom_bar -> atom_oal_2	in-bracket -> out-of-bracket atoms
+atom_bar -> atom_oar	in-bracket -> out-of-bracket atoms
+atom_bar_2 -> atom_oal	in-bracket -> out-of-bracket atoms
+atom_bar_2 -> atom_oal_2	in-bracket -> out-of-bracket atoms
+atom_bar_2 -> atom_oar	in-bracket -> out-of-bracket atoms
+atom_bal -> atom_bal	in-bracket -> in-bracket atoms
+atom_bal -> atom_bal_2	in-bracket -> in-bracket atoms
+atom_bal -> atom_bar	in-bracket -> in-bracket atoms
+atom_bal -> atom_bar_2	in-bracket -> in-bracket atoms
+atom_bal_2 -> atom_bal	in-bracket -> in-bracket atoms
+atom_bal_2 -> atom_bal_2	in-bracket -> in-bracket atoms
+atom_bal_2 -> atom_bar	in-bracket -> in-bracket atoms
+atom_bal_2 -> atom_bar_2	in-bracket -> in-bracket atoms
+atom_bar -> atom_bal	in-bracket -> in-bracket atoms
+atom_bar -> atom_bal_2	in-bracket -> in-bracket atoms
+atom_bar -> atom_bar	in-bracket -> in-bracket atoms
+atom_bar -> atom_bar_2	in-bracket -> in-bracket atoms
+atom_bar_2 -> atom_bal	in-bracket -> in-bracket atoms
+atom_bar_2 -> atom_bal_2	in-bracket -> in-bracket atoms
+atom_bar_2 -> atom_bar	in-bracket -> in-bracket atoms
+atom_bar_2 -> atom_bar_2	in-bracket -> in-bracket atoms
+atom_bal -> anything	in-bracket -> * atoms
+atom_bal_2 -> anything	in-bracket -> * atoms
+atom_bar -> anything	in-bracket -> * atoms
+atom_bar_2 -> anything	in-bracket -> * atoms
+anything -> atom_bal	* -> in-bracket atoms
+anything -> atom_bal_2	* -> in-bracket atoms
+anything -> atom_bar	* -> in-bracket atoms
+anything -> atom_bar_2	* -> in-bracket atoms
+atom_bal -> aromatic_bond	in-bracket atom -> bond
+atom_bal -> double_bond	in-bracket atom -> bond
+atom_bal -> no_bond	in-bracket atom -> bond
+atom_bal -> quadruple_bond	in-bracket atom -> bond
+atom_bal -> single_bond	in-bracket atom -> bond
+atom_bal -> triple_bond	in-bracket atom -> bond
+atom_bal_2 -> aromatic_bond	in-bracket atom -> bond
+atom_bal_2 -> double_bond	in-bracket atom -> bond
+atom_bal_2 -> no_bond	in-bracket atom -> bond
+atom_bal_2 -> quadruple_bond	in-bracket atom -> bond
+atom_bal_2 -> single_bond	in-bracket atom -> bond
+atom_bal_2 -> triple_bond	in-bracket atom -> bond
+atom_bar -> aromatic_bond	in-bracket atom -> bond
+atom_bar -> double_bond	in-bracket atom -> bond
+atom_bar -> no_bond	in-bracket atom -> bond
+atom_bar -> quadruple_bond	in-bracket atom -> bond
+atom_bar -> single_bond	in-bracket atom -> bond
+atom_bar -> triple_bond	in-bracket atom -> bond
+atom_bar_2 -> aromatic_bond	in-bracket atom -> bond
+atom_bar_2 -> double_bond	in-bracket atom -> bond
+atom_bar_2 -> no_bond	in-bracket atom -> bond
+atom_bar_2 -> quadruple_bond	in-bracket atom -> bond
+atom_bar_2 -> single_bond	in-bracket atom -> bond
+atom_bar_2 -> triple_bond	in-bracket atom -> bond
+aromatic_bond -> atom_bal	bond -> in-bracket atom
+aromatic_bond -> atom_bal_2	bond -> in-bracket atom
+aromatic_bond -> atom_bar	bond -> in-bracket atom
+aromatic_bond -> atom_bar_2	bond -> in-bracket atom
+double_bond -> atom_bal	bond -> in-bracket atom
+double_bond -> atom_bal_2	bond -> in-bracket atom
+double_bond -> atom_bar	bond -> in-bracket atom
+double_bond -> atom_bar_2	bond -> in-bracket atom
+no_bond -> atom_bal	bond -> in-bracket atom
+no_bond -> atom_bal_2	bond -> in-bracket atom
+no_bond -> atom_bar	bond -> in-bracket atom
+no_bond -> atom_bar_2	bond -> in-bracket atom
+quadruple_bond -> atom_bal	bond -> in-bracket atom
+quadruple_bond -> atom_bal_2	bond -> in-bracket atom
+quadruple_bond -> atom_bar	bond -> in-bracket atom
+quadruple_bond -> atom_bar_2	bond -> in-bracket atom
+single_bond -> atom_bal	bond -> in-bracket atom
+single_bond -> atom_bal_2	bond -> in-bracket atom
+single_bond -> atom_bar	bond -> in-bracket atom
+single_bond -> atom_bar_2	bond -> in-bracket atom
+triple_bond -> atom_bal	bond -> in-bracket atom
+triple_bond -> atom_bal_2	bond -> in-bracket atom
+triple_bond -> atom_bar	bond -> in-bracket atom
+triple_bond -> atom_bar_2	bond -> in-bracket atom
+aromatic_bond -> atom_oal	aromatic bond -> aliphatic atom
+aromatic_bond -> atom_oal_2	aromatic bond -> aliphatic atom
+atom_oal -> aromatic_bond	aliphatic atom -> aromatic bond
+atom_oal_2 -> aromatic_bond	aliphatic atom -> aromatic bond
+aromatic_bond -> e_bracket	bond in brackets
+double_bond -> e_bracket	bond in brackets
+no_bond -> e_bracket	bond in brackets
+quadruple_bond -> e_bracket	bond in brackets
+single_bond -> e_bracket	bond in brackets
+triple_bond -> e_bracket	bond in brackets
+atom_bal -> bm_ibe	in-bracket atom -> modifier
+atom_bal -> bm_ibi	in-bracket atom -> modifier
+atom_bal -> bm_ire_2	in-bracket atom -> modifier
+atom_bal -> bm_ire_4	in-bracket atom -> modifier
+atom_bal -> bm_iri	in-bracket atom -> modifier
+atom_bal -> bm_iri_3	in-bracket atom -> modifier
+atom_bal -> bm_tbe_2	in-bracket atom -> modifier
+atom_bal -> bm_tbi	in-bracket atom -> modifier
+atom_bal -> bm_tre_2	in-bracket atom -> modifier
+atom_bal -> bm_tre_4	in-bracket atom -> modifier
+atom_bal -> bm_tri	in-bracket atom -> modifier
+atom_bal -> bm_tri_3	in-bracket atom -> modifier
+atom_bal -> l_ct	in-bracket atom -> modifier
+atom_bal -> r_ct	in-bracket atom -> modifier
+atom_bal_2 -> bm_ibe	in-bracket atom -> modifier
+atom_bal_2 -> bm_ibi	in-bracket atom -> modifier
+atom_bal_2 -> bm_ire_2	in-bracket atom -> modifier
+atom_bal_2 -> bm_ire_4	in-bracket atom -> modifier
+atom_bal_2 -> bm_iri	in-bracket atom -> modifier
+atom_bal_2 -> bm_iri_3	in-bracket atom -> modifier
+atom_bal_2 -> bm_tbe_2	in-bracket atom -> modifier
+atom_bal_2 -> bm_tbi	in-bracket atom -> modifier
+atom_bal_2 -> bm_tre_2	in-bracket atom -> modifier
+atom_bal_2 -> bm_tre_4	in-bracket atom -> modifier
+atom_bal_2 -> bm_tri	in-bracket atom -> modifier
+atom_bal_2 -> bm_tri_3	in-bracket atom -> modifier
+atom_bal_2 -> l_ct	in-bracket atom -> modifier
+atom_bal_2 -> r_ct	in-bracket atom -> modifier
+atom_bar -> bm_ibe	in-bracket atom -> modifier
+atom_bar -> bm_ibi	in-bracket atom -> modifier
+atom_bar -> bm_ire_2	in-bracket atom -> modifier
+atom_bar -> bm_ire_4	in-bracket atom -> modifier
+atom_bar -> bm_iri	in-bracket atom -> modifier
+atom_bar -> bm_iri_3	in-bracket atom -> modifier
+atom_bar -> bm_tbe_2	in-bracket atom -> modifier
+atom_bar -> bm_tbi	in-bracket atom -> modifier
+atom_bar -> bm_tre_2	in-bracket atom -> modifier
+atom_bar -> bm_tre_4	in-bracket atom -> modifier
+atom_bar -> bm_tri	in-bracket atom -> modifier
+atom_bar -> bm_tri_3	in-bracket atom -> modifier
+atom_bar -> l_ct	in-bracket atom -> modifier
+atom_bar -> r_ct	in-bracket atom -> modifier
+atom_bar_2 -> bm_ibe	in-bracket atom -> modifier
+atom_bar_2 -> bm_ibi	in-bracket atom -> modifier
+atom_bar_2 -> bm_ire_2	in-bracket atom -> modifier
+atom_bar_2 -> bm_ire_4	in-bracket atom -> modifier
+atom_bar_2 -> bm_iri	in-bracket atom -> modifier
+atom_bar_2 -> bm_iri_3	in-bracket atom -> modifier
+atom_bar_2 -> bm_tbe_2	in-bracket atom -> modifier
+atom_bar_2 -> bm_tbi	in-bracket atom -> modifier
+atom_bar_2 -> bm_tre_2	in-bracket atom -> modifier
+atom_bar_2 -> bm_tre_4	in-bracket atom -> modifier
+atom_bar_2 -> bm_tri	in-bracket atom -> modifier
+atom_bar_2 -> bm_tri_3	in-bracket atom -> modifier
+atom_bar_2 -> l_ct	in-bracket atom -> modifier
+atom_bar_2 -> r_ct	in-bracket atom -> modifier
+bm_ibe -> atom_bal	modifier -> in-bracket atom
+bm_ibe -> atom_bal_2	modifier -> in-bracket atom
+bm_ibe -> atom_bar	modifier -> in-bracket atom
+bm_ibe -> atom_bar_2	modifier -> in-bracket atom
+bm_ibi -> atom_bal	modifier -> in-bracket atom
+bm_ibi -> atom_bal_2	modifier -> in-bracket atom
+bm_ibi -> atom_bar	modifier -> in-bracket atom
+bm_ibi -> atom_bar_2	modifier -> in-bracket atom
+bm_ire_2 -> atom_bal	modifier -> in-bracket atom
+bm_ire_2 -> atom_bal_2	modifier -> in-bracket atom
+bm_ire_2 -> atom_bar	modifier -> in-bracket atom
+bm_ire_2 -> atom_bar_2	modifier -> in-bracket atom
+bm_ire_4 -> atom_bal	modifier -> in-bracket atom
+bm_ire_4 -> atom_bal_2	modifier -> in-bracket atom
+bm_ire_4 -> atom_bar	modifier -> in-bracket atom
+bm_ire_4 -> atom_bar_2	modifier -> in-bracket atom
+bm_iri -> atom_bal	modifier -> in-bracket atom
+bm_iri -> atom_bal_2	modifier -> in-bracket atom
+bm_iri -> atom_bar	modifier -> in-bracket atom
+bm_iri -> atom_bar_2	modifier -> in-bracket atom
+bm_iri_3 -> atom_bal	modifier -> in-bracket atom
+bm_iri_3 -> atom_bal_2	modifier -> in-bracket atom
+bm_iri_3 -> atom_bar	modifier -> in-bracket atom
+bm_iri_3 -> atom_bar_2	modifier -> in-bracket atom
+bm_tbe_2 -> atom_bal	modifier -> in-bracket atom
+bm_tbe_2 -> atom_bal_2	modifier -> in-bracket atom
+bm_tbe_2 -> atom_bar	modifier -> in-bracket atom
+bm_tbe_2 -> atom_bar_2	modifier -> in-bracket atom
+bm_tbi -> atom_bal	modifier -> in-bracket atom
+bm_tbi -> atom_bal_2	modifier -> in-bracket atom
+bm_tbi -> atom_bar	modifier -> in-bracket atom
+bm_tbi -> atom_bar_2	modifier -> in-bracket atom
+bm_tre_2 -> atom_bal	modifier -> in-bracket atom
+bm_tre_2 -> atom_bal_2	modifier -> in-bracket atom
+bm_tre_2 -> atom_bar	modifier -> in-bracket atom
+bm_tre_2 -> atom_bar_2	modifier -> in-bracket atom
+bm_tre_4 -> atom_bal	modifier -> in-bracket atom
+bm_tre_4 -> atom_bal_2	modifier -> in-bracket atom
+bm_tre_4 -> atom_bar	modifier -> in-bracket atom
+bm_tre_4 -> atom_bar_2	modifier -> in-bracket atom
+bm_tri -> atom_bal	modifier -> in-bracket atom
+bm_tri -> atom_bal_2	modifier -> in-bracket atom
+bm_tri -> atom_bar	modifier -> in-bracket atom
+bm_tri -> atom_bar_2	modifier -> in-bracket atom
+bm_tri_3 -> atom_bal	modifier -> in-bracket atom
+bm_tri_3 -> atom_bal_2	modifier -> in-bracket atom
+bm_tri_3 -> atom_bar	modifier -> in-bracket atom
+bm_tri_3 -> atom_bar_2	modifier -> in-bracket atom
+l_ct -> atom_bal	modifier -> in-bracket atom
+l_ct -> atom_bal_2	modifier -> in-bracket atom
+l_ct -> atom_bar	modifier -> in-bracket atom
+l_ct -> atom_bar_2	modifier -> in-bracket atom
+r_ct -> atom_bal	modifier -> in-bracket atom
+r_ct -> atom_bal_2	modifier -> in-bracket atom
+r_ct -> atom_bar	modifier -> in-bracket atom
+r_ct -> atom_bar_2	modifier -> in-bracket atom
+atom_bal -> isotope	in-bracket atom -> isotope
+atom_bal -> isotope_m	in-bracket atom -> isotope
+atom_bal_2 -> isotope	in-bracket atom -> isotope
+atom_bal_2 -> isotope_m	in-bracket atom -> isotope
+atom_bar -> isotope	in-bracket atom -> isotope
+atom_bar -> isotope_m	in-bracket atom -> isotope
+atom_bar_2 -> isotope	in-bracket atom -> isotope
+atom_bar_2 -> isotope_m	in-bracket atom -> isotope
+atom_oal -> charge	out-of-bracket atom -> in-bracket property
+atom_oal -> charge_2	out-of-bracket atom -> in-bracket property
+atom_oal -> charge_m	out-of-bracket atom -> in-bracket property
+atom_oal -> chiral	out-of-bracket atom -> in-bracket property
+atom_oal -> chiral_2	out-of-bracket atom -> in-bracket property
+atom_oal -> chiral_m	out-of-bracket atom -> in-bracket property
+atom_oal -> class	out-of-bracket atom -> in-bracket property
+atom_oal -> hydro	out-of-bracket atom -> in-bracket property
+atom_oal -> hydro_2	out-of-bracket atom -> in-bracket property
+atom_oal -> isotope	out-of-bracket atom -> in-bracket property
+atom_oal -> isotope_m	out-of-bracket atom -> in-bracket property
+atom_oal_2 -> charge	out-of-bracket atom -> in-bracket property
+atom_oal_2 -> charge_2	out-of-bracket atom -> in-bracket property
+atom_oal_2 -> charge_m	out-of-bracket atom -> in-bracket property
+atom_oal_2 -> chiral	out-of-bracket atom -> in-bracket property
+atom_oal_2 -> chiral_2	out-of-bracket atom -> in-bracket property
+atom_oal_2 -> chiral_m	out-of-bracket atom -> in-bracket property
+atom_oal_2 -> class	out-of-bracket atom -> in-bracket property
+atom_oal_2 -> hydro	out-of-bracket atom -> in-bracket property
+atom_oal_2 -> hydro_2	out-of-bracket atom -> in-bracket property
+atom_oal_2 -> isotope	out-of-bracket atom -> in-bracket property
+atom_oal_2 -> isotope_m	out-of-bracket atom -> in-bracket property
+atom_oar -> charge	out-of-bracket atom -> in-bracket property
+atom_oar -> charge_2	out-of-bracket atom -> in-bracket property
+atom_oar -> charge_m	out-of-bracket atom -> in-bracket property
+atom_oar -> chiral	out-of-bracket atom -> in-bracket property
+atom_oar -> chiral_2	out-of-bracket atom -> in-bracket property
+atom_oar -> chiral_m	out-of-bracket atom -> in-bracket property
+atom_oar -> class	out-of-bracket atom -> in-bracket property
+atom_oar -> hydro	out-of-bracket atom -> in-bracket property
+atom_oar -> hydro_2	out-of-bracket atom -> in-bracket property
+atom_oar -> isotope	out-of-bracket atom -> in-bracket property
+atom_oar -> isotope_m	out-of-bracket atom -> in-bracket property
+charge -> atom_bal	!isotope in-bracket property -> in-bracket atom
+charge -> atom_bal_2	!isotope in-bracket property -> in-bracket atom
+charge -> atom_bar	!isotope in-bracket property -> in-bracket atom
+charge -> atom_bar_2	!isotope in-bracket property -> in-bracket atom
+charge_2 -> atom_bal	!isotope in-bracket property -> in-bracket atom
+charge_2 -> atom_bal_2	!isotope in-bracket property -> in-bracket atom
+charge_2 -> atom_bar	!isotope in-bracket property -> in-bracket atom
+charge_2 -> atom_bar_2	!isotope in-bracket property -> in-bracket atom
+charge_m -> atom_bal	!isotope in-bracket property -> in-bracket atom
+charge_m -> atom_bal_2	!isotope in-bracket property -> in-bracket atom
+charge_m -> atom_bar	!isotope in-bracket property -> in-bracket atom
+charge_m -> atom_bar_2	!isotope in-bracket property -> in-bracket atom
+chiral -> atom_bal	!isotope in-bracket property -> in-bracket atom
+chiral -> atom_bal_2	!isotope in-bracket property -> in-bracket atom
+chiral -> atom_bar	!isotope in-bracket property -> in-bracket atom
+chiral -> atom_bar_2	!isotope in-bracket property -> in-bracket atom
+chiral_2 -> atom_bal	!isotope in-bracket property -> in-bracket atom
+chiral_2 -> atom_bal_2	!isotope in-bracket property -> in-bracket atom
+chiral_2 -> atom_bar	!isotope in-bracket property -> in-bracket atom
+chiral_2 -> atom_bar_2	!isotope in-bracket property -> in-bracket atom
+chiral_m -> atom_bal	!isotope in-bracket property -> in-bracket atom
+chiral_m -> atom_bal_2	!isotope in-bracket property -> in-bracket atom
+chiral_m -> atom_bar	!isotope in-bracket property -> in-bracket atom
+chiral_m -> atom_bar_2	!isotope in-bracket property -> in-bracket atom
+class -> atom_bal	!isotope in-bracket property -> in-bracket atom
+class -> atom_bal_2	!isotope in-bracket property -> in-bracket atom
+class -> atom_bar	!isotope in-bracket property -> in-bracket atom
+class -> atom_bar_2	!isotope in-bracket property -> in-bracket atom
+hydro -> atom_bal	!isotope in-bracket property -> in-bracket atom
+hydro -> atom_bal_2	!isotope in-bracket property -> in-bracket atom
+hydro -> atom_bar	!isotope in-bracket property -> in-bracket atom
+hydro -> atom_bar_2	!isotope in-bracket property -> in-bracket atom
+hydro_2 -> atom_bal	!isotope in-bracket property -> in-bracket atom
+hydro_2 -> atom_bal_2	!isotope in-bracket property -> in-bracket atom
+hydro_2 -> atom_bar	!isotope in-bracket property -> in-bracket atom
+hydro_2 -> atom_bar_2	!isotope in-bracket property -> in-bracket atom
+atom_bal -> s_bracket	in-bracket atom -> bracket start
+atom_bal_2 -> s_bracket	in-bracket atom -> bracket start
+atom_bar -> s_bracket	in-bracket atom -> bracket start
+atom_bar_2 -> s_bracket	in-bracket atom -> bracket start
+bm_ibe -> aromatic_bond	bond to bond
+bm_ibe -> double_bond	bond to bond
+bm_ibe -> no_bond	bond to bond
+bm_ibe -> quadruple_bond	bond to bond
+bm_ibe -> single_bond	bond to bond
+bm_ibe -> triple_bond	bond to bond
+bm_tbe_2 -> aromatic_bond	bond to bond
+bm_tbe_2 -> double_bond	bond to bond
+bm_tbe_2 -> no_bond	bond to bond
+bm_tbe_2 -> quadruple_bond	bond to bond
+bm_tbe_2 -> single_bond	bond to bond
+bm_tbe_2 -> triple_bond	bond to bond
+bm_ibe -> bm_ibe	umbiguous
+bm_ibe -> bm_ire_2	umbiguous
+bm_ibe -> bm_ire_4	umbiguous
+bm_ibe -> bm_tbe_2	umbiguous
+bm_ibe -> bm_tbi	umbiguous
+bm_ibe -> bm_tre_2	umbiguous
+bm_ibe -> bm_tre_4	umbiguous
+bm_ibi -> bm_ire_2	umbiguous
+bm_ibi -> bm_ire_4	umbiguous
+bm_ibi -> bm_tbe_2	umbiguous
+bm_ibi -> bm_tbi	umbiguous
+bm_ibi -> bm_tre_2	umbiguous
+bm_ibi -> bm_tre_4	umbiguous
+bm_tbe_2 -> bm_ibe	umbiguous
+bm_tbe_2 -> bm_ibi	umbiguous
+bm_tbe_2 -> bm_ire_2	umbiguous
+bm_tbe_2 -> bm_ire_4	umbiguous
+bm_tbe_2 -> bm_tbe_2	umbiguous
+bm_tbe_2 -> bm_tbi	umbiguous
+bm_tbe_2 -> bm_tre_2	umbiguous
+bm_tbe_2 -> bm_tre_4	umbiguous
+e_bracket -> atom_bal	end of bracket -> in-bracket property
+e_bracket -> atom_bal_2	end of bracket -> in-bracket property
+e_bracket -> atom_bar	end of bracket -> in-bracket property
+e_bracket -> atom_bar_2	end of bracket -> in-bracket property
+e_bracket -> charge	end of bracket -> in-bracket property
+e_bracket -> charge_2	end of bracket -> in-bracket property
+e_bracket -> charge_m	end of bracket -> in-bracket property
+e_bracket -> chiral	end of bracket -> in-bracket property
+e_bracket -> chiral_2	end of bracket -> in-bracket property
+e_bracket -> chiral_m	end of bracket -> in-bracket property
+e_bracket -> class	end of bracket -> in-bracket property
+e_bracket -> e_bracket	end of bracket -> in-bracket property
+e_bracket -> hydro	end of bracket -> in-bracket property
+e_bracket -> hydro_2	end of bracket -> in-bracket property
+e_bracket -> isotope	end of bracket -> in-bracket property
+e_bracket -> isotope_m	end of bracket -> in-bracket property
+atom_oal -> e_bracket	!in-bracket symbol -> end of bracket
+atom_oal_2 -> e_bracket	!in-bracket symbol -> end of bracket
+atom_oar -> e_bracket	!in-bracket symbol -> end of bracket
+bm_ibe -> e_bracket	!in-bracket symbol -> end of bracket
+bm_ibi -> e_bracket	!in-bracket symbol -> end of bracket
+bm_ire_2 -> e_bracket	!in-bracket symbol -> end of bracket
+bm_ire_4 -> e_bracket	!in-bracket symbol -> end of bracket
+bm_iri -> e_bracket	!in-bracket symbol -> end of bracket
+bm_iri_3 -> e_bracket	!in-bracket symbol -> end of bracket
+bm_tbe_2 -> e_bracket	!in-bracket symbol -> end of bracket
+bm_tbi -> e_bracket	!in-bracket symbol -> end of bracket
+bm_tre_2 -> e_bracket	!in-bracket symbol -> end of bracket
+bm_tre_4 -> e_bracket	!in-bracket symbol -> end of bracket
+bm_tri -> e_bracket	!in-bracket symbol -> end of bracket
+bm_tri_3 -> e_bracket	!in-bracket symbol -> end of bracket
+l_ct -> e_bracket	!in-bracket symbol -> end of bracket
+r_ct -> e_bracket	!in-bracket symbol -> end of bracket
+s_bracket -> e_bracket	!in-bracket symbol -> end of bracket
+s_bracket -> aromatic_bond	starting bracket -> !in-bracket symbol
+s_bracket -> atom_oal	starting bracket -> !in-bracket symbol
+s_bracket -> atom_oal_2	starting bracket -> !in-bracket symbol
+s_bracket -> atom_oar	starting bracket -> !in-bracket symbol
+s_bracket -> bm_ibe	starting bracket -> !in-bracket symbol
+s_bracket -> bm_ibi	starting bracket -> !in-bracket symbol
+s_bracket -> bm_ire_2	starting bracket -> !in-bracket symbol
+s_bracket -> bm_ire_4	starting bracket -> !in-bracket symbol
+s_bracket -> bm_iri	starting bracket -> !in-bracket symbol
+s_bracket -> bm_iri_3	starting bracket -> !in-bracket symbol
+s_bracket -> bm_tbe_2	starting bracket -> !in-bracket symbol
+s_bracket -> bm_tbi	starting bracket -> !in-bracket symbol
+s_bracket -> bm_tre_2	starting bracket -> !in-bracket symbol
+s_bracket -> bm_tre_4	starting bracket -> !in-bracket symbol
+s_bracket -> bm_tri	starting bracket -> !in-bracket symbol
+s_bracket -> bm_tri_3	starting bracket -> !in-bracket symbol
+s_bracket -> charge	starting bracket -> !in-bracket symbol
+s_bracket -> charge_2	starting bracket -> !in-bracket symbol
+s_bracket -> charge_m	starting bracket -> !in-bracket symbol
+s_bracket -> chiral	starting bracket -> !in-bracket symbol
+s_bracket -> chiral_2	starting bracket -> !in-bracket symbol
+s_bracket -> chiral_m	starting bracket -> !in-bracket symbol
+s_bracket -> class	starting bracket -> !in-bracket symbol
+s_bracket -> double_bond	starting bracket -> !in-bracket symbol
+s_bracket -> hydro	starting bracket -> !in-bracket symbol
+s_bracket -> hydro_2	starting bracket -> !in-bracket symbol
+s_bracket -> l_ct	starting bracket -> !in-bracket symbol
+s_bracket -> no_bond	starting bracket -> !in-bracket symbol
+s_bracket -> quadruple_bond	starting bracket -> !in-bracket symbol
+s_bracket -> r_ct	starting bracket -> !in-bracket symbol
+s_bracket -> s_bracket	starting bracket -> !in-bracket symbol
+s_bracket -> single_bond	starting bracket -> !in-bracket symbol
+s_bracket -> triple_bond	starting bracket -> !in-bracket symbol
+charge -> s_bracket	in-bracket -> bracket start
+charge_2 -> s_bracket	in-bracket -> bracket start
+charge_m -> s_bracket	in-bracket -> bracket start
+chiral -> s_bracket	in-bracket -> bracket start
+chiral_2 -> s_bracket	in-bracket -> bracket start
+chiral_m -> s_bracket	in-bracket -> bracket start
+class -> s_bracket	in-bracket -> bracket start
+hydro -> s_bracket	in-bracket -> bracket start
+hydro_2 -> s_bracket	in-bracket -> bracket start
+isotope -> s_bracket	in-bracket -> bracket start
+isotope_m -> s_bracket	in-bracket -> bracket start
+charge -> anything	in-bracket property -> various inappropriate symbols
+charge -> atom_oal	in-bracket property -> various inappropriate symbols
+charge -> atom_oal_2	in-bracket property -> various inappropriate symbols
+charge -> atom_oar	in-bracket property -> various inappropriate symbols
+charge -> charge	in-bracket property -> various inappropriate symbols
+charge -> charge_2	in-bracket property -> various inappropriate symbols
+charge -> charge_m	in-bracket property -> various inappropriate symbols
+charge -> chiral	in-bracket property -> various inappropriate symbols
+charge -> chiral_2	in-bracket property -> various inappropriate symbols
+charge -> chiral_m	in-bracket property -> various inappropriate symbols
+charge -> hydro	in-bracket property -> various inappropriate symbols
+charge -> hydro_2	in-bracket property -> various inappropriate symbols
+charge -> isotope	in-bracket property -> various inappropriate symbols
+charge -> isotope_m	in-bracket property -> various inappropriate symbols
+charge_2 -> anything	in-bracket property -> various inappropriate symbols
+charge_2 -> atom_oal	in-bracket property -> various inappropriate symbols
+charge_2 -> atom_oal_2	in-bracket property -> various inappropriate symbols
+charge_2 -> atom_oar	in-bracket property -> various inappropriate symbols
+charge_2 -> charge	in-bracket property -> various inappropriate symbols
+charge_2 -> charge_2	in-bracket property -> various inappropriate symbols
+charge_2 -> charge_m	in-bracket property -> various inappropriate symbols
+charge_2 -> chiral	in-bracket property -> various inappropriate symbols
+charge_2 -> chiral_2	in-bracket property -> various inappropriate symbols
+charge_2 -> chiral_m	in-bracket property -> various inappropriate symbols
+charge_2 -> hydro	in-bracket property -> various inappropriate symbols
+charge_2 -> hydro_2	in-bracket property -> various inappropriate symbols
+charge_2 -> isotope	in-bracket property -> various inappropriate symbols
+charge_2 -> isotope_m	in-bracket property -> various inappropriate symbols
+charge_m -> anything	in-bracket property -> various inappropriate symbols
+charge_m -> atom_oal	in-bracket property -> various inappropriate symbols
+charge_m -> atom_oal_2	in-bracket property -> various inappropriate symbols
+charge_m -> atom_oar	in-bracket property -> various inappropriate symbols
+charge_m -> charge	in-bracket property -> various inappropriate symbols
+charge_m -> charge_2	in-bracket property -> various inappropriate symbols
+charge_m -> charge_m	in-bracket property -> various inappropriate symbols
+charge_m -> chiral	in-bracket property -> various inappropriate symbols
+charge_m -> chiral_2	in-bracket property -> various inappropriate symbols
+charge_m -> chiral_m	in-bracket property -> various inappropriate symbols
+charge_m -> hydro	in-bracket property -> various inappropriate symbols
+charge_m -> hydro_2	in-bracket property -> various inappropriate symbols
+charge_m -> isotope	in-bracket property -> various inappropriate symbols
+charge_m -> isotope_m	in-bracket property -> various inappropriate symbols
+chiral -> anything	in-bracket property -> various inappropriate symbols
+chiral -> atom_oal	in-bracket property -> various inappropriate symbols
+chiral -> atom_oal_2	in-bracket property -> various inappropriate symbols
+chiral -> atom_oar	in-bracket property -> various inappropriate symbols
+chiral -> chiral	in-bracket property -> various inappropriate symbols
+chiral -> chiral_2	in-bracket property -> various inappropriate symbols
+chiral -> chiral_m	in-bracket property -> various inappropriate symbols
+chiral -> isotope	in-bracket property -> various inappropriate symbols
+chiral -> isotope_m	in-bracket property -> various inappropriate symbols
+chiral_2 -> anything	in-bracket property -> various inappropriate symbols
+chiral_2 -> atom_oal	in-bracket property -> various inappropriate symbols
+chiral_2 -> atom_oal_2	in-bracket property -> various inappropriate symbols
+chiral_2 -> atom_oar	in-bracket property -> various inappropriate symbols
+chiral_2 -> chiral	in-bracket property -> various inappropriate symbols
+chiral_2 -> chiral_2	in-bracket property -> various inappropriate symbols
+chiral_2 -> chiral_m	in-bracket property -> various inappropriate symbols
+chiral_2 -> isotope	in-bracket property -> various inappropriate symbols
+chiral_2 -> isotope_m	in-bracket property -> various inappropriate symbols
+chiral_m -> anything	in-bracket property -> various inappropriate symbols
+chiral_m -> atom_oal	in-bracket property -> various inappropriate symbols
+chiral_m -> atom_oal_2	in-bracket property -> various inappropriate symbols
+chiral_m -> atom_oar	in-bracket property -> various inappropriate symbols
+chiral_m -> chiral	in-bracket property -> various inappropriate symbols
+chiral_m -> chiral_2	in-bracket property -> various inappropriate symbols
+chiral_m -> chiral_m	in-bracket property -> various inappropriate symbols
+chiral_m -> isotope	in-bracket property -> various inappropriate symbols
+chiral_m -> isotope_m	in-bracket property -> various inappropriate symbols
+class -> anything	in-bracket property -> various inappropriate symbols
+class -> atom_oal	in-bracket property -> various inappropriate symbols
+class -> atom_oal_2	in-bracket property -> various inappropriate symbols
+class -> atom_oar	in-bracket property -> various inappropriate symbols
+class -> charge	in-bracket property -> various inappropriate symbols
+class -> charge_2	in-bracket property -> various inappropriate symbols
+class -> charge_m	in-bracket property -> various inappropriate symbols
+class -> chiral	in-bracket property -> various inappropriate symbols
+class -> chiral_2	in-bracket property -> various inappropriate symbols
+class -> chiral_m	in-bracket property -> various inappropriate symbols
+class -> class	in-bracket property -> various inappropriate symbols
+class -> hydro	in-bracket property -> various inappropriate symbols
+class -> hydro_2	in-bracket property -> various inappropriate symbols
+class -> isotope	in-bracket property -> various inappropriate symbols
+class -> isotope_m	in-bracket property -> various inappropriate symbols
+hydro -> anything	in-bracket property -> various inappropriate symbols
+hydro -> atom_oal	in-bracket property -> various inappropriate symbols
+hydro -> atom_oal_2	in-bracket property -> various inappropriate symbols
+hydro -> atom_oar	in-bracket property -> various inappropriate symbols
+hydro -> chiral	in-bracket property -> various inappropriate symbols
+hydro -> chiral_2	in-bracket property -> various inappropriate symbols
+hydro -> chiral_m	in-bracket property -> various inappropriate symbols
+hydro -> hydro	in-bracket property -> various inappropriate symbols
+hydro -> hydro_2	in-bracket property -> various inappropriate symbols
+hydro -> isotope	in-bracket property -> various inappropriate symbols
+hydro -> isotope_m	in-bracket property -> various inappropriate symbols
+hydro_2 -> anything	in-bracket property -> various inappropriate symbols
+hydro_2 -> atom_oal	in-bracket property -> various inappropriate symbols
+hydro_2 -> atom_oal_2	in-bracket property -> various inappropriate symbols
+hydro_2 -> atom_oar	in-bracket property -> various inappropriate symbols
+hydro_2 -> chiral	in-bracket property -> various inappropriate symbols
+hydro_2 -> chiral_2	in-bracket property -> various inappropriate symbols
+hydro_2 -> chiral_m	in-bracket property -> various inappropriate symbols
+hydro_2 -> hydro	in-bracket property -> various inappropriate symbols
+hydro_2 -> hydro_2	in-bracket property -> various inappropriate symbols
+hydro_2 -> isotope	in-bracket property -> various inappropriate symbols
+hydro_2 -> isotope_m	in-bracket property -> various inappropriate symbols
+isotope -> atom_oal	in-bracket property -> various inappropriate symbols
+isotope -> atom_oal_2	in-bracket property -> various inappropriate symbols
+isotope -> atom_oar	in-bracket property -> various inappropriate symbols
+isotope -> charge	in-bracket property -> various inappropriate symbols
+isotope -> charge_2	in-bracket property -> various inappropriate symbols
+isotope -> charge_m	in-bracket property -> various inappropriate symbols
+isotope -> chiral	in-bracket property -> various inappropriate symbols
+isotope -> chiral_2	in-bracket property -> various inappropriate symbols
+isotope -> chiral_m	in-bracket property -> various inappropriate symbols
+isotope -> class	in-bracket property -> various inappropriate symbols
+isotope -> hydro	in-bracket property -> various inappropriate symbols
+isotope -> hydro_2	in-bracket property -> various inappropriate symbols
+isotope -> isotope	in-bracket property -> various inappropriate symbols
+isotope -> isotope_m	in-bracket property -> various inappropriate symbols
+isotope_m -> atom_oal	in-bracket property -> various inappropriate symbols
+isotope_m -> atom_oal_2	in-bracket property -> various inappropriate symbols
+isotope_m -> atom_oar	in-bracket property -> various inappropriate symbols
+isotope_m -> charge	in-bracket property -> various inappropriate symbols
+isotope_m -> charge_2	in-bracket property -> various inappropriate symbols
+isotope_m -> charge_m	in-bracket property -> various inappropriate symbols
+isotope_m -> chiral	in-bracket property -> various inappropriate symbols
+isotope_m -> chiral_2	in-bracket property -> various inappropriate symbols
+isotope_m -> chiral_m	in-bracket property -> various inappropriate symbols
+isotope_m -> class	in-bracket property -> various inappropriate symbols
+isotope_m -> hydro	in-bracket property -> various inappropriate symbols
+isotope_m -> hydro_2	in-bracket property -> various inappropriate symbols
+isotope_m -> isotope	in-bracket property -> various inappropriate symbols
+isotope_m -> isotope_m	in-bracket property -> various inappropriate symbols
+bm_tbe_2 -> l_ct	problematic cis/trans
+bm_tbe_2 -> r_ct	problematic cis/trans
+l_ct -> bm_ibe	problematic cis/trans
+l_ct -> bm_ibi	problematic cis/trans
+l_ct -> bm_tbe_2	problematic cis/trans
+l_ct -> bm_tbi	problematic cis/trans
+l_ct -> l_ct	problematic cis/trans
+l_ct -> no_bond	problematic cis/trans
+l_ct -> r_ct	problematic cis/trans
+r_ct -> bm_ibe	problematic cis/trans
+r_ct -> bm_ibi	problematic cis/trans
+r_ct -> bm_tbe_2	problematic cis/trans
+r_ct -> bm_tbi	problematic cis/trans
+r_ct -> l_ct	problematic cis/trans
+r_ct -> no_bond	problematic cis/trans
+r_ct -> r_ct	problematic cis/trans
