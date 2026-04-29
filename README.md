@@ -600,7 +600,7 @@ The latter forbidden pairs of classes were constructed from the leftovers, thus,
 
 6.   Cis/trans single character symbols should not be paired with some of the following classes of symbols (bond-related):
 
-   >  bm_tbe_2 -\> l_ct, bm_tbe_2 -\> r_ct, l_ct -\> bm_ibe, l_ct -\> bm_ibi, l_ct -\> bm_tbe_2, l_ct -\> bm_tbi, l_ct -\> l_ct, l_ct -\> no_bond, l_ct -\> r_ct, r_ct -\> bm_ibe, r_ct -\> bm_ibi, r_ct -\> bm_tbe_2, r_ct -\> bm_tbi, r_ct -\> l_ct, r_ct -\> no_bond, r_ct -\> r_ct
+   > bm_tbe_2 -\> l_ct, bm_tbe_2 -\> r_ct, l_ct -\> bm_ibe, l_ct -\> bm_ibi, l_ct -\> bm_tbe_2, l_ct -\> bm_tbi, l_ct -\> l_ct, l_ct -\> no_bond, l_ct -\> r_ct, r_ct -\> bm_ibe, r_ct -\> bm_ibi, r_ct -\> bm_tbe_2, r_ct -\> bm_tbi, r_ct -\> l_ct, r_ct -\> no_bond, r_ct -\> r_ct
     
 So, at this point all the pairs of classes, which somehow contradict the SMILES rules, are enumerated. The list of these pairs could be used during the parsing procedure to stop it in cases, where there is no possibility to obtain the technically correct unambiguous output.
     
