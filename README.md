@@ -671,9 +671,12 @@ input: original_smiles_string
 branches = empty LIFO data structure rings = empty set
 n_all = length(smiles)
 n_remain = length(smiles)
-subs = "" symb = ""
+subs = ""
+symb = ""
+prev_symb = ""
 symb_length = 0
 open_bracket = 0
+simple_ct_on = 0
 ```
 
 **procedure:**
@@ -686,7 +689,8 @@ while n > 0 do:
   else:
     subs = smiles[symb_length + 1 ... min(symb_length+6, n_all)]
   // Get the symbol (dummy function this time)
-  symb = find_longest_symb(subs) symb_length = length(symb)
+  symb = find_longest_symb(subs)
+  symb_length = length(symb)
   // Monitor brackets
   if (symb == "["):
     open_bracket = 1
@@ -698,6 +702,12 @@ while n > 0 do:
   update_state(state elements, symb)
   // decrease n
   n = n - symb_length
+  // Monitor simple cis / trans: when left_ct is detected -> turn on -> next ct is right one
+  if simple_ct_on == 0 AND (symb == "\" OR symb == "/"):
+  simple_ct_on = 1
+  // previous symbol
+  prev_symb = symb
+  symb = ""
 ```
 
 **return:**
