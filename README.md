@@ -668,7 +668,12 @@ input: original_smiles_string
 **elements of state:**
 
 ```         
-branches = empty LIFO data structure rings = empty set n_all = length(smiles) n_remain = length(smiles) subs = "" symb = "" symb_length = 0
+branches = empty LIFO data structure rings = empty set
+n_all = length(smiles)
+n_remain = length(smiles)
+subs = "" symb = ""
+symb_length = 0
+open_bracket = 0
 ```
 
 **procedure:**
@@ -682,6 +687,11 @@ while n > 0 do:
     subs = smiles[symb_length + 1 ... min(symb_length+6, n_all)]
   // Get the symbol (dummy function this time)
   symb = find_longest_symb(subs) symb_length = length(symb)
+  // Monitor brackets
+  if (symb == "["):
+    open_bracket = 1
+  if (symb == "]"):
+    open_bracket = 0
   // update an output (dummy function this time)
   update_output(output, state elements, symb)
   // update state (dummy function this time)
@@ -697,4 +707,3 @@ return output
 ```
 
 ### Code for parsing
-
