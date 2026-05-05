@@ -605,3 +605,96 @@ The latter forbidden pairs of classes were constructed from the leftovers, thus,
 So, at this point all the pairs of classes, which somehow contradict the SMILES rules, are enumerated. The list of these pairs could be used during the parsing procedure to stop it in cases, where there is no possibility to obtain the technically correct unambiguous output.
     
 List of pairs could be updated if needed.
+
+**Thus, it is possible to proceed with the basic parser, i.e. computer program which reads SMILES string from left to right, identifies meaningful symbols in the correct order and produces rather machine the human readable representation of the chemical graph.**
+
+## Basic parser
+
+### Technology
+
+**Rust** (<https://doc.rust-lang.org/book/>) seems to be an appropriate option for the task:
+
+-   modern language: less legacy things both in terms of the code and documentation, which makes the search for information and actual coding much easier for beginners; ecosystem seems to be pretty compact and well structured
+
+-   performance is considered to be high
+
+-   venerated memory safety (probably not a deal breaker in the context of this task, but people could consider the resulting tool more reliable because of that, yes, they definately will)
+
+-   compiled code could be called from many different environments
+
+-   code could be compiled to a WebAssembly module and used in browser and is, as I can see, language is being developed with this option in mind
+
+-   build with the ideas of functional programming in mind (opinionated)
+
+-   Rust to R, there is extendR (<https://cran.r-project.org/web/packages/rextendr/index.html>)
+
+-   Rust to JavaScript (via Wasm), it surely works: <https://developer.mozilla.org/en-US/docs/WebAssembly/Guides/Rust_to_Wasm>
+
+-   Rust to Python, there are ways to do that, for example: <https://github.com/pyo3/pyo3>
+
+#### Some licensing
+
+-   Rust (1.94.1), <https://rust-lang.org/> : [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) OR [MIT license](http://opensource.org/licenses/MIT)
+
+-   wasm-pack, <https://www.npmjs.com/package/wasm-pack> : [MIT license](http://opensource.org/licenses/MIT) OR [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+-   wasm-bindgen, <https://github.com/wasm-bindgen/wasm-bindgen> : [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) OR [MIT license](http://opensource.org/licenses/MIT)
+
+-   serde (to manage data interchange using JSON), <https://crates.io/crates/serde> : [MIT license](http://opensource.org/licenses/MIT) OR [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+### Data structure to store the results
+
+It seems to be reasonable for the parser to produce an object consisting of the atom array (atoms and their properties) and bonds array (bonds, their properties, kinks to the corresponding atoms), also the input SMILES string maybe useful.
+
+### Algorithm, draft
+
+**input example:**
+
+```         
+smiles = "CCCCCCC"
+```
+
+**desired_output:**
+
+```         
+chem_struct = [
+atoms: [{id, symbol, is_in_ring, ring_ids, is_in_branch, branch_id, is_aromatic, is_in_bracket, has_hs, isotopic_number, hs, charge, chirality, class}, ..., {...}],
+bonds: [{id, atom_one, atom_two}, ... {...}],
+symbols: ["C", ..., "C"],
+input: original_smiles_string
+]
+```
+
+**elements of state:**
+
+```         
+branches = empty LIFO data structure rings = empty set n_all = length(smiles) n_remain = length(smiles) subs = "" symb = "" symb_length = 0
+```
+
+**procedure:**
+
+```         
+while n > 0 do:
+  // Get the substring
+  if (n == n_all):
+    subs = smiles[0 ... 5]
+  else:
+    subs = smiles[symb_length + 1 ... min(symb_length+6, n_all)]
+  // Get the symbol (dummy function this time)
+  symb = find_longest_symb(subs) symb_length = length(symb)
+  // update an output (dummy function this time)
+  update_output(output, state elements, symb)
+  // update state (dummy function this time)
+  update_state(state elements, symb)
+  // decrease n
+  n = n - symb_length
+```
+
+**return:**
+
+```         
+return output
+```
+
+### Code for parsing
+
