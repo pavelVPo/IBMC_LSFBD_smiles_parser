@@ -717,3 +717,32 @@ return output
 ```
 
 ### Code for parsing
+
+``` Rust
+// Function to find the longest symbol in SMILES string slice length of 5
+pub fn get_longest_symbol(smiles_slice: &str,
+                            SYMBOLONE: [&str; 39],
+                            SYMBOLTWO: [&str; 271],
+                            SYMBOLTHREE: [&str; 1155],
+                            SYMBOLFOUR: [&str; 1025],
+                            SYMBOLFIVE: [&str; 32]) -> String {
+    if SYMBOLFIVE.contains(&smiles_slice) {
+        return smiles_slice.to_string();
+    }
+    if SYMBOLFOUR.contains(&&smiles_slice[0..cmp::min(4,smiles_slice.len())]) {
+        return smiles_slice[0..cmp::min(4,smiles_slice.len())].to_string();
+    }
+    if SYMBOLTHREE.contains(&&smiles_slice[0..cmp::min(3,smiles_slice.len())]) {
+        return smiles_slice[0..cmp::min(3,smiles_slice.len())].to_string();
+    }
+    if SYMBOLTWO.contains(&&smiles_slice[0..cmp::min(2,smiles_slice.len())]) {
+        return smiles_slice[0..cmp::min(2,smiles_slice.len())].to_string();
+    }
+    if SYMBOLONE.contains(&&smiles_slice[0..cmp::min(1,smiles_slice.len())]) {
+        return smiles_slice[0..cmp::min(1,smiles_slice.len())].to_string();
+    } else {
+        let symb_error = format!("unknown symbol in {}", smiles_slice);
+        return symb_error;
+    }
+}
+```
