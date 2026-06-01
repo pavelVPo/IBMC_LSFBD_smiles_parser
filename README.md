@@ -635,7 +635,7 @@ List of pairs could be updated if needed.
     library(tidyverse)
 
     ## Input
-    symbols <- read_tsv("C:/Users/XPS/Documents/!__tools_for_chemical_information_processing/SMILES_parser/data_v3/symbols_&_info.tsv")
+    symbols <- read_tsv("C:/.../symbols_&_info.tsv")
 
     ## Prepare the data
     data <- symbols |> select(symbols) |>
