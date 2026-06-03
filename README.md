@@ -639,8 +639,6 @@ List of pairs could be updated if needed.
 
     Here in 0.02% of the records the second symbol was incorrectly recognized. However, in all such cases the mistake was made against the symbol from the **class atom_bar_2**. **atom_oar** could not preceed the **atom_bar_2**, thus such mistake could not been made in the correct SMILES string.
 
-**Thus, it is possible to proceed with the basic parser, i.e. computer program which reads SMILES string from left to right, identifies meaningful symbols in the correct order and produces rather machine the human readable representation of the chemical graph.**
-
 ## Basic parser
 
 ### Technology
