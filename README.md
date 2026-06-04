@@ -637,7 +637,7 @@ List of pairs could be updated if needed.
 
     See x1_test-pairs\_\_Rcode.R, x2_test-identify\_\_Rcode.R, x3_test-analyze\_\_Rcode.R for the actual code.
 
-    Here in 0.02% of the records the second symbol was incorrectly recognized. However, in all such cases the mistake was made against the symbol from the **class atom_bar_2**. **atom_oar** could not preceed the **atom_bar_2**, thus such mistake could not been made in the correct SMILES string.
+    Here, the second symbol was incorrectly recognized in 0.02% of the records. However, in all such cases the mistake was made against the symbol from the class atom_bar_2. atom_oar could not precede the atom_bar_2, thus such mistake could not been made in the correct SMILES string.
 
 ## Basic parser
 
