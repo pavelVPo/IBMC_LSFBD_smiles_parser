@@ -622,8 +622,12 @@ List of pairs could be updated if needed.
 
     > b, c, n, o, s, p
 
+    AND
+
+2.  Single character atom symbols of aromatic atoms enclosed within brackets (**atom_bar**):
+
     1.  It should be one of the single character symbols given above.
-    2.  It should not be enclosed in the square brackets.
+    2.  It should (not) be enclosed within the square brackets.
 
     Since the desired parser will be the left to right parser mainly operating with the previous and current symbol, it is important to check whether it is possible to uniquely identify symbols from this class after any symbol.
 
@@ -637,7 +641,111 @@ List of pairs could be updated if needed.
 
     See x1_test-pairs\_\_Rcode.R, x2_test-identify\_\_Rcode.R, x3_test-analyze\_\_Rcode.R for the actual code.
 
-    Here, the second symbol was incorrectly recognized in 0.02% of the records. However, in all such cases the mistake was made against the symbol from the class atom_bar_2. atom_oar could not precede the atom_bar_2, thus such mistake could not been made in the correct SMILES string.
+    Here, the second symbol was incorrectly recognized in 0.02% of the records. However, in all such cases the mistake was made against the symbol from the **class atom_bar_2**. **atom_oar** could not precede the **atom_bar_2**, thus such mistake could not been made in the correct SMILES string.
+
+3.  Single character atom symbols of organic aliphatic atoms lacking the additional grammatical requirements and features (**atom_oal**):
+
+    > B, C, N, O, S, P, F, I
+
+    AND
+
+4.  Single character atom symbols of bracket aliphatic atoms (**atom_bal**):
+
+    > H, B, C, N, O, F, P, S, K, V, Y, I, W, U
+
+    1.  It should be one of the single character symbols given above.
+    2.  It should (not) be enclosed within the square brackets.
+
+    Using procedure from the x3_test-analyze\_\_Rcode.R it was shown that there are no missidentifications in this case.
+
+5.  Two character atom symbols of organic aliphatic atoms lacking the additional grammatical requirements and features (**atom_oal_2**):
+
+    > Cl, Br
+
+    AND
+
+6.  Two character atom symbols of in-bracket aliphatic atoms (**atom_bal_2**):
+
+    > He, Li, Be, Ne, Na, Mg, Al, Si, Cl, Ar, Ca, Sc, Ti, Cr, Mn, Fe, Co, Ni, Cu, Zn, Ga, Ge, As, Se, Br, Kr, Rb, Sr, Zr, Nb, Mo, Tc, Ru, Rh, Pd, Ag, Cd, In, Sn, Sb, Te,Xe, Cs, Ba, Hf, Ta, Re, Os, Ir, Pt, Au, Hg, Tl, Pb, Bi, Po, At, Rn, Fr, Ra, Rf, Db, Sg, Bh, Hs, Mt, Ds, Rg, Cn, Fl, Lv, La, Ce, Pr, Nd, Pm, Sm, Eu, Gd, Tb, Dy, Ho, Er, Tm, Yb, Lu, Ac, Th, Pa, Np, Pu, Am, Cm, Bk, Cf, Es, Fm, Md, No, Lr
+
+    Using procedure from the x3_test-analyze\_\_Rcode.R it was shown that there are no miss-identifications in this case.
+
+7.  Single character symbol of any atom or basically **anything**:
+
+    > \*
+
+    Using procedure from the x3_test-analyze\_\_Rcode.R it was shown that there are no miss-identifications in this case.
+
+8.  Square bracket symbols (**[, ]**):
+
+    > [, ]
+
+    1.  It should be one of the single character symbols given above.
+    2.  It should not be enclosed within the square brackets.
+
+    Second point will also be verified latter using the state variable.
+
+    Using procedure from the x3_test-analyze\_\_Rcode.R it was shown that there are no miss-identifications in this case.
+
+9.  Single character bond symbol corresponding to the single bond (**single_bond**):
+
+    > \-
+
+    1.  It should be the single character symbol given above.
+
+    The error rate in this case was equal to 0.09%, all the miss-identifications were related to the class **charge_2** (in-brackets only), thus they will not be possible in the correct SMILES string.
+
+10. Single character bond symbol corresponding to the double bond (**double_bond**):
+
+    > =
+
+    Using procedure from the x3_test-analyze\_\_Rcode.R it was shown that there are no miss-identifications in this case.
+
+11. Single character bond symbol corresponding to the double bond (**triple_bond**):
+
+    > \#
+
+    Using procedure from the x3_test-analyze\_\_Rcode.R it was shown that there are no miss-identifications in this case.
+
+12. Single character bond symbol corresponding to the double bond (**quadruple_bond**):
+
+    > \$
+
+    Using procedure from the x3_test-analyze\_\_Rcode.R it was shown that there are no miss-identifications in this case.
+
+13. Single character symbol corresponding to the aromatic bond (**aromatic_bond**):
+
+    > :
+
+    Using procedure from the x3_test-analyze\_\_Rcode.R it was shown that there are no miss-identifications in this case.
+
+14. Single character symbol corresponding to the absence of the bond between the two specific atoms (**no_bond**):
+
+    > .
+
+    Using procedure from the x3_test-analyze\_\_Rcode.R it was shown that there are no miss-identifications in this case.
+
+15. Single character bond multiplying symbols initiators of branching with implicit bond (**bm_ibi**) and single character bond multiplying symbols terminators of branching with implicit bond (**bm_tbi**):
+
+    > (, )
+
+    It should be the single character symbol given above.
+
+    Using procedure from the x3_test-analyze\_\_Rcode.R it was shown that there are no miss-identifications in this case.
+
+16. Single character bond multiplying symbols initiators and terminators of rings with implicit bond (**bm_iri** and **bm_tri**):
+
+    > 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+    Error rate in this case was whooping 51%. However, **bm_iri** / **bm_tri** were misinterpretedonly as the symbols from the following classes:
+
+    > bm_iri_3 / bm_tri_3, bm_ire_2 / bm_tre_2, bm_ire_2 / bm_tre_2
+
+    By design of the SMILES language single character initiators and terminators of rings could not be misinterpreted as single character symbols of the same type, since longer symbols have higher priority. Thus, such an errors could not be seen in the correct SMILES string.
+
+    > isotope_m, charge_m, class
+
+    Such miss-identifications could not be seen in the correct SMILES string, since symbols of these classes are in-bracket only, while initiators and terminators of rings could seen only outside the brackets.
 
 ## Basic parser
 
