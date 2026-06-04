@@ -675,7 +675,7 @@ List of pairs could be updated if needed.
 
 ### Data structure to store the results
 
-It seems to be reasonable for the parser to produce an object consisting of the atom array (atoms and their properties) and bonds array (bonds, their properties, kinks to the corresponding atoms), also the input SMILES string maybe useful.
+It seems to be reasonable for the parser to produce an object consisting of the atom array (atoms and their properties) and bonds array (bonds, their properties, links to the corresponding atoms), also the input SMILES string maybe useful.
 
 ### Algorithm, draft
 
