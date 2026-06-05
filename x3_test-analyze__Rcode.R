@@ -118,6 +118,32 @@ symb__ring <- symbols |> filter(class == "bm_iri" | class == "bm_tri") |>
 data__ring <- pairs |> inner_join(symb__ring, by = c("target" = "symbols")) |>
 					bind_rows(pairs |> inner_join(symb__ring, by = c("found_target" = "symbols"))) |>
 					distinct()
+# branching with the explicit bonds
+symb__tibe <- symbols |> filter(class == "bm_ibe" | class == "bm_tbe_2") |>
+					select(symbols) |>
+					separate_longer_delim(symbols, delim = ", ") |>
+					distinct()
+data__tibe <- pairs |> inner_join(symb__tibe, by = c("target" = "symbols")) |>
+					bind_rows(pairs |> inner_join(symb__tibe, by = c("found_target" = "symbols"))) |>
+					distinct()
+# branching with the explicit bonds
+symb__tirei <- symbols |> filter(class == "bm_ire_2" | class == "bm_ire_4" | class == "bm_iri" |
+								 class == "bm_iri_3" | class == "bm_tre_2" | class == "bm_tre_4" |
+								 class == "bm_tri" | class == "bm_tri_3") |>
+					select(symbols) |>
+					separate_longer_delim(symbols, delim = ", ") |>
+					distinct()
+data__tirei <- pairs |> inner_join(symb__tirei, by = c("target" = "symbols")) |>
+					bind_rows(pairs |> inner_join(symb__tirei, by = c("found_target" = "symbols"))) |>
+					distinct()
+# cis \ trans
+symb__ct <- symbols |> filter(class == "l_ct" | class == "r_ct") |>
+					select(symbols) |>
+					separate_longer_delim(symbols, delim = ", ") |>
+					distinct()
+data__ct <- pairs |> inner_join(symb__ct, by = c("target" = "symbols")) |>
+					bind_rows(pairs |> inner_join(symb__ct, by = c("found_target" = "symbols"))) |>
+					distinct()
 
 ## Check rules
 # atom_oar / atom_bar
@@ -156,3 +182,30 @@ class_symb_fail__branch <- data__branch |> filter(result == 0) |> pull(target_cl
 # ring
 pct_symb_fail__ring   <- 100 * nrow(data__ring |> filter(result == 0)) / nrow(data__ring)
 class_symb_fail__ring <- data__ring |> filter(result == 0) |> pull(target_class) |> unique()
+# tibe
+pct_symb_fail__tibe   <- 100 * nrow(data__tibe |> filter(result == 0)) / nrow(data__tibe)
+class_symb_fail__tibe <- data__tibe |> filter(result == 0) |> pull(target_class) |> unique()
+# tirei
+pct_symb_fail__tirei   <- 100 * nrow(data__tirei |> filter(result == 0)) / nrow(data__tirei)
+class_symb_fail__tirei <- data__tirei |> filter(result == 0) |>
+							select(found_target, target_class) |>
+							distinct() |>
+							inner_join(symbols_ext, by = c("found_target" = "symbols"), relationship = "many-to-many") |>
+							select(target_class, class) |>
+							distinct() |>
+							rowwise() |>
+							mutate(miss = str_c(c(target_class, class), collapse = " -> ")) |>
+							pull(miss) |>
+							unique()
+# ct
+pct_symb_fail__ct   <- 100 * nrow(data__ct |> filter(result == 0)) / nrow(data__ct)
+class_symb_fail__ct <- data__ct |> filter(result == 0) |>
+							select(found_target, target_class) |>
+							distinct() |>
+							inner_join(symbols_ext, by = c("found_target" = "symbols"), relationship = "many-to-many") |>
+							select(target_class, class) |>
+							distinct() |>
+							rowwise() |>
+							mutate(miss = str_c(c(target_class, class), collapse = " -> ")) |>
+							pull(miss) |>
+							unique()
