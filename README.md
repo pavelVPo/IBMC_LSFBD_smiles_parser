@@ -616,7 +616,7 @@ The list of these pairs could be used during the parsing procedure to stop it in
 
 List of pairs could be updated if needed.
 
-## Percept the symbol class of the particular symbol
+## Get the symbol class of the particular symbol
 
 1.  Single character atom symbols of organic (from so called *organic* subset) aromatic atoms lacking the additional grammatical requirements and features (**atom_oar**):
 
