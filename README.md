@@ -616,7 +616,7 @@ The list of these pairs could be used during the parsing procedure to stop it in
 
 List of pairs could be updated if needed.
 
-## Rules to decide on the symbol class of the particular symbol
+## Percept the symbol class of the particular symbol
 
 1.  Single character atom symbols of organic (from so called *organic* subset) aromatic atoms lacking the additional grammatical requirements and features (**atom_oar**):
 
@@ -746,6 +746,36 @@ List of pairs could be updated if needed.
     > isotope_m, charge_m, class
 
     Such miss-identifications could not be seen in the correct SMILES string, since symbols of these classes are in-bracket only, while initiators and terminators of rings could seen only outside the brackets.
+
+17. Two-character bond multiplying symbols initiators and terminators of branching with explicit bond (**bm_ibe** and **bm_tbe_2**):
+
+    > (-, (#, (\$, (., (:, (=, )-, )#, )\$, )., ):, )=
+
+    Using procedure from the x3_test-analyze\_\_Rcode.R it was shown that there are no miss-identifications in this case.
+
+18. Multi-character initiators and terminators of rings (**bm_ire_2, bm_ire_4, bm_iri, bm_iri_3, bm_tre_2, bm_tre_4, bm_tri, bm_tri_3**):
+
+    > ...
+
+    Error rate in this case was 1.82%. However, **bm_iri** / **bm_tri** were misinterpretedonly as the symbols from the following classes:
+
+    > bm_iri, bm_tri, bm_iri_3, bm_tri_3
+
+    As it was mentioned earlier such miss-identifications are not possible in the correct SMILES string, since longer symbols have priority by design.
+
+    > isotope, isotope_m
+
+    Such miss-identifications are also not possible, since all the symbols given above could be seen inside the square brackets only.
+
+19.  Cis/trans single character symbols (**l_ct** and **r_ct**):
+
+    > /, \
+
+    Using procedure from the x3_test-analyze\_\_Rcode.R it was shown that there are no miss-identifications in this case.
+
+All the other symbol classes are belonging to the square brackets, correct order of their appearance is defined, starting position is marked; thus, they will not be analyzed this way.
+
+All in all selected simple parsing strategy should be sufficient for the task.
 
 ## Basic parser
 
