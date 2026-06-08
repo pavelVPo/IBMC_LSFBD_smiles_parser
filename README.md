@@ -693,7 +693,7 @@ List of pairs could be updated if needed.
 
     1.  It should be the single character symbol given above.
 
-    The error rate in this case was equal to 0.09%, all the miss-identifications were related to the class **charge_2** (in-brackets only), thus they will not be possible in the correct SMILES string.
+    The error rate in this case was equal to 0.1%, all the miss-identifications were related to the class **charge_2** (in-brackets only), thus they will not be possible in the correct SMILES string.
 
 10. Single character bond symbol corresponding to the double bond (**double_bond**):
 
