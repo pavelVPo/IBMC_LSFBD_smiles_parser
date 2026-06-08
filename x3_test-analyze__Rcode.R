@@ -4,6 +4,10 @@ library(tidyverse)
 pairs <- read_tsv("C:/.../pairs_processed.tsv") |>
 			distinct()
 symbols <- read_tsv("C:/.../symbols_&_info.tsv")
+symbols_ext <- symbols |> select(class, symbols) |>
+					separate_longer_delim(symbols, delim = ", ") |>
+					distinct()
+
 
 ## Apply rules
 # atom_oar / atom_bar
