@@ -179,6 +179,10 @@ pub fn update_structure(mut us_structure: Structure, us_symbol: &String, us_prev
         if ins_symbol == &")".to_string() {
           unimplemented!();
         }
+        // Case cis / trans
+        if ins_symbol == &"/".to_string() || ins_symbol == &"\\".to_string() {
+          unimplemented!();
+        }
     }
     //return ins_structure;
     unimplemented!();
