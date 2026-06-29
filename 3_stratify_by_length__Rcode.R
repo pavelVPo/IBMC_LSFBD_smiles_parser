@@ -9,11 +9,14 @@ symbols <- symbols_raw |> separate_longer_delim(symbols, delim = ", ") |>
 
 ## Stratify by the length and export symbols
 for (i in seq(1:5)) {
-	symbols_strata <- symbols |> filter(length == i) |> select(symbols) |> distinct()
+	symbols_strata <- symbols |> filter(length == i) |> select(symbols) |>
+	separate_longer_delim(symbols, ", ") |>
+	arrange(symbols) |>
+	distinct()
 	write_tsv(symbols_strata, str_glue("C:/.../symbols_strata_{i}.tsv"))
 	symbols_strata_str <- symbols_strata |> pull(symbols) |> unique() |> str_c(collapse = "\", \"")
 	symbols_strata_str <- str_c(c("[\"", symbols_strata_str, "\"]"), collapse = "")
-	write_lines(symbols_strata_str, str_glue("C:/.../symbols_strata_{i}.txt"), sep = "")
+	write_lines(str_c(c(str_glue("pub static SYMBOL_: [&str; {nrow(symbols_strata)}]   = "), symbols_strata_str), collapse = ""), str_glue("C:/.../symbols_strata_{i}.txt"), sep = "")
 }
 
 ## Re-arrange and export the whole dataset
