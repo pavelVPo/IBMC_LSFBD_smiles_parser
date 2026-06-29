@@ -1,7 +1,7 @@
 library(tidyverse)
 
 # Input
-symbs_raw <- read_tsv("C:/Users/XPS/Documents/!__tools_for_chemical_information_processing/SMILES_parser/data_v3/symbols.tsv") |>
+symbs_raw <- read_tsv("C:/.../symbols.tsv") |>
 					  rename(symb_class_id = id) |> 
 					  separate_longer_delim(symbols, delim = ", ")
 # Generate actual symbols from symbol folds
@@ -41,7 +41,7 @@ for (i in seq(1:nrow(symb_folds))) {
 	}
 	if (symb_folds[i, 4] |> pull() == "[-=#$:.]%[0-9][1-9]") {
 		symbs = expand.grid(c("-", "=", "#", "$", ":", "."), c("%"), c(0,1,2,3,4,5,6,7,8,9), c(1,2,3,4,5,6,7,8,9)) |>
-						mutate(v = str_c(Var1, Var2, Var3, collapse = ", ")) |>
+						mutate(v = str_c(Var1, Var2, Var3, Var4, collapse = ", ")) |>
 						pull() |>
 						unique() |>
 						str_c(collapse = ", ")
@@ -50,7 +50,7 @@ for (i in seq(1:nrow(symb_folds))) {
 	}
 	if (symb_folds[i, 4] |> pull() == "[-=#$:.]%[1-9][0-9]") {
 		symbs = expand.grid(c("-", "=", "#", "$", ":", "."), c("%"), c(1,2,3,4,5,6,7,8,9), c(0,1,2,3,4,5,6,7,8,9)) |>
-						mutate(v = str_c(Var1, Var2, Var3, collapse = ", ")) |>
+						mutate(v = str_c(Var1, Var2, Var3, Var4, collapse = ", ")) |>
 						pull() |>
 						unique() |>
 						str_c(collapse = ", ")
@@ -82,7 +82,7 @@ for (i in seq(1:nrow(symb_folds))) {
 	}
 	if (symb_folds[i, 4] |> pull() == "[0-9][0-9][1-9]") {
 		symbs = expand.grid(c(0,1,2,3,4,5,6,7,8,9), c(0,1,2,3,4,5,6,7,8,9), c(1,2,3,4,5,6,7,8,9)) |>
-						mutate(v = str_c(Var1, Var2, collapse = ", ")) |>
+						mutate(v = str_c(Var1, Var2, Var3, collapse = ", ")) |>
 						pull() |>
 						unique() |>
 						str_c(collapse = ", ")
@@ -206,7 +206,7 @@ for (i in seq(1:nrow(symb_folds))) {
 	}
 	if (symb_folds[i, 4] |> pull() == ":[0-9][0-9]") {
 		symbs = expand.grid(c(":"), c(0,1,2,3,4,5,6,7,8,9), c(0,1,2,3,4,5,6,7,8,9)) |>
-						mutate(v = str_c(Var1, Var2, collapse = ", ")) |>
+						mutate(v = str_c(Var1, Var2, Var3, collapse = ", ")) |>
 						pull() |>
 						unique() |>
 						str_c(collapse = ", ")
@@ -228,8 +228,8 @@ symbs_all <- symbs_raw |> filter(class == "s_bracket" | class == "e_bracket" | !
 							bind_rows(symb_folds |> separate_longer_delim(symbols, delim = ", ")) |>
 							group_by(class) |>
 							mutate(symbols = symbols |> sort() |> unique() |> str_c(collapse = ", ")) |>
-							slice_head(n=1) |>
-							ungroup()
+							ungroup() |>
+							distinct()
 
 # Output
-write_tsv(symbs_all, "C:/Users/XPS/Documents/!__tools_for_chemical_information_processing/SMILES_parser/data_v3/symbols_&_characters.tsv", quote = "all")
+write_tsv(symbs_all, "C:/.../symbols_&_characters_.tsv", quote = "all")
