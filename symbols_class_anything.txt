@@ -1,0 +1,1 @@
+pub static SYMBOL_anything: [&str; 1]   = ["*"];

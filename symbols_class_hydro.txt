@@ -1,0 +1,1 @@
+pub static SYMBOL_hydro: [&str; 1]   = ["H"];

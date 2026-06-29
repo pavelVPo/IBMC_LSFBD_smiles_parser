@@ -1,0 +1,1 @@
+pub static SYMBOL_quadruple_bond: [&str; 1]   = ["$"];

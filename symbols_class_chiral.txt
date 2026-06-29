@@ -1,0 +1,1 @@
+pub static SYMBOL_chiral: [&str; 1]   = ["@"];

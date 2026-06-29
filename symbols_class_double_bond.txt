@@ -1,0 +1,1 @@
+pub static SYMBOL_double_bond: [&str; 1]   = ["="];

@@ -1,0 +1,1 @@
+pub static SYMBOL_r_ct: [&str; 2]   = ["/", "\\"];

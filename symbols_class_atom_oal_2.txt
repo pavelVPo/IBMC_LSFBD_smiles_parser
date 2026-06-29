@@ -1,0 +1,1 @@
+pub static SYMBOL_atom_oal_2: [&str; 2]   = ["Br", "Cl"];

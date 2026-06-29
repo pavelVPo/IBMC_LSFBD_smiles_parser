@@ -1,0 +1,1 @@
+pub static SYMBOL_aromatic_bond: [&str; 1]   = [":"];

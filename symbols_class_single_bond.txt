@@ -1,0 +1,1 @@
+pub static SYMBOL_single_bond: [&str; 1]   = ["-"];

@@ -1,0 +1,1 @@
+pub static SYMBOL_atom_oar: [&str; 6]   = ["b", "c", "n", "o", "p", "s"];

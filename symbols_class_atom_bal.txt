@@ -1,0 +1,1 @@
+pub static SYMBOL_atom_bal: [&str; 14]   = ["B", "C", "F", "H", "I", "K", "N", "O", "P", "S", "U", "V", "W", "Y"];

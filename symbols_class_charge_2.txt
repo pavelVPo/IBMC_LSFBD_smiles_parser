@@ -1,0 +1,1 @@
+pub static SYMBOL_charge_2: [&str; 2]   = ["++", "--"];

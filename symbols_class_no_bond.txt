@@ -1,0 +1,1 @@
+pub static SYMBOL_no_bond: [&str; 1]   = ["."];

@@ -1,0 +1,1 @@
+pub static SYMBOL_s_bracket: [&str; 1]   = ["["];

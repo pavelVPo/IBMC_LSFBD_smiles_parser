@@ -1,0 +1,1 @@
+pub static SYMBOL_atom_oal: [&str; 8]   = ["B", "C", "F", "I", "N", "O", "P", "S"];
