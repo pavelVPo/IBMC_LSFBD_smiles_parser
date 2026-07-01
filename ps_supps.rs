@@ -106,7 +106,6 @@ pub struct Structure {
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  // Add implementation of the JSON conversion to the struct describing Structure - impl is enough, since only this struct needs it
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 impl Structure {
   fn get_json(&self) -> String {
     let mut json_string = String::from("{'atoms': [");
@@ -149,37 +148,14 @@ impl Structure {
   }
 }
 
-// Test impl
-/*fn main() {
-    let mut test_structure = Structure::default();
-    let mut test_atom = Atom::default();
-    test_atom.atom_id = 1;
-    test_atom.atom_symbol = "C".to_string();
-    test_atom.is_aromatic = false;
-    test_atom.is_in_bracket = false;
-    test_atom.has_hs = false;
-    test_atom.isotopic_number = 12;
-    test_atom.chirality = "".to_string();
-    test_atom.n_hs = 0;
-    test_atom.charge = 0;
-    test_atom.class = "test".to_string();
-    test_structure.atoms.push(test_atom);
-    let test = test_structure.get_json();
-    println!("{}", test);
-    
-}*/
-// OK
-
   ///////////////
  // FUNCTIONS
 ////////////////
-
 // Function to get chunk
 pub fn get_chunk(getc_smiles_string: &String, getc_start_pos: usize, getc_length: usize) -> &str {
   let getc_result: &str = &getc_smiles_string[getc_start_pos..cmp::min((getc_start_pos + getc_length), (getc_smiles_string.len()))];
   return getc_result;
 }
-
 // Function to get the longest possible symbol from the current SMILES chunk
 pub fn get_symbol(getls_smiles_chunk: &str, s_one: &[&str], s_two: &[&str],
                             s_three: &[&str], s_four: &[&str], s_five: &[&str]) -> String {
@@ -209,13 +185,51 @@ pub fn get_symbol(getls_smiles_chunk: &str, s_one: &[&str], s_two: &[&str],
       return symb_error;
   }
 }
-
-// Function to update structure
-pub fn update_structure(mut us_structure: Structure, us_symbol: &String, us_prev_symbol: String,
-                        us_simple_ct_on: u8, us_bracket: u8, us_last_symbol: u8) -> Structure {
+// Function to update the state and structure
+pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: String,
+                        mut u_simple_ct_on: bool, mut u_bracket: bool, mut u_inbracket: u8, u_last_symbol: u8) -> Structure {
+  let h_symbol: String = "H".to_string();
+   /////////////////////////////////////////
+  // Classify symbol                     //
+  ////////////////////////////////////////
+  // Check if an atom
+  if SYMBOL_atom.contains(&u_symbol.as_str()) || u_symbol.as_str() == "*" {
+    // It is an atom symbol
+    println!("{:?}", u_symbol);
+    // What is also important: state, bracket and prop block, to find the exactly correct class
+    // Check if an H and it is needed to be distinguished from hydro property
+    if u_symbol == &h_symbol {
+      // Check if it is a hydro is needed
+      if u_inbracket > 2 {
+        // Definitely, it is not an atom
+        unimplemented!();
+      } else {
+        // Rather, it is an atom
+      }
+    }
+  }
+  ////////////////////////////////////////
+  // Check if simple bond considering charge as an option
+  if SYMBOL_bond.contains(&u_symbol.as_str()) && u_bracket != true {
+    // Definitely, it is a bond
+  }
+  // Check if modifier considering props as an option
+  if SYMBOL_modifier.contains(&u_symbol.as_str()) && u_bracket != true {
+    // Definitely, it is a modifier of sorts
+  }
+  // Check if property
+  if SYMBOL_property.contains(&u_symbol.as_str()) && u_bracket != false {
+    // Probably, it is a modifier of sorts, if not an atom
+    unimplemented!();
+  }
+  // Check if square bracket
+  if SYMBOL_square.contains(&u_symbol.as_str()) {
+    // Probably, it is a modifier of sorts, if not an atom
+    unimplemented!();
+  }
   // Function to insert the symbol
   fn insert_symbol(mut ins_structure: Structure, ins_symbol: &String, ins_prev_symbol: String,
-                          ins_simple_ct_on: u8, ins_bracket: u8, ins_last_symbol: u8) -> Structure {
+                          ins_simple_ct_on: bool, ins_bracket: bool, ins_last_symbol: u8) -> Structure {
     // Case - for the first symbol
     if ins_prev_symbol == "" {
         // Decide on the symbol class
@@ -279,33 +293,32 @@ pub fn update_structure(mut us_structure: Structure, us_symbol: &String, us_prev
     unimplemented!();
   }
   // Case when this symbol is the first symbol
-  if us_prev_symbol == "" {
+  if u_prev_symbol == "" {
     // check if current symbol is viable
-    if SYMBS_ALLOWED_START.contains(&&us_symbol[0..us_symbol.len()]) {
+    if SYMBS_ALLOWED_START.contains(&&u_symbol[0..u_symbol.len()]) {
         // Actually update latter
-        us_structure = insert_symbol(us_structure, us_symbol, us_prev_symbol,
-                                  us_simple_ct_on, us_bracket, us_last_symbol);
-        return us_structure;
+        u_structure = insert_symbol(u_structure, u_symbol, u_prev_symbol,
+                                  u_simple_ct_on, u_bracket, u_last_symbol);
+        return u_structure;
     } else {
-        us_structure.status = false;
-        us_structure.error = String::from("unacceptable first symbol in SMILES string");
-        return us_structure;
+        u_structure.status = false;
+        u_structure.error = String::from("unacceptable first symbol in SMILES string");
+        return u_structure;
     }
-  } else if us_last_symbol == 1 {
+  } else if u_last_symbol == 1 {
     // check if the last symbol is viable
-    if SYMBS_ALLOWED_END.contains(&&us_symbol[0..us_symbol.len()]) {
+    if SYMBS_ALLOWED_END.contains(&&u_symbol[0..u_symbol.len()]) {
         // Actually update latter
-        return us_structure;
+        return u_structure;
     } else {
-        us_structure.status = false;
-        us_structure.error = String::from("unacceptable last symbol in SMILES string");
-        return us_structure;
+        u_structure.status = false;
+        u_structure.error = String::from("unacceptable last symbol in SMILES string");
+        return u_structure;
     }
   } else {
-          return us_structure;
+          return u_structure;
   }
 }
-
 // Function to parse SMILES
 pub fn parse_smiles(ps_smiles_string: &String, mut ps_structure: Structure) -> Structure {
   // Initial state
@@ -314,8 +327,17 @@ pub fn parse_smiles(ps_smiles_string: &String, mut ps_structure: Structure) -> S
   let mut ps_position: usize = 0;
   let mut ps_chunk: &str = "";
   let mut ps_symbol: String = String::from("");
-  let mut ps_simple_ct_on: u8 = 0;
-  let mut ps_open_bracket: u8 = 0;
+  let mut ps_simple_ct_on: bool = false;
+  let mut ps_open_bracket: bool = false;
+  // Remember the order of properties
+  // 0 - open bracket
+  // 1 - isotope
+  // 2 - symbol
+  // 3 - chirality
+  // 4 - hydro
+  // 5 - charge
+  // 6 - class
+  let mut ps_inbracket: u8 = 0;
   let mut ps_last_symbol:  u8 = 0;
   let mut ps_next_position: usize = 0;
   let mut ps_prev_symbol: String = "".to_string();
@@ -339,8 +361,8 @@ pub fn parse_smiles(ps_smiles_string: &String, mut ps_structure: Structure) -> S
       } 
 
       // Update structure
-      ps_structure = update_structure(ps_structure, &ps_symbol, ps_prev_symbol,
-                                      ps_simple_ct_on, ps_open_bracket, ps_last_symbol);
+      ps_structure = update(ps_structure, &ps_symbol, ps_prev_symbol,
+                                      ps_simple_ct_on, ps_open_bracket, ps_inbracket, ps_last_symbol);
 
       // Check updated structure
       if ps_structure.status == false {
