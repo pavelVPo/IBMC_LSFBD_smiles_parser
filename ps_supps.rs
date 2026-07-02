@@ -200,11 +200,12 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
     // Check if an H and it is needed to be distinguished from hydro property
     if u_symbol == &h_symbol {
       // Check if it is a hydro is needed
-      if u_inbracket > 2 {
-        // Definitely, it is not an atom
-        unimplemented!();
+      if u_inbracket > 1 {
+        // Definitely, it is not an atom, but property
+        u_inbracket = 4;
       } else {
-        // Rather, it is an atom
+        // Definitely, it is an atom
+        u_inbracket = 2;
       }
     }
   }
@@ -212,14 +213,16 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
   // Check if simple bond considering charge as an option
   if SYMBOL_bond.contains(&u_symbol.as_str()) && u_bracket != true {
     // Definitely, it is a bond
+    unimplemented!();
   }
   // Check if modifier considering props as an option
   if SYMBOL_modifier.contains(&u_symbol.as_str()) && u_bracket != true {
     // Definitely, it is a modifier of sorts
+    unimplemented!();
   }
   // Check if property
   if SYMBOL_property.contains(&u_symbol.as_str()) && u_bracket != false {
-    // Probably, it is a modifier of sorts, if not an atom
+    // Probably, it is a property, if not an atom
     unimplemented!();
   }
   // Check if square bracket
@@ -358,7 +361,7 @@ pub fn parse_smiles(ps_smiles_string: &String, mut ps_structure: Structure) -> S
       // Update state
       if ps_position >= ps_n_all {
           ps_last_symbol = 1;
-      } 
+      }
 
       // Update structure
       ps_structure = update(ps_structure, &ps_symbol, ps_prev_symbol,
