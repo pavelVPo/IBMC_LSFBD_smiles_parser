@@ -235,6 +235,9 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
   /////////////////////////////////////////////////////////////
 
   // Function to insert the atom
+  // So, this function creates new atom_id and adds everything about this atom, which is possible
+  // All the possible variants could be deduced from the Readme.MD materials
+  // fn add_atom(mut u_structure: Structure, )
 
   // Function to add or extend/modify bond
 
