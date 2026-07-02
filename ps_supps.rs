@@ -1,8 +1,10 @@
 use std::cmp;    //   Comparison and ordering
 
-  ///////////////
- // DATA
+
+  ////////////////
+ // DATA       //
 ////////////////
+
 // START and END
 pub static SYMBS_ALLOWED_START: [&str; 19]   = ["*", "B", "C", "F", "I", "N", "O", "P", "S", "Br", "Cl", "b", "c", "n", "o", "p", "s", "(", "["];
 pub static SYMBS_ALLOWED_END:   [&str; 782]  = ["*", "B", "C", "F", "I", "N", "O", "P", "S", "Br", "Cl", "b", "c", "n", "o", "p", "s", ")", "-0", "-1", "-2", "-3", "-4", "-5", "-6", "-7", "-8", "-9", "#0", "#1", "#2", "#3", "#4", "#5", "#6", "#7", "#8", "#9", "$0", "$1", "$2", "$3", "$4", "$5", "$6", "$7", "$8", "$9", ".0", ".1", ".2", ".3", ".4", ".5", ".6", ".7", ".8", ".9", ":0", ":1", ":2", ":3", ":4", ":5", ":6", ":7", ":8", ":9", "=0", "=1", "=2", "=3", "=4", "=5", "=6", "=7", "=8", "=9", "-%01", "-%02", "-%03", "-%04", "-%05", "-%06", "-%07", "-%08", "-%09", "-%10", "-%11", "-%12", "-%13", "-%14", "-%15", "-%16", "-%17", "-%18", "-%19", "-%20", "-%21", "-%22", "-%23", "-%24", "-%25", "-%26", "-%27", "-%28", "-%29", "-%30", "-%31", "-%32", "-%33", "-%34", "-%35", "-%36", "-%37", "-%38", "-%39", "-%40", "-%41", "-%42", "-%43", "-%44", "-%45", "-%46", "-%47", "-%48", "-%49", "-%50", "-%51", "-%52", "-%53", "-%54", "-%55", "-%56", "-%57", "-%58", "-%59", "-%60", "-%61", "-%62", "-%63", "-%64", "-%65", "-%66", "-%67", "-%68", "-%69", "-%70", "-%71", "-%72", "-%73", "-%74", "-%75", "-%76", "-%77", "-%78", "-%79", "-%80", "-%81", "-%82", "-%83", "-%84", "-%85", "-%86", "-%87", "-%88", "-%89", "-%90", "-%91", "-%92", "-%93", "-%94", "-%95", "-%96", "-%97", "-%98", "-%99", "#%01", "#%02", "#%03", "#%04", "#%05", "#%06", "#%07", "#%08", "#%09", "#%10", "#%11", "#%12", "#%13", "#%14", "#%15", "#%16", "#%17", "#%18", "#%19", "#%20", "#%21", "#%22", "#%23", "#%24", "#%25", "#%26", "#%27", "#%28", "#%29", "#%30", "#%31", "#%32", "#%33", "#%34", "#%35", "#%36", "#%37", "#%38", "#%39", "#%40", "#%41", "#%42", "#%43", "#%44", "#%45", "#%46", "#%47", "#%48", "#%49", "#%50", "#%51", "#%52", "#%53", "#%54", "#%55", "#%56", "#%57", "#%58", "#%59", "#%60", "#%61", "#%62", "#%63", "#%64", "#%65", "#%66", "#%67", "#%68", "#%69", "#%70", "#%71", "#%72", "#%73", "#%74", "#%75", "#%76", "#%77", "#%78", "#%79", "#%80", "#%81", "#%82", "#%83", "#%84", "#%85", "#%86", "#%87", "#%88", "#%89", "#%90", "#%91", "#%92", "#%93", "#%94", "#%95", "#%96", "#%97", "#%98", "#%99", "$%01", "$%02", "$%03", "$%04", "$%05", "$%06", "$%07", "$%08", "$%09", "$%10", "$%11", "$%12", "$%13", "$%14", "$%15", "$%16", "$%17", "$%18", "$%19", "$%20", "$%21", "$%22", "$%23", "$%24", "$%25", "$%26", "$%27", "$%28", "$%29", "$%30", "$%31", "$%32", "$%33", "$%34", "$%35", "$%36", "$%37", "$%38", "$%39", "$%40", "$%41", "$%42", "$%43", "$%44", "$%45", "$%46", "$%47", "$%48", "$%49", "$%50", "$%51", "$%52", "$%53", "$%54", "$%55", "$%56", "$%57", "$%58", "$%59", "$%60", "$%61", "$%62", "$%63", "$%64", "$%65", "$%66", "$%67", "$%68", "$%69", "$%70", "$%71", "$%72", "$%73", "$%74", "$%75", "$%76", "$%77", "$%78", "$%79", "$%80", "$%81", "$%82", "$%83", "$%84", "$%85", "$%86", "$%87", "$%88", "$%89", "$%90", "$%91", "$%92", "$%93", "$%94", "$%95", "$%96", "$%97", "$%98", "$%99", ".%01", ".%02", ".%03", ".%04", ".%05", ".%06", ".%07", ".%08", ".%09", ".%10", ".%11", ".%12", ".%13", ".%14", ".%15", ".%16", ".%17", ".%18", ".%19", ".%20", ".%21", ".%22", ".%23", ".%24", ".%25", ".%26", ".%27", ".%28", ".%29", ".%30", ".%31", ".%32", ".%33", ".%34", ".%35", ".%36", ".%37", ".%38", ".%39", ".%40", ".%41", ".%42", ".%43", ".%44", ".%45", ".%46", ".%47", ".%48", ".%49", ".%50", ".%51", ".%52", ".%53", ".%54", ".%55", ".%56", ".%57", ".%58", ".%59", ".%60", ".%61", ".%62", ".%63", ".%64", ".%65", ".%66", ".%67", ".%68", ".%69", ".%70", ".%71", ".%72", ".%73", ".%74", ".%75", ".%76", ".%77", ".%78", ".%79", ".%80", ".%81", ".%82", ".%83", ".%84", ".%85", ".%86", ".%87", ".%88", ".%89", ".%90", ".%91", ".%92", ".%93", ".%94", ".%95", ".%96", ".%97", ".%98", ".%99", ":%01", ":%02", ":%03", ":%04", ":%05", ":%06", ":%07", ":%08", ":%09", ":%10", ":%11", ":%12", ":%13", ":%14", ":%15", ":%16", ":%17", ":%18", ":%19", ":%20", ":%21", ":%22", ":%23", ":%24", ":%25", ":%26", ":%27", ":%28", ":%29", ":%30", ":%31", ":%32", ":%33", ":%34", ":%35", ":%36", ":%37", ":%38", ":%39", ":%40", ":%41", ":%42", ":%43", ":%44", ":%45", ":%46", ":%47", ":%48", ":%49", ":%50", ":%51", ":%52", ":%53", ":%54", ":%55", ":%56", ":%57", ":%58", ":%59", ":%60", ":%61", ":%62", ":%63", ":%64", ":%65", ":%66", ":%67", ":%68", ":%69", ":%70", ":%71", ":%72", ":%73", ":%74", ":%75", ":%76", ":%77", ":%78", ":%79", ":%80", ":%81", ":%82", ":%83", ":%84", ":%85", ":%86", ":%87", ":%88", ":%89", ":%90", ":%91", ":%92", ":%93", ":%94", ":%95", ":%96", ":%97", ":%98", ":%99", "=%01", "=%02", "=%03", "=%04", "=%05", "=%06", "=%07", "=%08", "=%09", "=%10", "=%11", "=%12", "=%13", "=%14", "=%15", "=%16", "=%17", "=%18", "=%19", "=%20", "=%21", "=%22", "=%23", "=%24", "=%25", "=%26", "=%27", "=%28", "=%29", "=%30", "=%31", "=%32", "=%33", "=%34", "=%35", "=%36", "=%37", "=%38", "=%39", "=%40", "=%41", "=%42", "=%43", "=%44", "=%45", "=%46", "=%47", "=%48", "=%49", "=%50", "=%51", "=%52", "=%53", "=%54", "=%55", "=%56", "=%57", "=%58", "=%59", "=%60", "=%61", "=%62", "=%63", "=%64", "=%65", "=%66", "=%67", "=%68", "=%69", "=%70", "=%71", "=%72", "=%73", "=%74", "=%75", "=%76", "=%77", "=%78", "=%79", "=%80", "=%81", "=%82", "=%83", "=%84", "=%85", "=%86", "=%87", "=%88", "=%89", "=%90", "=%91", "=%92", "=%93", "=%94", "=%95", "=%96", "=%97", "=%98", "=%99", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "%01", "%02", "%03", "%04", "%05", "%06", "%07", "%08", "%09", "%10", "%11", "%12", "%13", "%14", "%15", "%16", "%17", "%18", "%19", "%20", "%21", "%22", "%23", "%24", "%25", "%26", "%27", "%28", "%29", "%30", "%31", "%32", "%33", "%34", "%35", "%36", "%37", "%38", "%39", "%40", "%41", "%42", "%43", "%44", "%45", "%46", "%47", "%48", "%49", "%50", "%51", "%52", "%53", "%54", "%55", "%56", "%57", "%58", "%59", "%60", "%61", "%62", "%63", "%64", "%65", "%66", "%67", "%68", "%69", "%70", "%71", "%72", "%73", "%74", "%75", "%76", "%77", "%78", "%79", "%80", "%81", "%82", "%83", "%84", "%85", "%86", "%87", "%88", "%89", "%90", "%91", "%92", "%93", "%94", "%95", "%96", "%97", "%98", "%99", "]"];
@@ -60,8 +62,10 @@ pub static SYMBOL_r_ct: [&str; 2]            = ["/", "\\"];
 pub static SYMBOL_s_bracket: [&str; 1]       = ["["];
 pub static SYMBOL_single_bond: [&str; 1]     = ["-"];
 pub static SYMBOL_triple_bond: [&str; 1]     = ["#"];
-  ///////////////
- // STRUCTURES
+  
+
+  ////////////////
+ // STRUCTURES //
 ////////////////
 
 // Structure to hold the results 
@@ -103,9 +107,11 @@ pub struct Structure {
     error:        String
 }
 
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- // Add implementation of the JSON conversion to the struct describing Structure - impl is enough, since only this struct needs it
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ // Add implementation of the JSON conversion to the struct describing Structure - impl is enough, since only this struct needs it    //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 impl Structure {
   fn get_json(&self) -> String {
     let mut json_string = String::from("{'atoms': [");
@@ -117,6 +123,7 @@ impl Structure {
     // add status: {"atoms": [{...}, ..., {...}], "bonds": [{...}, ..., {...}], "symbols": [...], "smiles": '', "status": '',
     // add an error if any and finalize the string: {"atoms": [{...}, ..., {...}], "bonds": [{...}, ..., {...}], "symbols": [...], "smiles": '', "status": '', "error": ''}
     // ...
+    // ATOMS
     for atom in &self.atoms {
       println!("new atom encountered");
       json_string.push_str("{'atom_id': ");
@@ -144,14 +151,47 @@ impl Structure {
     json_string.pop();
     json_string.pop();
     json_string.push_str("], ");
+    // BONDS
+    json_string.push_str("'bonds': [");
+    for bond in &self.bonds {
+      println!("new bond encountered");
+      json_string.push_str("{'bond_id': ");
+      json_string.push_str(bond.bond_id.to_string().as_str());
+      json_string.push_str(", 'atom_one': ");
+      json_string.push_str(bond.atom_one.to_string().as_str());
+      json_string.push_str(", 'atom_two': ");
+      json_string.push_str(bond.atom_two.to_string().as_str());
+      json_string.push_str(", 'bond_symbol': ");
+      json_string.push_str(bond.bond_symbol.to_string().as_str());
+      json_string.push_str("}, ");
+    }
+    // SYMBOLS
+    json_string.push_str("'symbols': [");
+    for symbol in &self.symbols {
+      println!("new symbol encountered");
+      json_string.push_str(", 'symbol': ");
+      json_string.push_str(symbol.symbol.to_string().as_str());
+      json_string.push_str("}, ");
+    }
+    json_string.pop();
+    json_string.pop();
+    json_string.push_str("], ");
+    // STATUS
+    json_string.push_str("'status': ");
+    json_string.push_str(&self.status.to_string().as_str());
+    json_string.push_str(", 'error': ");
+    json_string.push_str(&self.error.to_string().as_str());
+    json_string.push_str("}, ");
+    // Return the string
     json_string
   }
 }
 
-  ///////////////
- // FUNCTIONS
+  ////////////////
+ // FUNCTIONS ///
 ////////////////
-// Function to get chunk
+
+// Function to get the chunk
 pub fn get_chunk(getc_smiles_string: &String, getc_start_pos: usize, getc_length: usize) -> &str {
   let getc_result: &str = &getc_smiles_string[getc_start_pos..cmp::min((getc_start_pos + getc_length), (getc_smiles_string.len()))];
   return getc_result;
@@ -188,11 +228,55 @@ pub fn get_symbol(getls_smiles_chunk: &str, s_one: &[&str], s_two: &[&str],
 // Function to update the state and structure
 pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: String,
                         mut u_simple_ct_on: bool, mut u_bracket: bool, mut u_inbracket: u8, u_last_symbol: u8) -> Structure {
+
+
+    /////////////////////////////////////////////////////////////
+   // Functions to update the structure                       //
+  /////////////////////////////////////////////////////////////
+
+  // Function to insert the atom
+
+  // Function to add or extend/modify bond
+
+  // Function to add the atom property
+
+
+    /////////////////////////////////////////////////////////////
+   // Test whether starting and ending symbols are correct    //
+  /////////////////////////////////////////////////////////////
+
+  if u_prev_symbol == "" {
+    // Case when this symbol is the first symbol
+    if SYMBS_ALLOWED_START.contains(&&u_symbol[0..u_symbol.len()]) {
+        // mark as OK and proceed
+        u_structure.status = true;
+        u_structure.error = String::from("");
+    } else {
+        u_structure.status = false;
+        u_structure.error = String::from("unacceptable first symbol in SMILES string");
+        return u_structure;
+    }
+  } else if u_last_symbol == 1 {
+      // Case when this symbol is the first symbol
+      if SYMBS_ALLOWED_END.contains(&&u_symbol[0..u_symbol.len()]) {
+        // Actually update latter
+        u_structure.status = true;
+        u_structure.error = String::from("");
+        return u_structure;
+      } else {
+        u_structure.status = false;
+        u_structure.error = String::from("unacceptable last symbol in SMILES string");
+      }
+  }
+
+
+    /////////////////////////////////////////
+   // Classify symbol                     //
+  /////////////////////////////////////////
+
+  // Some vars to help with the task
   let h_symbol: String = "H".to_string();
   let any_symbol: String = "*".to_string();
-   /////////////////////////////////////////
-  // Classify symbol                     //
-  ////////////////////////////////////////
   // Check if an atom
   if SYMBOL_atom.contains(&u_symbol.as_str()) || u_symbol == &any_symbol {
     // It is an atom symbol
@@ -210,8 +294,8 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
       }
     }
     // Add this atom to the structure
+    unimplemented!();
   }
-  ////////////////////////////////////////
   // Check if simple bond considering charge as an option
   if SYMBOL_bond.contains(&u_symbol.as_str()) && u_bracket != true {
     // Definitely, it is a bond
@@ -234,97 +318,14 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
     // Definitely, it is a square bracket
     unimplemented!();
   }
-  // Function to insert the symbol
-  fn insert_symbol(mut ins_structure: Structure, ins_symbol: &String, ins_prev_symbol: String,
-                          ins_simple_ct_on: bool, ins_bracket: bool, ins_last_symbol: u8) -> Structure {
-    // Case - for the first symbol
-    if ins_prev_symbol == "" {
-        // Decide on the symbol class
-        // Case atom
-        if SYMBOL_atom.contains(&ins_symbol.as_str()) {
-          unimplemented!();
-        }
-        // Case open square bracket
-        if ins_symbol == &"[".to_string() {
-          unimplemented!();
-        }
-        // Case open parentheses
-        if ins_symbol == &"(".to_string() {
-          unimplemented!();
-        }
-    } else if ins_last_symbol == 1 {
-        // Decide on the symbol class
-        // Case atom
-        if SYMBOL_atom.contains(&ins_symbol.as_str()) {
-          unimplemented!();
-        }
-        // Case close square brackets
-        if ins_symbol == &"]".to_string() {
-          unimplemented!();
-        }
-        // Case close parentheses
-        if ins_symbol == &")".to_string() {
-          unimplemented!();
-        }
-        // Case close ring
-    } else {
-        // Case - for the intermediate symbol
-        // Case - atom
-        if SYMBOL_atom.contains(&ins_symbol.as_str()) {
-          unimplemented!();
-        }
-        // Case - ring
-        // Case - bond modifier and not ring
-        // Case open square bracket
-        if ins_symbol == &"[".to_string() {
-          unimplemented!();
-        }
-        // Case close square bracket
-        if ins_symbol == &"]".to_string() {
-          unimplemented!();
-        }
-        // Case open parentheses
-        if ins_symbol == &"(".to_string() {
-          unimplemented!();
-        }
-        // Case close parentheses
-        if ins_symbol == &")".to_string() {
-          unimplemented!();
-        }
-        // Case cis / trans
-        if ins_symbol == &"/".to_string() || ins_symbol == &"\\".to_string() {
-          unimplemented!();
-        }
-    }
-    //return ins_structure;
-    unimplemented!();
-  }
-  // Case when this symbol is the first symbol
-  if u_prev_symbol == "" {
-    // check if current symbol is viable
-    if SYMBS_ALLOWED_START.contains(&&u_symbol[0..u_symbol.len()]) {
-        // Actually update latter
-        u_structure = insert_symbol(u_structure, u_symbol, u_prev_symbol,
-                                  u_simple_ct_on, u_bracket, u_last_symbol);
-        return u_structure;
-    } else {
-        u_structure.status = false;
-        u_structure.error = String::from("unacceptable first symbol in SMILES string");
-        return u_structure;
-    }
-  } else if u_last_symbol == 1 {
-    // check if the last symbol is viable
-    if SYMBS_ALLOWED_END.contains(&&u_symbol[0..u_symbol.len()]) {
-        // Actually update latter
-        return u_structure;
-    } else {
-        u_structure.status = false;
-        u_structure.error = String::from("unacceptable last symbol in SMILES string");
-        return u_structure;
-    }
-  } else {
-          return u_structure;
-  }
+
+
+    /////////////////////////////////////////
+   // Return the structure                //
+  /////////////////////////////////////////
+
+
+  u_structure
 }
 // Function to parse SMILES
 pub fn parse_smiles(ps_smiles_string: &String, mut ps_structure: Structure) -> Structure {
