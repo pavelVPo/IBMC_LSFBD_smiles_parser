@@ -189,11 +189,12 @@ pub fn get_symbol(getls_smiles_chunk: &str, s_one: &[&str], s_two: &[&str],
 pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: String,
                         mut u_simple_ct_on: bool, mut u_bracket: bool, mut u_inbracket: u8, u_last_symbol: u8) -> Structure {
   let h_symbol: String = "H".to_string();
+  let any_symbol: String = "*".to_string();
    /////////////////////////////////////////
   // Classify symbol                     //
   ////////////////////////////////////////
   // Check if an atom
-  if SYMBOL_atom.contains(&u_symbol.as_str()) || u_symbol.as_str() == "*" {
+  if SYMBOL_atom.contains(&u_symbol.as_str()) || u_symbol == &any_symbol {
     // It is an atom symbol
     println!("{:?}", u_symbol);
     // What is also important: state, bracket and prop block, to find the exactly correct class
@@ -208,26 +209,29 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
         u_inbracket = 2;
       }
     }
+    // Add this atom to the structure
   }
   ////////////////////////////////////////
   // Check if simple bond considering charge as an option
   if SYMBOL_bond.contains(&u_symbol.as_str()) && u_bracket != true {
     // Definitely, it is a bond
+    // Add this bond to the structure
     unimplemented!();
   }
   // Check if modifier considering props as an option
   if SYMBOL_modifier.contains(&u_symbol.as_str()) && u_bracket != true {
     // Definitely, it is a modifier of sorts
+    // Classify this modifier
     unimplemented!();
   }
   // Check if property
-  if SYMBOL_property.contains(&u_symbol.as_str()) && u_bracket != false {
-    // Probably, it is a property, if not an atom
+  if SYMBOL_property.contains(&u_symbol.as_str()) && u_bracket != false && u_inbracket != 2 {
+    // Definitely, it is a property
     unimplemented!();
   }
   // Check if square bracket
   if SYMBOL_square.contains(&u_symbol.as_str()) {
-    // Probably, it is a modifier of sorts, if not an atom
+    // Definitely, it is a square bracket
     unimplemented!();
   }
   // Function to insert the symbol
