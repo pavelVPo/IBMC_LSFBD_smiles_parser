@@ -1,4 +1,5 @@
-use std::cmp;    //   Comparison and ordering
+use std::cmp;                        // Comparison and ordering
+use std::collections::BTreeMap;     // Ordered collection to store the symbols
 
 
   ////////////////
@@ -93,18 +94,13 @@ pub struct Bond {
 }
 #[derive(Default)]
 #[derive(Debug)]
-pub struct Symbol {
-    symbol: String
-}
-#[derive(Default)]
-#[derive(Debug)]
 pub struct Structure {
-    atoms:        Vec<Atom>,
-    bonds:        Vec<Bond>,
-    symbols:      Vec<Symbol>,
-    input_smiles: String,
-    status:       bool,
-    error:        String
+    atoms:              Vec<Atom>,
+    bonds:              Vec<Bond>,
+    symbols:            BTreeMap<u32, String>,
+    input_smiles:       String,
+    status:             bool,
+    error:              String
 }
 
 
@@ -167,10 +163,10 @@ impl Structure {
     }
     // SYMBOLS
     json_string.push_str("'symbols': [");
-    for symbol in &self.symbols {
+    for symbol in &self.symbols.values().collect::<Vec<_>>() {
       println!("new symbol encountered");
       json_string.push_str(", 'symbol': ");
-      json_string.push_str(symbol.symbol.to_string().as_str());
+      json_string.push_str(symbol);
       json_string.push_str("}, ");
     }
     json_string.pop();
@@ -224,6 +220,17 @@ pub fn get_symbol(getls_smiles_chunk: &str, s_one: &[&str], s_two: &[&str],
       let symb_error = format!("unknown symbol in chunk: {}", getls_smiles_chunk);
       return symb_error;
   }
+}
+// Function to add an atom to the structure
+pub fn add_atom() {
+  // case prev symbol is "": add this atom
+  // case prev symbol is an atom or *: add this atom, add standard bond to the previous one
+  // case prev symbol is isotopic number: add this atom, add isotopic prop
+  // case prev symbol is square bracket: add this atom, check prevprev symbol and proceed accordingly
+  // case prev symbol is a bond: add this atom, add specidfic bond to the previous atom
+  // case prev symbol is a modifier: add this atom, find prev atom based on modifier type or earlier symbols and establish the connection
+  // case prev symbol is ct: add this atom and cis/trans
+  unimplemented!();
 }
 // Function to update the state and structure
 pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: String,
@@ -334,6 +341,8 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
 pub fn parse_smiles(ps_smiles_string: &String, mut ps_structure: Structure) -> Structure {
   // Initial state
   ps_structure.status = true;
+  // Count symbols to work with them latter
+  let mut symbol_number: u32 = 0;
   let ps_n_all: usize = ps_smiles_string.len();
   let mut ps_position: usize = 0;
   let mut ps_chunk: &str = "";
@@ -348,10 +357,10 @@ pub fn parse_smiles(ps_smiles_string: &String, mut ps_structure: Structure) -> S
   // 4 - hydro
   // 5 - charge
   // 6 - class
-  let mut ps_inbracket: u8 = 0;
-  let mut ps_last_symbol:  u8 = 0;
+  let mut ps_inbracket:     u8 = 0;
+  let mut ps_last_symbol:   u8 = 0;
   let mut ps_next_position: usize = 0;
-  let mut ps_prev_symbol: String = "".to_string();
+  let mut ps_prev_symbol:   String = "".to_string();
 
   // Parse SMILES in a loop, v1 chunk it
   while ps_n_all > ps_position {
@@ -362,6 +371,12 @@ pub fn parse_smiles(ps_smiles_string: &String, mut ps_structure: Structure) -> S
 
       // Get this symbol
       ps_symbol = get_symbol(ps_chunk, &SYMBOLONE, &SYMBOLTWO, &SYMBOLTHREE, &SYMBOLFOUR, &SYMBOLFIVE);
+
+      // Increase the symbol number
+      symbol_number = symbol_number + 1;
+
+      // Insert the symbol
+      ps_structure.symbols.insert(symbol_number, ps_symbol.clone());
 
       // Update position according to the symbol length
       ps_position = (ps_position + 5) - (5 - ps_symbol.len());
