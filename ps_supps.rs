@@ -79,9 +79,9 @@ pub struct Atom {
     is_aromatic: bool,
     is_in_bracket: bool, 
     has_hs: bool, 
-    isotopic_number: u8,
+    isotopic_number: usize,
     chirality: String,
-    n_hs: u8,
+    n_hs: usize,
     charge: i8,
     class: String
 }
@@ -98,7 +98,7 @@ pub struct Bond {
 pub struct Structure {
     atoms:              Vec<Atom>,
     bonds:              Vec<Bond>,
-    symbols:            BTreeMap<u32, String>,
+    symbols:            BTreeMap<usize, String>,
     input_smiles:       String,
     status:             bool,
     error:              String
@@ -226,7 +226,7 @@ pub fn get_symbol(getls_smiles_chunk: &str, s_one: &[&str], s_two: &[&str],
 
 // Function to update the state and structure
 pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: String,
-                        mut u_simple_ct_on: bool, mut u_inbracket: u8, u_last_symbol: u8) -> Structure {
+                        mut u_simple_ct_on: bool, mut u_inbracket: usize, u_last_symbol: usize) -> Structure {
 
 
     /////////////////////////////////////////////////////////////
@@ -262,7 +262,10 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
    // Functions to update the structure                       //
   /////////////////////////////////////////////////////////////
 
-  fn add_atom() {
+  // Function to add new atom
+  fn add_atom(mut u_structure: Structure, u_symbol: &String, u_case: &String) -> Structure {
+    // get holder for atom data
+    let mut this_atom = Atom::default();
     // case prev symbol is "": add this atom
     // case prev symbol is an atom or *: add this atom, add standard bond to the previous one
     // case prev symbol is isotopic number: add this atom, add isotopic prop
@@ -379,9 +382,10 @@ pub fn parse_smiles(ps_smiles_string: &String, mut ps_structure: Structure) -> S
   // Initial state
   ps_structure.status = true;
   // Count symbols to work with them latter
-  let mut symbol_number: u32 = 0;
-  let ps_n_all: usize = ps_smiles_string.len();
-  let mut ps_position: usize = 0;
+  let mut symbol_number:  usize = 0;
+  // Count the total length of the SMILES string in characters
+  let ps_n_all:           usize = ps_smiles_string.chars().count() as usize;
+  let mut ps_position:    usize = 0;
   let mut ps_chunk: &str = "";
   let mut ps_symbol: String = String::from("");
   let mut ps_simple_ct_on: bool = false;
@@ -394,8 +398,8 @@ pub fn parse_smiles(ps_smiles_string: &String, mut ps_structure: Structure) -> S
   // 5 - hydro
   // 6 - charge
   // 7 - class
-  let mut ps_inbracket:     u8 = 0;
-  let mut ps_last_symbol:   u8 = 0;
+  let mut ps_inbracket:     usize = 0;
+  let mut ps_last_symbol:   usize = 0;
   let mut ps_next_position: usize = 0;
   let mut ps_prev_symbol:   String = "".to_string();
 
