@@ -81,14 +81,14 @@ pub struct Atom {
     has_hs: bool, 
     isotopic_number: usize,
     chirality: String,
-    n_hs: usize,
+    n_hs: u8,
     charge: i8,
     class: String
 }
 #[derive(Default)]
 #[derive(Debug)]
 pub struct Bond {
-    bond_id: usize,
+    bond_id: String,
     atom_one: usize,
     atom_two: usize,
     bond_symbol: String
@@ -120,7 +120,11 @@ impl Structure {
     // add status: {"atoms": [{...}, ..., {...}], "bonds": [{...}, ..., {...}], "symbols": [...], "smiles": '', "status": '',
     // add an error if any and finalize the string: {"atoms": [{...}, ..., {...}], "bonds": [{...}, ..., {...}], "symbols": [...], "smiles": '', "status": '', "error": ''}
     // ...
+
+     //
     // ATOMS
+   //
+
     for atom in &self.atoms {
       println!("new atom encountered");
       json_string.push_str("{'atom_id': ");
@@ -148,12 +152,16 @@ impl Structure {
     json_string.pop();
     json_string.pop();
     json_string.push_str("], ");
+
+     //
     // BONDS
+   //
+
     json_string.push_str("'bonds': [");
     for bond in &self.bonds {
       println!("new bond encountered");
       json_string.push_str("{'bond_id': ");
-      json_string.push_str(bond.bond_id.to_string().as_str());
+      json_string.push_str(bond.bond_id.as_str());
       json_string.push_str(", 'atom_one': ");
       json_string.push_str(bond.atom_one.to_string().as_str());
       json_string.push_str(", 'atom_two': ");
@@ -162,7 +170,11 @@ impl Structure {
       json_string.push_str(bond.bond_symbol.to_string().as_str());
       json_string.push_str("}, ");
     }
+
+     //
     // SYMBOLS
+   //
+
     json_string.push_str("'symbols': [");
     for symbol in &self.symbols.values().collect::<Vec<_>>() {
       println!("new symbol encountered");
@@ -173,7 +185,11 @@ impl Structure {
     json_string.pop();
     json_string.pop();
     json_string.push_str("], ");
+
+     //
     // STATUS
+   //
+
     json_string.push_str("'status': ");
     json_string.push_str(&self.status.to_string().as_str());
     json_string.push_str(", 'error': ");
@@ -224,14 +240,16 @@ pub fn get_symbol(getls_smiles_chunk: &str, s_one: &[&str], s_two: &[&str],
   }
 }
 
+/////
+
 // Function to update the state and structure
 pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: String,
-                        mut u_simple_ct_on: bool, mut u_inbracket: usize, u_last_symbol: usize) -> Structure {
+                        mut u_simple_ct_on: bool, mut u_inbracket: usize, u_last_symbol: usize, u_symbol_number: usize) -> Structure {
 
 
-    /////////////////////////////////////////////////////////////
-   // Test whether starting and ending symbols are correct    //
-  /////////////////////////////////////////////////////////////
+    //
+   // Test whether starting and ending symbols are correct
+  //
 
   if u_prev_symbol == "" {
     // Case when this symbol is the first symbol
@@ -258,37 +276,141 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
   }
 
 
-    /////////////////////////////////////////////////////////////
-   // Functions to update the structure                       //
-  /////////////////////////////////////////////////////////////
+    //
+   // Helpful vars
+  //
 
-  // Function to add new atom
-  fn add_atom(mut u_structure: Structure, u_symbol: &String, u_case: &String) -> Structure {
-    // get holder for atom data
+  let h_symbol:   String = "H".to_string();
+  let any_symbol: String = "*".to_string();
+  let mut is_atom        = false;
+  let mut is_aromatic    = false;
+  let mut is_first       = false;
+
+    //
+   // Functions to update the structure
+  //
+
+  // Function to add new atom, #red addition of bonds - to the distinct function
+  fn addmut_atom(mut ama_structure: Structure, ama_symbol: &String, ama_symbol_number: usize,
+                  ama_is_first: bool, ama_is_aromatic: bool, ama_inbracket: usize) -> Structure {
+    // get holder for the atom data
     let mut this_atom = Atom::default();
-    // case prev symbol is "": add this atom
-    // case prev symbol is an atom or *: add this atom, add standard bond to the previous one
-    // case prev symbol is isotopic number: add this atom, add isotopic prop
-    // case prev symbol is square bracket: add this atom, check prevprev symbol and proceed accordingly
+    // get previous symbol
+    let binding = "".to_string();
+    let prev_symbol = ama_structure.symbols.get(&(ama_symbol_number.clone() - 1)).unwrap_or(&binding).as_str();
+    // case first symbol, not aromatic: add this atom and basic props
+    if ama_is_first == true && ama_is_aromatic == false && ama_inbracket == 0  {
+      this_atom.atom_id         = ama_symbol_number.clone();
+      this_atom.atom_symbol     = ama_symbol.clone();
+      this_atom.is_aromatic     = false;
+      this_atom.is_in_bracket   = false;
+      this_atom.has_hs          = false;
+      this_atom.isotopic_number = 0;
+      this_atom.chirality       = "".to_string();
+      this_atom.n_hs            = 0;
+      this_atom.charge          = 0;
+      this_atom.class           = "".to_string();
+      ama_structure.atoms.push(this_atom);
+    }
+    // case first symbol, aromatic: add this atom and basic props
+    else if ama_is_first == true && ama_is_aromatic == true && ama_inbracket == 0  {
+      this_atom.atom_id         = ama_symbol_number.clone();
+      this_atom.atom_symbol     = ama_symbol.clone();
+      this_atom.is_aromatic     = true;
+      this_atom.is_in_bracket   = false;
+      this_atom.has_hs          = false;
+      this_atom.isotopic_number = 0;
+      this_atom.chirality       = "".to_string();
+      this_atom.n_hs            = 0;
+      this_atom.charge          = 0;
+      this_atom.class           = "".to_string();
+      ama_structure.atoms.push(this_atom);
+    }
+    // case prev symbol is an atom or *, this atom is not in brackets, not aromatic: add this atom, and prepare to add the standard bond to the previous one
+    else if (SYMBOL_atom.contains(&prev_symbol) || prev_symbol == "*" ) && ama_inbracket == 0 && ama_is_aromatic == false {
+      this_atom.atom_id         = ama_symbol_number.clone();
+      this_atom.atom_symbol     = ama_symbol.clone();
+      this_atom.is_aromatic     = false;
+      this_atom.is_in_bracket   = false;
+      this_atom.has_hs          = false;
+      this_atom.isotopic_number = 0;
+      this_atom.chirality       = "".to_string();
+      this_atom.n_hs            = 0;
+      this_atom.charge          = 0;
+      this_atom.class           = "".to_string();
+      ama_structure.atoms.push(this_atom);
+    }
+    // case prev symbol is an atom or *, this atom is not in brackets, aromatic: add this atom, and prepare to add the standard bond to the previous one
+    else if (SYMBOL_atom.contains(&prev_symbol) || prev_symbol == "*" ) && ama_inbracket == 0 && ama_is_aromatic == false {
+      this_atom.atom_id         = ama_symbol_number.clone();
+      this_atom.atom_symbol     = ama_symbol.clone();
+      this_atom.is_aromatic     = true;
+      this_atom.is_in_bracket   = false;
+      this_atom.has_hs          = false;
+      this_atom.isotopic_number = 0;
+      this_atom.chirality       = "".to_string();
+      this_atom.n_hs            = 0;
+      this_atom.charge          = 0;
+      this_atom.class           = "".to_string();
+      ama_structure.atoms.push(this_atom);
+    }
+    // case prev symbol is starting square bracket, not aromatic: get and modify this atom, and prepare to check prevprev symbol and proceed accordingly
+    else if prev_symbol == "[" && ama_is_aromatic == false && ama_inbracket == 3 {
+      let this_atom_index = ama_structure.atoms.len() - 1;
+      ama_structure.atoms[this_atom_index].atom_id                = ama_symbol_number.clone();
+      ama_structure.atoms[this_atom_index].atom_symbol            = ama_symbol.clone();
+      ama_structure.atoms[this_atom_index].is_aromatic            = false;
+      ama_structure.atoms[this_atom_index].is_in_bracket          = true;
+
+    }
+    // case prev symbol is starting square bracket, aromatic: get and modify this atom, and prepare to check prevprev symbol and proceed accordingly
+    else if prev_symbol == "[" && ama_is_aromatic == false && ama_inbracket == 3 {
+      let this_atom_index = ama_structure.atoms.len() - 1;
+      ama_structure.atoms[this_atom_index].atom_id                = ama_symbol_number.clone();
+      ama_structure.atoms[this_atom_index].atom_symbol            = ama_symbol.clone();
+      ama_structure.atoms[this_atom_index].is_aromatic            = true;
+      ama_structure.atoms[this_atom_index].is_in_bracket          = true;
+    }
+    // case prev symbol is isotopic number: add isotopic prop
     // case prev symbol is a bond: add this atom, add specidfic bond to the previous atom
     // case prev symbol is a modifier: add this atom, find prev atom based on modifier type or earlier symbols and establish the connection
     // case prev symbol is ct: add this atom and cis/trans
-    unimplemented!();
+    
+    // return updated structure
+    ama_structure
   }
+
   // Function to add or extend/modify bond
+  fn addmut_bond(mut amb_structure: Structure, amb_symbol: &String, amb_symbol_number: usize) -> Structure {
+    // some vars to help
+    let mut this_bond = Bond::default();
+    let prev_symbol_number = amb_structure.atoms.len() - 1;
+    println!("{:?}", prev_symbol_number);
+    let this_atom_index = amb_structure.atoms.len() - 1;
+    let prev_atom_index = amb_structure.atoms.len() - 2;
+    // case when simple bond is implicit bond & this symbol is atom, which is not in brackets, not aromatic and the previous symbol is atom, which is not in brackets
+    if amb_structure.atoms[this_atom_index].atom_id      == amb_symbol_number &&
+        amb_structure.atoms[prev_atom_index].atom_id     == prev_symbol_number &&
+        amb_structure.atoms[this_atom_index].is_aromatic == false {
+      // atom_ids should ~2 times shorter than this
+      this_bond.bond_id     = format!("{}_{}", prev_symbol_number.to_string(), amb_symbol_number.to_string());
+      this_bond.atom_one    = prev_symbol_number;
+      this_bond.atom_two    = amb_symbol_number;
+      this_bond.bond_symbol = "-".to_string();
+      amb_structure.bonds.push(this_bond);
+    }
+
+    // return updated structure
+    amb_structure
+  }
+
+
   // Function to add the atom property
-    ///////////////////
-   // Helpful vars  //
-  ///////////////////
-  let h_symbol: String = "H".to_string();
-  let any_symbol: String = "*".to_string();
-  let mut is_atom = false;
-  let mut is_aromatic = false;
 
 
-    /////////////////////////////////////////////////////////////
-   // Test whether starting and ending symbols are correct    //
-  /////////////////////////////////////////////////////////////
+    //
+   // Test whether starting and ending symbols are correct
+  //
   
   if u_prev_symbol == "" {
     // Case when this symbol is the first symbol
@@ -296,6 +418,7 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
         // mark as OK and proceed
         u_structure.status = true;
         u_structure.error = String::from("");
+        is_first = true;
     } else {
         u_structure.status = false;
         u_structure.error = String::from("unacceptable first symbol in SMILES string");
@@ -312,12 +435,14 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
         u_structure.status = false;
         u_structure.error = String::from("unacceptable last symbol in SMILES string");
       }
+  } else {
+    is_first = false;
   }
 
 
-    /////////////////////////////////////////
-   // Classify symbol                     //
-  /////////////////////////////////////////
+    //
+   // Classify symbol
+  //
   
   // Check if an atom
   if SYMBOL_atom.contains(&u_symbol.as_str()) || u_symbol == &any_symbol {
@@ -326,7 +451,7 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
     is_atom = true;
     // check if aromatic
     if SYMBOL_aromatic_atom.contains(&u_symbol.as_str()) {
-      is_aromatic = false;
+      is_aromatic = true;
     } else if u_symbol == &h_symbol {
       // What is also important: state, bracket and prop block, to find the exactly correct class
       // Check if an H and it is needed to be distinguished from hydro property
@@ -335,16 +460,21 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
         // Definitely, it is not an atom, but property
         u_inbracket = 4;
         is_atom = false;
+        is_aromatic = false;
       } else {
         // Definitely, it is an atom
-        u_inbracket = 2;
+        u_inbracket = 3;
+        is_aromatic = false;
       }
     }
     if (u_inbracket > 0) {
-      u_inbracket = 2;
+      u_inbracket = 3;
     }
     // Add this atom to the structure
-    unimplemented!();
+    u_structure = addmut_atom(u_structure, u_symbol, u_symbol_number, is_first, is_aromatic, u_inbracket);
+    if u_prev_symbol != "" {
+      u_structure = addmut_bond(u_structure, u_symbol, u_symbol_number);
+    }
   }
   // Check if simple bond considering charge as an option
   if SYMBOL_bond.contains(&u_symbol.as_str()) && u_inbracket == 0 {
@@ -370,10 +500,10 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
   }
 
 
-    /////////////////////////////////////////
-   // Return the structure                //
-  /////////////////////////////////////////
-  
+    //
+   // Return the structure
+  //
+
   u_structure
 }
 
@@ -393,7 +523,7 @@ pub fn parse_smiles(ps_smiles_string: &String, mut ps_structure: Structure) -> S
   // 0 - no open bracket
   // 1 - open bracket
   // 2 - isotope
-  // 3 - symbol
+  // 3 - atom
   // 4 - chirality
   // 5 - hydro
   // 6 - charge
@@ -429,7 +559,7 @@ pub fn parse_smiles(ps_smiles_string: &String, mut ps_structure: Structure) -> S
 
       // Update structure
       ps_structure = update(ps_structure, &ps_symbol, ps_prev_symbol,
-                                      ps_simple_ct_on, ps_inbracket, ps_last_symbol);
+                                      ps_simple_ct_on, ps_inbracket, ps_last_symbol, symbol_number);
 
       // Check updated structure
       if ps_structure.status == false {
