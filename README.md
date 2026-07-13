@@ -556,7 +556,7 @@ Among the 36 theoretically possible pairs of symbol types the following will be 
 
     > charge -\> atom_bal, charge -\> atom_bal_2, charge -\> atom_bar, charge -\> atom_bar_2, charge_2 -\> atom_bal, charge_2 -\> atom_bal_2, charge_2 -\> atom_bar, charge_2 -\> atom_bar_2, charge_m -\> atom_bal, charge_m -\> atom_bal_2, charge_m -\> atom_bar, charge_m -\> atom_bar_2, chiral -\> atom_bal, chiral -\> atom_bal_2, chiral -\> atom_bar, chiral -\> atom_bar_2, chiral_2 -\> atom_bal, chiral_2 -\> atom_bal_2, chiral_2 -\> atom_bar, chiral_2 -\> atom_bar_2, chiral_m -\> atom_bal, chiral_m -\> atom_bal_2, chiral_m -\> atom_bar, chiral_m -\> atom_bar_2, class -\> atom_bal, class -\> atom_bal_2, class -\> atom_bar, class -\> atom_bar_2, hydro -\> atom_bal, hydro -\> atom_bal_2, hydro -\> atom_bar, hydro -\> atom_bar_2, hydro_2 -\> atom_bal, hydro_2 -\> atom_bal_2, hydro_2 -\> atom_bar, hydro_2 -\> atom_bar_2
 
-8.  In-bracket atoms could not be immediately precede the start of the square brackets, the following pairs of symbol classes are forbidden:
+8.  In-bracket atoms could not precede the start of the square brackets, the following pairs of symbol classes are forbidden:
 
     > atom_bal -\> s_bracket, atom_bal_2 -\> s_bracket, atom_bar -\> s_bracket, atom_bar_2 -\> s_bracket
 
