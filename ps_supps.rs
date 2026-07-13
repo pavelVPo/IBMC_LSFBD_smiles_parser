@@ -240,8 +240,6 @@ pub fn get_symbol(getls_smiles_chunk: &str, s_one: &[&str], s_two: &[&str],
   }
 }
 
-/////
-
 // Function to update the state and structure
 pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: String,
                         mut u_simple_ct_on: bool, mut u_inbracket: usize, u_last_symbol: usize, u_symbol_number: usize) -> Structure {
@@ -418,7 +416,7 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
 
   // Function to check whether symbol types in this pair are allowed, it is better to do it after the symbols' classification
   fn check_pair_type(mut cpt_structure: Structure, cpt_type: &str, cpt_prev_type: &str) -> Structure {
-    // If this pair of symbols has types, which are forbidden to be paired, through an error and return the structure.
+    // If this pair of symbols has types, which are forbidden to be paired, through an error, change structure's status to false and return the structure.
     // NOT ALLOWED:
     // bond      - bond
     // bond      - modifier
@@ -459,6 +457,27 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
     }
     // Return the structure
     cpt_structure
+  }
+
+  // Function to check whether symbol classes in this pair are allowed, it is better to do it after the symbols' classification
+  fn check_pair_class(mut cpc_structure: Structure, cpc_type: &str, cpc_prev_type: &str) -> Structure {
+    // If this pair of symbols has types, which are forbidden to be paired, through an error, change structure's status to false and return the structure.
+    // NOT ALLOWED:
+    // Mixed pairs of out-of-bracket and in-bracket atoms:
+    const class_pair_not_in_out:   [&str; 23]  = ["atom_oal,atom_bal", "atom_oal,atom_bal_2", "atom_oal,atom_bar_2", "atom_oal_2,atom_bal", "atom_oal_2,atom_bal_2", "atom_oal_2,atom_bar", "atom_oal_2,atom_bar_2", "atom_oar,atom_bal", "atom_oar,atom_bal_2", "atom_oar,atom_bar", "atom_oar,atom_bar_2", "atom_bal,atom_oal", "atom_bal,atom_oal_2", "atom_bal,atom_oar", "atom_bal_2,atom_oal", "atom_bal_2,atom_oal_2", "atom_bal_2,atom_oar", "atom_bar,atom_oal", "atom_bar,atom_oal_2", "atom_bar,atom_oar", "atom_bar_2,atom_oal", "atom_bar_2,atom_oal_2", "atom_bar_2,atom_oar"];
+    // pairs of in-bracket atoms
+    const class_pair_not_in_in:    [&str; 16]  = ["atom_bal,atom_bal", "atom_bal,atom_bal_2", "atom_bal,atom_bar", "atom_bal,atom_bar_2", "atom_bal_2,atom_bal", "atom_bal_2,atom_bal_2", "atom_bal_2,atom_bar", "atom_bal_2,atom_bar_2", "atom_bar,atom_bal", "atom_bar,atom_bal_2", "atom_bar,atom_bar", "atom_bar,atom_bar_2", "atom_bar_2,atom_bal", "atom_bar_2,atom_bal_2", "atom_bar_2,atom_bar", "atom_bar_2,atom_bar_2"];
+    // pairs of in-bracket atoms and anything
+    const class_pair_not_in_any:   [&str; 8]   = ["atom_bal,anything", "atom_bal_2,anything", "atom_bar,anything", "atom_bar_2,anything", "anything,atom_bal", "anything,atom_bal_2", "anything,atom_bar", "anything,atom_bar_2"];
+    // pairs of in-bracket atoms and bonds
+    const class_pair_not_in_bond:  [&str; 48]  = ["atom_bal,aromatic_bond", "atom_bal,double_bond", "atom_bal,no_bond", "atom_bal,quadruple_bond", "atom_bal,single_bond", "atom_bal,triple_bond", "atom_bal_2,aromatic_bond", "atom_bal_2,double_bond", "atom_bal_2,no_bond", "atom_bal_2,quadruple_bond", "atom_bal_2,single_bond", "atom_bal_2,triple_bond", "atom_bar,aromatic_bond", "atom_bar,double_bond", "atom_bar,no_bond", "atom_bar,quadruple_bond", "atom_bar,single_bond", "atom_bar,triple_bond", "atom_bar_2,aromatic_bond", "atom_bar_2,double_bond", "atom_bar_2,no_bond", "atom_bar_2,quadruple_bond", "atom_bar_2,single_bond", "atom_bar_2,triple_bond", "aromatic_bond,atom_bal", "aromatic_bond,atom_bal_2", "aromatic_bond,atom_bar", "aromatic_bond,atom_bar_2", "double_bond,atom_bal", "double_bond,atom_bal_2", "double_bond,atom_bar", "double_bond,atom_bar_2", "no_bond,atom_bal", "no_bond,atom_bal_2", "no_bond,atom_bar", "no_bond,atom_bar_2", "quadruple_bond,atom_bal", "quadruple_bond,atom_bal_2", "quadruple_bond,atom_bar", "quadruple_bond,atom_bar_2", "single_bond,atom_bal", "single_bond,atom_bal_2", "single_bond,atom_bar", "single_bond,atom_bar_2", "triple_bond,atom_bal", "triple_bond,atom_bal_2", "triple_bond,atom_bar", "triple_bond,atom_bar_2"]; 
+    // pairs of in-bracket atoms and modifiers
+    const class_pair_not_in_mod:   [&str; 111] = ["atom_bal,bm_ibe", "atom_bal,bm_ibi", "atom_bal,bm_ire_2", "atom_bal,bm_ire_4", "atom_bal,bm_iri", "atom_bal,bm_iri_3", "atom_bal,bm_tbe_2", "atom_bal,bm_tbi", "atom_bal,bm_tre_2", "atom_bal,bm_tre_4", "atom_bal,bm_tri", "atom_bal,bm_tri_3", "atom_bal,l_ct", "atom_bal,r_ct", "atom_bal_2,bm_ibe", "atom_bal_2,bm_ibi", "atom_bal_2,bm_ire_2", "atom_bal_2,bm_ire_4", "atom_bal_2,bm_iri", "atom_bal_2,bm_iri_3", "atom_bal_2,bm_tbe_2", "atom_bal_2,bm_tbi", "atom_bal_2,bm_tre_2", "atom_bal_2,bm_tre_4", "atom_bal_2,bm_tri", "atom_bal_2,bm_tri_3", "atom_bal_2,l_ct", "atom_bal_2,r_ct", "atom_bar,bm_ibe", "atom_bar,bm_ibi", "atom_bar,bm_ire_2", "atom_bar,bm_ire_4", "atom_bar,bm_iri", "atom_bar,bm_iri_3", "atom_bar,bm_tbe_2", "atom_bar,bm_tbi", "atom_bar,bm_tre_2", "atom_bar,bm_tre_4", "atom_bar,bm_tri", "atom_bar,bm_tri_3", "atom_bar,l_ct", "atom_bar,r_ct", "atom_bar_2,bm_ibe", "atom_bar_2,bm_ibi", "atom_bar_2,bm_ire_2", "atom_bar_2,bm_ire_4", "atom_bar_2,bm_iri", "atom_bar_2,bm_iri_3", "atom_bar_2,bm_tbe_2", "atom_bar_2,bm_tbi", "atom_bar_2,bm_tre_2", "atom_bar_2,bm_tre_4", "atom_bar_2,bm_tri", "atom_bar_2,bm_tri_3", "atom_bar_2,l_ct", "atom_bar_2,r_ct,bm_ibe,atom_bal", "bm_ibe,atom_bal_2", "bm_ibe,atom_bar", "bm_ibe,atom_bar_2", "bm_ibi,atom_bal", "bm_ibi,atom_bal_2", "bm_ibi,atom_bar", "bm_ibi,atom_bar_2", "bm_ire_2,atom_bal", "bm_ire_2,atom_bal_2", "bm_ire_2,atom_bar", "bm_ire_2,atom_bar_2", "bm_ire_4,atom_bal", "bm_ire_4,atom_bal_2", "bm_ire_4,atom_bar", "bm_ire_4,atom_bar_2", "bm_iri,atom_bal", "bm_iri,atom_bal_2", "bm_iri,atom_bar", "bm_iri,atom_bar_2", "bm_iri_3,atom_bal", "bm_iri_3,atom_bal_2", "bm_iri_3,atom_bar", "bm_iri_3,atom_bar_2", "bm_tbe_2,atom_bal", "bm_tbe_2,atom_bal_2", "bm_tbe_2,atom_bar", "bm_tbe_2,atom_bar_2", "bm_tbi,atom_bal", "bm_tbi,atom_bal_2", "bm_tbi,atom_bar", "bm_tbi,atom_bar_2", "bm_tre_2,atom_bal", "bm_tre_2,atom_bal_2", "bm_tre_2,atom_bar", "bm_tre_2,atom_bar_2", "bm_tre_4,atom_bal", "bm_tre_4,atom_bal_2", "bm_tre_4,atom_bar", "bm_tre_4,atom_bar_2", "bm_tri,atom_bal", "bm_tri,atom_bal_2", "bm_tri,atom_bar", "bm_tri,atom_bar_2", "bm_tri_3,atom_bal", "bm_tri_3,atom_bal_2", "bm_tri_3,atom_bar", "bm_tri_3,atom_bar_2", "l_ct,atom_bal", "l_ct,atom_bal_2", "l_ct,atom_bar", "l_ct,atom_bar_2", "r_ct,atom_bal", "r_ct,atom_bal_2", "r_ct,atom_bar", "r_ct,atom_bar_2"];
+    // pairs of in-bracket atoms (1) and isotopic numbers (2)
+    const class_pair_not_in_iso:   [&str; 8]   = ["atom_bal,isotope", "atom_bal,isotope_m", "atom_bal_2,isotope", "atom_bal_2,isotope_m", "atom_bar,isotope", "atom_bar,isotope_m", "atom_bar_2,isotope", "atom_bar_2,isotope_m"];
+    // pairs of in-bracket atoms (1) and s_brackets (2)
+    const class_pair_not_in_start: [&str; 4]   = ["atom_bal,s_bracket", "atom_bal_2,s_bracket", "atom_bar,s_bracket", "atom_bar_2,s_bracket"];
+    unimplemented!();
   }
 
 
@@ -526,12 +545,16 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
     }
     // Add type to this symbol
     this_type = "atom".to_string();
-    // Check types in this pair
+    // Check types in this pair and check structure's status
     u_structure = check_pair_type(u_structure, this_type.as_str(), prev_type.as_str());
-    // Add this atom to the structure
+    if (u_structure.status == false) {
+      return u_structure;
+    }
+    // Add this atom to the structure and check structure's status
     u_structure = addmut_atom(u_structure, u_symbol, u_symbol_number, is_first, is_aromatic, u_inbracket);
-    // Check structure status
-    // #red
+    if (u_structure.status == false) {
+      return u_structure;
+    }
     // Add the bond
     if u_prev_symbol != "" {
       u_structure = addmut_bond(u_structure, u_symbol, u_symbol_number);
@@ -544,9 +567,11 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
     // Definitely, it is a bond
     // Add type to this symbol
     this_type = "bond".to_string();
-    // Check this pair
+    // Check this pair and check structure's status
     u_structure = check_pair_type(u_structure, this_type.as_str(), prev_type.as_str());
-    // Check structure status #red
+    if (u_structure.status == false) {
+      return u_structure;
+    }
     // Add this bond to the state #red and modify the addmutbond accordingly
     prev_bond = u_symbol.clone();
     // Count this symbol's type as type of the previous one
@@ -557,9 +582,11 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
     // Definitely, it is a modifier of sorts
     // Add type to this symbol
     this_type = "modifier".to_string();
-    // Check this pair
+    // Check this pair and check structure status
     u_structure = check_pair_type(u_structure, this_type.as_str(), prev_type.as_str());
-    // Check structure status #red
+    if (u_structure.status == false) {
+      return u_structure;
+    }
     // Classify this modifier #red
     // Add this modifier to the state somehow #red
     // Count this symbol's type as type of the previous one
@@ -571,9 +598,11 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
     // Definitely, it is a property
     // Add type to this symbol
     this_type = "property".to_string();
-    // Check this pair
+    // Check this pair and check structure status
     u_structure = check_pair_type(u_structure, this_type.as_str(), prev_type.as_str());
-    // check structure status #red
+    if (u_structure.status == false) {
+      return u_structure;
+    }
     // Classify this property #
     // Add this modifier to the state somehow #red
     // Count this symbol's type as type of the previous one
