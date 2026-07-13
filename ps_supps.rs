@@ -285,6 +285,10 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
   let mut is_atom        = false;
   let mut is_aromatic    = false;
   let mut is_first       = false;
+  let mut prev_type      = "".to_string();
+  let mut this_type      = "".to_string();
+  let mut prev_bond      = "".to_string();
+
 
     //
    // Functions to update the structure
@@ -408,6 +412,56 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
   // Function to add the atom property
 
 
+     //
+    // Other functions
+   //
+
+  // Function to check whether symbol types in this pair are allowed, it is better to do it after the symbols' classification
+  fn check_pair_type(mut cpt_structure: Structure, cpt_type: &str, cpt_prev_type: &str) -> Structure {
+    // If this pair of symbols has types, which are forbidden to be paired, through an error and return the structure.
+    // NOT ALLOWED:
+    // bond      - bond
+    // bond      - modifier
+    // bond      - property
+    // modifier  - property
+    // property  - bond
+    // property  - modifier
+    if cpt_type == "bond" && cpt_prev_type == "bond"  {
+      // Describe the problem
+      cpt_structure.status = false;
+      cpt_structure.error = String::from("unacceptable pair of symbols: bond, bond");
+
+    }
+    else if cpt_type == "bond" && cpt_prev_type == "modifier"  {
+      // Describe the problem
+      cpt_structure.status = false;
+      cpt_structure.error = String::from("unacceptable pair of symbols: bond, modifier");      
+    }
+    else if cpt_type == "bond" && cpt_prev_type == "property"  {
+      // Describe the problem
+      cpt_structure.status = false;
+      cpt_structure.error = String::from("unacceptable pair of symbols: bond, property");      
+    }
+    else if cpt_type == "modifier" && cpt_prev_type == "property"  {
+      // Describe the problem
+      cpt_structure.status = false;
+      cpt_structure.error = String::from("unacceptable pair of symbols: modifier, property");    
+    }
+    else if cpt_type == "property" && cpt_prev_type == "bond"  {
+      // Describe the problem
+      cpt_structure.status = false;
+      cpt_structure.error = String::from("unacceptable pair of symbols: property, bond");      
+    }
+    else if cpt_type == "property" && cpt_prev_type == "modifier"  {
+      // Describe the problem
+      cpt_structure.status = false;
+      cpt_structure.error = String::from("unacceptable pair of symbols: property, modifier");      
+    }
+    // Return the structure
+    cpt_structure
+  }
+
+
     //
    // Test whether starting and ending symbols are correct
   //
@@ -470,32 +524,71 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
     if (u_inbracket > 0) {
       u_inbracket = 3;
     }
+    // Add type to this symbol
+    this_type = "atom".to_string();
+    // Check types in this pair
+    u_structure = check_pair_type(u_structure, this_type.as_str(), prev_type.as_str());
     // Add this atom to the structure
     u_structure = addmut_atom(u_structure, u_symbol, u_symbol_number, is_first, is_aromatic, u_inbracket);
+    // Check structure status
+    // #red
+    // Add the bond
     if u_prev_symbol != "" {
       u_structure = addmut_bond(u_structure, u_symbol, u_symbol_number);
     }
+    // Count this symbol's type as type of the previous one
+    prev_type = this_type.to_string().clone();
   }
   // Check if simple bond considering charge as an option
   if SYMBOL_bond.contains(&u_symbol.as_str()) && u_inbracket == 0 {
     // Definitely, it is a bond
-    // Add this bond to the structure
-    unimplemented!();
+    // Add type to this symbol
+    this_type = "bond".to_string();
+    // Check this pair
+    u_structure = check_pair_type(u_structure, this_type.as_str(), prev_type.as_str());
+    // Check structure status #red
+    // Add this bond to the state #red and modify the addmutbond accordingly
+    prev_bond = u_symbol.clone();
+    // Count this symbol's type as type of the previous one
+    prev_type = this_type.to_string().clone();
   }
   // Check if modifier considering props as an option
   if SYMBOL_modifier.contains(&u_symbol.as_str()) && u_inbracket == 0 {
     // Definitely, it is a modifier of sorts
-    // Classify this modifier
+    // Add type to this symbol
+    this_type = "modifier".to_string();
+    // Check this pair
+    u_structure = check_pair_type(u_structure, this_type.as_str(), prev_type.as_str());
+    // Check structure status #red
+    // Classify this modifier #red
+    // Add this modifier to the state somehow #red
+    // Count this symbol's type as type of the previous one
+    prev_type = this_type.to_string().clone();
     unimplemented!();
   }
   // Check if property
   if SYMBOL_property.contains(&u_symbol.as_str()) && u_inbracket > 0 && u_inbracket != 2 {
     // Definitely, it is a property
+    // Add type to this symbol
+    this_type = "property".to_string();
+    // Check this pair
+    u_structure = check_pair_type(u_structure, this_type.as_str(), prev_type.as_str());
+    // check structure status #red
+    // Classify this property #
+    // Add this modifier to the state somehow #red
+    // Count this symbol's type as type of the previous one
+    prev_type = this_type.to_string().clone();
     unimplemented!();
   }
   // Check if square bracket
   if SYMBOL_square.contains(&u_symbol.as_str()) {
     // Definitely, it is a square bracket
+    // Add type to this symbol
+    this_type = "square bracket".to_string();
+    // There is no need to check the types in this pair
+    // check structure status #red
+    // Count this symbol's type as type of the previous one
+    prev_type = this_type.to_string().clone();
     unimplemented!();
   }
 
