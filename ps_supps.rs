@@ -627,7 +627,7 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
     if u_structure.status == false {
       return u_structure;
     }
-    // Add the bond if it is possible
+    // Add the bond if it is needed
     if u_prev_symbol != "" && (prev_type == "atom" || prev_class == "e_bracket") {
       u_structure = addmut_bond(u_structure, u_symbol, u_symbol_number);
     }
@@ -676,9 +676,35 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
     if (u_structure.status == false) {
       return u_structure;
     }
-    // Classify this modifier #red
+    // #E5EFFF
+    // Classify this modifier further
+    // #E5EFFF
+    // Decide on length
+    if u_symbol.chars().count() == 4 {
+      // All of them have explicit bond
+      // Decide whether it is initiator or terminator of ring
+      unimplemented!();
+    }
+    else if u_symbol.chars().count() == 3 {
+      // All of them have implicit bond
+      // Decide whether it is initiator or terminator of ring
+      unimplemented!();
+    }
+    else if u_symbol.chars().count() == 2 {
+      // All of them have explicit bond
+      // Decide whether it is branch or ring
+        // Branch:
+          // Decide whether it is initiator or terminator of branching
+        // Ring:
+          // Decide whether it is initiator or terminator of ring
+        unimplemented!();
+    }
+    else if u_symbol.chars().count() == 1 {
+      // All of them have implicit bond
+      unimplemented!();
+    }
+
     // Add this modifier to the state somehow #red
-    // Count this symbol's type as type of the previous one
   }
   // Check if property
   if SYMBOL_property.contains(&u_symbol.as_str()) && u_inbracket > 0 && u_inbracket != 2 {
