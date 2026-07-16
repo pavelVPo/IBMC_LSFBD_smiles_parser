@@ -1,5 +1,6 @@
 use std::cmp;                        // Comparison and ordering
-use std::collections::BTreeMap;     // Ordered collection to store the symbols
+use std::collections::BTreeMap;     //  Ordered collection to store the 
+use std::collections::HashSet;     //   Set to store the ring data
 
 
   ////////////////
@@ -273,6 +274,8 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
       }
   }
 
+     // #red some of the functions and variables should introduced to the upper level function (parse_smiles) and, probably Structure should be modified to hold some intermediate values
+    //  some code re-conceptualization is needed
 
     //
    // Helpful vars
@@ -287,10 +290,13 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
   let mut prev_type      = "".to_string();
   let mut this_type      = "".to_string();
   // Classes
-  let mut prev_class      = "".to_string();
-  let mut this_class      = "".to_string();
+  let mut prev_class     = "".to_string();
+  let mut this_class     = "".to_string();
   // Bond
   let mut prev_bond      = "".to_string();
+  // Rings
+  let mut open_ring      = HashSet::<String>::new();
+
 
 
     //
