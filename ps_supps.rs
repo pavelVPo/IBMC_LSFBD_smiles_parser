@@ -244,10 +244,51 @@ pub fn get_symbol(getls_smiles_chunk: &str, s_one: &[&str], s_two: &[&str],
   }
 }
 
-// Function to classify this symbol
-pub fn classify_symbol() -> (String, String) {
-  unimplemented!();
+// Function to classify this symbol, returning the type, class and is_aromatic for this symbol
+// #red
+// consider pos_in_bracket as the state variable
+// Remember the order of properties
+// 0 - no open bracket
+// 1 - open bracket
+// 2 - isotope
+// 3 - atom
+// 4 - chirality
+// 5 - hydro
+// 6 - charge
+// 7 - class
+// let mut pos_in_bracket:     usize = 0;
+pub fn classify_symbol(this_symbol: &String, prev_symbol: &String, pos_in_bracket: usize) -> (String, String, bool) {
+
+  // Holders for the output
+  let mut this_type      = "".to_string();
+  let mut this_class     = "".to_string();
+  let mut is_aromatic    = false;
+  // Check if an atom
+  if SYMBOL_atom.contains(&this_symbol.as_str()) {
+    // Probably this is an atom
+    if pos_in_bracket > 0 && pos_in_bracket < 3 {
+      // This is an atom
+      this_type = "atom".to_string();
+    }
+    else if pos_in_bracket == 0 {
+      // This is an atom
+      this_type = "atom".to_string();
+    }
+  } else if SYMBOL_anything.contains(&this_symbol.as_str()) {
+    // This is any atom
+    this_type = "atom".to_string();
+  } else if SYMBOL_aromatic_atom.contains(&this_symbol.as_str()) {
+    // This is aromatic atom
+    this_type = "atom".to_string();
+  }
+  // Output
+  let symbol_classification: (String, String, bool) = (this_type, this_class, is_aromatic);
+  symbol_classification
+
 }
+// #red
+// Consider to update the state after classification
+// also checking whether the atom from brackets is omitted
 
 // Function to check types in the pair of symbols, return the string describing pair 
 pub fn check_pair_types(this_symbol: &String, this_symbol_type: &String, prev_symbol: &String, prev_symbol_type: &String) -> String {
