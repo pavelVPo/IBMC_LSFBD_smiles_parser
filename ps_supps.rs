@@ -281,6 +281,51 @@ pub fn classify_symbol(this_symbol: &String, prev_symbol: &String, pos_in_bracke
     // This is aromatic atom
     this_type = "atom".to_string();
   }
+  // Classify the atom further
+  // atom_bar:        1-character, in bracket,            aromatic
+  // atom_bar_2:      2-character, in bracket,            aromatic
+  // atom_bal:        1-character, in bracket,            aliphatic
+  // atom_bal_2:      2-character, in bracket,            aliphatic
+  // atom_oar:        1-character, not in brackets,       aromatic
+  // atom_oal:        1-character, not in brackets,       aliphatic
+  // atom_oal_2:      2-character, not in bracket,        aliphatic
+  // any:             any of the above mentioned classes
+  if this_type == "atom".to_string() {
+    if this_symbol == &"*".to_string() {
+      this_class = "any".to_string();
+    } else if pos_in_bracket > 1 {
+      // atom_bar
+      if is_aromatic == true && this_symbol.chars().count() == 1 {
+        this_class = "atom_bar".to_string();
+      }
+      // atom_bar_2
+      if is_aromatic == true && this_symbol.chars().count() == 2 {
+        this_class = "atom_bar".to_string();
+      }
+      // atom_bal
+      if is_aromatic == false && this_symbol.chars().count() == 1 {
+        this_class = "atom_bal".to_string();
+      }
+      // atom_bal_2
+      if is_aromatic == false && this_symbol.chars().count() == 2 {
+        this_class = "atom_bal_2".to_string();
+      }
+    } else {
+      // atom_oar
+      if is_aromatic == true && this_symbol.chars().count() == 1 {
+        this_class = "atom_oar".to_string();
+      }
+      // atom_oal
+      if is_aromatic == false && this_symbol.chars().count() == 1 {
+        this_class = "atom_oal".to_string();
+      }
+      // atom_oal_2
+      if is_aromatic == false && this_symbol.chars().count() == 2 {
+        this_class = "atom_oal_2".to_string();
+      }
+    }
+  }
+
   // Output
   let symbol_classification: (String, String, bool) = (this_type, this_class, is_aromatic);
   symbol_classification
