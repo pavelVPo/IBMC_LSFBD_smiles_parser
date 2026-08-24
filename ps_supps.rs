@@ -100,6 +100,8 @@ pub struct Structure {
     atoms:              Vec<Atom>,
     bonds:              Vec<Bond>,
     symbols:            BTreeMap<usize, String>,
+    types:              BTreeMap<usize, String>,
+    classes:            BTreeMap<usize, String>,
     input_smiles:       String,
     status:             bool,
     error:              String
@@ -199,6 +201,7 @@ impl Structure {
     // Return the string
     json_string
   }
+  // function to get the data on previous symbol are not needed in the implementation
 }
 
   ////////////////
@@ -241,8 +244,34 @@ pub fn get_symbol(getls_smiles_chunk: &str, s_one: &[&str], s_two: &[&str],
   }
 }
 
+// Function to classify this symbol
+pub fn classify_symbol() -> (String, String) {
+  unimplemented!();
+}
+
+// Function to check types in the pair of symbols, return the string describing pair 
+pub fn check_pair_types(this_symbol: &String, this_symbol_type: &String, prev_symbol: &String, prev_symbol_type: &String) -> String {
+  unimplemented!();
+}
+
+// Function to check classes in the pair of symbols, return the string describing pair
+pub fn check_pair_classes(this_symbol: &String, this_symbol_class: &String, prev_symbol: &String, prev_symbol_class: &String) -> String {
+  unimplemented!();
+}
+
+// Function to update the structure considering available data on current symbol and state
+pub fn update_structure(mut u_structure: Structure, this_symbol: &String) -> Structure {
+  unimplemented!();
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Older code, will be reworked and deleted later
 // Function to update the state and structure
-pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: String,
+/*pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: String,
                         mut u_simple_ct_on: bool, mut u_inbracket: usize, u_last_symbol: usize, u_symbol_number: usize) -> Structure {
 
 
@@ -274,7 +303,7 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
       }
   }
 
-     // #red some of the functions and variables should introduced to the upper level function (parse_smiles) and, probably Structure should be modified to hold some intermediate values
+     // #red some of the functions and variables should be introduced to the upper level function (parse_smiles) and, probably Structure should be modified to hold some intermediate values
     //  some code re-conceptualization is needed
 
     //
@@ -439,7 +468,6 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
       // Describe the problem
       cpt_structure.status = false;
       cpt_structure.error = String::from("unacceptable pair of symbols: bond, bond");
-
     }
     else if cpt_type == "bond" && cpt_prev_type == "modifier"  {
       // Describe the problem
@@ -669,7 +697,7 @@ pub fn update(mut u_structure: Structure, u_symbol: &String, u_prev_symbol: Stri
     if u_structure.status == false {
       return u_structure;
     }
-    // Add this bond to the state #red and modify the addmutbond accordingly
+    // Add the corresponding bond to the state #red and modify the addmutbond accordingly
     prev_bond = u_symbol.clone();
   }
   // Check if modifier considering props as an option
@@ -816,4 +844,4 @@ pub fn parse_smiles(ps_smiles_string: &String, mut ps_structure: Structure) -> S
 
   // Output
   return ps_structure;
-}
+}*/
