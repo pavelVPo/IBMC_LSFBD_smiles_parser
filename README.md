@@ -916,5 +916,6 @@ for chunks_ in smiles_string:
   check_pair_class(output, symb)
   update(output, symb)
   validate()
+# output
 output_json = get_json(output)
 ```
