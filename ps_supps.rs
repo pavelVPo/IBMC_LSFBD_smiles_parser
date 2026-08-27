@@ -265,160 +265,204 @@ pub fn classify_symbol(this_symbol: &String, prev_symbol: &String, mut pos_in_br
   let mut this_type      = "".to_string();
   let mut this_class     = "".to_string();
   let mut is_aromatic    = false;
-  // Classification process is based on assumption that knowing characters of this symbol and previous symbols (latter knowledge could be shortened via state variables) is enough
-  // to unambigously classify this symbol: one class among the allowed in certain type
-  // thus, this procedure is organized as follows:
-  // types are checked subsequently up to the match
-  // corresponding classes are checked subsequently up to the match
-  // i.e., the whole set of the variants should never be checked and the most efficient way (by simmilarity and co-occurence of symbols) is not considered
-  // this should be the OK balance between the simplicity and efficiency
-  // Check if an atom
-  if SYMBOL_atom.contains(&this_symbol.as_str()) {
-    // Probably this is an atom
-    if pos_in_bracket > 0 && pos_in_bracket < 3 {
-      // This is an atom
+  // Make the classification block to be terminated on success
+  'classification_block: {
+    // Classification process is based on assumption that knowing characters of this symbol and previous symbols (latter knowledge could be shortened via state variables) is enough
+    // to unambigously classify this symbol: one class among the allowed in certain type
+    // thus, this procedure is organized as follows:
+    // types are checked subsequently up to the match
+    // corresponding classes are checked subsequently up to the match
+    // i.e., the whole set of the variants should never be checked and the most efficient way (by simmilarity and co-occurence of symbols) is not considered
+    // this should be the OK balance between the simplicity and efficiency
+    // Check if an atom
+    if SYMBOL_atom.contains(&this_symbol.as_str()) {
+      // Probably this is an atom
+      if pos_in_bracket > 0 && pos_in_bracket < 3 {
+        // This is an atom
+        this_type = "atom".to_string();
+      }
+      else if pos_in_bracket == 0 {
+        // This is an atom
+        this_type = "atom".to_string();
+      }
+    } else if SYMBOL_anything.contains(&this_symbol.as_str()) {
+      // This is any atom
+      this_type = "atom".to_string();
+    } else if SYMBOL_aromatic_atom.contains(&this_symbol.as_str()) {
+      // This is aromatic atom
       this_type = "atom".to_string();
     }
-    else if pos_in_bracket == 0 {
-      // This is an atom
-      this_type = "atom".to_string();
+    // Classify the atom further
+    // atom_bar:        1-character, in bracket,            aromatic
+    // atom_bar_2:      2-character, in bracket,            aromatic
+    // atom_bal:        1-character, in bracket,            aliphatic
+    // atom_bal_2:      2-character, in bracket,            aliphatic
+    // atom_oar:        1-character, not in brackets,       aromatic
+    // atom_oal:        1-character, not in brackets,       aliphatic
+    // atom_oal_2:      2-character, not in bracket,        aliphatic
+    // any:             any of the above mentioned classes
+    if this_type == "atom".to_string() {
+      if this_symbol == &"*".to_string() {
+        this_class = "any".to_string();
+        break 'classification_block;
+      } else if pos_in_bracket > 1 {
+        // atom_bar
+        if is_aromatic == true && this_symbol.chars().count() == 1 {
+          this_class = "atom_bar".to_string();
+          break 'classification_block;
+        }
+        // atom_bar_2
+        if is_aromatic == true && this_symbol.chars().count() == 2 {
+          this_class = "atom_bar".to_string();
+          break 'classification_block;
+        }
+        // atom_bal
+        if is_aromatic == false && this_symbol.chars().count() == 1 {
+          this_class = "atom_bal".to_string();
+          break 'classification_block;
+        }
+        // atom_bal_2
+        if is_aromatic == false && this_symbol.chars().count() == 2 {
+          this_class = "atom_bal_2".to_string();
+          break 'classification_block;
+        }
+      } else {
+        // atom_oar
+        if is_aromatic == true && this_symbol.chars().count() == 1 {
+          this_class = "atom_oar".to_string();
+          break 'classification_block;
+        }
+        // atom_oal
+        if is_aromatic == false && this_symbol.chars().count() == 1 {
+          this_class = "atom_oal".to_string();
+          break 'classification_block;
+        }
+        // atom_oal_2
+        if is_aromatic == false && this_symbol.chars().count() == 2 {
+          this_class = "atom_oal_2".to_string();
+          break 'classification_block;
+        }
+      }
     }
-  } else if SYMBOL_anything.contains(&this_symbol.as_str()) {
-    // This is any atom
-    this_type = "atom".to_string();
-  } else if SYMBOL_aromatic_atom.contains(&this_symbol.as_str()) {
-    // This is aromatic atom
-    this_type = "atom".to_string();
+    // Check if a property
+    if this_type != "atom".to_string() && SYMBOL_property.contains(&this_symbol.as_str()) && pos_in_bracket != 0 && pos_in_bracket != 2 {
+      // It is a property
+      this_type = "property".to_string();
+      // Classify this property further
+      if SYMBOL_isotope.contains(&this_symbol.as_str()) {
+        pos_in_bracket = 2;
+        this_class = "isotope".to_string();
+        break 'classification_block;
+      }
+      if SYMBOL_isotope_m.contains(&this_symbol.as_str()) {
+        pos_in_bracket = 2;
+        this_class = "isotope_m".to_string();
+        break 'classification_block;
+      }
+      if SYMBOL_chiral.contains(&this_symbol.as_str()) {
+        pos_in_bracket = 4;
+        this_class = "chiral".to_string();
+        break 'classification_block;
+      }
+      if SYMBOL_chiral_2.contains(&this_symbol.as_str()) {
+        pos_in_bracket = 4;
+        this_class = "chiral_2".to_string();
+        break 'classification_block;
+      }
+      if SYMBOL_chiral_m.contains(&this_symbol.as_str()) {
+        pos_in_bracket = 4;
+        this_class = "chiral_m".to_string();
+        break 'classification_block;
+      }
+      if SYMBOL_hydro.contains(&this_symbol.as_str()) {
+        pos_in_bracket = 5;
+        this_class = "hydro".to_string();
+        break 'classification_block;
+      }
+      if SYMBOL_hydro_2.contains(&this_symbol.as_str()) {
+        pos_in_bracket = 5;
+        this_class = "hydro_2".to_string();
+        break 'classification_block;
+      }
+      if SYMBOL_charge.contains(&this_symbol.as_str()) {
+        pos_in_bracket = 6;
+        this_class = "charge".to_string();
+        break 'classification_block;
+      }
+      if SYMBOL_charge_2.contains(&this_symbol.as_str()) {
+        pos_in_bracket = 6;
+        this_class = "charge_2".to_string();
+        break 'classification_block;
+      }
+      if SYMBOL_charge_m.contains(&this_symbol.as_str()) {
+        pos_in_bracket = 6;
+        this_class = "charge_m".to_string();
+        break 'classification_block;
+      }
+      if SYMBOL_class.contains(&this_symbol.as_str()) {
+        pos_in_bracket = 7;
+        this_class = "class".to_string();
+        break 'classification_block;
+      }
+    }
+    // Check if a bracket
+    if this_type != "atom".to_string() && this_type != "property".to_string() && SYMBOL_square.contains(&this_symbol.as_str()) {
+      // It is a bracket
+      this_type = "square_bracket".to_string();
+      // Classify this bracket further
+      if SYMBOL_s_bracket.contains(&this_symbol.as_str()) {
+        pos_in_bracket = 1;
+        this_class = "s_bracket".to_string();
+        break 'classification_block;
+      }
+      if SYMBOL_e_bracket.contains(&this_symbol.as_str()) {
+        pos_in_bracket = 0;
+        this_class = "e_bracket".to_string();
+        break 'classification_block;
+      }
+    }
+    // Check if a bond
+    if this_type != "atom".to_string() && this_type != "property".to_string() && this_type != "square_bracket".to_string() && SYMBOL_bond.contains(&this_symbol.as_str()) {
+      // It is a bond
+      this_type = "bond".to_string();
+      //classify this bond further
+      if SYMBOL_single_bond.contains(&this_symbol.as_str()) {
+        this_class = "single_bond".to_string();
+        break 'classification_block;
+      }
+      if SYMBOL_double_bond.contains(&this_symbol.as_str()) {
+        this_class = "double_bond".to_string();
+        break 'classification_block;
+      }
+      if SYMBOL_triple_bond.contains(&this_symbol.as_str()) {
+        this_class = "triple_bond".to_string();
+        break 'classification_block;
+      }
+      if SYMBOL_quadruple_bond.contains(&this_symbol.as_str()) {
+        this_class = "quadruple_bond".to_string();
+        break 'classification_block;
+      }
+      if SYMBOL_no_bond.contains(&this_symbol.as_str()) {
+        this_class = "no_bond".to_string();
+        break 'classification_block;
+      }
+    }
+    // Check if a modifier
+    if this_type != "atom".to_string() && this_type != "property".to_string() && this_type != "square_bracket".to_string() && this_type != "bond".to_string() &&
+    pos_in_bracket == 0 &&
+    SYMBOL_modifier.contains(&this_symbol.as_str()) {
+      // It is a modifier of sorts
+      this_type = "modifier".to_string();
+      // Check if it is bm_ibe, bond modifying symbols initiators of branching with explicit bond
+      if SYMBOL_bm_ibe.contains(&this_symbol.as_str()) {
+        // It is bm_ibe
+        this_class = "bm_ibe".to_string();
+        // Consider how to describe this fact
+        // Go to output somehow
+      } 
+    }
   }
-  // Classify the atom further
-  // atom_bar:        1-character, in bracket,            aromatic
-  // atom_bar_2:      2-character, in bracket,            aromatic
-  // atom_bal:        1-character, in bracket,            aliphatic
-  // atom_bal_2:      2-character, in bracket,            aliphatic
-  // atom_oar:        1-character, not in brackets,       aromatic
-  // atom_oal:        1-character, not in brackets,       aliphatic
-  // atom_oal_2:      2-character, not in bracket,        aliphatic
-  // any:             any of the above mentioned classes
-  if this_type == "atom".to_string() {
-    if this_symbol == &"*".to_string() {
-      this_class = "any".to_string();
-    } else if pos_in_bracket > 1 {
-      // atom_bar
-      if is_aromatic == true && this_symbol.chars().count() == 1 {
-        this_class = "atom_bar".to_string();
-      }
-      // atom_bar_2
-      if is_aromatic == true && this_symbol.chars().count() == 2 {
-        this_class = "atom_bar".to_string();
-      }
-      // atom_bal
-      if is_aromatic == false && this_symbol.chars().count() == 1 {
-        this_class = "atom_bal".to_string();
-      }
-      // atom_bal_2
-      if is_aromatic == false && this_symbol.chars().count() == 2 {
-        this_class = "atom_bal_2".to_string();
-      }
-    } else {
-      // atom_oar
-      if is_aromatic == true && this_symbol.chars().count() == 1 {
-        this_class = "atom_oar".to_string();
-      }
-      // atom_oal
-      if is_aromatic == false && this_symbol.chars().count() == 1 {
-        this_class = "atom_oal".to_string();
-      }
-      // atom_oal_2
-      if is_aromatic == false && this_symbol.chars().count() == 2 {
-        this_class = "atom_oal_2".to_string();
-      }
-    }
-  }
-  // Check if a property
-  if this_type != "atom".to_string() && SYMBOL_property.contains(&this_symbol.as_str()) && pos_in_bracket != 0 && pos_in_bracket != 2 {
-    // It is a property
-    this_type = "property".to_string();
-    // Classify this property further
-    if SYMBOL_isotope.contains(&this_symbol.as_str()) {
-      this_class = "isotope".to_string();
-      pos_in_bracket = 2;
-    }
-    if SYMBOL_isotope_m.contains(&this_symbol.as_str()) {
-      this_class = "isotope_m".to_string();
-      pos_in_bracket = 2;
-    }
-    if SYMBOL_chiral.contains(&this_symbol.as_str()) {
-      this_class = "chiral".to_string();
-      pos_in_bracket = 4;
-    }
-    if SYMBOL_chiral_2.contains(&this_symbol.as_str()) {
-      this_class = "chiral_2".to_string();
-      pos_in_bracket = 4;
-    }
-    if SYMBOL_chiral_m.contains(&this_symbol.as_str()) {
-      this_class = "chiral_m".to_string();
-      pos_in_bracket = 4;
-    }
-    if SYMBOL_hydro.contains(&this_symbol.as_str()) {
-      this_class = "hydro".to_string();
-      pos_in_bracket = 5;
-    }
-    if SYMBOL_hydro_2.contains(&this_symbol.as_str()) {
-      this_class = "hydro_2".to_string();
-      pos_in_bracket = 5;
-    }
-    if SYMBOL_charge.contains(&this_symbol.as_str()) {
-      this_class = "charge".to_string();
-      pos_in_bracket = 6;
-    }
-    if SYMBOL_charge_2.contains(&this_symbol.as_str()) {
-      this_class = "charge_2".to_string();
-      pos_in_bracket = 6;
-    }
-    if SYMBOL_charge_m.contains(&this_symbol.as_str()) {
-      this_class = "charge_m".to_string();
-      pos_in_bracket = 6;
-    }
-    if SYMBOL_class.contains(&this_symbol.as_str()) {
-      this_class = "class".to_string();
-      pos_in_bracket = 7;
-    }
-  }
-  // Check if a bracket
-  if this_type != "atom".to_string() && this_type != "property".to_string() && SYMBOL_square.contains(&this_symbol.as_str()) {
-    // It is a bracket
-    this_type = "square_bracket".to_string();
-    // Classify this bracket further
-    if SYMBOL_s_bracket.contains(&this_symbol.as_str()) {
-      this_class = "s_bracket".to_string();
-      pos_in_bracket = 1;
-    }
-    if SYMBOL_e_bracket.contains(&this_symbol.as_str()) {
-      this_class = "e_bracket".to_string();
-      pos_in_bracket = 0;
-    }
-  }
-  // Check if a bond
-  if this_type != "atom".to_string() && this_type != "property".to_string() && this_type != "bracket".to_string() && SYMBOL_bond.contains(&this_symbol.as_str()) {
-    // It is a bond
-    this_type = "bond".to_string();
-    //classify this bond further
-    if SYMBOL_single_bond.contains(&this_symbol.as_str()) {
-      this_class = "single_bond".to_string();
-    }
-    if SYMBOL_double_bond.contains(&this_symbol.as_str()) {
-      this_class = "double_bond".to_string();
-    }
-    if SYMBOL_triple_bond.contains(&this_symbol.as_str()) {
-      this_class = "triple_bond".to_string();
-    }
-    if SYMBOL_quadruple_bond.contains(&this_symbol.as_str()) {
-      this_class = "quadruple_bond".to_string();
-    }
-    if SYMBOL_no_bond.contains(&this_symbol.as_str()) {
-      this_class = "no_bond".to_string();
-    }
-  }
+
 
   // Output
   let symbol_classification: (String, String, bool, usize) = (this_type, this_class, is_aromatic, pos_in_bracket);
