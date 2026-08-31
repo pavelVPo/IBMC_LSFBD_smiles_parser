@@ -582,6 +582,21 @@ pub fn check_symbols_pair(mut structure: Structure,
 }
 
 // Function to update the state
+// What are the changable variables at this point?
+// is_aromatic: bool; pos_in_bracket: usize; open_rings: HashSet<String>; open_ct; open_branches
+//    is_aromatic         ->  depends on the current symbol if atom
+//    pos_in_brackets     ->  depends on the current symbol and state
+//    open_rings          ->  depends on the current symbol and state
+//    open_ct             ->  depends on the current symbol and state
+//    open_branches       ->  depends on the current symbol and state
+pub fn update_state(this_class: &String, prev_class: &String,
+                    is_aromatic: bool, pos_in_bracket: usize,
+                    open_rings: HashSet<String>, open_ct: bool, open_branches: bool) -> (bool, usize, HashSet::<String>, bool, bool) {
+  // Output
+  let state_updated: (bool, usize, HashSet::<String>, bool, bool) = (is_aromatic, pos_in_bracket, open_rings, open_ct, open_branches);
+  state_updated
+}
+
 
 // Function to update the structure itself considering available data on current symbol and state
 pub fn update_structure(mut u_structure: Structure, this_symbol: &String) -> Structure {
