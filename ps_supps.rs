@@ -1,6 +1,7 @@
 use std::cmp;                        // Comparison and ordering
 use std::collections::BTreeMap;     //  Ordered collection to store the 
-use std::collections::HashSet;     //   Set to store the ring data
+use std::collections::HashSet;     //   Set to store the open rings
+use std::collections::HashMap;     //   Map to store the details on rings and branches
 
 
   ////////////////
@@ -262,10 +263,10 @@ pub fn get_symbol(getls_smiles_chunk: &str, s_one: &[&str], s_two: &[&str],
 // let mut pos_in_bracket:     usize = 0;
 // let mut is_aromatic:        bool  = FALSE;
 // consider storing and accessing the set of open rings
-// let mut open_rings      = HashSet::<String>::new();
+// let mut rings_open      = HashSet::<String>::new();
 // consider storing and accessing the state of the cis/trans around the double bond
-// let mut open_ct         = bool;
-pub fn classify_symbol(this_symbol: &String, is_aromatic: bool, pos_in_bracket: usize, open_rings: HashSet<String>, open_ct: bool) -> (String, String) {
+// let mut ct_open         = bool;
+pub fn classify_symbol(this_symbol: &String, is_aromatic: bool, pos_in_bracket: usize, rings_open: HashSet<String>, ct_open: bool) -> (String, String) {
 
   // Holders for the output
   let mut this_type      = "".to_string();
@@ -472,7 +473,7 @@ pub fn classify_symbol(this_symbol: &String, is_aromatic: bool, pos_in_bracket: 
       // Decide on rings, which have the same markers for the start and end
       if SYMBOL_bm_itri.contains(&this_symbol.as_str()) {
         // It is bm_iri OR bm_tri
-        if open_rings.contains(this_symbol) {
+        if rings_open.contains(this_symbol) {
           // This is bm_tri
           this_class = "bm_tri".to_string();
           break 'classification__block;
@@ -483,7 +484,7 @@ pub fn classify_symbol(this_symbol: &String, is_aromatic: bool, pos_in_bracket: 
       }
       if SYMBOL_bm_itre_2.contains(&this_symbol.as_str()) {
         // It is bm_ire_2 OR bm_tre_2
-        if open_rings.contains(this_symbol) {
+        if rings_open.contains(this_symbol) {
           // This is bm_tre_2
           this_class = "bm_tre_2".to_string();
           break 'classification__block;
@@ -494,7 +495,7 @@ pub fn classify_symbol(this_symbol: &String, is_aromatic: bool, pos_in_bracket: 
       }
       if SYMBOL_bm_itri_3.contains(&this_symbol.as_str()) {
         // It is bm_iri_3 OR bm_tri_3
-        if open_rings.contains(this_symbol) {
+        if rings_open.contains(this_symbol) {
           // This is bm_tri_3
           this_class = "bm_tri_3".to_string();
           break 'classification__block;
@@ -505,7 +506,7 @@ pub fn classify_symbol(this_symbol: &String, is_aromatic: bool, pos_in_bracket: 
       }
       if SYMBOL_bm_itre_4.contains(&this_symbol.as_str()) {
         // It is bm_ire_4 OR bm_tre_4
-        if open_rings.contains(this_symbol) {
+        if rings_open.contains(this_symbol) {
           // This is bm_tre_4
           this_class = "bm_tre_4".to_string();
           break 'classification__block;
@@ -519,7 +520,7 @@ pub fn classify_symbol(this_symbol: &String, is_aromatic: bool, pos_in_bracket: 
     if SYMBOL_ct.contains(&this_symbol.as_str()) {
       // It is a ct
       this_type = "ct".to_string();
-      if open_ct == false {
+      if ct_open == false {
         // It is lct
         this_class = "lct".to_string();
          break 'classification__block;
@@ -547,8 +548,8 @@ pub fn check_symbols_pair(mut structure: Structure,
                         this_class: &String, prev_class: &String,
                         mut is_aromatic: bool,
                         mut pos_in_bracket: usize,
-                        mut open_rings: HashSet<String>,
-                        mut open_ct: bool) -> Structure {
+                        mut rings_open: HashSet<String>,
+                        mut ct_open: bool) -> Structure {
   // so, at this time this and last symbols are known and classified
   // the state is relevant to the previous symbol
   // thus, pair should be checked and the state updated latter
@@ -583,18 +584,36 @@ pub fn check_symbols_pair(mut structure: Structure,
 
 // Function to update the state
 // What are the changable variables at this point?
-// is_aromatic: bool; pos_in_bracket: usize; open_rings: HashSet<String>; open_ct; open_branches
+// is_aromatic: bool; pos_in_bracket: usize; rings_open: HashSet<String>; ct_open; branches_open
 //    is_aromatic         ->  depends on the current symbol if atom
 //    pos_in_brackets     ->  depends on the current symbol and state
-//    open_rings          ->  depends on the current symbol and state
-//    open_ct             ->  depends on the current symbol and state
-//    open_branches       ->  depends on the current symbol and state
-pub fn update_state(this_class: &String, prev_class: &String,
-                    is_aromatic: bool, pos_in_bracket: usize,
-                    open_rings: HashSet<String>, open_ct: bool, open_branches: bool) -> (bool, usize, HashSet::<String>, bool, bool) {
+//    rings_open          ->  depends on the current symbol and state
+//    ct_open             ->  depends on the current symbol and state
+//    branches_open       ->  depends on the current symbol and state:
+//        key: usize
+//        value:
+//                (status: bool,      where true is closed, false is open
+//                  pos_pre: usize,
+//                  bond_pre: String,
+//                  pos_post: usize,
+//                  bond_post: String)
+//    rings_open          ->  depends on the current symbol and state
+//    rings_details       ->  depends on the current symbol and state
+//         key: usize
+//         value:
+//                (status: bool,      where true is closed, false is open
+//                  pos_start: usize,
+//                  bond: String,     i.e. the bond between the starting and ending atom, which could be specified here or there or both (should be the same)
+//                  pos_end: usize)
+pub fn update_state(this_class:     &String, prev_class: &String,
+                    is_aromatic:    bool, pos_in_bracket: usize,
+                    rings_open:     HashSet<String>, ct_open: bool,
+                    rings_detail:   HashMap<usize, (bool, usize, String, usize)>,
+                    branches_open:  HashMap<usize, (bool, usize, String, usize)>) -> (bool, usize, HashSet::<String>, bool, bool) {
   // Output
-  let state_updated: (bool, usize, HashSet::<String>, bool, bool) = (is_aromatic, pos_in_bracket, open_rings, open_ct, open_branches);
-  state_updated
+  //let state_updated: (bool, usize, HashSet::<String>, bool, bool) = (is_aromatic, pos_in_bracket, rings_open, ct_open, branches_open);
+  //state_updated
+  unimplemented!();
 }
 
 
