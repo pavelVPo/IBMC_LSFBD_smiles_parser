@@ -266,11 +266,14 @@ pub fn get_symbol(getls_smiles_chunk: &str, s_one: &[&str], s_two: &[&str],
 // let mut rings_open      = HashSet::<String>::new();
 // consider storing and accessing the state of the cis/trans around the double bond
 // let mut ct_open         = bool;
-pub fn classify_symbol(this_symbol: &String, is_aromatic: bool, pos_in_bracket: usize, rings_open: HashSet<String>, ct_open: bool) -> (String, String) {
+// #red is_aromatic is the subject of the classification of this particular symbol, not the state basically
+// however, it could be further useful as an element of state
+pub fn classify_symbol(this_symbol: &String, pos_in_bracket: usize, rings_open: HashSet<String>, ct_open: bool) -> (String, String) {
 
-  // Holders for the output
+  // Holders for the output and intermediate
   let mut this_type      = "".to_string();
   let mut this_class     = "".to_string();
+  let mut is_aromatic    = false;
   // Make the classification block to be terminated on success
   'classification__block: {
     // Classification process is based on assumption that knowing characters of this symbol and previous symbols (latter knowledge could be shortened via state variables) is enough
@@ -282,6 +285,10 @@ pub fn classify_symbol(this_symbol: &String, is_aromatic: bool, pos_in_bracket: 
     // this should be the OK balance between the simplicity and efficiency
     // Check if an atom
     if SYMBOL_atom.contains(&this_symbol.as_str()) {
+      // Decide on aromatics
+      if SYMBOL_aromatic_atom.contains(&this_symbol.as_str()) {
+        let is_aromatic = true;
+      }
       // Probably this is an atom
       if pos_in_bracket > 0 && pos_in_bracket < 3 {
         // This is an atom
@@ -294,7 +301,7 @@ pub fn classify_symbol(this_symbol: &String, is_aromatic: bool, pos_in_bracket: 
     } else if SYMBOL_anything.contains(&this_symbol.as_str()) {
       // This is any atom
       this_type = "atom".to_string();
-    } else if SYMBOL_aromatic_atom.contains(&this_symbol.as_str()) {
+    } else if is_aromatic == true {
       // This is aromatic atom
       this_type = "atom".to_string();
     }
@@ -609,7 +616,12 @@ pub fn update_state(this_class:     &String, prev_class: &String,
                     is_aromatic:    bool, pos_in_bracket: usize,
                     rings_open:     HashSet<String>, ct_open: bool,
                     rings_detail:   HashMap<usize, (bool, usize, String, usize)>,
-                    branches_open:  HashMap<usize, (bool, usize, String, usize)>) -> (bool, usize, HashSet::<String>, bool, bool) {
+                    branches_open:  HashMap<usize, (bool, usize, String, usize)>) -> (bool, usize, usize,
+                                                                                      HashSet::<String>, bool,
+                                                                                      HashMap<usize, (bool, usize, String, usize)>,
+                                                                                      HashMap<usize, (bool, usize, String, usize)>) {
+  // Updating
+
   // Output
   //let state_updated: (bool, usize, HashSet::<String>, bool, bool) = (is_aromatic, pos_in_bracket, rings_open, ct_open, branches_open);
   //state_updated
