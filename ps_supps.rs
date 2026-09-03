@@ -551,13 +551,13 @@ pub fn classify_symbol(this_symbol: &String, pos_in_bracket: usize, rings_open: 
 
 // Function to check the pair of symbols, and update the state 
 pub fn check_symbols_pair(mut structure: Structure,
-                        this_symbol: &String, prev_symbol: &String,
-                        this_type: &String, prev_type: &String,
-                        this_class: &String, prev_class: &String,
-                        mut is_aromatic: bool,
-                        mut pos_in_bracket: usize,
-                        mut rings_open: HashSet<String>,
-                        mut ct_open: bool) -> Structure {
+                            this_symbol: &String, prev_symbol: &String,
+                            this_type: &String, prev_type: &String,
+                            this_class: &String, prev_class: &String,
+                            mut is_aromatic: bool,
+                            mut pos_in_bracket: usize,
+                            mut rings_open: HashSet<String>,
+                            mut ct_open: bool) -> Structure {
   // so, at this time this and last symbols are known and classified
   // the state is relevant to the previous symbol
   // thus, pair should be checked and the state updated latter
@@ -599,11 +599,11 @@ pub fn check_symbols_pair(mut structure: Structure,
 //    branches_open       ->  depends on the current symbol and state:
 //        key: position in the vector of branches
 //        value:
-//                (status: bool,      where true is closed, false is open
-//                  pos_pre: usize,
-//                  bond_pre: String,
-//                  pos_post: usize,
-//                  bond_post: String)
+//                (status:         bool,      where true is closed, false is open
+//                  prev_atom_pos: usize,
+//                  bond_pre:      String,
+//                  pos_post:      usize,
+//                  bond_post:     String)
 //    rings_open          ->  depends on the current symbol and state
 //    rings_details       ->  depends on the current symbol and state
 //         key: - position in the vector of rings
@@ -613,18 +613,29 @@ pub fn check_symbols_pair(mut structure: Structure,
 //                  pos_start: usize,
 //                  bond: String,     i.e. the bond between the starting and ending atom, which could be specified here or there or both (should be the same)
 //                  pos_end: usize)
-pub fn update_state(this_symbol:          &String,
-                    this_class:           &String,
-                    prev_class:           &String,
-                    prev_atom_pos:        usize,                        // some novel var, should be considered
-                    mut pos_in_bracket:   usize,
-                    mut rings_open:       HashSet<String>, ct_open: bool,
-                    mut rings_details:    Vec<(bool, usize, usize, String, usize)>,
-                    mut branches_open:    Vec<(bool, usize, String, usize)>) -> (bool, usize, usize,
-                                                                                      HashSet::<String>, bool,
-                                                                                      Vec<(bool, String, usize)>,
-                                                                                      Vec<(bool, usize, String, usize)>) {
-  let x:    Vec<(bool, String, usize, String, usize)> = Vec::new();
+pub fn update_state(  this_symbol:          &String,
+                      this_class:           &String,
+                      prev_class:           &String,
+                      mut structure:        Structure,                   //  it will be used to store the possible errors 
+                      mut pos_in_bracket:   usize,
+                      mut rings_open:       HashSet<String>, ct_open: bool,
+                      mut branches_open:    Vec<(bool, usize, String, usize, String)>,
+                      mut rings_details:    Vec<(bool, usize, usize, String, usize)>) -> (  Structure,
+                                                                                          bool,
+                                                                                          usize,
+                                                                                          bool,
+                                                                                          HashSet::<String>,
+                                                                                          Vec<(bool, usize, String, usize, String)>,
+                                                                                          Vec<(bool, usize, usize, String, usize)>  ) {
+  let prev_atom_pos: usize  = structure.atoms.last().unwrap().atom_id.clone();
+  let maybe_branch_bond;
+  let draft_branch_bond = this_symbol.chars().nth(1);
+  if draft_branch_bond.is_none() {
+    maybe_branch_bond = "-".to_string();
+  } else {
+    maybe_branch_bond = draft_branch_bond.unwrap().to_string();
+  }
+  let mut is_aromatic       = false;
   // Updating
   // is_aromatic
   if (  this_class.to_string() == "atom_bar".to_string()    ||
@@ -632,9 +643,7 @@ pub fn update_state(this_symbol:          &String,
         this_class.to_string() == "atom_oar_2".to_string()  ||
         this_class.to_string() == "atom_oar".to_string()      ) {
     let is_aromatic = true;
-  } else {
-    let is_aromatic = false;
-  }
+  } 
 
   // pos_in_bracket
   // 1 - open bracket
@@ -650,11 +659,11 @@ pub fn update_state(this_symbol:          &String,
     let pos_in_bracket = 2;
   } else if this_class == "atom_bar" || this_class == "atom_bar_2" {
     let pos_in_bracket = 3;
-  } else if this_class == "chiral" || this_class == "chiral_2" || this_class == "chiral_m" {
+  } else if this_class == "chiral"   || this_class == "chiral_2" || this_class == "chiral_m" {
     let pos_in_bracket = 4;
-  } else if this_class == "hydro" || this_class == "hydro_2" {
+  } else if this_class == "hydro"    || this_class == "hydro_2" {
     let pos_in_bracket = 5;
-  } else if this_class == "charge" || this_class == "charge_2" || this_class == "charge_m" {
+  } else if this_class == "charge"   || this_class == "charge_2" || this_class == "charge_m" {
     let pos_in_bracket = 6;
   } else if this_class == "class" {
     let pos_in_bracket = 7;
@@ -662,31 +671,30 @@ pub fn update_state(this_symbol:          &String,
     let pos_in_bracket = 0;
   }
 
-  // rings_open
+  // update the rings_open
   if rings_open.contains(this_symbol) {
     if this_class == "bm_tri" || this_class == "bm_tri_3" || this_class == "bm_tre_2" || this_class == "bm_tre_4" {
       rings_open.remove(this_symbol);
+    } else if this_class == "bm_iri" || this_class == "bm_iri_3" || this_class == "bm_ire_2" || this_class == "bm_ire_4" {
+      structure.status = false;
+      structure.error = String::from("two distinct rings having the same IDs are open");
     }
   } else {
     if this_class == "bm_iri" || this_class == "bm_iri_3" || this_class == "bm_ire_2" || this_class == "bm_ire_4" {
       rings_open.insert(this_symbol.to_string());
-      // #red process cases when this is the initiator, which is already known -> ERROR
     }
   }
 
   // rings_details
   // create the record on this ring or modify the existing one
-  // status is known,             false
-  // symbol should be deduced,    numbers in this_symbol
-  // pos_start should be known,   prev_atom_pos
-  // bond should be deduced from  this_symbol
-  // pos_end is not known,        None
+  // status is known,               false
+  // symbol should be deduced,      numbers in this_symbol
+  // pos_start should be known,     prev_atom_pos
+  // bond should be deduced from    this_symbol
+  // pos_end is not known,          None
   // SEE the discussion in https://users.rust-lang.org/t/how-to-parse-an-int-from-string/12456/10
-  let ring_symbol_vec: Vec<_>        = this_symbol.chars()
-                                                    .filter(|this_char| this_char.is_ascii_digit())
-                                                    .collect();
-  let ring_symbol_string: String     = ring_symbol_vec.into_iter()
-                                                        .collect();
+  let ring_symbol_vec: Vec<_>        = this_symbol.chars().filter(|this_char| this_char.is_ascii_digit()).collect();
+  let ring_symbol_string: String     = ring_symbol_vec.into_iter().collect();
   let ring_symbol: usize             = ring_symbol_string.parse().unwrap();
   // Prepare the ring bond
   let ring_bond;
@@ -728,14 +736,23 @@ pub fn update_state(this_symbol:          &String,
         *status = true;
       }
     }
-
   }
+
+  // Update the branches_open, very simple: "(" -> add new element, ")" -> update the last element;
+  // #red Also, update is needed if this branch is closed and first next atom is found to establish the correct connection in the main (relative to this branch) line.  
+  if this_class == "bm_ibe" || this_class == "bm_ibi" {
+    branches_open.push( (false, prev_atom_pos, maybe_branch_bond, 0, "".to_string()) );
+  }
+  if this_class == "bm_tbe_2" || this_class == "bm_tbi"  {
+    // unimplemented!();
+  }
+  // #red if the first atom after the closed branch
+
 
 
   // Output
-  //let state_updated: (bool, usize, HashSet::<String>, bool, bool) = (is_aromatic, pos_in_bracket, rings_open, ct_open, branches_open);
-  //state_updated
-  unimplemented!();
+  let state_updated: (Structure, bool, usize, bool, HashSet::<String>, Vec<(bool, usize, String, usize, String)>, Vec<(bool, usize, usize, String, usize)>) = (structure, is_aromatic, pos_in_bracket, ct_open, rings_open, branches_open, rings_details);
+  state_updated
 }
 
 // Function to check the updated state of the structure
