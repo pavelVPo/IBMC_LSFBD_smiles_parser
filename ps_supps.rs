@@ -754,7 +754,7 @@ pub fn update_state(  this_symbol:          &String,
      (this_class == "atom_bal" || this_class == "atom_bal_2" || this_class == "atom_bar" || this_class == "atom_bar_2" || this_class == "atom_oar_2" || this_class == "atom_oar" || this_class == "atom_oal") {
 
       // get the unfinished branches
-      let branches_really_open = branches_open.iter().extract_if(|branch| branch.3 == 0).collect::<Vec<_>>();
+      let branches_really_open = branches_open.extract_if(.., |branch| branch.3 == 0).collect::<Vec<_>>();
       // finish them and return
       for branch in branches_really_open {
         branch.3 = this_atom_pos.clone();
