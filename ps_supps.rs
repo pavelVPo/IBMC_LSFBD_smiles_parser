@@ -591,6 +591,7 @@ pub fn check_symbols_pair(mut structure: Structure,
 }
 
 // Function to update the state
+// $red this_pos is needed
 // What are the changable variables at this point?
 // is_aromatic: bool; pos_in_bracket: usize; rings_open: HashSet<String>; ct_open; branches_open
 //    pos_in_brackets     ->  depends on the current symbol and state
@@ -615,6 +616,7 @@ pub fn check_symbols_pair(mut structure: Structure,
 //                  pos_end: usize)
 pub fn update_state(  this_symbol:          &String,
                       this_class:           &String,
+                      this_pos:             usize,
                       prev_class:           &String,
                       mut structure:        Structure,                   //  it will be used to store the possible errors 
                       mut pos_in_bracket:   usize,
@@ -756,8 +758,8 @@ pub fn update_state(  this_symbol:          &String,
       // get the unfinished branches
       let branches_really_open = branches_open.extract_if(.., |branch| branch.3 == 0).collect::<Vec<_>>();
       // finish them and return
-      for branch in branches_really_open {
-        branch.3 = this_atom_pos.clone();
+      for mut branch in branches_really_open {
+        branch.3 = this_pos.clone();
         branches_open.push(branch);
       }
 
