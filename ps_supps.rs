@@ -620,7 +620,7 @@ pub fn update_state(  this_symbol:          &String,
                       mut pos_in_bracket:   usize,
                       mut rings_open:       HashSet<String>, ct_open: bool,
                       mut branches_open:    Vec<(bool, usize, String, usize, String)>,
-                      mut rings_details:    Vec<(bool, usize, usize, String, usize)>) -> (  Structure,
+                      mut rings_details:    Vec<(bool, usize, usize, String, usize)> ) -> (  Structure,
                                                                                           bool,
                                                                                           usize,
                                                                                           bool,
@@ -739,14 +739,29 @@ pub fn update_state(  this_symbol:          &String,
   }
 
   // Update the branches_open, very simple: "(" -> add new element, ")" -> update the last element;
-  // #red Also, update is needed if this branch is closed and first next atom is found to establish the correct connection in the main (relative to this branch) line.  
+  // #red Also, update is needed if this branch is closed and first next atom is found to establish the correct connection in the main (relative to this branch) line.
+  // #red consider to change false to true for open_branches var name to be meaningful
   if this_class == "bm_ibe" || this_class == "bm_ibi" {
-    branches_open.push( (false, prev_atom_pos, maybe_branch_bond, 0, "".to_string()) );
+    branches_open.push( (false, prev_atom_pos.clone(), maybe_branch_bond.clone(), 0, "".to_string()) );
   }
   if this_class == "bm_tbe_2" || this_class == "bm_tbi"  {
-    // unimplemented!();
+    let mut this_branch = branches_open.pop().unwrap();
+    this_branch.4  = maybe_branch_bond.clone();
+    branches_open.push(this_branch); 
   }
-  // #red if the first atom after the closed branch
+  // if the first atom after the closed branch
+  if branches_open.iter().filter(|branch| branch.3 == 0).collect::<Vec<_>>().len() > 0 &&
+     (this_class == "atom_bal" || this_class == "atom_bal_2" || this_class == "atom_bar" || this_class == "atom_bar_2" || this_class == "atom_oar_2" || this_class == "atom_oar" || this_class == "atom_oal") {
+
+      // get the unfinished branches
+      let branches_really_open = branches_open.iter().extract_if(|branch| branch.3 == 0).collect::<Vec<_>>();
+      // finish them and return
+      for branch in branches_really_open {
+        branch.3 = this_atom_pos.clone();
+        branches_open.push(branch);
+      }
+
+  }
 
 
 
@@ -778,7 +793,7 @@ pub fn update_structure(mut u_structure: Structure, this_symbol: &String) -> Str
     //
    // Test whether starting and ending symbols are correct
   //
-
+ыф
   if u_prev_symbol == "" {
     // Case when this symbol is the first symbol
     if SYMBS_ALLOWED_START.contains(&&u_symbol[0..u_symbol.len()]) {
