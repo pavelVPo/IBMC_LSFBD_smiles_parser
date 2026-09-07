@@ -249,8 +249,8 @@ pub fn get_symbol(getls_smiles_chunk: &str, s_one: &[&str], s_two: &[&str],
 }
 
 // Function to classify this symbol, returning the type, class and is_aromatic for this symbol
-// #red
-// consider pos_in_bracket as the state variable
+//
+// consider pos_in_bracket as an element of state
 // Keep the order of properties
 // 0 - no open bracket
 // 1 - open bracket
@@ -614,6 +614,7 @@ pub fn check_symbols_pair(mut structure: Structure,
 //                  pos_start: usize,
 //                  bond: String,     i.e. the bond between the starting and ending atom, which could be specified here or there or both (should be the same)
 //                  pos_end: usize)
+// Not good enough, updating both structure and state is not desirable. To be reworked.
 pub fn update_state(  this_symbol:          &String,
                       this_class:           &String,
                       this_pos:             usize,
@@ -681,7 +682,8 @@ pub fn update_state(  this_symbol:          &String,
       structure.status = false;
       structure.error = String::from("two distinct rings having the same IDs are open");
     }
-  } else {
+  }
+     else {
     if this_class == "bm_iri" || this_class == "bm_iri_3" || this_class == "bm_ire_2" || this_class == "bm_ire_4" {
       rings_open.insert(this_symbol.to_string());
     }
@@ -719,6 +721,7 @@ pub fn update_state(  this_symbol:          &String,
   if this_class == "bm_iri" || this_class == "bm_iri_3" || this_class == "bm_ire_2" || this_class == "bm_ire_4" {
 
     rings_details.push( (false, ring_symbol, prev_atom_pos, ring_bond.to_string(), 0) );
+
   } else if this_class == "bm_tri" || this_class == "bm_tri_3" || this_class == "bm_tre_2" || this_class == "bm_tre_4" {
     // find the corresponding ring, i.e. the ring having the same number and still open
     // modify the record on the corresponding open ring
@@ -742,7 +745,6 @@ pub fn update_state(  this_symbol:          &String,
 
   // Update the branches_open, very simple: "(" -> add new element, ")" -> update the last element;
   // #red Also, update is needed if this branch is closed and first next atom is found to establish the correct connection in the main (relative to this branch) line.
-  // #red consider to change false to true for open_branches var name to be meaningful
   if this_class == "bm_ibe" || this_class == "bm_ibi" {
     branches_open.push( (false, prev_atom_pos.clone(), maybe_branch_bond.clone(), 0, "".to_string()) );
   }
@@ -772,8 +774,8 @@ pub fn update_state(  this_symbol:          &String,
   state_updated
 }
 
-// Function to check the updated state of the structure
-// #red check for ambigous bonds in ring and open rings having same IDs
+// Function to check the updated state
+// #red check for ambigous bonds in ring and disticnt open rings having same IDs
 
 
 // Function to update the structure itself considering available data on current symbol and state
