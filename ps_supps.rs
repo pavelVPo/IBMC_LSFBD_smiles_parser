@@ -616,6 +616,23 @@ pub fn check_symbols_pair(mut structure: Structure,
 //                  pos_end: usize)
 // Not good enough, updating both structure and state is not desirable. To be reworked.
 // So, probably, it is time to think about the state variables more thoroughly
+// First of all, having rings_open, ring_details and branches_open is incosistent
+// It will be better to have branches and rings instead
+// This function is not the only place, where these are used, so, * will be better
+// Also, rings is the reason for the structure update to be here
+// Changing data structure will help to update structure and state separately.
+// So, branches:
+//  status:             bool, true - closed; false - open;
+//  pos_prev_atom:      usize
+//  bond_prev_atom:     String
+//  pos_next_atom:      usize
+//  bond_next_atom:     String
+// Rings:
+//  status:             bool, true - closed; false - open;
+//  number:             usize
+//  pos_start:          usize
+//  pos_end:            usize
+//  bond:               String
 pub fn update_state(  this_symbol:          &String,
                       this_class:           &String,
                       this_pos:             usize,
