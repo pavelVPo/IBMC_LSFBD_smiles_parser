@@ -615,6 +615,7 @@ pub fn check_symbols_pair(mut structure: Structure,
 //                  bond: String,     i.e. the bond between the starting and ending atom, which could be specified here or there or both (should be the same)
 //                  pos_end: usize)
 // Not good enough, updating both structure and state is not desirable. To be reworked.
+// So, probably, it is time to think about the state variables more thoroughly
 pub fn update_state(  this_symbol:          &String,
                       this_class:           &String,
                       this_pos:             usize,
@@ -775,7 +776,7 @@ pub fn update_state(  this_symbol:          &String,
 }
 
 // Function to check the updated state
-// #red check for ambigous bonds in ring and disticnt open rings having same IDs
+// #red check for ambigous bonds in ring and disticnt open rings having same IDs, for example
 
 
 // Function to update the structure itself considering available data on current symbol and state
