@@ -2,7 +2,14 @@ use std::cmp;                        // Comparison and ordering
 use std::collections::BTreeMap;     //  Ordered collection to store the 
 use std::collections::HashSet;     //   Set to store the open rings
 use std::collections::HashMap;     //   Map to store the details on rings and branches
+// !!!
+// WORK IN PROGRESS, NOT TO RUN
+// !!!
 
+// #red
+// !!!
+// Change structure in progress to "traversed_structure"
+// !!!
 
   ////////////////
  // DATA       //
@@ -69,11 +76,51 @@ pub static PAIR_class_no__in_bond:    [&str; 48]         = ["atom_bal,aromatic_b
 pub static PAIR_class_no__in_mod:     [&str; 111]        = ["atom_bal,bm_ibe", "atom_bal,bm_ibi", "atom_bal,bm_ire_2", "atom_bal,bm_ire_4", "atom_bal,bm_iri", "atom_bal,bm_iri_3", "atom_bal,bm_tbe_2", "atom_bal,bm_tbi", "atom_bal,bm_tre_2", "atom_bal,bm_tre_4", "atom_bal,bm_tri", "atom_bal,bm_tri_3", "atom_bal,l_ct", "atom_bal,r_ct", "atom_bal_2,bm_ibe", "atom_bal_2,bm_ibi", "atom_bal_2,bm_ire_2", "atom_bal_2,bm_ire_4", "atom_bal_2,bm_iri", "atom_bal_2,bm_iri_3", "atom_bal_2,bm_tbe_2", "atom_bal_2,bm_tbi", "atom_bal_2,bm_tre_2", "atom_bal_2,bm_tre_4", "atom_bal_2,bm_tri", "atom_bal_2,bm_tri_3", "atom_bal_2,l_ct", "atom_bal_2,r_ct", "atom_bar,bm_ibe", "atom_bar,bm_ibi", "atom_bar,bm_ire_2", "atom_bar,bm_ire_4", "atom_bar,bm_iri", "atom_bar,bm_iri_3", "atom_bar,bm_tbe_2", "atom_bar,bm_tbi", "atom_bar,bm_tre_2", "atom_bar,bm_tre_4", "atom_bar,bm_tri", "atom_bar,bm_tri_3", "atom_bar,l_ct", "atom_bar,r_ct", "atom_bar_2,bm_ibe", "atom_bar_2,bm_ibi", "atom_bar_2,bm_ire_2", "atom_bar_2,bm_ire_4", "atom_bar_2,bm_iri", "atom_bar_2,bm_iri_3", "atom_bar_2,bm_tbe_2", "atom_bar_2,bm_tbi", "atom_bar_2,bm_tre_2", "atom_bar_2,bm_tre_4", "atom_bar_2,bm_tri", "atom_bar_2,bm_tri_3", "atom_bar_2,l_ct", "atom_bar_2,r_ct,bm_ibe,atom_bal", "bm_ibe,atom_bal_2", "bm_ibe,atom_bar", "bm_ibe,atom_bar_2", "bm_ibi,atom_bal", "bm_ibi,atom_bal_2", "bm_ibi,atom_bar", "bm_ibi,atom_bar_2", "bm_ire_2,atom_bal", "bm_ire_2,atom_bal_2", "bm_ire_2,atom_bar", "bm_ire_2,atom_bar_2", "bm_ire_4,atom_bal", "bm_ire_4,atom_bal_2", "bm_ire_4,atom_bar", "bm_ire_4,atom_bar_2", "bm_iri,atom_bal", "bm_iri,atom_bal_2", "bm_iri,atom_bar", "bm_iri,atom_bar_2", "bm_iri_3,atom_bal", "bm_iri_3,atom_bal_2", "bm_iri_3,atom_bar", "bm_iri_3,atom_bar_2", "bm_tbe_2,atom_bal", "bm_tbe_2,atom_bal_2", "bm_tbe_2,atom_bar", "bm_tbe_2,atom_bar_2", "bm_tbi,atom_bal", "bm_tbi,atom_bal_2", "bm_tbi,atom_bar", "bm_tbi,atom_bar_2", "bm_tre_2,atom_bal", "bm_tre_2,atom_bal_2", "bm_tre_2,atom_bar", "bm_tre_2,atom_bar_2", "bm_tre_4,atom_bal", "bm_tre_4,atom_bal_2", "bm_tre_4,atom_bar", "bm_tre_4,atom_bar_2", "bm_tri,atom_bal", "bm_tri,atom_bal_2", "bm_tri,atom_bar", "bm_tri,atom_bar_2", "bm_tri_3,atom_bal", "bm_tri_3,atom_bal_2", "bm_tri_3,atom_bar", "bm_tri_3,atom_bar_2", "l_ct,atom_bal", "l_ct,atom_bal_2", "l_ct,atom_bar", "l_ct,atom_bar_2", "r_ct,atom_bal", "r_ct,atom_bal_2", "r_ct,atom_bar", "r_ct,atom_bar_2"];
 pub static PAIR_class_no__in_iso:     [&str; 8]          = ["atom_bal,isotope", "atom_bal,isotope_m", "atom_bal_2,isotope", "atom_bal_2,isotope_m", "atom_bar,isotope", "atom_bar,isotope_m", "atom_bar_2,isotope", "atom_bar_2,isotope_m"];
 pub static PAIR_class_no__in_start:   [&str; 4]          = ["atom_bal,s_bracket", "atom_bal_2,s_bracket", "atom_bar,s_bracket", "atom_bar_2,s_bracket"];
+pub static CLASSES_aromatic:          [&str; 3]          = ["atom_bar", "atom_bar_2", "atom_oar"];
+pub static CLASSES_initiator_ring:    [&str; 4]          = ["bm_iri", "bm_iri_3", "bm_ire_2", "bm_ire_4"];
+pub static CLASSES_terminator_ring:   [&str; 4]          = ["bm_tri", "bm_tri_3", "bm_tre_2", "bm_tre_4"];
 
-  ////////////////
- // STRUCTURES //
-////////////////
+  /////////////////////
+ // DATA STRUCTURES //
+/////////////////////
 
+
+
+// Structure to hold the intermediate info on rings
+#[derive(Default)]
+#[derive(Debug)]
+pub struct Ring  {
+  status:             bool,                  // true - closed; false - open
+  number:             usize,
+  pos_start:          usize,
+  pos_end:            usize,
+  bond:               String,
+  error:              String
+}
+#[derive(Default)]
+#[derive(Debug)]
+pub struct Rings {
+  status:             bool,                 // true - there is no clear error; false - there is clear error
+  rings:              Vec<Ring>,
+  open_rings:         HashSet::<usize>,
+  error:              String                // what is wrong?
+}
+// Structure to hold the intermediate info on branches
+#[derive(Default)]
+#[derive(Debug)]
+pub struct Branch  {
+  status:                 bool,            // true - closed; false - open
+  pos_prev_atom:          usize,
+  bond_prev_atom:         String,
+  pos_next_atom:          usize,
+  bond_next_atom:         String
+}
+#[derive(Default)]
+#[derive(Debug)]
+pub struct Branches  {
+  branches:               Vec<Branch>,  
+  any_open:               bool            // true - there are open branches; false - there is no open branches
+}
 // Structure to hold the results 
 #[derive(Default)]
 #[derive(Debug)]
@@ -269,11 +316,11 @@ pub fn get_symbol(getls_smiles_chunk: &str, s_one: &[&str], s_two: &[&str],
 // let mut ct_open         = bool;
 // #red is_aromatic is the subject of the classification of this particular symbol, not the state basically
 // however, it could be further useful as an element of state
-pub fn classify_symbol(this_symbol: &String, pos_in_bracket: usize, rings_open: HashSet<String>, ct_open: bool) -> (String, String) {
+pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: HashSet<String>, ct_open: bool) -> (String, String) {
 
   // Holders for the output and intermediate
   let mut this_type      = "".to_string();
-  let mut this_class     = "".to_string();
+  let mut class_this     = "".to_string();
   let mut is_aromatic    = false;
   // Make the classification block to be terminated on success
   'classification__block: {
@@ -285,9 +332,9 @@ pub fn classify_symbol(this_symbol: &String, pos_in_bracket: usize, rings_open: 
     // i.e., the whole set of the variants should never be checked and the most efficient way (by simmilarity and co-occurence of symbols) is not considered
     // this should be the OK balance between the simplicity and efficiency
     // Check if an atom
-    if SYMBOL_atom.contains(&this_symbol.as_str()) {
+    if SYMBOL_atom.contains(&symbol_this.as_str()) {
       // Decide on aromatics
-      if SYMBOL_aromatic_atom.contains(&this_symbol.as_str()) {
+      if SYMBOL_aromatic_atom.contains(&symbol_this.as_str()) {
         let is_aromatic = true;
       }
       // Probably this is an atom
@@ -299,7 +346,7 @@ pub fn classify_symbol(this_symbol: &String, pos_in_bracket: usize, rings_open: 
         // This is an atom
         this_type = "atom".to_string();
       }
-    } else if SYMBOL_anything.contains(&this_symbol.as_str()) {
+    } else if SYMBOL_anything.contains(&symbol_this.as_str()) {
       // This is any atom
       this_type = "atom".to_string();
     } else if is_aromatic == true {
@@ -316,225 +363,225 @@ pub fn classify_symbol(this_symbol: &String, pos_in_bracket: usize, rings_open: 
     // atom_oal_2:      2-character, not in bracket,        aliphatic
     // any:             any of the above mentioned classes
     if this_type == "atom".to_string() {
-      if this_symbol == &"*".to_string() {
-        this_class = "any".to_string();
+      if symbol_this == &"*".to_string() {
+        class_this = "any".to_string();
         break 'classification__block;
       } else if pos_in_bracket > 1 {
         // atom_bar
-        if is_aromatic == true && this_symbol.chars().count() == 1 {
-          this_class = "atom_bar".to_string();
+        if is_aromatic == true && symbol_this.chars().count() == 1 {
+          class_this = "atom_bar".to_string();
           break 'classification__block;
         }
         // atom_bar_2
-        if is_aromatic == true && this_symbol.chars().count() == 2 {
-          this_class = "atom_bar".to_string();
+        if is_aromatic == true && symbol_this.chars().count() == 2 {
+          class_this = "atom_bar".to_string();
           break 'classification__block;
         }
         // atom_bal
-        if is_aromatic == false && this_symbol.chars().count() == 1 {
-          this_class = "atom_bal".to_string();
+        if is_aromatic == false && symbol_this.chars().count() == 1 {
+          class_this = "atom_bal".to_string();
           break 'classification__block;
         }
         // atom_bal_2
-        if is_aromatic == false && this_symbol.chars().count() == 2 {
-          this_class = "atom_bal_2".to_string();
+        if is_aromatic == false && symbol_this.chars().count() == 2 {
+          class_this = "atom_bal_2".to_string();
           break 'classification__block;
         }
       } else {
         // atom_oar
-        if is_aromatic == true && this_symbol.chars().count() == 1 {
-          this_class = "atom_oar".to_string();
+        if is_aromatic == true && symbol_this.chars().count() == 1 {
+          class_this = "atom_oar".to_string();
           break 'classification__block;
         }
         // atom_oal
-        if is_aromatic == false && this_symbol.chars().count() == 1 {
-          this_class = "atom_oal".to_string();
+        if is_aromatic == false && symbol_this.chars().count() == 1 {
+          class_this = "atom_oal".to_string();
           break 'classification__block;
         }
         // atom_oal_2
-        if is_aromatic == false && this_symbol.chars().count() == 2 {
-          this_class = "atom_oal_2".to_string();
+        if is_aromatic == false && symbol_this.chars().count() == 2 {
+          class_this = "atom_oal_2".to_string();
           break 'classification__block;
         }
       }
     }
     // Check if a property
-    if this_type != "atom".to_string() && SYMBOL_property.contains(&this_symbol.as_str()) && pos_in_bracket != 0 && pos_in_bracket != 2 {
+    if this_type != "atom".to_string() && SYMBOL_property.contains(&symbol_this.as_str()) && pos_in_bracket != 0 && pos_in_bracket != 2 {
       // It is a property
       this_type = "property".to_string();
       // Classify this property further
-      if SYMBOL_isotope.contains(&this_symbol.as_str()) {
-        this_class = "isotope".to_string();
+      if SYMBOL_isotope.contains(&symbol_this.as_str()) {
+        class_this = "isotope".to_string();
         break 'classification__block;
       }
-      if SYMBOL_isotope_m.contains(&this_symbol.as_str()) {
-        this_class = "isotope_m".to_string();
+      if SYMBOL_isotope_m.contains(&symbol_this.as_str()) {
+        class_this = "isotope_m".to_string();
         break 'classification__block;
       }
-      if SYMBOL_chiral.contains(&this_symbol.as_str()) {
-        this_class = "chiral".to_string();
+      if SYMBOL_chiral.contains(&symbol_this.as_str()) {
+        class_this = "chiral".to_string();
         break 'classification__block;
       }
-      if SYMBOL_chiral_2.contains(&this_symbol.as_str()) {
-        this_class = "chiral_2".to_string();
+      if SYMBOL_chiral_2.contains(&symbol_this.as_str()) {
+        class_this = "chiral_2".to_string();
         break 'classification__block;
       }
-      if SYMBOL_chiral_m.contains(&this_symbol.as_str()) {
-        this_class = "chiral_m".to_string();
+      if SYMBOL_chiral_m.contains(&symbol_this.as_str()) {
+        class_this = "chiral_m".to_string();
         break 'classification__block;
       }
-      if SYMBOL_hydro.contains(&this_symbol.as_str()) {
-        this_class = "hydro".to_string();
+      if SYMBOL_hydro.contains(&symbol_this.as_str()) {
+        class_this = "hydro".to_string();
         break 'classification__block;
       }
-      if SYMBOL_hydro_2.contains(&this_symbol.as_str()) {
-        this_class = "hydro_2".to_string();
+      if SYMBOL_hydro_2.contains(&symbol_this.as_str()) {
+        class_this = "hydro_2".to_string();
         break 'classification__block;
       }
-      if SYMBOL_charge.contains(&this_symbol.as_str()) {
-        this_class = "charge".to_string();
+      if SYMBOL_charge.contains(&symbol_this.as_str()) {
+        class_this = "charge".to_string();
         break 'classification__block;
       }
-      if SYMBOL_charge_2.contains(&this_symbol.as_str()) {
-        this_class = "charge_2".to_string();
+      if SYMBOL_charge_2.contains(&symbol_this.as_str()) {
+        class_this = "charge_2".to_string();
         break 'classification__block;
       }
-      if SYMBOL_charge_m.contains(&this_symbol.as_str()) {
-        this_class = "charge_m".to_string();
+      if SYMBOL_charge_m.contains(&symbol_this.as_str()) {
+        class_this = "charge_m".to_string();
         break 'classification__block;
       }
-      if SYMBOL_class.contains(&this_symbol.as_str()) {
-        this_class = "class".to_string();
+      if SYMBOL_class.contains(&symbol_this.as_str()) {
+        class_this = "class".to_string();
         break 'classification__block;
       }
     }
     // Check if a bracket
-    if this_type != "atom".to_string() && this_type != "property".to_string() && SYMBOL_square.contains(&this_symbol.as_str()) {
+    if this_type != "atom".to_string() && this_type != "property".to_string() && SYMBOL_square.contains(&symbol_this.as_str()) {
       // It is a bracket
       this_type = "square_bracket".to_string();
       // Classify this bracket further
-      if SYMBOL_s_bracket.contains(&this_symbol.as_str()) {
-        this_class = "s_bracket".to_string();
+      if SYMBOL_s_bracket.contains(&symbol_this.as_str()) {
+        class_this = "s_bracket".to_string();
         break 'classification__block;
       }
-      if SYMBOL_e_bracket.contains(&this_symbol.as_str()) {
-        this_class = "e_bracket".to_string();
+      if SYMBOL_e_bracket.contains(&symbol_this.as_str()) {
+        class_this = "e_bracket".to_string();
         break 'classification__block;
       }
     }
     // Check if a bond
-    if this_type != "atom".to_string() && this_type != "property".to_string() && this_type != "square_bracket".to_string() && SYMBOL_bond.contains(&this_symbol.as_str()) {
+    if this_type != "atom".to_string() && this_type != "property".to_string() && this_type != "square_bracket".to_string() && SYMBOL_bond.contains(&symbol_this.as_str()) {
       // It is a bond
       this_type = "bond".to_string();
       //classify this bond further
-      if SYMBOL_single_bond.contains(&this_symbol.as_str()) {
-        this_class = "single_bond".to_string();
+      if SYMBOL_single_bond.contains(&symbol_this.as_str()) {
+        class_this = "single_bond".to_string();
         break 'classification__block;
       }
-      if SYMBOL_double_bond.contains(&this_symbol.as_str()) {
-        this_class = "double_bond".to_string();
+      if SYMBOL_double_bond.contains(&symbol_this.as_str()) {
+        class_this = "double_bond".to_string();
         break 'classification__block;
       }
-      if SYMBOL_triple_bond.contains(&this_symbol.as_str()) {
-        this_class = "triple_bond".to_string();
+      if SYMBOL_triple_bond.contains(&symbol_this.as_str()) {
+        class_this = "triple_bond".to_string();
         break 'classification__block;
       }
-      if SYMBOL_quadruple_bond.contains(&this_symbol.as_str()) {
-        this_class = "quadruple_bond".to_string();
+      if SYMBOL_quadruple_bond.contains(&symbol_this.as_str()) {
+        class_this = "quadruple_bond".to_string();
         break 'classification__block;
       }
-      if SYMBOL_no_bond.contains(&this_symbol.as_str()) {
-        this_class = "no_bond".to_string();
+      if SYMBOL_no_bond.contains(&symbol_this.as_str()) {
+        class_this = "no_bond".to_string();
         break 'classification__block;
       }
     }
     // Check if a modifier
-    if SYMBOL_modifier.contains(&this_symbol.as_str()) && pos_in_bracket == 0 {
+    if SYMBOL_modifier.contains(&symbol_this.as_str()) && pos_in_bracket == 0 {
       // It is a modifier of sorts
       this_type = "modifier".to_string();
       // Check unique modifiers
-      if SYMBOL_bm_ibe.contains(&this_symbol.as_str()) {
+      if SYMBOL_bm_ibe.contains(&symbol_this.as_str()) {
         // It is bm_ibe
-        this_class = "bm_ibe".to_string();
+        class_this = "bm_ibe".to_string();
         break 'classification__block;
       }
-      if SYMBOL_bm_ibi.contains(&this_symbol.as_str()) {
+      if SYMBOL_bm_ibi.contains(&symbol_this.as_str()) {
         // It is bm_ibi
-        this_class = "bm_ibi".to_string();
+        class_this = "bm_ibi".to_string();
         break 'classification__block;
       }
-      if SYMBOL_bm_ibi.contains(&this_symbol.as_str()) {
+      if SYMBOL_bm_ibi.contains(&symbol_this.as_str()) {
         // It is bm_ibi
-        this_class = "bm_ibi".to_string();
+        class_this = "bm_ibi".to_string();
         break 'classification__block;
       }
-      if SYMBOL_bm_tbe_2.contains(&this_symbol.as_str()) {
+      if SYMBOL_bm_tbe_2.contains(&symbol_this.as_str()) {
         // It is bm_tbe_2
-        this_class = "bm_tbe_2".to_string();
+        class_this = "bm_tbe_2".to_string();
         break 'classification__block;
       }
-      if SYMBOL_bm_tbi.contains(&this_symbol.as_str()) {
+      if SYMBOL_bm_tbi.contains(&symbol_this.as_str()) {
         // It is bm_tbi
-        this_class = "bm_tbi".to_string();
+        class_this = "bm_tbi".to_string();
         break 'classification__block;
       }
       // Decide on rings, which have the same markers for the start and end
-      if SYMBOL_bm_itri.contains(&this_symbol.as_str()) {
+      if SYMBOL_bm_itri.contains(&symbol_this.as_str()) {
         // It is bm_iri OR bm_tri
-        if rings_open.contains(this_symbol) {
+        if rings_open.contains(symbol_this) {
           // This is bm_tri
-          this_class = "bm_tri".to_string();
+          class_this = "bm_tri".to_string();
           break 'classification__block;
         } else {
-          this_class = "bm_iri".to_string();
+          class_this = "bm_iri".to_string();
           break 'classification__block;
         }
       }
-      if SYMBOL_bm_itre_2.contains(&this_symbol.as_str()) {
+      if SYMBOL_bm_itre_2.contains(&symbol_this.as_str()) {
         // It is bm_ire_2 OR bm_tre_2
-        if rings_open.contains(this_symbol) {
+        if rings_open.contains(symbol_this) {
           // This is bm_tre_2
-          this_class = "bm_tre_2".to_string();
+          class_this = "bm_tre_2".to_string();
           break 'classification__block;
         } else {
-          this_class = "bm_ire_2".to_string();
+          class_this = "bm_ire_2".to_string();
           break 'classification__block;
         }
       }
-      if SYMBOL_bm_itri_3.contains(&this_symbol.as_str()) {
+      if SYMBOL_bm_itri_3.contains(&symbol_this.as_str()) {
         // It is bm_iri_3 OR bm_tri_3
-        if rings_open.contains(this_symbol) {
+        if rings_open.contains(symbol_this) {
           // This is bm_tri_3
-          this_class = "bm_tri_3".to_string();
+          class_this = "bm_tri_3".to_string();
           break 'classification__block;
         } else {
-          this_class = "bm_iri_3".to_string();
+          class_this = "bm_iri_3".to_string();
           break 'classification__block;
         }
       }
-      if SYMBOL_bm_itre_4.contains(&this_symbol.as_str()) {
+      if SYMBOL_bm_itre_4.contains(&symbol_this.as_str()) {
         // It is bm_ire_4 OR bm_tre_4
-        if rings_open.contains(this_symbol) {
+        if rings_open.contains(symbol_this) {
           // This is bm_tre_4
-          this_class = "bm_tre_4".to_string();
+          class_this = "bm_tre_4".to_string();
           break 'classification__block;
         } else {
-          this_class = "bm_ire_4".to_string();
+          class_this = "bm_ire_4".to_string();
           break 'classification__block;
         }
       }
     }
     // Check if a cis/trans
-    if SYMBOL_ct.contains(&this_symbol.as_str()) {
+    if SYMBOL_ct.contains(&symbol_this.as_str()) {
       // It is a ct
       this_type = "ct".to_string();
       if ct_open == false {
         // It is lct
-        this_class = "lct".to_string();
+        class_this = "lct".to_string();
          break 'classification__block;
       } else {
         // It is rct
-        this_class = "rct".to_string();
+        class_this = "rct".to_string();
         break 'classification__block;
       }
     }
@@ -542,7 +589,7 @@ pub fn classify_symbol(this_symbol: &String, pos_in_bracket: usize, rings_open: 
 
 
   // Output
-  let symbol_classification: (String, String) = (this_type, this_class);
+  let symbol_classification: (String, String) = (this_type, class_this);
   symbol_classification
 }
 // #red
@@ -551,9 +598,9 @@ pub fn classify_symbol(this_symbol: &String, pos_in_bracket: usize, rings_open: 
 
 // Function to check the pair of symbols, and update the state 
 pub fn check_symbols_pair(mut structure: Structure,
-                            this_symbol: &String, prev_symbol: &String,
+                            symbol_this: &String, prev_symbol: &String,
                             this_type: &String, prev_type: &String,
-                            this_class: &String, prev_class: &String,
+                            class_this: &String, prev_class: &String,
                             mut is_aromatic: bool,
                             mut pos_in_bracket: usize,
                             mut rings_open: HashSet<String>,
@@ -565,7 +612,7 @@ pub fn check_symbols_pair(mut structure: Structure,
   'check__block: {
     // Prepare this pair
     let this_pair_type = format!("{},{}", prev_type, this_type);
-    let this_pair_class = format!("{},{}", prev_class, this_class);
+    let this_pair_class = format!("{},{}", prev_class, class_this);
     // Check the types of symbols in pair
     if PAIR_type_no.contains(&this_pair_type.as_str())  {
       // Describe the problem
@@ -621,6 +668,7 @@ pub fn check_symbols_pair(mut structure: Structure,
 // This function is not the only place, where these are used, so, * will be better
 // Also, rings is the reason for the structure update to be here
 // Changing data structure will help to update structure and state separately.
+// Probably, structure consisting of vector of values and common HashSet for open rings is a good option
 // So, branches:
 //  status:             bool, true - closed; false - open;
 //  pos_prev_atom:      usize
@@ -628,44 +676,38 @@ pub fn check_symbols_pair(mut structure: Structure,
 //  pos_next_atom:      usize
 //  bond_next_atom:     String
 // Rings:
-//  status:             bool, true - closed; false - open;
+//  status:             bool                    true - closed; false - open;
 //  number:             usize
 //  pos_start:          usize
 //  pos_end:            usize
 //  bond:               String
-pub fn update_state(  this_symbol:          &String,
-                      this_class:           &String,
-                      this_pos:             usize,
-                      prev_class:           &String,
-                      mut structure:        Structure,                   //  it will be used to store the possible errors 
-                      mut pos_in_bracket:   usize,
-                      mut rings_open:       HashSet<String>, ct_open: bool,
-                      mut branches_open:    Vec<(bool, usize, String, usize, String)>,
-                      mut rings_details:    Vec<(bool, usize, usize, String, usize)> ) -> (  Structure,
-                                                                                          bool,
-                                                                                          usize,
-                                                                                          bool,
-                                                                                          HashSet::<String>,
-                                                                                          Vec<(bool, usize, String, usize, String)>,
-                                                                                          Vec<(bool, usize, usize, String, usize)>  ) {
-  let prev_atom_pos: usize  = structure.atoms.last().unwrap().atom_id.clone();
-  let maybe_branch_bond;
-  let draft_branch_bond = this_symbol.chars().nth(1);
-  if draft_branch_bond.is_none() {
-    maybe_branch_bond = "-".to_string();
+//  open:               HashSet::<usize>        numbers assigned to the rings, open rings with the duplicated numbers are not allowed
+//  So, starting with the rewriting update_state and then where needed
+//  is_aromatic could be defined earlier, but maybe it is too much to drag it between the functions 
+pub fn update_state(  symbol_this:                    &String,
+                      class_this:                     &String,
+                      class_prev:                     &String,
+                      pos_this:                       usize,
+                      pos_prev:                       &String,
+                      mut pos_in_bracket:             usize,
+                      mut traversed_branches:         Branches,
+                      mut traversed_rings:            Rings ) -> ( usize, bool, Branches, Rings ) {
+  // Some variables
+  let mut ring_number: usize;
+  let branch_bond;
+  let branch_bond__draft = symbol_this.chars().nth(1);
+  if  branch_bond__draft.is_none() {
+    branch_bond = "-".to_string();
   } else {
-    maybe_branch_bond = draft_branch_bond.unwrap().to_string();
+    branch_bond = branch_bond__draft.unwrap().to_string();
   }
-  let mut is_aromatic       = false;
-  // Updating
+  let mut is_aromatic = false;
+
+  // Updating the state and doing all things needed
   // is_aromatic
-  if (  this_class.to_string() == "atom_bar".to_string()    ||
-        this_class.to_string() == "atom_bar_2".to_string()  ||
-        this_class.to_string() == "atom_oar_2".to_string()  ||
-        this_class.to_string() == "atom_oar".to_string()      ) {
+  if CLASSES_aromatic.contains(&symbol_this.as_str()) {
     let is_aromatic = true;
   } 
-
   // pos_in_bracket
   // 1 - open bracket
   // 2 - isotope
@@ -674,77 +716,91 @@ pub fn update_state(  this_symbol:          &String,
   // 5 - hydro
   // 6 - charge
   // 7 - class
-  if this_class == "s_bracket" {
+  if class_this == "s_bracket" {
     let pos_in_bracket = 1;
-  } else if this_class == "isotope"  || this_class == "isotope_m" {
+  } else if class_this == "isotope"  || class_this == "isotope_m" {
     let pos_in_bracket = 2;
-  } else if this_class == "atom_bar" || this_class == "atom_bar_2" {
+  } else if class_this == "atom_bar" || class_this == "atom_bar_2" {
     let pos_in_bracket = 3;
-  } else if this_class == "chiral"   || this_class == "chiral_2" || this_class == "chiral_m" {
+  } else if class_this == "chiral"   || class_this == "chiral_2" || class_this == "chiral_m" {
     let pos_in_bracket = 4;
-  } else if this_class == "hydro"    || this_class == "hydro_2" {
+  } else if class_this == "hydro"    || class_this == "hydro_2" {
     let pos_in_bracket = 5;
-  } else if this_class == "charge"   || this_class == "charge_2" || this_class == "charge_m" {
+  } else if class_this == "charge"   || class_this == "charge_2" || class_this == "charge_m" {
     let pos_in_bracket = 6;
-  } else if this_class == "class" {
+  } else if class_this == "class" {
     let pos_in_bracket = 7;
   } else {
     let pos_in_bracket = 0;
   }
 
-  // update the rings_open
-  if rings_open.contains(this_symbol) {
-    if this_class == "bm_tri" || this_class == "bm_tri_3" || this_class == "bm_tre_2" || this_class == "bm_tre_4" {
-      rings_open.remove(this_symbol);
-    } else if this_class == "bm_iri" || this_class == "bm_iri_3" || this_class == "bm_ire_2" || this_class == "bm_ire_4" {
-      structure.status = false;
-      structure.error = String::from("two distinct rings having the same IDs are open");
+  // This is the subject of changes, since the data structure changed
+  // Update rings
+  if CLASSES_initiator_ring.contains(&symbol_this.as_str()) {
+     // Get the number of this ring
+     let ring_number_vec: Vec<_>        = symbol_this.chars().filter(|this_char| this_char.is_ascii_digit()).collect();
+     let ring_number_string: String     = ring_number_vec.into_iter().collect();
+     ring_number                        = ring_number_string.parse().unwrap();
+    // Case when such a ring is among the open rings, which is wrong
+    if  traversed_rings.open_rings.contains(&ring_number) {
+      // Introduce changes to the corresponding element of the rings vector
+      // #f07b57 working here
+      // Find the corresponding element
+      // Using rposition seems to be reasonable, since the target should be rather on the right side of the vector
+      let ring_index = traversed_rings.rings.into_iter().rposition(|ring| ring.number == ring_number && ring.status == false); 
+      unimplemented!();
+    } else {
+      // * is OK
+      unimplemented!();
     }
-  }
-     else {
-    if this_class == "bm_iri" || this_class == "bm_iri_3" || this_class == "bm_ire_2" || this_class == "bm_ire_4" {
-      rings_open.insert(this_symbol.to_string());
+  } else if CLASSES_terminator_ring.contains(&symbol_this.as_str()) {
+    // Case when such a ring is NOT among the open rings, which is wrong
+    if  !traversed_rings.open_rings.contains(&ring_number) {
+      unimplemented!();
+    } else {
+      // * is OK
+      unimplemented!();
     }
   }
 
   // rings_details
   // create the record on this ring or modify the existing one
   // status is known,               false
-  // symbol should be deduced,      numbers in this_symbol
+  // symbol should be deduced,      numbers in symbol_this
   // pos_start should be known,     prev_atom_pos
-  // bond should be deduced from    this_symbol
+  // bond should be deduced from    symbol_this
   // pos_end is not known,          None
   // SEE the discussion in https://users.rust-lang.org/t/how-to-parse-an-int-from-string/12456/10
-  let ring_symbol_vec: Vec<_>        = this_symbol.chars().filter(|this_char| this_char.is_ascii_digit()).collect();
-  let ring_symbol_string: String     = ring_symbol_vec.into_iter().collect();
-  let ring_symbol: usize             = ring_symbol_string.parse().unwrap();
+  let ring_number_vec: Vec<_>        = symbol_this.chars().filter(|this_char| this_char.is_ascii_digit()).collect();
+  let ring_number_string: String     = ring_number_vec.into_iter().collect();
+  let ring_number: usize             = ring_number_string.parse().unwrap();
   // Prepare the ring bond
   let ring_bond;
-  if this_symbol.contains("-") {
+  if symbol_this.contains("-") {
     ring_bond = "_";
-  } else if this_symbol.contains("=") {
+  } else if symbol_this.contains("=") {
     ring_bond = "=";
-  } else if this_symbol.contains("#") {
+  } else if symbol_this.contains("#") {
     ring_bond = "#";
-  } else if this_symbol.contains("$") {
+  } else if symbol_this.contains("$") {
     ring_bond = "$";
-  } else if this_symbol.contains(":") {
+  } else if symbol_this.contains(":") {
     ring_bond = ":";
-  } else if this_symbol.contains(".") {
+  } else if symbol_this.contains(".") {
     ring_bond = ".";
   } else {
     ring_bond = "_";
   }
   // new ring case
-  if this_class == "bm_iri" || this_class == "bm_iri_3" || this_class == "bm_ire_2" || this_class == "bm_ire_4" {
+  if class_this == "bm_iri" || class_this == "bm_iri_3" || class_this == "bm_ire_2" || class_this == "bm_ire_4" {
 
-    rings_details.push( (false, ring_symbol, prev_atom_pos, ring_bond.to_string(), 0) );
+    rings_details.push( (false, ring_number, prev_atom_pos, ring_bond.to_string(), 0) );
 
-  } else if this_class == "bm_tri" || this_class == "bm_tri_3" || this_class == "bm_tre_2" || this_class == "bm_tre_4" {
+  } else if class_this == "bm_tri" || class_this == "bm_tri_3" || class_this == "bm_tre_2" || class_this == "bm_tre_4" {
     // find the corresponding ring, i.e. the ring having the same number and still open
     // modify the record on the corresponding open ring
     for (status, number, pos_start, bond, pos_end) in rings_details.iter_mut() {
-      if *status == false && *number == ring_symbol {
+      if *status == false && *number == ring_number {
         // Add position of the last atom
         *pos_end = prev_atom_pos;
         // Add bond
@@ -763,17 +819,17 @@ pub fn update_state(  this_symbol:          &String,
 
   // Update the branches_open, very simple: "(" -> add new element, ")" -> update the last element;
   // #red Also, update is needed if this branch is closed and first next atom is found to establish the correct connection in the main (relative to this branch) line.
-  if this_class == "bm_ibe" || this_class == "bm_ibi" {
+  if class_this == "bm_ibe" || class_this == "bm_ibi" {
     branches_open.push( (false, prev_atom_pos.clone(), maybe_branch_bond.clone(), 0, "".to_string()) );
   }
-  if this_class == "bm_tbe_2" || this_class == "bm_tbi"  {
+  if class_this == "bm_tbe_2" || class_this == "bm_tbi"  {
     let mut this_branch = branches_open.pop().unwrap();
     this_branch.4  = maybe_branch_bond.clone();
     branches_open.push(this_branch); 
   }
   // if the first atom after the closed branch
   if branches_open.iter().filter(|branch| branch.3 == 0).collect::<Vec<_>>().len() > 0 &&
-     (this_class == "atom_bal" || this_class == "atom_bal_2" || this_class == "atom_bar" || this_class == "atom_bar_2" || this_class == "atom_oar_2" || this_class == "atom_oar" || this_class == "atom_oal") {
+     (class_this == "atom_bal" || class_this == "atom_bal_2" || class_this == "atom_bar" || class_this == "atom_bar_2" || class_this == "atom_oar_2" || class_this == "atom_oar" || class_this == "atom_oal") {
 
       // get the unfinished branches
       let branches_really_open = branches_open.extract_if(.., |branch| branch.3 == 0).collect::<Vec<_>>();
@@ -788,8 +844,9 @@ pub fn update_state(  this_symbol:          &String,
 
 
   // Output
-  let state_updated: (Structure, bool, usize, bool, HashSet::<String>, Vec<(bool, usize, String, usize, String)>, Vec<(bool, usize, usize, String, usize)>) = (structure, is_aromatic, pos_in_bracket, ct_open, rings_open, branches_open, rings_details);
-  state_updated
+  //let state_updated: (Structure, bool, usize, bool, HashSet::<String>, Vec<(bool, usize, String, usize, String)>, Vec<(bool, usize, usize, String, usize)>) = (structure, is_aromatic, pos_in_bracket, ct_open, rings_open, branches_open, rings_details);
+  //state_updated
+  unimplemented!();
 }
 
 // Function to check the updated state
@@ -797,7 +854,7 @@ pub fn update_state(  this_symbol:          &String,
 
 
 // Function to update the structure itself considering available data on current symbol and state
-pub fn update_structure(mut u_structure: Structure, this_symbol: &String) -> Structure {
+pub fn update_structure(mut u_structure: Structure, symbol_this: &String) -> Structure {
   unimplemented!();
 }
 
@@ -857,7 +914,7 @@ pub fn update_structure(mut u_structure: Structure, this_symbol: &String) -> Str
   let mut this_type      = "".to_string();
   // Classes
   let mut prev_class     = "".to_string();
-  let mut this_class     = "".to_string();
+  let mut class_this     = "".to_string();
   // Bond
   let mut prev_bond      = "".to_string();
   // Rings
@@ -1156,16 +1213,16 @@ pub fn update_structure(mut u_structure: Structure, this_symbol: &String) -> Str
       if is_aromatic == true {
         // Check length
         if u_symbol.chars().count() > 1 {
-          this_class = "atom_bar_2".to_string();
+          class_this = "atom_bar_2".to_string();
         } else {
-          this_class = "atom_bar".to_string();
+          class_this = "atom_bar".to_string();
         }
       } else {
         // Check length
         if u_symbol.chars().count() > 1 {
-          this_class = "atom_bal_2".to_string();
+          class_this = "atom_bal_2".to_string();
         } else {
-          this_class = "atom_bal".to_string();
+          class_this = "atom_bal".to_string();
         }
       }
     } else {
@@ -1177,19 +1234,19 @@ pub fn update_structure(mut u_structure: Structure, this_symbol: &String) -> Str
           u_structure.error = format!("Something wrong with the symbol: {}", u_symbol);
           return u_structure;
         } else {
-          this_class = "atom_oar".to_string();
+          class_this = "atom_oar".to_string();
         }
       } else {
         // Check length
         if u_symbol.chars().count() > 1 {
-          this_class = "atom_oal_2".to_string();
+          class_this = "atom_oal_2".to_string();
         } else {
-          this_class = "atom_oal".to_string();
+          class_this = "atom_oal".to_string();
         }
       }
     }
     // Check classes in this pair and check structure's status
-    u_structure = check_pair_class(u_structure, this_class.as_str(), prev_class.as_str());
+    u_structure = check_pair_class(u_structure, class_this.as_str(), prev_class.as_str());
     if u_structure.status == false {
       return u_structure;
     }
@@ -1215,22 +1272,22 @@ pub fn update_structure(mut u_structure: Structure, this_symbol: &String) -> Str
     }
     // Classify this bond further
     if u_symbol == SYMBOL_single_bond[0] {
-      this_class = "single_bond".to_string();
+      class_this = "single_bond".to_string();
     }
     else if u_symbol == SYMBOL_double_bond[0] {
-      this_class = "double_bond".to_string();
+      class_this = "double_bond".to_string();
     }
     else if u_symbol == SYMBOL_triple_bond[0] {
-      this_class = "triple_bond".to_string();
+      class_this = "triple_bond".to_string();
     }
     else if u_symbol == SYMBOL_quadruple_bond[0] {
-      this_class = "quadruple_bond".to_string();
+      class_this = "quadruple_bond".to_string();
     }
     else if u_symbol == SYMBOL_no_bond[0] {
-      this_class = "no_bond".to_string();
+      class_this = "no_bond".to_string();
     }
     // Check classes in this pair and check structure's status
-    u_structure = check_pair_class(u_structure, this_class.as_str(), prev_class.as_str());
+    u_structure = check_pair_class(u_structure, class_this.as_str(), prev_class.as_str());
     if u_structure.status == false {
       return u_structure;
     }
@@ -1304,7 +1361,7 @@ pub fn update_structure(mut u_structure: Structure, this_symbol: &String) -> Str
     }
     // Count this symbol's type as type of the previous one
     prev_type  = this_type.to_string().clone();
-    prev_class = this_class.to_string().clone();
+    prev_class = class_this.to_string().clone();
     unimplemented!();
   }
 
