@@ -86,40 +86,44 @@ pub static CLASSES_terminator_ring:   [&str; 4]          = ["bm_tri", "bm_tri_3"
 
 
 
-// Structure to hold the intermediate info on rings
+// Structure to hold the ring data
 #[derive(Default)]
 #[derive(Debug)]
+#[derive(Clone)]
 pub struct Ring  {
-  status:             bool,                  // true - closed; false - open
+  status:             bool,                      // true - closed; false - open
   number:             usize,
   pos_start:          usize,
   pos_end:            usize,
-  bond:               String,
-  error:              String
+  bond:               String
 }
-#[derive(Default)]
-#[derive(Debug)]
-pub struct Rings {
-  status:             bool,                 // true - there is no clear error; false - there is clear error
-  rings:              Vec<Ring>,
-  open_rings:         HashSet::<usize>,
-  error:              String                // what is wrong?
-}
-// Structure to hold the intermediate info on branches
+// Structure to hold the branch data
 #[derive(Default)]
 #[derive(Debug)]
 pub struct Branch  {
-  status:                 bool,            // true - closed; false - open
+  status:                 bool,                 // true - closed; false - open
   pos_prev_atom:          usize,
   bond_prev_atom:         String,
   pos_next_atom:          usize,
   bond_next_atom:         String
 }
+// Structure to hold the state
 #[derive(Default)]
 #[derive(Debug)]
-pub struct Branches  {
-  branches:               Vec<Branch>,  
-  any_open:               bool            // true - there are open branches; false - there is no open branches
+pub struct State {
+  status:                 bool,                   // true - acceptable; false - unacceptable
+  branches:               Vec<Branch>,
+  any_open_branch:        bool,                  // true - there are open branches; false - there is no open branches
+  rings:                  Vec<Ring>,
+  open_rings:             HashSet::<usize>,
+  ring_error:             String,
+  symbol_this:            String,
+  class_this:             String,
+  class_prev:             String,
+  pos_this:               usize,
+  pos_prev:               String,
+  pos_in_bracket:         usize,
+  error:                  String
 }
 // Structure to hold the results 
 #[derive(Default)]
@@ -259,7 +263,7 @@ impl Structure {
 ////////////////
 // #red at this point it should be checked where the cloning of variables is needed to be done explicitly to prevent the originals from unexpected changes 
 
-// Function to get the chunk
+// Function to get the chunk of SMILES
 pub fn get_chunk(getc_smiles_string: &String, getc_start_pos: usize, getc_length: usize) -> &str {
        let getc_result: &str = &getc_smiles_string[getc_start_pos..cmp::min((getc_start_pos + getc_length), (getc_smiles_string.len()))];
        return getc_result;
@@ -319,7 +323,7 @@ pub fn get_symbol(getls_smiles_chunk: &str, s_one: &[&str], s_two: &[&str],
 pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: HashSet<String>, ct_open: bool) -> (String, String) {
 
   // Holders for the output and intermediate
-  let mut this_type      = "".to_string();
+  let mut type_this      = "".to_string();
   let mut class_this     = "".to_string();
   let mut is_aromatic    = false;
   // Make the classification block to be terminated on success
@@ -340,18 +344,18 @@ pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: 
       // Probably this is an atom
       if pos_in_bracket > 0 && pos_in_bracket < 3 {
         // This is an atom
-        this_type = "atom".to_string();
+        type_this = "atom".to_string();
       }
       else if pos_in_bracket == 0 {
         // This is an atom
-        this_type = "atom".to_string();
+        type_this = "atom".to_string();
       }
     } else if SYMBOL_anything.contains(&symbol_this.as_str()) {
       // This is any atom
-      this_type = "atom".to_string();
+      type_this = "atom".to_string();
     } else if is_aromatic == true {
       // This is aromatic atom
-      this_type = "atom".to_string();
+      type_this = "atom".to_string();
     }
     // Classify the atom further
     // atom_bar:        1-character, in bracket,            aromatic
@@ -362,7 +366,7 @@ pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: 
     // atom_oal:        1-character, not in brackets,       aliphatic
     // atom_oal_2:      2-character, not in bracket,        aliphatic
     // any:             any of the above mentioned classes
-    if this_type == "atom".to_string() {
+    if type_this == "atom".to_string() {
       if symbol_this == &"*".to_string() {
         class_this = "any".to_string();
         break 'classification__block;
@@ -406,9 +410,9 @@ pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: 
       }
     }
     // Check if a property
-    if this_type != "atom".to_string() && SYMBOL_property.contains(&symbol_this.as_str()) && pos_in_bracket != 0 && pos_in_bracket != 2 {
+    if type_this != "atom".to_string() && SYMBOL_property.contains(&symbol_this.as_str()) && pos_in_bracket != 0 && pos_in_bracket != 2 {
       // It is a property
-      this_type = "property".to_string();
+      type_this = "property".to_string();
       // Classify this property further
       if SYMBOL_isotope.contains(&symbol_this.as_str()) {
         class_this = "isotope".to_string();
@@ -456,9 +460,9 @@ pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: 
       }
     }
     // Check if a bracket
-    if this_type != "atom".to_string() && this_type != "property".to_string() && SYMBOL_square.contains(&symbol_this.as_str()) {
+    if type_this != "atom".to_string() && type_this != "property".to_string() && SYMBOL_square.contains(&symbol_this.as_str()) {
       // It is a bracket
-      this_type = "square_bracket".to_string();
+      type_this = "square_bracket".to_string();
       // Classify this bracket further
       if SYMBOL_s_bracket.contains(&symbol_this.as_str()) {
         class_this = "s_bracket".to_string();
@@ -470,9 +474,9 @@ pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: 
       }
     }
     // Check if a bond
-    if this_type != "atom".to_string() && this_type != "property".to_string() && this_type != "square_bracket".to_string() && SYMBOL_bond.contains(&symbol_this.as_str()) {
+    if type_this != "atom".to_string() && type_this != "property".to_string() && type_this != "square_bracket".to_string() && SYMBOL_bond.contains(&symbol_this.as_str()) {
       // It is a bond
-      this_type = "bond".to_string();
+      type_this = "bond".to_string();
       //classify this bond further
       if SYMBOL_single_bond.contains(&symbol_this.as_str()) {
         class_this = "single_bond".to_string();
@@ -498,7 +502,7 @@ pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: 
     // Check if a modifier
     if SYMBOL_modifier.contains(&symbol_this.as_str()) && pos_in_bracket == 0 {
       // It is a modifier of sorts
-      this_type = "modifier".to_string();
+      type_this = "modifier".to_string();
       // Check unique modifiers
       if SYMBOL_bm_ibe.contains(&symbol_this.as_str()) {
         // It is bm_ibe
@@ -574,7 +578,7 @@ pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: 
     // Check if a cis/trans
     if SYMBOL_ct.contains(&symbol_this.as_str()) {
       // It is a ct
-      this_type = "ct".to_string();
+      type_this = "ct".to_string();
       if ct_open == false {
         // It is lct
         class_this = "lct".to_string();
@@ -589,7 +593,7 @@ pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: 
 
 
   // Output
-  let symbol_classification: (String, String) = (this_type, class_this);
+  let symbol_classification: (String, String) = (type_this, class_this);
   symbol_classification
 }
 // #red
@@ -599,7 +603,7 @@ pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: 
 // Function to check the pair of symbols, and update the state 
 pub fn check_symbols_pair(mut structure: Structure,
                             symbol_this: &String, prev_symbol: &String,
-                            this_type: &String, prev_type: &String,
+                            type_this: &String, prev_type: &String,
                             class_this: &String, prev_class: &String,
                             mut is_aromatic: bool,
                             mut pos_in_bracket: usize,
@@ -611,26 +615,26 @@ pub fn check_symbols_pair(mut structure: Structure,
   
   'check__block: {
     // Prepare this pair
-    let this_pair_type = format!("{},{}", prev_type, this_type);
-    let this_pair_class = format!("{},{}", prev_class, class_this);
+    let pair_type_this = format!("{},{}", prev_type, type_this);
+    let pair_class_this = format!("{},{}", prev_class, class_this);
     // Check the types of symbols in pair
-    if PAIR_type_no.contains(&this_pair_type.as_str())  {
+    if PAIR_type_no.contains(&pair_type_this.as_str())  {
       // Describe the problem
       structure.status = false;
-      structure.error  = format!("unacceptable pair of symbols: {}", this_pair_type);
+      structure.error  = format!("unacceptable pair of symbols: {}", pair_type_this);
       break 'check__block;
     }
     // Check the classes of symbols in pair
-    if PAIR_class_no__in_out.contains(&this_pair_class.as_str())  ||
-       PAIR_class_no__in_in.contains(&this_pair_class.as_str())   ||
-       PAIR_class_no__in_any.contains(&this_pair_class.as_str())  ||
-       PAIR_class_no__in_bond.contains(&this_pair_class.as_str()) ||
-       PAIR_class_no__in_mod.contains(&this_pair_class.as_str())  ||
-       PAIR_class_no__in_iso.contains(&this_pair_class.as_str())  ||
-       PAIR_class_no__in_start.contains(&this_pair_class.as_str())  {
+    if PAIR_class_no__in_out.contains(&pair_class_this.as_str())  ||
+       PAIR_class_no__in_in.contains(&pair_class_this.as_str())   ||
+       PAIR_class_no__in_any.contains(&pair_class_this.as_str())  ||
+       PAIR_class_no__in_bond.contains(&pair_class_this.as_str()) ||
+       PAIR_class_no__in_mod.contains(&pair_class_this.as_str())  ||
+       PAIR_class_no__in_iso.contains(&pair_class_this.as_str())  ||
+       PAIR_class_no__in_start.contains(&pair_class_this.as_str())  {
           // Describe the problem
           structure.status = false;
-          structure.error  = format!("unacceptable pair of symbols: {}", this_pair_class);
+          structure.error  = format!("unacceptable pair of symbols: {}", pair_class_this);
           break 'check__block;
        } 
   }
@@ -683,17 +687,19 @@ pub fn check_symbols_pair(mut structure: Structure,
 //  bond:               String
 //  open:               HashSet::<usize>        numbers assigned to the rings, open rings with the duplicated numbers are not allowed
 //  So, starting with the rewriting update_state and then where needed
-//  is_aromatic could be defined earlier, but maybe it is too much to drag it between the functions 
+//  is_aromatic could be defined earlier, but maybe it is too much to drag it between the functions
+//  now, single state variable will be used to hold the state
+//  #red still work in progress
 pub fn update_state(  symbol_this:                    &String,
                       class_this:                     &String,
                       class_prev:                     &String,
                       pos_this:                       usize,
                       pos_prev:                       &String,
-                      mut pos_in_bracket:             usize,
-                      mut traversed_branches:         Branches,
-                      mut traversed_rings:            Rings ) -> ( usize, bool, Branches, Rings ) {
+                      mut state:                      State) -> State {
   // Some variables
-  let mut ring_number: usize;
+  // pos
+  let mut pos_in_bracket:   usize;
+  // bracket
   let branch_bond;
   let branch_bond__draft = symbol_this.chars().nth(1);
   if  branch_bond__draft.is_none() {
@@ -701,75 +707,8 @@ pub fn update_state(  symbol_this:                    &String,
   } else {
     branch_bond = branch_bond__draft.unwrap().to_string();
   }
-  let mut is_aromatic = false;
-
-  // Updating the state and doing all things needed
-  // is_aromatic
-  if CLASSES_aromatic.contains(&symbol_this.as_str()) {
-    let is_aromatic = true;
-  } 
-  // pos_in_bracket
-  // 1 - open bracket
-  // 2 - isotope
-  // 3 - atom
-  // 4 - chirality
-  // 5 - hydro
-  // 6 - charge
-  // 7 - class
-  if class_this == "s_bracket" {
-    let pos_in_bracket = 1;
-  } else if class_this == "isotope"  || class_this == "isotope_m" {
-    let pos_in_bracket = 2;
-  } else if class_this == "atom_bar" || class_this == "atom_bar_2" {
-    let pos_in_bracket = 3;
-  } else if class_this == "chiral"   || class_this == "chiral_2" || class_this == "chiral_m" {
-    let pos_in_bracket = 4;
-  } else if class_this == "hydro"    || class_this == "hydro_2" {
-    let pos_in_bracket = 5;
-  } else if class_this == "charge"   || class_this == "charge_2" || class_this == "charge_m" {
-    let pos_in_bracket = 6;
-  } else if class_this == "class" {
-    let pos_in_bracket = 7;
-  } else {
-    let pos_in_bracket = 0;
-  }
-
-  // This is the subject of changes, since the data structure changed
-  // Update rings
-  if CLASSES_initiator_ring.contains(&symbol_this.as_str()) {
-     // Get the number of this ring
-     let ring_number_vec: Vec<_>        = symbol_this.chars().filter(|this_char| this_char.is_ascii_digit()).collect();
-     let ring_number_string: String     = ring_number_vec.into_iter().collect();
-     ring_number                        = ring_number_string.parse().unwrap();
-    // Case when such a ring is among the open rings, which is wrong
-    if  traversed_rings.open_rings.contains(&ring_number) {
-      // Introduce changes to the corresponding element of the rings vector
-      // #f07b57 working here
-      // Find the corresponding element
-      // Using rposition seems to be reasonable, since the target should be rather on the right side of the vector
-      let ring_index = traversed_rings.rings.into_iter().rposition(|ring| ring.number == ring_number && ring.status == false); 
-      unimplemented!();
-    } else {
-      // * is OK
-      unimplemented!();
-    }
-  } else if CLASSES_terminator_ring.contains(&symbol_this.as_str()) {
-    // Case when such a ring is NOT among the open rings, which is wrong
-    if  !traversed_rings.open_rings.contains(&ring_number) {
-      unimplemented!();
-    } else {
-      // * is OK
-      unimplemented!();
-    }
-  }
-
-  // rings_details
-  // create the record on this ring or modify the existing one
-  // status is known,               false
-  // symbol should be deduced,      numbers in symbol_this
-  // pos_start should be known,     prev_atom_pos
-  // bond should be deduced from    symbol_this
-  // pos_end is not known,          None
+  // ring
+  let mut ring_number:      usize;
   // SEE the discussion in https://users.rust-lang.org/t/how-to-parse-an-int-from-string/12456/10
   let ring_number_vec: Vec<_>        = symbol_this.chars().filter(|this_char| this_char.is_ascii_digit()).collect();
   let ring_number_string: String     = ring_number_vec.into_iter().collect();
@@ -791,54 +730,103 @@ pub fn update_state(  symbol_this:                    &String,
   } else {
     ring_bond = "_";
   }
-  // new ring case
-  if class_this == "bm_iri" || class_this == "bm_iri_3" || class_this == "bm_ire_2" || class_this == "bm_ire_4" {
 
-    rings_details.push( (false, ring_number, prev_atom_pos, ring_bond.to_string(), 0) );
+  // Updating the state and doing all things needed
+  // pos_in_bracket
+  // 1 - open bracket
+  // 2 - isotope
+  // 3 - atom
+  // 4 - chirality
+  // 5 - hydro
+  // 6 - charge
+  // 7 - class
+  // 0 - not in bracket
+  if class_this == "s_bracket" {
+    pos_in_bracket = 1;
+  } else if class_this == "isotope"  || class_this == "isotope_m" {
+    pos_in_bracket = 2;
+  } else if class_this == "atom_bar" || class_this == "atom_bar_2" {
+    pos_in_bracket = 3;
+  } else if class_this == "chiral"   || class_this == "chiral_2" || class_this == "chiral_m" {
+    pos_in_bracket = 4;
+  } else if class_this == "hydro"    || class_this == "hydro_2" {
+    pos_in_bracket = 5;
+  } else if class_this == "charge"   || class_this == "charge_2" || class_this == "charge_m" {
+    pos_in_bracket = 6;
+  } else if class_this == "class" {
+    pos_in_bracket = 7;
+  } else {
+    pos_in_bracket = 0;
+  }
 
-  } else if class_this == "bm_tri" || class_this == "bm_tri_3" || class_this == "bm_tre_2" || class_this == "bm_tre_4" {
-    // find the corresponding ring, i.e. the ring having the same number and still open
-    // modify the record on the corresponding open ring
-    for (status, number, pos_start, bond, pos_end) in rings_details.iter_mut() {
-      if *status == false && *number == ring_number {
-        // Add position of the last atom
-        *pos_end = prev_atom_pos;
-        // Add bond
-        if bond == "_" && ring_bond == "_" {
-          *bond = "-".to_string();
-        } else if bond == "_" && ring_bond != "_" {
-          *bond = ring_bond.to_string();
-        } else if bond != "_" && ring_bond != "_" {
-          *bond = "_".to_string();
+  // Update rings
+  if CLASSES_initiator_ring.contains(&class_this.as_str()) {
+    // Case when such a ring is among the open rings, which is wrong
+    if  state.open_rings.contains(&ring_number) {
+      // Check if such a ring is already open
+      // Using rposition seems to be reasonable, since the target should be rather on the right side of the vector
+      let ring_index = state.rings.clone().into_iter().rposition(|ring| ring.number == ring_number && ring.status == false).unwrap_or(state.rings.len() * 2);
+      // Check if not None
+      if ring_index < state.rings.len() {
+        // this is wrong: there are two rings having the same number and open at one time
+        state.status = false;
+        state.error = format!("Two rings {ring_number} are open simultaneously");
+        // output
+        return state;
+      }
+    } else {
+      // Add new element to the open rings
+      state.open_rings.insert(ring_number);
+      // Add new element to the rings
+      let new_ring_this = Ring {
+                                      status:             false,                      // true - closed; false - open
+                                      number:             ring_number,
+                                      pos_start:          pos_this.clone(),
+                                      pos_end:            0,
+                                      bond:               branch_bond.clone()
+                                };
+      state.rings.push(new_ring_this);
+    }
+  } else if CLASSES_terminator_ring.contains(&class_this.as_str()) {
+    // Case when such a ring is NOT among the open rings, which is wrong
+    if  !state.open_rings.contains(&ring_number) {
+      // state is false, return it
+      state.status = false;
+      state.error = "Smth is wrong".to_string();
+      // output
+      return state;
+    } else {
+      // Find and close this ring
+      let ring_index = state.rings.clone().into_iter().rposition(|ring| ring.number == ring_number && ring.status == false).unwrap_or(state.rings.len() * 2);
+      if ring_index < state.rings.len() {
+        // Ring is found, update it
+        state.rings[ring_index].status  = true;
+        state.rings[ring_index].pos_end = pos_this;
+        if state.rings[ring_index].bond != ring_bond {
+          if state.rings[ring_index].bond == "_".to_string() && ring_bond != "_".to_string() {
+            state.rings[ring_index].bond = ring_bond.to_string();
+          } else if state.rings[ring_index].bond != "_".to_string() && ring_bond != "_".to_string() {
+            // Wrong, ambigous bond closing the ring
+            state.status = false;
+            state.error = format!("Ring {ring_number} has ambigous bond");
+            // output
+            return state;
+          }
         }
-        // Update the status
-        *status = true;
+        if state.rings[ring_index].bond == "_" {
+          state.rings[ring_index].bond = "-".to_string();
+        }
+      } else {
+        // Ring not found, state is false
+        state.status = false;
+        state.error = format!("Ring {ring_number} is problematic");
+        // output
+        return state;
       }
     }
-  }
 
-  // Update the branches_open, very simple: "(" -> add new element, ")" -> update the last element;
-  // #red Also, update is needed if this branch is closed and first next atom is found to establish the correct connection in the main (relative to this branch) line.
-  if class_this == "bm_ibe" || class_this == "bm_ibi" {
-    branches_open.push( (false, prev_atom_pos.clone(), maybe_branch_bond.clone(), 0, "".to_string()) );
-  }
-  if class_this == "bm_tbe_2" || class_this == "bm_tbi"  {
-    let mut this_branch = branches_open.pop().unwrap();
-    this_branch.4  = maybe_branch_bond.clone();
-    branches_open.push(this_branch); 
-  }
-  // if the first atom after the closed branch
-  if branches_open.iter().filter(|branch| branch.3 == 0).collect::<Vec<_>>().len() > 0 &&
-     (class_this == "atom_bal" || class_this == "atom_bal_2" || class_this == "atom_bar" || class_this == "atom_bar_2" || class_this == "atom_oar_2" || class_this == "atom_oar" || class_this == "atom_oal") {
-
-      // get the unfinished branches
-      let branches_really_open = branches_open.extract_if(.., |branch| branch.3 == 0).collect::<Vec<_>>();
-      // finish them and return
-      for mut branch in branches_really_open {
-        branch.3 = this_pos.clone();
-        branches_open.push(branch);
-      }
-
+    // Update branches
+      
   }
 
 
@@ -911,7 +899,7 @@ pub fn update_structure(mut u_structure: Structure, symbol_this: &String) -> Str
   let mut is_first       = false;
   // Types
   let mut prev_type      = "".to_string();
-  let mut this_type      = "".to_string();
+  let mut type_this      = "".to_string();
   // Classes
   let mut prev_class     = "".to_string();
   let mut class_this     = "".to_string();
@@ -1189,9 +1177,9 @@ pub fn update_structure(mut u_structure: Structure, symbol_this: &String) -> Str
       u_inbracket = 3;
     }
     // Add type to this symbol
-    this_type = "atom".to_string();
+    type_this = "atom".to_string();
     // Check types in this pair and check structure's status
-    u_structure = check_pair_type(u_structure, this_type.as_str(), prev_type.as_str());
+    u_structure = check_pair_type(u_structure, type_this.as_str(), prev_type.as_str());
     if (u_structure.status == false) {
       return u_structure;
     }
@@ -1264,9 +1252,9 @@ pub fn update_structure(mut u_structure: Structure, symbol_this: &String) -> Str
   if SYMBOL_bond.contains(&u_symbol.as_str()) && u_inbracket == 0 {
     // Definitely, it is a bond
     // Add type to this symbol
-    this_type = "bond".to_string();
+    type_this = "bond".to_string();
     // Check types in this pair and check structure's status
-    u_structure = check_pair_type(u_structure, this_type.as_str(), prev_type.as_str());
+    u_structure = check_pair_type(u_structure, type_this.as_str(), prev_type.as_str());
     if (u_structure.status == false) {
       return u_structure;
     }
@@ -1298,9 +1286,9 @@ pub fn update_structure(mut u_structure: Structure, symbol_this: &String) -> Str
   if SYMBOL_modifier.contains(&u_symbol.as_str()) && u_inbracket == 0 {
     // Definitely, it is a modifier of sorts
     // Add type to this symbol
-    this_type = "modifier".to_string();
+    type_this = "modifier".to_string();
     // Check this pair and check structure status
-    u_structure = check_pair_type(u_structure, this_type.as_str(), prev_type.as_str());
+    u_structure = check_pair_type(u_structure, type_this.as_str(), prev_type.as_str());
     if (u_structure.status == false) {
       return u_structure;
     }
@@ -1338,9 +1326,9 @@ pub fn update_structure(mut u_structure: Structure, symbol_this: &String) -> Str
   if SYMBOL_property.contains(&u_symbol.as_str()) && u_inbracket > 0 && u_inbracket != 2 {
     // Definitely, it is a property
     // Add type to this symbol
-    this_type = "property".to_string();
+    type_this = "property".to_string();
     // Check this pair and check structure status
-    u_structure = check_pair_type(u_structure, this_type.as_str(), prev_type.as_str());
+    u_structure = check_pair_type(u_structure, type_this.as_str(), prev_type.as_str());
     if (u_structure.status == false) {
       return u_structure;
     }
@@ -1352,15 +1340,15 @@ pub fn update_structure(mut u_structure: Structure, symbol_this: &String) -> Str
   if SYMBOL_square.contains(&u_symbol.as_str()) {
     // Definitely, it is a square bracket
     // Add type to this symbol
-    this_type = "square bracket".to_string();
+    type_this = "square bracket".to_string();
     // There is no need to check the types in this pair
     // Check this pair and check structure status
-    u_structure = check_pair_type(u_structure, this_type.as_str(), prev_type.as_str());
+    u_structure = check_pair_type(u_structure, type_this.as_str(), prev_type.as_str());
     if (u_structure.status == false) {
       return u_structure;
     }
     // Count this symbol's type as type of the previous one
-    prev_type  = this_type.to_string().clone();
+    prev_type  = type_this.to_string().clone();
     prev_class = class_this.to_string().clone();
     unimplemented!();
   }
