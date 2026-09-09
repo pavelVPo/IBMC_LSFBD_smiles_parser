@@ -101,11 +101,11 @@ pub struct Ring  {
 #[derive(Default)]
 #[derive(Debug)]
 pub struct Branch  {
-  status:                 bool,                 // true - closed; false - open
-  pos_prev_atom:          usize,
-  bond_prev_atom:         String,
-  pos_next_atom:          usize,
-  bond_next_atom:         String
+  status:             bool,                 // true - closed; false - open
+  pos_first:          usize,
+  bond_prev_atom:     String,
+  pos_last:           usize,
+  bond_post:          String
 }
 // Structure to hold the state
 #[derive(Default)]
@@ -113,10 +113,11 @@ pub struct Branch  {
 pub struct State {
   status:                 bool,                   // true - acceptable; false - unacceptable
   branches:               Vec<Branch>,
-  any_open_branch:        bool,                  // true - there are open branches; false - there is no open branches
+  branches_open:          HashSet::<usize>,       // position
+  n_branches_open:        usize,                  // true - there are open branches; false - there is no open branches
   rings:                  Vec<Ring>,
-  open_rings:             HashSet::<usize>,
-  ring_error:             String,
+  rings_open:             HashSet::<usize>,       // ring numbers
+  n_rings_open:           usize,
   symbol_this:            String,
   class_this:             String,
   class_prev:             String,
@@ -675,10 +676,10 @@ pub fn check_symbols_pair(mut structure: Structure,
 // Probably, structure consisting of vector of values and common HashSet for open rings is a good option
 // So, branches:
 //  status:             bool, true - closed; false - open;
-//  pos_prev_atom:      usize
+//  pos_first:      usize
 //  bond_prev_atom:     String
-//  pos_next_atom:      usize
-//  bond_next_atom:     String
+//  pos_last:      usize
+//  bond_post:     String
 // Rings:
 //  status:             bool                    true - closed; false - open;
 //  number:             usize
@@ -694,18 +695,27 @@ pub fn update_state(  symbol_this:                    &String,
                       class_this:                     &String,
                       class_prev:                     &String,
                       pos_this:                       usize,
-                      pos_prev:                       &String,
+                      pos_prev:                       usize,
                       mut state:                      State) -> State {
   // Some variables
   // pos
   let mut pos_in_bracket:   usize;
-  // bracket
+  // branch
   let branch_bond;
-  let branch_bond__draft = symbol_this.chars().nth(1);
-  if  branch_bond__draft.is_none() {
+  if symbol_this.contains("-") {
     branch_bond = "-".to_string();
+  } else if symbol_this.contains("=") {
+    branch_bond = "=".to_string();
+  } else if symbol_this.contains("#") {
+    branch_bond = "#".to_string();
+  } else if symbol_this.contains("$") {
+    branch_bond = "$".to_string();
+  } else if symbol_this.contains(":") {
+    branch_bond = ":".to_string();
+  } else if symbol_this.contains(".") {
+    branch_bond = ".".to_string();
   } else {
-    branch_bond = branch_bond__draft.unwrap().to_string();
+    branch_bond = "-".to_string();
   }
   // ring
   let mut ring_number:      usize;
@@ -762,7 +772,7 @@ pub fn update_state(  symbol_this:                    &String,
   // Update rings
   if CLASSES_initiator_ring.contains(&class_this.as_str()) {
     // Case when such a ring is among the open rings, which is wrong
-    if  state.open_rings.contains(&ring_number) {
+    if  state.rings_open.contains(&ring_number) {
       // Check if such a ring is already open
       // Using rposition seems to be reasonable, since the target should be rather on the right side of the vector
       let ring_index = state.rings.clone().into_iter().rposition(|ring| ring.number == ring_number && ring.status == false).unwrap_or(state.rings.len() * 2);
@@ -776,20 +786,20 @@ pub fn update_state(  symbol_this:                    &String,
       }
     } else {
       // Add new element to the open rings
-      state.open_rings.insert(ring_number);
+      state.rings_open.insert(ring_number.clone());
       // Add new element to the rings
-      let new_ring_this = Ring {
+      let new_ring = Ring {
                                       status:             false,                      // true - closed; false - open
                                       number:             ring_number,
                                       pos_start:          pos_this.clone(),
                                       pos_end:            0,
-                                      bond:               branch_bond.clone()
+                                      bond:               branch_bond.to_string()
                                 };
-      state.rings.push(new_ring_this);
+      state.rings.push(new_ring);
     }
   } else if CLASSES_terminator_ring.contains(&class_this.as_str()) {
     // Case when such a ring is NOT among the open rings, which is wrong
-    if  !state.open_rings.contains(&ring_number) {
+    if  !state.rings_open.contains(&ring_number) {
       // state is false, return it
       state.status = false;
       state.error = "Smth is wrong".to_string();
@@ -816,6 +826,8 @@ pub fn update_state(  symbol_this:                    &String,
         if state.rings[ring_index].bond == "_" {
           state.rings[ring_index].bond = "-".to_string();
         }
+        // Remove this ring from the rings_open
+        state.rings_open.remove(&ring_number);
       } else {
         // Ring not found, state is false
         state.status = false;
@@ -823,18 +835,44 @@ pub fn update_state(  symbol_this:                    &String,
         // output
         return state;
       }
-    }
-
-    // Update branches
-      
+    } 
   }
 
+  // Update branches
+  if class_this == "bm_ibi" || class_this == "bm_ibe" {
+    // Open new branch
+    let new_branch = Branch {
+                              status:                 false,
+                              pos_first:              pos_prev,
+                              bond_prev_atom:         branch_bond,
+                              pos_last:               0,
+                              bond_post:              0.to_string()
+                            };
+    state.branches.push(new_branch);
+    state.branches_open.insert(pos_this.clone());
+  } else if class_this == "bm_tbi" || class_this == "bm_tbe" {
+    // Close the last branch
+    if let Some(last_branch) = state.branches.last_mut() {
+      if last_branch.status == true || last_branch.pos_last > 0 {
+        // Smth is wrong, return false state
+        state.status = false;
+        state.error = format!("Branch at {pos_this} is problematic");
+        // output
+        return state;
+      } else {
+        last_branch.pos_last = pos_this;
+        last_branch.bond_post = branch_bond;
+      }
+      state.branches_open.remove(&pos_this);
+    }
+  }
 
+  // Update meta state (numbers of things open):
+  state.n_rings_open    = state.rings_open.len();
+  state.n_branches_open = state.branches_open.len();
 
   // Output
-  //let state_updated: (Structure, bool, usize, bool, HashSet::<String>, Vec<(bool, usize, String, usize, String)>, Vec<(bool, usize, usize, String, usize)>) = (structure, is_aromatic, pos_in_bracket, ct_open, rings_open, branches_open, rings_details);
-  //state_updated
-  unimplemented!();
+  return state;
 }
 
 // Function to check the updated state
