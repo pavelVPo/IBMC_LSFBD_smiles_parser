@@ -768,6 +768,7 @@ pub fn update_state(  symbol_this:                    &String,
   } else {
     pos_in_bracket = 0;
   }
+  state.pos_in_bracket = pos_in_bracket.clone();
 
   // Update rings
   if CLASSES_initiator_ring.contains(&class_this.as_str()) {
