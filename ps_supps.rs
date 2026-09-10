@@ -103,7 +103,7 @@ pub struct Ring  {
 pub struct Branch  {
   status:             bool,                 // true - closed; false - open
   pos_first:          usize,
-  bond_prev_atom:     String,
+  bond_prev:          String,
   pos_last:           usize,
   bond_post:          String
 }
@@ -122,7 +122,7 @@ pub struct State {
   class_this:             String,
   class_prev:             String,
   pos_this:               usize,
-  pos_prev:               String,
+  pos_prev:               usize,
   pos_in_bracket:         usize,
   error:                  String
 }
@@ -643,65 +643,19 @@ pub fn check_symbols_pair(mut structure: Structure,
 }
 
 // Function to update the state
-// $red this_pos is needed
-// What are the changable variables at this point?
-// is_aromatic: bool; pos_in_bracket: usize; rings_open: HashSet<String>; ct_open; branches_open
-//    pos_in_brackets     ->  depends on the current symbol and state
-//    rings_open          ->  depends on the current symbol and state
-//    ct_open             ->  depends on the current symbol and state
-//    branches_open       ->  depends on the current symbol and state:
-//        key: position in the vector of branches
-//        value:
-//                (status:         bool,      where true is closed, false is open
-//                  prev_atom_pos: usize,
-//                  bond_pre:      String,
-//                  pos_post:      usize,
-//                  bond_post:     String)
-//    rings_open          ->  depends on the current symbol and state
-//    rings_details       ->  depends on the current symbol and state
-//         key: - position in the vector of rings
-//         value:
-//                (status: bool,      where true is closed, false is open
-//                  number: number
-//                  pos_start: usize,
-//                  bond: String,     i.e. the bond between the starting and ending atom, which could be specified here or there or both (should be the same)
-//                  pos_end: usize)
-// Not good enough, updating both structure and state is not desirable. To be reworked.
-// So, probably, it is time to think about the state variables more thoroughly
-// First of all, having rings_open, ring_details and branches_open is incosistent
-// It will be better to have branches and rings instead
-// This function is not the only place, where these are used, so, * will be better
-// Also, rings is the reason for the structure update to be here
-// Changing data structure will help to update structure and state separately.
-// Probably, structure consisting of vector of values and common HashSet for open rings is a good option
-// So, branches:
-//  status:             bool, true - closed; false - open;
-//  pos_first:      usize
-//  bond_prev_atom:     String
-//  pos_last:      usize
-//  bond_post:     String
-// Rings:
-//  status:             bool                    true - closed; false - open;
-//  number:             usize
-//  pos_start:          usize
-//  pos_end:            usize
-//  bond:               String
-//  open:               HashSet::<usize>        numbers assigned to the rings, open rings with the duplicated numbers are not allowed
-//  So, starting with the rewriting update_state and then where needed
-//  is_aromatic could be defined earlier, but maybe it is too much to drag it between the functions
-//  now, single state variable will be used to hold the state
-//  #red still work in progress
+// SEEMS to be OK by now
 pub fn update_state(  symbol_this:                    &String,
                       class_this:                     &String,
-                      class_prev:                     &String,
                       pos_this:                       usize,
-                      pos_prev:                       usize,
-                      mut state:                      State) -> State {
-  // Some variables
-  // pos
-  let mut pos_in_bracket:   usize;
+                      mut state:                      State   ) -> State {
+  // Prepare some variables
+  let branch_bond:          String;
+  let ring_bond:            String;
+  let pos_in_bracket:       usize;
+  let ring_number:          usize;
+
+  // Prepare further
   // branch
-  let branch_bond;
   if symbol_this.contains("-") {
     branch_bond = "-".to_string();
   } else if symbol_this.contains("=") {
@@ -718,38 +672,39 @@ pub fn update_state(  symbol_this:                    &String,
     branch_bond = "-".to_string();
   }
   // ring
-  let mut ring_number:      usize;
   // SEE the discussion in https://users.rust-lang.org/t/how-to-parse-an-int-from-string/12456/10
   let ring_number_vec: Vec<_>        = symbol_this.chars().filter(|this_char| this_char.is_ascii_digit()).collect();
   let ring_number_string: String     = ring_number_vec.into_iter().collect();
-  let ring_number: usize             = ring_number_string.parse().unwrap();
+  ring_number                        = ring_number_string.parse().unwrap();
   // Prepare the ring bond
-  let ring_bond;
   if symbol_this.contains("-") {
-    ring_bond = "_";
+    ring_bond = "_".to_string();
   } else if symbol_this.contains("=") {
-    ring_bond = "=";
+    ring_bond = "=".to_string();
   } else if symbol_this.contains("#") {
-    ring_bond = "#";
+    ring_bond = "#".to_string();
   } else if symbol_this.contains("$") {
-    ring_bond = "$";
+    ring_bond = "$".to_string();
   } else if symbol_this.contains(":") {
-    ring_bond = ":";
+    ring_bond = ":".to_string();
   } else if symbol_this.contains(".") {
-    ring_bond = ".";
+    ring_bond = ".".to_string();
   } else {
-    ring_bond = "_";
+    ring_bond = "_".to_string();
   }
 
   // Updating the state and doing all things needed
+  // It should be noted that this value will be used during the symbol classification,
+  // i.e., symbol classification procedure will deal with the position of the previous symbol  
   // pos_in_bracket
-  // 1 - open bracket
+  // 1 - s_bracket
   // 2 - isotope
   // 3 - atom
   // 4 - chirality
   // 5 - hydro
   // 6 - charge
   // 7 - class
+  // 8 - e_bracket
   // 0 - not in bracket
   if class_this == "s_bracket" {
     pos_in_bracket = 1;
@@ -765,6 +720,8 @@ pub fn update_state(  symbol_this:                    &String,
     pos_in_bracket = 6;
   } else if class_this == "class" {
     pos_in_bracket = 7;
+  } else if class_this == "e_bracket" {
+    pos_in_bracket = 8;
   } else {
     pos_in_bracket = 0;
   }
@@ -774,27 +731,21 @@ pub fn update_state(  symbol_this:                    &String,
   if CLASSES_initiator_ring.contains(&class_this.as_str()) {
     // Case when such a ring is among the open rings, which is wrong
     if  state.rings_open.contains(&ring_number) {
-      // Check if such a ring is already open
-      // Using rposition seems to be reasonable, since the target should be rather on the right side of the vector
-      let ring_index = state.rings.clone().into_iter().rposition(|ring| ring.number == ring_number && ring.status == false).unwrap_or(state.rings.len() * 2);
-      // Check if not None
-      if ring_index < state.rings.len() {
-        // this is wrong: there are two rings having the same number and open at one time
-        state.status = false;
-        state.error = format!("Two rings {ring_number} are open simultaneously");
-        // output
-        return state;
-      }
+      // additional checks are not needed
+      // this is wrong: there are two rings having the same number and open at one time
+      state.status = false;
+      state.error = format!("Two rings '{ring_number}' are open simultaneously");
+      // output
+      return state;
     } else {
       // Add new element to the open rings
       state.rings_open.insert(ring_number.clone());
       // Add new element to the rings
-      let new_ring = Ring {
-                                      status:             false,                      // true - closed; false - open
-                                      number:             ring_number,
-                                      pos_start:          pos_this.clone(),
-                                      pos_end:            0,
-                                      bond:               branch_bond.to_string()
+      let new_ring = Ring { status:             false,                      // true - closed; false - open
+                            number:             ring_number.clone(),
+                            pos_start:          pos_this.clone(),
+                            pos_end:            0,
+                            bond:               branch_bond.to_string()
                                 };
       state.rings.push(new_ring);
     }
@@ -809,33 +760,25 @@ pub fn update_state(  symbol_this:                    &String,
     } else {
       // Find and close this ring
       let ring_index = state.rings.clone().into_iter().rposition(|ring| ring.number == ring_number && ring.status == false).unwrap_or(state.rings.len() * 2);
-      if ring_index < state.rings.len() {
-        // Ring is found, update it
-        state.rings[ring_index].status  = true;
-        state.rings[ring_index].pos_end = pos_this;
-        if state.rings[ring_index].bond != ring_bond {
-          if state.rings[ring_index].bond == "_".to_string() && ring_bond != "_".to_string() {
-            state.rings[ring_index].bond = ring_bond.to_string();
-          } else if state.rings[ring_index].bond != "_".to_string() && ring_bond != "_".to_string() {
-            // Wrong, ambigous bond closing the ring
-            state.status = false;
-            state.error = format!("Ring {ring_number} has ambigous bond");
-            // output
-            return state;
-          }
+      // Ring is found, update it
+      state.rings[ring_index].status  = true;
+      state.rings[ring_index].pos_end = pos_this;
+      if state.rings[ring_index].bond != ring_bond {
+        if state.rings[ring_index].bond == "_".to_string() && ring_bond != "_".to_string() {
+          state.rings[ring_index].bond = ring_bond.to_string();
+        } else if state.rings[ring_index].bond != "_".to_string() && ring_bond != "_".to_string() {
+          // Wrong, ambigous bond closing the ring
+          state.status = false;
+          state.error = format!("Ring {ring_number} has ambigous bond");
+          // output
+          return state;
         }
-        if state.rings[ring_index].bond == "_" {
-          state.rings[ring_index].bond = "-".to_string();
-        }
-        // Remove this ring from the rings_open
-        state.rings_open.remove(&ring_number);
-      } else {
-        // Ring not found, state is false
-        state.status = false;
-        state.error = format!("Ring {ring_number} is problematic");
-        // output
-        return state;
       }
+      if state.rings[ring_index].bond == "_" {
+        state.rings[ring_index].bond = "-".to_string();
+      }
+      // Remove this ring from the rings_open
+      state.rings_open.remove(&ring_number);
     } 
   }
 
@@ -844,8 +787,8 @@ pub fn update_state(  symbol_this:                    &String,
     // Open new branch
     let new_branch = Branch {
                               status:                 false,
-                              pos_first:              pos_prev,
-                              bond_prev_atom:         branch_bond,
+                              pos_first:              pos_this.clone(),
+                              bond_prev:              branch_bond.clone(),
                               pos_last:               0,
                               bond_post:              0.to_string()
                             };
@@ -861,28 +804,41 @@ pub fn update_state(  symbol_this:                    &String,
         // output
         return state;
       } else {
-        last_branch.pos_last = pos_this;
-        last_branch.bond_post = branch_bond;
+        // update
+        last_branch.pos_last =  pos_this.clone();
+        last_branch.bond_post = branch_bond.clone();
+        // remove
+        state.branches_open.remove(&last_branch.pos_first);
       }
-      state.branches_open.remove(&pos_this);
     }
   }
 
-  // Update meta state (numbers of things open):
-  state.n_rings_open    = state.rings_open.len();
-  state.n_branches_open = state.branches_open.len();
+  // Update single value and meta state (numbers of things open):
+  state.class_prev        = state.class_this.clone();
+  state.pos_prev          = state.pos_this.clone();
+  state.pos_this          = pos_this.clone();
+  state.class_this        = class_this.clone();
+  state.symbol_this       = symbol_this.clone();
+  state.n_rings_open      = state.rings_open.len();
+  state.n_branches_open   = state.branches_open.len();
 
   // Output
   return state;
 }
 
-// Function to check the updated state
-// #red check for ambigous bonds in ring and disticnt open rings having same IDs, for example
 
+// ?? Function to check the updated state
+// #red check for ambigous bonds in ring and disticnt open rings having same IDs, for example
+pub fn check_state(state: State) -> State {
+  unimplemented!();
+  // Output
+}
 
 // Function to update the structure itself considering available data on current symbol and state
-pub fn update_structure(mut u_structure: Structure, symbol_this: &String) -> Structure {
+pub fn update_structure(mut structure: Structure, state: State) -> Structure {
   unimplemented!();
+  // Output
+  return structure;
 }
 
 
