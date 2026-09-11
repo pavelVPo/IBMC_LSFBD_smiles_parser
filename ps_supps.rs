@@ -118,6 +118,7 @@ pub struct State {
   rings:                  Vec<Ring>,
   rings_open:             HashSet::<usize>,       // ring numbers
   n_rings_open:           usize,
+  ct_open:                bool,
   symbol_this:            String,
   class_this:             String,
   class_prev:             String,
@@ -796,7 +797,7 @@ pub fn update_state(  symbol_this:                    &String,
   }
 
   // Check if is_aromatic
-  if CLASSES_aromatic.contains(&symbol_this) {
+  if CLASSES_aromatic.contains(&symbol_this.as_str()) {
     is_aromatic = true;
   } else {
     is_aromatic = false;
@@ -811,6 +812,11 @@ pub fn update_state(  symbol_this:                    &String,
   state.n_rings_open      = state.rings_open.len();
   state.n_branches_open   = state.branches_open.len();
   state.is_aromatic       = is_aromatic.clone();
+  if class_this == "l_ct" {
+    state.ct_open = true;
+  } else if class_this == "r_ct" {
+    state.ct_open = false;
+  }
 
   // Output
   return state;
