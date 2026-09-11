@@ -124,7 +124,8 @@ pub struct State {
   class_prev:             String,
   pos_this:               usize,
   pos_prev:               usize,
-  pos_in_bracket:         usize,
+  pos_inb_this:           usize,
+  pos_inb_prev:           usize,
   is_aromatic:            bool,
   error:                  String
 }
@@ -303,7 +304,8 @@ pub fn get_symbol(getls_smiles_chunk: &str, s_one: &[&str], s_two: &[&str],
 }
 
 // Function to classify this symbol, returning the type, class and is_aromatic for this symbol
-pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: HashSet<String>, ct_open: bool) -> (String, String) {
+// Should be fine by now
+pub fn classify_symbol(symbol_this: &String, state: State) -> (String, String) {
 
   // Holders for the output and intermediate
   let mut type_this      = "".to_string();
@@ -322,22 +324,15 @@ pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: 
     if SYMBOL_atom.contains(&symbol_this.as_str()) {
       // Decide on aromatics
       if SYMBOL_aromatic_atom.contains(&symbol_this.as_str()) {
-        let is_aromatic = true;
+        is_aromatic = true;
       }
       // Probably this is an atom
-      if pos_in_bracket > 0 && pos_in_bracket < 3 {
-        // This is an atom
-        type_this = "atom".to_string();
-      }
-      else if pos_in_bracket == 0 {
+      if state.pos_inb_this < 3 {
         // This is an atom
         type_this = "atom".to_string();
       }
     } else if SYMBOL_anything.contains(&symbol_this.as_str()) {
       // This is any atom
-      type_this = "atom".to_string();
-    } else if is_aromatic == true {
-      // This is aromatic atom
       type_this = "atom".to_string();
     }
     // Classify the atom further
@@ -353,7 +348,7 @@ pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: 
       if symbol_this == &"*".to_string() {
         class_this = "any".to_string();
         break 'classification__block;
-      } else if pos_in_bracket > 1 {
+      } else if state.pos_inb_this > 1 {
         // atom_bar
         if is_aromatic == true && symbol_this.chars().count() == 1 {
           class_this = "atom_bar".to_string();
@@ -361,7 +356,7 @@ pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: 
         }
         // atom_bar_2
         if is_aromatic == true && symbol_this.chars().count() == 2 {
-          class_this = "atom_bar".to_string();
+          class_this = "atom_bar_2".to_string();
           break 'classification__block;
         }
         // atom_bal
@@ -393,51 +388,51 @@ pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: 
       }
     }
     // Check if a property
-    if type_this != "atom".to_string() && SYMBOL_property.contains(&symbol_this.as_str()) && pos_in_bracket != 0 && pos_in_bracket != 2 {
+    if type_this != "atom".to_string() && SYMBOL_property.contains(&symbol_this.as_str()) && state.pos_inb_this != 2 {
       // It is a property
       type_this = "property".to_string();
       // Classify this property further
-      if SYMBOL_isotope.contains(&symbol_this.as_str()) {
+      if SYMBOL_isotope.contains(&symbol_this.as_str()) && state.pos_inb_this == 1 {
         class_this = "isotope".to_string();
         break 'classification__block;
       }
-      if SYMBOL_isotope_m.contains(&symbol_this.as_str()) {
+      if SYMBOL_isotope_m.contains(&symbol_this.as_str()) && state.pos_inb_this == 1 {
         class_this = "isotope_m".to_string();
         break 'classification__block;
       }
-      if SYMBOL_chiral.contains(&symbol_this.as_str()) {
+      if SYMBOL_chiral.contains(&symbol_this.as_str()) && state.pos_inb_this > 2 {
         class_this = "chiral".to_string();
         break 'classification__block;
       }
-      if SYMBOL_chiral_2.contains(&symbol_this.as_str()) {
+      if SYMBOL_chiral_2.contains(&symbol_this.as_str()) && state.pos_inb_this > 2 {
         class_this = "chiral_2".to_string();
         break 'classification__block;
       }
-      if SYMBOL_chiral_m.contains(&symbol_this.as_str()) {
+      if SYMBOL_chiral_m.contains(&symbol_this.as_str()) && state.pos_inb_this > 2 {
         class_this = "chiral_m".to_string();
         break 'classification__block;
       }
-      if SYMBOL_hydro.contains(&symbol_this.as_str()) {
+      if SYMBOL_hydro.contains(&symbol_this.as_str()) && state.pos_inb_this > 2 {
         class_this = "hydro".to_string();
         break 'classification__block;
       }
-      if SYMBOL_hydro_2.contains(&symbol_this.as_str()) {
+      if SYMBOL_hydro_2.contains(&symbol_this.as_str()) && state.pos_inb_this > 2 {
         class_this = "hydro_2".to_string();
         break 'classification__block;
       }
-      if SYMBOL_charge.contains(&symbol_this.as_str()) {
+      if SYMBOL_charge.contains(&symbol_this.as_str()) && state.pos_inb_this > 2 {
         class_this = "charge".to_string();
         break 'classification__block;
       }
-      if SYMBOL_charge_2.contains(&symbol_this.as_str()) {
+      if SYMBOL_charge_2.contains(&symbol_this.as_str()) && state.pos_inb_this > 2 {
         class_this = "charge_2".to_string();
         break 'classification__block;
       }
-      if SYMBOL_charge_m.contains(&symbol_this.as_str()) {
+      if SYMBOL_charge_m.contains(&symbol_this.as_str()) && state.pos_inb_this > 2 {
         class_this = "charge_m".to_string();
         break 'classification__block;
       }
-      if SYMBOL_class.contains(&symbol_this.as_str()) {
+      if SYMBOL_class.contains(&symbol_this.as_str()) && state.pos_inb_this > 2 {
         class_this = "class".to_string();
         break 'classification__block;
       }
@@ -483,18 +478,14 @@ pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: 
       }
     }
     // Check if a modifier
-    if SYMBOL_modifier.contains(&symbol_this.as_str()) && pos_in_bracket == 0 {
+    if type_this != "atom".to_string() && type_this != "property".to_string() && type_this != "square_bracket".to_string() && type_this != "bond".to_string() &&
+       SYMBOL_modifier.contains(&symbol_this.as_str()) && state.pos_inb_this == 0 {
       // It is a modifier of sorts
       type_this = "modifier".to_string();
       // Check unique modifiers
       if SYMBOL_bm_ibe.contains(&symbol_this.as_str()) {
         // It is bm_ibe
         class_this = "bm_ibe".to_string();
-        break 'classification__block;
-      }
-      if SYMBOL_bm_ibi.contains(&symbol_this.as_str()) {
-        // It is bm_ibi
-        class_this = "bm_ibi".to_string();
         break 'classification__block;
       }
       if SYMBOL_bm_ibi.contains(&symbol_this.as_str()) {
@@ -515,7 +506,12 @@ pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: 
       // Decide on rings, which have the same markers for the start and end
       if SYMBOL_bm_itri.contains(&symbol_this.as_str()) {
         // It is bm_iri OR bm_tri
-        if rings_open.contains(symbol_this) {
+        // Get the ring number to search for
+        let ring_number_vec: Vec<_>        = symbol_this.chars().filter(|this_char| this_char.is_ascii_digit()).collect();
+        let ring_number_string: String     = ring_number_vec.into_iter().collect();
+        let ring_number: usize             = ring_number_string.parse().unwrap();
+        // Search for it
+        if state.rings_open.contains(&ring_number) {
           // This is bm_tri
           class_this = "bm_tri".to_string();
           break 'classification__block;
@@ -526,7 +522,11 @@ pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: 
       }
       if SYMBOL_bm_itre_2.contains(&symbol_this.as_str()) {
         // It is bm_ire_2 OR bm_tre_2
-        if rings_open.contains(symbol_this) {
+        // Get the ring number to search for
+        let ring_number_vec: Vec<_>        = symbol_this.chars().filter(|this_char| this_char.is_ascii_digit()).collect();
+        let ring_number_string: String     = ring_number_vec.into_iter().collect();
+        let ring_number: usize             = ring_number_string.parse().unwrap();
+        if state.rings_open.contains(&ring_number) {
           // This is bm_tre_2
           class_this = "bm_tre_2".to_string();
           break 'classification__block;
@@ -537,7 +537,11 @@ pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: 
       }
       if SYMBOL_bm_itri_3.contains(&symbol_this.as_str()) {
         // It is bm_iri_3 OR bm_tri_3
-        if rings_open.contains(symbol_this) {
+        // Get the ring number to search for
+        let ring_number_vec: Vec<_>        = symbol_this.chars().filter(|this_char| this_char.is_ascii_digit()).collect();
+        let ring_number_string: String     = ring_number_vec.into_iter().collect();
+        let ring_number: usize             = ring_number_string.parse().unwrap();
+        if state.rings_open.contains(&ring_number) {
           // This is bm_tri_3
           class_this = "bm_tri_3".to_string();
           break 'classification__block;
@@ -548,7 +552,11 @@ pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: 
       }
       if SYMBOL_bm_itre_4.contains(&symbol_this.as_str()) {
         // It is bm_ire_4 OR bm_tre_4
-        if rings_open.contains(symbol_this) {
+        // Get the ring number to search for
+        let ring_number_vec: Vec<_>        = symbol_this.chars().filter(|this_char| this_char.is_ascii_digit()).collect();
+        let ring_number_string: String     = ring_number_vec.into_iter().collect();
+        let ring_number: usize             = ring_number_string.parse().unwrap();
+        if state.rings_open.contains(&ring_number) {
           // This is bm_tre_4
           class_this = "bm_tre_4".to_string();
           break 'classification__block;
@@ -562,7 +570,7 @@ pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: 
     if SYMBOL_ct.contains(&symbol_this.as_str()) {
       // It is a ct
       type_this = "ct".to_string();
-      if ct_open == false {
+      if state.ct_open == false {
         // It is lct
         class_this = "lct".to_string();
          break 'classification__block;
@@ -577,7 +585,7 @@ pub fn classify_symbol(symbol_this: &String, pos_in_bracket: usize, rings_open: 
 
   // Output
   let symbol_classification: (String, String) = (type_this, class_this);
-  symbol_classification
+  return symbol_classification;
 }
 // #red
 // Consider to update the state after classification during the pair check-up
@@ -589,7 +597,7 @@ pub fn check_symbols_pair(mut structure: Structure,
                             type_this: &String, prev_type: &String,
                             class_this: &String, prev_class: &String,
                             mut is_aromatic: bool,
-                            mut pos_in_bracket: usize,
+                            mut pos_inb_this: usize,
                             mut rings_open: HashSet<String>,
                             mut ct_open: bool) -> Structure {
   // so, at this time this and last symbols are known and classified
@@ -633,7 +641,7 @@ pub fn update_state(  symbol_this:                    &String,
   // Prepare some variables
   let branch_bond:          String;
   let ring_bond:            String;
-  let pos_in_bracket:       usize;
+  let pos_inb_this:       usize;
   let ring_number:          usize;
   let is_aromatic:          bool;
 
@@ -679,7 +687,7 @@ pub fn update_state(  symbol_this:                    &String,
   // Updating the state and doing all things needed
   // It should be noted that this value will be used during the symbol classification,
   // i.e., symbol classification procedure will deal with the position of the previous symbol  
-  // pos_in_bracket
+  // pos_inb_this
   // 1 - s_bracket
   // 2 - isotope
   // 3 - atom
@@ -690,25 +698,28 @@ pub fn update_state(  symbol_this:                    &String,
   // 8 - e_bracket
   // 0 - not in bracket
   if class_this == "s_bracket" {
-    pos_in_bracket = 1;
+    pos_inb_this = 1;
   } else if class_this == "isotope"  || class_this == "isotope_m" {
-    pos_in_bracket = 2;
+    pos_inb_this = 2;
   } else if class_this == "atom_bar" || class_this == "atom_bar_2" {
-    pos_in_bracket = 3;
+    pos_inb_this = 3;
   } else if class_this == "chiral"   || class_this == "chiral_2" || class_this == "chiral_m" {
-    pos_in_bracket = 4;
+    pos_inb_this = 4;
   } else if class_this == "hydro"    || class_this == "hydro_2" {
-    pos_in_bracket = 5;
+    pos_inb_this = 5;
   } else if class_this == "charge"   || class_this == "charge_2" || class_this == "charge_m" {
-    pos_in_bracket = 6;
+    pos_inb_this = 6;
   } else if class_this == "class" {
-    pos_in_bracket = 7;
+    pos_inb_this = 7;
   } else if class_this == "e_bracket" {
-    pos_in_bracket = 8;
+    pos_inb_this = 8;
   } else {
-    pos_in_bracket = 0;
+    pos_inb_this = 0;
   }
-  state.pos_in_bracket = pos_in_bracket.clone();
+  // Update position in brackets
+  // pos_inb should increase always
+  state.pos_inb_prev = state.pos_inb_this.clone();
+  state.pos_inb_this = pos_inb_this.clone();
 
   // Update rings
   if CLASSES_initiator_ring.contains(&class_this.as_str()) {
