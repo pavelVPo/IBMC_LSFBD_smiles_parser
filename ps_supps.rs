@@ -589,7 +589,8 @@ pub fn classify_symbol(symbol_this: &String, state: State) -> (String, String) {
 }
 
 
-// Correct this to align with the current strategy: state first, then structure according to the state 
+// Correct this to align with the current strategy: state first, then structure according to the state
+// Seems to be OK by now
 // Function to check the pair of symbols, and update the state 
 pub fn check_symbols_pair(mut state: State,
                             symbol_this: &String, symbol_prev: &String,
@@ -830,11 +831,14 @@ pub fn update_state(  symbol_this:                    &String,
 }
 
 
-// ?? Function to check the updated state
-// #red check for ambigous bonds in ring and disticnt open rings having same IDs, for example
-pub fn check_state(state: State) -> State {
-  unimplemented!();
+// Function to check state status
+pub fn check_state_status(state: State, mut structure: Structure) -> Structure {
+  if state.status == false {
+    structure.status = false;
+    structure.error = state.error.clone();
+  }
   // Output
+  return structure;
 }
 
 // Function to update the structure itself considering available data on current symbol and state
