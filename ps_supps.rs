@@ -587,32 +587,28 @@ pub fn classify_symbol(symbol_this: &String, state: State) -> (String, String) {
   let symbol_classification: (String, String) = (type_this, class_this);
   return symbol_classification;
 }
-// #red
-// Consider to update the state after classification during the pair check-up
-// also checking whether the atom from brackets is omitted
 
+
+// Correct this to align with the current strategy: state first, then structure according to the state 
 // Function to check the pair of symbols, and update the state 
-pub fn check_symbols_pair(mut structure: Structure,
-                            symbol_this: &String, prev_symbol: &String,
-                            type_this: &String, prev_type: &String,
-                            class_this: &String, prev_class: &String,
-                            mut is_aromatic: bool,
-                            mut pos_inb_this: usize,
-                            mut rings_open: HashSet<String>,
-                            mut ct_open: bool) -> Structure {
+pub fn check_symbols_pair(mut state: State,
+                            symbol_this: &String, symbol_prev: &String,
+                            type_this: &String, type_prev: &String,
+                            class_this: &String, prev_class: &String) -> State {
   // so, at this time this and last symbols are known and classified
   // the state is relevant to the previous symbol
   // thus, pair should be checked and the state updated latter
   
   'check__block: {
     // Prepare this pair
-    let pair_type_this = format!("{},{}", prev_type, type_this);
+    let pair_this = format!("{},{}", symbol_prev, symbol_this);
+    let pair_type_this = format!("{},{}", type_prev, type_this);
     let pair_class_this = format!("{},{}", prev_class, class_this);
     // Check the types of symbols in pair
     if PAIR_type_no.contains(&pair_type_this.as_str())  {
       // Describe the problem
-      structure.status = false;
-      structure.error  = format!("unacceptable pair of symbols: {}", pair_type_this);
+      state.status = false;
+      state.error  = format!("unacceptable pair of symbols: {}: {}", pair_type_this, pair_this);
       break 'check__block;
     }
     // Check the classes of symbols in pair
@@ -624,12 +620,12 @@ pub fn check_symbols_pair(mut structure: Structure,
        PAIR_class_no__in_iso.contains(&pair_class_this.as_str())  ||
        PAIR_class_no__in_start.contains(&pair_class_this.as_str())  {
           // Describe the problem
-          structure.status = false;
-          structure.error  = format!("unacceptable pair of symbols: {}", pair_class_this);
+          state.status = false;
+          state.error  = format!("unacceptable pair of symbols: {}: {}", pair_class_this, pair_this);
           break 'check__block;
        } 
   }
-  structure
+  state
 }
 
 // Function to update the state
