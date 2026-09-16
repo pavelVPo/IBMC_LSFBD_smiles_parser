@@ -112,6 +112,7 @@ pub struct Branch  {
 #[derive(Debug)]
 pub struct State {
   status:                 bool,                   // true - acceptable; false - unacceptable
+  current_position:       usize,
   branches:               Vec<Branch>,
   branches_open:          HashSet::<usize>,       // position
   n_branches_open:        usize,                  // true - there are open branches; false - there is no open branches
@@ -843,7 +844,10 @@ pub fn check_state_status(state: State, mut structure: Structure) -> Structure {
 
 // Function to update the structure itself considering available data on current symbol and state
 pub fn update_structure(mut structure: Structure, state: State) -> Structure {
-  unimplemented!();
+  // what are the options?
+  // enumeration of the options is needed at this point
+  // So, studies described in readme should be updated
+
   // Output
   return structure;
 }
