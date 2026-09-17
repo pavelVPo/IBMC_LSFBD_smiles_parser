@@ -1,4 +1,6 @@
-# SMILES Parser (work in progress)
+# SMILES Parser
+
+**The whole thing besides the symbols' classification (maybe) is in progress and will be modified substantially.**
 
 For the SMILES (Simplified Molecular Input Line Entry System) reference, please, SEE:
 
@@ -10,9 +12,9 @@ For the SMILES (Simplified Molecular Input Line Entry System) reference, please,
 
 In short:
 
--   SMILES is a language, which is used to describe a molecule in the terms of and according to the rules of chemical valence and mathematical graph theories.
+-   SMILES is a language, which is used to describe a molecule in terms of and according to the rules of chemical valence and mathematical graph theories.
 
--   SMILES string is the linear notation of a spanning tree of a graph representing molecule.
+-   SMILES string is the linear notation of spanning tree of the graph representing molecule.
 
 -   SMILES string includes atom symbols, bonds between them and some characteristics of these entities.
 
@@ -30,19 +32,17 @@ The main idea is as follows:
 
 1.  Computer program accepts the SMILES string, i.e., sequence of characters constituting symbols having chemical meaning.
 
-2.  Computer program process this string from left to right one character at time.
+2.  Computer program process this string from left to right in chunks equal in length to the longest symbol possible in SMILES.
 
     **What is meant by "computer program process"?**
 
     | - Computer program has default state.
-    | - Every time computer program encounters new (next) character, state of the computer program changes accordingly (taking into account program's current state and what character it encounters).
-    | - At each step computer program takes some action to produce an output.
+    | - Every time computer program encounters new (next) chunk and symbol, state of the computer program changes accordingly (taking into account program's current state and what symbol it encounters).
+    | - At each step computer program takes some actions to produce an output.
 
-3.  Computer program produces an output.
+3.  Computer program produces an output, i.e. graph representing chemical structure in such a way that this structure could be processed in computer furhter.
 
-    **What is an "output"?**
-
-    | Data structure appropriate for the further computer processing and filled with the chemical data encoded by the input SMILES string.
+    **- - -**
 
     To get an insight into what kinds of state switching will be needed and possible for the program, it will be useful to check, which pairs of characters are possible in SMILES.
 
@@ -70,7 +70,7 @@ Using faceted classification scheme (<https://en.wikipedia.org/wiki/Faceted_clas
 
 -   specific grammatical requirements (symbols of some atoms could only be valid when they are enclosed within the square brackets, symbols of other atoms do not require such enclosing)
 
--   aromaticity (for atoms only)
+-   aromaticity (for atoms only now and also for bonds in the earlier versions of SMILES, compatibility)
 
 -   whether symbol marks the start or the end of something in case of symbols, which go in pairs (initiator (left), terminator (right))
 
@@ -84,7 +84,7 @@ Using the information above, it is possible to
 
 -   construct corresponding classes of characters providing some convenience for parsing
 
--   assess their intersections and frequency in the available data, which will be useful while selecting particular parsing approach
+-   assess their intersections and frequency in the available data, which will be useful while selecting particular parsing tactics
 
 And then, select particular parsing approach and set of rules within it and set of technologies for implementation to hopefully finally come up with the pretty normal SMILES parser.
 
@@ -118,7 +118,7 @@ Thus, the following classes of atom symbols allowed in SMILES could be enumerate
 
 > b, c, n, o, s, p
 
-Corresponding characters could be designated as distinct character class, **w_atom_oar**, where prefix **w** stands for the whole symbol, suffix **o** - for organic and suffix **ar** - for aromatic.
+Corresponding characters could be designated as distinct character class, **w_atom_oar**, where prefix **w** stands for the whole symbol, suffix **o** - for organic and suffix **ar** - for aromatic. However, prefix **w** is not substantial in this case, since all the members of **atom_oar** belong to the **w_atom_oar**.
 
 2.  Single character atom symbols of organic aliphatic atoms lacking the additional grammatical requirements and features (**atom_oal**):
 
@@ -182,11 +182,11 @@ Corresponding symbol and character classes could be designated as **s_bracket** 
 
 Bond symbol is the way to designate the edge of the molecular graph, i.e. chemical bond, in the SMILES string.
 
-**There are six bond symbols allowed in SMILES, all of them are single character and do not have other peculiar aspects, five of them correspond to the conventional type of chemical bond:**
+**There are six bond symbols allowed in SMILES, all of them are single character symbols and do not have other peculiar aspects, five of them correspond to the conventional type of chemical bond:**
 
 11. Single character bond symbol corresponding to the single bond (**single_bond**):
 
-> -   
+> \-
 
 This single character symbol could be and typically is omitted, since by default all the atoms, which symbols are written side by side in SMILES string, are presumed to be connected by this type of bond. Corresponding character class will be designated as **w_single_bond**.
 
@@ -378,7 +378,7 @@ Corresponding character class could be designated as **w_isotope**, where prefix
 
 > [0-9][1-9], [1-9][0-9], [0-9][0-9][1-9], [0-9][1-9][0-9], [1-9][0-9][0-9]
 
-Corresponding characters could be designated as **s_isotope & r_isotope**, where prefix **s** stands for the start and prefix **r** stands for the rest of the symbol.
+Corresponding characters could be designated as **s_isotope, m_isotope & r_isotope**, where prefix **s** stands for the start, and prefix **r** stands for the rest of the symbol.
 
 ##### Chirality symbols
 
@@ -460,7 +460,9 @@ Corresponding character classes could be designated as **s_class & r_class**, wh
 
 Information on symbols is summarized in **symbols.tsv**, all symbols are provided in **symbols_all.tsv**.
 
-## Q1: are described symbols unique, i.e. is it possible to identify each SMILES symbols based only on characters constituting it?
+> **Remark from 17.09.2026:** at this point it is clear that sufficiently efficient and straightforward parsing is possible in chunks having lengths equal to the length of the longest symbol, thus, dividing symbols into characters is not needed. However, this info is still presented in this version.
+
+## Q1: are the described symbols unique, i.e. is it possible to identify each SMILES symbols based only on characters constituting it?
 
 No, as it can be seen from **Figure 1** or **symbols.tsv**.
 
@@ -474,25 +476,27 @@ For example:
 
 Also, several classes of symbols could be described or are described partially by the patterns [0-9] and [1-9], which makes parsing without consideration of the environment questionable.
 
-In the previous version the attempt was taken to divide the whole symbols into the smaller subsets of characters, the result is as follows: this strategy does not pay off, character classes probably could be useful to construct the SMILES strings, but they provide no clear benefits for parsing:
-
-> [!NOTE]
-
-> It seems to be easier to read the characters one by one until the longest possible sequence describing symbol is gathered (5 characters, I guess) and decide on the actual symbol afterwards, considering matches in **current sub-string** and **state** deduced from the previous symbols and length of the remaining SMILES string.
-
-> The following text will be rewritten accordingly.
-
 ## General SMILES parsing strategy revised
 
-1.  Computer program initializes with the SMILES string having default **state** and empty **accumulator** of characters and empty **result**.
+1.  Default state of the computer program is initialized with the new SMILES string.
 
-2.  Every time computer program encounters new (next) character it accumulates this character.
+2.  Computer program process chunks of the SMILES string from left to right.
 
-3.  Every time accumulator reaches its limits (longest symbol in SMILES or end of the string) its content is being evaluated, state changes accordingly, accumulator's content is being trimmed from left to right to delete all the characters evaluated as the whole symbol at this step.
+3.  Computer program searches for the longest symbol in the current chunk.
 
-4.  Every time state changes computer program takes some action to build up an output.
+4.  Computer program classify the found symbol according to the sequence of characters constituting it and current state.
 
-5.  When the end of the string is reached, computer program outputs the result.
+5.  Computer program verifies that this symbol is acceptable at this point.
+
+6.  Computer program updates the state according to the current symbol.
+
+7.  Computer program verifies that the state is acceptable.
+
+8.  Computer program updates the structure.
+
+9.  Computer program verifies that the structure is acceptable at this point.
+
+10. Copmuter program proceeds with the next chunk and symbol or, if the end of the string is reached, computer program outputs the result.
 
 ## Pairs of symbol types, which are not allowed in SMILES
 
@@ -783,9 +787,161 @@ All the other symbol classes are belonging to the square brackets, correct order
 
 All in all selected simple parsing strategy should be sufficient for the task.
 
-## Basic parser
+## All the possible states of the parser, work in progress
 
-Main idea is that if the parser will be able to correctly parse any correct SMILES symbol after any correct SMILES symbol under any correct state and condition that such a pair is valid, this tool will correctly parse any valid SMILES string as a whole.
+At the moment the data structure to store the state looks like this:
+
+```         
+
+struct State {
+  status:                 bool,
+  current_position:       usize,
+  is_first:               bool,
+  is_last:                bool,
+  branches:               Vec<Branch>,
+  branches_open:          HashSet::<usize>,
+  n_branches_open:        usize,
+  rings:                  Vec<Ring>,
+  rings_open:             HashSet::<usize>,
+  n_rings_open:           usize,
+  ct_open:                bool,
+  symbol_this:            String,
+  class_this:             String,
+  class_prev:             String,
+  pos_this:               usize,
+  pos_prev:               usize,
+  pos_inb_this:           usize,
+  pos_inb_prev:           usize,
+  is_aromatic:            bool,
+  error:                  String
+}
+```
+
+Where
+
+-   **status** (true / false) indicates whether the state is acceptable.
+
+    status is essential for the immediate update of the structure.
+
+-   **current_position** indicates the exact point in SMILES string, where current progress is.
+
+    current_position is not essential for the immediate structure update, since there is no obligatory limits on the SMILES length. Strictly speaking current position imposes some restrictions (the end of the ring could not be located as the second symbol in SMILES string, it does not make sense), but they are rather about chemical sense than rules of the SMILES language. Thus, this field will be used just to count characters left in the string.
+
+-   **is_first** (true / false) indicates whether the first symbol being in work.
+
+    is_first is essential for the immediate structure update, some symbols are not allowed in this particular point.
+
+-   **is_last** (true / false) indicates whether the last symbol being in work.
+
+    is_last is essential for the immediate structure update, some symbols are not allowed in this particular position.
+
+-   **branches** contains the data on the already occured branches.
+
+    branches variable is not essential for the immediate structure update.
+
+-   **n_branches_open** is number of open branches at this point.
+
+    n_branches_open is essential for the immediate structure update, since it should be equal to 0 at the end of the string.
+
+-   **rings** contains the data on the already occurred rings.
+
+    rings variable is not essential for the immediate structure update.
+
+-   **rings_open** contains the IDs of the rings open at the moment.
+
+    rings_open is not essential for the immediate structure update.
+
+-   **n_rings_open** is number of the rings open at the moment
+
+    n_rings_open is essential for the immediate structure update.
+
+-   **ct_open** (true / false) indicates whether the cis/trans designation is in progress.
+
+    ct_open is essential for the immediate structure update.
+
+-   **symbol_this** is the current symbol.
+
+    symbol_this is not essential for the immediate structure update.
+
+-   **class_this** is the class of this symbol.
+
+    class_this is essential for the immediate structure update.
+
+-   **class_prev** is the class of the previous symbol.
+
+    class_prev is essential for the immediate structure update.
+
+-   **pos_this** is the position (maybe number will be more useful) of the current symbol.
+
+    pos_this maybe important for the immediate structure update.
+
+-   **pos_prev** is the position (maybe number will be more useful) of the previous symbol.
+
+    pos_prev maybe important for the immediate structure update.
+
+-   **pos_inb_this** is the position in brackets of the current symbol.
+
+    pos_inb_this is essential for the immediate structure update.
+
+-   **pos_inb_prev** is the position in brackets of the previous symbol.
+
+    pos_inb_prev is essential for the immediate structure update.
+
+-   **is_aromatic** indicates whether current symbol is an aromatic atom.
+
+    is_aromatic is not essential for the immediate structure update.
+
+-   **error** contains description of the first error.
+
+    error is essential for the immediate structure update.
+
+So, **status & error, pos_inb_prev, pos_inb_this, class_prev, class_this, symbol_this, ct_open, n_rings_open, n_branches_open, is_last, is_first** are essential and **pos_this & pos_prev** maybe important for the immediate structure update (not the minimal set, work in progress) whether directly or as conditions allowing the update.
+
+## Updating the structure, work in progress
+
+So, there are number of symbols allowed in SMILES and number of states, which are possible during the parsing. It is needed to enumerate all the combinations of them and decide on what to do in every case.
+
+### Errors (most of the cases are only temporally listed here, since they are should be worked out earlier)
+
+1.  status != true OR error != ""
+
+Terminate the parsing and return an error.
+
+Normally both conditions should fire simultaneously, but just in case - OR.
+
+2.  is_last == true AND (n_branches_open \> 0 OR n_rings_open \> 0)
+
+Terminate the parsing and return an error.
+
+Normally status should be set to false in this case, so, this check up is listed here temporally to plan the code.
+
+3.  is_first == true AND (n_branches_open \> 0 OR n_rings_open \> 0)
+
+Terminate the parsing and return an error.
+
+Normally status should be set to false in this case, so, this check up is listed here temporally to plan the code.
+
+4.  pos_inb_prev != 8 AND (pos_inb_prev \> pos_inb_this)
+
+Terminate the parsing and return an error.
+
+Normally status should be set to false in this case, so, this check up is listed here temporally to plan the code.
+
+5.  pos_prev \> pos_this OR pos_prev == pos_this
+
+Terminate the parsing and return an error.
+
+This should not be like that, but just in case.
+
+### Actual update
+
+...
+
+## Basics on parser
+
+Main idea is that if the parser will be able to correctly parse any correct SMILES symbol after any correct SMILES symbol under any correct state and condition that such a pair is valid, this tool should and will correctly parse any valid SMILES string as a whole.
+
+Main functions and data are provided in <https://github.com/pavelVPo/IBMC_LSFBD_smiles_parser/blob/main/ps_supps.rs>
 
 ### Technology
 
@@ -817,105 +973,4 @@ Main idea is that if the parser will be able to correctly parse any correct SMIL
 
 -   wasm-bindgen, <https://github.com/wasm-bindgen/wasm-bindgen> : [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) OR [MIT license](http://opensource.org/licenses/MIT)
 
--   serde (to manage data interchange using JSON), <https://crates.io/crates/serde> : [MIT license](http://opensource.org/licenses/MIT) OR [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
-
-### Data structure to store the results
-
-It seems to be reasonable for the parser to produce an object consisting of the atom array (atoms and their properties) and bonds array (bonds, their properties, links to the corresponding atoms), also the input SMILES string maybe useful.
-
-### Algorithm, draft
-
-**input example:**
-
-```         
-smiles = "CCCCCCC"
-```
-
-**desired_output:**
-
-```         
-chem_struct = [
-atoms: [{atom_id, atom_symbol, is_aromatic, is_in_bracket, has_hs, isotopic_number, chirality, n_hs, charge, class}, ..., {...}],
-bonds: [{id, atom_one, atom_two, bond_symbol}, ... {...}],
-symbols: ["C", ..., "C"],
-input: original_smiles_string
-]
-```
-
-**elements of state:**
-
-```         
-n_all = length(smiles)
-n_remain = length(smiles)
-subs = ""
-symb = ""
-prev_symb = ""
-symb_length = 0
-open_bracket = 0
-simple_ct_on = 0
-```
-
-**procedure:**
-
-```         
-while n > 0 do:
-  // Get the substring
-  if (n == n_all):
-    subs = smiles[0 ... 5]
-  else:
-    subs = smiles[symb_length + 1 ... min(symb_length+6, n_all)]
-  // Get the symbol (dummy function this time)
-  symb = find_longest_symb(subs)
-  // Check if this symbol is allowed after the previous (dummy function this time)
-  if (symb_allowed(prev_symb, symb)) {
-    symb_length = length(symb)
-    // Monitor brackets
-    if (symb == "["):
-      open_bracket = 1
-    if (symb == "]"):
-      open_bracket = 0
-    // update an output (dummy function this time)
-    update_output(output, state elements, symb)
-    // update state (dummy function this time)
-    update_state(state elements, symb)
-    // decrease n
-    n = n - symb_length
-    // Monitor simple cis / trans: when left_ct is detected -> turn on -> next ct is right one
-    if simple_ct_on == 0 AND (symb == "\" OR symb == "/"):
-    simple_ct_on = 1
-    // previous symbol
-    prev_symb = symb
-    symb = ""
-  }
-```
-
-**return:**
-
-```         
-return output
-```
-
-### More abstract algorithm, without considering the state
-
-This concept should be updated with the state variables and other things during the realization (ps_supps.rs AND main.rs).
-
-```         
-input  = smiles_string
-output = empty_chem_struct
-# processing
-first_chunk  = get_first_chunk(smiles_string)
-first_symbol = get_symbol(first_chunk)
-last_chunk  = get_last_chunk(smiles_string)
-last_symbol = get_symbol(last_chunk)
-validate()
-output = update(output, first_symbol)
-for chunks_ in smiles_string:
-  chunk = get_chunk(smiles_string)
-  symb  = get_symbol(chunk)
-  check_pair_type(output, symb)
-  check_pair_class(output, symb)
-  update(output, symb)
-  validate()
-# output
-output_json = get_json(output)
-```
+-   (?) serde (to manage data interchange using JSON), <https://crates.io/crates/serde> : [MIT license](http://opensource.org/licenses/MIT) OR [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
