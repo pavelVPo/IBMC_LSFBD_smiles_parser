@@ -757,7 +757,7 @@ List of pairs could be updated if needed.
 
 17. Two-character bond multiplying symbols initiators and terminators of branching with explicit bond (**bm_ibe** and **bm_tbe_2**):
 
-    > (-, (#, (\$, (., (:, (=, )-, )#, )\$, )., ):, )=
+    > (-, (\#, (\$, (., (:, (=, )-, )\#, )\$, )., ):, )=
 
     Using procedure from the x3_test-analyze\_\_Rcode.R it was shown that there are no miss-identifications in this case.
 
