@@ -8,7 +8,7 @@ use std::collections::HashMap;     //   Map to store the details on rings and br
 
 // #red
 // !!!
-// Change structure in progress to "traversed_structure"
+// Consider "" symbol as pub static or smth to be paired with the first and last actual symbols to avoid the special cases. 
 // !!!
 
   ////////////////
@@ -113,6 +113,8 @@ pub struct Branch  {
 pub struct State {
   status:                 bool,                   // true - acceptable; false - unacceptable
   current_position:       usize,
+  is_first:               bool,
+  is_last:                bool,
   branches:               Vec<Branch>,
   branches_open:          HashSet::<usize>,       // position
   n_branches_open:        usize,                  // true - there are open branches; false - there is no open branches
