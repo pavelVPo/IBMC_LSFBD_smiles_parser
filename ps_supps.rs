@@ -73,7 +73,7 @@ pub static SYMBOL_quadruple_bond:     [&str; 1]          = ["$"];
 pub static SYMBOL_no_bond:            [&str; 1]          = ["."];
 pub static PAIR_type_no:              [&str; 6]          = ["bond,bond", "bond,modifier", "bond,property", "modifier,property", "property,bond", "property,modifier"];
 pub static PAIR_type_no_ambient:      [&str; 6]          = ["ambient,bond", "ambient,modifier", "ambient,property", "bond,ambient", "modifier,ambient", "property,ambient"];
-pub static PAIR_class_no_ambient:     [&str; ]           = ["atom_bal,ambient", "atom_bal_2,ambient", "atom_bar,ambient", "atom_bar_2,ambient", "s_bracket,ambient", "ambient,e_bracket", "ambient,atom_bar_2", "ambient,atom_bar", "ambient,atom_bal_2", "ambient,atom_bal"];
+pub static PAIR_class_no__ambient:    [&str; 10]         = ["atom_bal,ambient", "atom_bal_2,ambient", "atom_bar,ambient", "atom_bar_2,ambient", "s_bracket,ambient", "ambient,e_bracket", "ambient,atom_bar_2", "ambient,atom_bar", "ambient,atom_bal_2", "ambient,atom_bal"];
 pub static PAIR_class_no__in_out:     [&str; 23]         = ["atom_oal,atom_bal", "atom_oal,atom_bal_2", "atom_oal,atom_bar_2", "atom_oal_2,atom_bal", "atom_oal_2,atom_bal_2", "atom_oal_2,atom_bar", "atom_oal_2,atom_bar_2", "atom_oar,atom_bal", "atom_oar,atom_bal_2", "atom_oar,atom_bar", "atom_oar,atom_bar_2", "atom_bal,atom_oal", "atom_bal,atom_oal_2", "atom_bal,atom_oar", "atom_bal_2,atom_oal", "atom_bal_2,atom_oal_2", "atom_bal_2,atom_oar", "atom_bar,atom_oal", "atom_bar,atom_oal_2", "atom_bar,atom_oar", "atom_bar_2,atom_oal", "atom_bar_2,atom_oal_2", "atom_bar_2,atom_oar"];
 pub static PAIR_class_no__in_in:      [&str; 16]         = ["atom_bal,atom_bal", "atom_bal,atom_bal_2", "atom_bal,atom_bar", "atom_bal,atom_bar_2", "atom_bal_2,atom_bal", "atom_bal_2,atom_bal_2", "atom_bal_2,atom_bar", "atom_bal_2,atom_bar_2", "atom_bar,atom_bal", "atom_bar,atom_bal_2", "atom_bar,atom_bar", "atom_bar,atom_bar_2", "atom_bar_2,atom_bal", "atom_bar_2,atom_bal_2", "atom_bar_2,atom_bar", "atom_bar_2,atom_bar_2"];
 pub static PAIR_class_no__in_any:     [&str; 8]          = ["atom_bal,anything", "atom_bal_2,anything", "atom_bar,anything", "atom_bar_2,anything", "anything,atom_bal", "anything,atom_bal_2", "anything,atom_bar", "anything,atom_bar_2"];
@@ -614,14 +614,15 @@ pub fn check_symbols_pair(mut state: State,
     let pair_type_this = format!("{},{}", type_prev, type_this);
     let pair_class_this = format!("{},{}", prev_class, class_this);
     // Check the types of symbols in pair
-    if PAIR_type_no.contains(&pair_type_this.as_str())  {
+    if PAIR_type_no.contains(&pair_type_this.as_str()) || PAIR_type_no_ambient.contains(&pair_type_this.as_str())  {
       // Describe the problem
       state.status = false;
       state.error  = format!("unacceptable pair of symbols: {}: {}", pair_type_this, pair_this);
       break 'check__block;
     }
     // Check the classes of symbols in pair
-    if PAIR_class_no__in_out.contains(&pair_class_this.as_str())  ||
+    if PAIR_class_no__ambient.contains(&pair_class_this.as_str()) || 
+       PAIR_class_no__in_out.contains(&pair_class_this.as_str())  ||
        PAIR_class_no__in_in.contains(&pair_class_this.as_str())   ||
        PAIR_class_no__in_any.contains(&pair_class_this.as_str())  ||
        PAIR_class_no__in_bond.contains(&pair_class_this.as_str()) ||
@@ -646,7 +647,7 @@ pub fn update_state(  symbol_this:                    &String,
   // Prepare some variables
   let branch_bond:          String;
   let ring_bond:            String;
-  let pos_inb_this:       usize;
+  let pos_inb_this:         usize;
   let ring_number:          usize;
   let is_aromatic:          bool;
 
