@@ -933,9 +933,25 @@ Terminate the parsing and return an error.
 
 This should not be like that, but just in case.
 
-### Actual update
+### Case of the first symbol
 
-...
+Earlier I've decided to use the list of symbols not-allowed at first position in SMILES string to pre-check the input. Now, I think that it will be better to use symbol **""** of special type **ambient** to process the SMILES symbols at every position similarly (not yet in the classification of symbols). Thus, the following section will have some repeats from earlier versions, but from slightly different point of view.
+
+1.  ambient -\> anything:                update
+2.  ambient -\> atom
+    1.  ambient -\> atom_bal:            throw an error, "[" is missing
+    2.  ambient -\> atom_bal_2:          throw an error, "[" is missing
+    3.  ambient -\> atom_bar:            throw an error, "[" is missing
+    4.  ambient -\> atom_bar_2:          throw an error, "[" is missing
+    5.  ambient -\> atom_oal:            update
+    6.  ambient -\> atom_oal_2:          update
+    7.  ambient -\> atom_oar:            update
+3.  ambient -\> bond:                    throw an error, atom is missing
+4.  ambient -\> modifier:                throw an error, atom is missing
+5.  ambient -\> property:                throw an error, opening square bracket is missing
+6.  ambient -\> square_bracket:
+    1.  ambient -\> s_bracket:           update
+    2.  ambient -\> e_bracket:           throw an error, opening square bracket is missing
 
 ## Basics on parser
 
@@ -973,4 +989,4 @@ Main functions and data are provided in <https://github.com/pavelVPo/IBMC_LSFBD_
 
 -   wasm-bindgen, <https://github.com/wasm-bindgen/wasm-bindgen> : [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) OR [MIT license](http://opensource.org/licenses/MIT)
 
--   (?) serde (to manage data interchange using JSON), <https://crates.io/crates/serde> : [MIT license](http://opensource.org/licenses/MIT) OR [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+-   (?) serde (to manage data interchange using JSON), <https://crates.io/crates/serde> : [MIT license](http://opensource.org/licenses/MIT) OR [Apache License, Versio2.0](http://www.apache.org/licenses/LICENSE-2.0)
