@@ -946,12 +946,12 @@ Earlier I've decided to use the list of symbols not-allowed at first position in
     5.  ambient -\> atom_oal:            process further
     6.  ambient -\> atom_oal_2:          process further
     7.  ambient -\> atom_oar:            process further
-3.  ambient -\> bond:                   throw an error, atom is missing
+3.  ambient -\> bond:                    throw an error, atom is missing
 4.  ambient -\> modifier:                throw an error, atom is missing
 5.  ambient -\> property:                throw an error, opening square bracket is missing
 6.  ambient -\> square_bracket:
-    1.  ambient -\> s_bracket:            process further
-    2.  ambient -\> e_bracket:            throw an error, opening square bracket is missing
+    1.  ambient -\> s_bracket:           process further
+    2.  ambient -\> e_bracket:           throw an error, opening square bracket is missing
 
 ### Case of the last symbol
 
@@ -959,19 +959,19 @@ Same as above
 
 1.  anything -\> ambient: process
 2.  atom -\> ambient:
-    1.  atom_bal -\> ambient:          throw an error, closing square bracket is missing
+    1.  atom_bal -\> ambient:            throw an error, closing square bracket is missing
     2.  atom_bal_2 -\> ambient:          throw an error, closing square bracket is missing
-    3.  atom_bar -\> ambient:          throw an error, closing square bracket is missing
+    3.  atom_bar -\> ambient:            throw an error, closing square bracket is missing
     4.  atom_bar_2 -\> ambient:          throw an error, closing square bracket is missing
-    5.  atom_oal -\> ambient:           process further
+    5.  atom_oal -\> ambient:            process further
     6.  atom_oal_2 -\> ambient:          process further
-    7.  atom_oar -\> ambient:           process further
-3.  bond -\> ambient:                   throw an error, atom is missing
+    7.  atom_oar -\> ambient:            process further
+3.  bond -\> ambient:                    throw an error, atom is missing
 4.  modifier -\> ambient:                throw an error, atom is missing
 5.  property -\> ambient:                throw an error, closing square bracket is missing
 6.  square_bracket -\> ambient:
-    1.  s_bracket -\> ambient:            throw an error, closing square bracket is missing
-    2.  e_bracket -\> ambient:            process further
+    1.  s_bracket -\> ambient:           throw an error, closing square bracket is missing
+    2.  e_bracket -\> ambient:           process further
 
 **The results given above should be considered in the code of parser.**
 
