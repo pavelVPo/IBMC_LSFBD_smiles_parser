@@ -988,23 +988,51 @@ Same as above
 
 **The results given above should be considered in the code of parser, errors should be treated prior to the structure's update. Just a reminder.**
 
-### Allowed cases
+Allowed cases
 
-#### First symbol, default state
+First symbol, default state
 
-**ambient -\> anything** is a special case of **ambient -\> ATOM:**
+ambient -> anything is a special case of ambient -> ATOM:
 
--   add new atom to atoms and describe it to an extent
+add new atom to atoms and describe it to an extent
 
-**ambient -\> square_bracket:**
+ambient -> square_bracket:
 
--   add new atom to atoms without specifying its properties
+add new atom to atoms without specifying its properties
 
-#### Last symbol, variable correct state
+Last symbol, variable correct state
 
-**anything -\> ambient** is a special case of **ambient -\> ATOM:**
+anything -> ambient is a special case of ambient -> ATOM:
 
 add new atom and describe it
+
+bm_tbi -> ambient:
+
+close the current branch
+
+bm_tre_2 | bm_tre_4 -> ambient:
+
+add new atom and describe it
+
+close current ring
+
+modify key ring bond (bond between the starting and ending ring symbol in SMILES) if needed
+
+bm_tri | bm_tri_3 -> ambient:
+
+add new atom and describe it
+
+close current ring
+
+bm_tri | bm_tri_3 -> ambient:
+
+add new atom and describe it
+
+close current ring
+
+Intermediate symbols, variable correct state
+
+**...**
 
 ## Basics on parser
 
