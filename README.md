@@ -1,6 +1,8 @@
 # SMILES Parser
 
-**The whole thing besides the symbols' classification (maybe) is in progress and will be modified substantially.** **update from 29.09.2026: symbols' classification is slightly reconsidered according to the current practical attempt to develop parser, and some other minor tweaks.**
+**The whole thing besides the symbols' classification (maybe) is in progress and will be modified substantially.**
+
+**update from 29.09.2026: symbols' classification is slightly reconsidered according to the current practical attempt to develop parser, and some other minor tweaks.**
 
 For the SMILES (Simplified Molecular Input Line Entry System) reference, please, SEE:
 
