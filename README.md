@@ -1,8 +1,6 @@
 # SMILES Parser
 
-**The whole thing besides the symbols' classification (maybe) is in progress and will be modified substantially.**
-
-**update from 29.09.2026: symbols' classification is slightly reconsidered according to the current practical attempt to develop parser, and some other minor tweaks.**
+**The whole thing besides the symbols' classification (maybe) is in progress and will be modified substantially.** **update from 29.09.2026: symbols' classification is slightly reconsidered according to the current practical attempt to develop parser, and some other minor tweaks.**
 
 For the SMILES (Simplified Molecular Input Line Entry System) reference, please, SEE:
 
@@ -40,7 +38,7 @@ In short:
     | - Every time computer program encounters new (next) chunk and symbol, state of the computer program changes accordingly (taking into account program's current state and what symbol it encounters).
     | - At each step computer program takes some actions to produce an output.
 
-3.  Computer program produces an output, i.e. graph representing chemical structure in such a way that this structure could be processed in computer furhter.
+3.  Computer program produces an output, i.e. graph representing chemical structure in such a way that this structure could be processed in computer further.
 
     **- - -**
 
@@ -50,18 +48,16 @@ In short:
 
     To construct such a parser understanding of SMILES is needed, this understanding is about knowing symbols and characters, which could be present in the SMILES string; and rules of their arrangement. Thus, at the first stage all symbols and characters allowed in SMILES will be enumerated and classified.
 
-    ## Enumeration and classification of the symbols and characters allowed in SMILES
-
-| *This part may require some further adjustments and corrections, but should be OK in general.*
+## Enumeration and classification of the symbols and characters allowed in SMILES
 
 The following types (upper level of classification) of SMILES symbols (sequence of characters having specific meaning) could be enumerated:
 
-1.  Atom symbols including special ones
-2.  Square bracket symbols
-3.  Bond symbols including special one
-4.  Bond modifying (multiplying) symbols
-5.  Cis/Trans symbols
-6.  All the symbols inside the square brackets besides the main atom symbol, i.e. properties (isotope symbols, chirality symbols, hydrogen symbols, charge symbols, atom class symbols)
+1.  **Atom** symbols including special ones
+2.  **Square** bracket symbols
+3.  **Bond** symbols including special one
+4.  Bond **modifying** (multiplying) symbols
+5.  **Cis/Trans** symbols
+6.  All the symbols inside the square brackets besides the main atom symbol, i.e. **properties** (isotope symbols, chirality symbols, hydrogen symbols, charge symbols, atom class symbols)
 
 Using faceted classification scheme (<https://en.wikipedia.org/wiki/Faceted_classification>) the following aspects meaningful for the parsing task could be used to describe symbols in SMILES further:
 
@@ -91,7 +87,7 @@ And then, select particular parsing approach and set of rules within it and set 
 
 #### What are they?
 
-Atom symbol is the way to designate the node of the molecular graph, i.e. an atom, in the SMILES string.
+**Atom** symbol is the way to designate the node of the molecule's graph, i.e. an atom, in the SMILES string.
 
 Atom symbols allowed in SMILES could be divided into two facets by their length:
 
@@ -153,13 +149,13 @@ Thus, the following classes of atom symbols allowed in SMILES could be enumerate
 
 #### What are they?
 
-Square bracket symbols **[, ]** is the SMILES way to mark the start of the record for atom having some property (-ies) and is the way to designate the end for such a record.
+**Square** bracket symbols **[, ]** is the SMILES way to mark the start of the record for an atom having some property (-ies) and is the way to designate the end for such a record.
 
-10. Single character symbol to start the record for atom having property (-ies) (**s_bracket**)
+10. Single character symbol to start the record for atom having property (-ies) (**s_square**)
 
 > [
 
-11. Single character symbol to end the record for atom having property (-ies) (**e_bracket**)
+11. Single character symbol to end the record for atom having property (-ies) (**e_square**)
 
 > ]
 
@@ -167,7 +163,7 @@ Square bracket symbols **[, ]** is the SMILES way to mark the start of the recor
 
 #### What are they?
 
-Bond symbol is the way to designate the edge of the molecular graph, i.e. chemical bond, in the SMILES string.
+**Bond** symbol is the way to designate the edge of the molecule's graph, i.e. chemical bond, in the SMILES string.
 
 **There are six bond symbols allowed in SMILES, all of them are single character symbols and do not have other peculiar aspects, five of them correspond to the conventional type of chemical bond:**
 
@@ -255,15 +251,15 @@ Bond multiplying symbols allowed in SMILES could be divided into two categories 
 
 23. Two-character bond multiplying symbols initiators of rings with explicit bond (**bm_ire_2**):
 
-> [-=#\$:.][0-9]
+> [-=#\$:.][0:9]
 
 24. Three-character bond multiplying symbols initiators of rings with implicit bond (**bm_iri_3**):
 
-> \%[0-9][1-9], %[1-9][0-9]
+> \%[0:9][1:9], %[1:9][0:9]
 
 25. Four-character bond multiplying symbols initiators of rings with explicit bond (**bm_ire_4**):
 
-> [-=#\$:.]%[0-9][1-9], [-=#\$:.]%[1-9][0-9]
+> [-=#\$:.]%[0:9][1:9], [-=#\$:.]%[1:9][0:9]
 
 26. Two-character bond multiplying symbols terminators of branching with explicit bond (**bm_tbe_2**):
 
@@ -271,15 +267,15 @@ Bond multiplying symbols allowed in SMILES could be divided into two categories 
 
 27. Two-character bond multiplying symbols terminators of rings with explicit bond (**bm_tre_2**):
 
-> [-=#\$:.][0-9]
+> [-=#\$:.][0:9]
 
 28. Four-character bond multiplying symbols terminators of rings with explicit bond (**bm_tre_4**):
 
-> [-=#\$:.]%[0-9][1-9], [-=#\$:.]%[1-9][0-9]
+> [-=#\$:.]%[0:9][1:9], [-=#\$:.]%[1:9][0:9]
 
 29. Three-character bond multiplying symbols terminators of rings with implicit bond (**bm_tri_3**):
 
-> \%[0-9][1-9], %[1-9][0-9]
+> \%[0:9][1:9], %[1:9][0:9]
 
 ### Cis/Trans symbols and corresponding characters
 
@@ -293,12 +289,11 @@ Cis/trans symbols should always be paired, i.e. atoms on each side of the bond s
 
 > /, \\
 
-31. Cis/trans symbols on the right side of the rotary non-permissive bond:
+31. Cis/trans symbols on the right side of the rotary non-permissive bond (**r_ct**):
 
 > /, \\
 
-Cis/trans symbols could be seen as bond modifiers, however, there is a rationale for them to constitute the distinct type: other mean to provide the spatial information is via atoms' properties, not bond  modifying symbols.
-Thus, distinct type, to avoid confusion between the properties and modifiers. 
+Cis/trans symbols could be seen as bond modifiers, however, there is a rationale for them to constitute the distinct type: other mean to provide the spatial information is via atoms' properties, not bond modifying symbols. Thus, distinct type, to avoid confusion between the properties and modifiers.
 
 Chemical logic behind these symbols is outstandingly well described in <http://opensmiles.org/opensmiles.html> including the fact that such combinations of these symbols as in F/C=C/F and C(\\F)=C/F are equivalent, since
 
@@ -312,7 +307,7 @@ Chemical logic behind these symbols is outstandingly well described in <http://o
 
 #### What are they?
 
-Symbols and corresponding characters inside the square brackets besides the main atom symbol describe the main bracket atom in terms of its mass number indicating specific isotope, chiral status, number of explicit hydrogens, charge and class assigned by the author of the particular SMILES string. It should be noted that any atom symbol could be found in the square brackets and any atom symbol should be put in the square brackets if corresponding atom has aforementioned properties.
+Symbols and corresponding characters inside the square brackets besides the main atom symbol (**properties**) describe the main bracket atom in terms of its mass number indicating specific isotope, chiral status, number of explicit hydrogens, charge and class assigned by the author of the particular SMILES string. It should be noted that any atom symbol could be found in the square brackets and any atom symbol should be put in the square brackets if corresponding atom has aforementioned properties.
 
 These symbols will be categorized only by the length, this is sufficient for the purpose, since these symbols have the strict order of placement inside the brackets.
 
@@ -328,7 +323,7 @@ Isotope symbols allowed in SMILES could be divided into 3 categories by their le
 
 33. Multicharacter (from 2 to 3 characters) isotope symbols (**isotope_m**):
 
-> [0-9][1-9], [1-9][0-9], [0-9][0-9][1-9], [0-9][1-9][0-9], [1-9][0-9][0-9]
+> [0:9][1:9], [1:9][0:9], [0:9][0:9][1:9], [0:9][1:9][0:9], [1:9][0:9][0:9]
 
 ##### Chirality symbols
 
@@ -340,13 +335,13 @@ Chirality symbols allowed in SMILES could be divided into 5 categories by their 
 
 > \@
 
-35. Two-character chirality symbols (**chiral_2**):
+35. Two-character chirality symbol (**chiral_2**):
 
-> [\@][\@]
+> \@, \@
 
 36. Multicharacter (four or five character) chirality symbols (**chiral_m**):
 
-> [\@]TH[1-2], [\@]AL[1-2], [\@]SP[1-3], [\@]TB[1-20], [\@]OH[1-30]
+> \@TH[1:2], \@AL[1:2], \@SP[1:3], \@TB[1:20], \@OH[1:30]
 
 ##### Hydrogen symbols
 
@@ -360,7 +355,7 @@ Hydrogen symbols allowed in SMILES could be divided into 2 facets by their lengt
 
 38. Two-character hydrogen symbols (**hydro_2**):
 
-> H[2-9]
+> H[2:9]
 
 ##### Charge symbols
 
@@ -370,15 +365,15 @@ Charge symbols allowed in SMILES could be divided into 2 facets by their length:
 
 39. Single character charge symbols (**charge**):
 
-> [+-]
+> +, -
 
 40. Two-character charge obsolete symbols (**charge_2**):
 
-> [+][+], [-][-]
+> ++, --
 
 41. Multicharacter (two or three characters) charge symbols (**charge_m**):
 
-> [+-][1-9], [+-]1[0-5]
+> [+-][1:9], [+-]1[0:5]
 
 ##### Class symbols
 
@@ -388,4 +383,28 @@ Class symbols allowed in SMILES may have variable length, but there is no point 
 
 42. Multicharacter (from 2 to 4 characters) atom class symbol type (**class**):
 
-> :[0-9], :[0-9][0-9], :[0-9][0-9][0-9]
+> :[0:9], :[0:9][0:9], :[0:9][0:9][0:9]
+
+## Practical aspects of the proposed symbol classification
+
+List of symbol belonging to the different types, classes and particular facets will be used during parsing and preliminary analysis.
+
+Thus, simple and reliable procedure is needed to summarize all the information on classification and present it as a table for the further studies.
+
+R language (<https://www.r-project.org/>) will be used to prepare such a table to start automating the further analysis early.
+
+The table will consist of the following columns:
+
+-   Record ID
+
+-   Type of symbols
+
+-   Class of symbols
+
+-   Symbols
+
+-   Short description of symbols' type
+
+-   Short description of symbols' class
+
+The results are given in the Table symbols.tsv
