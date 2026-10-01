@@ -417,4 +417,4 @@ To apply proposed classification in practice the intersections between classes o
 
 **Figure 1.** Heatmap describing relations between the types and classes of symbols in SMILES language. White cells correspond to cases where classes are not intersected, pink cells are pairs of partially intersected classes, dark cells correspond to the classes described by identical sets of symbols.
 
-So, this heatmap visualize cases where additional checks of the current state are needed to assign correct symbol class.
+So, this heatmap visualizes the cases where additional checks of the current state are needed to assign correct symbol class.
