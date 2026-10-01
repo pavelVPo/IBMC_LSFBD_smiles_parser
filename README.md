@@ -411,7 +411,7 @@ The results are given in the Table symbols.tsv, see prepareClassification\_\_Rco
 
 ### Intersections between the different classes of symbols
 
-To apply proposed classification in practice the intersections between classes of symbols should be assessed, see Figure 1.
+To apply proposed classification in practice the intersections between classes of symbols should be assessed, see **Figure 1**.
 
 ![**Figure 1.** Heatmap describing relations between the types and classes of symbols in SMILES language. White cells correspond to cases where classes are not intersected, pink cells are pairs of partially intersected classes, dark cells correspond to the classes described by identical sets of symbols.](hmap.png)
 
