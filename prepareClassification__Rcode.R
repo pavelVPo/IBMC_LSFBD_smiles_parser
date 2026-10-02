@@ -101,7 +101,7 @@ for (i in seq(1:nrow(data))) {
         draft_2   <- paste0("@AL", seq(1:2)) |> paste0(collapse = ", ")
         draft_3   <- paste0("@SP", seq(1:3)) |> paste0(collapse = ", ")
         draft_4   <- paste0("@TB", seq(1:20)) |> paste0(collapse = ", ")
-        draft_5   <- paste0("@OH", seq(1:2)) |> paste0(collapse = ", ")
+        draft_5   <- paste0("@OH", seq(1:30)) |> paste0(collapse = ", ")
         draft     <- c(draft_1, draft_2, draft_3, draft_4, draft_5) |> unique() |> sort() |> paste0(collapse = ", ")
         data[i,4] <- draft
     } else if(data[i,4] == "H[2:9]") {
