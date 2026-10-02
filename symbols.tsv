@@ -1,4 +1,4 @@
-"record_id"	"type"	"class"	"symbols_draft"	"type_description"	"class_description"
+"record_id"	"type"	"class"	"symbols"	"type_description"	"class_description"
 1	"atom"	"atom_oar"	"b, c, n, o, s, p"	"node of the molecule's graph, i.e. an atom OR smth having similar behavior according to the SMILES rules"	"Single character atom symbols of organic (from so called organic subset) aromatic atoms lacking the additional grammatical requirements and features"
 2	"atom"	"atom_oal"	"B, C, N, O, S, P, F, I"	"node of the molecule's graph, i.e. an atom OR smth having similar behavior according to the SMILES rules"	"Single character atom symbols of organic aliphatic atoms lacking the additional grammatical requirements and features"
 3	"atom"	"atom_bar"	"b, c, n, o, s, p"	"node of the molecule's graph, i.e. an atom OR smth having similar behavior according to the SMILES rules"	"Single character atom symbols of aromatic atoms enclosed within brackets"

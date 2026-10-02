@@ -1,5 +1,5 @@
 ## Input
-symbols <- read.csv2(paste0(path, "symbols.tsv"), sep = "\t")[,4] |>
+symbols <- read.csv2(".../SMILES_parser/data_v4/symbols.tsv", sep = "\t")[,4] |>
 						paste0(collapse = ", ") |>
 						strsplit(", ") |>
 						unlist() |>
