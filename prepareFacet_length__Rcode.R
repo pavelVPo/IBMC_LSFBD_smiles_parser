@@ -45,3 +45,4 @@ rslt_str <- paste0(	"1\n",
 				    "\n",
 				    symbol_five_str)
 write(rslt_str, file_con)
+close(file_con)
