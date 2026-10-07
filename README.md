@@ -455,4 +455,4 @@ At the moment the state variable of the parser seems to be reasonable to define 
 
 -   **pos_in_bracket\_\_prev**, position of the previous symbol relative to the square brackets.
 
-So, all of the state variants should enumerated and considered for the further parsing.
+So, all of the state variants should be enumerated and considered for the further parsing.
