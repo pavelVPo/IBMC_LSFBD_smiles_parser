@@ -428,3 +428,31 @@ To apply proposed classification in practice the intersections between classes o
 ![**Figure 1.** Heatmap describing relations between the types and classes of symbols in SMILES language. White cells correspond to cases where classes are not intersected, pink cells are pairs of partially intersected classes, dark cells correspond to the classes described by identical sets of symbols.](hmap.png)
 
 So, this heatmap visualizes the cases where additional checks of the current state are needed to assign correct symbol class. So, the state is needed for the successful parsing.
+
+## State of the SMILES parser
+
+At the moment the state variable of the parser seems to be reasonable to define via the following principal parameters (SEE **ps_supps.rs**, but the code itself is still the subject of changes), it is important to note that the state is given after the classification of the current symbol, preliminary assessment of the pair validity but prior to the modification of the output:
+
+-   **status**, TRUE / FALSE, where TRUE is the absence of errors on the previous step and FALSE - error on the previous step.
+
+-   **is_first**, TRUE - if current symbol is the first symbol, FALSE - otherwise.
+
+-   **is_last**, TRUE - if current symbol is the last symbol, FALSE - otherwise.
+
+-   **is_branch_open**, TRUE - if branch(es) is/are open (unpaired **bm_ib\*** symbol).
+
+-   **is_ring_open**, TRUE - if ring(s) is/are open (unpaired **bm_ir\*** symbol).
+
+-   **is_ct_open**, TRUE - if **l_ct** symbol still has not matching **r_ct** symbol at this point.
+
+-   **pos_in_bracket**, position of the current symbol relative to the square brackets.
+
+-   **is_aromatic**, self-explanatory.
+
+-   **symbol\_\_prev**, previous symbol.
+
+-   **class\_\_prev**, class of the previous symbol.
+
+-   **pos_in_bracket\_\_prev**, position of the previous symbol relative to the square brackets.
+
+So, all of the state variants should enumerated and considered for the further parsing.
