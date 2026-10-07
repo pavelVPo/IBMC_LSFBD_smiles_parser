@@ -509,4 +509,16 @@ As it was written, some combinations of the state parameters are forbidden and c
     * 1 * * * * * * * [^1,2,5,8,11,20,21,27,28,29] * *
     ```
 
-4.  ...
+4.  All the states, where **pos_in_bracket** = 1 and **class\_\_prev** is one of the following: atom_bar (3), atom_bal (4), atom_bar_2 (6), atom_bal_2 (7), s_square (10), isotope (32), isotope_m (33), chiral (34), chiral_2 (35), chiral_m (36), hydro (37), hydro_2 (38), charge (39), charge_2 (40), charge_m (41), class (42)
+
+    ```         
+    * * * * * * * 1 * [3,4,6,7,10,32,33,34,35,36,37,38,39,40,41,42] * *
+    ```
+
+5.  All the states, where **pos_in_bracket** = 2 and **pos_in_bracket\_\_prev** != 1
+
+    ```         
+    * * * * * * * 1 * * * [^1]
+    ```
+
+6. ... 
