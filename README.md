@@ -48,6 +48,18 @@ In short:
 
     To construct such a parser understanding of SMILES is needed, this understanding is about knowing symbols and characters, which could be present in the SMILES string; and rules of their arrangement. Thus, at the first stage all symbols and characters allowed in SMILES will be enumerated and classified.
 
+    Probably the **main advantage** of such a straightforward strategy is the fact that it is quite simple to prove the correctness of its realization with regards to the whole SMILES string:
+
+    1)  SMILES string is correctly parsed if all the the symbol pairs are parsed correctly under corresponding states.
+
+    2)  As it can be seen from the analysis provided below, number of combinations of states and symbol pairs is countable and even moderate.
+
+    **Thus**,
+
+    1)  Correct parsing of all the theoretically possible pairs of SMILES symbols with the parser initialized with all the theoretically possible states will prove the general correctness of the parser.
+
+    2)  Since the number of combinations of theoretically possible SMILES symbol pairs and states is moderate, such a prove is possible computationally, despite the fact that the number of all possible SMILES strings is huge.
+
 ## Enumeration and classification of the symbols and characters allowed in SMILES
 
 The following types (upper level of classification) of SMILES symbols (sequence of characters having specific meaning) could be enumerated:
@@ -245,7 +257,7 @@ Bond multiplying symbols allowed in SMILES could be divided into two categories 
 
 > 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 
-22. Two-character bond multiplying symbols initiators of branching with explicit bond (**bm_ibe**):
+22. Two-character bond multiplying symbols initiators of branching with explicit bond (**bm_ibe_2**):
 
 > ([-=#\$:.]
 
@@ -409,12 +421,10 @@ The table will consist of the following columns:
 
 The results are given in the Table symbols.tsv, see prepareClassification\_\_Rcode.R for the details of realization.
 
-### Intersections between the different classes of symbols
+### Intersections between the different types and classes of symbols
 
-To apply proposed classification in practice the intersections between classes of symbols should be assessed, see **Figure 1**.
+To apply proposed classification in practice the intersections between classes of symbols should be assessed, see Figure 1.
 
 ![**Figure 1.** Heatmap describing relations between the types and classes of symbols in SMILES language. White cells correspond to cases where classes are not intersected, pink cells are pairs of partially intersected classes, dark cells correspond to the classes described by identical sets of symbols.](hmap.png)
 
-**Figure 1.** Heatmap describing relations between the types and classes of symbols in SMILES language. White cells correspond to cases where classes are not intersected, pink cells are pairs of partially intersected classes, dark cells correspond to the classes described by identical sets of symbols.
-
-So, this heatmap visualizes the cases where additional checks of the current state are needed to assign correct symbol class.
+So, this heatmap visualizes the cases where additional checks of the current state are needed to assign correct symbol class. So, the state is needed for the successful parsing.
