@@ -493,4 +493,14 @@ As it was written, some combinations of the state parameters are forbidden and c
 
 1.  All the states, where **status** is FALSE.
 
-...
+    ```         
+    0 * * * * * * * * * * *
+    ```
+
+2.  All the states, where **is_first** is TRUE and **class** is one of the following: atom_bar (3), atom_bal (4), atom_bar_2 (5), atom_bal_2 (6), ambient (9), e_square (11), single_bond (12), double_bond (13), triple_bond (14), quadruple_bond (15), aromatic_bond (16), no_bond (17), bm_ibi (18), bm_iri (19), bm_tbi (20), bm_tri (21), bm_ibe_2 (22), bm_ire_2 (23), bm_iri_3 (24), bm_ire_4 (25), bm_tbe_2 (26), bm_tre_2 (27), bm_tre_4 (28), bm_tri_3 (29), l_ct (30), r_ct (31), isotope (32), isotope_m (33), chiral (34), chiral_2 (35), chiral_m (36), hydro (37), hydro_2 (38), charge (39), charge_2 (40), charge_m (41), class (42)
+
+    ```         
+    * 1 * * * * * * * [^1,2,7,8,10] * *
+    ```
+
+3.  
