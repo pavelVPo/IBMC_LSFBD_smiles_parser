@@ -441,31 +441,21 @@ At the moment the state variable of the parser seems to be reasonable to define 
 
     | 1,0
 
-<!-- -->
-
 -   **is_last**, TRUE - if current symbol is the last symbol, FALSE - otherwise.
 
     | 1,0
-
-<!-- -->
 
 -   **is_branch_open**, TRUE - if branch(es) is/are open (unpaired **bm_ib\*** symbol), FALSE - otherwise.
 
     | 1,0
 
-<!-- -->
-
 -   **is_ring_open**, TRUE - if ring(s) is/are open (unpaired **bm_ir\*** symbol), FALSE - otherwise.
 
     | 1,0
 
-<!-- -->
-
 -   **is_ct_open**, TRUE - if **l_ct** symbol still has not matching **r_ct** symbol at this point, FALSE - otherwise.
 
     | 1,0
-
-<!-- -->
 
 -   **pos_in_bracket**, position of the current symbol relative to the square brackets.
 
@@ -485,8 +475,6 @@ At the moment the state variable of the parser seems to be reasonable to define 
 
     | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42
 
-<!-- -->
-
 -   **pos_in_bracket\_\_prev**, position of the previous symbol relative to the square brackets.
 
     | 0, 1, 2, 3, 4, 5, 6, 7, 8
@@ -498,3 +486,11 @@ So, all of the state variants should be enumerated and considered for the furthe
 This line gives the exact number of state variants, which should checked to verify the parser's correctness according to the introduction: only **18289152** variants should be checked and many of them are nonsensical according to the most basic SMILES rules and will be eliminated earlier (see the previous Readme versions and ps_supps.rs).
 
 Still, it should be noted that this correctness is not about the rules of chemistry, it is only a guarantee that the parser will read exactly what is written on condition that the string does not violate the basic rules of the language and return an error otherwise.
+
+## Forbidden variants of state
+
+As it was written, some combinations of the state parameters are forbidden and could be eliminated prior to the main state check according to the more detailed parsing logic (see ps_supp.rs for the current state of realization), such variants will be listed here:
+
+1.  All the states, where **status** is FALSE.
+
+...
