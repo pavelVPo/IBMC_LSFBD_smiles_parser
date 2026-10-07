@@ -497,4 +497,4 @@ So, all of the state variants should be enumerated and considered for the furthe
 
 This line gives the exact number of state variants, which should checked to verify the parser's correctness according to the introduction: only **18289152** variants should be checked and many of them are nonsensical according to the most basic SMILES rules and will be eliminated earlier (see the previous Readme versions and ps_supps.rs).
 
-Still, it should be noted that this correctness is not about the rules of chemistry, it is only a guarantee that the parser will read exactly what is written on condition that the string does not violate the basic rules of the language.
+Still, it should be noted that this correctness is not about the rules of chemistry, it is only a guarantee that the parser will read exactly what is written on condition that the string does not violate the basic rules of the language and return an error otherwise.
