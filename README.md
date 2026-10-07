@@ -431,28 +431,68 @@ So, this heatmap visualizes the cases where additional checks of the current sta
 
 ## State of the SMILES parser
 
-At the moment the state variable of the parser seems to be reasonable to define via the following principal parameters (SEE **ps_supps.rs**, but the code itself is still the subject of changes), it is important to note that the state is given after the classification of the current symbol, preliminary assessment of the pair validity but prior to the modification of the output:
+At the moment the state variable of the parser seems to be reasonable to define via the following principal parameters (SEE **ps_supps.rs**, but the code itself is still the subject of changes), it is important to note that the state is given after the classification of the current symbol, preliminary assessment of the pair validity, but prior to the modification of the output (given that parser will effectively work further with the state and structure only), parameters will be recoded to numerics for the convinience:
 
 -   **status**, TRUE / FALSE, where TRUE is the absence of errors on the previous step and FALSE - error on the previous step.
 
+    | 1,0
+
 -   **is_first**, TRUE - if current symbol is the first symbol, FALSE - otherwise.
+
+    | 1,0
+
+<!-- -->
 
 -   **is_last**, TRUE - if current symbol is the last symbol, FALSE - otherwise.
 
--   **is_branch_open**, TRUE - if branch(es) is/are open (unpaired **bm_ib\*** symbol).
+    | 1,0
 
--   **is_ring_open**, TRUE - if ring(s) is/are open (unpaired **bm_ir\*** symbol).
+<!-- -->
 
--   **is_ct_open**, TRUE - if **l_ct** symbol still has not matching **r_ct** symbol at this point.
+-   **is_branch_open**, TRUE - if branch(es) is/are open (unpaired **bm_ib\*** symbol), FALSE - otherwise.
+
+    | 1,0
+
+<!-- -->
+
+-   **is_ring_open**, TRUE - if ring(s) is/are open (unpaired **bm_ir\*** symbol), FALSE - otherwise.
+
+    | 1,0
+
+<!-- -->
+
+-   **is_ct_open**, TRUE - if **l_ct** symbol still has not matching **r_ct** symbol at this point, FALSE - otherwise.
+
+    | 1,0
+
+<!-- -->
 
 -   **pos_in_bracket**, position of the current symbol relative to the square brackets.
 
+    | 0, 1, 2, 3, 4, 5, 6, 7, 8
+
+    Where 0 - symbol is not in bracket; 1 - symbol is s_square; 2 - symbol is isotope at correct relative position; 3 - symbol is an atom at correct relative position; 4 - symbol is chirality symbol at correct relative position; 5 - symbol is hydro symbol at correct relative position; 6 - symbol is charge symbol at correct relative position; 7 - symbol is class symbol at correct relative position; 8 - symbol is e_square
+
 -   **is_aromatic**, self-explanatory.
 
--   **symbol\_\_prev**, previous symbol.
+    | 0,1
 
--   **class\_\_prev**, class of the previous symbol.
+-   **class**, class of the symbol; numerics could be deciphered using **symbols.tsv**.
+
+    | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42
+
+-   **class\_\_prev**, class of the previous symbol; numerics could be deciphered using **symbols.tsv**.
+
+    | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42
+
+<!-- -->
 
 -   **pos_in_bracket\_\_prev**, position of the previous symbol relative to the square brackets.
 
-So, all of the state variants should be enumerated and considered for the further parsing.
+    | 0, 1, 2, 3, 4, 5, 6, 7, 8
+
+So, all of the state variants should be enumerated and considered for the further parsing and it can be done using R:
+
+`state_variants <- expand.grid(0:1, 0:1, 0:1, 0:1, 0:1, 0:1, 0:8, 0:1, 1:42, 1:42, 0:8)`
+
+This line gives the exact number of state variants, which should checked to verify the parser's correctness according to the introduction: only **18289152** variants should be checked and many of them are nonsensical according to the most basic SMILES rules and will be eliminated earlier (see the previous Readme versions and ps_supps.rs).
