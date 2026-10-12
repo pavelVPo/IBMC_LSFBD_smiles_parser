@@ -433,55 +433,57 @@ So, this heatmap visualizes the cases where additional checks of the current sta
 
 At the moment the state variable of the parser seems to be reasonable to define via the following principal parameters (SEE **ps_supps.rs**, but the code itself is still the subject of changes), it is important to note that the state is given after the classification of the current symbol, preliminary assessment of the pair validity, but prior to the modification of the output (given that parser will effectively work further with the state and structure only), parameters will be recoded to numerics for the convinience:
 
--   **status**, TRUE / FALSE, where TRUE is the absence of errors on the previous step and FALSE - error on the previous step.
+1.  **status**, TRUE / FALSE, where TRUE is the absence of errors on the previous step and FALSE - error on the previous step.
 
     | 1,0
 
--   **is_first**, TRUE - if current symbol is the first symbol, FALSE - otherwise.
+2.  **is_first**, TRUE - if current symbol is the first symbol, FALSE - otherwise.
 
     | 1,0
 
--   **is_last**, TRUE - if current symbol is the last symbol, FALSE - otherwise.
+3.  **is_last**, TRUE - if current symbol is the last symbol, FALSE - otherwise.
 
     | 1,0
 
--   **is_branch_open**, TRUE - if branch(es) is/are open (unpaired **bm_ib\*** symbol), FALSE - otherwise.
+4.  **is_branch_open**, TRUE - if branch(es) is/are open (unpaired **bm_ib\*** symbol), FALSE - otherwise.
 
     | 1,0
 
--   **is_ring_open**, TRUE - if ring(s) is/are open (unpaired **bm_ir\*** symbol), FALSE - otherwise.
+5.  **is_ring_open**, TRUE - if ring(s) is/are open (unpaired **bm_ir\*** symbol), FALSE - otherwise.
 
     | 1,0
 
--   **is_ct_open**, TRUE - if **l_ct** symbol still has not matching **r_ct** symbol at this point, FALSE - otherwise.
+6.  **is_ct_open**, TRUE - if **l_ct** symbol still has not matching **r_ct** symbol at this point, FALSE - otherwise.
 
     | 1,0
 
--   **pos_in_bracket**, position of the current symbol relative to the square brackets.
+7.  **pos_in_bracket**, position of the current symbol relative to the square brackets.
 
     | 0, 1, 2, 3, 4, 5, 6, 7, 8
 
     Where 0 - symbol is not in bracket; 1 - symbol is s_square; 2 - symbol is isotope at correct relative position; 3 - symbol is an atom at correct relative position; 4 - symbol is chirality symbol at correct relative position; 5 - symbol is hydro symbol at correct relative position; 6 - symbol is charge symbol at correct relative position; 7 - symbol is class symbol at correct relative position; 8 - symbol is e_square
 
--   **is_aromatic**, self-explanatory.
+8.  **is_aromatic**, self-explanatory.
 
     | 0,1
 
--   **class**, class of the symbol; numerics could be deciphered using **symbols.tsv**.
+9.  **class**, class of the symbol; numerics could be deciphered using **symbols.tsv**.
 
     | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42
 
--   **class\_\_prev**, class of the previous symbol; numerics could be deciphered using **symbols.tsv**.
+10. **class\_\_prev**, class of the previous symbol; numerics could be deciphered using **symbols.tsv**.
 
     | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42
 
--   **pos_in_bracket\_\_prev**, position of the previous symbol relative to the square brackets.
+11. **pos_in_bracket\_\_prev**, position of the previous symbol relative to the square brackets.
 
     | 0, 1, 2, 3, 4, 5, 6, 7, 8
 
 So, all of the state variants should be enumerated and considered for the further parsing and it can be done using R:
 
-`state_variants <- expand.grid(0:1, 0:1, 0:1, 0:1, 0:1, 0:1, 0:8, 0:1, 1:42, 1:42, 0:8)`
+```         
+state_variants <- expand.grid(0:1, 0:1, 0:1, 0:1, 0:1, 0:1, 0:8, 0:1, 1:42, 1:42, 0:8)
+```
 
 This line gives the exact number of state variants, which should checked to verify the parser's correctness according to the introduction: only **18289152** variants should be checked and many of them are nonsensical according to the most basic SMILES rules and will be eliminated earlier (see the previous Readme versions and ps_supps.rs).
 
@@ -493,32 +495,134 @@ As it was written, some combinations of the state parameters are forbidden and c
 
 1.  All the states, where **status** is FALSE.
 
-    ```         
-    0 * * * * * * * * * * *
-    ```
+    1.  0
+
+    2.  \*
+
+    3.  \*
+
+    4.  \*
+
+    5.  \*
+
+    6.  \*
+
+    7.  \*
+
+    8.  \*
+
+    9.  \*
+
+    10. \*
+
+    11. \*
+
+    Because of the problem, which was detected earlier
 
 2.  All the states, where **is_first** is TRUE and **class** is one of the following: atom_bar (3), atom_bal (4), atom_bar_2 (6), atom_bal_2 (7), ambient (9), e_square (11), single_bond (12), double_bond (13), triple_bond (14), quadruple_bond (15), aromatic_bond (16), no_bond (17), bm_ibi (18), bm_iri (19), bm_tbi (20), bm_tri (21), bm_ibe_2 (22), bm_ire_2 (23), bm_iri_3 (24), bm_ire_4 (25), bm_tbe_2 (26), bm_tre_2 (27), bm_tre_4 (28), bm_tri_3 (29), l_ct (30), r_ct (31), isotope (32), isotope_m (33), chiral (34), chiral_2 (35), chiral_m (36), hydro (37), hydro_2 (38), charge (39), charge_2 (40), charge_m (41), class (42)
 
-    ```         
-    * 1 * * * * * * * [^1,2,5,8,10] * *
-    ```
+    1.  \*
+
+    2.  1
+
+    3.  \*
+
+    4.  \*
+
+    5.  \*
+
+    6.  \*
+
+    7.  \*
+
+    8.  \*
+
+    9.  [3,4,6,7,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42]
+
+    10. \*
+
+    11. \*
+
+    Since these classes could not be placed at the start of the SMILES string
 
 3.  All the states, where **is_last** is TRUE and **class** is one of the following: atom_bar (3), atom_bal (4), atom_bar_2 (6), atom_bal_2 (7), ambient (9), s_square (10), single_bond (12), double_bond (13), triple_bond (14), quadruple_bond (15), aromatic_bond (16), no_bond (17), bm_ibi (18), bm_iri (19), bm_ibe_2 (22), bm_ire_2 (23), bm_iri_3 (24), bm_ire_4 (25), bm_tbe_2 (26), l_ct (30), r_ct (31), isotope (32), isotope_m (33), chiral (34), chiral_2 (35), chiral_m (36), hydro (37), hydro_2 (38), charge (39), charge_2 (40), charge_m (41), class (42)
 
-    ```         
-    * * 1 * * * * * * [^1,2,5,8,11,20,21,27,28,29] * *
-    ```
+    1.  \*
+
+    2.  \*
+
+    3.  1
+
+    4.  \*
+
+    5.  \*
+
+    6.  \*
+
+    7.  \*
+
+    8.  \*
+
+    9.  [3,4,6,7,9,10,12,13,14,15,16,17,18,19,22,23,24,25,26,30,31,32,33,34,35,36,37,38,39,40,41,42]
+
+    10. \*
+
+    11. \*
+
+    Since these classes could not be placed at the end of the SMILES string
 
 4.  All the states, where **pos_in_bracket** = 1 and **class\_\_prev** is one of the following: atom_bar (3), atom_bal (4), atom_bar_2 (6), atom_bal_2 (7), s_square (10), isotope (32), isotope_m (33), chiral (34), chiral_2 (35), chiral_m (36), hydro (37), hydro_2 (38), charge (39), charge_2 (40), charge_m (41), class (42)
 
-    ```         
-    * * * * * * * 1 * [3,4,6,7,10,32,33,34,35,36,37,38,39,40,41,42] * *
-    ```
+    1.  \*
 
-5.  All the states, where **pos_in_bracket** = 2 and **pos_in_bracket\_\_prev** != 1
+    2.  \*
 
-    ```         
-    * * * * * * * 2 * * * [^1]
-    ```
+    3.  \*
 
-6. ... 
+    4.  \*
+
+    5.  \*
+
+    6.  \*
+
+    7.  1
+
+    8.  \*
+
+    9.  \*
+
+    10. [3,4,6,7,10,32,33,34,35,36,37,38,39,40,41,42]
+
+    11. \*
+
+    Since these classes could not be without the trailing closing square bracket
+
+5.  All the states, where **pos_in_bracket\_\_prev** = 8 and (**pos_in_bracket** != 0 OR **pos_in_bracket** != 1)
+
+    1.  \*
+
+    2.  \*
+
+    3.  \*
+
+    4.  \*
+
+    5.  \*
+
+    6.  \*
+
+    7.  \*
+
+    8.  \*
+
+    9.  \*
+
+    10. [2,3,4,5,6,7,8]
+
+    11. 8
+
+    Since opening bracket is needed
+
+6.  All the states, where the order in brackets is wrong, besides the cases, which were presented earlier
+
+    ...
