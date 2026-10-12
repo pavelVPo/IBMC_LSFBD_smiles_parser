@@ -639,12 +639,12 @@ As it was written, some combinations of the state parameters are forbidden and c
 
     6.  \*
 
-    7.  \*
+    7.  y $\leq$ x
 
-    8.  \*
+    8.  x = sample of one from [1,2,3,4,5,6,7]
 
     9.  \*
 
-    10. y $\leq$ x
+    10. \*
 
-    11. x = sample of one from [1,2,3,4,5,6,7]
+    11. \*
