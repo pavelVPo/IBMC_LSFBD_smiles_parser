@@ -611,18 +611,38 @@ As it was written, some combinations of the state parameters are forbidden and c
 
     6.  \*
 
-    7.  \*
+    7.  [1,2,3,4,5,6,7,8]
 
     8.  \*
 
     9.  \*
 
-    10. [2,3,4,5,6,7,8]
+    10. \*
 
     11. 8
 
     Since opening bracket is needed
 
-6.  All the states, where the order in brackets is wrong, besides the cases, which were presented earlier
+6.  All the states, where the order **in** brackets is wrong, in addition to the cases related to brackets, which were discussed earlier
 
-    ...
+    1.  \*
+
+    2.  \*
+
+    3.  \*
+
+    4.  \*
+
+    5.  \*
+
+    6.  \*
+
+    7.  y $\leq$ x
+
+    8.  \*
+
+    9.  \*
+
+    10. \*
+
+    11. x = sample of one from [1,2,3,4,5,6,7]
