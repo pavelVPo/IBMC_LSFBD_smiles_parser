@@ -491,6 +491,8 @@ Still, it should be noted that this correctness is not about the rules of chemis
 
 ## Forbidden variants of state
 
+**WORK IN PROGRESS**
+
 As it was written, some combinations of the state parameters are forbidden and could be eliminated prior to the main state check according to the more detailed parsing logic (see ps_supp.rs for the current state of realization), such variants will be listed here:
 
 1.  All the states, where **status** is FALSE.
