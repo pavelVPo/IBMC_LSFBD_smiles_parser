@@ -573,7 +573,7 @@ As it was written, some combinations of the state parameters are forbidden and c
 
     Since these classes could not be placed at the end of the SMILES string
 
-4.  All the states, where **pos_in_bracket** = 1 and **class\_\_prev** is one of the following: atom_bar (3), atom_bal (4), atom_bar_2 (6), atom_bal_2 (7), s_square (10), isotope (32), isotope_m (33), chiral (34), chiral_2 (35), chiral_m (36), hydro (37), hydro_2 (38), charge (39), charge_2 (40), charge_m (41), class (42)
+4.  All the states, where **pos_in_bracket** = 1 & (**pos_in_bracket\_\_prev** $\neq$ 0 \| **pos_in_bracket\_\_prev** $\neq$ 8)
 
     1.  \*
 
@@ -589,17 +589,17 @@ As it was written, some combinations of the state parameters are forbidden and c
 
     7.  1
 
-    8.  \*
+    8.  [1,2,3,4,5,6,7]
 
     9.  \*
 
     10. \*
 
-    11. [3,4,6,7,10,32,33,34,35,36,37,38,39,40,41,42]
+    11. \*
 
     Since these classes could not be without the trailing closing square bracket
 
-5.  All the states, where **pos_in_bracket\_\_prev** = 8 and (**pos_in_bracket** != 0 OR **pos_in_bracket** != 1)
+5.  All the states, where **pos_in_bracket\_\_prev** = 8 and (**pos_in_bracket** $\neq$ 0 \| **pos_in_bracket** $\neq$ 1)
 
     1.  \*
 
@@ -613,7 +613,7 @@ As it was written, some combinations of the state parameters are forbidden and c
 
     6.  \*
 
-    7.  [1,2,3,4,5,6,7,8]
+    7.  [2,3,4,5,6,7,8]
 
     8.  8
 
