@@ -518,7 +518,7 @@ As it was written, some combinations of the state parameters are forbidden and c
 5.  All the states, where **pos_in_bracket** = 2 and **pos_in_bracket\_\_prev** != 1
 
     ```         
-    * * * * * * * 1 * * * [^1]
+    * * * * * * * 2 * * * [^1]
     ```
 
 6. ... 
