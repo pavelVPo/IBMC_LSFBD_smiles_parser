@@ -463,21 +463,21 @@ At the moment the state variable of the parser seems to be reasonable to define 
 
     Where 0 - symbol is not in bracket; 1 - symbol is s_square; 2 - symbol is isotope at correct relative position; 3 - symbol is an atom at correct relative position; 4 - symbol is chirality symbol at correct relative position; 5 - symbol is hydro symbol at correct relative position; 6 - symbol is charge symbol at correct relative position; 7 - symbol is class symbol at correct relative position; 8 - symbol is e_square
 
-8.  **is_aromatic**, self-explanatory.
+8.  **pos_in_bracket\_\_prev**, position of the previous symbol relative to the square brackets.
+
+    | 0, 1, 2, 3, 4, 5, 6, 7, 8
+
+9.  **is_aromatic**, self-explanatory.
 
     | 0,1
 
-9.  **class**, class of the symbol; numerics could be deciphered using **symbols.tsv**.
+10. **class**, class of the symbol; numerics could be deciphered using **symbols.tsv**.
 
     | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42
 
-10. **class\_\_prev**, class of the previous symbol; numerics could be deciphered using **symbols.tsv**.
+11. **class\_\_prev**, class of the previous symbol; numerics could be deciphered using **symbols.tsv**.
 
     | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42
-
-11. **pos_in_bracket\_\_prev**, position of the previous symbol relative to the square brackets.
-
-    | 0, 1, 2, 3, 4, 5, 6, 7, 8
 
 So, all of the state variants should be enumerated and considered for the further parsing and it can be done using R:
 
@@ -537,9 +537,9 @@ As it was written, some combinations of the state parameters are forbidden and c
 
     8.  \*
 
-    9.  [3,4,6,7,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42]
+    9.  \*
 
-    10. \*
+    10. [3,4,6,7,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42]
 
     11. \*
 
@@ -563,9 +563,9 @@ As it was written, some combinations of the state parameters are forbidden and c
 
     8.  \*
 
-    9.  [3,4,6,7,9,10,12,13,14,15,16,17,18,19,22,23,24,25,26,30,31,32,33,34,35,36,37,38,39,40,41,42]
+    9.  \*
 
-    10. \*
+    10. [3,4,6,7,9,10,12,13,14,15,16,17,18,19,22,23,24,25,26,30,31,32,33,34,35,36,37,38,39,40,41,42]
 
     11. \*
 
@@ -591,9 +591,9 @@ As it was written, some combinations of the state parameters are forbidden and c
 
     9.  \*
 
-    10. [3,4,6,7,10,32,33,34,35,36,37,38,39,40,41,42]
+    10. \*
 
-    11. \*
+    11. [3,4,6,7,10,32,33,34,35,36,37,38,39,40,41,42]
 
     Since these classes could not be without the trailing closing square bracket
 
@@ -613,13 +613,13 @@ As it was written, some combinations of the state parameters are forbidden and c
 
     7.  [1,2,3,4,5,6,7,8]
 
-    8.  \*
+    8.  8
 
     9.  \*
 
     10. \*
 
-    11. 8
+    11. \*
 
     Since opening bracket is needed
 
@@ -637,12 +637,12 @@ As it was written, some combinations of the state parameters are forbidden and c
 
     6.  \*
 
-    7.  y $\leq$ x
+    7.  \*
 
     8.  \*
 
     9.  \*
 
-    10. \*
+    10. y $\leq$ x
 
     11. x = sample of one from [1,2,3,4,5,6,7]
