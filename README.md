@@ -495,7 +495,7 @@ Still, it should be noted that this correctness is not about the rules of chemis
 
 As it was written, some combinations of the state parameters are forbidden and could be eliminated prior to the main state check according to the more detailed parsing logic (see ps_supp.rs for the current state of realization), such variants will be listed here:
 
-**Basics**
+   **Basics**
 
 1.  All the states, where **status** is FALSE.
 
@@ -657,9 +657,57 @@ As it was written, some combinations of the state parameters are forbidden and c
 
     11. \*
 
+7.  All the states where in-bracket symbol besides opening bracket is preceded by the out-of-bracket symbol
+
+    1.  \*
+
+    2.  \*
+
+    3.  \*
+
+    4.  \*
+
+    5.  \*
+
+    6.  \*
+
+    7.  [2,3,4,5,6,7,8]
+
+    8.  0
+
+    9.  \*
+
+    10. \*
+
+    11. \*
+
+8.  All the states where out-of-bracket symbols besides the closing bracket is preceded by the in-bracket symbol
+
+    1.  \*
+
+    2.  \*
+
+    3.  \*
+
+    4.  \*
+
+    5.  \*
+
+    6.  \*
+
+    7.  0
+
+    8.  [1,2,34,5,6,7]
+
+    9.  \*
+
+    10. \*
+
+    11. \*
+
     **Forbidden pairs of symbol classes**
 
-7.  All the states, where two bonds (also as a part of modifiers with explicit bonds) are going one after another
+9.  All the states, where two bonds (also as a part of modifiers with explicit bonds) are going one after another
 
     1.  \*
     2.  \*
@@ -673,50 +721,123 @@ As it was written, some combinations of the state parameters are forbidden and c
     10. [12,13,14,15,16,17,23,25,27,28]
     11. [12,13,14,15,16,17,22,26]
 
-Subtraction of the forbidden states (**1-6** at the moment) from all the theoretically possible states leaves only **2032128** variants to consider further.
+10. All the states where in-bracket symbol besides opening bracket is preceded by the out-of-bracket symbol or closing bracket
+
+    1.  \*
+
+    2.  \*
+
+    3.  \*
+
+    4.  \*
+
+    5.  \*
+
+    6.  \*
+
+    7.  \*
+
+    8.  \*
+
+    9.  \*
+
+    10. [3,4,6,7,11,32,33,34,35,36,37,38,39,40,41,42]
+
+    11. [1,2,5,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
+
+11. All the states where out-of-bracket class is preceded by the in-bracket class besides the closing bracket
+
+    1.  \*
+
+    2.  \*
+
+    3.  \*
+
+    4.  \*
+
+    5.  \*
+
+    6.  \*
+
+    7.  \*
+
+    8.  \*
+
+    9.  \*
+
+    10. [1,2,5,8,9,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
+
+    11. [3,4,6,7,10,32,33,34,35,36,37,38,39,40,41,42]
+
+Subtraction of the forbidden states (**1-11** at the moment) from all the theoretically possible states leaves only **700928** variants to consider further.
 
 The code is provided below:
 
 ```         
-### This code is not for efficiency
-## Enumerate states
-state_variants <- expand.grid(0:1, 0:1, 0:1, 0:1, 0:1, 0:1, 0:8, 0:1, 1:42, 1:42, 0:8)
+### not for efficiency
+## Enumerate state
+state_forbid_one     <- expand.grid(0, 0:1, 0:1, 0:1, 0:1, 0:1, 0:8, 0:8, 0:1, 1:42, 1:42)
+state_forbid_two     <- expand.grid(0:1, 1, 0:1, 0:1, 0:1, 0:1, 0:8, 0:8, 0:1,
+                                    c(3,4,6,7,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42),
+                                    1:42)
+state_forbid_three   <- expand.grid(0:1, 0:1, 1, 0:1, 0:1, 0:1, 0:8, 0:8, 0:1,
+                                    c(3,4,6,7,9,10,12,13,14,15,16,17,18,19,22,23,24,25,26,30,31,32,33,34,35,36,37,38,39,40,41,42),
+                                    1:42)
+state_forbid_four    <- expand.grid(0:1, 0:1, 0:1, 0:1, 0:1, 0:1,
+                                    1,
+                                    c(1,2,3,4,5,6,7),
+                                    0:1, 1:42, 1:42)
+state_forbid_five    <- expand.grid(0:1, 0:1, 0:1, 0:1, 0:1, 0:1,
+                                    c(2,3,4,5,6,7,8),
+                                    8,
+                                    0:1, 1:42, 1:42)
+state_forbid_six     <- expand.grid(0:1, 0:1, 0:1, 0:1, 0:1, 0:1,
+                                    c(1,2,3,4,5,6,7),
+                                    c(1,2,3,4,5,6,7),
+                                    0:1, 1:42, 1:42) |>
+                            subset(Var7 <= Var8)
+state_forbid_seven   <- expand.grid(0:1, 0:1, 0:1, 0:1, 0:1, 0:1,
+                                    c(2,3,4,5,6,7,8),
+                                    0,
+                                    0:1, 1:42, 1:42)
+state_forbid_eight   <- expand.grid(0:1, 0:1, 0:1, 0:1, 0:1, 0:1,
+                                    0,
+                                    c(1,2,3,4,5,6,7),
+                                    0:1, 1:42, 1:42)
+state_forbid_nine    <- expand.grid(0:1, 0:1, 0:1, 0:1, 0:1, 0:1, c(0:8), c(0:8), 0:1,
+                                    c(12,13,14,15,16,17,23,25,27,28),
+                                    c(12,13,14,15,16,17,22,26))
+state_forbid_ten     <- expand.grid(0:1, 0:1, 0:1, 0:1, 0:1, 0:1, c(0:8), c(0:8), 0:1,
+                                    c(3,4,6,7,11,32,33,34,35,36,37,38,39,40,41,42),
+                                    c(1,2,5,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31))
+state_forbid_eleven  <- expand.grid(0:1, 0:1, 0:1, 0:1, 0:1, 0:1, c(0:8), c(0:8), 0:1,
+                                    c(1,2,5,8,9,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31),
+                                    c(3,4,6,7,10,32,33,34,35,36,37,38,39,40,41,42))
+                                 
+# ...
 
-## Enumerate forbidden states
-state_forbid_one   <- expand.grid(0, 0:1, 0:1, 0:1, 0:1, 0:1, 0:8, 0:1, 1:42, 1:42, 0:8)
-state_forbid_two   <- expand.grid(0:1, 1, 0:1, 0:1, 0:1, 0:1, 0:8, 0:1,
-                                c(3,4,6,7,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42),
-                                1:42, 0:8)
-state_forbid_three <- expand.grid(0:1, 0:1, 0:1, 0:1, 0:1, 0:1, 0:8, 0:1,
-                                c(3,4,6,7,9,10,12,13,14,15,16,17,18,19,22,23,24,25,26,30,31,32,33,34,35,36,37,38,39,40,41,42),
-                                1:42, 0:8)
-state_forbid_four  <- expand.grid(0:1, 0:1, 0:1, 0:1, 0:1, 0:1,
-                                  1,
-                                  c(1,2,3,4,5,6,7),
-                                  1:42, 1:42, 0:8)
-state_forbid_five  <- expand.grid(0:1, 0:1, 0:1, 0:1, 0:1, 0:1,
-                                  c(2,3,4,5,6,7,8),
-                                  8,
-                                  1:42, 1:42, 0:8)
-state_forbid_six   <- expand.grid(0:1, 0:1, 0:1, 0:1, 0:1, 0:1,
-                                                  c(1,2,3,4,5,6,7),
-                                                  c(1,2,3,4,5,6,7),
-                                                  1:42, 1:42, 0:8) |>
-                                            subset(Var7 <= Var8)
-# ... to be continued
-
-## Convert to vectors of strings
-variants__vec      <-  state_variants     |> apply(1, paste0, collapse = "")
-forbid_one__vec    <-  state_forbid_one   |> apply(1, paste0, collapse = "")
+## Convert dataframes to vectors of strings and exclude forbidden states
+variants__vec      <-  state_variants     |> apply(1, paste0, collapse = "-")
+forbid_one__vec    <-  state_forbid_one   |> apply(1, paste0, collapse = "-")
 variants__vec      <-  setdiff(variants__vec, forbid_one__vec)
-forbid_two__vec    <-  state_forbid_two   |> apply(1, paste0, collapse = "")
+forbid_two__vec    <-  state_forbid_two   |> apply(1, paste0, collapse = "-")
 variants__vec      <-  setdiff(variants__vec, forbid_two__vec)
-forbid_three__vec  <-  state_forbid_three |> apply(1, paste0, collapse = "")
+forbid_three__vec  <-  state_forbid_three |> apply(1, paste0, collapse = "-")
 variants__vec      <-  setdiff(variants__vec, forbid_three__vec)
-forbid_four__vec   <-  state_forbid_four  |> apply(1, paste0, collapse = "")
+forbid_four__vec   <-  state_forbid_four  |> apply(1, paste0, collapse = "-")
 variants__vec      <-  setdiff(variants__vec, forbid_four__vec)
-forbid_five__vec   <-  state_forbid_five  |> apply(1, paste0, collapse = "")
+forbid_five__vec   <-  state_forbid_five  |> apply(1, paste0, collapse = "-")
 variants__vec      <-  setdiff(variants__vec, forbid_five__vec)
-forbid_six__vec    <-  state_forbid_six   |> apply(1, paste0, collapse = "")
+forbid_six__vec    <-  state_forbid_six   |> apply(1, paste0, collapse = "-")
 variants__vec      <-  setdiff(variants__vec, forbid_six__vec)
+forbid_seven__vec  <-  state_forbid_seven |> apply(1, paste0, collapse = "-")
+variants__vec      <-  setdiff(variants__vec, forbid_seven__vec)
+forbid_eight__vec  <-  state_forbid_eight |> apply(1, paste0, collapse = "-")
+variants__vec      <-  setdiff(variants__vec, forbid_eight__vec)
+forbid_nine__vec   <-  state_forbid_nine |> apply(1, paste0, collapse = "-")
+variants__vec      <-  setdiff(variants__vec, forbid_nine__vec)
+forbid_ten__vec    <-  state_forbid_ten |> apply(1, paste0, collapse = "-")
+variants__vec      <-  setdiff(variants__vec, forbid_ten__vec)
+forbid_eleven__vec <-  state_forbid_eleven |> apply(1, paste0, collapse = "-")
+variants__vec      <-  setdiff(variants__vec, forbid_eleven__vec)
 ```
