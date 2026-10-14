@@ -491,9 +491,11 @@ Still, it should be noted that this correctness is not about the rules of chemis
 
 ## Forbidden variants of state
 
-**WORK IN PROGRESS**
+***WORK IN PROGRESS***
 
 As it was written, some combinations of the state parameters are forbidden and could be eliminated prior to the main state check according to the more detailed parsing logic (see ps_supp.rs for the current state of realization), such variants will be listed here:
+
+**Basics**
 
 1.  All the states, where **status** is FALSE.
 
@@ -521,6 +523,8 @@ As it was written, some combinations of the state parameters are forbidden and c
 
     Because of the problem, which was detected earlier
 
+    **Start**
+
 2.  All the states, where **is_first** is TRUE and **class** is one of the following: atom_bar (3), atom_bal (4), atom_bar_2 (6), atom_bal_2 (7), ambient (9), e_square (11), single_bond (12), double_bond (13), triple_bond (14), quadruple_bond (15), aromatic_bond (16), no_bond (17), bm_ibi (18), bm_iri (19), bm_tbi (20), bm_tri (21), bm_ibe_2 (22), bm_ire_2 (23), bm_iri_3 (24), bm_ire_4 (25), bm_tbe_2 (26), bm_tre_2 (27), bm_tre_4 (28), bm_tri_3 (29), l_ct (30), r_ct (31), isotope (32), isotope_m (33), chiral (34), chiral_2 (35), chiral_m (36), hydro (37), hydro_2 (38), charge (39), charge_2 (40), charge_m (41), class (42)
 
     1.  \*
@@ -547,6 +551,8 @@ As it was written, some combinations of the state parameters are forbidden and c
 
     Since these classes could not be placed at the start of the SMILES string
 
+    **End**
+
 3.  All the states, where **is_last** is TRUE and **class** is one of the following: atom_bar (3), atom_bal (4), atom_bar_2 (6), atom_bal_2 (7), ambient (9), s_square (10), single_bond (12), double_bond (13), triple_bond (14), quadruple_bond (15), aromatic_bond (16), no_bond (17), bm_ibi (18), bm_iri (19), bm_ibe_2 (22), bm_ire_2 (23), bm_iri_3 (24), bm_ire_4 (25), bm_tbe_2 (26), l_ct (30), r_ct (31), isotope (32), isotope_m (33), chiral (34), chiral_2 (35), chiral_m (36), hydro (37), hydro_2 (38), charge (39), charge_2 (40), charge_m (41), class (42)
 
     1.  \*
@@ -572,6 +578,8 @@ As it was written, some combinations of the state parameters are forbidden and c
     11. \*
 
     Since these classes could not be placed at the end of the SMILES string
+
+    **Position in brackets**
 
 4.  All the states, where **pos_in_bracket** = 1 & (**pos_in_bracket\_\_prev** $\neq$ 0 \| **pos_in_bracket\_\_prev** $\neq$ 8)
 
@@ -649,7 +657,23 @@ As it was written, some combinations of the state parameters are forbidden and c
 
     11. \*
 
-Subtraction of the forbidden states from all the theoretically possible states leaves only **1155456** variants to consider further.
+    **Forbidden pairs of symbol classes**
+
+7.  All the states, where two bonds (also as a part of modifiers with explicit bonds) are going one after another
+
+    1.  \*
+    2.  \*
+    3.  \*
+    4.  \*
+    5.  \*
+    6.  \*
+    7.  \*
+    8.  \*
+    9.  \*
+    10. [12,13,14,15,16,17,23,25,27,28]
+    11. [12,13,14,15,16,17,22,26]
+
+Subtraction of the forbidden states (**1-6** at the moment) from all the theoretically possible states leaves only **2032128** variants to consider further.
 
 The code is provided below:
 
@@ -675,9 +699,10 @@ state_forbid_five  <- expand.grid(0:1, 0:1, 0:1, 0:1, 0:1, 0:1,
                                   8,
                                   1:42, 1:42, 0:8)
 state_forbid_six   <- expand.grid(0:1, 0:1, 0:1, 0:1, 0:1, 0:1,
-                                  c(2,3,4,5,6,7,8),
-                                  8,
-                                  1:42, 1:42, 0:8)
+                                                  c(1,2,3,4,5,6,7),
+                                                  c(1,2,3,4,5,6,7),
+                                                  1:42, 1:42, 0:8) |>
+                                            subset(Var7 <= Var8)
 # ... to be continued
 
 ## Convert to vectors of strings
