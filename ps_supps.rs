@@ -1,12 +1,12 @@
 use std::cmp;                        // Comparison and ordering
 use std::collections::BTreeMap;     //  Ordered collection to store the 
 use std::collections::HashSet;     //   Set to store the open rings
-use std::collections::HashMap;     //   Map to store the details on rings and branches
 // !!!
 // WORK IN PROGRESS, NOT TO RUN
 // !!!
 
 // #red
+// Work in progress
 // !!!
 // Consider "" symbol as pub static or smth to be paired with the first and last actual symbols to avoid the special cases.
 // Considered as follows: ambient type and ambient class and "" symbol
@@ -71,7 +71,7 @@ pub static SYMBOL_double_bond:        [&str; 1]          = ["="];
 pub static SYMBOL_triple_bond:        [&str; 1]          = ["#"];
 pub static SYMBOL_quadruple_bond:     [&str; 1]          = ["$"];
 pub static SYMBOL_no_bond:            [&str; 1]          = ["."];
-pub static PAIR_type_no:              [&str; 6]          = ["bond,bond", "bond,modifier", "bond,property", "modifier,property", "property,bond", "property,modifier"];
+pub static PAIR_type_no:              [&str; 7]          = ["square_bracket,square_bracket", "bond,bond", "bond,modifier", "bond,property", "modifier,property", "property,bond", "property,modifier"];
 pub static PAIR_type_no_ambient:      [&str; 6]          = ["ambient,bond", "ambient,modifier", "ambient,property", "bond,ambient", "modifier,ambient", "property,ambient"];
 pub static PAIR_class_no__ambient:    [&str; 10]         = ["atom_bal,ambient", "atom_bal_2,ambient", "atom_bar,ambient", "atom_bar_2,ambient", "s_bracket,ambient", "ambient,e_bracket", "ambient,atom_bar_2", "ambient,atom_bar", "ambient,atom_bal_2", "ambient,atom_bal"];
 pub static PAIR_class_no__in_out:     [&str; 23]         = ["atom_oal,atom_bal", "atom_oal,atom_bal_2", "atom_oal,atom_bar_2", "atom_oal_2,atom_bal", "atom_oal_2,atom_bal_2", "atom_oal_2,atom_bar", "atom_oal_2,atom_bar_2", "atom_oar,atom_bal", "atom_oar,atom_bal_2", "atom_oar,atom_bar", "atom_oar,atom_bar_2", "atom_bal,atom_oal", "atom_bal,atom_oal_2", "atom_bal,atom_oar", "atom_bal_2,atom_oal", "atom_bal_2,atom_oal_2", "atom_bal_2,atom_oar", "atom_bar,atom_oal", "atom_bar,atom_oal_2", "atom_bar,atom_oar", "atom_bar_2,atom_oal", "atom_bar_2,atom_oal_2", "atom_bar_2,atom_oar"];
@@ -150,7 +150,10 @@ pub struct Atom {
     chirality: String,
     n_hs: u8,
     charge: i8,
-    class: String
+    class: String,
+    x: f32,
+    y: f32,
+    z: f32
 }
 #[derive(Default)]
 #[derive(Debug)]
@@ -854,7 +857,8 @@ pub fn check_state_status(state: State, mut structure: Structure) -> Structure {
 pub fn update_structure(mut structure: Structure, state: State) -> Structure {
   // what are the options?
   // enumeration of the options is needed at this point
-  // So, studies described in readme should be updated
+  // So, studies described in readme should be updated and used here
+  // Since all the possible errors should be considered prior to this point, only allowed states will be considered here
 
   // Output
   return structure;
