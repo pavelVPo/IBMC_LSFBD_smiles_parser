@@ -152,8 +152,7 @@ pub struct Atom {
     charge: i8,
     class: String,
     x: f32,
-    y: f32,
-    z: f32
+    y: f32
 }
 #[derive(Default)]
 #[derive(Debug)]
